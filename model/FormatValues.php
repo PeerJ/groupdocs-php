@@ -22,6 +22,8 @@
 abstract class FormatValues {
   
     public static $Docx = "docx";
+    public static $Doc = "doc";
+    public static $Pdf = "pdf";
 
 };
 ?>

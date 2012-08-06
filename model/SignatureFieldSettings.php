@@ -24,33 +24,18 @@
 class SignatureFieldSettings {
 
   static $swaggerTypes = array(    
-    'textColumns' => 'int',
-    'input' => 'int',
-    'check' => 'string',
+    'regularExpression' => 'string',
     'name' => 'string',
     'graphSizeH' => 'int',
     'getDataFrom' => 'string',
-    'graphSizeW' => 'int',
-    'textRows' => 'int'   
+    'graphSizeW' => 'int'   
     );
 
 
     /**
      * 
      */
-	 public $textColumns;// int
-
-
-    /**
-     * 
-     */
-	 public $input;// int
-
-
-    /**
-     * 
-     */
-	 public $check;// string
+	 public $regularExpression;// string
 
 
     /**
@@ -75,12 +60,6 @@ class SignatureFieldSettings {
      * 
      */
 	 public $graphSizeW;// int
-
-
-    /**
-     * 
-     */
-	 public $textRows;// int
 
 
 }

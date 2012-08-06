@@ -31,6 +31,7 @@ class DocumentInfo {
     'type' => 'string',
     'url' => 'string',
     'file_type' => 'string',
+    'size' => 'int',
     'version' => 'int'   
     );
 
@@ -75,6 +76,12 @@ class DocumentInfo {
      * 
      */
 	 public $file_type;// string
+
+
+    /**
+     * 
+     */
+	 public $size;// int
 
 
     /**

@@ -24,10 +24,17 @@
 class ListEntitiesResult {
 
   static $swaggerTypes = array(    
+    'files' => 'array<FileSystemDocument>',
     'count' => 'int',
     'path' => 'string',
-    'entities' => 'array<SharedDocumentInfo>'   
+    'folders' => 'array<FileSystemFolder>'   
     );
+
+
+    /**
+     * 
+     */
+	 public $files =  array();// array<FileSystemDocument>
 
 
     /**
@@ -45,7 +52,7 @@ class ListEntitiesResult {
     /**
      * 
      */
-	 public $entities =  array();// array<SharedDocumentInfo>
+	 public $folders =  array();// array<FileSystemFolder>
 
 
 }

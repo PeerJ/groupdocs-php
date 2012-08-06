@@ -24,24 +24,95 @@
 class SignatureEnvelopeFieldSettings {
 
   static $swaggerTypes = array(    
-    'textColumns' => 'float',
+    'locationHeight' => 'float',
+    'fontName' => 'string',
+    'fontColor' => 'string',
+    'forceNewField' => 'bool',
+    'regularExpression' => 'string',
+    'mandatory' => 'bool',
+    'locationX' => 'float',
+    'fontBold' => 'bool',
+    'fontSize' => 'float',
+    'locationY' => 'float',
+    'fontItalic' => 'bool',
+    'fontUnderline' => 'bool',
     'order' => 'int',
     'page' => 'int',
-    'regex' => 'string',
-    'mandatory' => 'bool',
     'name' => 'string',
-    'locationX' => 'float',
-    'graphSizeH' => 'float',
-    'graphSizeW' => 'float',
-    'locationY' => 'float',
-    'textRows' => 'float'   
+    'locationWidth' => 'float'   
     );
 
 
     /**
      * 
      */
-	 public $textColumns;// float
+	 public $locationHeight;// float
+
+
+    /**
+     * 
+     */
+	 public $fontName;// string
+
+
+    /**
+     * 
+     */
+	 public $fontColor;// string
+
+
+    /**
+     * 
+     */
+	 public $forceNewField;// bool
+
+
+    /**
+     * 
+     */
+	 public $regularExpression;// string
+
+
+    /**
+     * 
+     */
+	 public $mandatory;// bool
+
+
+    /**
+     * 
+     */
+	 public $locationX;// float
+
+
+    /**
+     * 
+     */
+	 public $fontBold;// bool
+
+
+    /**
+     * 
+     */
+	 public $fontSize;// float
+
+
+    /**
+     * 
+     */
+	 public $locationY;// float
+
+
+    /**
+     * 
+     */
+	 public $fontItalic;// bool
+
+
+    /**
+     * 
+     */
+	 public $fontUnderline;// bool
 
 
     /**
@@ -59,49 +130,13 @@ class SignatureEnvelopeFieldSettings {
     /**
      * 
      */
-	 public $regex;// string
-
-
-    /**
-     * 
-     */
-	 public $mandatory;// bool
-
-
-    /**
-     * 
-     */
 	 public $name;// string
 
 
     /**
      * 
      */
-	 public $locationX;// float
-
-
-    /**
-     * 
-     */
-	 public $graphSizeH;// float
-
-
-    /**
-     * 
-     */
-	 public $graphSizeW;// float
-
-
-    /**
-     * 
-     */
-	 public $locationY;// float
-
-
-    /**
-     * 
-     */
-	 public $textRows;// float
+	 public $locationWidth;// float
 
 
 }

@@ -24,10 +24,55 @@
 class SignatureEnvelopeFieldLocationSettings {
 
   static $swaggerTypes = array(    
+    'locationHeight' => 'float',
+    'fontItalic' => 'bool',
+    'fontColor' => 'string',
+    'fontName' => 'string',
+    'forceNewField' => 'bool',
+    'fontUnderline' => 'bool',
     'page' => 'int',
+    'locationWidth' => 'float',
     'locationX' => 'float',
+    'fontBold' => 'bool',
+    'fontSize' => 'float',
     'locationY' => 'float'   
     );
+
+
+    /**
+     * 
+     */
+	 public $locationHeight;// float
+
+
+    /**
+     * 
+     */
+	 public $fontItalic;// bool
+
+
+    /**
+     * 
+     */
+	 public $fontColor;// string
+
+
+    /**
+     * 
+     */
+	 public $fontName;// string
+
+
+    /**
+     * 
+     */
+	 public $forceNewField;// bool
+
+
+    /**
+     * 
+     */
+	 public $fontUnderline;// bool
 
 
     /**
@@ -39,7 +84,25 @@ class SignatureEnvelopeFieldLocationSettings {
     /**
      * 
      */
+	 public $locationWidth;// float
+
+
+    /**
+     * 
+     */
 	 public $locationX;// float
+
+
+    /**
+     * 
+     */
+	 public $fontBold;// bool
+
+
+    /**
+     * 
+     */
+	 public $fontSize;// float
 
 
     /**

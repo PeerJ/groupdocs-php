@@ -25,7 +25,9 @@ class SignatureSignatureSettings {
 
   static $swaggerTypes = array(    
     'position' => 'string',
+    'initialsData' => 'string',
     'lastName' => 'string',
+    'signatureData' => 'string',
     'name' => 'string',
     'firstName' => 'string',
     'companyName' => 'string',
@@ -42,7 +44,19 @@ class SignatureSignatureSettings {
     /**
      * 
      */
+	 public $initialsData;// string
+
+
+    /**
+     * 
+     */
 	 public $lastName;// string
+
+
+    /**
+     * 
+     */
+	 public $signatureData;// string
 
 
     /**

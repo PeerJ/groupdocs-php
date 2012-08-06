@@ -584,5 +584,144 @@ class MgmtAPI {
 	 }
 
 
+	/**
+	 * Returns user's storage providers.
+	 *
+	 * 
+	 * 
+   * @param userId  User GUID
+   *  
+	 * @return GetStorageProvidersResponse {@link GetStorageProvidersResponse} 
+	 * @throws APIException 
+	 */
+
+	 public function GetStorageProviders($userId) {
+
+		//parse inputs
+		$resourcePath = "/mgmt/{userId}/storages";
+		$resourcePath = str_replace("{format}", "json", $resourcePath);
+		$resourcePath = str_replace("*", "", $resourcePath);
+		$method = "GET";
+        $queryParams = array();
+        $headerParams = array();
+    
+		
+		if($userId != null) {
+			$resourcePath = str_replace("{userId}", $this->apiClient->toPathValue($userId), $resourcePath);
+		}
+
+	
+	
+
+		//make the API Call
+		$response = $this->apiClient->callAPI($resourcePath, $method, $queryParams, null, $headerParams);
+    if(! $response){
+        return null;
+    }
+
+		//create output objects if the response has more than one object
+		$responseObject = $this->apiClient->deserialize($response, 'GetStorageProvidersResponse');
+		return $responseObject;
+				
+				
+	 }
+
+
+	/**
+	 * Adds a new storage provider configuration.
+	 *
+	 * 
+	 * 
+   * @param userId  User GUID
+   *  @param provider  Storage provider name
+   *  @param postData  Storage provider configuration details
+   *  
+	 * @return AddStorageProviderResponse {@link AddStorageProviderResponse} 
+	 * @throws APIException 
+	 */
+
+	 public function AddStorageProvider($userId, $provider, $postData) {
+
+		//parse inputs
+		$resourcePath = "/mgmt/{userId}/storages/{provider}";
+		$resourcePath = str_replace("{format}", "json", $resourcePath);
+		$resourcePath = str_replace("*", "", $resourcePath);
+		$method = "POST";
+        $queryParams = array();
+        $headerParams = array();
+    
+		
+		if($userId != null) {
+			$resourcePath = str_replace("{userId}", $this->apiClient->toPathValue($userId), $resourcePath);
+		}
+		if($provider != null) {
+			$resourcePath = str_replace("{provider}", $this->apiClient->toPathValue($provider), $resourcePath);
+		}
+
+	
+	
+
+		//make the API Call
+		$response = $this->apiClient->callAPI($resourcePath, $method, $queryParams, $postData, $headerParams);
+    if(! $response){
+        return null;
+    }
+
+		//create output objects if the response has more than one object
+		$responseObject = $this->apiClient->deserialize($response, 'AddStorageProviderResponse');
+		return $responseObject;
+				
+				
+	 }
+
+
+	/**
+	 * Updates user's storage provider configuration.
+	 *
+	 * 
+	 * 
+   * @param userId  User GUID
+   *  @param provider  Storage provider name
+   *  @param postData  Storage provider configuration details
+   *  
+	 * @return UpdateStorageProviderResponse {@link UpdateStorageProviderResponse} 
+	 * @throws APIException 
+	 */
+
+	 public function UpdateStorageProvider($userId, $provider, $postData) {
+
+		//parse inputs
+		$resourcePath = "/mgmt/{userId}/storages/{provider}";
+		$resourcePath = str_replace("{format}", "json", $resourcePath);
+		$resourcePath = str_replace("*", "", $resourcePath);
+		$method = "PUT";
+        $queryParams = array();
+        $headerParams = array();
+    
+		
+		if($userId != null) {
+			$resourcePath = str_replace("{userId}", $this->apiClient->toPathValue($userId), $resourcePath);
+		}
+		if($provider != null) {
+			$resourcePath = str_replace("{provider}", $this->apiClient->toPathValue($provider), $resourcePath);
+		}
+
+	
+	
+
+		//make the API Call
+		$response = $this->apiClient->callAPI($resourcePath, $method, $queryParams, $postData, $headerParams);
+    if(! $response){
+        return null;
+    }
+
+		//create output objects if the response has more than one object
+		$responseObject = $this->apiClient->deserialize($response, 'UpdateStorageProviderResponse');
+		return $responseObject;
+				
+				
+	 }
+
+
 
 }

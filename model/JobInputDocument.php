@@ -30,9 +30,10 @@ class JobInputDocument {
     'access' => 'string',
     'url' => 'string',
     'version' => 'int',
+    'size' => 'int',
     'file_type' => 'string',
-    'id' => 'float',
     'guid' => 'string',
+    'id' => 'float',
     'proc_date' => 'int',
     'name' => 'string',
     'outputs' => 'array<JobOutputDocument>',
@@ -79,19 +80,25 @@ class JobInputDocument {
     /**
      * 
      */
+	 public $size;// int
+
+
+    /**
+     * 
+     */
 	 public $file_type;// string
 
 
     /**
      * 
      */
-	 public $id;// float
+	 public $guid;// string
 
 
     /**
      * 
      */
-	 public $guid;// string
+	 public $id;// float
 
 
     /**

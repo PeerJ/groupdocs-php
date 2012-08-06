@@ -24,7 +24,8 @@
 class CreateQuestionnaireResult {
 
   static $swaggerTypes = array(    
-    'questionnaire_id' => 'float'   
+    'questionnaire_id' => 'float',
+    'adjusted_name' => 'string'   
     );
 
 
@@ -32,6 +33,12 @@ class CreateQuestionnaireResult {
      * 
      */
 	 public $questionnaire_id;// float
+
+
+    /**
+     * 
+     */
+	 public $adjusted_name;// string
 
 
 }

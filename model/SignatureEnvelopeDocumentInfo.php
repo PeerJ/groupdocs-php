@@ -24,6 +24,7 @@
 class SignatureEnvelopeDocumentInfo {
 
   static $swaggerTypes = array(    
+    'fieldsCount' => 'int',
     'order' => 'int',
     'name' => 'string',
     'envelopeId' => 'string',
@@ -31,6 +32,12 @@ class SignatureEnvelopeDocumentInfo {
     'originalDocumentMD5' => 'string',
     'documentId' => 'string'   
     );
+
+
+    /**
+     * 
+     */
+	 public $fieldsCount;// int
 
 
     /**

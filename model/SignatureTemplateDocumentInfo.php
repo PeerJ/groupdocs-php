@@ -25,6 +25,7 @@ class SignatureTemplateDocumentInfo {
 
   static $swaggerTypes = array(    
     'templateId' => 'string',
+    'fieldsCount' => 'int',
     'order' => 'int',
     'name' => 'string',
     'originalDocumentPagesCount' => 'int',
@@ -37,6 +38,12 @@ class SignatureTemplateDocumentInfo {
      * 
      */
 	 public $templateId;// string
+
+
+    /**
+     * 
+     */
+	 public $fieldsCount;// int
 
 
     /**

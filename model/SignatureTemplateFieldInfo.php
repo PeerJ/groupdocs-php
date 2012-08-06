@@ -24,7 +24,7 @@
 class SignatureTemplateFieldInfo {
 
   static $swaggerTypes = array(    
-    'check' => 'string',
+    'regularExpression' => 'string',
     'mandatory' => 'bool',
     'graphSizeH' => 'int',
     'textRows' => 'float',
@@ -44,7 +44,7 @@ class SignatureTemplateFieldInfo {
     /**
      * 
      */
-	 public $check;// string
+	 public $regularExpression;// string
 
 
     /**

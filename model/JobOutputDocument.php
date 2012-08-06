@@ -32,6 +32,7 @@ class JobOutputDocument {
     'type' => 'string',
     'ftype' => 'string',
     'url' => 'string',
+    'size' => 'int',
     'version' => 'int'   
     );
 
@@ -82,6 +83,12 @@ class JobOutputDocument {
      * 
      */
 	 public $url;// string
+
+
+    /**
+     * 
+     */
+	 public $size;// int
 
 
     /**

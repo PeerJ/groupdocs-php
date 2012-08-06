@@ -24,17 +24,62 @@
 class SignatureFieldInfo {
 
   static $swaggerTypes = array(    
-    'id' => 'string',
-    'textColumns' => 'float',
-    'input' => 'float',
-    'check' => 'string',
-    'name' => 'string',
+    'fontName' => 'string',
+    'fontColor' => 'string',
+    'regularExpression' => 'string',
     'graphSizeH' => 'int',
-    'getDataFrom' => 'string',
-    'graphSizeW' => 'int',
+    'fontBold' => 'bool',
+    'fontSize' => 'float',
     'isSystem' => 'bool',
-    'textRows' => 'float'   
+    'id' => 'string',
+    'fontItalic' => 'bool',
+    'fontUnderline' => 'bool',
+    'name' => 'string',
+    'getDataFrom' => 'string',
+    'graphSizeW' => 'int'   
     );
+
+
+    /**
+     * 
+     */
+	 public $fontName;// string
+
+
+    /**
+     * 
+     */
+	 public $fontColor;// string
+
+
+    /**
+     * 
+     */
+	 public $regularExpression;// string
+
+
+    /**
+     * 
+     */
+	 public $graphSizeH;// int
+
+
+    /**
+     * 
+     */
+	 public $fontBold;// bool
+
+
+    /**
+     * 
+     */
+	 public $fontSize;// float
+
+
+    /**
+     * 
+     */
+	 public $isSystem;// bool
 
 
     /**
@@ -46,31 +91,19 @@ class SignatureFieldInfo {
     /**
      * 
      */
-	 public $textColumns;// float
+	 public $fontItalic;// bool
 
 
     /**
      * 
      */
-	 public $input;// float
-
-
-    /**
-     * 
-     */
-	 public $check;// string
+	 public $fontUnderline;// bool
 
 
     /**
      * 
      */
 	 public $name;// string
-
-
-    /**
-     * 
-     */
-	 public $graphSizeH;// int
 
 
     /**
@@ -83,18 +116,6 @@ class SignatureFieldInfo {
      * 
      */
 	 public $graphSizeW;// int
-
-
-    /**
-     * 
-     */
-	 public $isSystem;// bool
-
-
-    /**
-     * 
-     */
-	 public $textRows;// float
 
 
 }

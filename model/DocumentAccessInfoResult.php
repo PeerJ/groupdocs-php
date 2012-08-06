@@ -25,26 +25,18 @@ class DocumentAccessInfoResult {
 
   static $swaggerTypes = array(    
     'sharers' => 'array<UserInfo>',
-    'folder_count' => 'int',
-    'modified_on' => 'int',
     'status' => 'string',
-    'created_on' => 'int',
     'shared_on' => 'int',
-    'access' => 'string',
     'type' => 'string',
-    'supported_types' => 'array<string>',
+    'access' => 'string',
     'url' => 'string',
-    'file_type' => 'string',
     'version' => 'int',
     'size' => 'int',
-    'guid' => 'string',
+    'file_type' => 'string',
     'id' => 'float',
-    'thumbnail' => 'array<int>',
-    'dir' => 'bool',
+    'guid' => 'string',
     'name' => 'string',
-    'owner' => 'UserInfo',
-    'file_count' => 'int',
-    'known' => 'bool'   
+    'owner' => 'UserInfo'   
     );
 
 
@@ -57,25 +49,7 @@ class DocumentAccessInfoResult {
     /**
      * 
      */
-	 public $folder_count;// int
-
-
-    /**
-     * 
-     */
-	 public $modified_on;// int
-
-
-    /**
-     * 
-     */
 	 public $status;// string
-
-
-    /**
-     * 
-     */
-	 public $created_on;// int
 
 
     /**
@@ -87,31 +61,19 @@ class DocumentAccessInfoResult {
     /**
      * 
      */
-	 public $access;// string
-
-
-    /**
-     * 
-     */
 	 public $type;// string
 
 
     /**
      * 
      */
-	 public $supported_types =  array();// array<string>
+	 public $access;// string
 
 
     /**
      * 
      */
 	 public $url;// string
-
-
-    /**
-     * 
-     */
-	 public $file_type;// string
 
 
     /**
@@ -129,7 +91,7 @@ class DocumentAccessInfoResult {
     /**
      * 
      */
-	 public $guid;// string
+	 public $file_type;// string
 
 
     /**
@@ -141,13 +103,7 @@ class DocumentAccessInfoResult {
     /**
      * 
      */
-	 public $thumbnail =  array();// array<int>
-
-
-    /**
-     * 
-     */
-	 public $dir;// bool
+	 public $guid;// string
 
 
     /**
@@ -160,18 +116,6 @@ class DocumentAccessInfoResult {
      * 
      */
 	 public $owner;// UserInfo
-
-
-    /**
-     * 
-     */
-	 public $file_count;// int
-
-
-    /**
-     * 
-     */
-	 public $known;// bool
 
 
 }

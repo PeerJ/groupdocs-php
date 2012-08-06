@@ -28,72 +28,21 @@ class ComparisonAPI {
 
 
 	/**
-	 * Compare
-	 *
-	 * 
-	 * 
-   * @param userId  User GUID
-   *  @param sourceFileId  Source File GUID
-   *  @param targetFileId  Target File GUID
-   *  
-	 * @return CompareResponse {@link CompareResponse} 
-	 * @throws APIException 
-	 */
-
-	 public function Compare($userId, $sourceFileId, $targetFileId) {
-
-		//parse inputs
-		$resourcePath = "/comparison/{userId}/comparison/compare?source={sourceFileId}&target={targetFileId}";
-		$resourcePath = str_replace("{format}", "json", $resourcePath);
-		$resourcePath = str_replace("*", "", $resourcePath);
-		$method = "GET";
-        $queryParams = array();
-        $headerParams = array();
-    
-		
-		if($userId != null) {
-			$resourcePath = str_replace("{userId}", $this->apiClient->toPathValue($userId), $resourcePath);
-		}
-		if($sourceFileId != null) {
-			$resourcePath = str_replace("{sourceFileId}", $this->apiClient->toPathValue($sourceFileId), $resourcePath);
-		}
-		if($targetFileId != null) {
-			$resourcePath = str_replace("{targetFileId}", $this->apiClient->toPathValue($targetFileId), $resourcePath);
-		}
-
-	
-	
-
-		//make the API Call
-		$response = $this->apiClient->callAPI($resourcePath, $method, $queryParams, null, $headerParams);
-    if(! $response){
-        return null;
-    }
-
-		//create output objects if the response has more than one object
-		$responseObject = $this->apiClient->deserialize($response, 'CompareResponse');
-		return $responseObject;
-				
-				
-	 }
-
-
-	/**
-	 * Get changes
+	 * Download comparison result file
 	 *
 	 * 
 	 * 
    * @param userId  User GUID
    *  @param resultFileId  Comparison result file GUID
    *  
-	 * @return ChangesResponse {@link ChangesResponse} 
+	 * @return string {@link string} 
 	 * @throws APIException 
 	 */
 
-	 public function GetChanges($userId, $resultFileId) {
+	 public function DownloadResult($userId, $resultFileId) {
 
 		//parse inputs
-		$resourcePath = "/comparison/{userId}/comparison/changes?resultFileId={resultFileId}";
+		$resourcePath = "/comparison/{userId}/comparison/download?resultFileId={resultFileId}&format={format}";
 		$resourcePath = str_replace("{format}", "json", $resourcePath);
 		$resourcePath = str_replace("*", "", $resourcePath);
 		$method = "GET";
@@ -118,54 +67,7 @@ class ComparisonAPI {
     }
 
 		//create output objects if the response has more than one object
-		$responseObject = $this->apiClient->deserialize($response, 'ChangesResponse');
-		return $responseObject;
-				
-				
-	 }
-
-
-	/**
-	 * Get document details
-	 *
-	 * 
-	 * 
-   * @param userId  User GUID
-   *  @param guid  Document GUID
-   *  
-	 * @return DocumentDetailsResponse {@link DocumentDetailsResponse} 
-	 * @throws APIException 
-	 */
-
-	 public function GetDocumentDetails($userId, $guid) {
-
-		//parse inputs
-		$resourcePath = "/comparison/{userId}/comparison/document?guid={guid}";
-		$resourcePath = str_replace("{format}", "json", $resourcePath);
-		$resourcePath = str_replace("*", "", $resourcePath);
-		$method = "GET";
-        $queryParams = array();
-        $headerParams = array();
-    
-		
-		if($userId != null) {
-			$resourcePath = str_replace("{userId}", $this->apiClient->toPathValue($userId), $resourcePath);
-		}
-		if($guid != null) {
-			$resourcePath = str_replace("{guid}", $this->apiClient->toPathValue($guid), $resourcePath);
-		}
-
-	
-	
-
-		//make the API Call
-		$response = $this->apiClient->callAPI($resourcePath, $method, $queryParams, null, $headerParams);
-    if(! $response){
-        return null;
-    }
-
-		//create output objects if the response has more than one object
-		$responseObject = $this->apiClient->deserialize($response, 'DocumentDetailsResponse');
+		$responseObject = $this->apiClient->deserialize($response, 'string');
 		return $responseObject;
 				
 				

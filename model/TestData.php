@@ -33,27 +33,25 @@ class TestData {
     'compareResponseList' => 'Array<CompareResponse>',
     'rectangleList' => 'Array<Rectangle>',
     'changeInfoList' => 'Array<ChangeInfo>',
-    'createPackageResultList' => 'Array<CreatePackageResult>',
-    'uploadResponseList' => 'Array<UploadResponse>',
-    'compressResponseList' => 'Array<CompressResponse>',
-    'deleteResultList' => 'Array<DeleteResult>',
-    'createFolderResultList' => 'Array<CreateFolderResult>',
-    'folderMoveResultList' => 'Array<FolderMoveResult>',
-    'fileMoveResultList' => 'Array<FileMoveResult>',
-    'listEntitiesResultList' => 'Array<ListEntitiesResult>',
-    'createFolderResponseList' => 'Array<CreateFolderResponse>',
-    'documentInfoList' => 'Array<DocumentInfo>',
-    'compressRequestResultList' => 'Array<CompressRequestResult>',
-    'uploadRequestResultList' => 'Array<UploadRequestResult>',
-    'storageInfoResultList' => 'Array<StorageInfoResult>',
-    'createPackageResponseList' => 'Array<CreatePackageResponse>',
-    'folderMoveResponseList' => 'Array<FolderMoveResponse>',
-    'storageInfoResponseList' => 'Array<StorageInfoResponse>',
+    'resetPasswordResultList' => 'Array<ResetPasswordResult>',
+    'createUserResultList' => 'Array<CreateUserResult>',
+    'userPasswordInfoList' => 'Array<UserPasswordInfo>',
+    'updateStorageProviderResponseList' => 'Array<UpdateStorageProviderResponse>',
+    'createUserResponseList' => 'Array<CreateUserResponse>',
+    'changePasswordResultList' => 'Array<ChangePasswordResult>',
+    'updateUserResponseList' => 'Array<UpdateUserResponse>',
+    'addStorageProviderResponseList' => 'Array<AddStorageProviderResponse>',
+    'updateUserResultList' => 'Array<UpdateUserResult>',
+    'userInfoResponseList' => 'Array<UserInfoResponse>',
+    'getStorageProvidersResultList' => 'Array<GetStorageProvidersResult>',
+    'resetPasswordResponseList' => 'Array<ResetPasswordResponse>',
+    'updateStorageProviderResultList' => 'Array<UpdateStorageProviderResult>',
     'userInfoList' => 'Array<UserInfo>',
-    'deleteResponseList' => 'Array<DeleteResponse>',
-    'listEntitiesResponseList' => 'Array<ListEntitiesResponse>',
-    'fileMoveResponseList' => 'Array<FileMoveResponse>',
-    'sharedDocumentInfoList' => 'Array<SharedDocumentInfo>',
+    'addStorageProviderResultList' => 'Array<AddStorageProviderResult>',
+    'getStorageProvidersResponseList' => 'Array<GetStorageProvidersResponse>',
+    'userInfoResultList' => 'Array<UserInfoResult>',
+    'storageProviderInfoList' => 'Array<StorageProviderInfo>',
+    'changePasswordResponseList' => 'Array<ChangePasswordResponse>',
     'setCollaboratorsResponseList' => 'Array<SetCollaboratorsResponse>',
     'listRepliesResultList' => 'Array<ListRepliesResult>',
     'listAnnotationsResponseList' => 'Array<ListAnnotationsResponse>',
@@ -77,6 +75,69 @@ class TestData {
     'setCollaboratorsResultList' => 'Array<SetCollaboratorsResult>',
     'pointList' => 'Array<Point>',
     'getCollaboratorsResultList' => 'Array<GetCollaboratorsResult>',
+    'resultList' => 'Array<Result>',
+    'getJobsDocumentsResultList' => 'Array<GetJobsDocumentsResult>',
+    'getJobDocumentsResultList' => 'Array<GetJobDocumentsResult>',
+    'createJobResponseList' => 'Array<CreateJobResponse>',
+    'getJobDocumentsResponseList' => 'Array<GetJobDocumentsResponse>',
+    'createJobResultList' => 'Array<CreateJobResult>',
+    'getJobsResponseList' => 'Array<GetJobsResponse>',
+    'jobInputDocumentList' => 'Array<JobInputDocument>',
+    'convertResponseList' => 'Array<ConvertResponse>',
+    'getJobResponseList' => 'Array<GetJobResponse>',
+    'addJobDocumentResponseList' => 'Array<AddJobDocumentResponse>',
+    'getJobsDocumentsResponseList' => 'Array<GetJobsDocumentsResponse>',
+    'getJobsResultList' => 'Array<GetJobsResult>',
+    'updateJobResponseList' => 'Array<UpdateJobResponse>',
+    'getJobResultList' => 'Array<GetJobResult>',
+    'jobOutputDocumentList' => 'Array<JobOutputDocument>',
+    'convertRequestResultList' => 'Array<ConvertRequestResult>',
+    'jobDocumentsEntryList' => 'Array<JobDocumentsEntry>',
+    'jobInfoList' => 'Array<JobInfo>',
+    'addJobDocumentResultList' => 'Array<AddJobDocumentResult>',
+    'viewDocumentResultList' => 'Array<ViewDocumentResult>',
+    'viewDocumentResponseList' => 'Array<ViewDocumentResponse>',
+    'dimensionList' => 'Array<Dimension>',
+    'createPackageResultList' => 'Array<CreatePackageResult>',
+    'uploadResponseList' => 'Array<UploadResponse>',
+    'compressResponseList' => 'Array<CompressResponse>',
+    'deleteResultList' => 'Array<DeleteResult>',
+    'createFolderResultList' => 'Array<CreateFolderResult>',
+    'folderMoveResultList' => 'Array<FolderMoveResult>',
+    'fileMoveResultList' => 'Array<FileMoveResult>',
+    'listEntitiesResultList' => 'Array<ListEntitiesResult>',
+    'fileSystemDocumentList' => 'Array<FileSystemDocument>',
+    'createFolderResponseList' => 'Array<CreateFolderResponse>',
+    'documentInfoList' => 'Array<DocumentInfo>',
+    'compressRequestResultList' => 'Array<CompressRequestResult>',
+    'uploadRequestResultList' => 'Array<UploadRequestResult>',
+    'storageInfoResultList' => 'Array<StorageInfoResult>',
+    'createPackageResponseList' => 'Array<CreatePackageResponse>',
+    'folderMoveResponseList' => 'Array<FolderMoveResponse>',
+    'storageInfoResponseList' => 'Array<StorageInfoResponse>',
+    'fileSystemFolderList' => 'Array<FileSystemFolder>',
+    'deleteResponseList' => 'Array<DeleteResponse>',
+    'listEntitiesResponseList' => 'Array<ListEntitiesResponse>',
+    'fileMoveResponseList' => 'Array<FileMoveResponse>',
+    'getDocumentInfoResultList' => 'Array<GetDocumentInfoResult>',
+    'templateFieldList' => 'Array<TemplateField>',
+    'documentViewsResultList' => 'Array<DocumentViewsResult>',
+    'sharedDocumentsResponseList' => 'Array<SharedDocumentsResponse>',
+    'templateFieldsResponseList' => 'Array<TemplateFieldsResponse>',
+    'documentAccessInfoResultList' => 'Array<DocumentAccessInfoResult>',
+    'sharedUsersResultList' => 'Array<SharedUsersResult>',
+    'sharedDocumentsResultList' => 'Array<SharedDocumentsResult>',
+    'documentViewsResponseList' => 'Array<DocumentViewsResponse>',
+    'getDocumentForeignTypesResponseList' => 'Array<GetDocumentForeignTypesResponse>',
+    'documentViewInfoList' => 'Array<DocumentViewInfo>',
+    'sharedUsersResponseList' => 'Array<SharedUsersResponse>',
+    'getDocumentInfoResponseList' => 'Array<GetDocumentInfoResponse>',
+    'documentUserStatusResultList' => 'Array<DocumentUserStatusResult>',
+    'documentUserStatusResponseList' => 'Array<DocumentUserStatusResponse>',
+    'templateFieldsResultList' => 'Array<TemplateFieldsResult>',
+    'getDocumentForeignTypesResultList' => 'Array<GetDocumentForeignTypesResult>',
+    'documentAccessInfoResponseList' => 'Array<DocumentAccessInfoResponse>',
+    'sharedDocumentInfoList' => 'Array<SharedDocumentInfo>',
     'questionnaireExecutionInfoList' => 'Array<QuestionnaireExecutionInfo>',
     'getQuestionnairesResponseList' => 'Array<GetQuestionnairesResponse>',
     'getDocumentQuestionnairesResultList' => 'Array<GetDocumentQuestionnairesResult>',
@@ -118,58 +179,6 @@ class TestData {
     'addDatasourceResponseList' => 'Array<AddDatasourceResponse>',
     'getQuestionnaireResponseList' => 'Array<GetQuestionnaireResponse>',
     'datasourceFieldList' => 'Array<DatasourceField>',
-    'getDocumentInfoResultList' => 'Array<GetDocumentInfoResult>',
-    'templateFieldList' => 'Array<TemplateField>',
-    'documentViewsResultList' => 'Array<DocumentViewsResult>',
-    'sharedDocumentsResponseList' => 'Array<SharedDocumentsResponse>',
-    'templateFieldsResponseList' => 'Array<TemplateFieldsResponse>',
-    'documentAccessInfoResultList' => 'Array<DocumentAccessInfoResult>',
-    'sharedUsersResultList' => 'Array<SharedUsersResult>',
-    'sharedDocumentsResultList' => 'Array<SharedDocumentsResult>',
-    'documentViewsResponseList' => 'Array<DocumentViewsResponse>',
-    'getDocumentForeignTypesResponseList' => 'Array<GetDocumentForeignTypesResponse>',
-    'documentViewInfoList' => 'Array<DocumentViewInfo>',
-    'viewDocumentResultList' => 'Array<ViewDocumentResult>',
-    'sharedUsersResponseList' => 'Array<SharedUsersResponse>',
-    'getDocumentInfoResponseList' => 'Array<GetDocumentInfoResponse>',
-    'documentUserStatusResultList' => 'Array<DocumentUserStatusResult>',
-    'documentUserStatusResponseList' => 'Array<DocumentUserStatusResponse>',
-    'templateFieldsResultList' => 'Array<TemplateFieldsResult>',
-    'dimensionList' => 'Array<Dimension>',
-    'getDocumentForeignTypesResultList' => 'Array<GetDocumentForeignTypesResult>',
-    'documentAccessInfoResponseList' => 'Array<DocumentAccessInfoResponse>',
-    'viewDocumentResponseList' => 'Array<ViewDocumentResponse>',
-    'resultList' => 'Array<Result>',
-    'getJobsDocumentsResultList' => 'Array<GetJobsDocumentsResult>',
-    'getJobDocumentsResultList' => 'Array<GetJobDocumentsResult>',
-    'createJobResponseList' => 'Array<CreateJobResponse>',
-    'getJobDocumentsResponseList' => 'Array<GetJobDocumentsResponse>',
-    'createJobResultList' => 'Array<CreateJobResult>',
-    'getJobsResponseList' => 'Array<GetJobsResponse>',
-    'jobInputDocumentList' => 'Array<JobInputDocument>',
-    'convertResponseList' => 'Array<ConvertResponse>',
-    'getJobResponseList' => 'Array<GetJobResponse>',
-    'addJobDocumentResponseList' => 'Array<AddJobDocumentResponse>',
-    'getJobsDocumentsResponseList' => 'Array<GetJobsDocumentsResponse>',
-    'getJobsResultList' => 'Array<GetJobsResult>',
-    'updateJobResponseList' => 'Array<UpdateJobResponse>',
-    'getJobResultList' => 'Array<GetJobResult>',
-    'jobOutputDocumentList' => 'Array<JobOutputDocument>',
-    'convertRequestResultList' => 'Array<ConvertRequestResult>',
-    'jobDocumentsEntryList' => 'Array<JobDocumentsEntry>',
-    'jobInfoList' => 'Array<JobInfo>',
-    'addJobDocumentResultList' => 'Array<AddJobDocumentResult>',
-    'resetPasswordResultList' => 'Array<ResetPasswordResult>',
-    'updateUserResultList' => 'Array<UpdateUserResult>',
-    'userInfoResponseList' => 'Array<UserInfoResponse>',
-    'resetPasswordResponseList' => 'Array<ResetPasswordResponse>',
-    'createUserResultList' => 'Array<CreateUserResult>',
-    'userPasswordInfoList' => 'Array<UserPasswordInfo>',
-    'createUserResponseList' => 'Array<CreateUserResponse>',
-    'changePasswordResultList' => 'Array<ChangePasswordResult>',
-    'updateUserResponseList' => 'Array<UpdateUserResponse>',
-    'userInfoResultList' => 'Array<UserInfoResult>',
-    'changePasswordResponseList' => 'Array<ChangePasswordResponse>',
     'renameResponseList' => 'Array<RenameResponse>',
     'renameResultList' => 'Array<RenameResult>',
     'signatureEnvelopeDocumentsResponseList' => 'Array<SignatureEnvelopeDocumentsResponse>',
@@ -187,8 +196,8 @@ class TestData {
     'signatureTemplateFieldLocationSettingsList' => 'Array<SignatureTemplateFieldLocationSettings>',
     'signatureEnvelopeRecipientResultList' => 'Array<SignatureEnvelopeRecipientResult>',
     'signatureTemplateFieldResponseList' => 'Array<SignatureTemplateFieldResponse>',
-    'signatureEnvelopeFieldInfoList' => 'Array<SignatureEnvelopeFieldInfo>',
     'signatureEnvelopesResponseList' => 'Array<SignatureEnvelopesResponse>',
+    'signatureEnvelopeFieldInfoList' => 'Array<SignatureEnvelopeFieldInfo>',
     'signatureRoleInfoList' => 'Array<SignatureRoleInfo>',
     'signatureTemplateSettingsList' => 'Array<SignatureTemplateSettings>',
     'signatureTemplateFieldsResultList' => 'Array<SignatureTemplateFieldsResult>',
@@ -197,8 +206,8 @@ class TestData {
     'signatureTemplateDocumentInfoList' => 'Array<SignatureTemplateDocumentInfo>',
     'signatureFieldSettingsList' => 'Array<SignatureFieldSettings>',
     'signatureTemplateFieldInfoList' => 'Array<SignatureTemplateFieldInfo>',
-    'signatureTemplateResultList' => 'Array<SignatureTemplateResult>',
     'signatureRolesResultList' => 'Array<SignatureRolesResult>',
+    'signatureTemplateResultList' => 'Array<SignatureTemplateResult>',
     'signatureEnvelopeRecipientsResponseList' => 'Array<SignatureEnvelopeRecipientsResponse>',
     'signatureRolesResponseList' => 'Array<SignatureRolesResponse>',
     'signatureContactsImportResponseList' => 'Array<SignatureContactsImportResponse>',
@@ -209,31 +218,31 @@ class TestData {
     'signatureSignaturesResponseList' => 'Array<SignatureSignaturesResponse>',
     'signatureTemplatesResponseList' => 'Array<SignatureTemplatesResponse>',
     'signatureSignatureSettingsList' => 'Array<SignatureSignatureSettings>',
-    'signatureTemplateDocumentResponseList' => 'Array<SignatureTemplateDocumentResponse>',
     'signatureEnvelopeResultList' => 'Array<SignatureEnvelopeResult>',
+    'signatureTemplateDocumentResponseList' => 'Array<SignatureTemplateDocumentResponse>',
     'signatureTemplateRecipientsResultList' => 'Array<SignatureTemplateRecipientsResult>',
     'signatureContactResultList' => 'Array<SignatureContactResult>',
-    'signatureTemplateRecipientsResponseList' => 'Array<SignatureTemplateRecipientsResponse>',
     'signatureEnvelopeRecipientResponseList' => 'Array<SignatureEnvelopeRecipientResponse>',
-    'signatureTemplateDocumentsResultList' => 'Array<SignatureTemplateDocumentsResult>',
+    'signatureTemplateRecipientsResponseList' => 'Array<SignatureTemplateRecipientsResponse>',
     'signatureEnvelopeFieldResultList' => 'Array<SignatureEnvelopeFieldResult>',
+    'signatureTemplateDocumentsResultList' => 'Array<SignatureTemplateDocumentsResult>',
     'signatureEnvelopeResourcesResultList' => 'Array<SignatureEnvelopeResourcesResult>',
     'signatureEnvelopeDocumentsResultList' => 'Array<SignatureEnvelopeDocumentsResult>',
     'signatureTemplatesResultList' => 'Array<SignatureTemplatesResult>',
     'signatureEnvelopeRecipientsResultList' => 'Array<SignatureEnvelopeRecipientsResult>',
-    'signatureFieldsResponseList' => 'Array<SignatureFieldsResponse>',
     'signatureFieldResponseList' => 'Array<SignatureFieldResponse>',
+    'signatureFieldsResponseList' => 'Array<SignatureFieldsResponse>',
     'signatureStatusResponseList' => 'Array<SignatureStatusResponse>',
     'signatureEnvelopeFieldLocationInfoList' => 'Array<SignatureEnvelopeFieldLocationInfo>',
     'signatureContactsResultList' => 'Array<SignatureContactsResult>',
     'signatureEnvelopeDocumentInfoList' => 'Array<SignatureEnvelopeDocumentInfo>',
+    'signatureTemplateRecipientInfoList' => 'Array<SignatureTemplateRecipientInfo>',
     'signatureTemplateDocumentsResponseList' => 'Array<SignatureTemplateDocumentsResponse>',
     'signatureSignatureResponseList' => 'Array<SignatureSignatureResponse>',
-    'signatureTemplateRecipientInfoList' => 'Array<SignatureTemplateRecipientInfo>',
     'signatureEnvelopeDocumentResultList' => 'Array<SignatureEnvelopeDocumentResult>',
     'signatureTemplateFieldResultList' => 'Array<SignatureTemplateFieldResult>',
-    'signatureSignatureResultList' => 'Array<SignatureSignatureResult>',
     'signatureTemplateInfoList' => 'Array<SignatureTemplateInfo>',
+    'signatureSignatureResultList' => 'Array<SignatureSignatureResult>',
     'signatureFieldsResultList' => 'Array<SignatureFieldsResult>',
     'signatureContactSettingsList' => 'Array<SignatureContactSettings>',
     'signatureEnvelopeRecipientInfoList' => 'Array<SignatureEnvelopeRecipientInfo>',
@@ -304,97 +313,79 @@ class TestData {
     /**
      * 
      */
-	 public $createPackageResultList;// Array<CreatePackageResult>
+	 public $resetPasswordResultList;// Array<ResetPasswordResult>
 
 
     /**
      * 
      */
-	 public $uploadResponseList;// Array<UploadResponse>
+	 public $createUserResultList;// Array<CreateUserResult>
 
 
     /**
      * 
      */
-	 public $compressResponseList;// Array<CompressResponse>
+	 public $userPasswordInfoList;// Array<UserPasswordInfo>
 
 
     /**
      * 
      */
-	 public $deleteResultList;// Array<DeleteResult>
+	 public $updateStorageProviderResponseList;// Array<UpdateStorageProviderResponse>
 
 
     /**
      * 
      */
-	 public $createFolderResultList;// Array<CreateFolderResult>
+	 public $createUserResponseList;// Array<CreateUserResponse>
 
 
     /**
      * 
      */
-	 public $folderMoveResultList;// Array<FolderMoveResult>
+	 public $changePasswordResultList;// Array<ChangePasswordResult>
 
 
     /**
      * 
      */
-	 public $fileMoveResultList;// Array<FileMoveResult>
+	 public $updateUserResponseList;// Array<UpdateUserResponse>
 
 
     /**
      * 
      */
-	 public $listEntitiesResultList;// Array<ListEntitiesResult>
+	 public $addStorageProviderResponseList;// Array<AddStorageProviderResponse>
 
 
     /**
      * 
      */
-	 public $createFolderResponseList;// Array<CreateFolderResponse>
+	 public $updateUserResultList;// Array<UpdateUserResult>
 
 
     /**
      * 
      */
-	 public $documentInfoList;// Array<DocumentInfo>
+	 public $userInfoResponseList;// Array<UserInfoResponse>
 
 
     /**
      * 
      */
-	 public $compressRequestResultList;// Array<CompressRequestResult>
+	 public $getStorageProvidersResultList;// Array<GetStorageProvidersResult>
 
 
     /**
      * 
      */
-	 public $uploadRequestResultList;// Array<UploadRequestResult>
+	 public $resetPasswordResponseList;// Array<ResetPasswordResponse>
 
 
     /**
      * 
      */
-	 public $storageInfoResultList;// Array<StorageInfoResult>
-
-
-    /**
-     * 
-     */
-	 public $createPackageResponseList;// Array<CreatePackageResponse>
-
-
-    /**
-     * 
-     */
-	 public $folderMoveResponseList;// Array<FolderMoveResponse>
-
-
-    /**
-     * 
-     */
-	 public $storageInfoResponseList;// Array<StorageInfoResponse>
+	 public $updateStorageProviderResultList;// Array<UpdateStorageProviderResult>
 
 
     /**
@@ -406,25 +397,31 @@ class TestData {
     /**
      * 
      */
-	 public $deleteResponseList;// Array<DeleteResponse>
+	 public $addStorageProviderResultList;// Array<AddStorageProviderResult>
 
 
     /**
      * 
      */
-	 public $listEntitiesResponseList;// Array<ListEntitiesResponse>
+	 public $getStorageProvidersResponseList;// Array<GetStorageProvidersResponse>
 
 
     /**
      * 
      */
-	 public $fileMoveResponseList;// Array<FileMoveResponse>
+	 public $userInfoResultList;// Array<UserInfoResult>
 
 
     /**
      * 
      */
-	 public $sharedDocumentInfoList;// Array<SharedDocumentInfo>
+	 public $storageProviderInfoList;// Array<StorageProviderInfo>
+
+
+    /**
+     * 
+     */
+	 public $changePasswordResponseList;// Array<ChangePasswordResponse>
 
 
     /**
@@ -563,6 +560,384 @@ class TestData {
      * 
      */
 	 public $getCollaboratorsResultList;// Array<GetCollaboratorsResult>
+
+
+    /**
+     * 
+     */
+	 public $resultList;// Array<Result>
+
+
+    /**
+     * 
+     */
+	 public $getJobsDocumentsResultList;// Array<GetJobsDocumentsResult>
+
+
+    /**
+     * 
+     */
+	 public $getJobDocumentsResultList;// Array<GetJobDocumentsResult>
+
+
+    /**
+     * 
+     */
+	 public $createJobResponseList;// Array<CreateJobResponse>
+
+
+    /**
+     * 
+     */
+	 public $getJobDocumentsResponseList;// Array<GetJobDocumentsResponse>
+
+
+    /**
+     * 
+     */
+	 public $createJobResultList;// Array<CreateJobResult>
+
+
+    /**
+     * 
+     */
+	 public $getJobsResponseList;// Array<GetJobsResponse>
+
+
+    /**
+     * 
+     */
+	 public $jobInputDocumentList;// Array<JobInputDocument>
+
+
+    /**
+     * 
+     */
+	 public $convertResponseList;// Array<ConvertResponse>
+
+
+    /**
+     * 
+     */
+	 public $getJobResponseList;// Array<GetJobResponse>
+
+
+    /**
+     * 
+     */
+	 public $addJobDocumentResponseList;// Array<AddJobDocumentResponse>
+
+
+    /**
+     * 
+     */
+	 public $getJobsDocumentsResponseList;// Array<GetJobsDocumentsResponse>
+
+
+    /**
+     * 
+     */
+	 public $getJobsResultList;// Array<GetJobsResult>
+
+
+    /**
+     * 
+     */
+	 public $updateJobResponseList;// Array<UpdateJobResponse>
+
+
+    /**
+     * 
+     */
+	 public $getJobResultList;// Array<GetJobResult>
+
+
+    /**
+     * 
+     */
+	 public $jobOutputDocumentList;// Array<JobOutputDocument>
+
+
+    /**
+     * 
+     */
+	 public $convertRequestResultList;// Array<ConvertRequestResult>
+
+
+    /**
+     * 
+     */
+	 public $jobDocumentsEntryList;// Array<JobDocumentsEntry>
+
+
+    /**
+     * 
+     */
+	 public $jobInfoList;// Array<JobInfo>
+
+
+    /**
+     * 
+     */
+	 public $addJobDocumentResultList;// Array<AddJobDocumentResult>
+
+
+    /**
+     * 
+     */
+	 public $viewDocumentResultList;// Array<ViewDocumentResult>
+
+
+    /**
+     * 
+     */
+	 public $viewDocumentResponseList;// Array<ViewDocumentResponse>
+
+
+    /**
+     * 
+     */
+	 public $dimensionList;// Array<Dimension>
+
+
+    /**
+     * 
+     */
+	 public $createPackageResultList;// Array<CreatePackageResult>
+
+
+    /**
+     * 
+     */
+	 public $uploadResponseList;// Array<UploadResponse>
+
+
+    /**
+     * 
+     */
+	 public $compressResponseList;// Array<CompressResponse>
+
+
+    /**
+     * 
+     */
+	 public $deleteResultList;// Array<DeleteResult>
+
+
+    /**
+     * 
+     */
+	 public $createFolderResultList;// Array<CreateFolderResult>
+
+
+    /**
+     * 
+     */
+	 public $folderMoveResultList;// Array<FolderMoveResult>
+
+
+    /**
+     * 
+     */
+	 public $fileMoveResultList;// Array<FileMoveResult>
+
+
+    /**
+     * 
+     */
+	 public $listEntitiesResultList;// Array<ListEntitiesResult>
+
+
+    /**
+     * 
+     */
+	 public $fileSystemDocumentList;// Array<FileSystemDocument>
+
+
+    /**
+     * 
+     */
+	 public $createFolderResponseList;// Array<CreateFolderResponse>
+
+
+    /**
+     * 
+     */
+	 public $documentInfoList;// Array<DocumentInfo>
+
+
+    /**
+     * 
+     */
+	 public $compressRequestResultList;// Array<CompressRequestResult>
+
+
+    /**
+     * 
+     */
+	 public $uploadRequestResultList;// Array<UploadRequestResult>
+
+
+    /**
+     * 
+     */
+	 public $storageInfoResultList;// Array<StorageInfoResult>
+
+
+    /**
+     * 
+     */
+	 public $createPackageResponseList;// Array<CreatePackageResponse>
+
+
+    /**
+     * 
+     */
+	 public $folderMoveResponseList;// Array<FolderMoveResponse>
+
+
+    /**
+     * 
+     */
+	 public $storageInfoResponseList;// Array<StorageInfoResponse>
+
+
+    /**
+     * 
+     */
+	 public $fileSystemFolderList;// Array<FileSystemFolder>
+
+
+    /**
+     * 
+     */
+	 public $deleteResponseList;// Array<DeleteResponse>
+
+
+    /**
+     * 
+     */
+	 public $listEntitiesResponseList;// Array<ListEntitiesResponse>
+
+
+    /**
+     * 
+     */
+	 public $fileMoveResponseList;// Array<FileMoveResponse>
+
+
+    /**
+     * 
+     */
+	 public $getDocumentInfoResultList;// Array<GetDocumentInfoResult>
+
+
+    /**
+     * 
+     */
+	 public $templateFieldList;// Array<TemplateField>
+
+
+    /**
+     * 
+     */
+	 public $documentViewsResultList;// Array<DocumentViewsResult>
+
+
+    /**
+     * 
+     */
+	 public $sharedDocumentsResponseList;// Array<SharedDocumentsResponse>
+
+
+    /**
+     * 
+     */
+	 public $templateFieldsResponseList;// Array<TemplateFieldsResponse>
+
+
+    /**
+     * 
+     */
+	 public $documentAccessInfoResultList;// Array<DocumentAccessInfoResult>
+
+
+    /**
+     * 
+     */
+	 public $sharedUsersResultList;// Array<SharedUsersResult>
+
+
+    /**
+     * 
+     */
+	 public $sharedDocumentsResultList;// Array<SharedDocumentsResult>
+
+
+    /**
+     * 
+     */
+	 public $documentViewsResponseList;// Array<DocumentViewsResponse>
+
+
+    /**
+     * 
+     */
+	 public $getDocumentForeignTypesResponseList;// Array<GetDocumentForeignTypesResponse>
+
+
+    /**
+     * 
+     */
+	 public $documentViewInfoList;// Array<DocumentViewInfo>
+
+
+    /**
+     * 
+     */
+	 public $sharedUsersResponseList;// Array<SharedUsersResponse>
+
+
+    /**
+     * 
+     */
+	 public $getDocumentInfoResponseList;// Array<GetDocumentInfoResponse>
+
+
+    /**
+     * 
+     */
+	 public $documentUserStatusResultList;// Array<DocumentUserStatusResult>
+
+
+    /**
+     * 
+     */
+	 public $documentUserStatusResponseList;// Array<DocumentUserStatusResponse>
+
+
+    /**
+     * 
+     */
+	 public $templateFieldsResultList;// Array<TemplateFieldsResult>
+
+
+    /**
+     * 
+     */
+	 public $getDocumentForeignTypesResultList;// Array<GetDocumentForeignTypesResult>
+
+
+    /**
+     * 
+     */
+	 public $documentAccessInfoResponseList;// Array<DocumentAccessInfoResponse>
+
+
+    /**
+     * 
+     */
+	 public $sharedDocumentInfoList;// Array<SharedDocumentInfo>
 
 
     /**
@@ -814,318 +1189,6 @@ class TestData {
     /**
      * 
      */
-	 public $getDocumentInfoResultList;// Array<GetDocumentInfoResult>
-
-
-    /**
-     * 
-     */
-	 public $templateFieldList;// Array<TemplateField>
-
-
-    /**
-     * 
-     */
-	 public $documentViewsResultList;// Array<DocumentViewsResult>
-
-
-    /**
-     * 
-     */
-	 public $sharedDocumentsResponseList;// Array<SharedDocumentsResponse>
-
-
-    /**
-     * 
-     */
-	 public $templateFieldsResponseList;// Array<TemplateFieldsResponse>
-
-
-    /**
-     * 
-     */
-	 public $documentAccessInfoResultList;// Array<DocumentAccessInfoResult>
-
-
-    /**
-     * 
-     */
-	 public $sharedUsersResultList;// Array<SharedUsersResult>
-
-
-    /**
-     * 
-     */
-	 public $sharedDocumentsResultList;// Array<SharedDocumentsResult>
-
-
-    /**
-     * 
-     */
-	 public $documentViewsResponseList;// Array<DocumentViewsResponse>
-
-
-    /**
-     * 
-     */
-	 public $getDocumentForeignTypesResponseList;// Array<GetDocumentForeignTypesResponse>
-
-
-    /**
-     * 
-     */
-	 public $documentViewInfoList;// Array<DocumentViewInfo>
-
-
-    /**
-     * 
-     */
-	 public $viewDocumentResultList;// Array<ViewDocumentResult>
-
-
-    /**
-     * 
-     */
-	 public $sharedUsersResponseList;// Array<SharedUsersResponse>
-
-
-    /**
-     * 
-     */
-	 public $getDocumentInfoResponseList;// Array<GetDocumentInfoResponse>
-
-
-    /**
-     * 
-     */
-	 public $documentUserStatusResultList;// Array<DocumentUserStatusResult>
-
-
-    /**
-     * 
-     */
-	 public $documentUserStatusResponseList;// Array<DocumentUserStatusResponse>
-
-
-    /**
-     * 
-     */
-	 public $templateFieldsResultList;// Array<TemplateFieldsResult>
-
-
-    /**
-     * 
-     */
-	 public $dimensionList;// Array<Dimension>
-
-
-    /**
-     * 
-     */
-	 public $getDocumentForeignTypesResultList;// Array<GetDocumentForeignTypesResult>
-
-
-    /**
-     * 
-     */
-	 public $documentAccessInfoResponseList;// Array<DocumentAccessInfoResponse>
-
-
-    /**
-     * 
-     */
-	 public $viewDocumentResponseList;// Array<ViewDocumentResponse>
-
-
-    /**
-     * 
-     */
-	 public $resultList;// Array<Result>
-
-
-    /**
-     * 
-     */
-	 public $getJobsDocumentsResultList;// Array<GetJobsDocumentsResult>
-
-
-    /**
-     * 
-     */
-	 public $getJobDocumentsResultList;// Array<GetJobDocumentsResult>
-
-
-    /**
-     * 
-     */
-	 public $createJobResponseList;// Array<CreateJobResponse>
-
-
-    /**
-     * 
-     */
-	 public $getJobDocumentsResponseList;// Array<GetJobDocumentsResponse>
-
-
-    /**
-     * 
-     */
-	 public $createJobResultList;// Array<CreateJobResult>
-
-
-    /**
-     * 
-     */
-	 public $getJobsResponseList;// Array<GetJobsResponse>
-
-
-    /**
-     * 
-     */
-	 public $jobInputDocumentList;// Array<JobInputDocument>
-
-
-    /**
-     * 
-     */
-	 public $convertResponseList;// Array<ConvertResponse>
-
-
-    /**
-     * 
-     */
-	 public $getJobResponseList;// Array<GetJobResponse>
-
-
-    /**
-     * 
-     */
-	 public $addJobDocumentResponseList;// Array<AddJobDocumentResponse>
-
-
-    /**
-     * 
-     */
-	 public $getJobsDocumentsResponseList;// Array<GetJobsDocumentsResponse>
-
-
-    /**
-     * 
-     */
-	 public $getJobsResultList;// Array<GetJobsResult>
-
-
-    /**
-     * 
-     */
-	 public $updateJobResponseList;// Array<UpdateJobResponse>
-
-
-    /**
-     * 
-     */
-	 public $getJobResultList;// Array<GetJobResult>
-
-
-    /**
-     * 
-     */
-	 public $jobOutputDocumentList;// Array<JobOutputDocument>
-
-
-    /**
-     * 
-     */
-	 public $convertRequestResultList;// Array<ConvertRequestResult>
-
-
-    /**
-     * 
-     */
-	 public $jobDocumentsEntryList;// Array<JobDocumentsEntry>
-
-
-    /**
-     * 
-     */
-	 public $jobInfoList;// Array<JobInfo>
-
-
-    /**
-     * 
-     */
-	 public $addJobDocumentResultList;// Array<AddJobDocumentResult>
-
-
-    /**
-     * 
-     */
-	 public $resetPasswordResultList;// Array<ResetPasswordResult>
-
-
-    /**
-     * 
-     */
-	 public $updateUserResultList;// Array<UpdateUserResult>
-
-
-    /**
-     * 
-     */
-	 public $userInfoResponseList;// Array<UserInfoResponse>
-
-
-    /**
-     * 
-     */
-	 public $resetPasswordResponseList;// Array<ResetPasswordResponse>
-
-
-    /**
-     * 
-     */
-	 public $createUserResultList;// Array<CreateUserResult>
-
-
-    /**
-     * 
-     */
-	 public $userPasswordInfoList;// Array<UserPasswordInfo>
-
-
-    /**
-     * 
-     */
-	 public $createUserResponseList;// Array<CreateUserResponse>
-
-
-    /**
-     * 
-     */
-	 public $changePasswordResultList;// Array<ChangePasswordResult>
-
-
-    /**
-     * 
-     */
-	 public $updateUserResponseList;// Array<UpdateUserResponse>
-
-
-    /**
-     * 
-     */
-	 public $userInfoResultList;// Array<UserInfoResult>
-
-
-    /**
-     * 
-     */
-	 public $changePasswordResponseList;// Array<ChangePasswordResponse>
-
-
-    /**
-     * 
-     */
 	 public $renameResponseList;// Array<RenameResponse>
 
 
@@ -1228,13 +1291,13 @@ class TestData {
     /**
      * 
      */
-	 public $signatureEnvelopeFieldInfoList;// Array<SignatureEnvelopeFieldInfo>
+	 public $signatureEnvelopesResponseList;// Array<SignatureEnvelopesResponse>
 
 
     /**
      * 
      */
-	 public $signatureEnvelopesResponseList;// Array<SignatureEnvelopesResponse>
+	 public $signatureEnvelopeFieldInfoList;// Array<SignatureEnvelopeFieldInfo>
 
 
     /**
@@ -1288,13 +1351,13 @@ class TestData {
     /**
      * 
      */
-	 public $signatureTemplateResultList;// Array<SignatureTemplateResult>
+	 public $signatureRolesResultList;// Array<SignatureRolesResult>
 
 
     /**
      * 
      */
-	 public $signatureRolesResultList;// Array<SignatureRolesResult>
+	 public $signatureTemplateResultList;// Array<SignatureTemplateResult>
 
 
     /**
@@ -1360,13 +1423,13 @@ class TestData {
     /**
      * 
      */
-	 public $signatureTemplateDocumentResponseList;// Array<SignatureTemplateDocumentResponse>
+	 public $signatureEnvelopeResultList;// Array<SignatureEnvelopeResult>
 
 
     /**
      * 
      */
-	 public $signatureEnvelopeResultList;// Array<SignatureEnvelopeResult>
+	 public $signatureTemplateDocumentResponseList;// Array<SignatureTemplateDocumentResponse>
 
 
     /**
@@ -1384,25 +1447,25 @@ class TestData {
     /**
      * 
      */
-	 public $signatureTemplateRecipientsResponseList;// Array<SignatureTemplateRecipientsResponse>
-
-
-    /**
-     * 
-     */
 	 public $signatureEnvelopeRecipientResponseList;// Array<SignatureEnvelopeRecipientResponse>
 
 
     /**
      * 
      */
-	 public $signatureTemplateDocumentsResultList;// Array<SignatureTemplateDocumentsResult>
+	 public $signatureTemplateRecipientsResponseList;// Array<SignatureTemplateRecipientsResponse>
 
 
     /**
      * 
      */
 	 public $signatureEnvelopeFieldResultList;// Array<SignatureEnvelopeFieldResult>
+
+
+    /**
+     * 
+     */
+	 public $signatureTemplateDocumentsResultList;// Array<SignatureTemplateDocumentsResult>
 
 
     /**
@@ -1432,13 +1495,13 @@ class TestData {
     /**
      * 
      */
-	 public $signatureFieldsResponseList;// Array<SignatureFieldsResponse>
+	 public $signatureFieldResponseList;// Array<SignatureFieldResponse>
 
 
     /**
      * 
      */
-	 public $signatureFieldResponseList;// Array<SignatureFieldResponse>
+	 public $signatureFieldsResponseList;// Array<SignatureFieldsResponse>
 
 
     /**
@@ -1468,6 +1531,12 @@ class TestData {
     /**
      * 
      */
+	 public $signatureTemplateRecipientInfoList;// Array<SignatureTemplateRecipientInfo>
+
+
+    /**
+     * 
+     */
 	 public $signatureTemplateDocumentsResponseList;// Array<SignatureTemplateDocumentsResponse>
 
 
@@ -1475,12 +1544,6 @@ class TestData {
      * 
      */
 	 public $signatureSignatureResponseList;// Array<SignatureSignatureResponse>
-
-
-    /**
-     * 
-     */
-	 public $signatureTemplateRecipientInfoList;// Array<SignatureTemplateRecipientInfo>
 
 
     /**
@@ -1498,13 +1561,13 @@ class TestData {
     /**
      * 
      */
-	 public $signatureSignatureResultList;// Array<SignatureSignatureResult>
+	 public $signatureTemplateInfoList;// Array<SignatureTemplateInfo>
 
 
     /**
      * 
      */
-	 public $signatureTemplateInfoList;// Array<SignatureTemplateInfo>
+	 public $signatureSignatureResultList;// Array<SignatureSignatureResult>
 
 
     /**

@@ -24,14 +24,11 @@
 class SignatureEnvelopeFieldInfo {
 
   static $swaggerTypes = array(    
-    'check' => 'string',
+    'regularExpression' => 'string',
     'mandatory' => 'bool',
     'data' => 'array<int>',
     'graphSizeH' => 'int',
-    'textRows' => 'float',
     'id' => 'string',
-    'input' => 'float',
-    'textColumns' => 'float',
     'recipientId' => 'string',
     'order' => 'float',
     'locations' => 'array<SignatureEnvelopeFieldLocationInfo>',
@@ -47,7 +44,7 @@ class SignatureEnvelopeFieldInfo {
     /**
      * 
      */
-	 public $check;// string
+	 public $regularExpression;// string
 
 
     /**
@@ -71,25 +68,7 @@ class SignatureEnvelopeFieldInfo {
     /**
      * 
      */
-	 public $textRows;// float
-
-
-    /**
-     * 
-     */
 	 public $id;// string
-
-
-    /**
-     * 
-     */
-	 public $input;// float
-
-
-    /**
-     * 
-     */
-	 public $textColumns;// float
 
 
     /**

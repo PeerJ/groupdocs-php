@@ -50,7 +50,7 @@ class MgmtAPI {
     
 		
 		if($userId != null) {
-			$resourcePath = str_replace("{userId}", $this->apiClient->toPathValue($userId), $resourcePath);
+			$resourcePath = str_replace("{userId}", $userId, $resourcePath);
 		}
 
 	
@@ -94,7 +94,7 @@ class MgmtAPI {
     
 		
 		if($userId != null) {
-			$resourcePath = str_replace("{userId}", $this->apiClient->toPathValue($userId), $resourcePath);
+			$resourcePath = str_replace("{userId}", $userId, $resourcePath);
 		}
 
 	
@@ -138,7 +138,7 @@ class MgmtAPI {
     
 		
 		if($userId != null) {
-			$resourcePath = str_replace("{userId}", $this->apiClient->toPathValue($userId), $resourcePath);
+			$resourcePath = str_replace("{userId}", $userId, $resourcePath);
 		}
 
 	
@@ -182,10 +182,10 @@ class MgmtAPI {
     
 		
 		if($callerId != null) {
-			$resourcePath = str_replace("{callerId}", $this->apiClient->toPathValue($callerId), $resourcePath);
+			$resourcePath = str_replace("{callerId}", $callerId, $resourcePath);
 		}
 		if($token != null) {
-			$resourcePath = str_replace("{token}", $this->apiClient->toPathValue($token), $resourcePath);
+			$resourcePath = str_replace("{token}", $token, $resourcePath);
 		}
 
 	
@@ -229,10 +229,10 @@ class MgmtAPI {
     
 		
 		if($callerId != null) {
-			$resourcePath = str_replace("{callerId}", $this->apiClient->toPathValue($callerId), $resourcePath);
+			$resourcePath = str_replace("{callerId}", $callerId, $resourcePath);
 		}
 		if($token != null) {
-			$resourcePath = str_replace("{token}", $this->apiClient->toPathValue($token), $resourcePath);
+			$resourcePath = str_replace("{token}", $token, $resourcePath);
 		}
 
 	
@@ -276,10 +276,10 @@ class MgmtAPI {
     
 		
 		if($callerId != null) {
-			$resourcePath = str_replace("{callerId}", $this->apiClient->toPathValue($callerId), $resourcePath);
+			$resourcePath = str_replace("{callerId}", $callerId, $resourcePath);
 		}
 		if($token != null) {
-			$resourcePath = str_replace("{token}", $this->apiClient->toPathValue($token), $resourcePath);
+			$resourcePath = str_replace("{token}", $token, $resourcePath);
 		}
 
 	
@@ -323,10 +323,10 @@ class MgmtAPI {
     
 		
 		if($callerId != null) {
-			$resourcePath = str_replace("{callerId}", $this->apiClient->toPathValue($callerId), $resourcePath);
+			$resourcePath = str_replace("{callerId}", $callerId, $resourcePath);
 		}
 		if($userId != null) {
-			$resourcePath = str_replace("{userId}", $this->apiClient->toPathValue($userId), $resourcePath);
+			$resourcePath = str_replace("{userId}", $userId, $resourcePath);
 		}
 
 	
@@ -371,10 +371,10 @@ class MgmtAPI {
     
 		
 		if($callerId != null) {
-			$resourcePath = str_replace("{callerId}", $this->apiClient->toPathValue($callerId), $resourcePath);
+			$resourcePath = str_replace("{callerId}", $callerId, $resourcePath);
 		}
 		if($userId != null) {
-			$resourcePath = str_replace("{userId}", $this->apiClient->toPathValue($userId), $resourcePath);
+			$resourcePath = str_replace("{userId}", $userId, $resourcePath);
 		}
 
 	
@@ -418,7 +418,7 @@ class MgmtAPI {
     
 		
 		if($callerId != null) {
-			$resourcePath = str_replace("{callerId}", $this->apiClient->toPathValue($callerId), $resourcePath);
+			$resourcePath = str_replace("{callerId}", $callerId, $resourcePath);
 		}
 
 	
@@ -463,13 +463,13 @@ class MgmtAPI {
     
 		
 		if($callerId != null) {
-			$resourcePath = str_replace("{callerId}", $this->apiClient->toPathValue($callerId), $resourcePath);
+			$resourcePath = str_replace("{callerId}", $callerId, $resourcePath);
 		}
 		if($userId != null) {
-			$resourcePath = str_replace("{userId}", $this->apiClient->toPathValue($userId), $resourcePath);
+			$resourcePath = str_replace("{userId}", $userId, $resourcePath);
 		}
 		if($password != null) {
-			$resourcePath = str_replace("{password}", $this->apiClient->toPathValue($password), $resourcePath);
+			$resourcePath = str_replace("{password}", $password, $resourcePath);
 		}
 
 	
@@ -514,10 +514,10 @@ class MgmtAPI {
     
 		
 		if($callerId != null) {
-			$resourcePath = str_replace("{callerId}", $this->apiClient->toPathValue($callerId), $resourcePath);
+			$resourcePath = str_replace("{callerId}", $callerId, $resourcePath);
 		}
 		if($userId != null) {
-			$resourcePath = str_replace("{userId}", $this->apiClient->toPathValue($userId), $resourcePath);
+			$resourcePath = str_replace("{userId}", $userId, $resourcePath);
 		}
 
 	
@@ -561,10 +561,10 @@ class MgmtAPI {
     
 		
 		if($callerId != null) {
-			$resourcePath = str_replace("{callerId}", $this->apiClient->toPathValue($callerId), $resourcePath);
+			$resourcePath = str_replace("{callerId}", $callerId, $resourcePath);
 		}
 		if($userId != null) {
-			$resourcePath = str_replace("{userId}", $this->apiClient->toPathValue($userId), $resourcePath);
+			$resourcePath = str_replace("{userId}", $userId, $resourcePath);
 		}
 
 	
@@ -607,7 +607,7 @@ class MgmtAPI {
     
 		
 		if($userId != null) {
-			$resourcePath = str_replace("{userId}", $this->apiClient->toPathValue($userId), $resourcePath);
+			$resourcePath = str_replace("{userId}", $userId, $resourcePath);
 		}
 
 	
@@ -652,10 +652,10 @@ class MgmtAPI {
     
 		
 		if($userId != null) {
-			$resourcePath = str_replace("{userId}", $this->apiClient->toPathValue($userId), $resourcePath);
+			$resourcePath = str_replace("{userId}", $userId, $resourcePath);
 		}
 		if($provider != null) {
-			$resourcePath = str_replace("{provider}", $this->apiClient->toPathValue($provider), $resourcePath);
+			$resourcePath = str_replace("{provider}", $provider, $resourcePath);
 		}
 
 	
@@ -700,10 +700,10 @@ class MgmtAPI {
     
 		
 		if($userId != null) {
-			$resourcePath = str_replace("{userId}", $this->apiClient->toPathValue($userId), $resourcePath);
+			$resourcePath = str_replace("{userId}", $userId, $resourcePath);
 		}
 		if($provider != null) {
-			$resourcePath = str_replace("{provider}", $this->apiClient->toPathValue($provider), $resourcePath);
+			$resourcePath = str_replace("{provider}", $provider, $resourcePath);
 		}
 
 	

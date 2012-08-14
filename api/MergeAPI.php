@@ -53,16 +53,16 @@ class MergeAPI {
     
 		
 		if($userId != null) {
-			$resourcePath = str_replace("{userId}", $this->apiClient->toPathValue($userId), $resourcePath);
+			$resourcePath = str_replace("{userId}", $userId, $resourcePath);
 		}
 		if($jobId != null) {
-			$resourcePath = str_replace("{jobId}", $this->apiClient->toPathValue($jobId), $resourcePath);
+			$resourcePath = str_replace("{jobId}", $jobId, $resourcePath);
 		}
 		if($fileId != null) {
-			$resourcePath = str_replace("{fileId}", $this->apiClient->toPathValue($fileId), $resourcePath);
+			$resourcePath = str_replace("{fileId}", $fileId, $resourcePath);
 		}
 		if($datasourceId != null) {
-			$resourcePath = str_replace("{datasourceId}", $this->apiClient->toPathValue($datasourceId), $resourcePath);
+			$resourcePath = str_replace("{datasourceId}", $datasourceId, $resourcePath);
 		}
 
 	
@@ -108,13 +108,13 @@ class MergeAPI {
     
 		
 		if($userId != null) {
-			$resourcePath = str_replace("{userId}", $this->apiClient->toPathValue($userId), $resourcePath);
+			$resourcePath = str_replace("{userId}", $userId, $resourcePath);
 		}
 		if($jobId != null) {
-			$resourcePath = str_replace("{jobId}", $this->apiClient->toPathValue($jobId), $resourcePath);
+			$resourcePath = str_replace("{jobId}", $jobId, $resourcePath);
 		}
 		if($fileId != null) {
-			$resourcePath = str_replace("{fileId}", $this->apiClient->toPathValue($fileId), $resourcePath);
+			$resourcePath = str_replace("{fileId}", $fileId, $resourcePath);
 		}
 
 	
@@ -158,19 +158,19 @@ class MergeAPI {
 	
 		
 		if($mergeMergeInputFilesInputDatasourcesInput != null && $mergeMergeInputFilesInputDatasourcesInput->userId != null) {
-		 	$resourcePath = str_replace("{userId}", $this->apiClient->toPathValue($mergeMergeInputFilesInputDatasourcesInput->userId), $resourcePath);	
+		 	$resourcePath = str_replace("{userId}", $mergeMergeInputFilesInputDatasourcesInput->userId, $resourcePath);	
 		}
 		if($mergeMergeInputFilesInputDatasourcesInput != null && $mergeMergeInputFilesInputDatasourcesInput->fileId != null) {
-		 	$resourcePath = str_replace("{fileId}", $this->apiClient->toPathValue($mergeMergeInputFilesInputDatasourcesInput->fileId), $resourcePath);	
+		 	$resourcePath = str_replace("{fileId}", $mergeMergeInputFilesInputDatasourcesInput->fileId, $resourcePath);	
 		}
 		if($mergeMergeInputFilesInputDatasourcesInput != null && $mergeMergeInputFilesInputDatasourcesInput->datasourceId != null) {
-		 	$resourcePath = str_replace("{datasourceId}", $this->apiClient->toPathValue($mergeMergeInputFilesInputDatasourcesInput->datasourceId), $resourcePath);	
+		 	$resourcePath = str_replace("{datasourceId}", $mergeMergeInputFilesInputDatasourcesInput->datasourceId, $resourcePath);	
 		}
 		if($mergeMergeInputFilesInputDatasourcesInput != null && $mergeMergeInputFilesInputDatasourcesInput->targetType != null) {
-		 	$resourcePath = str_replace("{targetType}", $this->apiClient->toPathValue($mergeMergeInputFilesInputDatasourcesInput->targetType), $resourcePath);	
+		 	$resourcePath = str_replace("{targetType}", $mergeMergeInputFilesInputDatasourcesInput->targetType, $resourcePath);	
 		}
 		if($mergeMergeInputFilesInputDatasourcesInput != null && $mergeMergeInputFilesInputDatasourcesInput->emailResults != null) {
-		 	$resourcePath = str_replace("{emailResults}", $this->apiClient->toPathValue($mergeMergeInputFilesInputDatasourcesInput->emailResults), $resourcePath);	
+		 	$resourcePath = str_replace("{emailResults}", $mergeMergeInputFilesInputDatasourcesInput->emailResults, $resourcePath);	
 		}
 
 	
@@ -214,19 +214,19 @@ class MergeAPI {
 	
 		
 		if($mergeMergeInputFilesInput != null && $mergeMergeInputFilesInput->userId != null) {
-		 	$resourcePath = str_replace("{userId}", $this->apiClient->toPathValue($mergeMergeInputFilesInput->userId), $resourcePath);	
+		 	$resourcePath = str_replace("{userId}", $mergeMergeInputFilesInput->userId, $resourcePath);	
 		}
 		if($mergeMergeInputFilesInput != null && $mergeMergeInputFilesInput->fileId != null) {
-		 	$resourcePath = str_replace("{fileId}", $this->apiClient->toPathValue($mergeMergeInputFilesInput->fileId), $resourcePath);	
+		 	$resourcePath = str_replace("{fileId}", $mergeMergeInputFilesInput->fileId, $resourcePath);	
 		}
 		if($mergeMergeInputFilesInput != null && $mergeMergeInputFilesInput->targetType != null) {
-		 	$resourcePath = str_replace("{targetType}", $this->apiClient->toPathValue($mergeMergeInputFilesInput->targetType), $resourcePath);	
+		 	$resourcePath = str_replace("{targetType}", $mergeMergeInputFilesInput->targetType, $resourcePath);	
 		}
 		if($mergeMergeInputFilesInput != null && $mergeMergeInputFilesInput->emailResults != null) {
-		 	$resourcePath = str_replace("{emailResults}", $this->apiClient->toPathValue($mergeMergeInputFilesInput->emailResults), $resourcePath);	
+		 	$resourcePath = str_replace("{emailResults}", $mergeMergeInputFilesInput->emailResults, $resourcePath);	
 		}
 		if($mergeMergeInputFilesInput != null && $mergeMergeInputFilesInput->assemblyName != null) {
-		 	$resourcePath = str_replace("{assemblyName}", $this->apiClient->toPathValue($mergeMergeInputFilesInput->assemblyName), $resourcePath);	
+		 	$resourcePath = str_replace("{assemblyName}", $mergeMergeInputFilesInput->assemblyName, $resourcePath);	
 		}
 
 	
@@ -269,10 +269,10 @@ class MergeAPI {
     
 		
 		if($userId != null) {
-			$resourcePath = str_replace("{userId}", $this->apiClient->toPathValue($userId), $resourcePath);
+			$resourcePath = str_replace("{userId}", $userId, $resourcePath);
 		}
 		if($questionnaireId != null) {
-			$resourcePath = str_replace("{questionnaireId}", $this->apiClient->toPathValue($questionnaireId), $resourcePath);
+			$resourcePath = str_replace("{questionnaireId}", $questionnaireId, $resourcePath);
 		}
 
 	
@@ -315,7 +315,7 @@ class MergeAPI {
     
 		
 		if($userId != null) {
-			$resourcePath = str_replace("{userId}", $this->apiClient->toPathValue($userId), $resourcePath);
+			$resourcePath = str_replace("{userId}", $userId, $resourcePath);
 		}
 
 	
@@ -359,7 +359,7 @@ class MergeAPI {
     
 		
 		if($userId != null) {
-			$resourcePath = str_replace("{userId}", $this->apiClient->toPathValue($userId), $resourcePath);
+			$resourcePath = str_replace("{userId}", $userId, $resourcePath);
 		}
 
 	
@@ -404,10 +404,10 @@ class MergeAPI {
     
 		
 		if($userId != null) {
-			$resourcePath = str_replace("{userId}", $this->apiClient->toPathValue($userId), $resourcePath);
+			$resourcePath = str_replace("{userId}", $userId, $resourcePath);
 		}
 		if($questionnaireId != null) {
-			$resourcePath = str_replace("{questionnaireId}", $this->apiClient->toPathValue($questionnaireId), $resourcePath);
+			$resourcePath = str_replace("{questionnaireId}", $questionnaireId, $resourcePath);
 		}
 
 	
@@ -451,10 +451,10 @@ class MergeAPI {
     
 		
 		if($userId != null) {
-			$resourcePath = str_replace("{userId}", $this->apiClient->toPathValue($userId), $resourcePath);
+			$resourcePath = str_replace("{userId}", $userId, $resourcePath);
 		}
 		if($questionnaireId != null) {
-			$resourcePath = str_replace("{questionnaireId}", $this->apiClient->toPathValue($questionnaireId), $resourcePath);
+			$resourcePath = str_replace("{questionnaireId}", $questionnaireId, $resourcePath);
 		}
 
 	
@@ -498,10 +498,10 @@ class MergeAPI {
     
 		
 		if($userId != null) {
-			$resourcePath = str_replace("{userId}", $this->apiClient->toPathValue($userId), $resourcePath);
+			$resourcePath = str_replace("{userId}", $userId, $resourcePath);
 		}
 		if($fileId != null) {
-			$resourcePath = str_replace("{fileId}", $this->apiClient->toPathValue($fileId), $resourcePath);
+			$resourcePath = str_replace("{fileId}", $fileId, $resourcePath);
 		}
 
 	
@@ -546,10 +546,10 @@ class MergeAPI {
     
 		
 		if($userId != null) {
-			$resourcePath = str_replace("{userId}", $this->apiClient->toPathValue($userId), $resourcePath);
+			$resourcePath = str_replace("{userId}", $userId, $resourcePath);
 		}
 		if($fileId != null) {
-			$resourcePath = str_replace("{fileId}", $this->apiClient->toPathValue($fileId), $resourcePath);
+			$resourcePath = str_replace("{fileId}", $fileId, $resourcePath);
 		}
 
 	
@@ -594,13 +594,13 @@ class MergeAPI {
     
 		
 		if($userId != null) {
-			$resourcePath = str_replace("{userId}", $this->apiClient->toPathValue($userId), $resourcePath);
+			$resourcePath = str_replace("{userId}", $userId, $resourcePath);
 		}
 		if($fileId != null) {
-			$resourcePath = str_replace("{fileId}", $this->apiClient->toPathValue($fileId), $resourcePath);
+			$resourcePath = str_replace("{fileId}", $fileId, $resourcePath);
 		}
 		if($questionnaireId != null) {
-			$resourcePath = str_replace("{questionnaireId}", $this->apiClient->toPathValue($questionnaireId), $resourcePath);
+			$resourcePath = str_replace("{questionnaireId}", $questionnaireId, $resourcePath);
 		}
 
 	
@@ -645,13 +645,13 @@ class MergeAPI {
     
 		
 		if($userId != null) {
-			$resourcePath = str_replace("{userId}", $this->apiClient->toPathValue($userId), $resourcePath);
+			$resourcePath = str_replace("{userId}", $userId, $resourcePath);
 		}
 		if($fileId != null) {
-			$resourcePath = str_replace("{fileId}", $this->apiClient->toPathValue($fileId), $resourcePath);
+			$resourcePath = str_replace("{fileId}", $fileId, $resourcePath);
 		}
 		if($questionnaireId != null) {
-			$resourcePath = str_replace("{questionnaireId}", $this->apiClient->toPathValue($questionnaireId), $resourcePath);
+			$resourcePath = str_replace("{questionnaireId}", $questionnaireId, $resourcePath);
 		}
 
 	
@@ -695,7 +695,7 @@ class MergeAPI {
     
 		
 		if($userId != null) {
-			$resourcePath = str_replace("{userId}", $this->apiClient->toPathValue($userId), $resourcePath);
+			$resourcePath = str_replace("{userId}", $userId, $resourcePath);
 		}
 
 	
@@ -740,10 +740,10 @@ class MergeAPI {
     
 		
 		if($userId != null) {
-			$resourcePath = str_replace("{userId}", $this->apiClient->toPathValue($userId), $resourcePath);
+			$resourcePath = str_replace("{userId}", $userId, $resourcePath);
 		}
 		if($datasourceId != null) {
-			$resourcePath = str_replace("{datasourceId}", $this->apiClient->toPathValue($datasourceId), $resourcePath);
+			$resourcePath = str_replace("{datasourceId}", $datasourceId, $resourcePath);
 		}
 
 	
@@ -788,10 +788,10 @@ class MergeAPI {
     
 		
 		if($userId != null) {
-			$resourcePath = str_replace("{userId}", $this->apiClient->toPathValue($userId), $resourcePath);
+			$resourcePath = str_replace("{userId}", $userId, $resourcePath);
 		}
 		if($datasourceId != null) {
-			$resourcePath = str_replace("{datasourceId}", $this->apiClient->toPathValue($datasourceId), $resourcePath);
+			$resourcePath = str_replace("{datasourceId}", $datasourceId, $resourcePath);
 		}
 
 	
@@ -835,10 +835,10 @@ class MergeAPI {
     
 		
 		if($userId != null) {
-			$resourcePath = str_replace("{userId}", $this->apiClient->toPathValue($userId), $resourcePath);
+			$resourcePath = str_replace("{userId}", $userId, $resourcePath);
 		}
 		if($datasourceId != null) {
-			$resourcePath = str_replace("{datasourceId}", $this->apiClient->toPathValue($datasourceId), $resourcePath);
+			$resourcePath = str_replace("{datasourceId}", $datasourceId, $resourcePath);
 		}
 
 	
@@ -883,13 +883,13 @@ class MergeAPI {
     
 		
 		if($userId != null) {
-			$resourcePath = str_replace("{userId}", $this->apiClient->toPathValue($userId), $resourcePath);
+			$resourcePath = str_replace("{userId}", $userId, $resourcePath);
 		}
 		if($datasourceId != null) {
-			$resourcePath = str_replace("{datasourceId}", $this->apiClient->toPathValue($datasourceId), $resourcePath);
+			$resourcePath = str_replace("{datasourceId}", $datasourceId, $resourcePath);
 		}
 		if($fields != null) {
-			$resourcePath = str_replace("{fields}", $this->apiClient->toPathValue($fields), $resourcePath);
+			$resourcePath = str_replace("{fields}", $fields, $resourcePath);
 		}
 
 	
@@ -934,13 +934,13 @@ class MergeAPI {
     
 		
 		if($userId != null) {
-			$resourcePath = str_replace("{userId}", $this->apiClient->toPathValue($userId), $resourcePath);
+			$resourcePath = str_replace("{userId}", $userId, $resourcePath);
 		}
 		if($questionnaireId != null) {
-			$resourcePath = str_replace("{questionnaireId}", $this->apiClient->toPathValue($questionnaireId), $resourcePath);
+			$resourcePath = str_replace("{questionnaireId}", $questionnaireId, $resourcePath);
 		}
 		if($includeFields != null) {
-			$resourcePath = str_replace("{includeFields}", $this->apiClient->toPathValue($includeFields), $resourcePath);
+			$resourcePath = str_replace("{includeFields}", $includeFields, $resourcePath);
 		}
 
 	
@@ -985,10 +985,10 @@ class MergeAPI {
     
 		
 		if($userId != null) {
-			$resourcePath = str_replace("{userId}", $this->apiClient->toPathValue($userId), $resourcePath);
+			$resourcePath = str_replace("{userId}", $userId, $resourcePath);
 		}
 		if($questionnaireId != null) {
-			$resourcePath = str_replace("{questionnaireId}", $this->apiClient->toPathValue($questionnaireId), $resourcePath);
+			$resourcePath = str_replace("{questionnaireId}", $questionnaireId, $resourcePath);
 		}
 
 	
@@ -1031,7 +1031,7 @@ class MergeAPI {
     
 		
 		if($userId != null) {
-			$resourcePath = str_replace("{userId}", $this->apiClient->toPathValue($userId), $resourcePath);
+			$resourcePath = str_replace("{userId}", $userId, $resourcePath);
 		}
 
 	
@@ -1076,10 +1076,10 @@ class MergeAPI {
     
 		
 		if($userId != null) {
-			$resourcePath = str_replace("{userId}", $this->apiClient->toPathValue($userId), $resourcePath);
+			$resourcePath = str_replace("{userId}", $userId, $resourcePath);
 		}
 		if($executionId != null) {
-			$resourcePath = str_replace("{executionId}", $this->apiClient->toPathValue($executionId), $resourcePath);
+			$resourcePath = str_replace("{executionId}", $executionId, $resourcePath);
 		}
 
 	
@@ -1124,10 +1124,10 @@ class MergeAPI {
     
 		
 		if($userId != null) {
-			$resourcePath = str_replace("{userId}", $this->apiClient->toPathValue($userId), $resourcePath);
+			$resourcePath = str_replace("{userId}", $userId, $resourcePath);
 		}
 		if($executionId != null) {
-			$resourcePath = str_replace("{executionId}", $this->apiClient->toPathValue($executionId), $resourcePath);
+			$resourcePath = str_replace("{executionId}", $executionId, $resourcePath);
 		}
 
 	

@@ -52,13 +52,13 @@ class SignatureAPI {
     
 		
 		if($userId != null) {
-			$resourcePath = str_replace("{userId}", $this->apiClient->toPathValue($userId), $resourcePath);
+			$resourcePath = str_replace("{userId}", $userId, $resourcePath);
 		}
 		if($envelopeId != null) {
-			$resourcePath = str_replace("{envelopeId}", $this->apiClient->toPathValue($envelopeId), $resourcePath);
+			$resourcePath = str_replace("{envelopeId}", $envelopeId, $resourcePath);
 		}
 		if($recipientId != null) {
-			$resourcePath = str_replace("{recipientId}", $this->apiClient->toPathValue($recipientId), $resourcePath);
+			$resourcePath = str_replace("{recipientId}", $recipientId, $resourcePath);
 		}
 
 	
@@ -102,7 +102,7 @@ class SignatureAPI {
     
 		
 		if($userId != null) {
-			$resourcePath = str_replace("{userId}", $this->apiClient->toPathValue($userId), $resourcePath);
+			$resourcePath = str_replace("{userId}", $userId, $resourcePath);
 		}
 
 	
@@ -147,10 +147,10 @@ class SignatureAPI {
     
 		
 		if($userId != null) {
-			$resourcePath = str_replace("{userId}", $this->apiClient->toPathValue($userId), $resourcePath);
+			$resourcePath = str_replace("{userId}", $userId, $resourcePath);
 		}
 		if($contactId != null) {
-			$resourcePath = str_replace("{contactId}", $this->apiClient->toPathValue($contactId), $resourcePath);
+			$resourcePath = str_replace("{contactId}", $contactId, $resourcePath);
 		}
 
 	
@@ -194,20 +194,20 @@ class SignatureAPI {
 	
 		
 		if($signatureSignatureInput != null && $signatureSignatureInput->page != null) {
-		 	$queryParams["page"] = $this->apiClient->toPathValue($signatureSignatureInput->page);
+		 	$queryParams["page"] = $signatureSignatureInput->page;
 		}
 		if($signatureSignatureInput != null && $signatureSignatureInput->firstName != null) {
-		 	$queryParams["firstName"] = $this->apiClient->toPathValue($signatureSignatureInput->firstName);
+		 	$queryParams["firstName"] = $signatureSignatureInput->firstName;
 		}
 		if($signatureSignatureInput != null && $signatureSignatureInput->lastName != null) {
-		 	$queryParams["lastName"] = $this->apiClient->toPathValue($signatureSignatureInput->lastName);
+		 	$queryParams["lastName"] = $signatureSignatureInput->lastName;
 		}
 		if($signatureSignatureInput != null && $signatureSignatureInput->email != null) {
-		 	$queryParams["email"] = $this->apiClient->toPathValue($signatureSignatureInput->email);
+		 	$queryParams["email"] = $signatureSignatureInput->email;
 		}
 
 		if($signatureSignatureInput != null && $signatureSignatureInput->userId != null) {
-		 	$resourcePath = str_replace("{userId}", $this->apiClient->toPathValue($signatureSignatureInput->userId), $resourcePath);	
+		 	$resourcePath = str_replace("{userId}", $signatureSignatureInput->userId, $resourcePath);	
 		}
 
 	
@@ -250,10 +250,10 @@ class SignatureAPI {
     
 		
 		if($userId != null) {
-			$resourcePath = str_replace("{userId}", $this->apiClient->toPathValue($userId), $resourcePath);
+			$resourcePath = str_replace("{userId}", $userId, $resourcePath);
 		}
 		if($contactId != null) {
-			$resourcePath = str_replace("{contactId}", $this->apiClient->toPathValue($contactId), $resourcePath);
+			$resourcePath = str_replace("{contactId}", $contactId, $resourcePath);
 		}
 
 	
@@ -296,7 +296,7 @@ class SignatureAPI {
     
 		
 		if($userId != null) {
-			$resourcePath = str_replace("{userId}", $this->apiClient->toPathValue($userId), $resourcePath);
+			$resourcePath = str_replace("{userId}", $userId, $resourcePath);
 		}
 
 	
@@ -339,7 +339,7 @@ class SignatureAPI {
     
 		
 		if($userId != null) {
-			$resourcePath = str_replace("{userId}", $this->apiClient->toPathValue($userId), $resourcePath);
+			$resourcePath = str_replace("{userId}", $userId, $resourcePath);
 		}
 
 	
@@ -384,22 +384,22 @@ class SignatureAPI {
 	
 		
 		if($signatureSignatureInputEnvelopesInputDocumentsInputRecipientInputFieldsInputLocationsInput != null && $signatureSignatureInputEnvelopesInputDocumentsInputRecipientInputFieldsInputLocationsInput->userId != null) {
-		 	$resourcePath = str_replace("{userId}", $this->apiClient->toPathValue($signatureSignatureInputEnvelopesInputDocumentsInputRecipientInputFieldsInputLocationsInput->userId), $resourcePath);	
+		 	$resourcePath = str_replace("{userId}", $signatureSignatureInputEnvelopesInputDocumentsInputRecipientInputFieldsInputLocationsInput->userId, $resourcePath);	
 		}
 		if($signatureSignatureInputEnvelopesInputDocumentsInputRecipientInputFieldsInputLocationsInput != null && $signatureSignatureInputEnvelopesInputDocumentsInputRecipientInputFieldsInputLocationsInput->envelopeId != null) {
-		 	$resourcePath = str_replace("{envelopeId}", $this->apiClient->toPathValue($signatureSignatureInputEnvelopesInputDocumentsInputRecipientInputFieldsInputLocationsInput->envelopeId), $resourcePath);	
+		 	$resourcePath = str_replace("{envelopeId}", $signatureSignatureInputEnvelopesInputDocumentsInputRecipientInputFieldsInputLocationsInput->envelopeId, $resourcePath);	
 		}
 		if($signatureSignatureInputEnvelopesInputDocumentsInputRecipientInputFieldsInputLocationsInput != null && $signatureSignatureInputEnvelopesInputDocumentsInputRecipientInputFieldsInputLocationsInput->documentId != null) {
-		 	$resourcePath = str_replace("{documentId}", $this->apiClient->toPathValue($signatureSignatureInputEnvelopesInputDocumentsInputRecipientInputFieldsInputLocationsInput->documentId), $resourcePath);	
+		 	$resourcePath = str_replace("{documentId}", $signatureSignatureInputEnvelopesInputDocumentsInputRecipientInputFieldsInputLocationsInput->documentId, $resourcePath);	
 		}
 		if($signatureSignatureInputEnvelopesInputDocumentsInputRecipientInputFieldsInputLocationsInput != null && $signatureSignatureInputEnvelopesInputDocumentsInputRecipientInputFieldsInputLocationsInput->recipientId != null) {
-		 	$resourcePath = str_replace("{recipientId}", $this->apiClient->toPathValue($signatureSignatureInputEnvelopesInputDocumentsInputRecipientInputFieldsInputLocationsInput->recipientId), $resourcePath);	
+		 	$resourcePath = str_replace("{recipientId}", $signatureSignatureInputEnvelopesInputDocumentsInputRecipientInputFieldsInputLocationsInput->recipientId, $resourcePath);	
 		}
 		if($signatureSignatureInputEnvelopesInputDocumentsInputRecipientInputFieldsInputLocationsInput != null && $signatureSignatureInputEnvelopesInputDocumentsInputRecipientInputFieldsInputLocationsInput->fieldId != null) {
-		 	$resourcePath = str_replace("{fieldId}", $this->apiClient->toPathValue($signatureSignatureInputEnvelopesInputDocumentsInputRecipientInputFieldsInputLocationsInput->fieldId), $resourcePath);	
+		 	$resourcePath = str_replace("{fieldId}", $signatureSignatureInputEnvelopesInputDocumentsInputRecipientInputFieldsInputLocationsInput->fieldId, $resourcePath);	
 		}
 		if($signatureSignatureInputEnvelopesInputDocumentsInputRecipientInputFieldsInputLocationsInput != null && $signatureSignatureInputEnvelopesInputDocumentsInputRecipientInputFieldsInputLocationsInput->locationId != null) {
-		 	$resourcePath = str_replace("{locationId}", $this->apiClient->toPathValue($signatureSignatureInputEnvelopesInputDocumentsInputRecipientInputFieldsInputLocationsInput->locationId), $resourcePath);	
+		 	$resourcePath = str_replace("{locationId}", $signatureSignatureInputEnvelopesInputDocumentsInputRecipientInputFieldsInputLocationsInput->locationId, $resourcePath);	
 		}
 
 	
@@ -442,11 +442,11 @@ class SignatureAPI {
     
 		
     if($page != null) {
-		$queryParams['page'] = $this->apiClient->toPathValue($page);
+		$queryParams['page'] = $page;
 	}
 
 		if($userId != null) {
-			$resourcePath = str_replace("{userId}", $this->apiClient->toPathValue($userId), $resourcePath);
+			$resourcePath = str_replace("{userId}", $userId, $resourcePath);
 		}
 
 	
@@ -490,10 +490,10 @@ class SignatureAPI {
     
 		
 		if($userId != null) {
-			$resourcePath = str_replace("{userId}", $this->apiClient->toPathValue($userId), $resourcePath);
+			$resourcePath = str_replace("{userId}", $userId, $resourcePath);
 		}
 		if($templateId != null) {
-			$resourcePath = str_replace("{templateId}", $this->apiClient->toPathValue($templateId), $resourcePath);
+			$resourcePath = str_replace("{templateId}", $templateId, $resourcePath);
 		}
 
 	
@@ -539,14 +539,14 @@ class SignatureAPI {
     
 		
     if($name != null) {
-		$queryParams['name'] = $this->apiClient->toPathValue($name);
+		$queryParams['name'] = $name;
 	}
     if($templateId != null) {
-		$queryParams['templateId'] = $this->apiClient->toPathValue($templateId);
+		$queryParams['templateId'] = $templateId;
 	}
 
 		if($userId != null) {
-			$resourcePath = str_replace("{userId}", $this->apiClient->toPathValue($userId), $resourcePath);
+			$resourcePath = str_replace("{userId}", $userId, $resourcePath);
 		}
 
 	
@@ -591,10 +591,10 @@ class SignatureAPI {
     
 		
 		if($userId != null) {
-			$resourcePath = str_replace("{userId}", $this->apiClient->toPathValue($userId), $resourcePath);
+			$resourcePath = str_replace("{userId}", $userId, $resourcePath);
 		}
 		if($templateId != null) {
-			$resourcePath = str_replace("{templateId}", $this->apiClient->toPathValue($templateId), $resourcePath);
+			$resourcePath = str_replace("{templateId}", $templateId, $resourcePath);
 		}
 
 	
@@ -639,14 +639,14 @@ class SignatureAPI {
     
 		
     if($name != null) {
-		$queryParams['name'] = $this->apiClient->toPathValue($name);
+		$queryParams['name'] = $name;
 	}
 
 		if($userId != null) {
-			$resourcePath = str_replace("{userId}", $this->apiClient->toPathValue($userId), $resourcePath);
+			$resourcePath = str_replace("{userId}", $userId, $resourcePath);
 		}
 		if($templateId != null) {
-			$resourcePath = str_replace("{templateId}", $this->apiClient->toPathValue($templateId), $resourcePath);
+			$resourcePath = str_replace("{templateId}", $templateId, $resourcePath);
 		}
 
 	
@@ -690,10 +690,10 @@ class SignatureAPI {
     
 		
 		if($userId != null) {
-			$resourcePath = str_replace("{userId}", $this->apiClient->toPathValue($userId), $resourcePath);
+			$resourcePath = str_replace("{userId}", $userId, $resourcePath);
 		}
 		if($templateId != null) {
-			$resourcePath = str_replace("{templateId}", $this->apiClient->toPathValue($templateId), $resourcePath);
+			$resourcePath = str_replace("{templateId}", $templateId, $resourcePath);
 		}
 
 	
@@ -739,17 +739,17 @@ class SignatureAPI {
     
 		
     if($nickname != null) {
-		$queryParams['nickname'] = $this->apiClient->toPathValue($nickname);
+		$queryParams['nickname'] = $nickname;
 	}
     if($order != null) {
-		$queryParams['order'] = $this->apiClient->toPathValue($order);
+		$queryParams['order'] = $order;
 	}
 
 		if($userId != null) {
-			$resourcePath = str_replace("{userId}", $this->apiClient->toPathValue($userId), $resourcePath);
+			$resourcePath = str_replace("{userId}", $userId, $resourcePath);
 		}
 		if($templateId != null) {
-			$resourcePath = str_replace("{templateId}", $this->apiClient->toPathValue($templateId), $resourcePath);
+			$resourcePath = str_replace("{templateId}", $templateId, $resourcePath);
 		}
 
 	
@@ -793,10 +793,10 @@ class SignatureAPI {
     
 		
 		if($userId != null) {
-			$resourcePath = str_replace("{userId}", $this->apiClient->toPathValue($userId), $resourcePath);
+			$resourcePath = str_replace("{userId}", $userId, $resourcePath);
 		}
 		if($templateId != null) {
-			$resourcePath = str_replace("{templateId}", $this->apiClient->toPathValue($templateId), $resourcePath);
+			$resourcePath = str_replace("{templateId}", $templateId, $resourcePath);
 		}
 
 	
@@ -841,13 +841,13 @@ class SignatureAPI {
     
 		
 		if($userId != null) {
-			$resourcePath = str_replace("{userId}", $this->apiClient->toPathValue($userId), $resourcePath);
+			$resourcePath = str_replace("{userId}", $userId, $resourcePath);
 		}
 		if($templateId != null) {
-			$resourcePath = str_replace("{templateId}", $this->apiClient->toPathValue($templateId), $resourcePath);
+			$resourcePath = str_replace("{templateId}", $templateId, $resourcePath);
 		}
 		if($recipientId != null) {
-			$resourcePath = str_replace("{recipientId}", $this->apiClient->toPathValue($recipientId), $resourcePath);
+			$resourcePath = str_replace("{recipientId}", $recipientId, $resourcePath);
 		}
 
 	
@@ -893,17 +893,17 @@ class SignatureAPI {
     
 		
     if($nickname != null) {
-		$queryParams['nickname'] = $this->apiClient->toPathValue($nickname);
+		$queryParams['nickname'] = $nickname;
 	}
     if($order != null) {
-		$queryParams['order'] = $this->apiClient->toPathValue($order);
+		$queryParams['order'] = $order;
 	}
 
 		if($userId != null) {
-			$resourcePath = str_replace("{userId}", $this->apiClient->toPathValue($userId), $resourcePath);
+			$resourcePath = str_replace("{userId}", $userId, $resourcePath);
 		}
 		if($templateId != null) {
-			$resourcePath = str_replace("{templateId}", $this->apiClient->toPathValue($templateId), $resourcePath);
+			$resourcePath = str_replace("{templateId}", $templateId, $resourcePath);
 		}
 
 	
@@ -949,17 +949,17 @@ class SignatureAPI {
     
 		
     if($order != null) {
-		$queryParams['order'] = $this->apiClient->toPathValue($order);
+		$queryParams['order'] = $order;
 	}
 
 		if($userId != null) {
-			$resourcePath = str_replace("{userId}", $this->apiClient->toPathValue($userId), $resourcePath);
+			$resourcePath = str_replace("{userId}", $userId, $resourcePath);
 		}
 		if($templateId != null) {
-			$resourcePath = str_replace("{templateId}", $this->apiClient->toPathValue($templateId), $resourcePath);
+			$resourcePath = str_replace("{templateId}", $templateId, $resourcePath);
 		}
 		if($documentId != null) {
-			$resourcePath = str_replace("{documentId}", $this->apiClient->toPathValue($documentId), $resourcePath);
+			$resourcePath = str_replace("{documentId}", $documentId, $resourcePath);
 		}
 
 	
@@ -1003,10 +1003,10 @@ class SignatureAPI {
     
 		
 		if($userId != null) {
-			$resourcePath = str_replace("{userId}", $this->apiClient->toPathValue($userId), $resourcePath);
+			$resourcePath = str_replace("{userId}", $userId, $resourcePath);
 		}
 		if($templateId != null) {
-			$resourcePath = str_replace("{templateId}", $this->apiClient->toPathValue($templateId), $resourcePath);
+			$resourcePath = str_replace("{templateId}", $templateId, $resourcePath);
 		}
 
 	
@@ -1051,13 +1051,13 @@ class SignatureAPI {
     
 		
 		if($userId != null) {
-			$resourcePath = str_replace("{userId}", $this->apiClient->toPathValue($userId), $resourcePath);
+			$resourcePath = str_replace("{userId}", $userId, $resourcePath);
 		}
 		if($templateId != null) {
-			$resourcePath = str_replace("{templateId}", $this->apiClient->toPathValue($templateId), $resourcePath);
+			$resourcePath = str_replace("{templateId}", $templateId, $resourcePath);
 		}
 		if($documentId != null) {
-			$resourcePath = str_replace("{documentId}", $this->apiClient->toPathValue($documentId), $resourcePath);
+			$resourcePath = str_replace("{documentId}", $documentId, $resourcePath);
 		}
 
 	
@@ -1102,16 +1102,16 @@ class SignatureAPI {
 	
 		
 		if($signatureSignatureInputTemplatesInputDocumentsInputRecipientInputFieldInput != null && $signatureSignatureInputTemplatesInputDocumentsInputRecipientInputFieldInput->userId != null) {
-		 	$resourcePath = str_replace("{userId}", $this->apiClient->toPathValue($signatureSignatureInputTemplatesInputDocumentsInputRecipientInputFieldInput->userId), $resourcePath);	
+		 	$resourcePath = str_replace("{userId}", $signatureSignatureInputTemplatesInputDocumentsInputRecipientInputFieldInput->userId, $resourcePath);	
 		}
 		if($signatureSignatureInputTemplatesInputDocumentsInputRecipientInputFieldInput != null && $signatureSignatureInputTemplatesInputDocumentsInputRecipientInputFieldInput->templateId != null) {
-		 	$resourcePath = str_replace("{templateId}", $this->apiClient->toPathValue($signatureSignatureInputTemplatesInputDocumentsInputRecipientInputFieldInput->templateId), $resourcePath);	
+		 	$resourcePath = str_replace("{templateId}", $signatureSignatureInputTemplatesInputDocumentsInputRecipientInputFieldInput->templateId, $resourcePath);	
 		}
 		if($signatureSignatureInputTemplatesInputDocumentsInputRecipientInputFieldInput != null && $signatureSignatureInputTemplatesInputDocumentsInputRecipientInputFieldInput->documentId != null) {
-		 	$resourcePath = str_replace("{documentId}", $this->apiClient->toPathValue($signatureSignatureInputTemplatesInputDocumentsInputRecipientInputFieldInput->documentId), $resourcePath);	
+		 	$resourcePath = str_replace("{documentId}", $signatureSignatureInputTemplatesInputDocumentsInputRecipientInputFieldInput->documentId, $resourcePath);	
 		}
 		if($signatureSignatureInputTemplatesInputDocumentsInputRecipientInputFieldInput != null && $signatureSignatureInputTemplatesInputDocumentsInputRecipientInputFieldInput->recipientId != null) {
-		 	$resourcePath = str_replace("{recipientId}", $this->apiClient->toPathValue($signatureSignatureInputTemplatesInputDocumentsInputRecipientInputFieldInput->recipientId), $resourcePath);	
+		 	$resourcePath = str_replace("{recipientId}", $signatureSignatureInputTemplatesInputDocumentsInputRecipientInputFieldInput->recipientId, $resourcePath);	
 		}
 
 	
@@ -1156,16 +1156,16 @@ class SignatureAPI {
     
 		
 		if($userId != null) {
-			$resourcePath = str_replace("{userId}", $this->apiClient->toPathValue($userId), $resourcePath);
+			$resourcePath = str_replace("{userId}", $userId, $resourcePath);
 		}
 		if($templateId != null) {
-			$resourcePath = str_replace("{templateId}", $this->apiClient->toPathValue($templateId), $resourcePath);
+			$resourcePath = str_replace("{templateId}", $templateId, $resourcePath);
 		}
 		if($documentId != null) {
-			$resourcePath = str_replace("{documentId}", $this->apiClient->toPathValue($documentId), $resourcePath);
+			$resourcePath = str_replace("{documentId}", $documentId, $resourcePath);
 		}
 		if($fieldId != null) {
-			$resourcePath = str_replace("{fieldId}", $this->apiClient->toPathValue($fieldId), $resourcePath);
+			$resourcePath = str_replace("{fieldId}", $fieldId, $resourcePath);
 		}
 
 	
@@ -1211,16 +1211,16 @@ class SignatureAPI {
     
 		
 		if($userId != null) {
-			$resourcePath = str_replace("{userId}", $this->apiClient->toPathValue($userId), $resourcePath);
+			$resourcePath = str_replace("{userId}", $userId, $resourcePath);
 		}
 		if($templateId != null) {
-			$resourcePath = str_replace("{templateId}", $this->apiClient->toPathValue($templateId), $resourcePath);
+			$resourcePath = str_replace("{templateId}", $templateId, $resourcePath);
 		}
 		if($fieldId != null) {
-			$resourcePath = str_replace("{fieldId}", $this->apiClient->toPathValue($fieldId), $resourcePath);
+			$resourcePath = str_replace("{fieldId}", $fieldId, $resourcePath);
 		}
 		if($locationId != null) {
-			$resourcePath = str_replace("{locationId}", $this->apiClient->toPathValue($locationId), $resourcePath);
+			$resourcePath = str_replace("{locationId}", $locationId, $resourcePath);
 		}
 
 	
@@ -1265,22 +1265,22 @@ class SignatureAPI {
 	
 		
 		if($signatureSignatureInputTemplatesInputDocumentsInputRecipientInputFieldsInputLocationsInput != null && $signatureSignatureInputTemplatesInputDocumentsInputRecipientInputFieldsInputLocationsInput->userId != null) {
-		 	$resourcePath = str_replace("{userId}", $this->apiClient->toPathValue($signatureSignatureInputTemplatesInputDocumentsInputRecipientInputFieldsInputLocationsInput->userId), $resourcePath);	
+		 	$resourcePath = str_replace("{userId}", $signatureSignatureInputTemplatesInputDocumentsInputRecipientInputFieldsInputLocationsInput->userId, $resourcePath);	
 		}
 		if($signatureSignatureInputTemplatesInputDocumentsInputRecipientInputFieldsInputLocationsInput != null && $signatureSignatureInputTemplatesInputDocumentsInputRecipientInputFieldsInputLocationsInput->templateId != null) {
-		 	$resourcePath = str_replace("{templateId}", $this->apiClient->toPathValue($signatureSignatureInputTemplatesInputDocumentsInputRecipientInputFieldsInputLocationsInput->templateId), $resourcePath);	
+		 	$resourcePath = str_replace("{templateId}", $signatureSignatureInputTemplatesInputDocumentsInputRecipientInputFieldsInputLocationsInput->templateId, $resourcePath);	
 		}
 		if($signatureSignatureInputTemplatesInputDocumentsInputRecipientInputFieldsInputLocationsInput != null && $signatureSignatureInputTemplatesInputDocumentsInputRecipientInputFieldsInputLocationsInput->documentId != null) {
-		 	$resourcePath = str_replace("{documentId}", $this->apiClient->toPathValue($signatureSignatureInputTemplatesInputDocumentsInputRecipientInputFieldsInputLocationsInput->documentId), $resourcePath);	
+		 	$resourcePath = str_replace("{documentId}", $signatureSignatureInputTemplatesInputDocumentsInputRecipientInputFieldsInputLocationsInput->documentId, $resourcePath);	
 		}
 		if($signatureSignatureInputTemplatesInputDocumentsInputRecipientInputFieldsInputLocationsInput != null && $signatureSignatureInputTemplatesInputDocumentsInputRecipientInputFieldsInputLocationsInput->recipientId != null) {
-		 	$resourcePath = str_replace("{recipientId}", $this->apiClient->toPathValue($signatureSignatureInputTemplatesInputDocumentsInputRecipientInputFieldsInputLocationsInput->recipientId), $resourcePath);	
+		 	$resourcePath = str_replace("{recipientId}", $signatureSignatureInputTemplatesInputDocumentsInputRecipientInputFieldsInputLocationsInput->recipientId, $resourcePath);	
 		}
 		if($signatureSignatureInputTemplatesInputDocumentsInputRecipientInputFieldsInputLocationsInput != null && $signatureSignatureInputTemplatesInputDocumentsInputRecipientInputFieldsInputLocationsInput->fieldId != null) {
-		 	$resourcePath = str_replace("{fieldId}", $this->apiClient->toPathValue($signatureSignatureInputTemplatesInputDocumentsInputRecipientInputFieldsInputLocationsInput->fieldId), $resourcePath);	
+		 	$resourcePath = str_replace("{fieldId}", $signatureSignatureInputTemplatesInputDocumentsInputRecipientInputFieldsInputLocationsInput->fieldId, $resourcePath);	
 		}
 		if($signatureSignatureInputTemplatesInputDocumentsInputRecipientInputFieldsInputLocationsInput != null && $signatureSignatureInputTemplatesInputDocumentsInputRecipientInputFieldsInputLocationsInput->locationId != null) {
-		 	$resourcePath = str_replace("{locationId}", $this->apiClient->toPathValue($signatureSignatureInputTemplatesInputDocumentsInputRecipientInputFieldsInputLocationsInput->locationId), $resourcePath);	
+		 	$resourcePath = str_replace("{locationId}", $signatureSignatureInputTemplatesInputDocumentsInputRecipientInputFieldsInputLocationsInput->locationId, $resourcePath);	
 		}
 
 	
@@ -1325,16 +1325,16 @@ class SignatureAPI {
     
 		
 		if($userId != null) {
-			$resourcePath = str_replace("{userId}", $this->apiClient->toPathValue($userId), $resourcePath);
+			$resourcePath = str_replace("{userId}", $userId, $resourcePath);
 		}
 		if($templateId != null) {
-			$resourcePath = str_replace("{templateId}", $this->apiClient->toPathValue($templateId), $resourcePath);
+			$resourcePath = str_replace("{templateId}", $templateId, $resourcePath);
 		}
 		if($documentId != null) {
-			$resourcePath = str_replace("{documentId}", $this->apiClient->toPathValue($documentId), $resourcePath);
+			$resourcePath = str_replace("{documentId}", $documentId, $resourcePath);
 		}
 		if($recipientId != null) {
-			$resourcePath = str_replace("{recipientId}", $this->apiClient->toPathValue($recipientId), $resourcePath);
+			$resourcePath = str_replace("{recipientId}", $recipientId, $resourcePath);
 		}
 
 	
@@ -1379,13 +1379,13 @@ class SignatureAPI {
     
 		
 		if($userId != null) {
-			$resourcePath = str_replace("{userId}", $this->apiClient->toPathValue($userId), $resourcePath);
+			$resourcePath = str_replace("{userId}", $userId, $resourcePath);
 		}
 		if($templateId != null) {
-			$resourcePath = str_replace("{templateId}", $this->apiClient->toPathValue($templateId), $resourcePath);
+			$resourcePath = str_replace("{templateId}", $templateId, $resourcePath);
 		}
 		if($fieldId != null) {
-			$resourcePath = str_replace("{fieldId}", $this->apiClient->toPathValue($fieldId), $resourcePath);
+			$resourcePath = str_replace("{fieldId}", $fieldId, $resourcePath);
 		}
 
 	
@@ -1428,7 +1428,7 @@ class SignatureAPI {
     
 		
 		if($userId != null) {
-			$resourcePath = str_replace("{userId}", $this->apiClient->toPathValue($userId), $resourcePath);
+			$resourcePath = str_replace("{userId}", $userId, $resourcePath);
 		}
 
 	
@@ -1472,10 +1472,10 @@ class SignatureAPI {
     
 		
 		if($userId != null) {
-			$resourcePath = str_replace("{userId}", $this->apiClient->toPathValue($userId), $resourcePath);
+			$resourcePath = str_replace("{userId}", $userId, $resourcePath);
 		}
 		if($signatureId != null) {
-			$resourcePath = str_replace("{signatureId}", $this->apiClient->toPathValue($signatureId), $resourcePath);
+			$resourcePath = str_replace("{signatureId}", $signatureId, $resourcePath);
 		}
 
 	
@@ -1520,11 +1520,11 @@ class SignatureAPI {
     
 		
     if($name != null) {
-		$queryParams['name'] = $this->apiClient->toPathValue($name);
+		$queryParams['name'] = $name;
 	}
 
 		if($userId != null) {
-			$resourcePath = str_replace("{userId}", $this->apiClient->toPathValue($userId), $resourcePath);
+			$resourcePath = str_replace("{userId}", $userId, $resourcePath);
 		}
 
 	
@@ -1570,17 +1570,17 @@ class SignatureAPI {
     
 		
     if($type != null) {
-		$queryParams['type'] = $this->apiClient->toPathValue($type);
+		$queryParams['type'] = $type;
 	}
     if($dataFrom != null) {
-		$queryParams['dataFrom'] = $this->apiClient->toPathValue($dataFrom);
+		$queryParams['dataFrom'] = $dataFrom;
 	}
 
 		if($userId != null) {
-			$resourcePath = str_replace("{userId}", $this->apiClient->toPathValue($userId), $resourcePath);
+			$resourcePath = str_replace("{userId}", $userId, $resourcePath);
 		}
 		if($signatureId != null) {
-			$resourcePath = str_replace("{signatureId}", $this->apiClient->toPathValue($signatureId), $resourcePath);
+			$resourcePath = str_replace("{signatureId}", $signatureId, $resourcePath);
 		}
 
 	
@@ -1625,19 +1625,19 @@ class SignatureAPI {
 	
 		
 		if($signatureSignatureInputEnvelopesInputDocumentsInputRecipientInputFieldInput != null && $signatureSignatureInputEnvelopesInputDocumentsInputRecipientInputFieldInput->userId != null) {
-		 	$resourcePath = str_replace("{userId}", $this->apiClient->toPathValue($signatureSignatureInputEnvelopesInputDocumentsInputRecipientInputFieldInput->userId), $resourcePath);	
+		 	$resourcePath = str_replace("{userId}", $signatureSignatureInputEnvelopesInputDocumentsInputRecipientInputFieldInput->userId, $resourcePath);	
 		}
 		if($signatureSignatureInputEnvelopesInputDocumentsInputRecipientInputFieldInput != null && $signatureSignatureInputEnvelopesInputDocumentsInputRecipientInputFieldInput->envelopeId != null) {
-		 	$resourcePath = str_replace("{envelopeId}", $this->apiClient->toPathValue($signatureSignatureInputEnvelopesInputDocumentsInputRecipientInputFieldInput->envelopeId), $resourcePath);	
+		 	$resourcePath = str_replace("{envelopeId}", $signatureSignatureInputEnvelopesInputDocumentsInputRecipientInputFieldInput->envelopeId, $resourcePath);	
 		}
 		if($signatureSignatureInputEnvelopesInputDocumentsInputRecipientInputFieldInput != null && $signatureSignatureInputEnvelopesInputDocumentsInputRecipientInputFieldInput->documentId != null) {
-		 	$resourcePath = str_replace("{documentId}", $this->apiClient->toPathValue($signatureSignatureInputEnvelopesInputDocumentsInputRecipientInputFieldInput->documentId), $resourcePath);	
+		 	$resourcePath = str_replace("{documentId}", $signatureSignatureInputEnvelopesInputDocumentsInputRecipientInputFieldInput->documentId, $resourcePath);	
 		}
 		if($signatureSignatureInputEnvelopesInputDocumentsInputRecipientInputFieldInput != null && $signatureSignatureInputEnvelopesInputDocumentsInputRecipientInputFieldInput->recipientId != null) {
-		 	$resourcePath = str_replace("{recipientId}", $this->apiClient->toPathValue($signatureSignatureInputEnvelopesInputDocumentsInputRecipientInputFieldInput->recipientId), $resourcePath);	
+		 	$resourcePath = str_replace("{recipientId}", $signatureSignatureInputEnvelopesInputDocumentsInputRecipientInputFieldInput->recipientId, $resourcePath);	
 		}
 		if($signatureSignatureInputEnvelopesInputDocumentsInputRecipientInputFieldInput != null && $signatureSignatureInputEnvelopesInputDocumentsInputRecipientInputFieldInput->fieldId != null) {
-		 	$resourcePath = str_replace("{fieldId}", $this->apiClient->toPathValue($signatureSignatureInputEnvelopesInputDocumentsInputRecipientInputFieldInput->fieldId), $resourcePath);	
+		 	$resourcePath = str_replace("{fieldId}", $signatureSignatureInputEnvelopesInputDocumentsInputRecipientInputFieldInput->fieldId, $resourcePath);	
 		}
 
 	
@@ -1681,13 +1681,13 @@ class SignatureAPI {
     
 		
 		if($userId != null) {
-			$resourcePath = str_replace("{userId}", $this->apiClient->toPathValue($userId), $resourcePath);
+			$resourcePath = str_replace("{userId}", $userId, $resourcePath);
 		}
 		if($envelopeId != null) {
-			$resourcePath = str_replace("{envelopeId}", $this->apiClient->toPathValue($envelopeId), $resourcePath);
+			$resourcePath = str_replace("{envelopeId}", $envelopeId, $resourcePath);
 		}
 		if($recipientId != null) {
-			$resourcePath = str_replace("{recipientId}", $this->apiClient->toPathValue($recipientId), $resourcePath);
+			$resourcePath = str_replace("{recipientId}", $recipientId, $resourcePath);
 		}
 
 	
@@ -1732,13 +1732,13 @@ class SignatureAPI {
     
 		
 		if($userId != null) {
-			$resourcePath = str_replace("{userId}", $this->apiClient->toPathValue($userId), $resourcePath);
+			$resourcePath = str_replace("{userId}", $userId, $resourcePath);
 		}
 		if($envelopeId != null) {
-			$resourcePath = str_replace("{envelopeId}", $this->apiClient->toPathValue($envelopeId), $resourcePath);
+			$resourcePath = str_replace("{envelopeId}", $envelopeId, $resourcePath);
 		}
 		if($recipientId != null) {
-			$resourcePath = str_replace("{recipientId}", $this->apiClient->toPathValue($recipientId), $resourcePath);
+			$resourcePath = str_replace("{recipientId}", $recipientId, $resourcePath);
 		}
 
 	
@@ -1786,23 +1786,23 @@ class SignatureAPI {
     
 		
     if($statusId != null) {
-		$queryParams['statusId'] = $this->apiClient->toPathValue($statusId);
+		$queryParams['statusId'] = $statusId;
 	}
     if($page != null) {
-		$queryParams['page'] = $this->apiClient->toPathValue($page);
+		$queryParams['page'] = $page;
 	}
     if($recipientEmail != null) {
-		$queryParams['recipientEmail'] = $this->apiClient->toPathValue($recipientEmail);
+		$queryParams['recipientEmail'] = $recipientEmail;
 	}
     if($date != null) {
-		$queryParams['date'] = $this->apiClient->toPathValue($date);
+		$queryParams['date'] = $date;
 	}
     if($name != null) {
-		$queryParams['name'] = $this->apiClient->toPathValue($name);
+		$queryParams['name'] = $name;
 	}
 
 		if($userId != null) {
-			$resourcePath = str_replace("{userId}", $this->apiClient->toPathValue($userId), $resourcePath);
+			$resourcePath = str_replace("{userId}", $userId, $resourcePath);
 		}
 
 	
@@ -1847,14 +1847,14 @@ class SignatureAPI {
     
 		
     if($statusId != null) {
-		$queryParams['statusId'] = $this->apiClient->toPathValue($statusId);
+		$queryParams['statusId'] = $statusId;
 	}
     if($page != null) {
-		$queryParams['page'] = $this->apiClient->toPathValue($page);
+		$queryParams['page'] = $page;
 	}
 
 		if($userId != null) {
-			$resourcePath = str_replace("{userId}", $this->apiClient->toPathValue($userId), $resourcePath);
+			$resourcePath = str_replace("{userId}", $userId, $resourcePath);
 		}
 
 	
@@ -1898,10 +1898,10 @@ class SignatureAPI {
     
 		
 		if($userId != null) {
-			$resourcePath = str_replace("{userId}", $this->apiClient->toPathValue($userId), $resourcePath);
+			$resourcePath = str_replace("{userId}", $userId, $resourcePath);
 		}
 		if($envelopeId != null) {
-			$resourcePath = str_replace("{envelopeId}", $this->apiClient->toPathValue($envelopeId), $resourcePath);
+			$resourcePath = str_replace("{envelopeId}", $envelopeId, $resourcePath);
 		}
 
 	
@@ -1946,11 +1946,11 @@ class SignatureAPI {
     
 		
     if($name != null) {
-		$queryParams['name'] = $this->apiClient->toPathValue($name);
+		$queryParams['name'] = $name;
 	}
 
 		if($userId != null) {
-			$resourcePath = str_replace("{userId}", $this->apiClient->toPathValue($userId), $resourcePath);
+			$resourcePath = str_replace("{userId}", $userId, $resourcePath);
 		}
 
 	
@@ -1995,10 +1995,10 @@ class SignatureAPI {
     
 		
 		if($userId != null) {
-			$resourcePath = str_replace("{userId}", $this->apiClient->toPathValue($userId), $resourcePath);
+			$resourcePath = str_replace("{userId}", $userId, $resourcePath);
 		}
 		if($envelopeId != null) {
-			$resourcePath = str_replace("{envelopeId}", $this->apiClient->toPathValue($envelopeId), $resourcePath);
+			$resourcePath = str_replace("{envelopeId}", $envelopeId, $resourcePath);
 		}
 
 	
@@ -2043,14 +2043,14 @@ class SignatureAPI {
     
 		
     if($name != null) {
-		$queryParams['name'] = $this->apiClient->toPathValue($name);
+		$queryParams['name'] = $name;
 	}
 
 		if($userId != null) {
-			$resourcePath = str_replace("{userId}", $this->apiClient->toPathValue($userId), $resourcePath);
+			$resourcePath = str_replace("{userId}", $userId, $resourcePath);
 		}
 		if($envelopeId != null) {
-			$resourcePath = str_replace("{envelopeId}", $this->apiClient->toPathValue($envelopeId), $resourcePath);
+			$resourcePath = str_replace("{envelopeId}", $envelopeId, $resourcePath);
 		}
 
 	
@@ -2094,10 +2094,10 @@ class SignatureAPI {
     
 		
 		if($userId != null) {
-			$resourcePath = str_replace("{userId}", $this->apiClient->toPathValue($userId), $resourcePath);
+			$resourcePath = str_replace("{userId}", $userId, $resourcePath);
 		}
 		if($envelopeId != null) {
-			$resourcePath = str_replace("{envelopeId}", $this->apiClient->toPathValue($envelopeId), $resourcePath);
+			$resourcePath = str_replace("{envelopeId}", $envelopeId, $resourcePath);
 		}
 
 	
@@ -2140,7 +2140,7 @@ class SignatureAPI {
     
 		
 		if($userId != null) {
-			$resourcePath = str_replace("{userId}", $this->apiClient->toPathValue($userId), $resourcePath);
+			$resourcePath = str_replace("{userId}", $userId, $resourcePath);
 		}
 
 	
@@ -2183,7 +2183,7 @@ class SignatureAPI {
     
 		
 		if($userId != null) {
-			$resourcePath = str_replace("{userId}", $this->apiClient->toPathValue($userId), $resourcePath);
+			$resourcePath = str_replace("{userId}", $userId, $resourcePath);
 		}
 
 	
@@ -2227,7 +2227,7 @@ class SignatureAPI {
     
 		
 		if($userId != null) {
-			$resourcePath = str_replace("{userId}", $this->apiClient->toPathValue($userId), $resourcePath);
+			$resourcePath = str_replace("{userId}", $userId, $resourcePath);
 		}
 
 	
@@ -2272,10 +2272,10 @@ class SignatureAPI {
     
 		
 		if($userId != null) {
-			$resourcePath = str_replace("{userId}", $this->apiClient->toPathValue($userId), $resourcePath);
+			$resourcePath = str_replace("{userId}", $userId, $resourcePath);
 		}
 		if($fieldId != null) {
-			$resourcePath = str_replace("{fieldId}", $this->apiClient->toPathValue($fieldId), $resourcePath);
+			$resourcePath = str_replace("{fieldId}", $fieldId, $resourcePath);
 		}
 
 	
@@ -2319,10 +2319,10 @@ class SignatureAPI {
     
 		
 		if($userId != null) {
-			$resourcePath = str_replace("{userId}", $this->apiClient->toPathValue($userId), $resourcePath);
+			$resourcePath = str_replace("{userId}", $userId, $resourcePath);
 		}
 		if($fieldId != null) {
-			$resourcePath = str_replace("{fieldId}", $this->apiClient->toPathValue($fieldId), $resourcePath);
+			$resourcePath = str_replace("{fieldId}", $fieldId, $resourcePath);
 		}
 
 	
@@ -2366,11 +2366,11 @@ class SignatureAPI {
     
 		
     if($order != null) {
-		$queryParams['order'] = $this->apiClient->toPathValue($order);
+		$queryParams['order'] = $order;
 	}
 
 		if($userId != null) {
-			$resourcePath = str_replace("{userId}", $this->apiClient->toPathValue($userId), $resourcePath);
+			$resourcePath = str_replace("{userId}", $userId, $resourcePath);
 		}
 
 	
@@ -2414,10 +2414,10 @@ class SignatureAPI {
     
 		
 		if($userId != null) {
-			$resourcePath = str_replace("{userId}", $this->apiClient->toPathValue($userId), $resourcePath);
+			$resourcePath = str_replace("{userId}", $userId, $resourcePath);
 		}
 		if($envelopeId != null) {
-			$resourcePath = str_replace("{envelopeId}", $this->apiClient->toPathValue($envelopeId), $resourcePath);
+			$resourcePath = str_replace("{envelopeId}", $envelopeId, $resourcePath);
 		}
 
 	
@@ -2462,13 +2462,13 @@ class SignatureAPI {
     
 		
 		if($userId != null) {
-			$resourcePath = str_replace("{userId}", $this->apiClient->toPathValue($userId), $resourcePath);
+			$resourcePath = str_replace("{userId}", $userId, $resourcePath);
 		}
 		if($envelopeId != null) {
-			$resourcePath = str_replace("{envelopeId}", $this->apiClient->toPathValue($envelopeId), $resourcePath);
+			$resourcePath = str_replace("{envelopeId}", $envelopeId, $resourcePath);
 		}
 		if($recipientId != null) {
-			$resourcePath = str_replace("{recipientId}", $this->apiClient->toPathValue($recipientId), $resourcePath);
+			$resourcePath = str_replace("{recipientId}", $recipientId, $resourcePath);
 		}
 
 	
@@ -2512,11 +2512,11 @@ class SignatureAPI {
     
 		
     if($order != null) {
-		$queryParams['order'] = $this->apiClient->toPathValue($order);
+		$queryParams['order'] = $order;
 	}
 
 		if($userId != null) {
-			$resourcePath = str_replace("{userId}", $this->apiClient->toPathValue($userId), $resourcePath);
+			$resourcePath = str_replace("{userId}", $userId, $resourcePath);
 		}
 
 	
@@ -2562,17 +2562,17 @@ class SignatureAPI {
     
 		
     if($order != null) {
-		$queryParams['order'] = $this->apiClient->toPathValue($order);
+		$queryParams['order'] = $order;
 	}
 
 		if($userId != null) {
-			$resourcePath = str_replace("{userId}", $this->apiClient->toPathValue($userId), $resourcePath);
+			$resourcePath = str_replace("{userId}", $userId, $resourcePath);
 		}
 		if($envelopeId != null) {
-			$resourcePath = str_replace("{envelopeId}", $this->apiClient->toPathValue($envelopeId), $resourcePath);
+			$resourcePath = str_replace("{envelopeId}", $envelopeId, $resourcePath);
 		}
 		if($documentId != null) {
-			$resourcePath = str_replace("{documentId}", $this->apiClient->toPathValue($documentId), $resourcePath);
+			$resourcePath = str_replace("{documentId}", $documentId, $resourcePath);
 		}
 
 	
@@ -2616,10 +2616,10 @@ class SignatureAPI {
     
 		
 		if($userId != null) {
-			$resourcePath = str_replace("{userId}", $this->apiClient->toPathValue($userId), $resourcePath);
+			$resourcePath = str_replace("{userId}", $userId, $resourcePath);
 		}
 		if($envelopeId != null) {
-			$resourcePath = str_replace("{envelopeId}", $this->apiClient->toPathValue($envelopeId), $resourcePath);
+			$resourcePath = str_replace("{envelopeId}", $envelopeId, $resourcePath);
 		}
 
 	
@@ -2664,13 +2664,13 @@ class SignatureAPI {
     
 		
 		if($userId != null) {
-			$resourcePath = str_replace("{userId}", $this->apiClient->toPathValue($userId), $resourcePath);
+			$resourcePath = str_replace("{userId}", $userId, $resourcePath);
 		}
 		if($envelopeId != null) {
-			$resourcePath = str_replace("{envelopeId}", $this->apiClient->toPathValue($envelopeId), $resourcePath);
+			$resourcePath = str_replace("{envelopeId}", $envelopeId, $resourcePath);
 		}
 		if($documentId != null) {
-			$resourcePath = str_replace("{documentId}", $this->apiClient->toPathValue($documentId), $resourcePath);
+			$resourcePath = str_replace("{documentId}", $documentId, $resourcePath);
 		}
 
 	
@@ -2714,10 +2714,10 @@ class SignatureAPI {
     
 		
 		if($userId != null) {
-			$resourcePath = str_replace("{userId}", $this->apiClient->toPathValue($userId), $resourcePath);
+			$resourcePath = str_replace("{userId}", $userId, $resourcePath);
 		}
 		if($envelopeId != null) {
-			$resourcePath = str_replace("{envelopeId}", $this->apiClient->toPathValue($envelopeId), $resourcePath);
+			$resourcePath = str_replace("{envelopeId}", $envelopeId, $resourcePath);
 		}
 
 	
@@ -2762,13 +2762,13 @@ class SignatureAPI {
     
 		
 		if($userId != null) {
-			$resourcePath = str_replace("{userId}", $this->apiClient->toPathValue($userId), $resourcePath);
+			$resourcePath = str_replace("{userId}", $userId, $resourcePath);
 		}
 		if($envelopeId != null) {
-			$resourcePath = str_replace("{envelopeId}", $this->apiClient->toPathValue($envelopeId), $resourcePath);
+			$resourcePath = str_replace("{envelopeId}", $envelopeId, $resourcePath);
 		}
 		if($documentId != null) {
-			$resourcePath = str_replace("{documentId}", $this->apiClient->toPathValue($documentId), $resourcePath);
+			$resourcePath = str_replace("{documentId}", $documentId, $resourcePath);
 		}
 
 	
@@ -2816,19 +2816,19 @@ class SignatureAPI {
     
 		
 		if($userId != null) {
-			$resourcePath = str_replace("{userId}", $this->apiClient->toPathValue($userId), $resourcePath);
+			$resourcePath = str_replace("{userId}", $userId, $resourcePath);
 		}
 		if($envelopeId != null) {
-			$resourcePath = str_replace("{envelopeId}", $this->apiClient->toPathValue($envelopeId), $resourcePath);
+			$resourcePath = str_replace("{envelopeId}", $envelopeId, $resourcePath);
 		}
 		if($documentId != null) {
-			$resourcePath = str_replace("{documentId}", $this->apiClient->toPathValue($documentId), $resourcePath);
+			$resourcePath = str_replace("{documentId}", $documentId, $resourcePath);
 		}
 		if($recipientId != null) {
-			$resourcePath = str_replace("{recipientId}", $this->apiClient->toPathValue($recipientId), $resourcePath);
+			$resourcePath = str_replace("{recipientId}", $recipientId, $resourcePath);
 		}
 		if($fieldId != null) {
-			$resourcePath = str_replace("{fieldId}", $this->apiClient->toPathValue($fieldId), $resourcePath);
+			$resourcePath = str_replace("{fieldId}", $fieldId, $resourcePath);
 		}
 
 	
@@ -2874,16 +2874,16 @@ class SignatureAPI {
     
 		
 		if($userId != null) {
-			$resourcePath = str_replace("{userId}", $this->apiClient->toPathValue($userId), $resourcePath);
+			$resourcePath = str_replace("{userId}", $userId, $resourcePath);
 		}
 		if($envelopeId != null) {
-			$resourcePath = str_replace("{envelopeId}", $this->apiClient->toPathValue($envelopeId), $resourcePath);
+			$resourcePath = str_replace("{envelopeId}", $envelopeId, $resourcePath);
 		}
 		if($documentId != null) {
-			$resourcePath = str_replace("{documentId}", $this->apiClient->toPathValue($documentId), $resourcePath);
+			$resourcePath = str_replace("{documentId}", $documentId, $resourcePath);
 		}
 		if($recipientId != null) {
-			$resourcePath = str_replace("{recipientId}", $this->apiClient->toPathValue($recipientId), $resourcePath);
+			$resourcePath = str_replace("{recipientId}", $recipientId, $resourcePath);
 		}
 
 	
@@ -2928,13 +2928,13 @@ class SignatureAPI {
     
 		
 		if($userId != null) {
-			$resourcePath = str_replace("{userId}", $this->apiClient->toPathValue($userId), $resourcePath);
+			$resourcePath = str_replace("{userId}", $userId, $resourcePath);
 		}
 		if($envelopeId != null) {
-			$resourcePath = str_replace("{envelopeId}", $this->apiClient->toPathValue($envelopeId), $resourcePath);
+			$resourcePath = str_replace("{envelopeId}", $envelopeId, $resourcePath);
 		}
 		if($fieldId != null) {
-			$resourcePath = str_replace("{fieldId}", $this->apiClient->toPathValue($fieldId), $resourcePath);
+			$resourcePath = str_replace("{fieldId}", $fieldId, $resourcePath);
 		}
 
 	
@@ -2979,16 +2979,16 @@ class SignatureAPI {
 	
 		
 		if($signatureSignatureInputEnvelopesInputDocumentsInputFieldInput != null && $signatureSignatureInputEnvelopesInputDocumentsInputFieldInput->userId != null) {
-		 	$resourcePath = str_replace("{userId}", $this->apiClient->toPathValue($signatureSignatureInputEnvelopesInputDocumentsInputFieldInput->userId), $resourcePath);	
+		 	$resourcePath = str_replace("{userId}", $signatureSignatureInputEnvelopesInputDocumentsInputFieldInput->userId, $resourcePath);	
 		}
 		if($signatureSignatureInputEnvelopesInputDocumentsInputFieldInput != null && $signatureSignatureInputEnvelopesInputDocumentsInputFieldInput->envelopeId != null) {
-		 	$resourcePath = str_replace("{envelopeId}", $this->apiClient->toPathValue($signatureSignatureInputEnvelopesInputDocumentsInputFieldInput->envelopeId), $resourcePath);	
+		 	$resourcePath = str_replace("{envelopeId}", $signatureSignatureInputEnvelopesInputDocumentsInputFieldInput->envelopeId, $resourcePath);	
 		}
 		if($signatureSignatureInputEnvelopesInputDocumentsInputFieldInput != null && $signatureSignatureInputEnvelopesInputDocumentsInputFieldInput->documentId != null) {
-		 	$resourcePath = str_replace("{documentId}", $this->apiClient->toPathValue($signatureSignatureInputEnvelopesInputDocumentsInputFieldInput->documentId), $resourcePath);	
+		 	$resourcePath = str_replace("{documentId}", $signatureSignatureInputEnvelopesInputDocumentsInputFieldInput->documentId, $resourcePath);	
 		}
 		if($signatureSignatureInputEnvelopesInputDocumentsInputFieldInput != null && $signatureSignatureInputEnvelopesInputDocumentsInputFieldInput->fieldId != null) {
-		 	$resourcePath = str_replace("{fieldId}", $this->apiClient->toPathValue($signatureSignatureInputEnvelopesInputDocumentsInputFieldInput->fieldId), $resourcePath);	
+		 	$resourcePath = str_replace("{fieldId}", $signatureSignatureInputEnvelopesInputDocumentsInputFieldInput->fieldId, $resourcePath);	
 		}
 
 	
@@ -3031,10 +3031,10 @@ class SignatureAPI {
     
 		
 		if($userId != null) {
-			$resourcePath = str_replace("{userId}", $this->apiClient->toPathValue($userId), $resourcePath);
+			$resourcePath = str_replace("{userId}", $userId, $resourcePath);
 		}
 		if($envelopeId != null) {
-			$resourcePath = str_replace("{envelopeId}", $this->apiClient->toPathValue($envelopeId), $resourcePath);
+			$resourcePath = str_replace("{envelopeId}", $envelopeId, $resourcePath);
 		}
 
 	
@@ -3078,10 +3078,10 @@ class SignatureAPI {
     
 		
 		if($userId != null) {
-			$resourcePath = str_replace("{userId}", $this->apiClient->toPathValue($userId), $resourcePath);
+			$resourcePath = str_replace("{userId}", $userId, $resourcePath);
 		}
 		if($envelopeId != null) {
-			$resourcePath = str_replace("{envelopeId}", $this->apiClient->toPathValue($envelopeId), $resourcePath);
+			$resourcePath = str_replace("{envelopeId}", $envelopeId, $resourcePath);
 		}
 
 	
@@ -3127,16 +3127,16 @@ class SignatureAPI {
     
 		
 		if($userId != null) {
-			$resourcePath = str_replace("{userId}", $this->apiClient->toPathValue($userId), $resourcePath);
+			$resourcePath = str_replace("{userId}", $userId, $resourcePath);
 		}
 		if($envelopeId != null) {
-			$resourcePath = str_replace("{envelopeId}", $this->apiClient->toPathValue($envelopeId), $resourcePath);
+			$resourcePath = str_replace("{envelopeId}", $envelopeId, $resourcePath);
 		}
 		if($fieldId != null) {
-			$resourcePath = str_replace("{fieldId}", $this->apiClient->toPathValue($fieldId), $resourcePath);
+			$resourcePath = str_replace("{fieldId}", $fieldId, $resourcePath);
 		}
 		if($locationId != null) {
-			$resourcePath = str_replace("{locationId}", $this->apiClient->toPathValue($locationId), $resourcePath);
+			$resourcePath = str_replace("{locationId}", $locationId, $resourcePath);
 		}
 
 	

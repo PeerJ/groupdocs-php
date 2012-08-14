@@ -52,10 +52,10 @@ class AntAPI {
     
 		
 		if($userId != null) {
-			$resourcePath = str_replace("{userId}", $this->apiClient->toPathValue($userId), $resourcePath);
+			$resourcePath = str_replace("{userId}", $userId, $resourcePath);
 		}
 		if($fileId != null) {
-			$resourcePath = str_replace("{fileId}", $this->apiClient->toPathValue($fileId), $resourcePath);
+			$resourcePath = str_replace("{fileId}", $fileId, $resourcePath);
 		}
 
 	
@@ -99,10 +99,10 @@ class AntAPI {
     
 		
 		if($userId != null) {
-			$resourcePath = str_replace("{userId}", $this->apiClient->toPathValue($userId), $resourcePath);
+			$resourcePath = str_replace("{userId}", $userId, $resourcePath);
 		}
 		if($fileId != null) {
-			$resourcePath = str_replace("{fileId}", $this->apiClient->toPathValue($fileId), $resourcePath);
+			$resourcePath = str_replace("{fileId}", $fileId, $resourcePath);
 		}
 
 	
@@ -146,10 +146,10 @@ class AntAPI {
     
 		
 		if($userId != null) {
-			$resourcePath = str_replace("{userId}", $this->apiClient->toPathValue($userId), $resourcePath);
+			$resourcePath = str_replace("{userId}", $userId, $resourcePath);
 		}
 		if($annotationId != null) {
-			$resourcePath = str_replace("{annotationId}", $this->apiClient->toPathValue($annotationId), $resourcePath);
+			$resourcePath = str_replace("{annotationId}", $annotationId, $resourcePath);
 		}
 
 	
@@ -194,13 +194,13 @@ class AntAPI {
     
 		
 		if($userId != null) {
-			$resourcePath = str_replace("{userId}", $this->apiClient->toPathValue($userId), $resourcePath);
+			$resourcePath = str_replace("{userId}", $userId, $resourcePath);
 		}
 		if($annotationId != null) {
-			$resourcePath = str_replace("{annotationId}", $this->apiClient->toPathValue($annotationId), $resourcePath);
+			$resourcePath = str_replace("{annotationId}", $annotationId, $resourcePath);
 		}
 		if($message != null) {
-			$resourcePath = str_replace("{message}", $this->apiClient->toPathValue($message), $resourcePath);
+			$resourcePath = str_replace("{message}", $message, $resourcePath);
 		}
 
 	
@@ -245,13 +245,13 @@ class AntAPI {
     
 		
 		if($userId != null) {
-			$resourcePath = str_replace("{userId}", $this->apiClient->toPathValue($userId), $resourcePath);
+			$resourcePath = str_replace("{userId}", $userId, $resourcePath);
 		}
 		if($replyGuid != null) {
-			$resourcePath = str_replace("{replyGuid}", $this->apiClient->toPathValue($replyGuid), $resourcePath);
+			$resourcePath = str_replace("{replyGuid}", $replyGuid, $resourcePath);
 		}
 		if($message != null) {
-			$resourcePath = str_replace("{message}", $this->apiClient->toPathValue($message), $resourcePath);
+			$resourcePath = str_replace("{message}", $message, $resourcePath);
 		}
 
 	
@@ -296,13 +296,13 @@ class AntAPI {
     
 		
 		if($userId != null) {
-			$resourcePath = str_replace("{userId}", $this->apiClient->toPathValue($userId), $resourcePath);
+			$resourcePath = str_replace("{userId}", $userId, $resourcePath);
 		}
 		if($annotationId != null) {
-			$resourcePath = str_replace("{annotationId}", $this->apiClient->toPathValue($annotationId), $resourcePath);
+			$resourcePath = str_replace("{annotationId}", $annotationId, $resourcePath);
 		}
 		if($after != null) {
-			$resourcePath = str_replace("{after}", $this->apiClient->toPathValue($after), $resourcePath);
+			$resourcePath = str_replace("{after}", $after, $resourcePath);
 		}
 
 	
@@ -347,13 +347,13 @@ class AntAPI {
     
 		
 		if($userId != null) {
-			$resourcePath = str_replace("{userId}", $this->apiClient->toPathValue($userId), $resourcePath);
+			$resourcePath = str_replace("{userId}", $userId, $resourcePath);
 		}
 		if($fileId != null) {
-			$resourcePath = str_replace("{fileId}", $this->apiClient->toPathValue($fileId), $resourcePath);
+			$resourcePath = str_replace("{fileId}", $fileId, $resourcePath);
 		}
 		if($collaborators != null) {
-			$resourcePath = str_replace("{collaborators}", $this->apiClient->toPathValue($collaborators), $resourcePath);
+			$resourcePath = str_replace("{collaborators}", $collaborators, $resourcePath);
 		}
 
 	
@@ -397,10 +397,10 @@ class AntAPI {
     
 		
 		if($userId != null) {
-			$resourcePath = str_replace("{userId}", $this->apiClient->toPathValue($userId), $resourcePath);
+			$resourcePath = str_replace("{userId}", $userId, $resourcePath);
 		}
 		if($fileId != null) {
-			$resourcePath = str_replace("{fileId}", $this->apiClient->toPathValue($fileId), $resourcePath);
+			$resourcePath = str_replace("{fileId}", $fileId, $resourcePath);
 		}
 
 	
@@ -445,10 +445,10 @@ class AntAPI {
     
 		
 		if($userId != null) {
-			$resourcePath = str_replace("{userId}", $this->apiClient->toPathValue($userId), $resourcePath);
+			$resourcePath = str_replace("{userId}", $userId, $resourcePath);
 		}
 		if($annotationId != null) {
-			$resourcePath = str_replace("{annotationId}", $this->apiClient->toPathValue($annotationId), $resourcePath);
+			$resourcePath = str_replace("{annotationId}", $annotationId, $resourcePath);
 		}
 
 	

@@ -52,13 +52,13 @@ class SharedAPI {
     
 		
 		if($guid != null) {
-			$resourcePath = str_replace("{guid}", $this->apiClient->toPathValue($guid), $resourcePath);
+			$resourcePath = str_replace("{guid}", $guid, $resourcePath);
 		}
 		if($fileName != null) {
-			$resourcePath = str_replace("{fileName}", $this->apiClient->toPathValue($fileName), $resourcePath);
+			$resourcePath = str_replace("{fileName}", $fileName, $resourcePath);
 		}
 		if($render != null) {
-			$resourcePath = str_replace("{render}", $this->apiClient->toPathValue($render), $resourcePath);
+			$resourcePath = str_replace("{render}", $render, $resourcePath);
 		}
 
 	
@@ -102,19 +102,19 @@ class SharedAPI {
 	
 		
 		if($sharedSharedInputFilesInputPagesInput != null && $sharedSharedInputFilesInputPagesInput->guid != null) {
-		 	$resourcePath = str_replace("{guid}", $this->apiClient->toPathValue($sharedSharedInputFilesInputPagesInput->guid), $resourcePath);	
+		 	$resourcePath = str_replace("{guid}", $sharedSharedInputFilesInputPagesInput->guid, $resourcePath);	
 		}
 		if($sharedSharedInputFilesInputPagesInput != null && $sharedSharedInputFilesInputPagesInput->folio != null) {
-		 	$resourcePath = str_replace("{folio}", $this->apiClient->toPathValue($sharedSharedInputFilesInputPagesInput->folio), $resourcePath);	
+		 	$resourcePath = str_replace("{folio}", $sharedSharedInputFilesInputPagesInput->folio, $resourcePath);	
 		}
 		if($sharedSharedInputFilesInputPagesInput != null && $sharedSharedInputFilesInputPagesInput->dimension != null) {
-		 	$resourcePath = str_replace("{dimension}", $this->apiClient->toPathValue($sharedSharedInputFilesInputPagesInput->dimension), $resourcePath);	
+		 	$resourcePath = str_replace("{dimension}", $sharedSharedInputFilesInputPagesInput->dimension, $resourcePath);	
 		}
 		if($sharedSharedInputFilesInputPagesInput != null && $sharedSharedInputFilesInputPagesInput->quality != null) {
-		 	$resourcePath = str_replace("{quality}", $this->apiClient->toPathValue($sharedSharedInputFilesInputPagesInput->quality), $resourcePath);	
+		 	$resourcePath = str_replace("{quality}", $sharedSharedInputFilesInputPagesInput->quality, $resourcePath);	
 		}
 		if($sharedSharedInputFilesInputPagesInput != null && $sharedSharedInputFilesInputPagesInput->usePdf != null) {
-		 	$resourcePath = str_replace("{usePdf}", $this->apiClient->toPathValue($sharedSharedInputFilesInputPagesInput->usePdf), $resourcePath);	
+		 	$resourcePath = str_replace("{usePdf}", $sharedSharedInputFilesInputPagesInput->usePdf, $resourcePath);	
 		}
 
 	
@@ -160,19 +160,19 @@ class SharedAPI {
     
 		
 		if($guid != null) {
-			$resourcePath = str_replace("{guid}", $this->apiClient->toPathValue($guid), $resourcePath);
+			$resourcePath = str_replace("{guid}", $guid, $resourcePath);
 		}
 		if($folio != null) {
-			$resourcePath = str_replace("{folio}", $this->apiClient->toPathValue($folio), $resourcePath);
+			$resourcePath = str_replace("{folio}", $folio, $resourcePath);
 		}
 		if($dimension != null) {
-			$resourcePath = str_replace("{dimension}", $this->apiClient->toPathValue($dimension), $resourcePath);
+			$resourcePath = str_replace("{dimension}", $dimension, $resourcePath);
 		}
 		if($quality != null) {
-			$resourcePath = str_replace("{quality}", $this->apiClient->toPathValue($quality), $resourcePath);
+			$resourcePath = str_replace("{quality}", $quality, $resourcePath);
 		}
 		if($usePdf != null) {
-			$resourcePath = str_replace("{usePdf}", $this->apiClient->toPathValue($usePdf), $resourcePath);
+			$resourcePath = str_replace("{usePdf}", $usePdf, $resourcePath);
 		}
 
 	
@@ -215,7 +215,7 @@ class SharedAPI {
     
 		
 		if($guid != null) {
-			$resourcePath = str_replace("{guid}", $this->apiClient->toPathValue($guid), $resourcePath);
+			$resourcePath = str_replace("{guid}", $guid, $resourcePath);
 		}
 
 	
@@ -258,7 +258,7 @@ class SharedAPI {
     
 		
 		if($path != null) {
-			$resourcePath = str_replace("{path}", $this->apiClient->toPathValue($path), $resourcePath);
+			$resourcePath = str_replace("{path}", $path, $resourcePath);
 		}
 
 	
@@ -302,19 +302,19 @@ class SharedAPI {
 	
 		
 		if($sharedSharedInputFilesInput != null && $sharedSharedInputFilesInput->guid != null) {
-		 	$resourcePath = str_replace("{guid}", $this->apiClient->toPathValue($sharedSharedInputFilesInput->guid), $resourcePath);	
+		 	$resourcePath = str_replace("{guid}", $sharedSharedInputFilesInput->guid, $resourcePath);	
 		}
 		if($sharedSharedInputFilesInput != null && $sharedSharedInputFilesInput->pageNumber != null) {
-		 	$resourcePath = str_replace("{pageNumber}", $this->apiClient->toPathValue($sharedSharedInputFilesInput->pageNumber), $resourcePath);	
+		 	$resourcePath = str_replace("{pageNumber}", $sharedSharedInputFilesInput->pageNumber, $resourcePath);	
 		}
 		if($sharedSharedInputFilesInput != null && $sharedSharedInputFilesInput->pageCount != null) {
-		 	$resourcePath = str_replace("{pageCount}", $this->apiClient->toPathValue($sharedSharedInputFilesInput->pageCount), $resourcePath);	
+		 	$resourcePath = str_replace("{pageCount}", $sharedSharedInputFilesInput->pageCount, $resourcePath);	
 		}
 		if($sharedSharedInputFilesInput != null && $sharedSharedInputFilesInput->quality != null) {
-		 	$resourcePath = str_replace("{quality}", $this->apiClient->toPathValue($sharedSharedInputFilesInput->quality), $resourcePath);	
+		 	$resourcePath = str_replace("{quality}", $sharedSharedInputFilesInput->quality, $resourcePath);	
 		}
 		if($sharedSharedInputFilesInput != null && $sharedSharedInputFilesInput->usePdf != null) {
-		 	$resourcePath = str_replace("{usePdf}", $this->apiClient->toPathValue($sharedSharedInputFilesInput->usePdf), $resourcePath);	
+		 	$resourcePath = str_replace("{usePdf}", $sharedSharedInputFilesInput->usePdf, $resourcePath);	
 		}
 
 	

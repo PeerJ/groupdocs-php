@@ -51,10 +51,10 @@ class AsyncAPI {
     
 		
 		if($userId != null) {
-			$resourcePath = str_replace("{userId}", $this->apiClient->toPathValue($userId), $resourcePath);
+			$resourcePath = str_replace("{userId}", $userId, $resourcePath);
 		}
 		if($jobId != null) {
-			$resourcePath = str_replace("{jobId}", $this->apiClient->toPathValue($jobId), $resourcePath);
+			$resourcePath = str_replace("{jobId}", $jobId, $resourcePath);
 		}
 
 	
@@ -98,10 +98,10 @@ class AsyncAPI {
     
 		
 		if($userId != null) {
-			$resourcePath = str_replace("{userId}", $this->apiClient->toPathValue($userId), $resourcePath);
+			$resourcePath = str_replace("{userId}", $userId, $resourcePath);
 		}
 		if($jobId != null) {
-			$resourcePath = str_replace("{jobId}", $this->apiClient->toPathValue($jobId), $resourcePath);
+			$resourcePath = str_replace("{jobId}", $jobId, $resourcePath);
 		}
 
 	
@@ -145,10 +145,10 @@ class AsyncAPI {
     
 		
 		if($userId != null) {
-			$resourcePath = str_replace("{userId}", $this->apiClient->toPathValue($userId), $resourcePath);
+			$resourcePath = str_replace("{userId}", $userId, $resourcePath);
 		}
 		if($jobId != null) {
-			$resourcePath = str_replace("{jobId}", $this->apiClient->toPathValue($jobId), $resourcePath);
+			$resourcePath = str_replace("{jobId}", $jobId, $resourcePath);
 		}
 
 	
@@ -192,7 +192,7 @@ class AsyncAPI {
     
 		
 		if($userId != null) {
-			$resourcePath = str_replace("{userId}", $this->apiClient->toPathValue($userId), $resourcePath);
+			$resourcePath = str_replace("{userId}", $userId, $resourcePath);
 		}
 
 	
@@ -238,16 +238,16 @@ class AsyncAPI {
     
 		
 		if($userId != null) {
-			$resourcePath = str_replace("{userId}", $this->apiClient->toPathValue($userId), $resourcePath);
+			$resourcePath = str_replace("{userId}", $userId, $resourcePath);
 		}
 		if($jobId != null) {
-			$resourcePath = str_replace("{jobId}", $this->apiClient->toPathValue($jobId), $resourcePath);
+			$resourcePath = str_replace("{jobId}", $jobId, $resourcePath);
 		}
 		if($fileId != null) {
-			$resourcePath = str_replace("{fileId}", $this->apiClient->toPathValue($fileId), $resourcePath);
+			$resourcePath = str_replace("{fileId}", $fileId, $resourcePath);
 		}
 		if($formats != null) {
-			$resourcePath = str_replace("{formats}", $this->apiClient->toPathValue($formats), $resourcePath);
+			$resourcePath = str_replace("{formats}", $formats, $resourcePath);
 		}
 
 	
@@ -293,16 +293,16 @@ class AsyncAPI {
     
 		
 		if($userId != null) {
-			$resourcePath = str_replace("{userId}", $this->apiClient->toPathValue($userId), $resourcePath);
+			$resourcePath = str_replace("{userId}", $userId, $resourcePath);
 		}
 		if($jobId != null) {
-			$resourcePath = str_replace("{jobId}", $this->apiClient->toPathValue($jobId), $resourcePath);
+			$resourcePath = str_replace("{jobId}", $jobId, $resourcePath);
 		}
 		if($absoluteUrl != null) {
-			$resourcePath = str_replace("{absoluteUrl}", $this->apiClient->toPathValue($absoluteUrl), $resourcePath);
+			$resourcePath = str_replace("{absoluteUrl}", $absoluteUrl, $resourcePath);
 		}
 		if($formats != null) {
-			$resourcePath = str_replace("{formats}", $this->apiClient->toPathValue($formats), $resourcePath);
+			$resourcePath = str_replace("{formats}", $formats, $resourcePath);
 		}
 
 	
@@ -347,10 +347,10 @@ class AsyncAPI {
     
 		
 		if($userId != null) {
-			$resourcePath = str_replace("{userId}", $this->apiClient->toPathValue($userId), $resourcePath);
+			$resourcePath = str_replace("{userId}", $userId, $resourcePath);
 		}
 		if($jobId != null) {
-			$resourcePath = str_replace("{jobId}", $this->apiClient->toPathValue($jobId), $resourcePath);
+			$resourcePath = str_replace("{jobId}", $jobId, $resourcePath);
 		}
 
 	
@@ -394,19 +394,19 @@ class AsyncAPI {
 	
 		
 		if($asyncAsyncInput != null && $asyncAsyncInput->userId != null) {
-		 	$resourcePath = str_replace("{userId}", $this->apiClient->toPathValue($asyncAsyncInput->userId), $resourcePath);	
+		 	$resourcePath = str_replace("{userId}", $asyncAsyncInput->userId, $resourcePath);	
 		}
 		if($asyncAsyncInput != null && $asyncAsyncInput->pageIndex != null) {
-		 	$resourcePath = str_replace("{pageIndex}", $this->apiClient->toPathValue($asyncAsyncInput->pageIndex), $resourcePath);	
+		 	$resourcePath = str_replace("{pageIndex}", $asyncAsyncInput->pageIndex, $resourcePath);	
 		}
 		if($asyncAsyncInput != null && $asyncAsyncInput->pageSize != null) {
-		 	$resourcePath = str_replace("{pageSize}", $this->apiClient->toPathValue($asyncAsyncInput->pageSize), $resourcePath);	
+		 	$resourcePath = str_replace("{pageSize}", $asyncAsyncInput->pageSize, $resourcePath);	
 		}
 		if($asyncAsyncInput != null && $asyncAsyncInput->actions != null) {
-		 	$resourcePath = str_replace("{actions}", $this->apiClient->toPathValue($asyncAsyncInput->actions), $resourcePath);	
+		 	$resourcePath = str_replace("{actions}", $asyncAsyncInput->actions, $resourcePath);	
 		}
 		if($asyncAsyncInput != null && $asyncAsyncInput->excludedActions != null) {
-		 	$resourcePath = str_replace("{excludedActions}", $this->apiClient->toPathValue($asyncAsyncInput->excludedActions), $resourcePath);	
+		 	$resourcePath = str_replace("{excludedActions}", $asyncAsyncInput->excludedActions, $resourcePath);	
 		}
 
 	
@@ -449,25 +449,25 @@ class AsyncAPI {
 	
 		
 		if($asyncAsyncInputJobsInput != null && $asyncAsyncInputJobsInput->userId != null) {
-		 	$resourcePath = str_replace("{userId}", $this->apiClient->toPathValue($asyncAsyncInputJobsInput->userId), $resourcePath);	
+		 	$resourcePath = str_replace("{userId}", $asyncAsyncInputJobsInput->userId, $resourcePath);	
 		}
 		if($asyncAsyncInputJobsInput != null && $asyncAsyncInputJobsInput->pageIndex != null) {
-		 	$resourcePath = str_replace("{pageIndex}", $this->apiClient->toPathValue($asyncAsyncInputJobsInput->pageIndex), $resourcePath);	
+		 	$resourcePath = str_replace("{pageIndex}", $asyncAsyncInputJobsInput->pageIndex, $resourcePath);	
 		}
 		if($asyncAsyncInputJobsInput != null && $asyncAsyncInputJobsInput->pageSize != null) {
-		 	$resourcePath = str_replace("{pageSize}", $this->apiClient->toPathValue($asyncAsyncInputJobsInput->pageSize), $resourcePath);	
+		 	$resourcePath = str_replace("{pageSize}", $asyncAsyncInputJobsInput->pageSize, $resourcePath);	
 		}
 		if($asyncAsyncInputJobsInput != null && $asyncAsyncInputJobsInput->actions != null) {
-		 	$resourcePath = str_replace("{actions}", $this->apiClient->toPathValue($asyncAsyncInputJobsInput->actions), $resourcePath);	
+		 	$resourcePath = str_replace("{actions}", $asyncAsyncInputJobsInput->actions, $resourcePath);	
 		}
 		if($asyncAsyncInputJobsInput != null && $asyncAsyncInputJobsInput->excludedActions != null) {
-		 	$resourcePath = str_replace("{excludedActions}", $this->apiClient->toPathValue($asyncAsyncInputJobsInput->excludedActions), $resourcePath);	
+		 	$resourcePath = str_replace("{excludedActions}", $asyncAsyncInputJobsInput->excludedActions, $resourcePath);	
 		}
 		if($asyncAsyncInputJobsInput != null && $asyncAsyncInputJobsInput->orderBy != null) {
-		 	$resourcePath = str_replace("{orderBy}", $this->apiClient->toPathValue($asyncAsyncInputJobsInput->orderBy), $resourcePath);	
+		 	$resourcePath = str_replace("{orderBy}", $asyncAsyncInputJobsInput->orderBy, $resourcePath);	
 		}
 		if($asyncAsyncInputJobsInput != null && $asyncAsyncInputJobsInput->orderAsc != null) {
-		 	$resourcePath = str_replace("{orderAsc}", $this->apiClient->toPathValue($asyncAsyncInputJobsInput->orderAsc), $resourcePath);	
+		 	$resourcePath = str_replace("{orderAsc}", $asyncAsyncInputJobsInput->orderAsc, $resourcePath);	
 		}
 
 	
@@ -510,22 +510,22 @@ class AsyncAPI {
 	
 		
 		if($asyncAsyncInputFilesInput != null && $asyncAsyncInputFilesInput->userId != null) {
-		 	$resourcePath = str_replace("{userId}", $this->apiClient->toPathValue($asyncAsyncInputFilesInput->userId), $resourcePath);	
+		 	$resourcePath = str_replace("{userId}", $asyncAsyncInputFilesInput->userId, $resourcePath);	
 		}
 		if($asyncAsyncInputFilesInput != null && $asyncAsyncInputFilesInput->fileId != null) {
-		 	$resourcePath = str_replace("{fileId}", $this->apiClient->toPathValue($asyncAsyncInputFilesInput->fileId), $resourcePath);	
+		 	$resourcePath = str_replace("{fileId}", $asyncAsyncInputFilesInput->fileId, $resourcePath);	
 		}
 		if($asyncAsyncInputFilesInput != null && $asyncAsyncInputFilesInput->targetType != null) {
-		 	$resourcePath = str_replace("{targetType}", $this->apiClient->toPathValue($asyncAsyncInputFilesInput->targetType), $resourcePath);	
+		 	$resourcePath = str_replace("{targetType}", $asyncAsyncInputFilesInput->targetType, $resourcePath);	
 		}
 		if($asyncAsyncInputFilesInput != null && $asyncAsyncInputFilesInput->emailResults != null) {
-		 	$resourcePath = str_replace("{emailResults}", $this->apiClient->toPathValue($asyncAsyncInputFilesInput->emailResults), $resourcePath);	
+		 	$resourcePath = str_replace("{emailResults}", $asyncAsyncInputFilesInput->emailResults, $resourcePath);	
 		}
 		if($asyncAsyncInputFilesInput != null && $asyncAsyncInputFilesInput->description != null) {
-		 	$resourcePath = str_replace("{description}", $this->apiClient->toPathValue($asyncAsyncInputFilesInput->description), $resourcePath);	
+		 	$resourcePath = str_replace("{description}", $asyncAsyncInputFilesInput->description, $resourcePath);	
 		}
 		if($asyncAsyncInputFilesInput != null && $asyncAsyncInputFilesInput->printScript != null) {
-		 	$resourcePath = str_replace("{printScript}", $this->apiClient->toPathValue($asyncAsyncInputFilesInput->printScript), $resourcePath);	
+		 	$resourcePath = str_replace("{printScript}", $asyncAsyncInputFilesInput->printScript, $resourcePath);	
 		}
 
 	

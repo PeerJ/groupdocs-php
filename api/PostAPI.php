@@ -52,13 +52,13 @@ class PostAPI {
     
 		
 		if($userId != null) {
-			$resourcePath = str_replace("{userId}", $this->apiClient->toPathValue($userId), $resourcePath);
+			$resourcePath = str_replace("{userId}", $userId, $resourcePath);
 		}
 		if($fileId != null) {
-			$resourcePath = str_replace("{fileId}", $this->apiClient->toPathValue($fileId), $resourcePath);
+			$resourcePath = str_replace("{fileId}", $fileId, $resourcePath);
 		}
 		if($newName != null) {
-			$resourcePath = str_replace("{newName}", $this->apiClient->toPathValue($newName), $resourcePath);
+			$resourcePath = str_replace("{newName}", $newName, $resourcePath);
 		}
 
 	
@@ -102,10 +102,10 @@ class PostAPI {
     
 		
 		if($userId != null) {
-			$resourcePath = str_replace("{userId}", $this->apiClient->toPathValue($userId), $resourcePath);
+			$resourcePath = str_replace("{userId}", $userId, $resourcePath);
 		}
 		if($fileId != null) {
-			$resourcePath = str_replace("{fileId}", $this->apiClient->toPathValue($fileId), $resourcePath);
+			$resourcePath = str_replace("{fileId}", $fileId, $resourcePath);
 		}
 
 	
@@ -149,10 +149,10 @@ class PostAPI {
     
 		
 		if($userId != null) {
-			$resourcePath = str_replace("{userId}", $this->apiClient->toPathValue($userId), $resourcePath);
+			$resourcePath = str_replace("{userId}", $userId, $resourcePath);
 		}
 		if($path != null) {
-			$resourcePath = str_replace("{path}", $this->apiClient->toPathValue($path), $resourcePath);
+			$resourcePath = str_replace("{path}", $path, $resourcePath);
 		}
 
 	
@@ -197,13 +197,13 @@ class PostAPI {
     
 		
 		if($userId != null) {
-			$resourcePath = str_replace("{userId}", $this->apiClient->toPathValue($userId), $resourcePath);
+			$resourcePath = str_replace("{userId}", $userId, $resourcePath);
 		}
 		if($fileId != null) {
-			$resourcePath = str_replace("{fileId}", $this->apiClient->toPathValue($fileId), $resourcePath);
+			$resourcePath = str_replace("{fileId}", $fileId, $resourcePath);
 		}
 		if($archiveType != null) {
-			$resourcePath = str_replace("{archiveType}", $this->apiClient->toPathValue($archiveType), $resourcePath);
+			$resourcePath = str_replace("{archiveType}", $archiveType, $resourcePath);
 		}
 
 	

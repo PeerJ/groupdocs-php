@@ -51,22 +51,22 @@ class DocAPI {
 	
 		
 		if($docDocInputFilesInput != null && $docDocInputFilesInput->userId != null) {
-		 	$resourcePath = str_replace("{userId}", $this->apiClient->toPathValue($docDocInputFilesInput->userId), $resourcePath);	
+		 	$resourcePath = str_replace("{userId}", $docDocInputFilesInput->userId, $resourcePath);	
 		}
 		if($docDocInputFilesInput != null && $docDocInputFilesInput->fileId != null) {
-		 	$resourcePath = str_replace("{fileId}", $this->apiClient->toPathValue($docDocInputFilesInput->fileId), $resourcePath);	
+		 	$resourcePath = str_replace("{fileId}", $docDocInputFilesInput->fileId, $resourcePath);	
 		}
 		if($docDocInputFilesInput != null && $docDocInputFilesInput->pageNumber != null) {
-		 	$resourcePath = str_replace("{pageNumber}", $this->apiClient->toPathValue($docDocInputFilesInput->pageNumber), $resourcePath);	
+		 	$resourcePath = str_replace("{pageNumber}", $docDocInputFilesInput->pageNumber, $resourcePath);	
 		}
 		if($docDocInputFilesInput != null && $docDocInputFilesInput->pageCount != null) {
-		 	$resourcePath = str_replace("{pageCount}", $this->apiClient->toPathValue($docDocInputFilesInput->pageCount), $resourcePath);	
+		 	$resourcePath = str_replace("{pageCount}", $docDocInputFilesInput->pageCount, $resourcePath);	
 		}
 		if($docDocInputFilesInput != null && $docDocInputFilesInput->quality != null) {
-		 	$resourcePath = str_replace("{quality}", $this->apiClient->toPathValue($docDocInputFilesInput->quality), $resourcePath);	
+		 	$resourcePath = str_replace("{quality}", $docDocInputFilesInput->quality, $resourcePath);	
 		}
 		if($docDocInputFilesInput != null && $docDocInputFilesInput->usePdf != null) {
-		 	$resourcePath = str_replace("{usePdf}", $this->apiClient->toPathValue($docDocInputFilesInput->usePdf), $resourcePath);	
+		 	$resourcePath = str_replace("{usePdf}", $docDocInputFilesInput->usePdf, $resourcePath);	
 		}
 
 	
@@ -110,13 +110,13 @@ class DocAPI {
     
 		
 		if($userId != null) {
-			$resourcePath = str_replace("{userId}", $this->apiClient->toPathValue($userId), $resourcePath);
+			$resourcePath = str_replace("{userId}", $userId, $resourcePath);
 		}
 		if($startIndex != null) {
-			$resourcePath = str_replace("{startIndex}", $this->apiClient->toPathValue($startIndex), $resourcePath);
+			$resourcePath = str_replace("{startIndex}", $startIndex, $resourcePath);
 		}
 		if($pageSize != null) {
-			$resourcePath = str_replace("{pageSize}", $this->apiClient->toPathValue($pageSize), $resourcePath);
+			$resourcePath = str_replace("{pageSize}", $pageSize, $resourcePath);
 		}
 
 	
@@ -161,13 +161,13 @@ class DocAPI {
     
 		
 		if($userId != null) {
-			$resourcePath = str_replace("{userId}", $this->apiClient->toPathValue($userId), $resourcePath);
+			$resourcePath = str_replace("{userId}", $userId, $resourcePath);
 		}
 		if($fileId != null) {
-			$resourcePath = str_replace("{fileId}", $this->apiClient->toPathValue($fileId), $resourcePath);
+			$resourcePath = str_replace("{fileId}", $fileId, $resourcePath);
 		}
 		if($sharers != null) {
-			$resourcePath = str_replace("{sharers}", $this->apiClient->toPathValue($sharers), $resourcePath);
+			$resourcePath = str_replace("{sharers}", $sharers, $resourcePath);
 		}
 
 	
@@ -211,10 +211,10 @@ class DocAPI {
     
 		
 		if($userId != null) {
-			$resourcePath = str_replace("{userId}", $this->apiClient->toPathValue($userId), $resourcePath);
+			$resourcePath = str_replace("{userId}", $userId, $resourcePath);
 		}
 		if($fileId != null) {
-			$resourcePath = str_replace("{fileId}", $this->apiClient->toPathValue($fileId), $resourcePath);
+			$resourcePath = str_replace("{fileId}", $fileId, $resourcePath);
 		}
 
 	
@@ -258,10 +258,10 @@ class DocAPI {
     
 		
 		if($userId != null) {
-			$resourcePath = str_replace("{userId}", $this->apiClient->toPathValue($userId), $resourcePath);
+			$resourcePath = str_replace("{userId}", $userId, $resourcePath);
 		}
 		if($folderId != null) {
-			$resourcePath = str_replace("{folderId}", $this->apiClient->toPathValue($folderId), $resourcePath);
+			$resourcePath = str_replace("{folderId}", $folderId, $resourcePath);
 		}
 
 	
@@ -306,13 +306,13 @@ class DocAPI {
     
 		
 		if($userId != null) {
-			$resourcePath = str_replace("{userId}", $this->apiClient->toPathValue($userId), $resourcePath);
+			$resourcePath = str_replace("{userId}", $userId, $resourcePath);
 		}
 		if($folderId != null) {
-			$resourcePath = str_replace("{folderId}", $this->apiClient->toPathValue($folderId), $resourcePath);
+			$resourcePath = str_replace("{folderId}", $folderId, $resourcePath);
 		}
 		if($sharers != null) {
-			$resourcePath = str_replace("{sharers}", $this->apiClient->toPathValue($sharers), $resourcePath);
+			$resourcePath = str_replace("{sharers}", $sharers, $resourcePath);
 		}
 
 	
@@ -356,10 +356,10 @@ class DocAPI {
     
 		
 		if($userId != null) {
-			$resourcePath = str_replace("{userId}", $this->apiClient->toPathValue($userId), $resourcePath);
+			$resourcePath = str_replace("{userId}", $userId, $resourcePath);
 		}
 		if($folderId != null) {
-			$resourcePath = str_replace("{folderId}", $this->apiClient->toPathValue($folderId), $resourcePath);
+			$resourcePath = str_replace("{folderId}", $folderId, $resourcePath);
 		}
 
 	
@@ -404,13 +404,13 @@ class DocAPI {
     
 		
 		if($userId != null) {
-			$resourcePath = str_replace("{userId}", $this->apiClient->toPathValue($userId), $resourcePath);
+			$resourcePath = str_replace("{userId}", $userId, $resourcePath);
 		}
 		if($fileId != null) {
-			$resourcePath = str_replace("{fileId}", $this->apiClient->toPathValue($fileId), $resourcePath);
+			$resourcePath = str_replace("{fileId}", $fileId, $resourcePath);
 		}
 		if($mode != null) {
-			$resourcePath = str_replace("{mode}", $this->apiClient->toPathValue($mode), $resourcePath);
+			$resourcePath = str_replace("{mode}", $mode, $resourcePath);
 		}
 
 	
@@ -454,10 +454,10 @@ class DocAPI {
     
 		
 		if($userId != null) {
-			$resourcePath = str_replace("{userId}", $this->apiClient->toPathValue($userId), $resourcePath);
+			$resourcePath = str_replace("{userId}", $userId, $resourcePath);
 		}
 		if($fileId != null) {
-			$resourcePath = str_replace("{fileId}", $this->apiClient->toPathValue($fileId), $resourcePath);
+			$resourcePath = str_replace("{fileId}", $fileId, $resourcePath);
 		}
 
 	
@@ -501,10 +501,10 @@ class DocAPI {
     
 		
 		if($userId != null) {
-			$resourcePath = str_replace("{userId}", $this->apiClient->toPathValue($userId), $resourcePath);
+			$resourcePath = str_replace("{userId}", $userId, $resourcePath);
 		}
 		if($fileId != null) {
-			$resourcePath = str_replace("{fileId}", $this->apiClient->toPathValue($fileId), $resourcePath);
+			$resourcePath = str_replace("{fileId}", $fileId, $resourcePath);
 		}
 
 	
@@ -549,13 +549,13 @@ class DocAPI {
     
 		
 		if($userId != null) {
-			$resourcePath = str_replace("{userId}", $this->apiClient->toPathValue($userId), $resourcePath);
+			$resourcePath = str_replace("{userId}", $userId, $resourcePath);
 		}
 		if($fileId != null) {
-			$resourcePath = str_replace("{fileId}", $this->apiClient->toPathValue($fileId), $resourcePath);
+			$resourcePath = str_replace("{fileId}", $fileId, $resourcePath);
 		}
 		if($status != null) {
-			$resourcePath = str_replace("{status}", $this->apiClient->toPathValue($status), $resourcePath);
+			$resourcePath = str_replace("{status}", $status, $resourcePath);
 		}
 
 	
@@ -599,22 +599,22 @@ class DocAPI {
 	
 		
 		if($docDocInputSharesInput != null && $docDocInputSharesInput->userId != null) {
-		 	$resourcePath = str_replace("{userId}", $this->apiClient->toPathValue($docDocInputSharesInput->userId), $resourcePath);	
+		 	$resourcePath = str_replace("{userId}", $docDocInputSharesInput->userId, $resourcePath);	
 		}
 		if($docDocInputSharesInput != null && $docDocInputSharesInput->sharesTypes != null) {
-		 	$resourcePath = str_replace("{sharesTypes}", $this->apiClient->toPathValue($docDocInputSharesInput->sharesTypes), $resourcePath);	
+		 	$resourcePath = str_replace("{sharesTypes}", $docDocInputSharesInput->sharesTypes, $resourcePath);	
 		}
 		if($docDocInputSharesInput != null && $docDocInputSharesInput->pageIndex != null) {
-		 	$resourcePath = str_replace("{pageIndex}", $this->apiClient->toPathValue($docDocInputSharesInput->pageIndex), $resourcePath);	
+		 	$resourcePath = str_replace("{pageIndex}", $docDocInputSharesInput->pageIndex, $resourcePath);	
 		}
 		if($docDocInputSharesInput != null && $docDocInputSharesInput->pageSize != null) {
-		 	$resourcePath = str_replace("{pageSize}", $this->apiClient->toPathValue($docDocInputSharesInput->pageSize), $resourcePath);	
+		 	$resourcePath = str_replace("{pageSize}", $docDocInputSharesInput->pageSize, $resourcePath);	
 		}
 		if($docDocInputSharesInput != null && $docDocInputSharesInput->orderBy != null) {
-		 	$resourcePath = str_replace("{orderBy}", $this->apiClient->toPathValue($docDocInputSharesInput->orderBy), $resourcePath);	
+		 	$resourcePath = str_replace("{orderBy}", $docDocInputSharesInput->orderBy, $resourcePath);	
 		}
 		if($docDocInputSharesInput != null && $docDocInputSharesInput->orderAsc != null) {
-		 	$resourcePath = str_replace("{orderAsc}", $this->apiClient->toPathValue($docDocInputSharesInput->orderAsc), $resourcePath);	
+		 	$resourcePath = str_replace("{orderAsc}", $docDocInputSharesInput->orderAsc, $resourcePath);	
 		}
 
 	
@@ -658,13 +658,13 @@ class DocAPI {
     
 		
 		if($userId != null) {
-			$resourcePath = str_replace("{userId}", $this->apiClient->toPathValue($userId), $resourcePath);
+			$resourcePath = str_replace("{userId}", $userId, $resourcePath);
 		}
 		if($fileId != null) {
-			$resourcePath = str_replace("{fileId}", $this->apiClient->toPathValue($fileId), $resourcePath);
+			$resourcePath = str_replace("{fileId}", $fileId, $resourcePath);
 		}
 		if($includeGeometry != null) {
-			$resourcePath = str_replace("{includeGeometry}", $this->apiClient->toPathValue($includeGeometry), $resourcePath);
+			$resourcePath = str_replace("{includeGeometry}", $includeGeometry, $resourcePath);
 		}
 
 	
@@ -708,10 +708,10 @@ class DocAPI {
     
 		
 		if($userId != null) {
-			$resourcePath = str_replace("{userId}", $this->apiClient->toPathValue($userId), $resourcePath);
+			$resourcePath = str_replace("{userId}", $userId, $resourcePath);
 		}
 		if($fileId != null) {
-			$resourcePath = str_replace("{fileId}", $this->apiClient->toPathValue($fileId), $resourcePath);
+			$resourcePath = str_replace("{fileId}", $fileId, $resourcePath);
 		}
 
 	

@@ -51,10 +51,10 @@ class ComparisonAPI {
     
 		
 		if($userId != null) {
-			$resourcePath = str_replace("{userId}", $this->apiClient->toPathValue($userId), $resourcePath);
+			$resourcePath = str_replace("{userId}", $userId, $resourcePath);
 		}
 		if($resultFileId != null) {
-			$resourcePath = str_replace("{resultFileId}", $this->apiClient->toPathValue($resultFileId), $resourcePath);
+			$resourcePath = str_replace("{resultFileId}", $resultFileId, $resourcePath);
 		}
 
 	

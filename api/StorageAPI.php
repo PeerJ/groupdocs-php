@@ -50,7 +50,7 @@ class StorageAPI {
     
 		
 		if($userId != null) {
-			$resourcePath = str_replace("{userId}", $this->apiClient->toPathValue($userId), $resourcePath);
+			$resourcePath = str_replace("{userId}", $userId, $resourcePath);
 		}
 
 	
@@ -94,31 +94,31 @@ class StorageAPI {
 	
 		
 		if($storageStorageInputFoldersInput != null && $storageStorageInputFoldersInput->userId != null) {
-		 	$resourcePath = str_replace("{userId}", $this->apiClient->toPathValue($storageStorageInputFoldersInput->userId), $resourcePath);	
+		 	$resourcePath = str_replace("{userId}", $storageStorageInputFoldersInput->userId, $resourcePath);	
 		}
 		if($storageStorageInputFoldersInput != null && $storageStorageInputFoldersInput->path != null) {
-		 	$resourcePath = str_replace("{path}", $this->apiClient->toPathValue($storageStorageInputFoldersInput->path), $resourcePath);	
+		 	$resourcePath = str_replace("{path}", $storageStorageInputFoldersInput->path, $resourcePath);	
 		}
 		if($storageStorageInputFoldersInput != null && $storageStorageInputFoldersInput->pageIndex != null) {
-		 	$resourcePath = str_replace("{pageIndex}", $this->apiClient->toPathValue($storageStorageInputFoldersInput->pageIndex), $resourcePath);	
+		 	$resourcePath = str_replace("{pageIndex}", $storageStorageInputFoldersInput->pageIndex, $resourcePath);	
 		}
 		if($storageStorageInputFoldersInput != null && $storageStorageInputFoldersInput->pageSize != null) {
-		 	$resourcePath = str_replace("{pageSize}", $this->apiClient->toPathValue($storageStorageInputFoldersInput->pageSize), $resourcePath);	
+		 	$resourcePath = str_replace("{pageSize}", $storageStorageInputFoldersInput->pageSize, $resourcePath);	
 		}
 		if($storageStorageInputFoldersInput != null && $storageStorageInputFoldersInput->orderBy != null) {
-		 	$resourcePath = str_replace("{orderBy}", $this->apiClient->toPathValue($storageStorageInputFoldersInput->orderBy), $resourcePath);	
+		 	$resourcePath = str_replace("{orderBy}", $storageStorageInputFoldersInput->orderBy, $resourcePath);	
 		}
 		if($storageStorageInputFoldersInput != null && $storageStorageInputFoldersInput->orderAsc != null) {
-		 	$resourcePath = str_replace("{orderAsc}", $this->apiClient->toPathValue($storageStorageInputFoldersInput->orderAsc), $resourcePath);	
+		 	$resourcePath = str_replace("{orderAsc}", $storageStorageInputFoldersInput->orderAsc, $resourcePath);	
 		}
 		if($storageStorageInputFoldersInput != null && $storageStorageInputFoldersInput->filter != null) {
-		 	$resourcePath = str_replace("{filter}", $this->apiClient->toPathValue($storageStorageInputFoldersInput->filter), $resourcePath);	
+		 	$resourcePath = str_replace("{filter}", $storageStorageInputFoldersInput->filter, $resourcePath);	
 		}
 		if($storageStorageInputFoldersInput != null && $storageStorageInputFoldersInput->fileTypes != null) {
-		 	$resourcePath = str_replace("{fileTypes}", $this->apiClient->toPathValue($storageStorageInputFoldersInput->fileTypes), $resourcePath);	
+		 	$resourcePath = str_replace("{fileTypes}", $storageStorageInputFoldersInput->fileTypes, $resourcePath);	
 		}
 		if($storageStorageInputFoldersInput != null && $storageStorageInputFoldersInput->extended != null) {
-		 	$resourcePath = str_replace("{extended}", $this->apiClient->toPathValue($storageStorageInputFoldersInput->extended), $resourcePath);	
+		 	$resourcePath = str_replace("{extended}", $storageStorageInputFoldersInput->extended, $resourcePath);	
 		}
 
 	
@@ -161,10 +161,10 @@ class StorageAPI {
     
 		
 		if($userId != null) {
-			$resourcePath = str_replace("{userId}", $this->apiClient->toPathValue($userId), $resourcePath);
+			$resourcePath = str_replace("{userId}", $userId, $resourcePath);
 		}
 		if($fileId != null) {
-			$resourcePath = str_replace("{fileId}", $this->apiClient->toPathValue($fileId), $resourcePath);
+			$resourcePath = str_replace("{fileId}", $fileId, $resourcePath);
 		}
 
 	
@@ -208,10 +208,10 @@ class StorageAPI {
     
 		
 		if($userEmail != null) {
-			$resourcePath = str_replace("{userEmail}", $this->apiClient->toPathValue($userEmail), $resourcePath);
+			$resourcePath = str_replace("{userEmail}", $userEmail, $resourcePath);
 		}
 		if($filePath != null) {
-			$resourcePath = str_replace("{filePath}", $this->apiClient->toPathValue($filePath), $resourcePath);
+			$resourcePath = str_replace("{filePath}", $filePath, $resourcePath);
 		}
 
 	
@@ -257,13 +257,13 @@ class StorageAPI {
     
 		
 		if($userId != null) {
-			$resourcePath = str_replace("{userId}", $this->apiClient->toPathValue($userId), $resourcePath);
+			$resourcePath = str_replace("{userId}", $userId, $resourcePath);
 		}
 		if($path != null) {
-			$resourcePath = str_replace("{path}", $this->apiClient->toPathValue($path), $resourcePath);
+			$resourcePath = str_replace("{path}", $path, $resourcePath);
 		}
 		if($description != null) {
-			$resourcePath = str_replace("{description}", $this->apiClient->toPathValue($description), $resourcePath);
+			$resourcePath = str_replace("{description}", $description, $resourcePath);
 		}
 
 	
@@ -307,10 +307,10 @@ class StorageAPI {
     
 		
 		if($userId != null) {
-			$resourcePath = str_replace("{userId}", $this->apiClient->toPathValue($userId), $resourcePath);
+			$resourcePath = str_replace("{userId}", $userId, $resourcePath);
 		}
 		if($url != null) {
-			$resourcePath = str_replace("{url}", $this->apiClient->toPathValue($url), $resourcePath);
+			$resourcePath = str_replace("{url}", $url, $resourcePath);
 		}
 
 	
@@ -354,10 +354,10 @@ class StorageAPI {
     
 		
 		if($userId != null) {
-			$resourcePath = str_replace("{userId}", $this->apiClient->toPathValue($userId), $resourcePath);
+			$resourcePath = str_replace("{userId}", $userId, $resourcePath);
 		}
 		if($fileId != null) {
-			$resourcePath = str_replace("{fileId}", $this->apiClient->toPathValue($fileId), $resourcePath);
+			$resourcePath = str_replace("{fileId}", $fileId, $resourcePath);
 		}
 
 	
@@ -401,10 +401,10 @@ class StorageAPI {
     
 		
 		if($userId != null) {
-			$resourcePath = str_replace("{userId}", $this->apiClient->toPathValue($userId), $resourcePath);
+			$resourcePath = str_replace("{userId}", $userId, $resourcePath);
 		}
 		if($path != null) {
-			$resourcePath = str_replace("{path}", $this->apiClient->toPathValue($path), $resourcePath);
+			$resourcePath = str_replace("{path}", $path, $resourcePath);
 		}
 
 	
@@ -449,13 +449,13 @@ class StorageAPI {
     
 		
 		if($userId != null) {
-			$resourcePath = str_replace("{userId}", $this->apiClient->toPathValue($userId), $resourcePath);
+			$resourcePath = str_replace("{userId}", $userId, $resourcePath);
 		}
 		if($path != null) {
-			$resourcePath = str_replace("{path}", $this->apiClient->toPathValue($path), $resourcePath);
+			$resourcePath = str_replace("{path}", $path, $resourcePath);
 		}
 		if($mode != null) {
-			$resourcePath = str_replace("{mode}", $this->apiClient->toPathValue($mode), $resourcePath);
+			$resourcePath = str_replace("{mode}", $mode, $resourcePath);
 		}
 
 	
@@ -500,13 +500,13 @@ class StorageAPI {
     
 		
 		if($userId != null) {
-			$resourcePath = str_replace("{userId}", $this->apiClient->toPathValue($userId), $resourcePath);
+			$resourcePath = str_replace("{userId}", $userId, $resourcePath);
 		}
 		if($path != null) {
-			$resourcePath = str_replace("{path}", $this->apiClient->toPathValue($path), $resourcePath);
+			$resourcePath = str_replace("{path}", $path, $resourcePath);
 		}
 		if($mode != null) {
-			$resourcePath = str_replace("{mode}", $this->apiClient->toPathValue($mode), $resourcePath);
+			$resourcePath = str_replace("{mode}", $mode, $resourcePath);
 		}
 
 	
@@ -550,10 +550,10 @@ class StorageAPI {
     
 		
 		if($userId != null) {
-			$resourcePath = str_replace("{userId}", $this->apiClient->toPathValue($userId), $resourcePath);
+			$resourcePath = str_replace("{userId}", $userId, $resourcePath);
 		}
 		if($path != null) {
-			$resourcePath = str_replace("{path}", $this->apiClient->toPathValue($path), $resourcePath);
+			$resourcePath = str_replace("{path}", $path, $resourcePath);
 		}
 
 	
@@ -597,10 +597,10 @@ class StorageAPI {
     
 		
 		if($userId != null) {
-			$resourcePath = str_replace("{userId}", $this->apiClient->toPathValue($userId), $resourcePath);
+			$resourcePath = str_replace("{userId}", $userId, $resourcePath);
 		}
 		if($archiveType != null) {
-			$resourcePath = str_replace("{archiveType}", $this->apiClient->toPathValue($archiveType), $resourcePath);
+			$resourcePath = str_replace("{archiveType}", $archiveType, $resourcePath);
 		}
 
 	
@@ -645,13 +645,13 @@ class StorageAPI {
     
 		
 		if($userId != null) {
-			$resourcePath = str_replace("{userId}", $this->apiClient->toPathValue($userId), $resourcePath);
+			$resourcePath = str_replace("{userId}", $userId, $resourcePath);
 		}
 		if($packageName != null) {
-			$resourcePath = str_replace("{packageName}", $this->apiClient->toPathValue($packageName), $resourcePath);
+			$resourcePath = str_replace("{packageName}", $packageName, $resourcePath);
 		}
 		if($paths != null) {
-			$resourcePath = str_replace("{paths}", $this->apiClient->toPathValue($paths), $resourcePath);
+			$resourcePath = str_replace("{paths}", $paths, $resourcePath);
 		}
 
 	
@@ -695,10 +695,10 @@ class StorageAPI {
     
 		
 		if($userId != null) {
-			$resourcePath = str_replace("{userId}", $this->apiClient->toPathValue($userId), $resourcePath);
+			$resourcePath = str_replace("{userId}", $userId, $resourcePath);
 		}
 		if($path != null) {
-			$resourcePath = str_replace("{path}", $this->apiClient->toPathValue($path), $resourcePath);
+			$resourcePath = str_replace("{path}", $path, $resourcePath);
 		}
 
 	
@@ -742,10 +742,10 @@ class StorageAPI {
     
 		
 		if($userId != null) {
-			$resourcePath = str_replace("{userId}", $this->apiClient->toPathValue($userId), $resourcePath);
+			$resourcePath = str_replace("{userId}", $userId, $resourcePath);
 		}
 		if($path != null) {
-			$resourcePath = str_replace("{path}", $this->apiClient->toPathValue($path), $resourcePath);
+			$resourcePath = str_replace("{path}", $path, $resourcePath);
 		}
 
 	

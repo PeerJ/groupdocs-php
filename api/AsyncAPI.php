@@ -50,10 +50,10 @@ class AsyncAPI {
         $headerParams = array();
     
 		
-		if($userId != null) {
+		if($userId !== null) {
 			$resourcePath = str_replace("{userId}", $userId, $resourcePath);
 		}
-		if($jobId != null) {
+		if($jobId !== null) {
 			$resourcePath = str_replace("{jobId}", $jobId, $resourcePath);
 		}
 
@@ -97,10 +97,10 @@ class AsyncAPI {
         $headerParams = array();
     
 		
-		if($userId != null) {
+		if($userId !== null) {
 			$resourcePath = str_replace("{userId}", $userId, $resourcePath);
 		}
-		if($jobId != null) {
+		if($jobId !== null) {
 			$resourcePath = str_replace("{jobId}", $jobId, $resourcePath);
 		}
 
@@ -144,10 +144,10 @@ class AsyncAPI {
         $headerParams = array();
     
 		
-		if($userId != null) {
+		if($userId !== null) {
 			$resourcePath = str_replace("{userId}", $userId, $resourcePath);
 		}
-		if($jobId != null) {
+		if($jobId !== null) {
 			$resourcePath = str_replace("{jobId}", $jobId, $resourcePath);
 		}
 
@@ -191,7 +191,7 @@ class AsyncAPI {
         $headerParams = array();
     
 		
-		if($userId != null) {
+		if($userId !== null) {
 			$resourcePath = str_replace("{userId}", $userId, $resourcePath);
 		}
 
@@ -237,16 +237,16 @@ class AsyncAPI {
         $headerParams = array();
     
 		
-		if($userId != null) {
+		if($userId !== null) {
 			$resourcePath = str_replace("{userId}", $userId, $resourcePath);
 		}
-		if($jobId != null) {
+		if($jobId !== null) {
 			$resourcePath = str_replace("{jobId}", $jobId, $resourcePath);
 		}
-		if($fileId != null) {
+		if($fileId !== null) {
 			$resourcePath = str_replace("{fileId}", $fileId, $resourcePath);
 		}
-		if($formats != null) {
+		if($formats !== null) {
 			$resourcePath = str_replace("{formats}", $formats, $resourcePath);
 		}
 
@@ -292,16 +292,16 @@ class AsyncAPI {
         $headerParams = array();
     
 		
-		if($userId != null) {
+		if($userId !== null) {
 			$resourcePath = str_replace("{userId}", $userId, $resourcePath);
 		}
-		if($jobId != null) {
+		if($jobId !== null) {
 			$resourcePath = str_replace("{jobId}", $jobId, $resourcePath);
 		}
-		if($absoluteUrl != null) {
+		if($absoluteUrl !== null) {
 			$resourcePath = str_replace("{absoluteUrl}", $absoluteUrl, $resourcePath);
 		}
-		if($formats != null) {
+		if($formats !== null) {
 			$resourcePath = str_replace("{formats}", $formats, $resourcePath);
 		}
 
@@ -346,10 +346,10 @@ class AsyncAPI {
         $headerParams = array();
     
 		
-		if($userId != null) {
+		if($userId !== null) {
 			$resourcePath = str_replace("{userId}", $userId, $resourcePath);
 		}
-		if($jobId != null) {
+		if($jobId !== null) {
 			$resourcePath = str_replace("{jobId}", $jobId, $resourcePath);
 		}
 
@@ -393,19 +393,19 @@ class AsyncAPI {
     
 	
 		
-		if($asyncAsyncInput != null && $asyncAsyncInput->userId != null) {
+		if($asyncAsyncInput !== null && $asyncAsyncInput->userId !== null) {
 		 	$resourcePath = str_replace("{userId}", $asyncAsyncInput->userId, $resourcePath);	
 		}
-		if($asyncAsyncInput != null && $asyncAsyncInput->pageIndex != null) {
+		if($asyncAsyncInput !== null && $asyncAsyncInput->pageIndex !== null) {
 		 	$resourcePath = str_replace("{pageIndex}", $asyncAsyncInput->pageIndex, $resourcePath);	
 		}
-		if($asyncAsyncInput != null && $asyncAsyncInput->pageSize != null) {
+		if($asyncAsyncInput !== null && $asyncAsyncInput->pageSize !== null) {
 		 	$resourcePath = str_replace("{pageSize}", $asyncAsyncInput->pageSize, $resourcePath);	
 		}
-		if($asyncAsyncInput != null && $asyncAsyncInput->actions != null) {
+		if($asyncAsyncInput !== null && $asyncAsyncInput->actions !== null) {
 		 	$resourcePath = str_replace("{actions}", $asyncAsyncInput->actions, $resourcePath);	
 		}
-		if($asyncAsyncInput != null && $asyncAsyncInput->excludedActions != null) {
+		if($asyncAsyncInput !== null && $asyncAsyncInput->excludedActions !== null) {
 		 	$resourcePath = str_replace("{excludedActions}", $asyncAsyncInput->excludedActions, $resourcePath);	
 		}
 
@@ -448,25 +448,25 @@ class AsyncAPI {
     
 	
 		
-		if($asyncAsyncInputJobsInput != null && $asyncAsyncInputJobsInput->userId != null) {
+		if($asyncAsyncInputJobsInput !== null && $asyncAsyncInputJobsInput->userId !== null) {
 		 	$resourcePath = str_replace("{userId}", $asyncAsyncInputJobsInput->userId, $resourcePath);	
 		}
-		if($asyncAsyncInputJobsInput != null && $asyncAsyncInputJobsInput->pageIndex != null) {
+		if($asyncAsyncInputJobsInput !== null && $asyncAsyncInputJobsInput->pageIndex !== null) {
 		 	$resourcePath = str_replace("{pageIndex}", $asyncAsyncInputJobsInput->pageIndex, $resourcePath);	
 		}
-		if($asyncAsyncInputJobsInput != null && $asyncAsyncInputJobsInput->pageSize != null) {
+		if($asyncAsyncInputJobsInput !== null && $asyncAsyncInputJobsInput->pageSize !== null) {
 		 	$resourcePath = str_replace("{pageSize}", $asyncAsyncInputJobsInput->pageSize, $resourcePath);	
 		}
-		if($asyncAsyncInputJobsInput != null && $asyncAsyncInputJobsInput->actions != null) {
+		if($asyncAsyncInputJobsInput !== null && $asyncAsyncInputJobsInput->actions !== null) {
 		 	$resourcePath = str_replace("{actions}", $asyncAsyncInputJobsInput->actions, $resourcePath);	
 		}
-		if($asyncAsyncInputJobsInput != null && $asyncAsyncInputJobsInput->excludedActions != null) {
+		if($asyncAsyncInputJobsInput !== null && $asyncAsyncInputJobsInput->excludedActions !== null) {
 		 	$resourcePath = str_replace("{excludedActions}", $asyncAsyncInputJobsInput->excludedActions, $resourcePath);	
 		}
-		if($asyncAsyncInputJobsInput != null && $asyncAsyncInputJobsInput->orderBy != null) {
+		if($asyncAsyncInputJobsInput !== null && $asyncAsyncInputJobsInput->orderBy !== null) {
 		 	$resourcePath = str_replace("{orderBy}", $asyncAsyncInputJobsInput->orderBy, $resourcePath);	
 		}
-		if($asyncAsyncInputJobsInput != null && $asyncAsyncInputJobsInput->orderAsc != null) {
+		if($asyncAsyncInputJobsInput !== null && $asyncAsyncInputJobsInput->orderAsc !== null) {
 		 	$resourcePath = str_replace("{orderAsc}", $asyncAsyncInputJobsInput->orderAsc, $resourcePath);	
 		}
 
@@ -509,22 +509,22 @@ class AsyncAPI {
     
 	
 		
-		if($asyncAsyncInputFilesInput != null && $asyncAsyncInputFilesInput->userId != null) {
+		if($asyncAsyncInputFilesInput !== null && $asyncAsyncInputFilesInput->userId !== null) {
 		 	$resourcePath = str_replace("{userId}", $asyncAsyncInputFilesInput->userId, $resourcePath);	
 		}
-		if($asyncAsyncInputFilesInput != null && $asyncAsyncInputFilesInput->fileId != null) {
+		if($asyncAsyncInputFilesInput !== null && $asyncAsyncInputFilesInput->fileId !== null) {
 		 	$resourcePath = str_replace("{fileId}", $asyncAsyncInputFilesInput->fileId, $resourcePath);	
 		}
-		if($asyncAsyncInputFilesInput != null && $asyncAsyncInputFilesInput->targetType != null) {
+		if($asyncAsyncInputFilesInput !== null && $asyncAsyncInputFilesInput->targetType !== null) {
 		 	$resourcePath = str_replace("{targetType}", $asyncAsyncInputFilesInput->targetType, $resourcePath);	
 		}
-		if($asyncAsyncInputFilesInput != null && $asyncAsyncInputFilesInput->emailResults != null) {
+		if($asyncAsyncInputFilesInput !== null && $asyncAsyncInputFilesInput->emailResults !== null) {
 		 	$resourcePath = str_replace("{emailResults}", $asyncAsyncInputFilesInput->emailResults, $resourcePath);	
 		}
-		if($asyncAsyncInputFilesInput != null && $asyncAsyncInputFilesInput->description != null) {
+		if($asyncAsyncInputFilesInput !== null && $asyncAsyncInputFilesInput->description !== null) {
 		 	$resourcePath = str_replace("{description}", $asyncAsyncInputFilesInput->description, $resourcePath);	
 		}
-		if($asyncAsyncInputFilesInput != null && $asyncAsyncInputFilesInput->printScript != null) {
+		if($asyncAsyncInputFilesInput !== null && $asyncAsyncInputFilesInput->printScript !== null) {
 		 	$resourcePath = str_replace("{printScript}", $asyncAsyncInputFilesInput->printScript, $resourcePath);	
 		}
 

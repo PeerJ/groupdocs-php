@@ -51,13 +51,13 @@ class PostAPI {
         $headerParams = array();
     
 		
-		if($userId != null) {
+		if($userId !== null) {
 			$resourcePath = str_replace("{userId}", $userId, $resourcePath);
 		}
-		if($fileId != null) {
+		if($fileId !== null) {
 			$resourcePath = str_replace("{fileId}", $fileId, $resourcePath);
 		}
-		if($newName != null) {
+		if($newName !== null) {
 			$resourcePath = str_replace("{newName}", $newName, $resourcePath);
 		}
 
@@ -101,10 +101,10 @@ class PostAPI {
         $headerParams = array();
     
 		
-		if($userId != null) {
+		if($userId !== null) {
 			$resourcePath = str_replace("{userId}", $userId, $resourcePath);
 		}
-		if($fileId != null) {
+		if($fileId !== null) {
 			$resourcePath = str_replace("{fileId}", $fileId, $resourcePath);
 		}
 
@@ -148,10 +148,10 @@ class PostAPI {
         $headerParams = array();
     
 		
-		if($userId != null) {
+		if($userId !== null) {
 			$resourcePath = str_replace("{userId}", $userId, $resourcePath);
 		}
-		if($path != null) {
+		if($path !== null) {
 			$resourcePath = str_replace("{path}", $path, $resourcePath);
 		}
 
@@ -196,13 +196,13 @@ class PostAPI {
         $headerParams = array();
     
 		
-		if($userId != null) {
+		if($userId !== null) {
 			$resourcePath = str_replace("{userId}", $userId, $resourcePath);
 		}
-		if($fileId != null) {
+		if($fileId !== null) {
 			$resourcePath = str_replace("{fileId}", $fileId, $resourcePath);
 		}
-		if($archiveType != null) {
+		if($archiveType !== null) {
 			$resourcePath = str_replace("{archiveType}", $archiveType, $resourcePath);
 		}
 

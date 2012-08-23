@@ -51,10 +51,10 @@ class AntAPI {
         $headerParams = array();
     
 		
-		if($userId != null) {
+		if($userId !== null) {
 			$resourcePath = str_replace("{userId}", $userId, $resourcePath);
 		}
-		if($fileId != null) {
+		if($fileId !== null) {
 			$resourcePath = str_replace("{fileId}", $fileId, $resourcePath);
 		}
 
@@ -98,10 +98,10 @@ class AntAPI {
         $headerParams = array();
     
 		
-		if($userId != null) {
+		if($userId !== null) {
 			$resourcePath = str_replace("{userId}", $userId, $resourcePath);
 		}
-		if($fileId != null) {
+		if($fileId !== null) {
 			$resourcePath = str_replace("{fileId}", $fileId, $resourcePath);
 		}
 
@@ -145,10 +145,10 @@ class AntAPI {
         $headerParams = array();
     
 		
-		if($userId != null) {
+		if($userId !== null) {
 			$resourcePath = str_replace("{userId}", $userId, $resourcePath);
 		}
-		if($annotationId != null) {
+		if($annotationId !== null) {
 			$resourcePath = str_replace("{annotationId}", $annotationId, $resourcePath);
 		}
 
@@ -193,13 +193,13 @@ class AntAPI {
         $headerParams = array();
     
 		
-		if($userId != null) {
+		if($userId !== null) {
 			$resourcePath = str_replace("{userId}", $userId, $resourcePath);
 		}
-		if($annotationId != null) {
+		if($annotationId !== null) {
 			$resourcePath = str_replace("{annotationId}", $annotationId, $resourcePath);
 		}
-		if($message != null) {
+		if($message !== null) {
 			$resourcePath = str_replace("{message}", $message, $resourcePath);
 		}
 
@@ -244,13 +244,13 @@ class AntAPI {
         $headerParams = array();
     
 		
-		if($userId != null) {
+		if($userId !== null) {
 			$resourcePath = str_replace("{userId}", $userId, $resourcePath);
 		}
-		if($replyGuid != null) {
+		if($replyGuid !== null) {
 			$resourcePath = str_replace("{replyGuid}", $replyGuid, $resourcePath);
 		}
-		if($message != null) {
+		if($message !== null) {
 			$resourcePath = str_replace("{message}", $message, $resourcePath);
 		}
 
@@ -295,13 +295,13 @@ class AntAPI {
         $headerParams = array();
     
 		
-		if($userId != null) {
+		if($userId !== null) {
 			$resourcePath = str_replace("{userId}", $userId, $resourcePath);
 		}
-		if($annotationId != null) {
+		if($annotationId !== null) {
 			$resourcePath = str_replace("{annotationId}", $annotationId, $resourcePath);
 		}
-		if($after != null) {
+		if($after !== null) {
 			$resourcePath = str_replace("{after}", $after, $resourcePath);
 		}
 
@@ -346,13 +346,13 @@ class AntAPI {
         $headerParams = array();
     
 		
-		if($userId != null) {
+		if($userId !== null) {
 			$resourcePath = str_replace("{userId}", $userId, $resourcePath);
 		}
-		if($fileId != null) {
+		if($fileId !== null) {
 			$resourcePath = str_replace("{fileId}", $fileId, $resourcePath);
 		}
-		if($collaborators != null) {
+		if($collaborators !== null) {
 			$resourcePath = str_replace("{collaborators}", $collaborators, $resourcePath);
 		}
 
@@ -396,10 +396,10 @@ class AntAPI {
         $headerParams = array();
     
 		
-		if($userId != null) {
+		if($userId !== null) {
 			$resourcePath = str_replace("{userId}", $userId, $resourcePath);
 		}
-		if($fileId != null) {
+		if($fileId !== null) {
 			$resourcePath = str_replace("{fileId}", $fileId, $resourcePath);
 		}
 
@@ -444,10 +444,10 @@ class AntAPI {
         $headerParams = array();
     
 		
-		if($userId != null) {
+		if($userId !== null) {
 			$resourcePath = str_replace("{userId}", $userId, $resourcePath);
 		}
-		if($annotationId != null) {
+		if($annotationId !== null) {
 			$resourcePath = str_replace("{annotationId}", $annotationId, $resourcePath);
 		}
 

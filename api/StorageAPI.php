@@ -49,7 +49,7 @@ class StorageAPI {
         $headerParams = array();
     
 		
-		if($userId != null) {
+		if($userId !== null) {
 			$resourcePath = str_replace("{userId}", $userId, $resourcePath);
 		}
 
@@ -93,31 +93,31 @@ class StorageAPI {
     
 	
 		
-		if($storageStorageInputFoldersInput != null && $storageStorageInputFoldersInput->userId != null) {
+		if($storageStorageInputFoldersInput !== null && $storageStorageInputFoldersInput->userId !== null) {
 		 	$resourcePath = str_replace("{userId}", $storageStorageInputFoldersInput->userId, $resourcePath);	
 		}
-		if($storageStorageInputFoldersInput != null && $storageStorageInputFoldersInput->path != null) {
+		if($storageStorageInputFoldersInput !== null && $storageStorageInputFoldersInput->path !== null) {
 		 	$resourcePath = str_replace("{path}", $storageStorageInputFoldersInput->path, $resourcePath);	
 		}
-		if($storageStorageInputFoldersInput != null && $storageStorageInputFoldersInput->pageIndex != null) {
+		if($storageStorageInputFoldersInput !== null && $storageStorageInputFoldersInput->pageIndex !== null) {
 		 	$resourcePath = str_replace("{pageIndex}", $storageStorageInputFoldersInput->pageIndex, $resourcePath);	
 		}
-		if($storageStorageInputFoldersInput != null && $storageStorageInputFoldersInput->pageSize != null) {
+		if($storageStorageInputFoldersInput !== null && $storageStorageInputFoldersInput->pageSize !== null) {
 		 	$resourcePath = str_replace("{pageSize}", $storageStorageInputFoldersInput->pageSize, $resourcePath);	
 		}
-		if($storageStorageInputFoldersInput != null && $storageStorageInputFoldersInput->orderBy != null) {
+		if($storageStorageInputFoldersInput !== null && $storageStorageInputFoldersInput->orderBy !== null) {
 		 	$resourcePath = str_replace("{orderBy}", $storageStorageInputFoldersInput->orderBy, $resourcePath);	
 		}
-		if($storageStorageInputFoldersInput != null && $storageStorageInputFoldersInput->orderAsc != null) {
+		if($storageStorageInputFoldersInput !== null && $storageStorageInputFoldersInput->orderAsc !== null) {
 		 	$resourcePath = str_replace("{orderAsc}", $storageStorageInputFoldersInput->orderAsc, $resourcePath);	
 		}
-		if($storageStorageInputFoldersInput != null && $storageStorageInputFoldersInput->filter != null) {
+		if($storageStorageInputFoldersInput !== null && $storageStorageInputFoldersInput->filter !== null) {
 		 	$resourcePath = str_replace("{filter}", $storageStorageInputFoldersInput->filter, $resourcePath);	
 		}
-		if($storageStorageInputFoldersInput != null && $storageStorageInputFoldersInput->fileTypes != null) {
+		if($storageStorageInputFoldersInput !== null && $storageStorageInputFoldersInput->fileTypes !== null) {
 		 	$resourcePath = str_replace("{fileTypes}", $storageStorageInputFoldersInput->fileTypes, $resourcePath);	
 		}
-		if($storageStorageInputFoldersInput != null && $storageStorageInputFoldersInput->extended != null) {
+		if($storageStorageInputFoldersInput !== null && $storageStorageInputFoldersInput->extended !== null) {
 		 	$resourcePath = str_replace("{extended}", $storageStorageInputFoldersInput->extended, $resourcePath);	
 		}
 
@@ -160,10 +160,10 @@ class StorageAPI {
         $headerParams = array();
     
 		
-		if($userId != null) {
+		if($userId !== null) {
 			$resourcePath = str_replace("{userId}", $userId, $resourcePath);
 		}
-		if($fileId != null) {
+		if($fileId !== null) {
 			$resourcePath = str_replace("{fileId}", $fileId, $resourcePath);
 		}
 
@@ -207,10 +207,10 @@ class StorageAPI {
         $headerParams = array();
     
 		
-		if($userEmail != null) {
+		if($userEmail !== null) {
 			$resourcePath = str_replace("{userEmail}", $userEmail, $resourcePath);
 		}
-		if($filePath != null) {
+		if($filePath !== null) {
 			$resourcePath = str_replace("{filePath}", $filePath, $resourcePath);
 		}
 
@@ -256,13 +256,13 @@ class StorageAPI {
         $headerParams = array();
     
 		
-		if($userId != null) {
+		if($userId !== null) {
 			$resourcePath = str_replace("{userId}", $userId, $resourcePath);
 		}
-		if($path != null) {
+		if($path !== null) {
 			$resourcePath = str_replace("{path}", $path, $resourcePath);
 		}
-		if($description != null) {
+		if($description !== null) {
 			$resourcePath = str_replace("{description}", $description, $resourcePath);
 		}
 
@@ -306,10 +306,10 @@ class StorageAPI {
         $headerParams = array();
     
 		
-		if($userId != null) {
+		if($userId !== null) {
 			$resourcePath = str_replace("{userId}", $userId, $resourcePath);
 		}
-		if($url != null) {
+		if($url !== null) {
 			$resourcePath = str_replace("{url}", $url, $resourcePath);
 		}
 
@@ -353,10 +353,10 @@ class StorageAPI {
         $headerParams = array();
     
 		
-		if($userId != null) {
+		if($userId !== null) {
 			$resourcePath = str_replace("{userId}", $userId, $resourcePath);
 		}
-		if($fileId != null) {
+		if($fileId !== null) {
 			$resourcePath = str_replace("{fileId}", $fileId, $resourcePath);
 		}
 
@@ -400,10 +400,10 @@ class StorageAPI {
         $headerParams = array();
     
 		
-		if($userId != null) {
+		if($userId !== null) {
 			$resourcePath = str_replace("{userId}", $userId, $resourcePath);
 		}
-		if($path != null) {
+		if($path !== null) {
 			$resourcePath = str_replace("{path}", $path, $resourcePath);
 		}
 
@@ -448,13 +448,13 @@ class StorageAPI {
         $headerParams = array();
     
 		
-		if($userId != null) {
+		if($userId !== null) {
 			$resourcePath = str_replace("{userId}", $userId, $resourcePath);
 		}
-		if($path != null) {
+		if($path !== null) {
 			$resourcePath = str_replace("{path}", $path, $resourcePath);
 		}
-		if($mode != null) {
+		if($mode !== null) {
 			$resourcePath = str_replace("{mode}", $mode, $resourcePath);
 		}
 
@@ -499,13 +499,13 @@ class StorageAPI {
         $headerParams = array();
     
 		
-		if($userId != null) {
+		if($userId !== null) {
 			$resourcePath = str_replace("{userId}", $userId, $resourcePath);
 		}
-		if($path != null) {
+		if($path !== null) {
 			$resourcePath = str_replace("{path}", $path, $resourcePath);
 		}
-		if($mode != null) {
+		if($mode !== null) {
 			$resourcePath = str_replace("{mode}", $mode, $resourcePath);
 		}
 
@@ -549,10 +549,10 @@ class StorageAPI {
         $headerParams = array();
     
 		
-		if($userId != null) {
+		if($userId !== null) {
 			$resourcePath = str_replace("{userId}", $userId, $resourcePath);
 		}
-		if($path != null) {
+		if($path !== null) {
 			$resourcePath = str_replace("{path}", $path, $resourcePath);
 		}
 
@@ -596,10 +596,10 @@ class StorageAPI {
         $headerParams = array();
     
 		
-		if($userId != null) {
+		if($userId !== null) {
 			$resourcePath = str_replace("{userId}", $userId, $resourcePath);
 		}
-		if($archiveType != null) {
+		if($archiveType !== null) {
 			$resourcePath = str_replace("{archiveType}", $archiveType, $resourcePath);
 		}
 
@@ -644,13 +644,13 @@ class StorageAPI {
         $headerParams = array();
     
 		
-		if($userId != null) {
+		if($userId !== null) {
 			$resourcePath = str_replace("{userId}", $userId, $resourcePath);
 		}
-		if($packageName != null) {
+		if($packageName !== null) {
 			$resourcePath = str_replace("{packageName}", $packageName, $resourcePath);
 		}
-		if($paths != null) {
+		if($paths !== null) {
 			$resourcePath = str_replace("{paths}", $paths, $resourcePath);
 		}
 
@@ -694,10 +694,10 @@ class StorageAPI {
         $headerParams = array();
     
 		
-		if($userId != null) {
+		if($userId !== null) {
 			$resourcePath = str_replace("{userId}", $userId, $resourcePath);
 		}
-		if($path != null) {
+		if($path !== null) {
 			$resourcePath = str_replace("{path}", $path, $resourcePath);
 		}
 
@@ -741,10 +741,10 @@ class StorageAPI {
         $headerParams = array();
     
 		
-		if($userId != null) {
+		if($userId !== null) {
 			$resourcePath = str_replace("{userId}", $userId, $resourcePath);
 		}
-		if($path != null) {
+		if($path !== null) {
 			$resourcePath = str_replace("{path}", $path, $resourcePath);
 		}
 

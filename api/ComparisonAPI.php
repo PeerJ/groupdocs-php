@@ -50,10 +50,10 @@ class ComparisonAPI {
         $headerParams = array();
     
 		
-		if($userId != null) {
+		if($userId !== null) {
 			$resourcePath = str_replace("{userId}", $userId, $resourcePath);
 		}
-		if($resultFileId != null) {
+		if($resultFileId !== null) {
 			$resourcePath = str_replace("{resultFileId}", $resultFileId, $resourcePath);
 		}
 

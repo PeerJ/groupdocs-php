@@ -50,22 +50,22 @@ class DocAPI {
     
 	
 		
-		if($docDocInputFilesInput != null && $docDocInputFilesInput->userId != null) {
+		if($docDocInputFilesInput !== null && $docDocInputFilesInput->userId !== null) {
 		 	$resourcePath = str_replace("{userId}", $docDocInputFilesInput->userId, $resourcePath);	
 		}
-		if($docDocInputFilesInput != null && $docDocInputFilesInput->fileId != null) {
+		if($docDocInputFilesInput !== null && $docDocInputFilesInput->fileId !== null) {
 		 	$resourcePath = str_replace("{fileId}", $docDocInputFilesInput->fileId, $resourcePath);	
 		}
-		if($docDocInputFilesInput != null && $docDocInputFilesInput->pageNumber != null) {
+		if($docDocInputFilesInput !== null && $docDocInputFilesInput->pageNumber !== null) {
 		 	$resourcePath = str_replace("{pageNumber}", $docDocInputFilesInput->pageNumber, $resourcePath);	
 		}
-		if($docDocInputFilesInput != null && $docDocInputFilesInput->pageCount != null) {
+		if($docDocInputFilesInput !== null && $docDocInputFilesInput->pageCount !== null) {
 		 	$resourcePath = str_replace("{pageCount}", $docDocInputFilesInput->pageCount, $resourcePath);	
 		}
-		if($docDocInputFilesInput != null && $docDocInputFilesInput->quality != null) {
+		if($docDocInputFilesInput !== null && $docDocInputFilesInput->quality !== null) {
 		 	$resourcePath = str_replace("{quality}", $docDocInputFilesInput->quality, $resourcePath);	
 		}
-		if($docDocInputFilesInput != null && $docDocInputFilesInput->usePdf != null) {
+		if($docDocInputFilesInput !== null && $docDocInputFilesInput->usePdf !== null) {
 		 	$resourcePath = str_replace("{usePdf}", $docDocInputFilesInput->usePdf, $resourcePath);	
 		}
 
@@ -109,13 +109,13 @@ class DocAPI {
         $headerParams = array();
     
 		
-		if($userId != null) {
+		if($userId !== null) {
 			$resourcePath = str_replace("{userId}", $userId, $resourcePath);
 		}
-		if($startIndex != null) {
+		if($startIndex !== null) {
 			$resourcePath = str_replace("{startIndex}", $startIndex, $resourcePath);
 		}
-		if($pageSize != null) {
+		if($pageSize !== null) {
 			$resourcePath = str_replace("{pageSize}", $pageSize, $resourcePath);
 		}
 
@@ -160,13 +160,13 @@ class DocAPI {
         $headerParams = array();
     
 		
-		if($userId != null) {
+		if($userId !== null) {
 			$resourcePath = str_replace("{userId}", $userId, $resourcePath);
 		}
-		if($fileId != null) {
+		if($fileId !== null) {
 			$resourcePath = str_replace("{fileId}", $fileId, $resourcePath);
 		}
-		if($sharers != null) {
+		if($sharers !== null) {
 			$resourcePath = str_replace("{sharers}", $sharers, $resourcePath);
 		}
 
@@ -210,10 +210,10 @@ class DocAPI {
         $headerParams = array();
     
 		
-		if($userId != null) {
+		if($userId !== null) {
 			$resourcePath = str_replace("{userId}", $userId, $resourcePath);
 		}
-		if($fileId != null) {
+		if($fileId !== null) {
 			$resourcePath = str_replace("{fileId}", $fileId, $resourcePath);
 		}
 
@@ -257,10 +257,10 @@ class DocAPI {
         $headerParams = array();
     
 		
-		if($userId != null) {
+		if($userId !== null) {
 			$resourcePath = str_replace("{userId}", $userId, $resourcePath);
 		}
-		if($folderId != null) {
+		if($folderId !== null) {
 			$resourcePath = str_replace("{folderId}", $folderId, $resourcePath);
 		}
 
@@ -305,13 +305,13 @@ class DocAPI {
         $headerParams = array();
     
 		
-		if($userId != null) {
+		if($userId !== null) {
 			$resourcePath = str_replace("{userId}", $userId, $resourcePath);
 		}
-		if($folderId != null) {
+		if($folderId !== null) {
 			$resourcePath = str_replace("{folderId}", $folderId, $resourcePath);
 		}
-		if($sharers != null) {
+		if($sharers !== null) {
 			$resourcePath = str_replace("{sharers}", $sharers, $resourcePath);
 		}
 
@@ -355,10 +355,10 @@ class DocAPI {
         $headerParams = array();
     
 		
-		if($userId != null) {
+		if($userId !== null) {
 			$resourcePath = str_replace("{userId}", $userId, $resourcePath);
 		}
-		if($folderId != null) {
+		if($folderId !== null) {
 			$resourcePath = str_replace("{folderId}", $folderId, $resourcePath);
 		}
 
@@ -403,13 +403,13 @@ class DocAPI {
         $headerParams = array();
     
 		
-		if($userId != null) {
+		if($userId !== null) {
 			$resourcePath = str_replace("{userId}", $userId, $resourcePath);
 		}
-		if($fileId != null) {
+		if($fileId !== null) {
 			$resourcePath = str_replace("{fileId}", $fileId, $resourcePath);
 		}
-		if($mode != null) {
+		if($mode !== null) {
 			$resourcePath = str_replace("{mode}", $mode, $resourcePath);
 		}
 
@@ -453,10 +453,10 @@ class DocAPI {
         $headerParams = array();
     
 		
-		if($userId != null) {
+		if($userId !== null) {
 			$resourcePath = str_replace("{userId}", $userId, $resourcePath);
 		}
-		if($fileId != null) {
+		if($fileId !== null) {
 			$resourcePath = str_replace("{fileId}", $fileId, $resourcePath);
 		}
 
@@ -500,10 +500,10 @@ class DocAPI {
         $headerParams = array();
     
 		
-		if($userId != null) {
+		if($userId !== null) {
 			$resourcePath = str_replace("{userId}", $userId, $resourcePath);
 		}
-		if($fileId != null) {
+		if($fileId !== null) {
 			$resourcePath = str_replace("{fileId}", $fileId, $resourcePath);
 		}
 
@@ -548,13 +548,13 @@ class DocAPI {
         $headerParams = array();
     
 		
-		if($userId != null) {
+		if($userId !== null) {
 			$resourcePath = str_replace("{userId}", $userId, $resourcePath);
 		}
-		if($fileId != null) {
+		if($fileId !== null) {
 			$resourcePath = str_replace("{fileId}", $fileId, $resourcePath);
 		}
-		if($status != null) {
+		if($status !== null) {
 			$resourcePath = str_replace("{status}", $status, $resourcePath);
 		}
 
@@ -598,22 +598,22 @@ class DocAPI {
     
 	
 		
-		if($docDocInputSharesInput != null && $docDocInputSharesInput->userId != null) {
+		if($docDocInputSharesInput !== null && $docDocInputSharesInput->userId !== null) {
 		 	$resourcePath = str_replace("{userId}", $docDocInputSharesInput->userId, $resourcePath);	
 		}
-		if($docDocInputSharesInput != null && $docDocInputSharesInput->sharesTypes != null) {
+		if($docDocInputSharesInput !== null && $docDocInputSharesInput->sharesTypes !== null) {
 		 	$resourcePath = str_replace("{sharesTypes}", $docDocInputSharesInput->sharesTypes, $resourcePath);	
 		}
-		if($docDocInputSharesInput != null && $docDocInputSharesInput->pageIndex != null) {
+		if($docDocInputSharesInput !== null && $docDocInputSharesInput->pageIndex !== null) {
 		 	$resourcePath = str_replace("{pageIndex}", $docDocInputSharesInput->pageIndex, $resourcePath);	
 		}
-		if($docDocInputSharesInput != null && $docDocInputSharesInput->pageSize != null) {
+		if($docDocInputSharesInput !== null && $docDocInputSharesInput->pageSize !== null) {
 		 	$resourcePath = str_replace("{pageSize}", $docDocInputSharesInput->pageSize, $resourcePath);	
 		}
-		if($docDocInputSharesInput != null && $docDocInputSharesInput->orderBy != null) {
+		if($docDocInputSharesInput !== null && $docDocInputSharesInput->orderBy !== null) {
 		 	$resourcePath = str_replace("{orderBy}", $docDocInputSharesInput->orderBy, $resourcePath);	
 		}
-		if($docDocInputSharesInput != null && $docDocInputSharesInput->orderAsc != null) {
+		if($docDocInputSharesInput !== null && $docDocInputSharesInput->orderAsc !== null) {
 		 	$resourcePath = str_replace("{orderAsc}", $docDocInputSharesInput->orderAsc, $resourcePath);	
 		}
 
@@ -657,13 +657,13 @@ class DocAPI {
         $headerParams = array();
     
 		
-		if($userId != null) {
+		if($userId !== null) {
 			$resourcePath = str_replace("{userId}", $userId, $resourcePath);
 		}
-		if($fileId != null) {
+		if($fileId !== null) {
 			$resourcePath = str_replace("{fileId}", $fileId, $resourcePath);
 		}
-		if($includeGeometry != null) {
+		if($includeGeometry !== null) {
 			$resourcePath = str_replace("{includeGeometry}", $includeGeometry, $resourcePath);
 		}
 
@@ -707,10 +707,10 @@ class DocAPI {
         $headerParams = array();
     
 		
-		if($userId != null) {
+		if($userId !== null) {
 			$resourcePath = str_replace("{userId}", $userId, $resourcePath);
 		}
-		if($fileId != null) {
+		if($fileId !== null) {
 			$resourcePath = str_replace("{fileId}", $fileId, $resourcePath);
 		}
 

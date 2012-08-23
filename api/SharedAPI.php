@@ -51,13 +51,13 @@ class SharedAPI {
         $headerParams = array();
     
 		
-		if($guid != null) {
+		if($guid !== null) {
 			$resourcePath = str_replace("{guid}", $guid, $resourcePath);
 		}
-		if($fileName != null) {
+		if($fileName !== null) {
 			$resourcePath = str_replace("{fileName}", $fileName, $resourcePath);
 		}
-		if($render != null) {
+		if($render !== null) {
 			$resourcePath = str_replace("{render}", $render, $resourcePath);
 		}
 
@@ -101,19 +101,19 @@ class SharedAPI {
     
 	
 		
-		if($sharedSharedInputFilesInputPagesInput != null && $sharedSharedInputFilesInputPagesInput->guid != null) {
+		if($sharedSharedInputFilesInputPagesInput !== null && $sharedSharedInputFilesInputPagesInput->guid !== null) {
 		 	$resourcePath = str_replace("{guid}", $sharedSharedInputFilesInputPagesInput->guid, $resourcePath);	
 		}
-		if($sharedSharedInputFilesInputPagesInput != null && $sharedSharedInputFilesInputPagesInput->folio != null) {
+		if($sharedSharedInputFilesInputPagesInput !== null && $sharedSharedInputFilesInputPagesInput->folio !== null) {
 		 	$resourcePath = str_replace("{folio}", $sharedSharedInputFilesInputPagesInput->folio, $resourcePath);	
 		}
-		if($sharedSharedInputFilesInputPagesInput != null && $sharedSharedInputFilesInputPagesInput->dimension != null) {
+		if($sharedSharedInputFilesInputPagesInput !== null && $sharedSharedInputFilesInputPagesInput->dimension !== null) {
 		 	$resourcePath = str_replace("{dimension}", $sharedSharedInputFilesInputPagesInput->dimension, $resourcePath);	
 		}
-		if($sharedSharedInputFilesInputPagesInput != null && $sharedSharedInputFilesInputPagesInput->quality != null) {
+		if($sharedSharedInputFilesInputPagesInput !== null && $sharedSharedInputFilesInputPagesInput->quality !== null) {
 		 	$resourcePath = str_replace("{quality}", $sharedSharedInputFilesInputPagesInput->quality, $resourcePath);	
 		}
-		if($sharedSharedInputFilesInputPagesInput != null && $sharedSharedInputFilesInputPagesInput->usePdf != null) {
+		if($sharedSharedInputFilesInputPagesInput !== null && $sharedSharedInputFilesInputPagesInput->usePdf !== null) {
 		 	$resourcePath = str_replace("{usePdf}", $sharedSharedInputFilesInputPagesInput->usePdf, $resourcePath);	
 		}
 
@@ -159,19 +159,19 @@ class SharedAPI {
         $headerParams = array();
     
 		
-		if($guid != null) {
+		if($guid !== null) {
 			$resourcePath = str_replace("{guid}", $guid, $resourcePath);
 		}
-		if($folio != null) {
+		if($folio !== null) {
 			$resourcePath = str_replace("{folio}", $folio, $resourcePath);
 		}
-		if($dimension != null) {
+		if($dimension !== null) {
 			$resourcePath = str_replace("{dimension}", $dimension, $resourcePath);
 		}
-		if($quality != null) {
+		if($quality !== null) {
 			$resourcePath = str_replace("{quality}", $quality, $resourcePath);
 		}
-		if($usePdf != null) {
+		if($usePdf !== null) {
 			$resourcePath = str_replace("{usePdf}", $usePdf, $resourcePath);
 		}
 
@@ -214,7 +214,7 @@ class SharedAPI {
         $headerParams = array();
     
 		
-		if($guid != null) {
+		if($guid !== null) {
 			$resourcePath = str_replace("{guid}", $guid, $resourcePath);
 		}
 
@@ -257,7 +257,7 @@ class SharedAPI {
         $headerParams = array();
     
 		
-		if($path != null) {
+		if($path !== null) {
 			$resourcePath = str_replace("{path}", $path, $resourcePath);
 		}
 
@@ -301,19 +301,19 @@ class SharedAPI {
     
 	
 		
-		if($sharedSharedInputFilesInput != null && $sharedSharedInputFilesInput->guid != null) {
+		if($sharedSharedInputFilesInput !== null && $sharedSharedInputFilesInput->guid !== null) {
 		 	$resourcePath = str_replace("{guid}", $sharedSharedInputFilesInput->guid, $resourcePath);	
 		}
-		if($sharedSharedInputFilesInput != null && $sharedSharedInputFilesInput->pageNumber != null) {
+		if($sharedSharedInputFilesInput !== null && $sharedSharedInputFilesInput->pageNumber !== null) {
 		 	$resourcePath = str_replace("{pageNumber}", $sharedSharedInputFilesInput->pageNumber, $resourcePath);	
 		}
-		if($sharedSharedInputFilesInput != null && $sharedSharedInputFilesInput->pageCount != null) {
+		if($sharedSharedInputFilesInput !== null && $sharedSharedInputFilesInput->pageCount !== null) {
 		 	$resourcePath = str_replace("{pageCount}", $sharedSharedInputFilesInput->pageCount, $resourcePath);	
 		}
-		if($sharedSharedInputFilesInput != null && $sharedSharedInputFilesInput->quality != null) {
+		if($sharedSharedInputFilesInput !== null && $sharedSharedInputFilesInput->quality !== null) {
 		 	$resourcePath = str_replace("{quality}", $sharedSharedInputFilesInput->quality, $resourcePath);	
 		}
-		if($sharedSharedInputFilesInput != null && $sharedSharedInputFilesInput->usePdf != null) {
+		if($sharedSharedInputFilesInput !== null && $sharedSharedInputFilesInput->usePdf !== null) {
 		 	$resourcePath = str_replace("{usePdf}", $sharedSharedInputFilesInput->usePdf, $resourcePath);	
 		}
 

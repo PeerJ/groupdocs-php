@@ -26,7 +26,7 @@ class UploadRequestResult {
   static $swaggerTypes = array(    
     'guid' => 'string',
     'id' => 'float',
-    'thumbnail' => 'array<int>',
+    'thumbnail' => 'string',
     'adj_name' => 'string',
     'type' => 'string',
     'url' => 'string',
@@ -51,7 +51,7 @@ class UploadRequestResult {
     /**
      * 
      */
-	 public $thumbnail =  array();// array<int>
+	 public $thumbnail;// string
 
 
     /**

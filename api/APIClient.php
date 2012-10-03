@@ -177,7 +177,7 @@ class APIClient {
 			settype($object, $class);
 			return $object;
 		} else {
-			if(empty($class)){
+			if($object ===null || empty($class)){
 				return;
 			}
 			$instance = new $class(); // this instantiates class named $class

@@ -28,7 +28,8 @@ class AnnotationReplyInfo {
     'repliedOn' => 'int',
     'text' => 'string',
     'userName' => 'string',
-    'userGuid' => 'string'   
+    'userGuid' => 'string',
+    'parentReplyGuid' => 'string'   
     );
 
 
@@ -61,6 +62,7 @@ class AnnotationReplyInfo {
      */
 	 public $userGuid;// string
 
+	 public $parentReplyGuid;
 
 }
 

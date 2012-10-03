@@ -24,21 +24,21 @@
 class Range {
 
   static $swaggerTypes = array(    
-    'len' => 'int',
-    'pos' => 'int'   
+    'Length' => 'int',
+    'Position' => 'int'   
     );
 
 
     /**
      * 
      */
-	 public $len;// int
+	 public $Length;// int
 
 
     /**
      * 
      */
-	 public $pos;// int
+	 public $Position;// int
 
 
 }

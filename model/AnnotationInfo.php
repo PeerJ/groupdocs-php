@@ -34,7 +34,8 @@ class AnnotationInfo {
     'replies' => 'array<AnnotationReplyInfo>',
     'box' => 'Rectangle',
     'access' => 'string',
-    'type' => 'string'   
+    'type' => 'string',
+    'creatorGuid' => 'string',   
     );
 
 
@@ -103,6 +104,7 @@ class AnnotationInfo {
      */
 	 public $type;// string
 
+	 public $creatorGuid;
 
 }
 

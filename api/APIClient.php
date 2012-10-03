@@ -177,7 +177,7 @@ class APIClient {
 			settype($object, $class);
 			return $object;
 		} else {
-			if($object ===null || empty($class)){
+			if($object === null || empty($class)){
 				return;
 			}
 			$instance = new $class(); // this instantiates class named $class
@@ -211,9 +211,11 @@ class APIClient {
 			} elseif (preg_match("/array<(.*)>/", $type, $matches)) {
 				$sub_class = $matches[1];
 				$instance->{$true_property} = array();
-				foreach ($value as $sub_property => $sub_value) {
-					$instance->{$true_property}[] = self::deserialize($sub_value,
-						$sub_class);
+				if($value !== null){
+					foreach ($value as $sub_property => $sub_value) {
+						$instance->{$true_property}[] = self::deserialize($sub_value,
+							$sub_class);
+					}
 				}
 			} else {
 				$instance->{$true_property} = self::deserialize($value, $type);

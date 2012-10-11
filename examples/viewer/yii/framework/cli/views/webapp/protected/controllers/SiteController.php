@@ -61,6 +61,28 @@ class SiteController extends Controller {
         $this->render('index', array('iframe' => $iframe,'model'=>$model,'res'=>$res));
     }
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     /**
      * This is the action to handle external exceptions.
      */

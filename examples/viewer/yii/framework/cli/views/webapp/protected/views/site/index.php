@@ -1,6 +1,3 @@
-<style>
-    td{padding:5px;}
-</style>
 <?php
 $this->pageTitle = Yii::app()->name . ' - GroupDocs';
 $this->breadcrumbs = array(
@@ -78,7 +75,11 @@ $this->breadcrumbs = array(
     </div><!-- form -->
 <?php endif; ?>
 
-<?php
-    // Viwer Iframe
+
+<?php 
+if($iframe){?>
+    <?php
+    // Iframe
     print '<hr/>'.$iframe;
+}
 ?>

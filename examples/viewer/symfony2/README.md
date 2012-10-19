@@ -2,7 +2,7 @@ GroupDocs Viewer SDK Example with Symfony Standard Edition (V2.1.2)
 ========================
 
 This document contains information on how to download, install, and start
-using Viwer SDK Example.
+using Viewer SDK Example.
 
 1) Installing the example
 ----------------------------------
@@ -39,7 +39,9 @@ If your webhost has name symfony2, then you can open URL like this:
 
     http://symfony2/app_dev.php/groupdocs/
 
+To investigate code of GroupDocsViewer bundle check code here:
 
+    https://github.com/groupdocs/groupdocs-php/tree/master/examples/viewer/symfony2/src/GroupDocs/ViewerBundle
 
 
 Enjoy!

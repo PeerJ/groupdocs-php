@@ -35,7 +35,8 @@ If you get any warnings or recommendations, fix them before moving on.
 
 Congratulations! You're now ready to use our Viewer Example.
 
-If your webhost has hame symfony2, then you can open URL like this:
+If your webhost has name symfony2, then you can open URL like this:
+
     http://symfony2/app_dev.php/groupdocs/
 
 

@@ -1,7 +1,18 @@
-groupdocs-php
+GroupDocs PHP SDK [![Build Status](https://secure.travis-ci.org/groupdocs/groupdocs-php.png)](http://travis-ci.org/groupdocs/groupdocs-php)
 =============
 
-GroupDocs PHP SDK
+## Requirements
+
+* SDK requires PHP 5.3 (or later).
+
+## Installation
+
+You can use the [Composer](http://getcomposer.org/) to download and install SDK as well as its dependencies.
+
+### Composer
+
+To add SDK as a local, per-project dependency to your project, simply add a dependency on `groupdocs/groupdocs-php` to your project's `composer.json` file.
+
 
 ###[Sign, Manage, Annotate, Assemble, Compare and Convert Documents with GroupDocs](http://groupdocs.com)
 1. [Sign documents online with GroupDocs Signature](http://groupdocs.com/apps/signature)

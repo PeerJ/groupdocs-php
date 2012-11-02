@@ -7,7 +7,8 @@ GroupDocs PHP SDK [![Build Status](https://secure.travis-ci.org/groupdocs/groupd
 
 ## Installation
 
-You can use the [Composer](http://getcomposer.org/) to download and install SDK as well as its dependencies.
+You can use the [Composer](http://getcomposer.org/) to download and install SDK.
+GroupDocs SDK is now in [Packagist](https://packagist.org/packages/groupdocs/groupdocs-php).
 
 ### Composer
 

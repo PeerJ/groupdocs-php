@@ -21,8 +21,18 @@
  */
 class SharedApi {
 
+	private $basePath = "https://api.groupdocs.com/v2.0";
+
 	function __construct($apiClient) {
 	  $this->apiClient = $apiClient;
+	}
+
+    public function setBasePath($basePath) {
+	  $this->basePath = $basePath;
+	}
+	  
+	public function getBasePath() {
+	  $this->basePath;
 	}
 
   /**
@@ -35,11 +45,10 @@ class SharedApi {
 	 */
 
    public function Download($guid, $fileName, $render=null) {
-
-  		//parse inputs
-  		$resourcePath = str_replace("*", "", "/shared/files/{guid}?filename={fileName}&amp;render={render}");
-  		$resourcePath = str_replace("{format}", "json", $resourcePath);
-  		$method = "GET";
+  	  //parse inputs
+  	  $resourcePath = str_replace("*", "", "/shared/files/{guid}?filename={fileName}&amp;render={render}");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "GET";
       $queryParams = array();
       $headerParams = array();
 
@@ -59,9 +68,8 @@ class SharedApi {
       if (! isset($body)) {
         $body = null;
       }
-  		$response = $this->apiClient->callAPI($resourcePath, $method,
-  		                                      $queryParams, $body,
-  		                                      $headerParams);
+  		$response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
 
 
       if(! $response){
@@ -81,11 +89,10 @@ class SharedApi {
 	 */
 
    public function GetXml($guid) {
-
-  		//parse inputs
-  		$resourcePath = str_replace("*", "", "/shared/files/{guid}/xml");
-  		$resourcePath = str_replace("{format}", "json", $resourcePath);
-  		$method = "GET";
+  	  //parse inputs
+  	  $resourcePath = str_replace("*", "", "/shared/files/{guid}/xml");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "GET";
       $queryParams = array();
       $headerParams = array();
 
@@ -97,9 +104,8 @@ class SharedApi {
       if (! isset($body)) {
         $body = null;
       }
-  		$response = $this->apiClient->callAPI($resourcePath, $method,
-  		                                      $queryParams, $body,
-  		                                      $headerParams);
+  		$response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
 
 
       if(! $response){
@@ -119,11 +125,10 @@ class SharedApi {
 	 */
 
    public function GetPackage($path) {
-
-  		//parse inputs
-  		$resourcePath = str_replace("*", "", "/shared/packages/{*path}");
-  		$resourcePath = str_replace("{format}", "json", $resourcePath);
-  		$method = "GET";
+  	  //parse inputs
+  	  $resourcePath = str_replace("*", "", "/shared/packages/{*path}");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "GET";
       $queryParams = array();
       $headerParams = array();
 
@@ -135,9 +140,8 @@ class SharedApi {
       if (! isset($body)) {
         $body = null;
       }
-  		$response = $this->apiClient->callAPI($resourcePath, $method,
-  		                                      $queryParams, $body,
-  		                                      $headerParams);
+  		$response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
 
 
       if(! $response){

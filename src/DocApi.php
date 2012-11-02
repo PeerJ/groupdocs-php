@@ -21,8 +21,18 @@
  */
 class DocApi {
 
+	private $basePath = "https://api.groupdocs.com/v2.0";
+
 	function __construct($apiClient) {
 	  $this->apiClient = $apiClient;
+	}
+
+    public function setBasePath($basePath) {
+	  $this->basePath = $basePath;
+	}
+	  
+	public function getBasePath() {
+	  $this->basePath;
 	}
 
   /**
@@ -39,11 +49,10 @@ class DocApi {
 	 */
 
    public function ViewDocument($userId, $fileId, $pageNumber=null, $pageCount=null, $width=null, $quality=null, $usePdf=null) {
-
-  		//parse inputs
-  		$resourcePath = str_replace("*", "", "/doc/{userId}/files/{fileId}/thumbnails?page_number={pageNumber}&amp;page_count={pageCount}&amp;width={width}&amp;quality={quality}&amp;use_pdf={usePdf}");
-  		$resourcePath = str_replace("{format}", "json", $resourcePath);
-  		$method = "POST";
+  	  //parse inputs
+  	  $resourcePath = str_replace("*", "", "/doc/{userId}/files/{fileId}/thumbnails?page_number={pageNumber}&amp;page_count={pageCount}&amp;width={width}&amp;quality={quality}&amp;use_pdf={usePdf}");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "POST";
       $queryParams = array();
       $headerParams = array();
 
@@ -79,9 +88,8 @@ class DocApi {
       if (! isset($body)) {
         $body = null;
       }
-  		$response = $this->apiClient->callAPI($resourcePath, $method,
-  		                                      $queryParams, $body,
-  		                                      $headerParams);
+  		$response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
 
 
       if(! $response){
@@ -103,11 +111,10 @@ class DocApi {
 	 */
 
    public function GetDocumentViews($userId, $startIndex=null, $pageSize=null) {
-
-  		//parse inputs
-  		$resourcePath = str_replace("*", "", "/doc/{userId}/views?page_index={startIndex}&amp;page_size={pageSize}");
-  		$resourcePath = str_replace("{format}", "json", $resourcePath);
-  		$method = "GET";
+  	  //parse inputs
+  	  $resourcePath = str_replace("*", "", "/doc/{userId}/views?page_index={startIndex}&amp;page_size={pageSize}");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "GET";
       $queryParams = array();
       $headerParams = array();
 
@@ -127,9 +134,8 @@ class DocApi {
       if (! isset($body)) {
         $body = null;
       }
-  		$response = $this->apiClient->callAPI($resourcePath, $method,
-  		                                      $queryParams, $body,
-  		                                      $headerParams);
+  		$response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
 
 
       if(! $response){
@@ -151,11 +157,10 @@ class DocApi {
 	 */
 
    public function ShareDocument($userId, $fileId, $body) {
-
-  		//parse inputs
-  		$resourcePath = str_replace("*", "", "/doc/{userId}/files/{fileId}/sharers");
-  		$resourcePath = str_replace("{format}", "json", $resourcePath);
-  		$method = "PUT";
+  	  //parse inputs
+  	  $resourcePath = str_replace("*", "", "/doc/{userId}/files/{fileId}/sharers");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "PUT";
       $queryParams = array();
       $headerParams = array();
 
@@ -171,9 +176,8 @@ class DocApi {
       if (! isset($body)) {
         $body = null;
       }
-  		$response = $this->apiClient->callAPI($resourcePath, $method,
-  		                                      $queryParams, $body,
-  		                                      $headerParams);
+  		$response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
 
 
       if(! $response){
@@ -194,11 +198,10 @@ class DocApi {
 	 */
 
    public function UnshareDocument($userId, $fileId) {
-
-  		//parse inputs
-  		$resourcePath = str_replace("*", "", "/doc/{userId}/files/{fileId}/sharers");
-  		$resourcePath = str_replace("{format}", "json", $resourcePath);
-  		$method = "DELETE";
+  	  //parse inputs
+  	  $resourcePath = str_replace("*", "", "/doc/{userId}/files/{fileId}/sharers");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "DELETE";
       $queryParams = array();
       $headerParams = array();
 
@@ -214,9 +217,8 @@ class DocApi {
       if (! isset($body)) {
         $body = null;
       }
-  		$response = $this->apiClient->callAPI($resourcePath, $method,
-  		                                      $queryParams, $body,
-  		                                      $headerParams);
+  		$response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
 
 
       if(! $response){
@@ -237,11 +239,10 @@ class DocApi {
 	 */
 
    public function GetFolderSharers($userId, $folderId) {
-
-  		//parse inputs
-  		$resourcePath = str_replace("*", "", "/doc/{userId}/folders/{folderId}/sharers");
-  		$resourcePath = str_replace("{format}", "json", $resourcePath);
-  		$method = "GET";
+  	  //parse inputs
+  	  $resourcePath = str_replace("*", "", "/doc/{userId}/folders/{folderId}/sharers");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "GET";
       $queryParams = array();
       $headerParams = array();
 
@@ -257,9 +258,8 @@ class DocApi {
       if (! isset($body)) {
         $body = null;
       }
-  		$response = $this->apiClient->callAPI($resourcePath, $method,
-  		                                      $queryParams, $body,
-  		                                      $headerParams);
+  		$response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
 
 
       if(! $response){
@@ -281,11 +281,10 @@ class DocApi {
 	 */
 
    public function ShareFolder($userId, $folderId, $body) {
-
-  		//parse inputs
-  		$resourcePath = str_replace("*", "", "/doc/{userId}/folders/{folderId}/sharers");
-  		$resourcePath = str_replace("{format}", "json", $resourcePath);
-  		$method = "PUT";
+  	  //parse inputs
+  	  $resourcePath = str_replace("*", "", "/doc/{userId}/folders/{folderId}/sharers");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "PUT";
       $queryParams = array();
       $headerParams = array();
 
@@ -301,9 +300,8 @@ class DocApi {
       if (! isset($body)) {
         $body = null;
       }
-  		$response = $this->apiClient->callAPI($resourcePath, $method,
-  		                                      $queryParams, $body,
-  		                                      $headerParams);
+  		$response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
 
 
       if(! $response){
@@ -324,11 +322,10 @@ class DocApi {
 	 */
 
    public function UnshareFolder($userId, $folderId) {
-
-  		//parse inputs
-  		$resourcePath = str_replace("*", "", "/doc/{userId}/folders/{folderId}/sharers");
-  		$resourcePath = str_replace("{format}", "json", $resourcePath);
-  		$method = "DELETE";
+  	  //parse inputs
+  	  $resourcePath = str_replace("*", "", "/doc/{userId}/folders/{folderId}/sharers");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "DELETE";
       $queryParams = array();
       $headerParams = array();
 
@@ -344,9 +341,8 @@ class DocApi {
       if (! isset($body)) {
         $body = null;
       }
-  		$response = $this->apiClient->callAPI($resourcePath, $method,
-  		                                      $queryParams, $body,
-  		                                      $headerParams);
+  		$response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
 
 
       if(! $response){
@@ -368,11 +364,10 @@ class DocApi {
 	 */
 
    public function SetDocumentAccessMode($userId, $fileId, $mode=null) {
-
-  		//parse inputs
-  		$resourcePath = str_replace("*", "", "/doc/{userId}/files/{fileId}/accessinfo?mode={mode}");
-  		$resourcePath = str_replace("{format}", "json", $resourcePath);
-  		$method = "PUT";
+  	  //parse inputs
+  	  $resourcePath = str_replace("*", "", "/doc/{userId}/files/{fileId}/accessinfo?mode={mode}");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "PUT";
       $queryParams = array();
       $headerParams = array();
 
@@ -392,9 +387,8 @@ class DocApi {
       if (! isset($body)) {
         $body = null;
       }
-  		$response = $this->apiClient->callAPI($resourcePath, $method,
-  		                                      $queryParams, $body,
-  		                                      $headerParams);
+  		$response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
 
 
       if(! $response){
@@ -415,11 +409,10 @@ class DocApi {
 	 */
 
    public function GetDocumentAccessInfo($userId, $fileId) {
-
-  		//parse inputs
-  		$resourcePath = str_replace("*", "", "/doc/{userId}/files/{fileId}/accessinfo");
-  		$resourcePath = str_replace("{format}", "json", $resourcePath);
-  		$method = "GET";
+  	  //parse inputs
+  	  $resourcePath = str_replace("*", "", "/doc/{userId}/files/{fileId}/accessinfo");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "GET";
       $queryParams = array();
       $headerParams = array();
 
@@ -435,9 +428,8 @@ class DocApi {
       if (! isset($body)) {
         $body = null;
       }
-  		$response = $this->apiClient->callAPI($resourcePath, $method,
-  		                                      $queryParams, $body,
-  		                                      $headerParams);
+  		$response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
 
 
       if(! $response){
@@ -458,11 +450,10 @@ class DocApi {
 	 */
 
    public function GetDocumentMetadata($userId, $fileId) {
-
-  		//parse inputs
-  		$resourcePath = str_replace("*", "", "/doc/{userId}/files/{fileId}/metadata");
-  		$resourcePath = str_replace("{format}", "json", $resourcePath);
-  		$method = "GET";
+  	  //parse inputs
+  	  $resourcePath = str_replace("*", "", "/doc/{userId}/files/{fileId}/metadata");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "GET";
       $queryParams = array();
       $headerParams = array();
 
@@ -478,9 +469,8 @@ class DocApi {
       if (! isset($body)) {
         $body = null;
       }
-  		$response = $this->apiClient->callAPI($resourcePath, $method,
-  		                                      $queryParams, $body,
-  		                                      $headerParams);
+  		$response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
 
 
       if(! $response){
@@ -501,11 +491,10 @@ class DocApi {
 	 */
 
    public function GetDocumentMetadataByPath($userId, $path) {
-
-  		//parse inputs
-  		$resourcePath = str_replace("*", "", "/doc/{userId}/files/{*path}");
-  		$resourcePath = str_replace("{format}", "json", $resourcePath);
-  		$method = "GET";
+  	  //parse inputs
+  	  $resourcePath = str_replace("*", "", "/doc/{userId}/files/{*path}");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "GET";
       $queryParams = array();
       $headerParams = array();
 
@@ -521,9 +510,8 @@ class DocApi {
       if (! isset($body)) {
         $body = null;
       }
-  		$response = $this->apiClient->callAPI($resourcePath, $method,
-  		                                      $queryParams, $body,
-  		                                      $headerParams);
+  		$response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
 
 
       if(! $response){
@@ -545,11 +533,10 @@ class DocApi {
 	 */
 
    public function SetDocumentUserStatus($userId, $fileId, $status) {
-
-  		//parse inputs
-  		$resourcePath = str_replace("*", "", "/doc/{userId}/files/{fileId}/sharer");
-  		$resourcePath = str_replace("{format}", "json", $resourcePath);
-  		$method = "PUT";
+  	  //parse inputs
+  	  $resourcePath = str_replace("*", "", "/doc/{userId}/files/{fileId}/sharer");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "PUT";
       $queryParams = array();
       $headerParams = array();
 
@@ -569,9 +556,8 @@ class DocApi {
       if (! isset($body)) {
         $body = null;
       }
-  		$response = $this->apiClient->callAPI($resourcePath, $method,
-  		                                      $queryParams, $body,
-  		                                      $headerParams);
+  		$response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
 
 
       if(! $response){
@@ -596,11 +582,10 @@ class DocApi {
 	 */
 
    public function GetSharedDocuments($userId, $sharesTypes=null, $pageIndex=null, $pageSize=null, $orderBy=null, $orderAsc=null) {
-
-  		//parse inputs
-  		$resourcePath = str_replace("*", "", "/doc/{userId}/shares/{sharesTypes}?page_index={pageIndex}&amp;page_size={pageSize}&amp;order_by={orderBy}&amp;order_asc={orderAsc}");
-  		$resourcePath = str_replace("{format}", "json", $resourcePath);
-  		$method = "GET";
+  	  //parse inputs
+  	  $resourcePath = str_replace("*", "", "/doc/{userId}/shares/{sharesTypes}?page_index={pageIndex}&amp;page_size={pageSize}&amp;order_by={orderBy}&amp;order_asc={orderAsc}");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "GET";
       $queryParams = array();
       $headerParams = array();
 
@@ -632,9 +617,8 @@ class DocApi {
       if (! isset($body)) {
         $body = null;
       }
-  		$response = $this->apiClient->callAPI($resourcePath, $method,
-  		                                      $queryParams, $body,
-  		                                      $headerParams);
+  		$response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
 
 
       if(! $response){
@@ -656,11 +640,10 @@ class DocApi {
 	 */
 
    public function GetTemplateFields($userId, $fileId, $includeGeometry=null) {
-
-  		//parse inputs
-  		$resourcePath = str_replace("*", "", "/doc/{userId}/files/{fileId}/fields?include_geometry={includeGeometry}");
-  		$resourcePath = str_replace("{format}", "json", $resourcePath);
-  		$method = "GET";
+  	  //parse inputs
+  	  $resourcePath = str_replace("*", "", "/doc/{userId}/files/{fileId}/fields?include_geometry={includeGeometry}");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "GET";
       $queryParams = array();
       $headerParams = array();
 
@@ -680,9 +663,8 @@ class DocApi {
       if (! isset($body)) {
         $body = null;
       }
-  		$response = $this->apiClient->callAPI($resourcePath, $method,
-  		                                      $queryParams, $body,
-  		                                      $headerParams);
+  		$response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
 
 
       if(! $response){
@@ -703,11 +685,10 @@ class DocApi {
 	 */
 
    public function GetDocumentFormats($userId, $fileId) {
-
-  		//parse inputs
-  		$resourcePath = str_replace("*", "", "/doc/{userId}/files/{fileId}/formats");
-  		$resourcePath = str_replace("{format}", "json", $resourcePath);
-  		$method = "GET";
+  	  //parse inputs
+  	  $resourcePath = str_replace("*", "", "/doc/{userId}/files/{fileId}/formats");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "GET";
       $queryParams = array();
       $headerParams = array();
 
@@ -723,9 +704,8 @@ class DocApi {
       if (! isset($body)) {
         $body = null;
       }
-  		$response = $this->apiClient->callAPI($resourcePath, $method,
-  		                                      $queryParams, $body,
-  		                                      $headerParams);
+  		$response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
 
 
       if(! $response){
@@ -751,11 +731,10 @@ class DocApi {
 	 */
 
    public function GetDocumentPageImage($userId, $fileId, $pageNumber, $dimension, $quality=null, $usePdf=null, $expiresOn=null) {
-
-  		//parse inputs
-  		$resourcePath = str_replace("*", "", "/doc/{userId}/files/{fileId}/pages/{pageNumber}/images/{dimension}?quality={quality}&amp;use_pdf={usePdf}&amp;expires={expiresOn}");
-  		$resourcePath = str_replace("{format}", "json", $resourcePath);
-  		$method = "GET";
+  	  //parse inputs
+  	  $resourcePath = str_replace("*", "", "/doc/{userId}/files/{fileId}/pages/{pageNumber}/images/{dimension}?quality={quality}&amp;use_pdf={usePdf}&amp;expires={expiresOn}");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "GET";
       $queryParams = array();
       $headerParams = array();
 
@@ -791,9 +770,8 @@ class DocApi {
       if (! isset($body)) {
         $body = null;
       }
-  		$response = $this->apiClient->callAPI($resourcePath, $method,
-  		                                      $queryParams, $body,
-  		                                      $headerParams);
+  		$response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
 
 
       if(! $response){
@@ -820,11 +798,10 @@ class DocApi {
 	 */
 
    public function GetDocumentPagesImageUrls($userId, $fileId, $firstPage=null, $pageCount=null, $dimension, $quality=null, $usePdf=null, $token=null) {
-
-  		//parse inputs
-  		$resourcePath = str_replace("*", "", "/doc/{userId}/files/{fileId}/pages/images/{dimension}/urls?first_page={firstPage}&amp;page_count={pageCount}&amp;quality={quality}&amp;use_pdf={usePdf}&amp;token={token}");
-  		$resourcePath = str_replace("{format}", "json", $resourcePath);
-  		$method = "GET";
+  	  //parse inputs
+  	  $resourcePath = str_replace("*", "", "/doc/{userId}/files/{fileId}/pages/images/{dimension}/urls?first_page={firstPage}&amp;page_count={pageCount}&amp;quality={quality}&amp;use_pdf={usePdf}&amp;token={token}");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "GET";
       $queryParams = array();
       $headerParams = array();
 
@@ -864,9 +841,8 @@ class DocApi {
       if (! isset($body)) {
         $body = null;
       }
-  		$response = $this->apiClient->callAPI($resourcePath, $method,
-  		                                      $queryParams, $body,
-  		                                      $headerParams);
+  		$response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
 
 
       if(! $response){
@@ -887,11 +863,10 @@ class DocApi {
 	 */
 
    public function GetEditLock($userId, $fileId) {
-
-  		//parse inputs
-  		$resourcePath = str_replace("*", "", "/doc/{userId}/files/{fileId}/editlock");
-  		$resourcePath = str_replace("{format}", "json", $resourcePath);
-  		$method = "GET";
+  	  //parse inputs
+  	  $resourcePath = str_replace("*", "", "/doc/{userId}/files/{fileId}/editlock");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "GET";
       $queryParams = array();
       $headerParams = array();
 
@@ -907,9 +882,8 @@ class DocApi {
       if (! isset($body)) {
         $body = null;
       }
-  		$response = $this->apiClient->callAPI($resourcePath, $method,
-  		                                      $queryParams, $body,
-  		                                      $headerParams);
+  		$response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
 
 
       if(! $response){
@@ -930,11 +904,10 @@ class DocApi {
 	 */
 
    public function RemoveEditLock($userId, $fileId) {
-
-  		//parse inputs
-  		$resourcePath = str_replace("*", "", "/doc/{userId}/files/{fileId}/editlock");
-  		$resourcePath = str_replace("{format}", "json", $resourcePath);
-  		$method = "DELETE";
+  	  //parse inputs
+  	  $resourcePath = str_replace("*", "", "/doc/{userId}/files/{fileId}/editlock");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "DELETE";
       $queryParams = array();
       $headerParams = array();
 
@@ -950,9 +923,8 @@ class DocApi {
       if (! isset($body)) {
         $body = null;
       }
-  		$response = $this->apiClient->callAPI($resourcePath, $method,
-  		                                      $queryParams, $body,
-  		                                      $headerParams);
+  		$response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
 
 
       if(! $response){

@@ -21,8 +21,18 @@
  */
 class ComparisonApi {
 
+	private $basePath = "https://api.groupdocs.com/v2.0";
+
 	function __construct($apiClient) {
 	  $this->apiClient = $apiClient;
+	}
+
+    public function setBasePath($basePath) {
+	  $this->basePath = $basePath;
+	}
+	  
+	public function getBasePath() {
+	  $this->basePath;
 	}
 
   /**
@@ -35,11 +45,10 @@ class ComparisonApi {
 	 */
 
    public function DownloadResult($userId, $resultFileId, $format=null) {
-
-  		//parse inputs
-  		$resourcePath = str_replace("*", "", "/comparison/{userId}/comparison/download?resultFileId={resultFileId}&amp;format={format}");
-  		$resourcePath = str_replace("{format}", "json", $resourcePath);
-  		$method = "GET";
+  	  //parse inputs
+  	  $resourcePath = str_replace("*", "", "/comparison/{userId}/comparison/download?resultFileId={resultFileId}&amp;format={format}");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "GET";
       $queryParams = array();
       $headerParams = array();
 
@@ -59,9 +68,8 @@ class ComparisonApi {
       if (! isset($body)) {
         $body = null;
       }
-  		$response = $this->apiClient->callAPI($resourcePath, $method,
-  		                                      $queryParams, $body,
-  		                                      $headerParams);
+  		$response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
 
 
       if(! $response){
@@ -83,11 +91,10 @@ class ComparisonApi {
 	 */
 
    public function Compare($userId, $sourceFileId, $targetFileId) {
-
-  		//parse inputs
-  		$resourcePath = str_replace("*", "", "/comparison/{userId}/comparison/compare?source={sourceFileId}&amp;target={targetFileId}");
-  		$resourcePath = str_replace("{format}", "json", $resourcePath);
-  		$method = "GET";
+  	  //parse inputs
+  	  $resourcePath = str_replace("*", "", "/comparison/{userId}/comparison/compare?source={sourceFileId}&amp;target={targetFileId}");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "GET";
       $queryParams = array();
       $headerParams = array();
 
@@ -107,9 +114,8 @@ class ComparisonApi {
       if (! isset($body)) {
         $body = null;
       }
-  		$response = $this->apiClient->callAPI($resourcePath, $method,
-  		                                      $queryParams, $body,
-  		                                      $headerParams);
+  		$response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
 
 
       if(! $response){
@@ -130,11 +136,10 @@ class ComparisonApi {
 	 */
 
    public function GetChanges($userId, $resultFileId) {
-
-  		//parse inputs
-  		$resourcePath = str_replace("*", "", "/comparison/{userId}/comparison/changes?resultFileId={resultFileId}");
-  		$resourcePath = str_replace("{format}", "json", $resourcePath);
-  		$method = "GET";
+  	  //parse inputs
+  	  $resourcePath = str_replace("*", "", "/comparison/{userId}/comparison/changes?resultFileId={resultFileId}");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "GET";
       $queryParams = array();
       $headerParams = array();
 
@@ -150,9 +155,8 @@ class ComparisonApi {
       if (! isset($body)) {
         $body = null;
       }
-  		$response = $this->apiClient->callAPI($resourcePath, $method,
-  		                                      $queryParams, $body,
-  		                                      $headerParams);
+  		$response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
 
 
       if(! $response){
@@ -174,11 +178,10 @@ class ComparisonApi {
 	 */
 
    public function UpdateChanges($userId, $resultFileId, $body) {
-
-  		//parse inputs
-  		$resourcePath = str_replace("*", "", "/comparison/{userId}/comparison/changes?resultFileId={resultFileId}");
-  		$resourcePath = str_replace("{format}", "json", $resourcePath);
-  		$method = "PUT";
+  	  //parse inputs
+  	  $resourcePath = str_replace("*", "", "/comparison/{userId}/comparison/changes?resultFileId={resultFileId}");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "PUT";
       $queryParams = array();
       $headerParams = array();
 
@@ -194,9 +197,8 @@ class ComparisonApi {
       if (! isset($body)) {
         $body = null;
       }
-  		$response = $this->apiClient->callAPI($resourcePath, $method,
-  		                                      $queryParams, $body,
-  		                                      $headerParams);
+  		$response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
 
 
       if(! $response){
@@ -217,11 +219,10 @@ class ComparisonApi {
 	 */
 
    public function GetDocumentDetails($userId, $guid) {
-
-  		//parse inputs
-  		$resourcePath = str_replace("*", "", "/comparison/{userId}/comparison/document?guid={guid}");
-  		$resourcePath = str_replace("{format}", "json", $resourcePath);
-  		$method = "GET";
+  	  //parse inputs
+  	  $resourcePath = str_replace("*", "", "/comparison/{userId}/comparison/document?guid={guid}");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "GET";
       $queryParams = array();
       $headerParams = array();
 
@@ -237,9 +238,8 @@ class ComparisonApi {
       if (! isset($body)) {
         $body = null;
       }
-  		$response = $this->apiClient->callAPI($resourcePath, $method,
-  		                                      $queryParams, $body,
-  		                                      $headerParams);
+  		$response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
 
 
       if(! $response){

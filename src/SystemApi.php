@@ -21,8 +21,18 @@
  */
 class SystemApi {
 
+	private $basePath = "https://api.groupdocs.com/v2.0";
+
 	function __construct($apiClient) {
 	  $this->apiClient = $apiClient;
+	}
+
+    public function setBasePath($basePath) {
+	  $this->basePath = $basePath;
+	}
+	  
+	public function getBasePath() {
+	  $this->basePath;
 	}
 
   /**
@@ -33,11 +43,10 @@ class SystemApi {
 	 */
 
    public function GetUserPlan($callerId) {
-
-  		//parse inputs
-  		$resourcePath = str_replace("*", "", "/system/{callerId}/plan");
-  		$resourcePath = str_replace("{format}", "json", $resourcePath);
-  		$method = "GET";
+  	  //parse inputs
+  	  $resourcePath = str_replace("*", "", "/system/{callerId}/plan");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "GET";
       $queryParams = array();
       $headerParams = array();
 
@@ -49,9 +58,8 @@ class SystemApi {
       if (! isset($body)) {
         $body = null;
       }
-  		$response = $this->apiClient->callAPI($resourcePath, $method,
-  		                                      $queryParams, $body,
-  		                                      $headerParams);
+  		$response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
 
 
       if(! $response){
@@ -71,11 +79,10 @@ class SystemApi {
 	 */
 
    public function GetUserSubscriptionPlan($callerId) {
-
-  		//parse inputs
-  		$resourcePath = str_replace("*", "", "/system/{callerId}/subscription");
-  		$resourcePath = str_replace("{format}", "json", $resourcePath);
-  		$method = "GET";
+  	  //parse inputs
+  	  $resourcePath = str_replace("*", "", "/system/{callerId}/subscription");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "GET";
       $queryParams = array();
       $headerParams = array();
 
@@ -87,9 +94,8 @@ class SystemApi {
       if (! isset($body)) {
         $body = null;
       }
-  		$response = $this->apiClient->callAPI($resourcePath, $method,
-  		                                      $queryParams, $body,
-  		                                      $headerParams);
+  		$response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
 
 
       if(! $response){
@@ -110,11 +116,10 @@ class SystemApi {
 	 */
 
    public function GetSubscriptionPlans($callerId, $family) {
-
-  		//parse inputs
-  		$resourcePath = str_replace("*", "", "/system/{callerId}/plans/{family}");
-  		$resourcePath = str_replace("{format}", "json", $resourcePath);
-  		$method = "GET";
+  	  //parse inputs
+  	  $resourcePath = str_replace("*", "", "/system/{callerId}/plans/{family}");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "GET";
       $queryParams = array();
       $headerParams = array();
 
@@ -130,9 +135,8 @@ class SystemApi {
       if (! isset($body)) {
         $body = null;
       }
-  		$response = $this->apiClient->callAPI($resourcePath, $method,
-  		                                      $queryParams, $body,
-  		                                      $headerParams);
+  		$response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
 
 
       if(! $response){
@@ -154,11 +158,10 @@ class SystemApi {
 	 */
 
    public function SetSubscriptionPlan($userId, $productId, $body) {
-
-  		//parse inputs
-  		$resourcePath = str_replace("*", "", "/system/{userId}/subscriptions/{productId}");
-  		$resourcePath = str_replace("{format}", "json", $resourcePath);
-  		$method = "PUT";
+  	  //parse inputs
+  	  $resourcePath = str_replace("*", "", "/system/{userId}/subscriptions/{productId}");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "PUT";
       $queryParams = array();
       $headerParams = array();
 
@@ -174,9 +177,8 @@ class SystemApi {
       if (! isset($body)) {
         $body = null;
       }
-  		$response = $this->apiClient->callAPI($resourcePath, $method,
-  		                                      $queryParams, $body,
-  		                                      $headerParams);
+  		$response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
 
 
       if(! $response){
@@ -196,11 +198,10 @@ class SystemApi {
 	 */
 
    public function GetCountries($callerId) {
-
-  		//parse inputs
-  		$resourcePath = str_replace("*", "", "/system/{callerId}/countries");
-  		$resourcePath = str_replace("{format}", "json", $resourcePath);
-  		$method = "GET";
+  	  //parse inputs
+  	  $resourcePath = str_replace("*", "", "/system/{callerId}/countries");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "GET";
       $queryParams = array();
       $headerParams = array();
 
@@ -212,9 +213,8 @@ class SystemApi {
       if (! isset($body)) {
         $body = null;
       }
-  		$response = $this->apiClient->callAPI($resourcePath, $method,
-  		                                      $queryParams, $body,
-  		                                      $headerParams);
+  		$response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
 
 
       if(! $response){
@@ -235,11 +235,10 @@ class SystemApi {
 	 */
 
    public function GetStates($callerId, $countryName) {
-
-  		//parse inputs
-  		$resourcePath = str_replace("*", "", "/system/{callerId}/countries/{countryName}/states");
-  		$resourcePath = str_replace("{format}", "json", $resourcePath);
-  		$method = "GET";
+  	  //parse inputs
+  	  $resourcePath = str_replace("*", "", "/system/{callerId}/countries/{countryName}/states");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "GET";
       $queryParams = array();
       $headerParams = array();
 
@@ -255,9 +254,8 @@ class SystemApi {
       if (! isset($body)) {
         $body = null;
       }
-  		$response = $this->apiClient->callAPI($resourcePath, $method,
-  		                                      $queryParams, $body,
-  		                                      $headerParams);
+  		$response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
 
 
       if(! $response){

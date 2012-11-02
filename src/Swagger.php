@@ -47,12 +47,10 @@ class APIClient {
 	public static $DELETE = "DELETE";
 
 	/**
-	 * @param string $apiKey your API key
-	 * @param string $apiServer the address of the API server
+	 * @param RequestSigner $requestSigner RequestSigner implementation or omit to use DefaultRequestSigner which do nothing
 	 */
-	function __construct($apiServer, $requestSigner) {
-		$this->signer = $requestSigner;
-		$this->apiServer = $apiServer;
+	function __construct($requestSigner = null) {
+		$this->signer = $requestSigner == null ? new DefaultRequestSigner() : $requestSigner;
 	}
 
 
@@ -64,7 +62,7 @@ class APIClient {
 	 * @param array $headerParams parameters to be place in request header
 	 * @return unknown
 	 */
-	public function callAPI($resourcePath, $method, $queryParams, $postData,
+	public function callAPI($apiServer, $resourcePath, $method, $queryParams, $postData,
 		$headerParams) {
 
 		$headers = array();
@@ -87,7 +85,7 @@ class APIClient {
 			$postData = json_encode($postData);
 		}
 
-		$url = $this->apiServer . $resourcePath;
+		$url = $apiServer . $resourcePath;
 
 		$timeoutSec = 0;
 		$curl = curl_init();

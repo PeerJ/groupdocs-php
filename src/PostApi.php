@@ -21,8 +21,18 @@
  */
 class PostApi {
 
+	private $basePath = "https://api.groupdocs.com/v2.0";
+
 	function __construct($apiClient) {
 	  $this->apiClient = $apiClient;
+	}
+
+    public function setBasePath($basePath) {
+	  $this->basePath = $basePath;
+	}
+	  
+	public function getBasePath() {
+	  $this->basePath;
 	}
 
   /**
@@ -35,11 +45,10 @@ class PostApi {
 	 */
 
    public function RenameByPost($userId, $fileId, $newName) {
-
-  		//parse inputs
-  		$resourcePath = str_replace("*", "", "/post/file.rename?user_id={userId}&amp;file_id={fileId}&amp;new_name={newName}");
-  		$resourcePath = str_replace("{format}", "json", $resourcePath);
-  		$method = "POST";
+  	  //parse inputs
+  	  $resourcePath = str_replace("*", "", "/post/file.rename?user_id={userId}&amp;file_id={fileId}&amp;new_name={newName}");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "POST";
       $queryParams = array();
       $headerParams = array();
 
@@ -59,9 +68,8 @@ class PostApi {
       if (! isset($body)) {
         $body = null;
       }
-  		$response = $this->apiClient->callAPI($resourcePath, $method,
-  		                                      $queryParams, $body,
-  		                                      $headerParams);
+  		$response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
 
 
       if(! $response){
@@ -82,11 +90,10 @@ class PostApi {
 	 */
 
    public function DeleteByPost($userId, $fileId) {
-
-  		//parse inputs
-  		$resourcePath = str_replace("*", "", "/post/file.delete?user_id={userId}&amp;file_id={fileId}");
-  		$resourcePath = str_replace("{format}", "json", $resourcePath);
-  		$method = "POST";
+  	  //parse inputs
+  	  $resourcePath = str_replace("*", "", "/post/file.delete?user_id={userId}&amp;file_id={fileId}");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "POST";
       $queryParams = array();
       $headerParams = array();
 
@@ -102,9 +109,8 @@ class PostApi {
       if (! isset($body)) {
         $body = null;
       }
-  		$response = $this->apiClient->callAPI($resourcePath, $method,
-  		                                      $queryParams, $body,
-  		                                      $headerParams);
+  		$response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
 
 
       if(! $response){
@@ -125,11 +131,10 @@ class PostApi {
 	 */
 
    public function DeleteFromFolderByPost($userId, $path) {
-
-  		//parse inputs
-  		$resourcePath = str_replace("*", "", "/post/file.delete.in?user_id={userId}&amp;path={path}");
-  		$resourcePath = str_replace("{format}", "json", $resourcePath);
-  		$method = "POST";
+  	  //parse inputs
+  	  $resourcePath = str_replace("*", "", "/post/file.delete.in?user_id={userId}&amp;path={path}");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "POST";
       $queryParams = array();
       $headerParams = array();
 
@@ -145,9 +150,8 @@ class PostApi {
       if (! isset($body)) {
         $body = null;
       }
-  		$response = $this->apiClient->callAPI($resourcePath, $method,
-  		                                      $queryParams, $body,
-  		                                      $headerParams);
+  		$response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
 
 
       if(! $response){
@@ -169,11 +173,10 @@ class PostApi {
 	 */
 
    public function CompressByPost($userId, $fileId, $archiveType) {
-
-  		//parse inputs
-  		$resourcePath = str_replace("*", "", "/post/file.compress?user_id={userId}&amp;file_id={fileId}&amp;archive_type={archiveType}");
-  		$resourcePath = str_replace("{format}", "json", $resourcePath);
-  		$method = "POST";
+  	  //parse inputs
+  	  $resourcePath = str_replace("*", "", "/post/file.compress?user_id={userId}&amp;file_id={fileId}&amp;archive_type={archiveType}");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "POST";
       $queryParams = array();
       $headerParams = array();
 
@@ -193,9 +196,8 @@ class PostApi {
       if (! isset($body)) {
         $body = null;
       }
-  		$response = $this->apiClient->callAPI($resourcePath, $method,
-  		                                      $queryParams, $body,
-  		                                      $headerParams);
+  		$response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
 
 
       if(! $response){

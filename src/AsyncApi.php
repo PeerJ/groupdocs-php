@@ -21,8 +21,18 @@
  */
 class AsyncApi {
 
+	private $basePath = "https://api.groupdocs.com/v2.0";
+
 	function __construct($apiClient) {
 	  $this->apiClient = $apiClient;
+	}
+
+    public function setBasePath($basePath) {
+	  $this->basePath = $basePath;
+	}
+	  
+	public function getBasePath() {
+	  $this->basePath;
 	}
 
   /**
@@ -34,11 +44,10 @@ class AsyncApi {
 	 */
 
    public function GetJob($userId, $jobId) {
-
-  		//parse inputs
-  		$resourcePath = str_replace("*", "", "/async/{userId}/jobs/{jobId}?format=xml");
-  		$resourcePath = str_replace("{format}", "json", $resourcePath);
-  		$method = "GET";
+  	  //parse inputs
+  	  $resourcePath = str_replace("*", "", "/async/{userId}/jobs/{jobId}?format=xml");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "GET";
       $queryParams = array();
       $headerParams = array();
 
@@ -54,9 +63,8 @@ class AsyncApi {
       if (! isset($body)) {
         $body = null;
       }
-  		$response = $this->apiClient->callAPI($resourcePath, $method,
-  		                                      $queryParams, $body,
-  		                                      $headerParams);
+  		$response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
 
 
       if(! $response){
@@ -77,11 +85,10 @@ class AsyncApi {
 	 */
 
    public function GetJobJson($userId, $jobId) {
-
-  		//parse inputs
-  		$resourcePath = str_replace("*", "", "/async/{userId}/jobs/{jobId}?format=json");
-  		$resourcePath = str_replace("{format}", "json", $resourcePath);
-  		$method = "GET";
+  	  //parse inputs
+  	  $resourcePath = str_replace("*", "", "/async/{userId}/jobs/{jobId}?format=json");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "GET";
       $queryParams = array();
       $headerParams = array();
 
@@ -97,9 +104,8 @@ class AsyncApi {
       if (! isset($body)) {
         $body = null;
       }
-  		$response = $this->apiClient->callAPI($resourcePath, $method,
-  		                                      $queryParams, $body,
-  		                                      $headerParams);
+  		$response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
 
 
       if(! $response){
@@ -121,11 +127,10 @@ class AsyncApi {
 	 */
 
    public function GetJobDocuments($userId, $jobId, $format=null) {
-
-  		//parse inputs
-  		$resourcePath = str_replace("*", "", "/async/{userId}/jobs/{jobId}/documents?format={format}");
-  		$resourcePath = str_replace("{format}", "json", $resourcePath);
-  		$method = "GET";
+  	  //parse inputs
+  	  $resourcePath = str_replace("*", "", "/async/{userId}/jobs/{jobId}/documents?format={format}");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "GET";
       $queryParams = array();
       $headerParams = array();
 
@@ -145,9 +150,8 @@ class AsyncApi {
       if (! isset($body)) {
         $body = null;
       }
-  		$response = $this->apiClient->callAPI($resourcePath, $method,
-  		                                      $queryParams, $body,
-  		                                      $headerParams);
+  		$response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
 
 
       if(! $response){
@@ -168,11 +172,10 @@ class AsyncApi {
 	 */
 
    public function CreateJob($userId, $body) {
-
-  		//parse inputs
-  		$resourcePath = str_replace("*", "", "/async/{userId}/jobs");
-  		$resourcePath = str_replace("{format}", "json", $resourcePath);
-  		$method = "POST";
+  	  //parse inputs
+  	  $resourcePath = str_replace("*", "", "/async/{userId}/jobs");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "POST";
       $queryParams = array();
       $headerParams = array();
 
@@ -184,9 +187,8 @@ class AsyncApi {
       if (! isset($body)) {
         $body = null;
       }
-  		$response = $this->apiClient->callAPI($resourcePath, $method,
-  		                                      $queryParams, $body,
-  		                                      $headerParams);
+  		$response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
 
 
       if(! $response){
@@ -207,11 +209,10 @@ class AsyncApi {
 	 */
 
    public function DeleteJob($userId, $jobGuid) {
-
-  		//parse inputs
-  		$resourcePath = str_replace("*", "", "/async/{userId}/jobs/{jobGuid}");
-  		$resourcePath = str_replace("{format}", "json", $resourcePath);
-  		$method = "DELETE";
+  	  //parse inputs
+  	  $resourcePath = str_replace("*", "", "/async/{userId}/jobs/{jobGuid}");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "DELETE";
       $queryParams = array();
       $headerParams = array();
 
@@ -227,9 +228,8 @@ class AsyncApi {
       if (! isset($body)) {
         $body = null;
       }
-  		$response = $this->apiClient->callAPI($resourcePath, $method,
-  		                                      $queryParams, $body,
-  		                                      $headerParams);
+  		$response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
 
 
       if(! $response){
@@ -253,11 +253,10 @@ class AsyncApi {
 	 */
 
    public function AddJobDocument($userId, $jobId, $fileId, $checkOwnership, $formats=null) {
-
-  		//parse inputs
-  		$resourcePath = str_replace("*", "", "/async/{userId}/jobs/{jobId}/files/{fileId}?check_ownership={checkOwnership}&amp;out_formats={formats}");
-  		$resourcePath = str_replace("{format}", "json", $resourcePath);
-  		$method = "PUT";
+  	  //parse inputs
+  	  $resourcePath = str_replace("*", "", "/async/{userId}/jobs/{jobId}/files/{fileId}?check_ownership={checkOwnership}&amp;out_formats={formats}");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "PUT";
       $queryParams = array();
       $headerParams = array();
 
@@ -285,9 +284,8 @@ class AsyncApi {
       if (! isset($body)) {
         $body = null;
       }
-  		$response = $this->apiClient->callAPI($resourcePath, $method,
-  		                                      $queryParams, $body,
-  		                                      $headerParams);
+  		$response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
 
 
       if(! $response){
@@ -309,11 +307,10 @@ class AsyncApi {
 	 */
 
    public function DeleteJobDocument($userId, $jobGuid, $documentId) {
-
-  		//parse inputs
-  		$resourcePath = str_replace("*", "", "/async/{userId}/jobs/{jobGuid}/documents/{documentId}");
-  		$resourcePath = str_replace("{format}", "json", $resourcePath);
-  		$method = "DELETE";
+  	  //parse inputs
+  	  $resourcePath = str_replace("*", "", "/async/{userId}/jobs/{jobGuid}/documents/{documentId}");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "DELETE";
       $queryParams = array();
       $headerParams = array();
 
@@ -333,9 +330,8 @@ class AsyncApi {
       if (! isset($body)) {
         $body = null;
       }
-  		$response = $this->apiClient->callAPI($resourcePath, $method,
-  		                                      $queryParams, $body,
-  		                                      $headerParams);
+  		$response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
 
 
       if(! $response){
@@ -358,11 +354,10 @@ class AsyncApi {
 	 */
 
    public function AddJobDocumentUrl($userId, $jobId, $absoluteUrl, $formats=null) {
-
-  		//parse inputs
-  		$resourcePath = str_replace("*", "", "/async/{userId}/jobs/{jobId}/urls?absolute_url={absoluteUrl}&amp;out_formats={formats}");
-  		$resourcePath = str_replace("{format}", "json", $resourcePath);
-  		$method = "PUT";
+  	  //parse inputs
+  	  $resourcePath = str_replace("*", "", "/async/{userId}/jobs/{jobId}/urls?absolute_url={absoluteUrl}&amp;out_formats={formats}");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "PUT";
       $queryParams = array();
       $headerParams = array();
 
@@ -386,9 +381,8 @@ class AsyncApi {
       if (! isset($body)) {
         $body = null;
       }
-  		$response = $this->apiClient->callAPI($resourcePath, $method,
-  		                                      $queryParams, $body,
-  		                                      $headerParams);
+  		$response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
 
 
       if(! $response){
@@ -410,11 +404,10 @@ class AsyncApi {
 	 */
 
    public function UpdateJob($userId, $jobId, $body) {
-
-  		//parse inputs
-  		$resourcePath = str_replace("*", "", "/async/{userId}/jobs/{jobId}");
-  		$resourcePath = str_replace("{format}", "json", $resourcePath);
-  		$method = "PUT";
+  	  //parse inputs
+  	  $resourcePath = str_replace("*", "", "/async/{userId}/jobs/{jobId}");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "PUT";
       $queryParams = array();
       $headerParams = array();
 
@@ -430,9 +423,8 @@ class AsyncApi {
       if (! isset($body)) {
         $body = null;
       }
-  		$response = $this->apiClient->callAPI($resourcePath, $method,
-  		                                      $queryParams, $body,
-  		                                      $headerParams);
+  		$response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
 
 
       if(! $response){
@@ -458,11 +450,10 @@ class AsyncApi {
 	 */
 
    public function GetJobs($userId, $pageIndex=null, $pageSize=null, $DateTime=null, $status=null, $actions=null, $excludedActions=null) {
-
-  		//parse inputs
-  		$resourcePath = str_replace("*", "", "/async/{userId}/jobs?page={pageIndex}&amp;count={pageSize}&amp;date={date}&amp;status={status}&amp;actions={actions}&amp;excluded_actions={excludedActions}");
-  		$resourcePath = str_replace("{format}", "json", $resourcePath);
-  		$method = "GET";
+  	  //parse inputs
+  	  $resourcePath = str_replace("*", "", "/async/{userId}/jobs?page={pageIndex}&amp;count={pageSize}&amp;date={date}&amp;status={status}&amp;actions={actions}&amp;excluded_actions={excludedActions}");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "GET";
       $queryParams = array();
       $headerParams = array();
 
@@ -498,9 +489,8 @@ class AsyncApi {
       if (! isset($body)) {
         $body = null;
       }
-  		$response = $this->apiClient->callAPI($resourcePath, $method,
-  		                                      $queryParams, $body,
-  		                                      $headerParams);
+  		$response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
 
 
       if(! $response){
@@ -526,11 +516,10 @@ class AsyncApi {
 	 */
 
    public function GetJobsDocuments($userId, $pageIndex=null, $pageSize=null, $actions=null, $excludedActions=null, $orderBy=null, $orderAsc=null) {
-
-  		//parse inputs
-  		$resourcePath = str_replace("*", "", "/async/{userId}/jobs/documents?page={pageIndex}&amp;count={pageSize}&amp;actions={actions}&amp;excluded_actions={excludedActions}&amp;order_by={orderBy}&amp;order_asc={orderAsc}");
-  		$resourcePath = str_replace("{format}", "json", $resourcePath);
-  		$method = "GET";
+  	  //parse inputs
+  	  $resourcePath = str_replace("*", "", "/async/{userId}/jobs/documents?page={pageIndex}&amp;count={pageSize}&amp;actions={actions}&amp;excluded_actions={excludedActions}&amp;order_by={orderBy}&amp;order_asc={orderAsc}");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "GET";
       $queryParams = array();
       $headerParams = array();
 
@@ -566,9 +555,8 @@ class AsyncApi {
       if (! isset($body)) {
         $body = null;
       }
-  		$response = $this->apiClient->callAPI($resourcePath, $method,
-  		                                      $queryParams, $body,
-  		                                      $headerParams);
+  		$response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
 
 
       if(! $response){
@@ -594,11 +582,10 @@ class AsyncApi {
 	 */
 
    public function Convert($userId, $fileId, $targetType=null, $emailResults=null, $description=null, $printScript=null, $callbackUrl=null) {
-
-  		//parse inputs
-  		$resourcePath = str_replace("*", "", "/async/{userId}/files/{fileId}?new_type={targetType}&amp;email_results={emailResults}&amp;new_description={description}&amp;print_script={printScript}&amp;callback={callbackUrl}");
-  		$resourcePath = str_replace("{format}", "json", $resourcePath);
-  		$method = "POST";
+  	  //parse inputs
+  	  $resourcePath = str_replace("*", "", "/async/{userId}/files/{fileId}?new_type={targetType}&amp;email_results={emailResults}&amp;new_description={description}&amp;print_script={printScript}&amp;callback={callbackUrl}");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "POST";
       $queryParams = array();
       $headerParams = array();
 
@@ -634,9 +621,8 @@ class AsyncApi {
       if (! isset($body)) {
         $body = null;
       }
-  		$response = $this->apiClient->callAPI($resourcePath, $method,
-  		                                      $queryParams, $body,
-  		                                      $headerParams);
+  		$response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
 
 
       if(! $response){

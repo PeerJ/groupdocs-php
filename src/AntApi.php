@@ -21,8 +21,18 @@
  */
 class AntApi {
 
+	private $basePath = "https://api.groupdocs.com/v2.0";
+
 	function __construct($apiClient) {
 	  $this->apiClient = $apiClient;
+	}
+
+    public function setBasePath($basePath) {
+	  $this->basePath = $basePath;
+	}
+	  
+	public function getBasePath() {
+	  $this->basePath;
 	}
 
   /**
@@ -35,11 +45,10 @@ class AntApi {
 	 */
 
    public function CreateAnnotation($userId, $fileId, $body) {
-
-  		//parse inputs
-  		$resourcePath = str_replace("*", "", "/ant/{userId}/files/{fileId}/annotations");
-  		$resourcePath = str_replace("{format}", "json", $resourcePath);
-  		$method = "POST";
+  	  //parse inputs
+  	  $resourcePath = str_replace("*", "", "/ant/{userId}/files/{fileId}/annotations");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "POST";
       $queryParams = array();
       $headerParams = array();
 
@@ -55,9 +64,8 @@ class AntApi {
       if (! isset($body)) {
         $body = null;
       }
-  		$response = $this->apiClient->callAPI($resourcePath, $method,
-  		                                      $queryParams, $body,
-  		                                      $headerParams);
+  		$response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
 
 
       if(! $response){
@@ -78,11 +86,10 @@ class AntApi {
 	 */
 
    public function ListAnnotations($userId, $fileId) {
-
-  		//parse inputs
-  		$resourcePath = str_replace("*", "", "/ant/{userId}/files/{fileId}/annotations");
-  		$resourcePath = str_replace("{format}", "json", $resourcePath);
-  		$method = "GET";
+  	  //parse inputs
+  	  $resourcePath = str_replace("*", "", "/ant/{userId}/files/{fileId}/annotations");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "GET";
       $queryParams = array();
       $headerParams = array();
 
@@ -98,9 +105,8 @@ class AntApi {
       if (! isset($body)) {
         $body = null;
       }
-  		$response = $this->apiClient->callAPI($resourcePath, $method,
-  		                                      $queryParams, $body,
-  		                                      $headerParams);
+  		$response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
 
 
       if(! $response){
@@ -121,11 +127,10 @@ class AntApi {
 	 */
 
    public function DeleteAnnotation($userId, $annotationId) {
-
-  		//parse inputs
-  		$resourcePath = str_replace("*", "", "/ant/{userId}/annotations/{annotationId}");
-  		$resourcePath = str_replace("{format}", "json", $resourcePath);
-  		$method = "DELETE";
+  	  //parse inputs
+  	  $resourcePath = str_replace("*", "", "/ant/{userId}/annotations/{annotationId}");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "DELETE";
       $queryParams = array();
       $headerParams = array();
 
@@ -141,9 +146,8 @@ class AntApi {
       if (! isset($body)) {
         $body = null;
       }
-  		$response = $this->apiClient->callAPI($resourcePath, $method,
-  		                                      $queryParams, $body,
-  		                                      $headerParams);
+  		$response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
 
 
       if(! $response){
@@ -165,11 +169,10 @@ class AntApi {
 	 */
 
    public function CreateAnnotationReply($userId, $annotationId, $body) {
-
-  		//parse inputs
-  		$resourcePath = str_replace("*", "", "/ant/{userId}/annotations/{annotationId}/replies");
-  		$resourcePath = str_replace("{format}", "json", $resourcePath);
-  		$method = "POST";
+  	  //parse inputs
+  	  $resourcePath = str_replace("*", "", "/ant/{userId}/annotations/{annotationId}/replies");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "POST";
       $queryParams = array();
       $headerParams = array();
 
@@ -185,9 +188,8 @@ class AntApi {
       if (! isset($body)) {
         $body = null;
       }
-  		$response = $this->apiClient->callAPI($resourcePath, $method,
-  		                                      $queryParams, $body,
-  		                                      $headerParams);
+  		$response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
 
 
       if(! $response){
@@ -209,11 +211,10 @@ class AntApi {
 	 */
 
    public function EditAnnotationReply($userId, $replyGuid, $body) {
-
-  		//parse inputs
-  		$resourcePath = str_replace("*", "", "/ant/{userId}/replies/{replyGuid}");
-  		$resourcePath = str_replace("{format}", "json", $resourcePath);
-  		$method = "PUT";
+  	  //parse inputs
+  	  $resourcePath = str_replace("*", "", "/ant/{userId}/replies/{replyGuid}");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "PUT";
       $queryParams = array();
       $headerParams = array();
 
@@ -229,9 +230,8 @@ class AntApi {
       if (! isset($body)) {
         $body = null;
       }
-  		$response = $this->apiClient->callAPI($resourcePath, $method,
-  		                                      $queryParams, $body,
-  		                                      $headerParams);
+  		$response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
 
 
       if(! $response){
@@ -252,11 +252,10 @@ class AntApi {
 	 */
 
    public function DeleteAnnotationReply($userId, $replyGuid) {
-
-  		//parse inputs
-  		$resourcePath = str_replace("*", "", "/ant/{userId}/replies/{replyGuid}");
-  		$resourcePath = str_replace("{format}", "json", $resourcePath);
-  		$method = "DELETE";
+  	  //parse inputs
+  	  $resourcePath = str_replace("*", "", "/ant/{userId}/replies/{replyGuid}");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "DELETE";
       $queryParams = array();
       $headerParams = array();
 
@@ -272,9 +271,8 @@ class AntApi {
       if (! isset($body)) {
         $body = null;
       }
-  		$response = $this->apiClient->callAPI($resourcePath, $method,
-  		                                      $queryParams, $body,
-  		                                      $headerParams);
+  		$response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
 
 
       if(! $response){
@@ -296,11 +294,10 @@ class AntApi {
 	 */
 
    public function ListAnnotationReplies($userId, $annotationId, $after) {
-
-  		//parse inputs
-  		$resourcePath = str_replace("*", "", "/ant/{userId}/annotations/{annotationId}/replies?after={after}");
-  		$resourcePath = str_replace("{format}", "json", $resourcePath);
-  		$method = "GET";
+  	  //parse inputs
+  	  $resourcePath = str_replace("*", "", "/ant/{userId}/annotations/{annotationId}/replies?after={after}");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "GET";
       $queryParams = array();
       $headerParams = array();
 
@@ -320,9 +317,8 @@ class AntApi {
       if (! isset($body)) {
         $body = null;
       }
-  		$response = $this->apiClient->callAPI($resourcePath, $method,
-  		                                      $queryParams, $body,
-  		                                      $headerParams);
+  		$response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
 
 
       if(! $response){
@@ -345,11 +341,10 @@ class AntApi {
 	 */
 
    public function SetAnnotationCollaborators($userId, $fileId, $version, $body=null) {
-
-  		//parse inputs
-  		$resourcePath = str_replace("*", "", "/ant/{userId}/files/{fileId}/version/{version}/collaborators");
-  		$resourcePath = str_replace("{format}", "json", $resourcePath);
-  		$method = "PUT";
+  	  //parse inputs
+  	  $resourcePath = str_replace("*", "", "/ant/{userId}/files/{fileId}/version/{version}/collaborators");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "PUT";
       $queryParams = array();
       $headerParams = array();
 
@@ -369,9 +364,8 @@ class AntApi {
       if (! isset($body)) {
         $body = null;
       }
-  		$response = $this->apiClient->callAPI($resourcePath, $method,
-  		                                      $queryParams, $body,
-  		                                      $headerParams);
+  		$response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
 
 
       if(! $response){
@@ -392,11 +386,10 @@ class AntApi {
 	 */
 
    public function GetAnnotationCollaborators($userId, $fileId) {
-
-  		//parse inputs
-  		$resourcePath = str_replace("*", "", "/ant/{userId}/files/{fileId}/collaborators");
-  		$resourcePath = str_replace("{format}", "json", $resourcePath);
-  		$method = "GET";
+  	  //parse inputs
+  	  $resourcePath = str_replace("*", "", "/ant/{userId}/files/{fileId}/collaborators");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "GET";
       $queryParams = array();
       $headerParams = array();
 
@@ -412,9 +405,8 @@ class AntApi {
       if (! isset($body)) {
         $body = null;
       }
-  		$response = $this->apiClient->callAPI($resourcePath, $method,
-  		                                      $queryParams, $body,
-  		                                      $headerParams);
+  		$response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
 
 
       if(! $response){
@@ -436,11 +428,10 @@ class AntApi {
 	 */
 
    public function AddAnnotationCollaborator($userId, $fileId, $body=null) {
-
-  		//parse inputs
-  		$resourcePath = str_replace("*", "", "/ant/{userId}/files/{fileId}/collaborators");
-  		$resourcePath = str_replace("{format}", "json", $resourcePath);
-  		$method = "POST";
+  	  //parse inputs
+  	  $resourcePath = str_replace("*", "", "/ant/{userId}/files/{fileId}/collaborators");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "POST";
       $queryParams = array();
       $headerParams = array();
 
@@ -456,9 +447,8 @@ class AntApi {
       if (! isset($body)) {
         $body = null;
       }
-  		$response = $this->apiClient->callAPI($resourcePath, $method,
-  		                                      $queryParams, $body,
-  		                                      $headerParams);
+  		$response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
 
 
       if(! $response){
@@ -478,11 +468,10 @@ class AntApi {
 	 */
 
    public function GetReviewerContacts($userId) {
-
-  		//parse inputs
-  		$resourcePath = str_replace("*", "", "/ant/{userId}/contacts");
-  		$resourcePath = str_replace("{format}", "json", $resourcePath);
-  		$method = "GET";
+  	  //parse inputs
+  	  $resourcePath = str_replace("*", "", "/ant/{userId}/contacts");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "GET";
       $queryParams = array();
       $headerParams = array();
 
@@ -494,9 +483,8 @@ class AntApi {
       if (! isset($body)) {
         $body = null;
       }
-  		$response = $this->apiClient->callAPI($resourcePath, $method,
-  		                                      $queryParams, $body,
-  		                                      $headerParams);
+  		$response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
 
 
       if(! $response){
@@ -516,11 +504,10 @@ class AntApi {
 	 */
 
    public function SetReviewerContacts($userId) {
-
-  		//parse inputs
-  		$resourcePath = str_replace("*", "", "/ant/{userId}/reviewerContacts");
-  		$resourcePath = str_replace("{format}", "json", $resourcePath);
-  		$method = "PUT";
+  	  //parse inputs
+  	  $resourcePath = str_replace("*", "", "/ant/{userId}/reviewerContacts");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "PUT";
       $queryParams = array();
       $headerParams = array();
 
@@ -532,9 +519,8 @@ class AntApi {
       if (! isset($body)) {
         $body = null;
       }
-  		$response = $this->apiClient->callAPI($resourcePath, $method,
-  		                                      $queryParams, $body,
-  		                                      $headerParams);
+  		$response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
 
 
       if(! $response){
@@ -556,11 +542,10 @@ class AntApi {
 	 */
 
    public function MoveAnnotation($userId, $annotationId, $body) {
-
-  		//parse inputs
-  		$resourcePath = str_replace("*", "", "/ant/{userId}/annotations/{annotationId}/position");
-  		$resourcePath = str_replace("{format}", "json", $resourcePath);
-  		$method = "PUT";
+  	  //parse inputs
+  	  $resourcePath = str_replace("*", "", "/ant/{userId}/annotations/{annotationId}/position");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "PUT";
       $queryParams = array();
       $headerParams = array();
 
@@ -576,9 +561,8 @@ class AntApi {
       if (! isset($body)) {
         $body = null;
       }
-  		$response = $this->apiClient->callAPI($resourcePath, $method,
-  		                                      $queryParams, $body,
-  		                                      $headerParams);
+  		$response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
 
 
       if(! $response){
@@ -600,11 +584,10 @@ class AntApi {
 	 */
 
    public function SetAnnotationAccess($userId, $annotationId, $body) {
-
-  		//parse inputs
-  		$resourcePath = str_replace("*", "", "/ant/{userId}/annotations/{annotationId}/annotationAccess");
-  		$resourcePath = str_replace("{format}", "json", $resourcePath);
-  		$method = "PUT";
+  	  //parse inputs
+  	  $resourcePath = str_replace("*", "", "/ant/{userId}/annotations/{annotationId}/annotationAccess");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "PUT";
       $queryParams = array();
       $headerParams = array();
 
@@ -620,9 +603,8 @@ class AntApi {
       if (! isset($body)) {
         $body = null;
       }
-  		$response = $this->apiClient->callAPI($resourcePath, $method,
-  		                                      $queryParams, $body,
-  		                                      $headerParams);
+  		$response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
 
 
       if(! $response){
@@ -644,11 +626,10 @@ class AntApi {
 	 */
 
    public function SetReviewerRights($userId, $fileId, $body) {
-
-  		//parse inputs
-  		$resourcePath = str_replace("*", "", "/ant/{userId}/files/{fileId}/reviewerRights");
-  		$resourcePath = str_replace("{format}", "json", $resourcePath);
-  		$method = "PUT";
+  	  //parse inputs
+  	  $resourcePath = str_replace("*", "", "/ant/{userId}/files/{fileId}/reviewerRights");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "PUT";
       $queryParams = array();
       $headerParams = array();
 
@@ -664,9 +645,8 @@ class AntApi {
       if (! isset($body)) {
         $body = null;
       }
-  		$response = $this->apiClient->callAPI($resourcePath, $method,
-  		                                      $queryParams, $body,
-  		                                      $headerParams);
+  		$response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
 
 
       if(! $response){
@@ -688,11 +668,10 @@ class AntApi {
 	 */
 
    public function SetSharedLinkAccessRights($userId, $fileId, $body) {
-
-  		//parse inputs
-  		$resourcePath = str_replace("*", "", "/ant/{userId}/files/{fileId}/sharedLinkAccessRights");
-  		$resourcePath = str_replace("{format}", "json", $resourcePath);
-  		$method = "PUT";
+  	  //parse inputs
+  	  $resourcePath = str_replace("*", "", "/ant/{userId}/files/{fileId}/sharedLinkAccessRights");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "PUT";
       $queryParams = array();
       $headerParams = array();
 
@@ -708,9 +687,8 @@ class AntApi {
       if (! isset($body)) {
         $body = null;
       }
-  		$response = $this->apiClient->callAPI($resourcePath, $method,
-  		                                      $queryParams, $body,
-  		                                      $headerParams);
+  		$response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
 
 
       if(! $response){

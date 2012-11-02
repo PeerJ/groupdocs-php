@@ -21,8 +21,18 @@
  */
 class SignatureApi {
 
+	private $basePath = "https://api.groupdocs.com/v2.0";
+
 	function __construct($apiClient) {
 	  $this->apiClient = $apiClient;
+	}
+
+    public function setBasePath($basePath) {
+	  $this->basePath = $basePath;
+	}
+	  
+	public function getBasePath() {
+	  $this->basePath;
 	}
 
   /**
@@ -35,11 +45,10 @@ class SignatureApi {
 	 */
 
    public function DeleteSignatureTemplateDocument($userId, $templateId, $documentId) {
-
-  		//parse inputs
-  		$resourcePath = str_replace("*", "", "/signature/{userId}/templates/{templateId}/documents/{documentId}");
-  		$resourcePath = str_replace("{format}", "json", $resourcePath);
-  		$method = "DELETE";
+  	  //parse inputs
+  	  $resourcePath = str_replace("*", "", "/signature/{userId}/templates/{templateId}/documents/{documentId}");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "DELETE";
       $queryParams = array();
       $headerParams = array();
 
@@ -59,9 +68,8 @@ class SignatureApi {
       if (! isset($body)) {
         $body = null;
       }
-  		$response = $this->apiClient->callAPI($resourcePath, $method,
-  		                                      $queryParams, $body,
-  		                                      $headerParams);
+  		$response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
 
 
       if(! $response){
@@ -86,11 +94,10 @@ class SignatureApi {
 	 */
 
    public function AddSignatureTemplateField($userId, $templateId, $documentId, $recipientId, $fieldId, $body=null) {
-
-  		//parse inputs
-  		$resourcePath = str_replace("*", "", "/signature/{userId}/templates/{templateId}/documents/{documentId}/recipient/{recipientId}/field/{fieldId}");
-  		$resourcePath = str_replace("{format}", "json", $resourcePath);
-  		$method = "POST";
+  	  //parse inputs
+  	  $resourcePath = str_replace("*", "", "/signature/{userId}/templates/{templateId}/documents/{documentId}/recipient/{recipientId}/field/{fieldId}");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "POST";
       $queryParams = array();
       $headerParams = array();
 
@@ -118,9 +125,8 @@ class SignatureApi {
       if (! isset($body)) {
         $body = null;
       }
-  		$response = $this->apiClient->callAPI($resourcePath, $method,
-  		                                      $queryParams, $body,
-  		                                      $headerParams);
+  		$response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
 
 
       if(! $response){
@@ -144,11 +150,10 @@ class SignatureApi {
 	 */
 
    public function ModifySignatureTemplateField($userId, $templateId, $documentId, $fieldId, $body=null) {
-
-  		//parse inputs
-  		$resourcePath = str_replace("*", "", "/signature/{userId}/templates/{templateId}/documents/{documentId}/field/{fieldId}");
-  		$resourcePath = str_replace("{format}", "json", $resourcePath);
-  		$method = "PUT";
+  	  //parse inputs
+  	  $resourcePath = str_replace("*", "", "/signature/{userId}/templates/{templateId}/documents/{documentId}/field/{fieldId}");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "PUT";
       $queryParams = array();
       $headerParams = array();
 
@@ -172,9 +177,8 @@ class SignatureApi {
       if (! isset($body)) {
         $body = null;
       }
-  		$response = $this->apiClient->callAPI($resourcePath, $method,
-  		                                      $queryParams, $body,
-  		                                      $headerParams);
+  		$response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
 
 
       if(! $response){
@@ -197,11 +201,10 @@ class SignatureApi {
 	 */
 
    public function DeleteSignatureTemplateFieldLocation($userId, $templateId, $fieldId, $locationId) {
-
-  		//parse inputs
-  		$resourcePath = str_replace("*", "", "/signature/{userId}/templates/{templateId}/fields/{fieldId}/locations/{locationId}");
-  		$resourcePath = str_replace("{format}", "json", $resourcePath);
-  		$method = "DELETE";
+  	  //parse inputs
+  	  $resourcePath = str_replace("*", "", "/signature/{userId}/templates/{templateId}/fields/{fieldId}/locations/{locationId}");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "DELETE";
       $queryParams = array();
       $headerParams = array();
 
@@ -225,9 +228,8 @@ class SignatureApi {
       if (! isset($body)) {
         $body = null;
       }
-  		$response = $this->apiClient->callAPI($resourcePath, $method,
-  		                                      $queryParams, $body,
-  		                                      $headerParams);
+  		$response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
 
 
       if(! $response){
@@ -253,11 +255,10 @@ class SignatureApi {
 	 */
 
    public function ModifySignatureTemplateFieldLocation($userId, $templateId, $documentId, $recipientId, $fieldId, $locationId, $body=null) {
-
-  		//parse inputs
-  		$resourcePath = str_replace("*", "", "/signature/{userId}/templates/{templateId}/documents/{documentId}/recipient/{recipientId}/fields/{fieldId}/locations/{locationId}");
-  		$resourcePath = str_replace("{format}", "json", $resourcePath);
-  		$method = "PUT";
+  	  //parse inputs
+  	  $resourcePath = str_replace("*", "", "/signature/{userId}/templates/{templateId}/documents/{documentId}/recipient/{recipientId}/fields/{fieldId}/locations/{locationId}");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "PUT";
       $queryParams = array();
       $headerParams = array();
 
@@ -289,9 +290,8 @@ class SignatureApi {
       if (! isset($body)) {
         $body = null;
       }
-  		$response = $this->apiClient->callAPI($resourcePath, $method,
-  		                                      $queryParams, $body,
-  		                                      $headerParams);
+  		$response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
 
 
       if(! $response){
@@ -314,11 +314,10 @@ class SignatureApi {
 	 */
 
    public function GetSignatureTemplateFields($userId, $templateId, $documentId, $recipientId) {
-
-  		//parse inputs
-  		$resourcePath = str_replace("*", "", "/signature/{userId}/templates/{templateId}/fields?document={documentId}&amp;recipient={recipientId}");
-  		$resourcePath = str_replace("{format}", "json", $resourcePath);
-  		$method = "GET";
+  	  //parse inputs
+  	  $resourcePath = str_replace("*", "", "/signature/{userId}/templates/{templateId}/fields?document={documentId}&amp;recipient={recipientId}");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "GET";
       $queryParams = array();
       $headerParams = array();
 
@@ -342,9 +341,8 @@ class SignatureApi {
       if (! isset($body)) {
         $body = null;
       }
-  		$response = $this->apiClient->callAPI($resourcePath, $method,
-  		                                      $queryParams, $body,
-  		                                      $headerParams);
+  		$response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
 
 
       if(! $response){
@@ -366,11 +364,10 @@ class SignatureApi {
 	 */
 
    public function DeleteSignatureTemplateField($userId, $templateId, $fieldId) {
-
-  		//parse inputs
-  		$resourcePath = str_replace("*", "", "/signature/{userId}/templates/{templateId}/fields/{fieldId}");
-  		$resourcePath = str_replace("{format}", "json", $resourcePath);
-  		$method = "DELETE";
+  	  //parse inputs
+  	  $resourcePath = str_replace("*", "", "/signature/{userId}/templates/{templateId}/fields/{fieldId}");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "DELETE";
       $queryParams = array();
       $headerParams = array();
 
@@ -390,9 +387,8 @@ class SignatureApi {
       if (! isset($body)) {
         $body = null;
       }
-  		$response = $this->apiClient->callAPI($resourcePath, $method,
-  		                                      $queryParams, $body,
-  		                                      $headerParams);
+  		$response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
 
 
       if(! $response){
@@ -415,11 +411,10 @@ class SignatureApi {
 	 */
 
    public function GetSignatures($userId, $page=null, $name=null, $records=null) {
-
-  		//parse inputs
-  		$resourcePath = str_replace("*", "", "/signature/{userId}/signatures?records={count}&amp;page={page}&amp;name={name}");
-  		$resourcePath = str_replace("{format}", "json", $resourcePath);
-  		$method = "GET";
+  	  //parse inputs
+  	  $resourcePath = str_replace("*", "", "/signature/{userId}/signatures?records={count}&amp;page={page}&amp;name={name}");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "GET";
       $queryParams = array();
       $headerParams = array();
 
@@ -440,9 +435,8 @@ class SignatureApi {
       if (! isset($body)) {
         $body = null;
       }
-  		$response = $this->apiClient->callAPI($resourcePath, $method,
-  		                                      $queryParams, $body,
-  		                                      $headerParams);
+  		$response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
 
 
       if(! $response){
@@ -463,11 +457,10 @@ class SignatureApi {
 	 */
 
    public function DeleteSignature($userId, $signatureId) {
-
-  		//parse inputs
-  		$resourcePath = str_replace("*", "", "/signature/{userId}/signatures/{signatureId}");
-  		$resourcePath = str_replace("{format}", "json", $resourcePath);
-  		$method = "DELETE";
+  	  //parse inputs
+  	  $resourcePath = str_replace("*", "", "/signature/{userId}/signatures/{signatureId}");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "DELETE";
       $queryParams = array();
       $headerParams = array();
 
@@ -483,9 +476,8 @@ class SignatureApi {
       if (! isset($body)) {
         $body = null;
       }
-  		$response = $this->apiClient->callAPI($resourcePath, $method,
-  		                                      $queryParams, $body,
-  		                                      $headerParams);
+  		$response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
 
 
       if(! $response){
@@ -507,11 +499,10 @@ class SignatureApi {
 	 */
 
    public function CreateSignature($userId, $name, $body=null) {
-
-  		//parse inputs
-  		$resourcePath = str_replace("*", "", "/signature/{userId}/signature?name={name}");
-  		$resourcePath = str_replace("{format}", "json", $resourcePath);
-  		$method = "POST";
+  	  //parse inputs
+  	  $resourcePath = str_replace("*", "", "/signature/{userId}/signature?name={name}");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "POST";
       $queryParams = array();
       $headerParams = array();
 
@@ -526,9 +517,8 @@ class SignatureApi {
       if (! isset($body)) {
         $body = null;
       }
-  		$response = $this->apiClient->callAPI($resourcePath, $method,
-  		                                      $queryParams, $body,
-  		                                      $headerParams);
+  		$response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
 
 
       if(! $response){
@@ -553,11 +543,10 @@ class SignatureApi {
 	 */
 
    public function FillEnvelopeField($userId, $envelopeId, $documentId, $recipientId, $fieldId, $body=null) {
-
-  		//parse inputs
-  		$resourcePath = str_replace("*", "", "/signature/{userId}/envelopes/{envelopeId}/documents/{documentId}/recipient/{recipientId}/field/{fieldId}?signatureId={signatureId}");
-  		$resourcePath = str_replace("{format}", "json", $resourcePath);
-  		$method = "PUT";
+  	  //parse inputs
+  	  $resourcePath = str_replace("*", "", "/signature/{userId}/envelopes/{envelopeId}/documents/{documentId}/recipient/{recipientId}/field/{fieldId}?signatureId={signatureId}");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "PUT";
       $queryParams = array();
       $headerParams = array();
 
@@ -585,9 +574,8 @@ class SignatureApi {
       if (! isset($body)) {
         $body = null;
       }
-  		$response = $this->apiClient->callAPI($resourcePath, $method,
-  		                                      $queryParams, $body,
-  		                                      $headerParams);
+  		$response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
 
 
       if(! $response){
@@ -609,11 +597,10 @@ class SignatureApi {
 	 */
 
    public function SignEnvelope($userId, $envelopeId, $recipientId) {
-
-  		//parse inputs
-  		$resourcePath = str_replace("*", "", "/signature/{userId}/envelopes/{envelopeId}/recipient/{recipientId}/sign");
-  		$resourcePath = str_replace("{format}", "json", $resourcePath);
-  		$method = "PUT";
+  	  //parse inputs
+  	  $resourcePath = str_replace("*", "", "/signature/{userId}/envelopes/{envelopeId}/recipient/{recipientId}/sign");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "PUT";
       $queryParams = array();
       $headerParams = array();
 
@@ -633,9 +620,8 @@ class SignatureApi {
       if (! isset($body)) {
         $body = null;
       }
-  		$response = $this->apiClient->callAPI($resourcePath, $method,
-  		                                      $queryParams, $body,
-  		                                      $headerParams);
+  		$response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
 
 
       if(! $response){
@@ -657,11 +643,10 @@ class SignatureApi {
 	 */
 
    public function DeclineEnvelope($userId, $envelopeId, $recipientId) {
-
-  		//parse inputs
-  		$resourcePath = str_replace("*", "", "/signature/{userId}/envelopes/{envelopeId}/recipient/{recipientId}/decline");
-  		$resourcePath = str_replace("{format}", "json", $resourcePath);
-  		$method = "PUT";
+  	  //parse inputs
+  	  $resourcePath = str_replace("*", "", "/signature/{userId}/envelopes/{envelopeId}/recipient/{recipientId}/decline");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "PUT";
       $queryParams = array();
       $headerParams = array();
 
@@ -681,9 +666,8 @@ class SignatureApi {
       if (! isset($body)) {
         $body = null;
       }
-  		$response = $this->apiClient->callAPI($resourcePath, $method,
-  		                                      $queryParams, $body,
-  		                                      $headerParams);
+  		$response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
 
 
       if(! $response){
@@ -708,11 +692,10 @@ class SignatureApi {
 	 */
 
    public function DelegateEnvelopeRecipient($userId, $envelopeId, $recipientId, $email, $firstname, $lastname) {
-
-  		//parse inputs
-  		$resourcePath = str_replace("*", "", "/signature/{userId}/envelopes/{envelopeId}/recipient/{recipientId}/delegate?email={recipientEmail}&amp;firstname={recipientFirstName}&amp;lastname={recipientLastName}");
-  		$resourcePath = str_replace("{format}", "json", $resourcePath);
-  		$method = "POST";
+  	  //parse inputs
+  	  $resourcePath = str_replace("*", "", "/signature/{userId}/envelopes/{envelopeId}/recipient/{recipientId}/delegate?email={recipientEmail}&amp;firstname={recipientFirstName}&amp;lastname={recipientLastName}");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "POST";
       $queryParams = array();
       $headerParams = array();
 
@@ -741,9 +724,8 @@ class SignatureApi {
       if (! isset($body)) {
         $body = null;
       }
-  		$response = $this->apiClient->callAPI($resourcePath, $method,
-  		                                      $queryParams, $body,
-  		                                      $headerParams);
+  		$response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
 
 
       if(! $response){
@@ -764,11 +746,10 @@ class SignatureApi {
 	 */
 
    public function AddContact($userId, $body) {
-
-  		//parse inputs
-  		$resourcePath = str_replace("*", "", "/signature/{userId}/contact");
-  		$resourcePath = str_replace("{format}", "json", $resourcePath);
-  		$method = "POST";
+  	  //parse inputs
+  	  $resourcePath = str_replace("*", "", "/signature/{userId}/contact");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "POST";
       $queryParams = array();
       $headerParams = array();
 
@@ -780,9 +761,8 @@ class SignatureApi {
       if (! isset($body)) {
         $body = null;
       }
-  		$response = $this->apiClient->callAPI($resourcePath, $method,
-  		                                      $queryParams, $body,
-  		                                      $headerParams);
+  		$response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
 
 
       if(! $response){
@@ -804,11 +784,10 @@ class SignatureApi {
 	 */
 
    public function ModifyContact($userId, $contactId, $body=null) {
-
-  		//parse inputs
-  		$resourcePath = str_replace("*", "", "/signature/{userId}/contacts/{contactId}");
-  		$resourcePath = str_replace("{format}", "json", $resourcePath);
-  		$method = "POST";
+  	  //parse inputs
+  	  $resourcePath = str_replace("*", "", "/signature/{userId}/contacts/{contactId}");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "POST";
       $queryParams = array();
       $headerParams = array();
 
@@ -824,9 +803,8 @@ class SignatureApi {
       if (! isset($body)) {
         $body = null;
       }
-  		$response = $this->apiClient->callAPI($resourcePath, $method,
-  		                                      $queryParams, $body,
-  		                                      $headerParams);
+  		$response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
 
 
       if(! $response){
@@ -851,11 +829,10 @@ class SignatureApi {
 	 */
 
    public function GetContacts($userId, $page=null, $firstName=null, $lastName=null, $email=null, $records=null) {
-
-  		//parse inputs
-  		$resourcePath = str_replace("*", "", "/signature/{userId}/contacts?firstName={firstName}&amp;lastName={lastName}&amp;email={email}&amp;records={count}&amp;page={page}");
-  		$resourcePath = str_replace("{format}", "json", $resourcePath);
-  		$method = "GET";
+  	  //parse inputs
+  	  $resourcePath = str_replace("*", "", "/signature/{userId}/contacts?firstName={firstName}&amp;lastName={lastName}&amp;email={email}&amp;records={count}&amp;page={page}");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "GET";
       $queryParams = array();
       $headerParams = array();
 
@@ -882,9 +859,8 @@ class SignatureApi {
       if (! isset($body)) {
         $body = null;
       }
-  		$response = $this->apiClient->callAPI($resourcePath, $method,
-  		                                      $queryParams, $body,
-  		                                      $headerParams);
+  		$response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
 
 
       if(! $response){
@@ -905,11 +881,10 @@ class SignatureApi {
 	 */
 
    public function DeleteContact($userId, $contactId) {
-
-  		//parse inputs
-  		$resourcePath = str_replace("*", "", "/signature/{userId}/contacts/{contactId}");
-  		$resourcePath = str_replace("{format}", "json", $resourcePath);
-  		$method = "DELETE";
+  	  //parse inputs
+  	  $resourcePath = str_replace("*", "", "/signature/{userId}/contacts/{contactId}");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "DELETE";
       $queryParams = array();
       $headerParams = array();
 
@@ -925,9 +900,8 @@ class SignatureApi {
       if (! isset($body)) {
         $body = null;
       }
-  		$response = $this->apiClient->callAPI($resourcePath, $method,
-  		                                      $queryParams, $body,
-  		                                      $headerParams);
+  		$response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
 
 
       if(! $response){
@@ -948,11 +922,10 @@ class SignatureApi {
 	 */
 
    public function ImportContacts($userId, $body=null) {
-
-  		//parse inputs
-  		$resourcePath = str_replace("*", "", "/signature/{userId}/contacts");
-  		$resourcePath = str_replace("{format}", "json", $resourcePath);
-  		$method = "POST";
+  	  //parse inputs
+  	  $resourcePath = str_replace("*", "", "/signature/{userId}/contacts");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "POST";
       $queryParams = array();
       $headerParams = array();
 
@@ -964,9 +937,8 @@ class SignatureApi {
       if (! isset($body)) {
         $body = null;
       }
-  		$response = $this->apiClient->callAPI($resourcePath, $method,
-  		                                      $queryParams, $body,
-  		                                      $headerParams);
+  		$response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
 
 
       if(! $response){
@@ -987,11 +959,10 @@ class SignatureApi {
 	 */
 
    public function GetSignatureEnvelopeResources($userId, $statusIds) {
-
-  		//parse inputs
-  		$resourcePath = str_replace("*", "", "/signature/{userId}/envelopes/resources?statusIds={statusIds}");
-  		$resourcePath = str_replace("{format}", "json", $resourcePath);
-  		$method = "GET";
+  	  //parse inputs
+  	  $resourcePath = str_replace("*", "", "/signature/{userId}/envelopes/resources?statusIds={statusIds}");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "GET";
       $queryParams = array();
       $headerParams = array();
 
@@ -1007,9 +978,8 @@ class SignatureApi {
       if (! isset($body)) {
         $body = null;
       }
-  		$response = $this->apiClient->callAPI($resourcePath, $method,
-  		                                      $queryParams, $body,
-  		                                      $headerParams);
+  		$response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
 
 
       if(! $response){
@@ -1030,11 +1000,10 @@ class SignatureApi {
 	 */
 
    public function AddContactIntegration($userId, $body=null) {
-
-  		//parse inputs
-  		$resourcePath = str_replace("*", "", "/signature/{userId}/integration");
-  		$resourcePath = str_replace("{format}", "json", $resourcePath);
-  		$method = "POST";
+  	  //parse inputs
+  	  $resourcePath = str_replace("*", "", "/signature/{userId}/integration");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "POST";
       $queryParams = array();
       $headerParams = array();
 
@@ -1046,9 +1015,8 @@ class SignatureApi {
       if (! isset($body)) {
         $body = null;
       }
-  		$response = $this->apiClient->callAPI($resourcePath, $method,
-  		                                      $queryParams, $body,
-  		                                      $headerParams);
+  		$response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
 
 
       if(! $response){
@@ -1068,11 +1036,10 @@ class SignatureApi {
 	 */
 
    public function GetSignaturePredefinedLists($userId) {
-
-  		//parse inputs
-  		$resourcePath = str_replace("*", "", "/signature/{userId}/lists");
-  		$resourcePath = str_replace("{format}", "json", $resourcePath);
-  		$method = "GET";
+  	  //parse inputs
+  	  $resourcePath = str_replace("*", "", "/signature/{userId}/lists");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "GET";
       $queryParams = array();
       $headerParams = array();
 
@@ -1084,9 +1051,8 @@ class SignatureApi {
       if (! isset($body)) {
         $body = null;
       }
-  		$response = $this->apiClient->callAPI($resourcePath, $method,
-  		                                      $queryParams, $body,
-  		                                      $headerParams);
+  		$response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
 
 
       if(! $response){
@@ -1107,11 +1073,10 @@ class SignatureApi {
 	 */
 
    public function AddPredefinedList($userId, $body) {
-
-  		//parse inputs
-  		$resourcePath = str_replace("*", "", "/signature/{userId}/list");
-  		$resourcePath = str_replace("{format}", "json", $resourcePath);
-  		$method = "POST";
+  	  //parse inputs
+  	  $resourcePath = str_replace("*", "", "/signature/{userId}/list");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "POST";
       $queryParams = array();
       $headerParams = array();
 
@@ -1123,9 +1088,8 @@ class SignatureApi {
       if (! isset($body)) {
         $body = null;
       }
-  		$response = $this->apiClient->callAPI($resourcePath, $method,
-  		                                      $queryParams, $body,
-  		                                      $headerParams);
+  		$response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
 
 
       if(! $response){
@@ -1146,11 +1110,10 @@ class SignatureApi {
 	 */
 
    public function DeletePredefinedList($userId, $listId) {
-
-  		//parse inputs
-  		$resourcePath = str_replace("*", "", "/signature/{userId}/lists/{listId}");
-  		$resourcePath = str_replace("{format}", "json", $resourcePath);
-  		$method = "DELETE";
+  	  //parse inputs
+  	  $resourcePath = str_replace("*", "", "/signature/{userId}/lists/{listId}");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "DELETE";
       $queryParams = array();
       $headerParams = array();
 
@@ -1166,9 +1129,8 @@ class SignatureApi {
       if (! isset($body)) {
         $body = null;
       }
-  		$response = $this->apiClient->callAPI($resourcePath, $method,
-  		                                      $queryParams, $body,
-  		                                      $headerParams);
+  		$response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
 
 
       if(! $response){
@@ -1189,11 +1151,10 @@ class SignatureApi {
 	 */
 
    public function GetEnvelopeAuditLogs($userId, $envelopeId) {
-
-  		//parse inputs
-  		$resourcePath = str_replace("*", "", "/signature/{userId}/envelopes/{envelopeId}/logs");
-  		$resourcePath = str_replace("{format}", "json", $resourcePath);
-  		$method = "GET";
+  	  //parse inputs
+  	  $resourcePath = str_replace("*", "", "/signature/{userId}/envelopes/{envelopeId}/logs");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "GET";
       $queryParams = array();
       $headerParams = array();
 
@@ -1209,9 +1170,8 @@ class SignatureApi {
       if (! isset($body)) {
         $body = null;
       }
-  		$response = $this->apiClient->callAPI($resourcePath, $method,
-  		                                      $queryParams, $body,
-  		                                      $headerParams);
+  		$response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
 
 
       if(! $response){
@@ -1235,11 +1195,10 @@ class SignatureApi {
 	 */
 
    public function CreateSignatureForm($userId, $name=null, $body=null, $assemblyGuid=null, $templateGuid=null) {
-
-  		//parse inputs
-  		$resourcePath = str_replace("*", "", "/signature/{userId}/form?name={name}&amp;templateId={templateId}&amp;assemblyId={assemblyId}");
-  		$resourcePath = str_replace("{format}", "json", $resourcePath);
-  		$method = "POST";
+  	  //parse inputs
+  	  $resourcePath = str_replace("*", "", "/signature/{userId}/form?name={name}&amp;templateId={templateId}&amp;assemblyId={assemblyId}");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "POST";
       $queryParams = array();
       $headerParams = array();
 
@@ -1260,9 +1219,8 @@ class SignatureApi {
       if (! isset($body)) {
         $body = null;
       }
-  		$response = $this->apiClient->callAPI($resourcePath, $method,
-  		                                      $queryParams, $body,
-  		                                      $headerParams);
+  		$response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
 
 
       if(! $response){
@@ -1283,11 +1241,10 @@ class SignatureApi {
 	 */
 
    public function GetSignatureFormDocuments($userId, $formId) {
-
-  		//parse inputs
-  		$resourcePath = str_replace("*", "", "/signature/{userId}/forms/{formId}/documents");
-  		$resourcePath = str_replace("{format}", "json", $resourcePath);
-  		$method = "GET";
+  	  //parse inputs
+  	  $resourcePath = str_replace("*", "", "/signature/{userId}/forms/{formId}/documents");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "GET";
       $queryParams = array();
       $headerParams = array();
 
@@ -1303,9 +1260,8 @@ class SignatureApi {
       if (! isset($body)) {
         $body = null;
       }
-  		$response = $this->apiClient->callAPI($resourcePath, $method,
-  		                                      $queryParams, $body,
-  		                                      $headerParams);
+  		$response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
 
 
       if(! $response){
@@ -1328,11 +1284,10 @@ class SignatureApi {
 	 */
 
    public function GetSignatureFormFields($userId, $formId, $documentId, $participantId) {
-
-  		//parse inputs
-  		$resourcePath = str_replace("*", "", "/signature/{userId}/forms/{formId}/fields?document={documentId}&amp;participant={participantId}");
-  		$resourcePath = str_replace("{format}", "json", $resourcePath);
-  		$method = "GET";
+  	  //parse inputs
+  	  $resourcePath = str_replace("*", "", "/signature/{userId}/forms/{formId}/fields?document={documentId}&amp;participant={participantId}");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "GET";
       $queryParams = array();
       $headerParams = array();
 
@@ -1356,9 +1311,8 @@ class SignatureApi {
       if (! isset($body)) {
         $body = null;
       }
-  		$response = $this->apiClient->callAPI($resourcePath, $method,
-  		                                      $queryParams, $body,
-  		                                      $headerParams);
+  		$response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
 
 
       if(! $response){
@@ -1379,11 +1333,10 @@ class SignatureApi {
 	 */
 
    public function DeleteSignatureForm($userId, $formId) {
-
-  		//parse inputs
-  		$resourcePath = str_replace("*", "", "/signature/{userId}/forms/{formId}");
-  		$resourcePath = str_replace("{format}", "json", $resourcePath);
-  		$method = "DELETE";
+  	  //parse inputs
+  	  $resourcePath = str_replace("*", "", "/signature/{userId}/forms/{formId}");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "DELETE";
       $queryParams = array();
       $headerParams = array();
 
@@ -1399,9 +1352,8 @@ class SignatureApi {
       if (! isset($body)) {
         $body = null;
       }
-  		$response = $this->apiClient->callAPI($resourcePath, $method,
-  		                                      $queryParams, $body,
-  		                                      $headerParams);
+  		$response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
 
 
       if(! $response){
@@ -1422,11 +1374,10 @@ class SignatureApi {
 	 */
 
    public function GetSignatureForm($userId, $formId) {
-
-  		//parse inputs
-  		$resourcePath = str_replace("*", "", "/signature/{userId}/forms/{formId}");
-  		$resourcePath = str_replace("{format}", "json", $resourcePath);
-  		$method = "GET";
+  	  //parse inputs
+  	  $resourcePath = str_replace("*", "", "/signature/{userId}/forms/{formId}");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "GET";
       $queryParams = array();
       $headerParams = array();
 
@@ -1442,9 +1393,8 @@ class SignatureApi {
       if (! isset($body)) {
         $body = null;
       }
-  		$response = $this->apiClient->callAPI($resourcePath, $method,
-  		                                      $queryParams, $body,
-  		                                      $headerParams);
+  		$response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
 
 
       if(! $response){
@@ -1470,11 +1420,10 @@ class SignatureApi {
 	 */
 
    public function GetSignatureForms($userId, $statusId=null, $page=null, $DateTime=null, $name=null, $records=null, $documentId=null) {
-
-  		//parse inputs
-  		$resourcePath = str_replace("*", "", "/signature/{userId}/forms?statusId={statusId}&amp;records={count}&amp;page={page}&amp;document={originalDocumentMD5}&amp;date={date}&amp;name={name}");
-  		$resourcePath = str_replace("{format}", "json", $resourcePath);
-  		$method = "GET";
+  	  //parse inputs
+  	  $resourcePath = str_replace("*", "", "/signature/{userId}/forms?statusId={statusId}&amp;records={count}&amp;page={page}&amp;document={originalDocumentMD5}&amp;date={date}&amp;name={name}");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "GET";
       $queryParams = array();
       $headerParams = array();
 
@@ -1504,9 +1453,8 @@ class SignatureApi {
       if (! isset($body)) {
         $body = null;
       }
-  		$response = $this->apiClient->callAPI($resourcePath, $method,
-  		                                      $queryParams, $body,
-  		                                      $headerParams);
+  		$response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
 
 
       if(! $response){
@@ -1528,11 +1476,10 @@ class SignatureApi {
 	 */
 
    public function RenameSignatureForm($userId, $formId, $name) {
-
-  		//parse inputs
-  		$resourcePath = str_replace("*", "", "/signature/{userId}/forms/{formId}?new_name={name}");
-  		$resourcePath = str_replace("{format}", "json", $resourcePath);
-  		$method = "PUT";
+  	  //parse inputs
+  	  $resourcePath = str_replace("*", "", "/signature/{userId}/forms/{formId}?new_name={name}");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "PUT";
       $queryParams = array();
       $headerParams = array();
 
@@ -1551,9 +1498,8 @@ class SignatureApi {
       if (! isset($body)) {
         $body = null;
       }
-  		$response = $this->apiClient->callAPI($resourcePath, $method,
-  		                                      $queryParams, $body,
-  		                                      $headerParams);
+  		$response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
 
 
       if(! $response){
@@ -1574,11 +1520,10 @@ class SignatureApi {
 	 */
 
    public function PublishSignatureForm($userId, $formId) {
-
-  		//parse inputs
-  		$resourcePath = str_replace("*", "", "/signature/{userId}/forms/{formId}/publish");
-  		$resourcePath = str_replace("{format}", "json", $resourcePath);
-  		$method = "PUT";
+  	  //parse inputs
+  	  $resourcePath = str_replace("*", "", "/signature/{userId}/forms/{formId}/publish");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "PUT";
       $queryParams = array();
       $headerParams = array();
 
@@ -1594,9 +1539,8 @@ class SignatureApi {
       if (! isset($body)) {
         $body = null;
       }
-  		$response = $this->apiClient->callAPI($resourcePath, $method,
-  		                                      $queryParams, $body,
-  		                                      $headerParams);
+  		$response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
 
 
       if(! $response){
@@ -1617,11 +1561,10 @@ class SignatureApi {
 	 */
 
    public function CompleteSignatureForm($userId, $formId) {
-
-  		//parse inputs
-  		$resourcePath = str_replace("*", "", "/signature/{userId}/forms/{formId}/complete");
-  		$resourcePath = str_replace("{format}", "json", $resourcePath);
-  		$method = "PUT";
+  	  //parse inputs
+  	  $resourcePath = str_replace("*", "", "/signature/{userId}/forms/{formId}/complete");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "PUT";
       $queryParams = array();
       $headerParams = array();
 
@@ -1637,9 +1580,8 @@ class SignatureApi {
       if (! isset($body)) {
         $body = null;
       }
-  		$response = $this->apiClient->callAPI($resourcePath, $method,
-  		                                      $queryParams, $body,
-  		                                      $headerParams);
+  		$response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
 
 
       if(! $response){
@@ -1661,11 +1603,10 @@ class SignatureApi {
 	 */
 
    public function ModifySignatureForm($userId, $formId, $body=null) {
-
-  		//parse inputs
-  		$resourcePath = str_replace("*", "", "/signature/{userId}/forms/{formId}");
-  		$resourcePath = str_replace("{format}", "json", $resourcePath);
-  		$method = "POST";
+  	  //parse inputs
+  	  $resourcePath = str_replace("*", "", "/signature/{userId}/forms/{formId}");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "POST";
       $queryParams = array();
       $headerParams = array();
 
@@ -1681,9 +1622,8 @@ class SignatureApi {
       if (! isset($body)) {
         $body = null;
       }
-  		$response = $this->apiClient->callAPI($resourcePath, $method,
-  		                                      $queryParams, $body,
-  		                                      $headerParams);
+  		$response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
 
 
       if(! $response){
@@ -1704,11 +1644,10 @@ class SignatureApi {
 	 */
 
    public function ArchiveSignatureForm($userId, $formId) {
-
-  		//parse inputs
-  		$resourcePath = str_replace("*", "", "/signature/{userId}/forms/{formId}/archive");
-  		$resourcePath = str_replace("{format}", "json", $resourcePath);
-  		$method = "PUT";
+  	  //parse inputs
+  	  $resourcePath = str_replace("*", "", "/signature/{userId}/forms/{formId}/archive");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "PUT";
       $queryParams = array();
       $headerParams = array();
 
@@ -1724,9 +1663,8 @@ class SignatureApi {
       if (! isset($body)) {
         $body = null;
       }
-  		$response = $this->apiClient->callAPI($resourcePath, $method,
-  		                                      $queryParams, $body,
-  		                                      $headerParams);
+  		$response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
 
 
       if(! $response){
@@ -1747,11 +1685,10 @@ class SignatureApi {
 	 */
 
    public function GetSignatureFormResources($userId, $statusIds) {
-
-  		//parse inputs
-  		$resourcePath = str_replace("*", "", "/signature/{userId}/forms/resources?statusIds={statusIds}");
-  		$resourcePath = str_replace("{format}", "json", $resourcePath);
-  		$method = "GET";
+  	  //parse inputs
+  	  $resourcePath = str_replace("*", "", "/signature/{userId}/forms/resources?statusIds={statusIds}");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "GET";
       $queryParams = array();
       $headerParams = array();
 
@@ -1767,9 +1704,8 @@ class SignatureApi {
       if (! isset($body)) {
         $body = null;
       }
-  		$response = $this->apiClient->callAPI($resourcePath, $method,
-  		                                      $queryParams, $body,
-  		                                      $headerParams);
+  		$response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
 
 
       if(! $response){
@@ -1789,11 +1725,10 @@ class SignatureApi {
 	 */
 
    public function GetSignatureTemplateResources($userId) {
-
-  		//parse inputs
-  		$resourcePath = str_replace("*", "", "/signature/{userId}/templates/resources");
-  		$resourcePath = str_replace("{format}", "json", $resourcePath);
-  		$method = "GET";
+  	  //parse inputs
+  	  $resourcePath = str_replace("*", "", "/signature/{userId}/templates/resources");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "GET";
       $queryParams = array();
       $headerParams = array();
 
@@ -1805,9 +1740,8 @@ class SignatureApi {
       if (! isset($body)) {
         $body = null;
       }
-  		$response = $this->apiClient->callAPI($resourcePath, $method,
-  		                                      $queryParams, $body,
-  		                                      $headerParams);
+  		$response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
 
 
       if(! $response){
@@ -1828,11 +1762,10 @@ class SignatureApi {
 	 */
 
    public function SignDocument($userId, $body=null) {
-
-  		//parse inputs
-  		$resourcePath = str_replace("*", "", "/signature/{userId}/sign");
-  		$resourcePath = str_replace("{format}", "json", $resourcePath);
-  		$method = "POST";
+  	  //parse inputs
+  	  $resourcePath = str_replace("*", "", "/signature/{userId}/sign");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "POST";
       $queryParams = array();
       $headerParams = array();
 
@@ -1844,9 +1777,8 @@ class SignatureApi {
       if (! isset($body)) {
         $body = null;
       }
-  		$response = $this->apiClient->callAPI($resourcePath, $method,
-  		                                      $queryParams, $body,
-  		                                      $headerParams);
+  		$response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
 
 
       if(! $response){
@@ -1873,11 +1805,10 @@ class SignatureApi {
 	 */
 
    public function GetSignatureEnvelopes($userId, $statusId=null, $page=null, $recipientEmail=null, $DateTime=null, $name=null, $records=null, $documentId=null) {
-
-  		//parse inputs
-  		$resourcePath = str_replace("*", "", "/signature/{userId}/envelopes?statusId={statusId}&amp;records={count}&amp;page={page}&amp;document={originalDocumentMD5}&amp;recipient={recipientEmail}&amp;date={date}&amp;name={name}");
-  		$resourcePath = str_replace("{format}", "json", $resourcePath);
-  		$method = "GET";
+  	  //parse inputs
+  	  $resourcePath = str_replace("*", "", "/signature/{userId}/envelopes?statusId={statusId}&amp;records={count}&amp;page={page}&amp;document={originalDocumentMD5}&amp;recipient={recipientEmail}&amp;date={date}&amp;name={name}");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "GET";
       $queryParams = array();
       $headerParams = array();
 
@@ -1910,9 +1841,8 @@ class SignatureApi {
       if (! isset($body)) {
         $body = null;
       }
-  		$response = $this->apiClient->callAPI($resourcePath, $method,
-  		                                      $queryParams, $body,
-  		                                      $headerParams);
+  		$response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
 
 
       if(! $response){
@@ -1935,11 +1865,10 @@ class SignatureApi {
 	 */
 
    public function GetRecipientSignatureEnvelopes($userId, $statusId=null, $page=null, $records=null) {
-
-  		//parse inputs
-  		$resourcePath = str_replace("*", "", "/signature/{userId}/envelopes/recipient?statusId={statusId}&amp;records={count}&amp;page={page}");
-  		$resourcePath = str_replace("{format}", "json", $resourcePath);
-  		$method = "GET";
+  	  //parse inputs
+  	  $resourcePath = str_replace("*", "", "/signature/{userId}/envelopes/recipient?statusId={statusId}&amp;records={count}&amp;page={page}");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "GET";
       $queryParams = array();
       $headerParams = array();
 
@@ -1960,9 +1889,8 @@ class SignatureApi {
       if (! isset($body)) {
         $body = null;
       }
-  		$response = $this->apiClient->callAPI($resourcePath, $method,
-  		                                      $queryParams, $body,
-  		                                      $headerParams);
+  		$response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
 
 
       if(! $response){
@@ -1983,11 +1911,10 @@ class SignatureApi {
 	 */
 
    public function GetSignatureEnvelope($userId, $envelopeId) {
-
-  		//parse inputs
-  		$resourcePath = str_replace("*", "", "/signature/{userId}/envelopes/{envelopeId}");
-  		$resourcePath = str_replace("{format}", "json", $resourcePath);
-  		$method = "GET";
+  	  //parse inputs
+  	  $resourcePath = str_replace("*", "", "/signature/{userId}/envelopes/{envelopeId}");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "GET";
       $queryParams = array();
       $headerParams = array();
 
@@ -2003,9 +1930,8 @@ class SignatureApi {
       if (! isset($body)) {
         $body = null;
       }
-  		$response = $this->apiClient->callAPI($resourcePath, $method,
-  		                                      $queryParams, $body,
-  		                                      $headerParams);
+  		$response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
 
 
       if(! $response){
@@ -2029,11 +1955,10 @@ class SignatureApi {
 	 */
 
    public function CreateSignatureEnvelope($userId, $name=null, $body=null, $envelopeGuid=null, $templateGuid=null) {
-
-  		//parse inputs
-  		$resourcePath = str_replace("*", "", "/signature/{userId}/envelope?name={name}&amp;templateId={templateId}&amp;envelopeId={envelopeId}");
-  		$resourcePath = str_replace("{format}", "json", $resourcePath);
-  		$method = "POST";
+  	  //parse inputs
+  	  $resourcePath = str_replace("*", "", "/signature/{userId}/envelope?name={name}&amp;templateId={templateId}&amp;envelopeId={envelopeId}");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "POST";
       $queryParams = array();
       $headerParams = array();
 
@@ -2054,9 +1979,8 @@ class SignatureApi {
       if (! isset($body)) {
         $body = null;
       }
-  		$response = $this->apiClient->callAPI($resourcePath, $method,
-  		                                      $queryParams, $body,
-  		                                      $headerParams);
+  		$response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
 
 
       if(! $response){
@@ -2078,11 +2002,10 @@ class SignatureApi {
 	 */
 
    public function ModifySignatureEnvelope($userId, $envelopeId, $body=null) {
-
-  		//parse inputs
-  		$resourcePath = str_replace("*", "", "/signature/{userId}/envelopes/{envelopeId}");
-  		$resourcePath = str_replace("{format}", "json", $resourcePath);
-  		$method = "POST";
+  	  //parse inputs
+  	  $resourcePath = str_replace("*", "", "/signature/{userId}/envelopes/{envelopeId}");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "POST";
       $queryParams = array();
       $headerParams = array();
 
@@ -2098,9 +2021,8 @@ class SignatureApi {
       if (! isset($body)) {
         $body = null;
       }
-  		$response = $this->apiClient->callAPI($resourcePath, $method,
-  		                                      $queryParams, $body,
-  		                                      $headerParams);
+  		$response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
 
 
       if(! $response){
@@ -2122,11 +2044,10 @@ class SignatureApi {
 	 */
 
    public function RenameSignatureEnvelope($userId, $envelopeId, $name) {
-
-  		//parse inputs
-  		$resourcePath = str_replace("*", "", "/signature/{userId}/envelopes/{envelopeId}?name={name}");
-  		$resourcePath = str_replace("{format}", "json", $resourcePath);
-  		$method = "PUT";
+  	  //parse inputs
+  	  $resourcePath = str_replace("*", "", "/signature/{userId}/envelopes/{envelopeId}?name={name}");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "PUT";
       $queryParams = array();
       $headerParams = array();
 
@@ -2145,9 +2066,8 @@ class SignatureApi {
       if (! isset($body)) {
         $body = null;
       }
-  		$response = $this->apiClient->callAPI($resourcePath, $method,
-  		                                      $queryParams, $body,
-  		                                      $headerParams);
+  		$response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
 
 
       if(! $response){
@@ -2168,11 +2088,10 @@ class SignatureApi {
 	 */
 
    public function DeleteSignatureEnvelope($userId, $envelopeId) {
-
-  		//parse inputs
-  		$resourcePath = str_replace("*", "", "/signature/{userId}/envelopes/{envelopeId}");
-  		$resourcePath = str_replace("{format}", "json", $resourcePath);
-  		$method = "DELETE";
+  	  //parse inputs
+  	  $resourcePath = str_replace("*", "", "/signature/{userId}/envelopes/{envelopeId}");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "DELETE";
       $queryParams = array();
       $headerParams = array();
 
@@ -2188,9 +2107,8 @@ class SignatureApi {
       if (! isset($body)) {
         $body = null;
       }
-  		$response = $this->apiClient->callAPI($resourcePath, $method,
-  		                                      $queryParams, $body,
-  		                                      $headerParams);
+  		$response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
 
 
       if(! $response){
@@ -2211,11 +2129,10 @@ class SignatureApi {
 	 */
 
    public function GetRolesList($userId, $id=null) {
-
-  		//parse inputs
-  		$resourcePath = str_replace("*", "", "/signature/{userId}/roles?id={roleId}");
-  		$resourcePath = str_replace("{format}", "json", $resourcePath);
-  		$method = "GET";
+  	  //parse inputs
+  	  $resourcePath = str_replace("*", "", "/signature/{userId}/roles?id={roleId}");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "GET";
       $queryParams = array();
       $headerParams = array();
 
@@ -2230,9 +2147,8 @@ class SignatureApi {
       if (! isset($body)) {
         $body = null;
       }
-  		$response = $this->apiClient->callAPI($resourcePath, $method,
-  		                                      $queryParams, $body,
-  		                                      $headerParams);
+  		$response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
 
 
       if(! $response){
@@ -2253,11 +2169,10 @@ class SignatureApi {
 	 */
 
    public function GetFieldsList($userId, $id=null) {
-
-  		//parse inputs
-  		$resourcePath = str_replace("*", "", "/signature/{userId}/fields?id={fieldId}");
-  		$resourcePath = str_replace("{format}", "json", $resourcePath);
-  		$method = "GET";
+  	  //parse inputs
+  	  $resourcePath = str_replace("*", "", "/signature/{userId}/fields?id={fieldId}");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "GET";
       $queryParams = array();
       $headerParams = array();
 
@@ -2272,9 +2187,8 @@ class SignatureApi {
       if (! isset($body)) {
         $body = null;
       }
-  		$response = $this->apiClient->callAPI($resourcePath, $method,
-  		                                      $queryParams, $body,
-  		                                      $headerParams);
+  		$response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
 
 
       if(! $response){
@@ -2295,11 +2209,10 @@ class SignatureApi {
 	 */
 
    public function CreateSignatureField($userId, $body=null) {
-
-  		//parse inputs
-  		$resourcePath = str_replace("*", "", "/signature/{userId}/field");
-  		$resourcePath = str_replace("{format}", "json", $resourcePath);
-  		$method = "POST";
+  	  //parse inputs
+  	  $resourcePath = str_replace("*", "", "/signature/{userId}/field");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "POST";
       $queryParams = array();
       $headerParams = array();
 
@@ -2311,9 +2224,8 @@ class SignatureApi {
       if (! isset($body)) {
         $body = null;
       }
-  		$response = $this->apiClient->callAPI($resourcePath, $method,
-  		                                      $queryParams, $body,
-  		                                      $headerParams);
+  		$response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
 
 
       if(! $response){
@@ -2335,11 +2247,10 @@ class SignatureApi {
 	 */
 
    public function ModifySignatureField($userId, $fieldId, $body=null) {
-
-  		//parse inputs
-  		$resourcePath = str_replace("*", "", "/signature/{userId}/fields/{fieldId}");
-  		$resourcePath = str_replace("{format}", "json", $resourcePath);
-  		$method = "POST";
+  	  //parse inputs
+  	  $resourcePath = str_replace("*", "", "/signature/{userId}/fields/{fieldId}");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "POST";
       $queryParams = array();
       $headerParams = array();
 
@@ -2355,9 +2266,8 @@ class SignatureApi {
       if (! isset($body)) {
         $body = null;
       }
-  		$response = $this->apiClient->callAPI($resourcePath, $method,
-  		                                      $queryParams, $body,
-  		                                      $headerParams);
+  		$response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
 
 
       if(! $response){
@@ -2378,11 +2288,10 @@ class SignatureApi {
 	 */
 
    public function DeleteSignatureField($userId, $fieldId) {
-
-  		//parse inputs
-  		$resourcePath = str_replace("*", "", "/signature/{userId}/fields/{fieldId}");
-  		$resourcePath = str_replace("{format}", "json", $resourcePath);
-  		$method = "DELETE";
+  	  //parse inputs
+  	  $resourcePath = str_replace("*", "", "/signature/{userId}/fields/{fieldId}");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "DELETE";
       $queryParams = array();
       $headerParams = array();
 
@@ -2398,9 +2307,8 @@ class SignatureApi {
       if (! isset($body)) {
         $body = null;
       }
-  		$response = $this->apiClient->callAPI($resourcePath, $method,
-  		                                      $queryParams, $body,
-  		                                      $headerParams);
+  		$response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
 
 
       if(! $response){
@@ -2426,11 +2334,10 @@ class SignatureApi {
 	 */
 
    public function AddSignatureEnvelopeRecipient($userId, $order=null, $lastname, $email, $envelopeid, $firstname, $role) {
-
-  		//parse inputs
-  		$resourcePath = str_replace("*", "", "/signature/{userId}/envelopes/{envelopeId}/recipient?email={recipientEmail}&amp;firstname={recipientFirstName}&amp;lastname={recipientLastName}&amp;role={roleId}&amp;order={order}");
-  		$resourcePath = str_replace("{format}", "json", $resourcePath);
-  		$method = "POST";
+  	  //parse inputs
+  	  $resourcePath = str_replace("*", "", "/signature/{userId}/envelopes/{envelopeId}/recipient?email={recipientEmail}&amp;firstname={recipientFirstName}&amp;lastname={recipientLastName}&amp;role={roleId}&amp;order={order}");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "POST";
       $queryParams = array();
       $headerParams = array();
 
@@ -2461,9 +2368,8 @@ class SignatureApi {
       if (! isset($body)) {
         $body = null;
       }
-  		$response = $this->apiClient->callAPI($resourcePath, $method,
-  		                                      $queryParams, $body,
-  		                                      $headerParams);
+  		$response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
 
 
       if(! $response){
@@ -2484,11 +2390,10 @@ class SignatureApi {
 	 */
 
    public function GetSignatureEnvelopeRecipients($userId, $envelopeId) {
-
-  		//parse inputs
-  		$resourcePath = str_replace("*", "", "/signature/{userId}/envelopes/{envelopeId}/recipients");
-  		$resourcePath = str_replace("{format}", "json", $resourcePath);
-  		$method = "GET";
+  	  //parse inputs
+  	  $resourcePath = str_replace("*", "", "/signature/{userId}/envelopes/{envelopeId}/recipients");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "GET";
       $queryParams = array();
       $headerParams = array();
 
@@ -2504,9 +2409,8 @@ class SignatureApi {
       if (! isset($body)) {
         $body = null;
       }
-  		$response = $this->apiClient->callAPI($resourcePath, $method,
-  		                                      $queryParams, $body,
-  		                                      $headerParams);
+  		$response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
 
 
       if(! $response){
@@ -2528,11 +2432,10 @@ class SignatureApi {
 	 */
 
    public function DeleteSignatureEnvelopeRecipient($userId, $envelopeId, $recipientId) {
-
-  		//parse inputs
-  		$resourcePath = str_replace("*", "", "/signature/{userId}/envelopes/{envelopeId}/recipients/{recipientId}");
-  		$resourcePath = str_replace("{format}", "json", $resourcePath);
-  		$method = "DELETE";
+  	  //parse inputs
+  	  $resourcePath = str_replace("*", "", "/signature/{userId}/envelopes/{envelopeId}/recipients/{recipientId}");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "DELETE";
       $queryParams = array();
       $headerParams = array();
 
@@ -2552,9 +2455,8 @@ class SignatureApi {
       if (! isset($body)) {
         $body = null;
       }
-  		$response = $this->apiClient->callAPI($resourcePath, $method,
-  		                                      $queryParams, $body,
-  		                                      $headerParams);
+  		$response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
 
 
       if(! $response){
@@ -2580,11 +2482,10 @@ class SignatureApi {
 	 */
 
    public function ModifySignatureEnvelopeRecipient($userId, $order=null, $envelopeid, $email, $firstname, $lastname, $role) {
-
-  		//parse inputs
-  		$resourcePath = str_replace("*", "", "/signature/{userId}/envelopes/{envelopeId}/recipient/{recipientId}?email={recipientEmail}&amp;firstname={recipientFirstName}&amp;lastname={recipientLastName}&amp;role={roleId}&amp;order={order}");
-  		$resourcePath = str_replace("{format}", "json", $resourcePath);
-  		$method = "PUT";
+  	  //parse inputs
+  	  $resourcePath = str_replace("*", "", "/signature/{userId}/envelopes/{envelopeId}/recipient/{recipientId}?email={recipientEmail}&amp;firstname={recipientFirstName}&amp;lastname={recipientLastName}&amp;role={roleId}&amp;order={order}");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "PUT";
       $queryParams = array();
       $headerParams = array();
 
@@ -2615,9 +2516,8 @@ class SignatureApi {
       if (! isset($body)) {
         $body = null;
       }
-  		$response = $this->apiClient->callAPI($resourcePath, $method,
-  		                                      $queryParams, $body,
-  		                                      $headerParams);
+  		$response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
 
 
       if(! $response){
@@ -2640,11 +2540,10 @@ class SignatureApi {
 	 */
 
    public function AddSignatureEnvelopeDocument($userId, $envelopeId, $documentId, $order=null) {
-
-  		//parse inputs
-  		$resourcePath = str_replace("*", "", "/signature/{userId}/envelopes/{envelopeId}/document/{documentId}?order={order}");
-  		$resourcePath = str_replace("{format}", "json", $resourcePath);
-  		$method = "POST";
+  	  //parse inputs
+  	  $resourcePath = str_replace("*", "", "/signature/{userId}/envelopes/{envelopeId}/document/{documentId}?order={order}");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "POST";
       $queryParams = array();
       $headerParams = array();
 
@@ -2667,9 +2566,8 @@ class SignatureApi {
       if (! isset($body)) {
         $body = null;
       }
-  		$response = $this->apiClient->callAPI($resourcePath, $method,
-  		                                      $queryParams, $body,
-  		                                      $headerParams);
+  		$response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
 
 
       if(! $response){
@@ -2690,11 +2588,10 @@ class SignatureApi {
 	 */
 
    public function GetSignatureEnvelopeDocuments($userId, $envelopeId) {
-
-  		//parse inputs
-  		$resourcePath = str_replace("*", "", "/signature/{userId}/envelopes/{envelopeId}/documents");
-  		$resourcePath = str_replace("{format}", "json", $resourcePath);
-  		$method = "GET";
+  	  //parse inputs
+  	  $resourcePath = str_replace("*", "", "/signature/{userId}/envelopes/{envelopeId}/documents");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "GET";
       $queryParams = array();
       $headerParams = array();
 
@@ -2710,9 +2607,8 @@ class SignatureApi {
       if (! isset($body)) {
         $body = null;
       }
-  		$response = $this->apiClient->callAPI($resourcePath, $method,
-  		                                      $queryParams, $body,
-  		                                      $headerParams);
+  		$response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
 
 
       if(! $response){
@@ -2734,11 +2630,10 @@ class SignatureApi {
 	 */
 
    public function GetSignedEnvelopeDocument($userId, $envelopeId, $documentId) {
-
-  		//parse inputs
-  		$resourcePath = str_replace("*", "", "/signature/{userId}/envelopes/{envelopeId}/document/{documentId}");
-  		$resourcePath = str_replace("{format}", "json", $resourcePath);
-  		$method = "GET";
+  	  //parse inputs
+  	  $resourcePath = str_replace("*", "", "/signature/{userId}/envelopes/{envelopeId}/document/{documentId}");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "GET";
       $queryParams = array();
       $headerParams = array();
 
@@ -2758,9 +2653,8 @@ class SignatureApi {
       if (! isset($body)) {
         $body = null;
       }
-  		$response = $this->apiClient->callAPI($resourcePath, $method,
-  		                                      $queryParams, $body,
-  		                                      $headerParams);
+  		$response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
 
 
       if(! $response){
@@ -2781,11 +2675,10 @@ class SignatureApi {
 	 */
 
    public function GetSignedEnvelopeDocuments($userId, $envelopeId) {
-
-  		//parse inputs
-  		$resourcePath = str_replace("*", "", "/signature/{userId}/envelopes/{envelopeId}/documents/get");
-  		$resourcePath = str_replace("{format}", "json", $resourcePath);
-  		$method = "GET";
+  	  //parse inputs
+  	  $resourcePath = str_replace("*", "", "/signature/{userId}/envelopes/{envelopeId}/documents/get");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "GET";
       $queryParams = array();
       $headerParams = array();
 
@@ -2801,9 +2694,8 @@ class SignatureApi {
       if (! isset($body)) {
         $body = null;
       }
-  		$response = $this->apiClient->callAPI($resourcePath, $method,
-  		                                      $queryParams, $body,
-  		                                      $headerParams);
+  		$response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
 
 
       if(! $response){
@@ -2825,11 +2717,10 @@ class SignatureApi {
 	 */
 
    public function DeleteSignatureEnvelopeDocument($userId, $envelopeId, $documentId) {
-
-  		//parse inputs
-  		$resourcePath = str_replace("*", "", "/signature/{userId}/envelopes/{envelopeId}/documents/{documentId}");
-  		$resourcePath = str_replace("{format}", "json", $resourcePath);
-  		$method = "DELETE";
+  	  //parse inputs
+  	  $resourcePath = str_replace("*", "", "/signature/{userId}/envelopes/{envelopeId}/documents/{documentId}");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "DELETE";
       $queryParams = array();
       $headerParams = array();
 
@@ -2849,9 +2740,8 @@ class SignatureApi {
       if (! isset($body)) {
         $body = null;
       }
-  		$response = $this->apiClient->callAPI($resourcePath, $method,
-  		                                      $queryParams, $body,
-  		                                      $headerParams);
+  		$response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
 
 
       if(! $response){
@@ -2876,11 +2766,10 @@ class SignatureApi {
 	 */
 
    public function AddSignatureEnvelopeField($userId, $envelopeId, $documentId, $recipientId, $fieldId, $body=null) {
-
-  		//parse inputs
-  		$resourcePath = str_replace("*", "", "/signature/{userId}/envelopes/{envelopeId}/documents/{documentId}/recipient/{recipientId}/field/{fieldId}");
-  		$resourcePath = str_replace("{format}", "json", $resourcePath);
-  		$method = "POST";
+  	  //parse inputs
+  	  $resourcePath = str_replace("*", "", "/signature/{userId}/envelopes/{envelopeId}/documents/{documentId}/recipient/{recipientId}/field/{fieldId}");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "POST";
       $queryParams = array();
       $headerParams = array();
 
@@ -2908,9 +2797,8 @@ class SignatureApi {
       if (! isset($body)) {
         $body = null;
       }
-  		$response = $this->apiClient->callAPI($resourcePath, $method,
-  		                                      $queryParams, $body,
-  		                                      $headerParams);
+  		$response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
 
 
       if(! $response){
@@ -2933,11 +2821,10 @@ class SignatureApi {
 	 */
 
    public function GetSignatureEnvelopeFields($userId, $envelopeId, $documentId, $recipientId) {
-
-  		//parse inputs
-  		$resourcePath = str_replace("*", "", "/signature/{userId}/envelopes/{envelopeId}/fields?document={documentId}&amp;recipient={recipientId}");
-  		$resourcePath = str_replace("{format}", "json", $resourcePath);
-  		$method = "GET";
+  	  //parse inputs
+  	  $resourcePath = str_replace("*", "", "/signature/{userId}/envelopes/{envelopeId}/fields?document={documentId}&amp;recipient={recipientId}");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "GET";
       $queryParams = array();
       $headerParams = array();
 
@@ -2961,9 +2848,8 @@ class SignatureApi {
       if (! isset($body)) {
         $body = null;
       }
-  		$response = $this->apiClient->callAPI($resourcePath, $method,
-  		                                      $queryParams, $body,
-  		                                      $headerParams);
+  		$response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
 
 
       if(! $response){
@@ -2985,11 +2871,10 @@ class SignatureApi {
 	 */
 
    public function DeleteSignatureEnvelopeField($userId, $envelopeId, $fieldId) {
-
-  		//parse inputs
-  		$resourcePath = str_replace("*", "", "/signature/{userId}/envelopes/{envelopeId}/fields/{fieldId}");
-  		$resourcePath = str_replace("{format}", "json", $resourcePath);
-  		$method = "DELETE";
+  	  //parse inputs
+  	  $resourcePath = str_replace("*", "", "/signature/{userId}/envelopes/{envelopeId}/fields/{fieldId}");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "DELETE";
       $queryParams = array();
       $headerParams = array();
 
@@ -3009,9 +2894,8 @@ class SignatureApi {
       if (! isset($body)) {
         $body = null;
       }
-  		$response = $this->apiClient->callAPI($resourcePath, $method,
-  		                                      $queryParams, $body,
-  		                                      $headerParams);
+  		$response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
 
 
       if(! $response){
@@ -3035,11 +2919,10 @@ class SignatureApi {
 	 */
 
    public function ModifySignatureEnvelopeField($userId, $envelopeId, $documentId, $fieldId, $body=null) {
-
-  		//parse inputs
-  		$resourcePath = str_replace("*", "", "/signature/{userId}/envelopes/{envelopeId}/documents/{documentId}/field/{fieldId}");
-  		$resourcePath = str_replace("{format}", "json", $resourcePath);
-  		$method = "PUT";
+  	  //parse inputs
+  	  $resourcePath = str_replace("*", "", "/signature/{userId}/envelopes/{envelopeId}/documents/{documentId}/field/{fieldId}");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "PUT";
       $queryParams = array();
       $headerParams = array();
 
@@ -3063,9 +2946,8 @@ class SignatureApi {
       if (! isset($body)) {
         $body = null;
       }
-  		$response = $this->apiClient->callAPI($resourcePath, $method,
-  		                                      $queryParams, $body,
-  		                                      $headerParams);
+  		$response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
 
 
       if(! $response){
@@ -3086,11 +2968,10 @@ class SignatureApi {
 	 */
 
    public function ArchiveSignatureEnvelope($userId, $envelopeId) {
-
-  		//parse inputs
-  		$resourcePath = str_replace("*", "", "/signature/{userId}/envelopes/{envelopeId}/archive");
-  		$resourcePath = str_replace("{format}", "json", $resourcePath);
-  		$method = "PUT";
+  	  //parse inputs
+  	  $resourcePath = str_replace("*", "", "/signature/{userId}/envelopes/{envelopeId}/archive");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "PUT";
       $queryParams = array();
       $headerParams = array();
 
@@ -3106,9 +2987,8 @@ class SignatureApi {
       if (! isset($body)) {
         $body = null;
       }
-  		$response = $this->apiClient->callAPI($resourcePath, $method,
-  		                                      $queryParams, $body,
-  		                                      $headerParams);
+  		$response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
 
 
       if(! $response){
@@ -3129,11 +3009,10 @@ class SignatureApi {
 	 */
 
    public function RestartExpiredSignatureEnvelope($userId, $envelopeId) {
-
-  		//parse inputs
-  		$resourcePath = str_replace("*", "", "/signature/{userId}/envelopes/{envelopeId}/restart");
-  		$resourcePath = str_replace("{format}", "json", $resourcePath);
-  		$method = "PUT";
+  	  //parse inputs
+  	  $resourcePath = str_replace("*", "", "/signature/{userId}/envelopes/{envelopeId}/restart");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "PUT";
       $queryParams = array();
       $headerParams = array();
 
@@ -3149,9 +3028,8 @@ class SignatureApi {
       if (! isset($body)) {
         $body = null;
       }
-  		$response = $this->apiClient->callAPI($resourcePath, $method,
-  		                                      $queryParams, $body,
-  		                                      $headerParams);
+  		$response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
 
 
       if(! $response){
@@ -3172,11 +3050,10 @@ class SignatureApi {
 	 */
 
    public function SignatureEnvelopeSend($userId, $envelopeId) {
-
-  		//parse inputs
-  		$resourcePath = str_replace("*", "", "/signature/{userId}/envelopes/{envelopeId}/send");
-  		$resourcePath = str_replace("{format}", "json", $resourcePath);
-  		$method = "PUT";
+  	  //parse inputs
+  	  $resourcePath = str_replace("*", "", "/signature/{userId}/envelopes/{envelopeId}/send");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "PUT";
       $queryParams = array();
       $headerParams = array();
 
@@ -3192,9 +3069,8 @@ class SignatureApi {
       if (! isset($body)) {
         $body = null;
       }
-  		$response = $this->apiClient->callAPI($resourcePath, $method,
-  		                                      $queryParams, $body,
-  		                                      $headerParams);
+  		$response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
 
 
       if(! $response){
@@ -3217,11 +3093,10 @@ class SignatureApi {
 	 */
 
    public function DeleteSignatureEnvelopeFieldLocation($userId, $envelopeId, $fieldId, $locationId) {
-
-  		//parse inputs
-  		$resourcePath = str_replace("*", "", "/signature/{userId}/envelopes/{envelopeId}/fields/{fieldId}/locations/{locationId}");
-  		$resourcePath = str_replace("{format}", "json", $resourcePath);
-  		$method = "DELETE";
+  	  //parse inputs
+  	  $resourcePath = str_replace("*", "", "/signature/{userId}/envelopes/{envelopeId}/fields/{fieldId}/locations/{locationId}");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "DELETE";
       $queryParams = array();
       $headerParams = array();
 
@@ -3245,9 +3120,8 @@ class SignatureApi {
       if (! isset($body)) {
         $body = null;
       }
-  		$response = $this->apiClient->callAPI($resourcePath, $method,
-  		                                      $queryParams, $body,
-  		                                      $headerParams);
+  		$response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
 
 
       if(! $response){
@@ -3273,11 +3147,10 @@ class SignatureApi {
 	 */
 
    public function ModifySignatureEnvelopeFieldLocation($userId, $envelopeId, $documentId, $recipientId, $fieldId, $locationId, $body=null) {
-
-  		//parse inputs
-  		$resourcePath = str_replace("*", "", "/signature/{userId}/envelopes/{envelopeId}/documents/{documentId}/recipient/{recipientId}/fields/{fieldId}/locations/{locationId}");
-  		$resourcePath = str_replace("{format}", "json", $resourcePath);
-  		$method = "PUT";
+  	  //parse inputs
+  	  $resourcePath = str_replace("*", "", "/signature/{userId}/envelopes/{envelopeId}/documents/{documentId}/recipient/{recipientId}/fields/{fieldId}/locations/{locationId}");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "PUT";
       $queryParams = array();
       $headerParams = array();
 
@@ -3309,9 +3182,8 @@ class SignatureApi {
       if (! isset($body)) {
         $body = null;
       }
-  		$response = $this->apiClient->callAPI($resourcePath, $method,
-  		                                      $queryParams, $body,
-  		                                      $headerParams);
+  		$response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
 
 
       if(! $response){
@@ -3336,11 +3208,10 @@ class SignatureApi {
 	 */
 
    public function GetSignatureTemplates($userId, $page=null, $documentGuid=null, $recipientName=null, $name=null, $records=null) {
-
-  		//parse inputs
-  		$resourcePath = str_replace("*", "", "/signature/{userId}/templates?records={count}&amp;page={page}&amp;documentGuid={documentGuid}&amp;recipientName={recipientName}&amp;name={name}");
-  		$resourcePath = str_replace("{format}", "json", $resourcePath);
-  		$method = "GET";
+  	  //parse inputs
+  	  $resourcePath = str_replace("*", "", "/signature/{userId}/templates?records={count}&amp;page={page}&amp;documentGuid={documentGuid}&amp;recipientName={recipientName}&amp;name={name}");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "GET";
       $queryParams = array();
       $headerParams = array();
 
@@ -3367,9 +3238,8 @@ class SignatureApi {
       if (! isset($body)) {
         $body = null;
       }
-  		$response = $this->apiClient->callAPI($resourcePath, $method,
-  		                                      $queryParams, $body,
-  		                                      $headerParams);
+  		$response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
 
 
       if(! $response){
@@ -3390,11 +3260,10 @@ class SignatureApi {
 	 */
 
    public function GetSignatureTemplate($userId, $templateId) {
-
-  		//parse inputs
-  		$resourcePath = str_replace("*", "", "/signature/{userId}/templates/{templateId}");
-  		$resourcePath = str_replace("{format}", "json", $resourcePath);
-  		$method = "GET";
+  	  //parse inputs
+  	  $resourcePath = str_replace("*", "", "/signature/{userId}/templates/{templateId}");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "GET";
       $queryParams = array();
       $headerParams = array();
 
@@ -3410,9 +3279,8 @@ class SignatureApi {
       if (! isset($body)) {
         $body = null;
       }
-  		$response = $this->apiClient->callAPI($resourcePath, $method,
-  		                                      $queryParams, $body,
-  		                                      $headerParams);
+  		$response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
 
 
       if(! $response){
@@ -3436,11 +3304,10 @@ class SignatureApi {
 	 */
 
    public function CreateSignatureTemplate($userId, $name=null, $templateId=null, $body=null, $envelopetId) {
-
-  		//parse inputs
-  		$resourcePath = str_replace("*", "", "/signature/{userId}/template?name={name}&amp;templateId={templateId}&amp;envelopeId={envelopeId}");
-  		$resourcePath = str_replace("{format}", "json", $resourcePath);
-  		$method = "POST";
+  	  //parse inputs
+  	  $resourcePath = str_replace("*", "", "/signature/{userId}/template?name={name}&amp;templateId={templateId}&amp;envelopeId={envelopeId}");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "POST";
       $queryParams = array();
       $headerParams = array();
 
@@ -3462,9 +3329,8 @@ class SignatureApi {
       if (! isset($body)) {
         $body = null;
       }
-  		$response = $this->apiClient->callAPI($resourcePath, $method,
-  		                                      $queryParams, $body,
-  		                                      $headerParams);
+  		$response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
 
 
       if(! $response){
@@ -3486,11 +3352,10 @@ class SignatureApi {
 	 */
 
    public function ModifySignatureTemplate($userId, $templateId, $body=null) {
-
-  		//parse inputs
-  		$resourcePath = str_replace("*", "", "/signature/{userId}/templates/{templateId}");
-  		$resourcePath = str_replace("{format}", "json", $resourcePath);
-  		$method = "POST";
+  	  //parse inputs
+  	  $resourcePath = str_replace("*", "", "/signature/{userId}/templates/{templateId}");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "POST";
       $queryParams = array();
       $headerParams = array();
 
@@ -3506,9 +3371,8 @@ class SignatureApi {
       if (! isset($body)) {
         $body = null;
       }
-  		$response = $this->apiClient->callAPI($resourcePath, $method,
-  		                                      $queryParams, $body,
-  		                                      $headerParams);
+  		$response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
 
 
       if(! $response){
@@ -3530,11 +3394,10 @@ class SignatureApi {
 	 */
 
    public function RenameSignatureTemplate($userId, $templateId, $name) {
-
-  		//parse inputs
-  		$resourcePath = str_replace("*", "", "/signature/{userId}/templates/{templateId}?name={name}");
-  		$resourcePath = str_replace("{format}", "json", $resourcePath);
-  		$method = "PUT";
+  	  //parse inputs
+  	  $resourcePath = str_replace("*", "", "/signature/{userId}/templates/{templateId}?name={name}");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "PUT";
       $queryParams = array();
       $headerParams = array();
 
@@ -3553,9 +3416,8 @@ class SignatureApi {
       if (! isset($body)) {
         $body = null;
       }
-  		$response = $this->apiClient->callAPI($resourcePath, $method,
-  		                                      $queryParams, $body,
-  		                                      $headerParams);
+  		$response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
 
 
       if(! $response){
@@ -3576,11 +3438,10 @@ class SignatureApi {
 	 */
 
    public function DeleteSignatureTemplate($userId, $templateId) {
-
-  		//parse inputs
-  		$resourcePath = str_replace("*", "", "/signature/{userId}/templates/{templateId}");
-  		$resourcePath = str_replace("{format}", "json", $resourcePath);
-  		$method = "DELETE";
+  	  //parse inputs
+  	  $resourcePath = str_replace("*", "", "/signature/{userId}/templates/{templateId}");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "DELETE";
       $queryParams = array();
       $headerParams = array();
 
@@ -3596,9 +3457,8 @@ class SignatureApi {
       if (! isset($body)) {
         $body = null;
       }
-  		$response = $this->apiClient->callAPI($resourcePath, $method,
-  		                                      $queryParams, $body,
-  		                                      $headerParams);
+  		$response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
 
 
       if(! $response){
@@ -3622,11 +3482,10 @@ class SignatureApi {
 	 */
 
    public function AddSignatureTemplateRecipient($userId, $templateId, $nickname, $order=null, $role) {
-
-  		//parse inputs
-  		$resourcePath = str_replace("*", "", "/signature/{userId}/templates/{templateId}/recipient?nickname={nickname}&amp;role={roleId}&amp;order={order}");
-  		$resourcePath = str_replace("{format}", "json", $resourcePath);
-  		$method = "POST";
+  	  //parse inputs
+  	  $resourcePath = str_replace("*", "", "/signature/{userId}/templates/{templateId}/recipient?nickname={nickname}&amp;role={roleId}&amp;order={order}");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "POST";
       $queryParams = array();
       $headerParams = array();
 
@@ -3651,9 +3510,8 @@ class SignatureApi {
       if (! isset($body)) {
         $body = null;
       }
-  		$response = $this->apiClient->callAPI($resourcePath, $method,
-  		                                      $queryParams, $body,
-  		                                      $headerParams);
+  		$response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
 
 
       if(! $response){
@@ -3674,11 +3532,10 @@ class SignatureApi {
 	 */
 
    public function GetSignatureTemplateRecipients($userId, $templateId) {
-
-  		//parse inputs
-  		$resourcePath = str_replace("*", "", "/signature/{userId}/templates/{templateId}/recipients");
-  		$resourcePath = str_replace("{format}", "json", $resourcePath);
-  		$method = "GET";
+  	  //parse inputs
+  	  $resourcePath = str_replace("*", "", "/signature/{userId}/templates/{templateId}/recipients");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "GET";
       $queryParams = array();
       $headerParams = array();
 
@@ -3694,9 +3551,8 @@ class SignatureApi {
       if (! isset($body)) {
         $body = null;
       }
-  		$response = $this->apiClient->callAPI($resourcePath, $method,
-  		                                      $queryParams, $body,
-  		                                      $headerParams);
+  		$response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
 
 
       if(! $response){
@@ -3718,11 +3574,10 @@ class SignatureApi {
 	 */
 
    public function DeleteSignatureTemplateRecipient($userId, $templateId, $recipientId) {
-
-  		//parse inputs
-  		$resourcePath = str_replace("*", "", "/signature/{userId}/templates/{templateId}/recipients/{recipientId}");
-  		$resourcePath = str_replace("{format}", "json", $resourcePath);
-  		$method = "DELETE";
+  	  //parse inputs
+  	  $resourcePath = str_replace("*", "", "/signature/{userId}/templates/{templateId}/recipients/{recipientId}");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "DELETE";
       $queryParams = array();
       $headerParams = array();
 
@@ -3742,9 +3597,8 @@ class SignatureApi {
       if (! isset($body)) {
         $body = null;
       }
-  		$response = $this->apiClient->callAPI($resourcePath, $method,
-  		                                      $queryParams, $body,
-  		                                      $headerParams);
+  		$response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
 
 
       if(! $response){
@@ -3768,11 +3622,10 @@ class SignatureApi {
 	 */
 
    public function ModifySignatureTemplateRecipient($userId, $templateId, $nickname, $order=null, $role) {
-
-  		//parse inputs
-  		$resourcePath = str_replace("*", "", "/signature/{userId}/templates/{templateId}/recipient/{recipientId}?nickname={nickname}&amp;role={roleId}&amp;order={order}");
-  		$resourcePath = str_replace("{format}", "json", $resourcePath);
-  		$method = "PUT";
+  	  //parse inputs
+  	  $resourcePath = str_replace("*", "", "/signature/{userId}/templates/{templateId}/recipient/{recipientId}?nickname={nickname}&amp;role={roleId}&amp;order={order}");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "PUT";
       $queryParams = array();
       $headerParams = array();
 
@@ -3797,9 +3650,8 @@ class SignatureApi {
       if (! isset($body)) {
         $body = null;
       }
-  		$response = $this->apiClient->callAPI($resourcePath, $method,
-  		                                      $queryParams, $body,
-  		                                      $headerParams);
+  		$response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
 
 
       if(! $response){
@@ -3822,11 +3674,10 @@ class SignatureApi {
 	 */
 
    public function AddSignatureTemplateDocument($userId, $templateId, $documentId, $order=null) {
-
-  		//parse inputs
-  		$resourcePath = str_replace("*", "", "/signature/{userId}/templates/{templateId}/document/{documentId}?order={order}");
-  		$resourcePath = str_replace("{format}", "json", $resourcePath);
-  		$method = "POST";
+  	  //parse inputs
+  	  $resourcePath = str_replace("*", "", "/signature/{userId}/templates/{templateId}/document/{documentId}?order={order}");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "POST";
       $queryParams = array();
       $headerParams = array();
 
@@ -3849,9 +3700,8 @@ class SignatureApi {
       if (! isset($body)) {
         $body = null;
       }
-  		$response = $this->apiClient->callAPI($resourcePath, $method,
-  		                                      $queryParams, $body,
-  		                                      $headerParams);
+  		$response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
 
 
       if(! $response){
@@ -3872,11 +3722,10 @@ class SignatureApi {
 	 */
 
    public function GetSignatureTemplateDocuments($userId, $templateId) {
-
-  		//parse inputs
-  		$resourcePath = str_replace("*", "", "/signature/{userId}/templates/{templateId}/documents");
-  		$resourcePath = str_replace("{format}", "json", $resourcePath);
-  		$method = "GET";
+  	  //parse inputs
+  	  $resourcePath = str_replace("*", "", "/signature/{userId}/templates/{templateId}/documents");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "GET";
       $queryParams = array();
       $headerParams = array();
 
@@ -3892,9 +3741,8 @@ class SignatureApi {
       if (! isset($body)) {
         $body = null;
       }
-  		$response = $this->apiClient->callAPI($resourcePath, $method,
-  		                                      $queryParams, $body,
-  		                                      $headerParams);
+  		$response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
 
 
       if(! $response){

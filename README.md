@@ -13,7 +13,6 @@ You can use the [Composer](http://getcomposer.org/) to download and install SDK 
 
 To add SDK as a local, per-project dependency to your project, simply add a dependency on `groupdocs/groupdocs-php` to your project's `composer.json` file:
 
-	``` json
 	{
 		"require": {
 			"groupdocs/groupdocs-php": "v1.1"
@@ -22,7 +21,12 @@ To add SDK as a local, per-project dependency to your project, simply add a depe
 			"phpunit/phpunit": "3.7.*"
 		}
 	}
-    ```
+
+### Usage Example
+	$apiClient = new APIClient(new GroupDocsRequestSigner($privateKey));
+	$api = new AntAPI($apiClient);
+	$response = $api->ListAnnotations($userId, $fileId);
+
 
 
 ###[Sign, Manage, Annotate, Assemble, Compare and Convert Documents with GroupDocs](http://groupdocs.com)

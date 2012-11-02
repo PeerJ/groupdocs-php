@@ -21,8 +21,18 @@
  */
 class MgmtApi {
 
+	private $basePath = "https://api.groupdocs.com/v2.0";
+
 	function __construct($apiClient) {
 	  $this->apiClient = $apiClient;
+	}
+
+    public function setBasePath($basePath) {
+	  $this->basePath = $basePath;
+	}
+	  
+	public function getBasePath() {
+	  $this->basePath;
 	}
 
   /**
@@ -33,11 +43,10 @@ class MgmtApi {
 	 */
 
    public function GetUserProfile($userId) {
-
-  		//parse inputs
-  		$resourcePath = str_replace("*", "", "/mgmt/{userId}/profile");
-  		$resourcePath = str_replace("{format}", "json", $resourcePath);
-  		$method = "GET";
+  	  //parse inputs
+  	  $resourcePath = str_replace("*", "", "/mgmt/{userId}/profile");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "GET";
       $queryParams = array();
       $headerParams = array();
 
@@ -49,9 +58,8 @@ class MgmtApi {
       if (! isset($body)) {
         $body = null;
       }
-  		$response = $this->apiClient->callAPI($resourcePath, $method,
-  		                                      $queryParams, $body,
-  		                                      $headerParams);
+  		$response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
 
 
       if(! $response){
@@ -72,11 +80,10 @@ class MgmtApi {
 	 */
 
    public function UpdateUserProfile($userId, $body) {
-
-  		//parse inputs
-  		$resourcePath = str_replace("*", "", "/mgmt/{userId}/profile");
-  		$resourcePath = str_replace("{format}", "json", $resourcePath);
-  		$method = "PUT";
+  	  //parse inputs
+  	  $resourcePath = str_replace("*", "", "/mgmt/{userId}/profile");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "PUT";
       $queryParams = array();
       $headerParams = array();
 
@@ -88,9 +95,8 @@ class MgmtApi {
       if (! isset($body)) {
         $body = null;
       }
-  		$response = $this->apiClient->callAPI($resourcePath, $method,
-  		                                      $queryParams, $body,
-  		                                      $headerParams);
+  		$response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
 
 
       if(! $response){
@@ -111,11 +117,10 @@ class MgmtApi {
 	 */
 
    public function ChangeUserPassword($userId, $body) {
-
-  		//parse inputs
-  		$resourcePath = str_replace("*", "", "/mgmt/{userId}/profile/password");
-  		$resourcePath = str_replace("{format}", "json", $resourcePath);
-  		$method = "PUT";
+  	  //parse inputs
+  	  $resourcePath = str_replace("*", "", "/mgmt/{userId}/profile/password");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "PUT";
       $queryParams = array();
       $headerParams = array();
 
@@ -127,9 +132,8 @@ class MgmtApi {
       if (! isset($body)) {
         $body = null;
       }
-  		$response = $this->apiClient->callAPI($resourcePath, $method,
-  		                                      $queryParams, $body,
-  		                                      $headerParams);
+  		$response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
 
 
       if(! $response){
@@ -150,11 +154,10 @@ class MgmtApi {
 	 */
 
    public function GetUserProfileByResetToken($callerId, $token) {
-
-  		//parse inputs
-  		$resourcePath = str_replace("*", "", "/mgmt/{callerId}/reset-tokens?token={token}");
-  		$resourcePath = str_replace("{format}", "json", $resourcePath);
-  		$method = "GET";
+  	  //parse inputs
+  	  $resourcePath = str_replace("*", "", "/mgmt/{callerId}/reset-tokens?token={token}");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "GET";
       $queryParams = array();
       $headerParams = array();
 
@@ -170,9 +173,8 @@ class MgmtApi {
       if (! isset($body)) {
         $body = null;
       }
-  		$response = $this->apiClient->callAPI($resourcePath, $method,
-  		                                      $queryParams, $body,
-  		                                      $headerParams);
+  		$response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
 
 
       if(! $response){
@@ -193,11 +195,10 @@ class MgmtApi {
 	 */
 
    public function GetUserProfileByVerifToken($callerId, $token) {
-
-  		//parse inputs
-  		$resourcePath = str_replace("*", "", "/mgmt/{callerId}/verif-tokens?token={token}");
-  		$resourcePath = str_replace("{format}", "json", $resourcePath);
-  		$method = "GET";
+  	  //parse inputs
+  	  $resourcePath = str_replace("*", "", "/mgmt/{callerId}/verif-tokens?token={token}");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "GET";
       $queryParams = array();
       $headerParams = array();
 
@@ -213,9 +214,8 @@ class MgmtApi {
       if (! isset($body)) {
         $body = null;
       }
-  		$response = $this->apiClient->callAPI($resourcePath, $method,
-  		                                      $queryParams, $body,
-  		                                      $headerParams);
+  		$response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
 
 
       if(! $response){
@@ -236,11 +236,10 @@ class MgmtApi {
 	 */
 
    public function GetUserProfileByClaimedToken($callerId, $token) {
-
-  		//parse inputs
-  		$resourcePath = str_replace("*", "", "/mgmt/{callerId}/claimed-tokens?token={token}");
-  		$resourcePath = str_replace("{format}", "json", $resourcePath);
-  		$method = "GET";
+  	  //parse inputs
+  	  $resourcePath = str_replace("*", "", "/mgmt/{callerId}/claimed-tokens?token={token}");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "GET";
       $queryParams = array();
       $headerParams = array();
 
@@ -256,9 +255,8 @@ class MgmtApi {
       if (! isset($body)) {
         $body = null;
       }
-  		$response = $this->apiClient->callAPI($resourcePath, $method,
-  		                                      $queryParams, $body,
-  		                                      $headerParams);
+  		$response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
 
 
       if(! $response){
@@ -279,11 +277,10 @@ class MgmtApi {
 	 */
 
    public function GetAlienUserProfile($callerId, $userId) {
-
-  		//parse inputs
-  		$resourcePath = str_replace("*", "", "/mgmt/{callerId}/users/{userId}/profile");
-  		$resourcePath = str_replace("{format}", "json", $resourcePath);
-  		$method = "GET";
+  	  //parse inputs
+  	  $resourcePath = str_replace("*", "", "/mgmt/{callerId}/users/{userId}/profile");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "GET";
       $queryParams = array();
       $headerParams = array();
 
@@ -299,9 +296,8 @@ class MgmtApi {
       if (! isset($body)) {
         $body = null;
       }
-  		$response = $this->apiClient->callAPI($resourcePath, $method,
-  		                                      $queryParams, $body,
-  		                                      $headerParams);
+  		$response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
 
 
       if(! $response){
@@ -323,11 +319,10 @@ class MgmtApi {
 	 */
 
    public function UpdateAlienUserProfile($callerId, $userId, $body) {
-
-  		//parse inputs
-  		$resourcePath = str_replace("*", "", "/mgmt/{callerId}/users/{userId}/profile");
-  		$resourcePath = str_replace("{format}", "json", $resourcePath);
-  		$method = "PUT";
+  	  //parse inputs
+  	  $resourcePath = str_replace("*", "", "/mgmt/{callerId}/users/{userId}/profile");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "PUT";
       $queryParams = array();
       $headerParams = array();
 
@@ -343,9 +338,8 @@ class MgmtApi {
       if (! isset($body)) {
         $body = null;
       }
-  		$response = $this->apiClient->callAPI($resourcePath, $method,
-  		                                      $queryParams, $body,
-  		                                      $headerParams);
+  		$response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
 
 
       if(! $response){
@@ -366,11 +360,10 @@ class MgmtApi {
 	 */
 
    public function CreateUser($callerId, $body) {
-
-  		//parse inputs
-  		$resourcePath = str_replace("*", "", "/mgmt/{callerId}/users");
-  		$resourcePath = str_replace("{format}", "json", $resourcePath);
-  		$method = "POST";
+  	  //parse inputs
+  	  $resourcePath = str_replace("*", "", "/mgmt/{callerId}/users");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "POST";
       $queryParams = array();
       $headerParams = array();
 
@@ -382,9 +375,8 @@ class MgmtApi {
       if (! isset($body)) {
         $body = null;
       }
-  		$response = $this->apiClient->callAPI($resourcePath, $method,
-  		                                      $queryParams, $body,
-  		                                      $headerParams);
+  		$response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
 
 
       if(! $response){
@@ -406,11 +398,10 @@ class MgmtApi {
 	 */
 
    public function CreateUserLogin($callerId, $userId, $password) {
-
-  		//parse inputs
-  		$resourcePath = str_replace("*", "", "/mgmt/{callerId}/users/{userId}/logins");
-  		$resourcePath = str_replace("{format}", "json", $resourcePath);
-  		$method = "POST";
+  	  //parse inputs
+  	  $resourcePath = str_replace("*", "", "/mgmt/{callerId}/users/{userId}/logins");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "POST";
       $queryParams = array();
       $headerParams = array();
 
@@ -430,9 +421,8 @@ class MgmtApi {
       if (! isset($body)) {
         $body = null;
       }
-  		$response = $this->apiClient->callAPI($resourcePath, $method,
-  		                                      $queryParams, $body,
-  		                                      $headerParams);
+  		$response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
 
 
       if(! $response){
@@ -454,11 +444,10 @@ class MgmtApi {
 	 */
 
    public function ChangeAlienUserPassword($callerId, $userId, $body) {
-
-  		//parse inputs
-  		$resourcePath = str_replace("*", "", "/mgmt/{callerId}/users/{userId}/password");
-  		$resourcePath = str_replace("{format}", "json", $resourcePath);
-  		$method = "PUT";
+  	  //parse inputs
+  	  $resourcePath = str_replace("*", "", "/mgmt/{callerId}/users/{userId}/password");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "PUT";
       $queryParams = array();
       $headerParams = array();
 
@@ -474,9 +463,8 @@ class MgmtApi {
       if (! isset($body)) {
         $body = null;
       }
-  		$response = $this->apiClient->callAPI($resourcePath, $method,
-  		                                      $queryParams, $body,
-  		                                      $headerParams);
+  		$response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
 
 
       if(! $response){
@@ -497,11 +485,10 @@ class MgmtApi {
 	 */
 
    public function ResetUserPassword($callerId, $userId) {
-
-  		//parse inputs
-  		$resourcePath = str_replace("*", "", "/mgmt/{callerId}/users/{userId}/password");
-  		$resourcePath = str_replace("{format}", "json", $resourcePath);
-  		$method = "DELETE";
+  	  //parse inputs
+  	  $resourcePath = str_replace("*", "", "/mgmt/{callerId}/users/{userId}/password");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "DELETE";
       $queryParams = array();
       $headerParams = array();
 
@@ -517,9 +504,8 @@ class MgmtApi {
       if (! isset($body)) {
         $body = null;
       }
-  		$response = $this->apiClient->callAPI($resourcePath, $method,
-  		                                      $queryParams, $body,
-  		                                      $headerParams);
+  		$response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
 
 
       if(! $response){
@@ -539,11 +525,10 @@ class MgmtApi {
 	 */
 
    public function GetStorageProviders($userId) {
-
-  		//parse inputs
-  		$resourcePath = str_replace("*", "", "/mgmt/{userId}/storages");
-  		$resourcePath = str_replace("{format}", "json", $resourcePath);
-  		$method = "GET";
+  	  //parse inputs
+  	  $resourcePath = str_replace("*", "", "/mgmt/{userId}/storages");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "GET";
       $queryParams = array();
       $headerParams = array();
 
@@ -555,9 +540,8 @@ class MgmtApi {
       if (! isset($body)) {
         $body = null;
       }
-  		$response = $this->apiClient->callAPI($resourcePath, $method,
-  		                                      $queryParams, $body,
-  		                                      $headerParams);
+  		$response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
 
 
       if(! $response){
@@ -579,11 +563,10 @@ class MgmtApi {
 	 */
 
    public function AddStorageProvider($userId, $provider, $body) {
-
-  		//parse inputs
-  		$resourcePath = str_replace("*", "", "/mgmt/{userId}/storages/{provider}");
-  		$resourcePath = str_replace("{format}", "json", $resourcePath);
-  		$method = "POST";
+  	  //parse inputs
+  	  $resourcePath = str_replace("*", "", "/mgmt/{userId}/storages/{provider}");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "POST";
       $queryParams = array();
       $headerParams = array();
 
@@ -599,9 +582,8 @@ class MgmtApi {
       if (! isset($body)) {
         $body = null;
       }
-  		$response = $this->apiClient->callAPI($resourcePath, $method,
-  		                                      $queryParams, $body,
-  		                                      $headerParams);
+  		$response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
 
 
       if(! $response){
@@ -623,11 +605,10 @@ class MgmtApi {
 	 */
 
    public function UpdateStorageProvider($userId, $provider, $body) {
-
-  		//parse inputs
-  		$resourcePath = str_replace("*", "", "/mgmt/{userId}/storages/{provider}");
-  		$resourcePath = str_replace("{format}", "json", $resourcePath);
-  		$method = "PUT";
+  	  //parse inputs
+  	  $resourcePath = str_replace("*", "", "/mgmt/{userId}/storages/{provider}");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "PUT";
       $queryParams = array();
       $headerParams = array();
 
@@ -643,9 +624,8 @@ class MgmtApi {
       if (! isset($body)) {
         $body = null;
       }
-  		$response = $this->apiClient->callAPI($resourcePath, $method,
-  		                                      $queryParams, $body,
-  		                                      $headerParams);
+  		$response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
 
 
       if(! $response){
@@ -665,11 +645,10 @@ class MgmtApi {
 	 */
 
    public function GetRoles($userId) {
-
-  		//parse inputs
-  		$resourcePath = str_replace("*", "", "/mgmt/{userId}/roles");
-  		$resourcePath = str_replace("{format}", "json", $resourcePath);
-  		$method = "GET";
+  	  //parse inputs
+  	  $resourcePath = str_replace("*", "", "/mgmt/{userId}/roles");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "GET";
       $queryParams = array();
       $headerParams = array();
 
@@ -681,9 +660,8 @@ class MgmtApi {
       if (! isset($body)) {
         $body = null;
       }
-  		$response = $this->apiClient->callAPI($resourcePath, $method,
-  		                                      $queryParams, $body,
-  		                                      $headerParams);
+  		$response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
 
 
       if(! $response){
@@ -704,11 +682,10 @@ class MgmtApi {
 	 */
 
    public function GetUserRoles($callerId, $userId) {
-
-  		//parse inputs
-  		$resourcePath = str_replace("*", "", "/mgmt/{callerId}/users/{userId}/roles");
-  		$resourcePath = str_replace("{format}", "json", $resourcePath);
-  		$method = "GET";
+  	  //parse inputs
+  	  $resourcePath = str_replace("*", "", "/mgmt/{callerId}/users/{userId}/roles");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "GET";
       $queryParams = array();
       $headerParams = array();
 
@@ -724,9 +701,8 @@ class MgmtApi {
       if (! isset($body)) {
         $body = null;
       }
-  		$response = $this->apiClient->callAPI($resourcePath, $method,
-  		                                      $queryParams, $body,
-  		                                      $headerParams);
+  		$response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
 
 
       if(! $response){
@@ -748,11 +724,10 @@ class MgmtApi {
 	 */
 
    public function SetUserRoles($callerId, $userId, $body) {
-
-  		//parse inputs
-  		$resourcePath = str_replace("*", "", "/mgmt/{callerId}/users/{userId}/roles");
-  		$resourcePath = str_replace("{format}", "json", $resourcePath);
-  		$method = "PUT";
+  	  //parse inputs
+  	  $resourcePath = str_replace("*", "", "/mgmt/{callerId}/users/{userId}/roles");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "PUT";
       $queryParams = array();
       $headerParams = array();
 
@@ -768,9 +743,8 @@ class MgmtApi {
       if (! isset($body)) {
         $body = null;
       }
-  		$response = $this->apiClient->callAPI($resourcePath, $method,
-  		                                      $queryParams, $body,
-  		                                      $headerParams);
+  		$response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
 
 
       if(! $response){
@@ -790,11 +764,10 @@ class MgmtApi {
 	 */
 
    public function GetAccount($userId) {
-
-  		//parse inputs
-  		$resourcePath = str_replace("*", "", "/mgmt/{userId}/account");
-  		$resourcePath = str_replace("{format}", "json", $resourcePath);
-  		$method = "GET";
+  	  //parse inputs
+  	  $resourcePath = str_replace("*", "", "/mgmt/{userId}/account");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "GET";
       $queryParams = array();
       $headerParams = array();
 
@@ -806,9 +779,8 @@ class MgmtApi {
       if (! isset($body)) {
         $body = null;
       }
-  		$response = $this->apiClient->callAPI($resourcePath, $method,
-  		                                      $queryParams, $body,
-  		                                      $headerParams);
+  		$response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
 
 
       if(! $response){
@@ -828,11 +800,10 @@ class MgmtApi {
 	 */
 
    public function DeleteAccount($userId) {
-
-  		//parse inputs
-  		$resourcePath = str_replace("*", "", "/mgmt/{userId}/account");
-  		$resourcePath = str_replace("{format}", "json", $resourcePath);
-  		$method = "DELETE";
+  	  //parse inputs
+  	  $resourcePath = str_replace("*", "", "/mgmt/{userId}/account");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "DELETE";
       $queryParams = array();
       $headerParams = array();
 
@@ -844,9 +815,8 @@ class MgmtApi {
       if (! isset($body)) {
         $body = null;
       }
-  		$response = $this->apiClient->callAPI($resourcePath, $method,
-  		                                      $queryParams, $body,
-  		                                      $headerParams);
+  		$response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
 
 
       if(! $response){
@@ -866,11 +836,10 @@ class MgmtApi {
 	 */
 
    public function GetAccountUsers($adminId) {
-
-  		//parse inputs
-  		$resourcePath = str_replace("*", "", "/mgmt/{adminId}/account/users");
-  		$resourcePath = str_replace("{format}", "json", $resourcePath);
-  		$method = "GET";
+  	  //parse inputs
+  	  $resourcePath = str_replace("*", "", "/mgmt/{adminId}/account/users");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "GET";
       $queryParams = array();
       $headerParams = array();
 
@@ -882,9 +851,8 @@ class MgmtApi {
       if (! isset($body)) {
         $body = null;
       }
-  		$response = $this->apiClient->callAPI($resourcePath, $method,
-  		                                      $queryParams, $body,
-  		                                      $headerParams);
+  		$response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
 
 
       if(! $response){
@@ -906,11 +874,10 @@ class MgmtApi {
 	 */
 
    public function UpdateAccountUser($adminId, $userName, $body) {
-
-  		//parse inputs
-  		$resourcePath = str_replace("*", "", "/mgmt/{adminId}/account/users/{userName}");
-  		$resourcePath = str_replace("{format}", "json", $resourcePath);
-  		$method = "PUT";
+  	  //parse inputs
+  	  $resourcePath = str_replace("*", "", "/mgmt/{adminId}/account/users/{userName}");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "PUT";
       $queryParams = array();
       $headerParams = array();
 
@@ -926,9 +893,8 @@ class MgmtApi {
       if (! isset($body)) {
         $body = null;
       }
-  		$response = $this->apiClient->callAPI($resourcePath, $method,
-  		                                      $queryParams, $body,
-  		                                      $headerParams);
+  		$response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
 
 
       if(! $response){
@@ -949,11 +915,10 @@ class MgmtApi {
 	 */
 
    public function DeleteAccountUser($adminId, $userName) {
-
-  		//parse inputs
-  		$resourcePath = str_replace("*", "", "/mgmt/{adminId}/account/users/{userName}");
-  		$resourcePath = str_replace("{format}", "json", $resourcePath);
-  		$method = "DELETE";
+  	  //parse inputs
+  	  $resourcePath = str_replace("*", "", "/mgmt/{adminId}/account/users/{userName}");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "DELETE";
       $queryParams = array();
       $headerParams = array();
 
@@ -969,9 +934,8 @@ class MgmtApi {
       if (! isset($body)) {
         $body = null;
       }
-  		$response = $this->apiClient->callAPI($resourcePath, $method,
-  		                                      $queryParams, $body,
-  		                                      $headerParams);
+  		$response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
 
 
       if(! $response){
@@ -992,11 +956,10 @@ class MgmtApi {
 	 */
 
    public function GetUserEmbedKey($userId, $area) {
-
-  		//parse inputs
-  		$resourcePath = str_replace("*", "", "/mgmt/{userId}/embedkey/{area}");
-  		$resourcePath = str_replace("{format}", "json", $resourcePath);
-  		$method = "GET";
+  	  //parse inputs
+  	  $resourcePath = str_replace("*", "", "/mgmt/{userId}/embedkey/{area}");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "GET";
       $queryParams = array();
       $headerParams = array();
 
@@ -1012,9 +975,8 @@ class MgmtApi {
       if (! isset($body)) {
         $body = null;
       }
-  		$response = $this->apiClient->callAPI($resourcePath, $method,
-  		                                      $queryParams, $body,
-  		                                      $headerParams);
+  		$response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
 
 
       if(! $response){
@@ -1035,11 +997,10 @@ class MgmtApi {
 	 */
 
    public function GetUserEmbedKeyFromGuid($callerId, $guid) {
-
-  		//parse inputs
-  		$resourcePath = str_replace("*", "", "/mgmt/{callerId}/embedkey/guid/{guid}");
-  		$resourcePath = str_replace("{format}", "json", $resourcePath);
-  		$method = "GET";
+  	  //parse inputs
+  	  $resourcePath = str_replace("*", "", "/mgmt/{callerId}/embedkey/guid/{guid}");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "GET";
       $queryParams = array();
       $headerParams = array();
 
@@ -1055,9 +1016,8 @@ class MgmtApi {
       if (! isset($body)) {
         $body = null;
       }
-  		$response = $this->apiClient->callAPI($resourcePath, $method,
-  		                                      $queryParams, $body,
-  		                                      $headerParams);
+  		$response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
 
 
       if(! $response){
@@ -1078,11 +1038,10 @@ class MgmtApi {
 	 */
 
    public function GenerateKeyForUser($userId, $area) {
-
-  		//parse inputs
-  		$resourcePath = str_replace("*", "", "/mgmt/{userId}/embedkey/new/{area}");
-  		$resourcePath = str_replace("{format}", "json", $resourcePath);
-  		$method = "GET";
+  	  //parse inputs
+  	  $resourcePath = str_replace("*", "", "/mgmt/{userId}/embedkey/new/{area}");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "GET";
       $queryParams = array();
       $headerParams = array();
 
@@ -1098,9 +1057,8 @@ class MgmtApi {
       if (! isset($body)) {
         $body = null;
       }
-  		$response = $this->apiClient->callAPI($resourcePath, $method,
-  		                                      $queryParams, $body,
-  		                                      $headerParams);
+  		$response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
 
 
       if(! $response){

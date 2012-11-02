@@ -11,7 +11,15 @@ You can use the [Composer](http://getcomposer.org/) to download and install SDK 
 
 ### Composer
 
-To add SDK as a local, per-project dependency to your project, simply add a dependency on `groupdocs/groupdocs-php` to your project's `composer.json` file.
+To add SDK as a local, per-project dependency to your project, simply add a dependency on `groupdocs/groupdocs-php` to your project's `composer.json` file:
+	{
+		"require": {
+			"groupdocs/groupdocs-php": "v1.1"
+		},
+		"require-dev": {
+			"phpunit/phpunit": "3.7.*"
+		}
+	}
 
 
 ###[Sign, Manage, Annotate, Assemble, Compare and Convert Documents with GroupDocs](http://groupdocs.com)

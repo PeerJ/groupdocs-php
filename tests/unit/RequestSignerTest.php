@@ -3,7 +3,6 @@
 class RequestSignerTest extends PHPUnit_Framework_TestCase {
 
 	private $basePath = "https://api.groupdocs.com/v2.0/storage/2721ad21bcf0d71e/folders/test.docx?description=";
-	private $userId = "2721ad21bcf0d71e";
 	private $privateKey = "8d8a7d642a807a31c2741c101a60cef2";
 	private $signer;
 	
@@ -66,3 +65,4 @@ class RequestSignerTest extends PHPUnit_Framework_TestCase {
 	}
 
 }
+

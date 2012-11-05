@@ -1,6 +1,9 @@
 <?php
 /**
- * APIClient.php
+ * 	Wordnik.com's Swagger generic API client. This client handles the client-
+ * 	server communication, and is invariant across implementations. Specifics of
+ *	the methods and models for each application are generated from the Swagger
+ *	templates.
  */
 
 

@@ -24,13 +24,13 @@
 class AddCollaboratorResponse {
 
   static $swaggerTypes = array(
-      'result' => 'AddCollaboratorResult',
+      'result' => 'SetCollaboratorsResult',
       'status' => 'string',
       'error_message' => 'string'
 
     );
 
-  public $result; // AddCollaboratorResult
+  public $result; // SetCollaboratorsResult
   public $status; // string
   public $error_message; // string
   }

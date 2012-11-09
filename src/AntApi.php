@@ -164,7 +164,7 @@ class AntApi {
 	 * Create annotation reply
    * userId, string: User GUID (required)
    * annotationId, string: Annotation ID (required)
-   * body, AnnotationReplyInfo: Message (required)
+   * body, AnnotationReplyInfo: Reply (required)
    * @return AddReplyResponse
 	 */
 
@@ -423,7 +423,7 @@ class AntApi {
 	 * Add an annotation collaborator
    * userId, string: User GUID (required)
    * fileId, string: File ID (required)
-   * body, string: Collaborator (optional)
+   * body, ReviewerInfo: Reviewer Info (optional)
    * @return AddCollaboratorResponse
 	 */
 
@@ -617,12 +617,54 @@ class AntApi {
 
       }
   /**
+	 * MoveAnnotationMarker
+	 * Move Annotation Marker
+   * userId, string: User GUID (required)
+   * annotationId, string: Annotation ID (required)
+   * body, Point: position (required)
+   * @return MoveAnnotationResponse
+	 */
+
+   public function MoveAnnotationMarker($userId, $annotationId, $body) {
+  	  //parse inputs
+  	  $resourcePath = str_replace("*", "", "/ant/{userId}/annotations/{annotationId}/markerPosition");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "PUT";
+      $queryParams = array();
+      $headerParams = array();
+
+      if($userId != null) {
+  			$resourcePath = str_replace("{" . "userId" . "}",
+  			                            $userId, $resourcePath);
+  		}
+  		if($annotationId != null) {
+  			$resourcePath = str_replace("{" . "annotationId" . "}",
+  			                            $annotationId, $resourcePath);
+  		}
+  		//make the API Call
+      if (! isset($body)) {
+        $body = null;
+      }
+  		$response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
+
+
+      if(! $response){
+          return null;
+        }
+
+  		$responseObject = $this->apiClient->deserialize($response,
+  		                                                'MoveAnnotationResponse');
+  		return $responseObject;
+
+      }
+  /**
 	 * SetReviewerRights
 	 * Set Reviewer Rights
    * userId, string: User GUID (required)
    * fileId, string: File ID (required)
    * body, List[ReviewerInfo]: Collaborators (required)
-   * @return SetDocumentRightsResponse
+   * @return SetReviewerRightsResponse
 	 */
 
    public function SetReviewerRights($userId, $fileId, $body) {
@@ -654,7 +696,7 @@ class AntApi {
         }
 
   		$responseObject = $this->apiClient->deserialize($response,
-  		                                                'SetDocumentRightsResponse');
+  		                                                'SetReviewerRightsResponse');
   		return $responseObject;
 
       }

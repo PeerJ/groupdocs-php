@@ -28,12 +28,12 @@ class SharedDocumentInfo {
       'status' => 'string',
       'type_str' => 'string',
       'shared_on' => 'int',
-      'access' => 'string',
       'type' => 'string',
+      'access' => 'string',
       'url' => 'string',
+      'file_type' => 'string',
       'version' => 'int',
       'size' => 'int',
-      'file_type' => 'string',
       'guid' => 'string',
       'id' => 'float',
       'document_path' => 'string',
@@ -47,12 +47,12 @@ class SharedDocumentInfo {
   public $status; // string
   public $type_str; // string
   public $shared_on; // int
-  public $access; // string
   public $type; // string
+  public $access; // string
   public $url; // string
+  public $file_type; // string
   public $version; // int
   public $size; // int
-  public $file_type; // string
   public $guid; // string
   public $id; // float
   public $document_path; // string

@@ -152,7 +152,7 @@ class StorageApi {
 	 * Get file
    * userId, string: User GUID (required)
    * fileId, string: File GUID (required)
-   * @return string
+   * @return stream
 	 */
 
    public function GetFile($userId, $fileId) {
@@ -184,7 +184,7 @@ class StorageApi {
         }
 
   		$responseObject = $this->apiClient->deserialize($response,
-  		                                                'string');
+  		                                                'stream');
   		return $responseObject;
 
       }
@@ -193,7 +193,7 @@ class StorageApi {
 	 * Get shared file
    * userEmail, string: User Email (required)
    * filePath, string: File path (required)
-   * @return string
+   * @return stream
 	 */
 
    public function GetSharedFile($userEmail, $filePath) {
@@ -225,7 +225,7 @@ class StorageApi {
         }
 
   		$responseObject = $this->apiClient->deserialize($response,
-  		                                                'string');
+  		                                                'stream');
   		return $responseObject;
 
       }
@@ -258,6 +258,58 @@ class StorageApi {
   		if($description != null) {
   			$resourcePath = str_replace("{" . "description" . "}",
   			                            $description, $resourcePath);
+  		}
+  		//make the API Call
+      if (! isset($body)) {
+        $body = null;
+      }
+  		$response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
+
+
+      if(! $response){
+          return null;
+        }
+
+  		$responseObject = $this->apiClient->deserialize($response,
+  		                                                'UploadResponse');
+  		return $responseObject;
+
+      }
+  /**
+	 * Decompress
+	 * UploadAndUnzip
+   * userId, string: User GUID (required)
+   * path, string: Path (required)
+   * description, string: Description (optional)
+   * archiveType, string: Archive type (optional)
+   * body, stream: Stream (required)
+   * @return UploadResponse
+	 */
+
+   public function Decompress($userId, $path, $description=null, $archiveType=null, $body) {
+  	  //parse inputs
+  	  $resourcePath = str_replace("*", "", "/storage/{userId}/decompress/{*path}?description={description}&amp;archiveType={archiveType}");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "POST";
+      $queryParams = array();
+      $headerParams = array();
+
+      if($userId != null) {
+  			$resourcePath = str_replace("{" . "userId" . "}",
+  			                            $userId, $resourcePath);
+  		}
+  		if($path != null) {
+  			$resourcePath = str_replace("{" . "path" . "}",
+  			                            $path, $resourcePath);
+  		}
+  		if($description != null) {
+  			$resourcePath = str_replace("{" . "description" . "}",
+  			                            $description, $resourcePath);
+  		}
+  		if($archiveType != null) {
+  			$resourcePath = str_replace("{" . "archiveType" . "}",
+  			                            $archiveType, $resourcePath);
   		}
   		//make the API Call
       if (! isset($body)) {
@@ -451,12 +503,12 @@ class StorageApi {
    * userId, string: User GUID (required)
    * path, string: Path (required)
    * mode, string: Mode (optional)
-   * Groupdocs_Move, string: File ID (move) (optional)
    * Groupdocs_Copy, string: File ID (copy) (optional)
+   * Groupdocs_Move, string: File ID (move) (optional)
    * @return FileMoveResponse
 	 */
 
-   public function MoveFile($userId, $path, $mode=null, $Groupdocs_Move=null, $Groupdocs_Copy=null) {
+   public function MoveFile($userId, $path, $mode=null, $Groupdocs_Copy=null, $Groupdocs_Move=null) {
   	  //parse inputs
   	  $resourcePath = str_replace("*", "", "/storage/{userId}/files/{*path}");
   	  $resourcePath = str_replace("{format}", "json", $resourcePath);
@@ -464,11 +516,11 @@ class StorageApi {
       $queryParams = array();
       $headerParams = array();
 
-      if($Groupdocs_Move != null) {
-  		 	$headerParams['Groupdocs-Move'] = $this->apiClient->toPathValue($Groupdocs_Move);
-  		}
       if($Groupdocs_Copy != null) {
   		 	$headerParams['Groupdocs-Copy'] = $this->apiClient->toPathValue($Groupdocs_Copy);
+  		}
+      if($Groupdocs_Move != null) {
+  		 	$headerParams['Groupdocs-Move'] = $this->apiClient->toPathValue($Groupdocs_Move);
   		}
       if($userId != null) {
   			$resourcePath = str_replace("{" . "userId" . "}",
@@ -505,12 +557,12 @@ class StorageApi {
    * userId, string: User GUID (required)
    * path, string: Destination Path (required)
    * mode, string: Mode (optional)
-   * Groupdocs_Copy, string: Source path (copy) (optional)
    * Groupdocs_Move, string: Source path (move) (optional)
+   * Groupdocs_Copy, string: Source path (copy) (optional)
    * @return FolderMoveResponse
 	 */
 
-   public function MoveFolder($userId, $path, $mode=null, $Groupdocs_Copy=null, $Groupdocs_Move=null) {
+   public function MoveFolder($userId, $path, $mode=null, $Groupdocs_Move=null, $Groupdocs_Copy=null) {
   	  //parse inputs
   	  $resourcePath = str_replace("*", "", "/storage/{userId}/folders/{*path}?override_mode={mode}");
   	  $resourcePath = str_replace("{format}", "json", $resourcePath);
@@ -518,11 +570,11 @@ class StorageApi {
       $queryParams = array();
       $headerParams = array();
 
-      if($Groupdocs_Copy != null) {
-  		 	$headerParams['Groupdocs-Copy'] = $this->apiClient->toPathValue($Groupdocs_Copy);
-  		}
       if($Groupdocs_Move != null) {
   		 	$headerParams['Groupdocs-Move'] = $this->apiClient->toPathValue($Groupdocs_Move);
+  		}
+      if($Groupdocs_Copy != null) {
+  		 	$headerParams['Groupdocs-Copy'] = $this->apiClient->toPathValue($Groupdocs_Copy);
   		}
       if($userId != null) {
   			$resourcePath = str_replace("{" . "userId" . "}",

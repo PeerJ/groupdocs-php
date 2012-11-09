@@ -24,11 +24,13 @@
 class CreateQuestionnaireResult {
 
   static $swaggerTypes = array(
+      'questionnaire_guid' => 'string',
       'questionnaire_id' => 'float',
       'adjusted_name' => 'string'
 
     );
 
+  public $questionnaire_guid; // string
   public $questionnaire_id; // float
   public $adjusted_name; // string
   }

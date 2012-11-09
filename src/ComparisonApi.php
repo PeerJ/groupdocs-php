@@ -41,7 +41,7 @@ class ComparisonApi {
    * userId, string: User GUID (required)
    * resultFileId, string: Comparison result file GUID (required)
    * format, string: Comparison result file format (optional)
-   * @return string
+   * @return stream
 	 */
 
    public function DownloadResult($userId, $resultFileId, $format=null) {
@@ -77,7 +77,7 @@ class ComparisonApi {
         }
 
   		$responseObject = $this->apiClient->deserialize($response,
-  		                                                'string');
+  		                                                'stream');
   		return $responseObject;
 
       }
@@ -87,12 +87,13 @@ class ComparisonApi {
    * userId, string: User GUID (required)
    * sourceFileId, string: Source File GUID (required)
    * targetFileId, string: Target File GUID (required)
+   * callbackUrl, string: Callback Url (required)
    * @return CompareResponse
 	 */
 
-   public function Compare($userId, $sourceFileId, $targetFileId) {
+   public function Compare($userId, $sourceFileId, $targetFileId, $callbackUrl) {
   	  //parse inputs
-  	  $resourcePath = str_replace("*", "", "/comparison/{userId}/comparison/compare?source={sourceFileId}&amp;target={targetFileId}");
+  	  $resourcePath = str_replace("*", "", "/comparison/{userId}/comparison/compare?source={sourceFileId}&amp;target={targetFileId}&amp;callback={callbackUrl}");
   	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "GET";
       $queryParams = array();
@@ -109,6 +110,10 @@ class ComparisonApi {
   		if($targetFileId != null) {
   			$resourcePath = str_replace("{" . "targetFileId" . "}",
   			                            $targetFileId, $resourcePath);
+  		}
+  		if($callbackUrl != null) {
+  			$resourcePath = str_replace("{" . "callbackUrl" . "}",
+  			                            $callbackUrl, $resourcePath);
   		}
   		//make the API Call
       if (! isset($body)) {

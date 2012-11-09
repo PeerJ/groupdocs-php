@@ -983,10 +983,51 @@ class MergeApi {
 
       }
   /**
+	 * GetQuestionnaireCollectorExecutions
+	 * Get questionnaire collector executions
+   * userId, string: User GUID (required)
+   * collectorId, string: Questionnaire collector global unique identifier (required)
+   * @return GetQuestionnaireExecutionsResponse
+	 */
+
+   public function GetQuestionnaireCollectorExecutions($userId, $collectorId) {
+  	  //parse inputs
+  	  $resourcePath = str_replace("*", "", "/merge/{userId}/questionnaires/collectors/{collectorId}/executions");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "GET";
+      $queryParams = array();
+      $headerParams = array();
+
+      if($userId != null) {
+  			$resourcePath = str_replace("{" . "userId" . "}",
+  			                            $userId, $resourcePath);
+  		}
+  		if($collectorId != null) {
+  			$resourcePath = str_replace("{" . "collectorId" . "}",
+  			                            $collectorId, $resourcePath);
+  		}
+  		//make the API Call
+      if (! isset($body)) {
+        $body = null;
+      }
+  		$response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
+
+
+      if(! $response){
+          return null;
+        }
+
+  		$responseObject = $this->apiClient->deserialize($response,
+  		                                                'GetQuestionnaireExecutionsResponse');
+  		return $responseObject;
+
+      }
+  /**
 	 * GetQuestionnaireExecutions
 	 * Get questionnaire executions
    * userId, string: User GUID (required)
-   * questionnaireId, string: QuestionnaireId global unique identifier (required)
+   * questionnaireId, string: Questionnaire global unique identifier (required)
    * @return GetQuestionnaireExecutionsResponse
 	 */
 
@@ -1434,6 +1475,89 @@ class MergeApi {
 
   		$responseObject = $this->apiClient->deserialize($response,
   		                                                'TemplateFieldsResponse');
+  		return $responseObject;
+
+      }
+  /**
+	 * GetQuestionnaireMetadata
+	 * Get questionnaire metadata
+   * userId, string: User global unique identifier (required)
+   * questionnaireId, string: Questionnaire global unique identifier (required)
+   * @return GetQuestionnaireMetadataResponse
+	 */
+
+   public function GetQuestionnaireMetadata($userId, $questionnaireId) {
+  	  //parse inputs
+  	  $resourcePath = str_replace("*", "", "/merge/{userId}/questionnaires/{questionnaireId}/metadata");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "GET";
+      $queryParams = array();
+      $headerParams = array();
+
+      if($userId != null) {
+  			$resourcePath = str_replace("{" . "userId" . "}",
+  			                            $userId, $resourcePath);
+  		}
+  		if($questionnaireId != null) {
+  			$resourcePath = str_replace("{" . "questionnaireId" . "}",
+  			                            $questionnaireId, $resourcePath);
+  		}
+  		//make the API Call
+      if (! isset($body)) {
+        $body = null;
+      }
+  		$response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
+
+
+      if(! $response){
+          return null;
+        }
+
+  		$responseObject = $this->apiClient->deserialize($response,
+  		                                                'GetQuestionnaireMetadataResponse');
+  		return $responseObject;
+
+      }
+  /**
+	 * UpdateQuestionnaireMetadata
+	 * Update questionnaire metadata
+   * userId, string: User global unique identifier (required)
+   * questionnaireId, string: Questionnaire global unique identifier (required)
+   * body, QuestionnaireMetadata: Questionnaire metadata to update (required)
+   * @return UpdateQuestionnaireResponse
+	 */
+
+   public function UpdateQuestionnaireMetadata($userId, $questionnaireId, $body) {
+  	  //parse inputs
+  	  $resourcePath = str_replace("*", "", "/merge/{userId}/questionnaires/{questionnaireId}/metadata");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "PUT";
+      $queryParams = array();
+      $headerParams = array();
+
+      if($userId != null) {
+  			$resourcePath = str_replace("{" . "userId" . "}",
+  			                            $userId, $resourcePath);
+  		}
+  		if($questionnaireId != null) {
+  			$resourcePath = str_replace("{" . "questionnaireId" . "}",
+  			                            $questionnaireId, $resourcePath);
+  		}
+  		//make the API Call
+      if (! isset($body)) {
+        $body = null;
+      }
+  		$response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
+
+
+      if(! $response){
+          return null;
+        }
+
+  		$responseObject = $this->apiClient->deserialize($response,
+  		                                                'UpdateQuestionnaireResponse');
   		return $responseObject;
 
       }

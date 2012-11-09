@@ -28,7 +28,7 @@ class QuestionnaireExecutionInfo {
       'datasource_id' => 'float',
       'guid' => 'string',
       'executive' => 'UserIdentity',
-      'document' => 'DocumentIdentity',
+      'document' => 'DocumentDownloadInfo',
       'collector_id' => 'float',
       'collector_guid' => 'string',
       'status' => 'string',
@@ -43,7 +43,7 @@ class QuestionnaireExecutionInfo {
   public $datasource_id; // float
   public $guid; // string
   public $executive; // UserIdentity
-  public $document; // DocumentIdentity
+  public $document; // DocumentDownloadInfo
   public $collector_id; // float
   public $collector_guid; // string
   public $status; // string

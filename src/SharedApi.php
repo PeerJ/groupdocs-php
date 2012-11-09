@@ -41,7 +41,7 @@ class SharedApi {
    * guid, string: GUID (required)
    * fileName, string: File name (required)
    * render, bool: Render (optional)
-   * @return string
+   * @return stream
 	 */
 
    public function Download($guid, $fileName, $render=null) {
@@ -77,7 +77,7 @@ class SharedApi {
         }
 
   		$responseObject = $this->apiClient->deserialize($response,
-  		                                                'string');
+  		                                                'stream');
   		return $responseObject;
 
       }
@@ -85,7 +85,7 @@ class SharedApi {
 	 * GetXml
 	 * Get xml
    * guid, string: GUID (required)
-   * @return string
+   * @return stream
 	 */
 
    public function GetXml($guid) {
@@ -113,7 +113,7 @@ class SharedApi {
         }
 
   		$responseObject = $this->apiClient->deserialize($response,
-  		                                                'string');
+  		                                                'stream');
   		return $responseObject;
 
       }
@@ -121,7 +121,7 @@ class SharedApi {
 	 * GetPackage
 	 * Get package
    * path, string: Path (required)
-   * @return string
+   * @return stream
 	 */
 
    public function GetPackage($path) {
@@ -149,7 +149,7 @@ class SharedApi {
         }
 
   		$responseObject = $this->apiClient->deserialize($response,
-  		                                                'string');
+  		                                                'stream');
   		return $responseObject;
 
       }

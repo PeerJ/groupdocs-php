@@ -25,14 +25,12 @@ class SignatureFormSettings {
 
   static $swaggerTypes = array(
       'canParticipantDownloadForm' => 'bool',
-      'templateGuid' => 'string',
       'name' => 'string',
       'fieldsInFinalFileName' => 'string'
 
     );
 
   public $canParticipantDownloadForm; // bool
-  public $templateGuid; // string
   public $name; // string
   public $fieldsInFinalFileName; // string
   }

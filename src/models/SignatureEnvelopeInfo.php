@@ -29,7 +29,6 @@ class SignatureEnvelopeInfo {
       'recipients' => 'array[SignatureEnvelopeRecipientInfo]',
       'status' => 'int',
       'envelopeExpireTime' => 'float',
-      'ownerId' => 'float',
       'reminderTime' => 'float',
       'emailSubject' => 'string',
       'statusDateTime' => 'string',
@@ -49,7 +48,6 @@ class SignatureEnvelopeInfo {
   public $recipients; // array[SignatureEnvelopeRecipientInfo]
   public $status; // int
   public $envelopeExpireTime; // float
-  public $ownerId; // float
   public $reminderTime; // float
   public $emailSubject; // string
   public $statusDateTime; // string

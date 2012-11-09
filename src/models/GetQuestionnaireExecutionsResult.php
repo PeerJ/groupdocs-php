@@ -24,10 +24,12 @@
 class GetQuestionnaireExecutionsResult {
 
   static $swaggerTypes = array(
-      'executions' => 'array[QuestionnaireExecutionInfo]'
+      'executions' => 'array[QuestionnaireExecutionInfo]',
+      'questionnaire_guid' => 'string'
 
     );
 
   public $executions; // array[QuestionnaireExecutionInfo]
+  public $questionnaire_guid; // string
   }
 

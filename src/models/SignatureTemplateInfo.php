@@ -26,7 +26,6 @@ class SignatureTemplateInfo {
   static $swaggerTypes = array(
       'ownerShouldSign' => 'bool',
       'recipients' => 'array[SignatureTemplateRecipientInfo]',
-      'ownerId' => 'float',
       'reminderTime' => 'float',
       'emailSubject' => 'string',
       'id' => 'string',
@@ -43,7 +42,6 @@ class SignatureTemplateInfo {
 
   public $ownerShouldSign; // bool
   public $recipients; // array[SignatureTemplateRecipientInfo]
-  public $ownerId; // float
   public $reminderTime; // float
   public $emailSubject; // string
   public $id; // string

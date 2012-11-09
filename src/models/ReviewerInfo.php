@@ -26,6 +26,7 @@ class ReviewerInfo {
   static $swaggerTypes = array(
       'guid' => 'string',
       'id' => 'float',
+      'customEmailMessage' => 'string',
       'color' => 'int',
       'primary_email' => 'string',
       'access_rights' => 'int',
@@ -35,6 +36,7 @@ class ReviewerInfo {
 
   public $guid; // string
   public $id; // float
+  public $customEmailMessage; // string
   public $color; // int
   public $primary_email; // string
   public $access_rights; // int

@@ -33,13 +33,12 @@ class SignatureEnvelopeRecipientInfo {
       'signatureBrowser' => 'string',
       'order' => 'int',
       'email' => 'string',
-      'userId' => 'float',
       'signatureLocation' => 'string',
       'signatureFingerprint' => 'string',
       'firstName' => 'string',
-      'signatureHost' => 'string',
       'userGuid' => 'string',
-      'roleId' => 'float'
+      'roleId' => 'float',
+      'signatureHost' => 'string'
 
     );
 
@@ -52,12 +51,11 @@ class SignatureEnvelopeRecipientInfo {
   public $signatureBrowser; // string
   public $order; // int
   public $email; // string
-  public $userId; // float
   public $signatureLocation; // string
   public $signatureFingerprint; // string
   public $firstName; // string
-  public $signatureHost; // string
   public $userGuid; // string
   public $roleId; // float
+  public $signatureHost; // string
   }
 

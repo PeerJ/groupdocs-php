@@ -30,8 +30,9 @@ class QuestionnaireInfo {
       'expires' => 'int',
       'status' => 'string',
       'resolved_executions' => 'int',
-      'pages' => 'array[QuestionnairePageInfo]',
       'name' => 'string',
+      'pages' => 'array[QuestionnairePageInfo]',
+      'document_ids' => 'array[string]',
       'descr' => 'string',
       'modified' => 'int',
       'total_questions' => 'int'
@@ -44,8 +45,9 @@ class QuestionnaireInfo {
   public $expires; // int
   public $status; // string
   public $resolved_executions; // int
-  public $pages; // array[QuestionnairePageInfo]
   public $name; // string
+  public $pages; // array[QuestionnairePageInfo]
+  public $document_ids; // array[string]
   public $descr; // string
   public $modified; // int
   public $total_questions; // int

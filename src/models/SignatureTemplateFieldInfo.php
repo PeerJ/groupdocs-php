@@ -27,20 +27,15 @@ class SignatureTemplateFieldInfo {
       'regularExpression' => 'string',
       'fieldType' => 'int',
       'mandatory' => 'bool',
-      'graphSizeH' => 'int',
-      'textRows' => 'float',
       'id' => 'string',
       'templateId' => 'string',
       'acceptableValues' => 'string',
-      'input' => 'float',
-      'textColumns' => 'float',
       'recipientId' => 'string',
       'order' => 'float',
-      'locations' => 'array[SignatureTemplateFieldLocationInfo]',
       'signatureFieldId' => 'float',
+      'locations' => 'array[SignatureTemplateFieldLocationInfo]',
       'name' => 'string',
       'defaultValue' => 'string',
-      'graphSizeW' => 'int',
       'tooltip' => 'string'
 
     );
@@ -48,20 +43,15 @@ class SignatureTemplateFieldInfo {
   public $regularExpression; // string
   public $fieldType; // int
   public $mandatory; // bool
-  public $graphSizeH; // int
-  public $textRows; // float
   public $id; // string
   public $templateId; // string
   public $acceptableValues; // string
-  public $input; // float
-  public $textColumns; // float
   public $recipientId; // string
   public $order; // float
-  public $locations; // array[SignatureTemplateFieldLocationInfo]
   public $signatureFieldId; // float
+  public $locations; // array[SignatureTemplateFieldLocationInfo]
   public $name; // string
   public $defaultValue; // string
-  public $graphSizeW; // int
   public $tooltip; // string
   }
 

@@ -118,6 +118,47 @@ class AsyncApi {
 
       }
   /**
+	 * GetJobResources
+	 * Get job resources
+   * userId, string: User GUID (required)
+   * statusIds, string: Comma separated job status identifiers (required)
+   * @return GetJobResourcesResponse
+	 */
+
+   public function GetJobResources($userId, $statusIds) {
+  	  //parse inputs
+  	  $resourcePath = str_replace("*", "", "/async/{userId}/jobs/resources?statusIds={statusIds}");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "GET";
+      $queryParams = array();
+      $headerParams = array();
+
+      if($userId != null) {
+  			$resourcePath = str_replace("{" . "userId" . "}",
+  			                            $userId, $resourcePath);
+  		}
+  		if($statusIds != null) {
+  			$resourcePath = str_replace("{" . "statusIds" . "}",
+  			                            $statusIds, $resourcePath);
+  		}
+  		//make the API Call
+      if (! isset($body)) {
+        $body = null;
+      }
+  		$response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
+
+
+      if(! $response){
+          return null;
+        }
+
+  		$responseObject = $this->apiClient->deserialize($response,
+  		                                                'GetJobResourcesResponse');
+  		return $responseObject;
+
+      }
+  /**
 	 * GetJobDocuments
 	 * Get job documents
    * userId, string: User GUID (required)
@@ -443,15 +484,15 @@ class AsyncApi {
    * pageIndex, string: Page Index (optional)
    * pageSize, string: Page Size (optional)
    * DateTime, string: Date (optional)
-   * status, string: Status (optional)
+   * statusIds, string: Comma separated status identifiers (optional)
    * actions, string: Actions (optional)
    * excludedActions, string: Excluded actions (optional)
    * @return GetJobsResponse
 	 */
 
-   public function GetJobs($userId, $pageIndex=null, $pageSize=null, $DateTime=null, $status=null, $actions=null, $excludedActions=null) {
+   public function GetJobs($userId, $pageIndex=null, $pageSize=null, $DateTime=null, $statusIds=null, $actions=null, $excludedActions=null) {
   	  //parse inputs
-  	  $resourcePath = str_replace("*", "", "/async/{userId}/jobs?page={pageIndex}&amp;count={pageSize}&amp;date={date}&amp;status={status}&amp;actions={actions}&amp;excluded_actions={excludedActions}");
+  	  $resourcePath = str_replace("*", "", "/async/{userId}/jobs?page={pageIndex}&amp;count={pageSize}&amp;date={date}&amp;statusIds={statusIds}&amp;actions={actions}&amp;excluded_actions={excludedActions}");
   	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "GET";
       $queryParams = array();
@@ -473,9 +514,9 @@ class AsyncApi {
   			$resourcePath = str_replace("{" . "date" . "}",
   			                            $DateTime, $resourcePath);
   		}
-  		if($status != null) {
-  			$resourcePath = str_replace("{" . "status" . "}",
-  			                            $status, $resourcePath);
+  		if($statusIds != null) {
+  			$resourcePath = str_replace("{" . "statusIds" . "}",
+  			                            $statusIds, $resourcePath);
   		}
   		if($actions != null) {
   			$resourcePath = str_replace("{" . "actions" . "}",

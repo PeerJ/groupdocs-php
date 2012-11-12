@@ -34,13 +34,17 @@ class SiteController extends Controller {
                 move_uploaded_file($tmp_name, "$uploads_dir/$name");
 
                 //  GroupDocs SDK
-                Yii::import('application.vendors.groupdocs-php.api.APIClient');
-                Yii::import('application.vendors.groupdocs-php.api.StorageAPI');
-                Yii::import('application.vendors.groupdocs-php.model.StorageStorageInputFoldersInput');
-                Yii::import('application.vendors.groupdocs-php.model.UploadResponse');
-                Yii::import('application.vendors.groupdocs-php.model.UploadRequestResult');
+                Yii::import('application.vendors.groupdocs-php.APIClient', true);          
+                Yii::import('application.vendors.groupdocs-php.StorageAPI');
+                Yii::import('application.vendors.groupdocs-php.GroupDocsRequestSigner');
+                Yii::import('application.vendors.groupdocs-php.models.StorageStorageInputFoldersInput');
+                Yii::import('application.vendors.groupdocs-php.models.UploadResponse');
+                Yii::import('application.vendors.groupdocs-php.models.UploadRequestResult');
                 // groupdocs api
-                $apiClient = new APIClient($apiKey, "https://api.groupdocs.com/v2.0");
+                
+                $signer = new GroupDocsRequestSigner($apiKey);
+                //$apiClient = new APIClient($apiKey, "https://api.groupdocs.com/v2.0"); //old api - SDK v1.0
+                $apiClient = new APIClient($signer); // PHP SDK V1.1
                 $api = new StorageAPI($apiClient);
                 $result = $api->Upload($clientID, $name, 'uploaded', "file://$uploads_dir/$name");
                 unlink("$uploads_dir/$name");

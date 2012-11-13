@@ -32,12 +32,12 @@ class JobInputDocument {
       'url' => 'string',
       'file_type' => 'string',
       'version' => 'int',
-      'size' => 'int',
+      'size' => 'string',
       'guid' => 'string',
       'id' => 'float',
       'document_path' => 'string',
       'supported_output_file_types' => 'array[string]',
-      'proc_date' => 'int',
+      'proc_date' => 'string',
       'name' => 'string',
       'file_type_str' => 'string',
       'outputs' => 'array[JobOutputDocument]',
@@ -54,12 +54,12 @@ class JobInputDocument {
   public $url; // string
   public $file_type; // string
   public $version; // int
-  public $size; // int
+  public $size; // string
   public $guid; // string
   public $id; // float
   public $document_path; // string
   public $supported_output_file_types; // array[string]
-  public $proc_date; // int
+  public $proc_date; // string
   public $name; // string
   public $file_type_str; // string
   public $outputs; // array[JobOutputDocument]

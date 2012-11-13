@@ -27,11 +27,11 @@ class QuestionnaireMetadata {
       'assigned_questions' => 'int',
       'guid' => 'string',
       'id' => 'float',
-      'expires' => 'int',
+      'expires' => 'string',
       'status' => 'string',
       'name' => 'string',
       'descr' => 'string',
-      'modified' => 'int',
+      'modified' => 'string',
       'total_questions' => 'int'
 
     );
@@ -39,11 +39,11 @@ class QuestionnaireMetadata {
   public $assigned_questions; // int
   public $guid; // string
   public $id; // float
-  public $expires; // int
+  public $expires; // string
   public $status; // string
   public $name; // string
   public $descr; // string
-  public $modified; // int
+  public $modified; // string
   public $total_questions; // int
   }
 

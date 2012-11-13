@@ -46,21 +46,21 @@ class PostApi {
 
    public function RenameByPost($userId, $fileId, $newName) {
   	  //parse inputs
-  	  $resourcePath = str_replace("*", "", "/post/file.rename?user_id={userId}&amp;file_id={fileId}&amp;new_name={newName}");
+  	  $resourcePath = str_replace("*", "", "/post/file.rename?user_id={userId}&file_id={fileId}&new_name={newName}");
   	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "POST";
       $queryParams = array();
       $headerParams = array();
 
-      if($userId != null) {
+      if($userId !== null) {
   			$resourcePath = str_replace("{" . "userId" . "}",
   			                            $userId, $resourcePath);
   		}
-  		if($fileId != null) {
+  		if($fileId !== null) {
   			$resourcePath = str_replace("{" . "fileId" . "}",
   			                            $fileId, $resourcePath);
   		}
-  		if($newName != null) {
+  		if($newName !== null) {
   			$resourcePath = str_replace("{" . "newName" . "}",
   			                            $newName, $resourcePath);
   		}
@@ -91,17 +91,17 @@ class PostApi {
 
    public function DeleteByPost($userId, $fileId) {
   	  //parse inputs
-  	  $resourcePath = str_replace("*", "", "/post/file.delete?user_id={userId}&amp;file_id={fileId}");
+  	  $resourcePath = str_replace("*", "", "/post/file.delete?user_id={userId}&file_id={fileId}");
   	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "POST";
       $queryParams = array();
       $headerParams = array();
 
-      if($userId != null) {
+      if($userId !== null) {
   			$resourcePath = str_replace("{" . "userId" . "}",
   			                            $userId, $resourcePath);
   		}
-  		if($fileId != null) {
+  		if($fileId !== null) {
   			$resourcePath = str_replace("{" . "fileId" . "}",
   			                            $fileId, $resourcePath);
   		}
@@ -132,17 +132,17 @@ class PostApi {
 
    public function DeleteFromFolderByPost($userId, $path) {
   	  //parse inputs
-  	  $resourcePath = str_replace("*", "", "/post/file.delete.in?user_id={userId}&amp;path={path}");
+  	  $resourcePath = str_replace("*", "", "/post/file.delete.in?user_id={userId}&path={path}");
   	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "POST";
       $queryParams = array();
       $headerParams = array();
 
-      if($userId != null) {
+      if($userId !== null) {
   			$resourcePath = str_replace("{" . "userId" . "}",
   			                            $userId, $resourcePath);
   		}
-  		if($path != null) {
+  		if($path !== null) {
   			$resourcePath = str_replace("{" . "path" . "}",
   			                            $path, $resourcePath);
   		}
@@ -174,21 +174,21 @@ class PostApi {
 
    public function CompressByPost($userId, $fileId, $archiveType) {
   	  //parse inputs
-  	  $resourcePath = str_replace("*", "", "/post/file.compress?user_id={userId}&amp;file_id={fileId}&amp;archive_type={archiveType}");
+  	  $resourcePath = str_replace("*", "", "/post/file.compress?user_id={userId}&file_id={fileId}&archive_type={archiveType}");
   	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "POST";
       $queryParams = array();
       $headerParams = array();
 
-      if($userId != null) {
+      if($userId !== null) {
   			$resourcePath = str_replace("{" . "userId" . "}",
   			                            $userId, $resourcePath);
   		}
-  		if($fileId != null) {
+  		if($fileId !== null) {
   			$resourcePath = str_replace("{" . "fileId" . "}",
   			                            $fileId, $resourcePath);
   		}
-  		if($archiveType != null) {
+  		if($archiveType !== null) {
   			$resourcePath = str_replace("{" . "archiveType" . "}",
   			                            $archiveType, $resourcePath);
   		}

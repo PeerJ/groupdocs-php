@@ -53,19 +53,19 @@ class MergeApi {
       $queryParams = array();
       $headerParams = array();
 
-      if($userId != null) {
+      if($userId !== null) {
   			$resourcePath = str_replace("{" . "userId" . "}",
   			                            $userId, $resourcePath);
   		}
-  		if($jobId != null) {
+  		if($jobId !== null) {
   			$resourcePath = str_replace("{" . "jobId" . "}",
   			                            $jobId, $resourcePath);
   		}
-  		if($fileId != null) {
+  		if($fileId !== null) {
   			$resourcePath = str_replace("{" . "fileId" . "}",
   			                            $fileId, $resourcePath);
   		}
-  		if($datasourceId != null) {
+  		if($datasourceId !== null) {
   			$resourcePath = str_replace("{" . "datasourceId" . "}",
   			                            $datasourceId, $resourcePath);
   		}
@@ -104,15 +104,15 @@ class MergeApi {
       $queryParams = array();
       $headerParams = array();
 
-      if($userId != null) {
+      if($userId !== null) {
   			$resourcePath = str_replace("{" . "userId" . "}",
   			                            $userId, $resourcePath);
   		}
-  		if($jobId != null) {
+  		if($jobId !== null) {
   			$resourcePath = str_replace("{" . "jobId" . "}",
   			                            $jobId, $resourcePath);
   		}
-  		if($fileId != null) {
+  		if($fileId !== null) {
   			$resourcePath = str_replace("{" . "fileId" . "}",
   			                            $fileId, $resourcePath);
   		}
@@ -146,29 +146,29 @@ class MergeApi {
 
    public function FillQuestionnaire($userId, $collectorId, $datasourceId, $targetType=null, $emailResults=null) {
   	  //parse inputs
-  	  $resourcePath = str_replace("*", "", "/merge/{userId}/questionnaires/collectors/{collectorId}/datasources/{datasourceId}?new_type={targetType}&amp;email_results={emailResults}");
+  	  $resourcePath = str_replace("*", "", "/merge/{userId}/questionnaires/collectors/{collectorId}/datasources/{datasourceId}?new_type={targetType}&email_results={emailResults}");
   	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "POST";
       $queryParams = array();
       $headerParams = array();
 
-      if($userId != null) {
+      if($userId !== null) {
   			$resourcePath = str_replace("{" . "userId" . "}",
   			                            $userId, $resourcePath);
   		}
-  		if($collectorId != null) {
+  		if($collectorId !== null) {
   			$resourcePath = str_replace("{" . "collectorId" . "}",
   			                            $collectorId, $resourcePath);
   		}
-  		if($datasourceId != null) {
+  		if($datasourceId !== null) {
   			$resourcePath = str_replace("{" . "datasourceId" . "}",
   			                            $datasourceId, $resourcePath);
   		}
-  		if($targetType != null) {
+  		if($targetType !== null) {
   			$resourcePath = str_replace("{" . "targetType" . "}",
   			                            $targetType, $resourcePath);
   		}
-  		if($emailResults != null) {
+  		if($emailResults !== null) {
   			$resourcePath = str_replace("{" . "emailResults" . "}",
   			                            $emailResults, $resourcePath);
   		}
@@ -202,29 +202,29 @@ class MergeApi {
 
    public function MergeDatasource($userId, $fileId, $datasourceId, $targetType=null, $emailResults=null) {
   	  //parse inputs
-  	  $resourcePath = str_replace("*", "", "/merge/{userId}/files/{fileId}/datasources/{datasourceId}?new_type={targetType}&amp;email_results={emailResults}");
+  	  $resourcePath = str_replace("*", "", "/merge/{userId}/files/{fileId}/datasources/{datasourceId}?new_type={targetType}&email_results={emailResults}");
   	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "POST";
       $queryParams = array();
       $headerParams = array();
 
-      if($userId != null) {
+      if($userId !== null) {
   			$resourcePath = str_replace("{" . "userId" . "}",
   			                            $userId, $resourcePath);
   		}
-  		if($fileId != null) {
+  		if($fileId !== null) {
   			$resourcePath = str_replace("{" . "fileId" . "}",
   			                            $fileId, $resourcePath);
   		}
-  		if($datasourceId != null) {
+  		if($datasourceId !== null) {
   			$resourcePath = str_replace("{" . "datasourceId" . "}",
   			                            $datasourceId, $resourcePath);
   		}
-  		if($targetType != null) {
+  		if($targetType !== null) {
   			$resourcePath = str_replace("{" . "targetType" . "}",
   			                            $targetType, $resourcePath);
   		}
-  		if($emailResults != null) {
+  		if($emailResults !== null) {
   			$resourcePath = str_replace("{" . "emailResults" . "}",
   			                            $emailResults, $resourcePath);
   		}
@@ -259,29 +259,29 @@ class MergeApi {
 
    public function MergeDatasourceFields($userId, $fileId, $targetType=null, $emailResults=null, $assemblyName=null, $body) {
   	  //parse inputs
-  	  $resourcePath = str_replace("*", "", "/merge/{userId}/files/{fileId}/datasources?new_type={targetType}&amp;email_results={emailResults}&amp;assembly_name={assemblyName}");
+  	  $resourcePath = str_replace("*", "", "/merge/{userId}/files/{fileId}/datasources?new_type={targetType}&email_results={emailResults}&assembly_name={assemblyName}");
   	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "POST";
       $queryParams = array();
       $headerParams = array();
 
-      if($userId != null) {
+      if($userId !== null) {
   			$resourcePath = str_replace("{" . "userId" . "}",
   			                            $userId, $resourcePath);
   		}
-  		if($fileId != null) {
+  		if($fileId !== null) {
   			$resourcePath = str_replace("{" . "fileId" . "}",
   			                            $fileId, $resourcePath);
   		}
-  		if($targetType != null) {
+  		if($targetType !== null) {
   			$resourcePath = str_replace("{" . "targetType" . "}",
   			                            $targetType, $resourcePath);
   		}
-  		if($emailResults != null) {
+  		if($emailResults !== null) {
   			$resourcePath = str_replace("{" . "emailResults" . "}",
   			                            $emailResults, $resourcePath);
   		}
-  		if($assemblyName != null) {
+  		if($assemblyName !== null) {
   			$resourcePath = str_replace("{" . "assemblyName" . "}",
   			                            $assemblyName, $resourcePath);
   		}
@@ -318,11 +318,11 @@ class MergeApi {
       $queryParams = array();
       $headerParams = array();
 
-      if($userId != null) {
+      if($userId !== null) {
   			$resourcePath = str_replace("{" . "userId" . "}",
   			                            $userId, $resourcePath);
   		}
-  		if($questionnaireId != null) {
+  		if($questionnaireId !== null) {
   			$resourcePath = str_replace("{" . "questionnaireId" . "}",
   			                            $questionnaireId, $resourcePath);
   		}
@@ -355,22 +355,23 @@ class MergeApi {
 
    public function GetQuestionnaires($userId, $status=null, $pageNumber=null, $pageSize=null) {
   	  //parse inputs
-  	  $resourcePath = str_replace("*", "", "/merge/{userId}/questionnaires?status={status}&amp;page_number={pageNumber}&amp;page_size={pageSize}");
-  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $resourcePath = str_replace("*", "", "/merge/{userId}/questionnaires?status={status}&page_number={pageNumber}&page_size={pageSize}");
+  	  $resourcePath = substr($resourcePath, 0, strpos($resourcePath, "?"));
+	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "GET";
       $queryParams = array();
       $headerParams = array();
 
-      if($status != null) {
+      if($status !== null) {
   		  $queryParams['status'] = $this->apiClient->toPathValue($status);
   		}
-  		if($pageNumber != null) {
+  		if($pageNumber !== null) {
   		  $queryParams['pageNumber'] = $this->apiClient->toPathValue($pageNumber);
   		}
-  		if($pageSize != null) {
+  		if($pageSize !== null) {
   		  $queryParams['pageSize'] = $this->apiClient->toPathValue($pageSize);
   		}
-  		if($userId != null) {
+  		if($userId !== null) {
   			$resourcePath = str_replace("{" . "userId" . "}",
   			                            $userId, $resourcePath);
   		}
@@ -407,7 +408,7 @@ class MergeApi {
       $queryParams = array();
       $headerParams = array();
 
-      if($userId != null) {
+      if($userId !== null) {
   			$resourcePath = str_replace("{" . "userId" . "}",
   			                            $userId, $resourcePath);
   		}
@@ -445,11 +446,11 @@ class MergeApi {
       $queryParams = array();
       $headerParams = array();
 
-      if($userId != null) {
+      if($userId !== null) {
   			$resourcePath = str_replace("{" . "userId" . "}",
   			                            $userId, $resourcePath);
   		}
-  		if($questionnaireId != null) {
+  		if($questionnaireId !== null) {
   			$resourcePath = str_replace("{" . "questionnaireId" . "}",
   			                            $questionnaireId, $resourcePath);
   		}
@@ -486,11 +487,11 @@ class MergeApi {
       $queryParams = array();
       $headerParams = array();
 
-      if($userId != null) {
+      if($userId !== null) {
   			$resourcePath = str_replace("{" . "userId" . "}",
   			                            $userId, $resourcePath);
   		}
-  		if($questionnaireId != null) {
+  		if($questionnaireId !== null) {
   			$resourcePath = str_replace("{" . "questionnaireId" . "}",
   			                            $questionnaireId, $resourcePath);
   		}
@@ -527,11 +528,11 @@ class MergeApi {
       $queryParams = array();
       $headerParams = array();
 
-      if($userId != null) {
+      if($userId !== null) {
   			$resourcePath = str_replace("{" . "userId" . "}",
   			                            $userId, $resourcePath);
   		}
-  		if($fileId != null) {
+  		if($fileId !== null) {
   			$resourcePath = str_replace("{" . "fileId" . "}",
   			                            $fileId, $resourcePath);
   		}
@@ -569,11 +570,11 @@ class MergeApi {
       $queryParams = array();
       $headerParams = array();
 
-      if($userId != null) {
+      if($userId !== null) {
   			$resourcePath = str_replace("{" . "userId" . "}",
   			                            $userId, $resourcePath);
   		}
-  		if($fileId != null) {
+  		if($fileId !== null) {
   			$resourcePath = str_replace("{" . "fileId" . "}",
   			                            $fileId, $resourcePath);
   		}
@@ -611,15 +612,15 @@ class MergeApi {
       $queryParams = array();
       $headerParams = array();
 
-      if($userId != null) {
+      if($userId !== null) {
   			$resourcePath = str_replace("{" . "userId" . "}",
   			                            $userId, $resourcePath);
   		}
-  		if($fileId != null) {
+  		if($fileId !== null) {
   			$resourcePath = str_replace("{" . "fileId" . "}",
   			                            $fileId, $resourcePath);
   		}
-  		if($questionnaireId != null) {
+  		if($questionnaireId !== null) {
   			$resourcePath = str_replace("{" . "questionnaireId" . "}",
   			                            $questionnaireId, $resourcePath);
   		}
@@ -657,15 +658,15 @@ class MergeApi {
       $queryParams = array();
       $headerParams = array();
 
-      if($userId != null) {
+      if($userId !== null) {
   			$resourcePath = str_replace("{" . "userId" . "}",
   			                            $userId, $resourcePath);
   		}
-  		if($fileId != null) {
+  		if($fileId !== null) {
   			$resourcePath = str_replace("{" . "fileId" . "}",
   			                            $fileId, $resourcePath);
   		}
-  		if($questionnaireId != null) {
+  		if($questionnaireId !== null) {
   			$resourcePath = str_replace("{" . "questionnaireId" . "}",
   			                            $questionnaireId, $resourcePath);
   		}
@@ -702,7 +703,7 @@ class MergeApi {
       $queryParams = array();
       $headerParams = array();
 
-      if($userId != null) {
+      if($userId !== null) {
   			$resourcePath = str_replace("{" . "userId" . "}",
   			                            $userId, $resourcePath);
   		}
@@ -740,11 +741,11 @@ class MergeApi {
       $queryParams = array();
       $headerParams = array();
 
-      if($userId != null) {
+      if($userId !== null) {
   			$resourcePath = str_replace("{" . "userId" . "}",
   			                            $userId, $resourcePath);
   		}
-  		if($datasourceId != null) {
+  		if($datasourceId !== null) {
   			$resourcePath = str_replace("{" . "datasourceId" . "}",
   			                            $datasourceId, $resourcePath);
   		}
@@ -782,11 +783,11 @@ class MergeApi {
       $queryParams = array();
       $headerParams = array();
 
-      if($userId != null) {
+      if($userId !== null) {
   			$resourcePath = str_replace("{" . "userId" . "}",
   			                            $userId, $resourcePath);
   		}
-  		if($datasourceId != null) {
+  		if($datasourceId !== null) {
   			$resourcePath = str_replace("{" . "datasourceId" . "}",
   			                            $datasourceId, $resourcePath);
   		}
@@ -823,11 +824,11 @@ class MergeApi {
       $queryParams = array();
       $headerParams = array();
 
-      if($userId != null) {
+      if($userId !== null) {
   			$resourcePath = str_replace("{" . "userId" . "}",
   			                            $userId, $resourcePath);
   		}
-  		if($datasourceId != null) {
+  		if($datasourceId !== null) {
   			$resourcePath = str_replace("{" . "datasourceId" . "}",
   			                            $datasourceId, $resourcePath);
   		}
@@ -865,15 +866,15 @@ class MergeApi {
       $queryParams = array();
       $headerParams = array();
 
-      if($userId != null) {
+      if($userId !== null) {
   			$resourcePath = str_replace("{" . "userId" . "}",
   			                            $userId, $resourcePath);
   		}
-  		if($datasourceId != null) {
+  		if($datasourceId !== null) {
   			$resourcePath = str_replace("{" . "datasourceId" . "}",
   			                            $datasourceId, $resourcePath);
   		}
-  		if($fields != null) {
+  		if($fields !== null) {
   			$resourcePath = str_replace("{" . "fields" . "}",
   			                            $fields, $resourcePath);
   		}
@@ -911,15 +912,15 @@ class MergeApi {
       $queryParams = array();
       $headerParams = array();
 
-      if($userId != null) {
+      if($userId !== null) {
   			$resourcePath = str_replace("{" . "userId" . "}",
   			                            $userId, $resourcePath);
   		}
-  		if($questionnaireId != null) {
+  		if($questionnaireId !== null) {
   			$resourcePath = str_replace("{" . "questionnaireId" . "}",
   			                            $questionnaireId, $resourcePath);
   		}
-  		if($includeFields != null) {
+  		if($includeFields !== null) {
   			$resourcePath = str_replace("{" . "includeFields" . "}",
   			                            $includeFields, $resourcePath);
   		}
@@ -957,11 +958,11 @@ class MergeApi {
       $queryParams = array();
       $headerParams = array();
 
-      if($userId != null) {
+      if($userId !== null) {
   			$resourcePath = str_replace("{" . "userId" . "}",
   			                            $userId, $resourcePath);
   		}
-  		if($collectorId != null) {
+  		if($collectorId !== null) {
   			$resourcePath = str_replace("{" . "collectorId" . "}",
   			                            $collectorId, $resourcePath);
   		}
@@ -998,11 +999,11 @@ class MergeApi {
       $queryParams = array();
       $headerParams = array();
 
-      if($userId != null) {
+      if($userId !== null) {
   			$resourcePath = str_replace("{" . "userId" . "}",
   			                            $userId, $resourcePath);
   		}
-  		if($collectorId != null) {
+  		if($collectorId !== null) {
   			$resourcePath = str_replace("{" . "collectorId" . "}",
   			                            $collectorId, $resourcePath);
   		}
@@ -1039,11 +1040,11 @@ class MergeApi {
       $queryParams = array();
       $headerParams = array();
 
-      if($userId != null) {
+      if($userId !== null) {
   			$resourcePath = str_replace("{" . "userId" . "}",
   			                            $userId, $resourcePath);
   		}
-  		if($questionnaireId != null) {
+  		if($questionnaireId !== null) {
   			$resourcePath = str_replace("{" . "questionnaireId" . "}",
   			                            $questionnaireId, $resourcePath);
   		}
@@ -1080,11 +1081,11 @@ class MergeApi {
       $queryParams = array();
       $headerParams = array();
 
-      if($userId != null) {
+      if($userId !== null) {
   			$resourcePath = str_replace("{" . "userId" . "}",
   			                            $userId, $resourcePath);
   		}
-  		if($executionId != null) {
+  		if($executionId !== null) {
   			$resourcePath = str_replace("{" . "executionId" . "}",
   			                            $executionId, $resourcePath);
   		}
@@ -1122,11 +1123,11 @@ class MergeApi {
       $queryParams = array();
       $headerParams = array();
 
-      if($userId != null) {
+      if($userId !== null) {
   			$resourcePath = str_replace("{" . "userId" . "}",
   			                            $userId, $resourcePath);
   		}
-  		if($executionId != null) {
+  		if($executionId !== null) {
   			$resourcePath = str_replace("{" . "executionId" . "}",
   			                            $executionId, $resourcePath);
   		}
@@ -1164,11 +1165,11 @@ class MergeApi {
       $queryParams = array();
       $headerParams = array();
 
-      if($userId != null) {
+      if($userId !== null) {
   			$resourcePath = str_replace("{" . "userId" . "}",
   			                            $userId, $resourcePath);
   		}
-  		if($executionId != null) {
+  		if($executionId !== null) {
   			$resourcePath = str_replace("{" . "executionId" . "}",
   			                            $executionId, $resourcePath);
   		}
@@ -1205,11 +1206,11 @@ class MergeApi {
       $queryParams = array();
       $headerParams = array();
 
-      if($userId != null) {
+      if($userId !== null) {
   			$resourcePath = str_replace("{" . "userId" . "}",
   			                            $userId, $resourcePath);
   		}
-  		if($questionnaireId != null) {
+  		if($questionnaireId !== null) {
   			$resourcePath = str_replace("{" . "questionnaireId" . "}",
   			                            $questionnaireId, $resourcePath);
   		}
@@ -1246,11 +1247,11 @@ class MergeApi {
       $queryParams = array();
       $headerParams = array();
 
-      if($userId != null) {
+      if($userId !== null) {
   			$resourcePath = str_replace("{" . "userId" . "}",
   			                            $userId, $resourcePath);
   		}
-  		if($collectorId != null) {
+  		if($collectorId !== null) {
   			$resourcePath = str_replace("{" . "collectorId" . "}",
   			                            $collectorId, $resourcePath);
   		}
@@ -1288,11 +1289,11 @@ class MergeApi {
       $queryParams = array();
       $headerParams = array();
 
-      if($userId != null) {
+      if($userId !== null) {
   			$resourcePath = str_replace("{" . "userId" . "}",
   			                            $userId, $resourcePath);
   		}
-  		if($questionnaireId != null) {
+  		if($questionnaireId !== null) {
   			$resourcePath = str_replace("{" . "questionnaireId" . "}",
   			                            $questionnaireId, $resourcePath);
   		}
@@ -1330,11 +1331,11 @@ class MergeApi {
       $queryParams = array();
       $headerParams = array();
 
-      if($userId != null) {
+      if($userId !== null) {
   			$resourcePath = str_replace("{" . "userId" . "}",
   			                            $userId, $resourcePath);
   		}
-  		if($collectorId != null) {
+  		if($collectorId !== null) {
   			$resourcePath = str_replace("{" . "collectorId" . "}",
   			                            $collectorId, $resourcePath);
   		}
@@ -1371,11 +1372,11 @@ class MergeApi {
       $queryParams = array();
       $headerParams = array();
 
-      if($userId != null) {
+      if($userId !== null) {
   			$resourcePath = str_replace("{" . "userId" . "}",
   			                            $userId, $resourcePath);
   		}
-  		if($collectorId != null) {
+  		if($collectorId !== null) {
   			$resourcePath = str_replace("{" . "collectorId" . "}",
   			                            $collectorId, $resourcePath);
   		}
@@ -1411,7 +1412,7 @@ class MergeApi {
       $queryParams = array();
       $headerParams = array();
 
-      if($userId != null) {
+      if($userId !== null) {
   			$resourcePath = str_replace("{" . "userId" . "}",
   			                            $userId, $resourcePath);
   		}
@@ -1449,15 +1450,15 @@ class MergeApi {
       $queryParams = array();
       $headerParams = array();
 
-      if($userId != null) {
+      if($userId !== null) {
   			$resourcePath = str_replace("{" . "userId" . "}",
   			                            $userId, $resourcePath);
   		}
-  		if($questionnaireId != null) {
+  		if($questionnaireId !== null) {
   			$resourcePath = str_replace("{" . "questionnaireId" . "}",
   			                            $questionnaireId, $resourcePath);
   		}
-  		if($includeGeometry != null) {
+  		if($includeGeometry !== null) {
   			$resourcePath = str_replace("{" . "includeGeometry" . "}",
   			                            $includeGeometry, $resourcePath);
   		}
@@ -1494,11 +1495,11 @@ class MergeApi {
       $queryParams = array();
       $headerParams = array();
 
-      if($userId != null) {
+      if($userId !== null) {
   			$resourcePath = str_replace("{" . "userId" . "}",
   			                            $userId, $resourcePath);
   		}
-  		if($questionnaireId != null) {
+  		if($questionnaireId !== null) {
   			$resourcePath = str_replace("{" . "questionnaireId" . "}",
   			                            $questionnaireId, $resourcePath);
   		}
@@ -1536,11 +1537,11 @@ class MergeApi {
       $queryParams = array();
       $headerParams = array();
 
-      if($userId != null) {
+      if($userId !== null) {
   			$resourcePath = str_replace("{" . "userId" . "}",
   			                            $userId, $resourcePath);
   		}
-  		if($questionnaireId != null) {
+  		if($questionnaireId !== null) {
   			$resourcePath = str_replace("{" . "questionnaireId" . "}",
   			                            $questionnaireId, $resourcePath);
   		}

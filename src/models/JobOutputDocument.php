@@ -30,7 +30,7 @@ class JobOutputDocument {
       'access' => 'string',
       'url' => 'string',
       'version' => 'int',
-      'size' => 'int',
+      'size' => 'string',
       'file_type' => 'string',
       'id' => 'float',
       'guid' => 'string',
@@ -46,7 +46,7 @@ class JobOutputDocument {
   public $access; // string
   public $url; // string
   public $version; // int
-  public $size; // int
+  public $size; // string
   public $file_type; // string
   public $id; // float
   public $guid; // string

@@ -27,14 +27,14 @@ class QuestionnaireInfo {
       'assigned_questions' => 'int',
       'guid' => 'string',
       'id' => 'float',
-      'expires' => 'int',
+      'expires' => 'string',
       'status' => 'string',
       'resolved_executions' => 'int',
       'name' => 'string',
       'pages' => 'array[QuestionnairePageInfo]',
       'document_ids' => 'array[string]',
       'descr' => 'string',
-      'modified' => 'int',
+      'modified' => 'string',
       'total_questions' => 'int'
 
     );
@@ -42,14 +42,14 @@ class QuestionnaireInfo {
   public $assigned_questions; // int
   public $guid; // string
   public $id; // float
-  public $expires; // int
+  public $expires; // string
   public $status; // string
   public $resolved_executions; // int
   public $name; // string
   public $pages; // array[QuestionnairePageInfo]
   public $document_ids; // array[string]
   public $descr; // string
-  public $modified; // int
+  public $modified; // string
   public $total_questions; // int
   }
 

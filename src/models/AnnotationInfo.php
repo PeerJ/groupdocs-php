@@ -24,7 +24,7 @@
 class AnnotationInfo {
 
   static $swaggerTypes = array(
-      'createdOn' => 'int',
+      'createdOn' => 'string',
       'guid' => 'string',
       'sessionGuid' => 'string',
       'documentGuid' => 'string',
@@ -39,7 +39,7 @@ class AnnotationInfo {
 
     );
 
-  public $createdOn; // int
+  public $createdOn; // string
   public $guid; // string
   public $sessionGuid; // string
   public $documentGuid; // string

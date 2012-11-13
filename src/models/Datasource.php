@@ -25,8 +25,8 @@ class Datasource {
 
   static $swaggerTypes = array(
       'id' => 'float',
-      'modified_on' => 'int',
-      'created_on' => 'int',
+      'modified_on' => 'string',
+      'created_on' => 'string',
       'questionnaire_id' => 'float',
       'descr' => 'string',
       'fields' => 'array[DatasourceField]'
@@ -34,8 +34,8 @@ class Datasource {
     );
 
   public $id; // float
-  public $modified_on; // int
-  public $created_on; // int
+  public $modified_on; // string
+  public $created_on; // string
   public $questionnaire_id; // float
   public $descr; // string
   public $fields; // array[DatasourceField]

@@ -25,7 +25,7 @@ class UserInfo {
 
   static $swaggerTypes = array(
       'signin_count' => 'int',
-      'signedupOn' => 'int',
+      'signedupOn' => 'string',
       'nickname' => 'string',
       'pkey' => 'string',
       'lastname' => 'string',
@@ -42,7 +42,7 @@ class UserInfo {
       'primary_email' => 'string',
       'roles' => 'array[RoleInfo]',
       'active' => 'bool',
-      'signedinOn' => 'int',
+      'signedinOn' => 'string',
       'trial' => 'bool',
       'claimed_id' => 'string',
       'storage' => 'int'
@@ -50,7 +50,7 @@ class UserInfo {
     );
 
   public $signin_count; // int
-  public $signedupOn; // int
+  public $signedupOn; // string
   public $nickname; // string
   public $pkey; // string
   public $lastname; // string
@@ -67,7 +67,7 @@ class UserInfo {
   public $primary_email; // string
   public $roles; // array[RoleInfo]
   public $active; // bool
-  public $signedinOn; // int
+  public $signedinOn; // string
   public $trial; // bool
   public $claimed_id; // string
   public $storage; // int

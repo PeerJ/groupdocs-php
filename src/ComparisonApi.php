@@ -46,21 +46,21 @@ class ComparisonApi {
 
    public function DownloadResult($userId, $resultFileId, $format=null) {
   	  //parse inputs
-  	  $resourcePath = str_replace("*", "", "/comparison/{userId}/comparison/download?resultFileId={resultFileId}&amp;format={format}");
+  	  $resourcePath = str_replace("*", "", "/comparison/{userId}/comparison/download?resultFileId={resultFileId}&format={format}");
   	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "GET";
       $queryParams = array();
       $headerParams = array();
 
-      if($userId != null) {
+      if($userId !== null) {
   			$resourcePath = str_replace("{" . "userId" . "}",
   			                            $userId, $resourcePath);
   		}
-  		if($resultFileId != null) {
+  		if($resultFileId !== null) {
   			$resourcePath = str_replace("{" . "resultFileId" . "}",
   			                            $resultFileId, $resourcePath);
   		}
-  		if($format != null) {
+  		if($format !== null) {
   			$resourcePath = str_replace("{" . "format" . "}",
   			                            $format, $resourcePath);
   		}
@@ -93,25 +93,25 @@ class ComparisonApi {
 
    public function Compare($userId, $sourceFileId, $targetFileId, $callbackUrl) {
   	  //parse inputs
-  	  $resourcePath = str_replace("*", "", "/comparison/{userId}/comparison/compare?source={sourceFileId}&amp;target={targetFileId}&amp;callback={callbackUrl}");
+  	  $resourcePath = str_replace("*", "", "/comparison/{userId}/comparison/compare?source={sourceFileId}&target={targetFileId}&callback={callbackUrl}");
   	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "GET";
       $queryParams = array();
       $headerParams = array();
 
-      if($userId != null) {
+      if($userId !== null) {
   			$resourcePath = str_replace("{" . "userId" . "}",
   			                            $userId, $resourcePath);
   		}
-  		if($sourceFileId != null) {
+  		if($sourceFileId !== null) {
   			$resourcePath = str_replace("{" . "sourceFileId" . "}",
   			                            $sourceFileId, $resourcePath);
   		}
-  		if($targetFileId != null) {
+  		if($targetFileId !== null) {
   			$resourcePath = str_replace("{" . "targetFileId" . "}",
   			                            $targetFileId, $resourcePath);
   		}
-  		if($callbackUrl != null) {
+  		if($callbackUrl !== null) {
   			$resourcePath = str_replace("{" . "callbackUrl" . "}",
   			                            $callbackUrl, $resourcePath);
   		}
@@ -148,11 +148,11 @@ class ComparisonApi {
       $queryParams = array();
       $headerParams = array();
 
-      if($userId != null) {
+      if($userId !== null) {
   			$resourcePath = str_replace("{" . "userId" . "}",
   			                            $userId, $resourcePath);
   		}
-  		if($resultFileId != null) {
+  		if($resultFileId !== null) {
   			$resourcePath = str_replace("{" . "resultFileId" . "}",
   			                            $resultFileId, $resourcePath);
   		}
@@ -190,11 +190,11 @@ class ComparisonApi {
       $queryParams = array();
       $headerParams = array();
 
-      if($userId != null) {
+      if($userId !== null) {
   			$resourcePath = str_replace("{" . "userId" . "}",
   			                            $userId, $resourcePath);
   		}
-  		if($resultFileId != null) {
+  		if($resultFileId !== null) {
   			$resourcePath = str_replace("{" . "resultFileId" . "}",
   			                            $resultFileId, $resourcePath);
   		}
@@ -231,11 +231,11 @@ class ComparisonApi {
       $queryParams = array();
       $headerParams = array();
 
-      if($userId != null) {
+      if($userId !== null) {
   			$resourcePath = str_replace("{" . "userId" . "}",
   			                            $userId, $resourcePath);
   		}
-  		if($guid != null) {
+  		if($guid !== null) {
   			$resourcePath = str_replace("{" . "guid" . "}",
   			                            $guid, $resourcePath);
   		}

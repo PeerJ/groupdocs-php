@@ -46,21 +46,21 @@ class SharedApi {
 
    public function Download($guid, $fileName, $render=null) {
   	  //parse inputs
-  	  $resourcePath = str_replace("*", "", "/shared/files/{guid}?filename={fileName}&amp;render={render}");
+  	  $resourcePath = str_replace("*", "", "/shared/files/{guid}?filename={fileName}&render={render}");
   	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "GET";
       $queryParams = array();
       $headerParams = array();
 
-      if($guid != null) {
+      if($guid !== null) {
   			$resourcePath = str_replace("{" . "guid" . "}",
   			                            $guid, $resourcePath);
   		}
-  		if($fileName != null) {
+  		if($fileName !== null) {
   			$resourcePath = str_replace("{" . "fileName" . "}",
   			                            $fileName, $resourcePath);
   		}
-  		if($render != null) {
+  		if($render !== null) {
   			$resourcePath = str_replace("{" . "render" . "}",
   			                            $render, $resourcePath);
   		}
@@ -96,7 +96,7 @@ class SharedApi {
       $queryParams = array();
       $headerParams = array();
 
-      if($guid != null) {
+      if($guid !== null) {
   			$resourcePath = str_replace("{" . "guid" . "}",
   			                            $guid, $resourcePath);
   		}
@@ -132,7 +132,7 @@ class SharedApi {
       $queryParams = array();
       $headerParams = array();
 
-      if($path != null) {
+      if($path !== null) {
   			$resourcePath = str_replace("{" . "path" . "}",
   			                            $path, $resourcePath);
   		}

@@ -31,7 +31,7 @@ class UploadRequestResult {
       'type' => 'string',
       'url' => 'string',
       'version' => 'int',
-      'size' => 'int',
+      'size' => 'string',
       'file_type' => 'string'
 
     );
@@ -43,7 +43,7 @@ class UploadRequestResult {
   public $type; // string
   public $url; // string
   public $version; // int
-  public $size; // int
+  public $size; // string
   public $file_type; // string
   }
 

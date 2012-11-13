@@ -27,13 +27,13 @@ class DocumentAccessInfoResult {
       'sharers' => 'array[UserInfo]',
       'status' => 'string',
       'type_str' => 'string',
-      'shared_on' => 'int',
+      'shared_on' => 'string',
       'type' => 'string',
       'access' => 'string',
       'url' => 'string',
       'file_type' => 'string',
       'version' => 'int',
-      'size' => 'int',
+      'size' => 'string',
       'guid' => 'string',
       'id' => 'float',
       'document_path' => 'string',
@@ -46,13 +46,13 @@ class DocumentAccessInfoResult {
   public $sharers; // array[UserInfo]
   public $status; // string
   public $type_str; // string
-  public $shared_on; // int
+  public $shared_on; // string
   public $type; // string
   public $access; // string
   public $url; // string
   public $file_type; // string
   public $version; // int
-  public $size; // int
+  public $size; // string
   public $guid; // string
   public $id; // float
   public $document_path; // string

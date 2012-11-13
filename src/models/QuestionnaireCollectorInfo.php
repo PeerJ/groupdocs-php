@@ -31,7 +31,7 @@ class QuestionnaireCollectorInfo {
       'questionnaire_id' => 'float',
       'emails' => 'array[string]',
       'type' => 'string',
-      'modified' => 'int'
+      'modified' => 'string'
 
     );
 
@@ -42,6 +42,6 @@ class QuestionnaireCollectorInfo {
   public $questionnaire_id; // float
   public $emails; // array[string]
   public $type; // string
-  public $modified; // int
+  public $modified; // string
   }
 

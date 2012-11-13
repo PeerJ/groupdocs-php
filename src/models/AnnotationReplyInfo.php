@@ -25,7 +25,7 @@ class AnnotationReplyInfo {
 
   static $swaggerTypes = array(
       'guid' => 'string',
-      'repliedOn' => 'int',
+      'repliedOn' => 'string',
       'text' => 'string',
       'userName' => 'string',
       'parentReplyGuid' => 'string',
@@ -34,7 +34,7 @@ class AnnotationReplyInfo {
     );
 
   public $guid; // string
-  public $repliedOn; // int
+  public $repliedOn; // string
   public $text; // string
   public $userName; // string
   public $parentReplyGuid; // string

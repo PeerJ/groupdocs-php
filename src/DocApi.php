@@ -50,37 +50,37 @@ class DocApi {
 
    public function ViewDocument($userId, $fileId, $pageNumber=null, $pageCount=null, $width=null, $quality=null, $usePdf=null) {
   	  //parse inputs
-  	  $resourcePath = str_replace("*", "", "/doc/{userId}/files/{fileId}/thumbnails?page_number={pageNumber}&amp;page_count={pageCount}&amp;width={width}&amp;quality={quality}&amp;use_pdf={usePdf}");
+  	  $resourcePath = str_replace("*", "", "/doc/{userId}/files/{fileId}/thumbnails?page_number={pageNumber}&page_count={pageCount}&width={width}&quality={quality}&use_pdf={usePdf}");
   	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "POST";
       $queryParams = array();
       $headerParams = array();
 
-      if($userId != null) {
+      if($userId !== null) {
   			$resourcePath = str_replace("{" . "userId" . "}",
   			                            $userId, $resourcePath);
   		}
-  		if($fileId != null) {
+  		if($fileId !== null) {
   			$resourcePath = str_replace("{" . "fileId" . "}",
   			                            $fileId, $resourcePath);
   		}
-  		if($pageNumber != null) {
+  		if($pageNumber !== null) {
   			$resourcePath = str_replace("{" . "pageNumber" . "}",
   			                            $pageNumber, $resourcePath);
   		}
-  		if($pageCount != null) {
+  		if($pageCount !== null) {
   			$resourcePath = str_replace("{" . "pageCount" . "}",
   			                            $pageCount, $resourcePath);
   		}
-  		if($width != null) {
+  		if($width !== null) {
   			$resourcePath = str_replace("{" . "width" . "}",
   			                            $width, $resourcePath);
   		}
-  		if($quality != null) {
+  		if($quality !== null) {
   			$resourcePath = str_replace("{" . "quality" . "}",
   			                            $quality, $resourcePath);
   		}
-  		if($usePdf != null) {
+  		if($usePdf !== null) {
   			$resourcePath = str_replace("{" . "usePdf" . "}",
   			                            $usePdf, $resourcePath);
   		}
@@ -112,21 +112,21 @@ class DocApi {
 
    public function GetDocumentViews($userId, $startIndex=null, $pageSize=null) {
   	  //parse inputs
-  	  $resourcePath = str_replace("*", "", "/doc/{userId}/views?page_index={startIndex}&amp;page_size={pageSize}");
+  	  $resourcePath = str_replace("*", "", "/doc/{userId}/views?page_index={startIndex}&page_size={pageSize}");
   	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "GET";
       $queryParams = array();
       $headerParams = array();
 
-      if($userId != null) {
+      if($userId !== null) {
   			$resourcePath = str_replace("{" . "userId" . "}",
   			                            $userId, $resourcePath);
   		}
-  		if($startIndex != null) {
+  		if($startIndex !== null) {
   			$resourcePath = str_replace("{" . "startIndex" . "}",
   			                            $startIndex, $resourcePath);
   		}
-  		if($pageSize != null) {
+  		if($pageSize !== null) {
   			$resourcePath = str_replace("{" . "pageSize" . "}",
   			                            $pageSize, $resourcePath);
   		}
@@ -164,11 +164,11 @@ class DocApi {
       $queryParams = array();
       $headerParams = array();
 
-      if($userId != null) {
+      if($userId !== null) {
   			$resourcePath = str_replace("{" . "userId" . "}",
   			                            $userId, $resourcePath);
   		}
-  		if($fileId != null) {
+  		if($fileId !== null) {
   			$resourcePath = str_replace("{" . "fileId" . "}",
   			                            $fileId, $resourcePath);
   		}
@@ -205,11 +205,11 @@ class DocApi {
       $queryParams = array();
       $headerParams = array();
 
-      if($userId != null) {
+      if($userId !== null) {
   			$resourcePath = str_replace("{" . "userId" . "}",
   			                            $userId, $resourcePath);
   		}
-  		if($fileId != null) {
+  		if($fileId !== null) {
   			$resourcePath = str_replace("{" . "fileId" . "}",
   			                            $fileId, $resourcePath);
   		}
@@ -246,11 +246,11 @@ class DocApi {
       $queryParams = array();
       $headerParams = array();
 
-      if($userId != null) {
+      if($userId !== null) {
   			$resourcePath = str_replace("{" . "userId" . "}",
   			                            $userId, $resourcePath);
   		}
-  		if($folderId != null) {
+  		if($folderId !== null) {
   			$resourcePath = str_replace("{" . "folderId" . "}",
   			                            $folderId, $resourcePath);
   		}
@@ -288,11 +288,11 @@ class DocApi {
       $queryParams = array();
       $headerParams = array();
 
-      if($userId != null) {
+      if($userId !== null) {
   			$resourcePath = str_replace("{" . "userId" . "}",
   			                            $userId, $resourcePath);
   		}
-  		if($folderId != null) {
+  		if($folderId !== null) {
   			$resourcePath = str_replace("{" . "folderId" . "}",
   			                            $folderId, $resourcePath);
   		}
@@ -329,11 +329,11 @@ class DocApi {
       $queryParams = array();
       $headerParams = array();
 
-      if($userId != null) {
+      if($userId !== null) {
   			$resourcePath = str_replace("{" . "userId" . "}",
   			                            $userId, $resourcePath);
   		}
-  		if($folderId != null) {
+  		if($folderId !== null) {
   			$resourcePath = str_replace("{" . "folderId" . "}",
   			                            $folderId, $resourcePath);
   		}
@@ -371,15 +371,15 @@ class DocApi {
       $queryParams = array();
       $headerParams = array();
 
-      if($userId != null) {
+      if($userId !== null) {
   			$resourcePath = str_replace("{" . "userId" . "}",
   			                            $userId, $resourcePath);
   		}
-  		if($fileId != null) {
+  		if($fileId !== null) {
   			$resourcePath = str_replace("{" . "fileId" . "}",
   			                            $fileId, $resourcePath);
   		}
-  		if($mode != null) {
+  		if($mode !== null) {
   			$resourcePath = str_replace("{" . "mode" . "}",
   			                            $mode, $resourcePath);
   		}
@@ -416,11 +416,11 @@ class DocApi {
       $queryParams = array();
       $headerParams = array();
 
-      if($userId != null) {
+      if($userId !== null) {
   			$resourcePath = str_replace("{" . "userId" . "}",
   			                            $userId, $resourcePath);
   		}
-  		if($fileId != null) {
+  		if($fileId !== null) {
   			$resourcePath = str_replace("{" . "fileId" . "}",
   			                            $fileId, $resourcePath);
   		}
@@ -457,11 +457,11 @@ class DocApi {
       $queryParams = array();
       $headerParams = array();
 
-      if($userId != null) {
+      if($userId !== null) {
   			$resourcePath = str_replace("{" . "userId" . "}",
   			                            $userId, $resourcePath);
   		}
-  		if($fileId != null) {
+  		if($fileId !== null) {
   			$resourcePath = str_replace("{" . "fileId" . "}",
   			                            $fileId, $resourcePath);
   		}
@@ -498,11 +498,11 @@ class DocApi {
       $queryParams = array();
       $headerParams = array();
 
-      if($userId != null) {
+      if($userId !== null) {
   			$resourcePath = str_replace("{" . "userId" . "}",
   			                            $userId, $resourcePath);
   		}
-  		if($path != null) {
+  		if($path !== null) {
   			$resourcePath = str_replace("{" . "path" . "}",
   			                            $path, $resourcePath);
   		}
@@ -540,15 +540,15 @@ class DocApi {
       $queryParams = array();
       $headerParams = array();
 
-      if($userId != null) {
+      if($userId !== null) {
   			$resourcePath = str_replace("{" . "userId" . "}",
   			                            $userId, $resourcePath);
   		}
-  		if($fileId != null) {
+  		if($fileId !== null) {
   			$resourcePath = str_replace("{" . "fileId" . "}",
   			                            $fileId, $resourcePath);
   		}
-  		if($status != null) {
+  		if($status !== null) {
   			$resourcePath = str_replace("{" . "status" . "}",
   			                            $status, $resourcePath);
   		}
@@ -583,33 +583,33 @@ class DocApi {
 
    public function GetSharedDocuments($userId, $sharesTypes=null, $pageIndex=null, $pageSize=null, $orderBy=null, $orderAsc=null) {
   	  //parse inputs
-  	  $resourcePath = str_replace("*", "", "/doc/{userId}/shares/{sharesTypes}?page_index={pageIndex}&amp;page_size={pageSize}&amp;order_by={orderBy}&amp;order_asc={orderAsc}");
+  	  $resourcePath = str_replace("*", "", "/doc/{userId}/shares/{sharesTypes}?page_index={pageIndex}&page_size={pageSize}&order_by={orderBy}&order_asc={orderAsc}");
   	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "GET";
       $queryParams = array();
       $headerParams = array();
 
-      if($userId != null) {
+      if($userId !== null) {
   			$resourcePath = str_replace("{" . "userId" . "}",
   			                            $userId, $resourcePath);
   		}
-  		if($sharesTypes != null) {
+  		if($sharesTypes !== null) {
   			$resourcePath = str_replace("{" . "sharesTypes" . "}",
   			                            $sharesTypes, $resourcePath);
   		}
-  		if($pageIndex != null) {
+  		if($pageIndex !== null) {
   			$resourcePath = str_replace("{" . "pageIndex" . "}",
   			                            $pageIndex, $resourcePath);
   		}
-  		if($pageSize != null) {
+  		if($pageSize !== null) {
   			$resourcePath = str_replace("{" . "pageSize" . "}",
   			                            $pageSize, $resourcePath);
   		}
-  		if($orderBy != null) {
+  		if($orderBy !== null) {
   			$resourcePath = str_replace("{" . "orderBy" . "}",
   			                            $orderBy, $resourcePath);
   		}
-  		if($orderAsc != null) {
+  		if($orderAsc !== null) {
   			$resourcePath = str_replace("{" . "orderAsc" . "}",
   			                            $orderAsc, $resourcePath);
   		}
@@ -647,15 +647,15 @@ class DocApi {
       $queryParams = array();
       $headerParams = array();
 
-      if($userId != null) {
+      if($userId !== null) {
   			$resourcePath = str_replace("{" . "userId" . "}",
   			                            $userId, $resourcePath);
   		}
-  		if($fileId != null) {
+  		if($fileId !== null) {
   			$resourcePath = str_replace("{" . "fileId" . "}",
   			                            $fileId, $resourcePath);
   		}
-  		if($includeGeometry != null) {
+  		if($includeGeometry !== null) {
   			$resourcePath = str_replace("{" . "includeGeometry" . "}",
   			                            $includeGeometry, $resourcePath);
   		}
@@ -692,11 +692,11 @@ class DocApi {
       $queryParams = array();
       $headerParams = array();
 
-      if($userId != null) {
+      if($userId !== null) {
   			$resourcePath = str_replace("{" . "userId" . "}",
   			                            $userId, $resourcePath);
   		}
-  		if($fileId != null) {
+  		if($fileId !== null) {
   			$resourcePath = str_replace("{" . "fileId" . "}",
   			                            $fileId, $resourcePath);
   		}
@@ -732,37 +732,37 @@ class DocApi {
 
    public function GetDocumentPageImage($userId, $fileId, $pageNumber, $dimension, $quality=null, $usePdf=null, $expiresOn=null) {
   	  //parse inputs
-  	  $resourcePath = str_replace("*", "", "/doc/{userId}/files/{fileId}/pages/{pageNumber}/images/{dimension}?quality={quality}&amp;use_pdf={usePdf}&amp;expires={expiresOn}");
+  	  $resourcePath = str_replace("*", "", "/doc/{userId}/files/{fileId}/pages/{pageNumber}/images/{dimension}?quality={quality}&use_pdf={usePdf}&expires={expiresOn}");
   	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "GET";
       $queryParams = array();
       $headerParams = array();
 
-      if($userId != null) {
+      if($userId !== null) {
   			$resourcePath = str_replace("{" . "userId" . "}",
   			                            $userId, $resourcePath);
   		}
-  		if($fileId != null) {
+  		if($fileId !== null) {
   			$resourcePath = str_replace("{" . "fileId" . "}",
   			                            $fileId, $resourcePath);
   		}
-  		if($pageNumber != null) {
+  		if($pageNumber !== null) {
   			$resourcePath = str_replace("{" . "pageNumber" . "}",
   			                            $pageNumber, $resourcePath);
   		}
-  		if($dimension != null) {
+  		if($dimension !== null) {
   			$resourcePath = str_replace("{" . "dimension" . "}",
   			                            $dimension, $resourcePath);
   		}
-  		if($quality != null) {
+  		if($quality !== null) {
   			$resourcePath = str_replace("{" . "quality" . "}",
   			                            $quality, $resourcePath);
   		}
-  		if($usePdf != null) {
+  		if($usePdf !== null) {
   			$resourcePath = str_replace("{" . "usePdf" . "}",
   			                            $usePdf, $resourcePath);
   		}
-  		if($expiresOn != null) {
+  		if($expiresOn !== null) {
   			$resourcePath = str_replace("{" . "expiresOn" . "}",
   			                            $expiresOn, $resourcePath);
   		}
@@ -799,41 +799,41 @@ class DocApi {
 
    public function GetDocumentPagesImageUrls($userId, $fileId, $firstPage=null, $pageCount=null, $dimension, $quality=null, $usePdf=null, $token=null) {
   	  //parse inputs
-  	  $resourcePath = str_replace("*", "", "/doc/{userId}/files/{fileId}/pages/images/{dimension}/urls?first_page={firstPage}&amp;page_count={pageCount}&amp;quality={quality}&amp;use_pdf={usePdf}&amp;token={token}");
+  	  $resourcePath = str_replace("*", "", "/doc/{userId}/files/{fileId}/pages/images/{dimension}/urls?first_page={firstPage}&page_count={pageCount}&quality={quality}&use_pdf={usePdf}&token={token}");
   	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "GET";
       $queryParams = array();
       $headerParams = array();
 
-      if($userId != null) {
+      if($userId !== null) {
   			$resourcePath = str_replace("{" . "userId" . "}",
   			                            $userId, $resourcePath);
   		}
-  		if($fileId != null) {
+  		if($fileId !== null) {
   			$resourcePath = str_replace("{" . "fileId" . "}",
   			                            $fileId, $resourcePath);
   		}
-  		if($firstPage != null) {
+  		if($firstPage !== null) {
   			$resourcePath = str_replace("{" . "firstPage" . "}",
   			                            $firstPage, $resourcePath);
   		}
-  		if($pageCount != null) {
+  		if($pageCount !== null) {
   			$resourcePath = str_replace("{" . "pageCount" . "}",
   			                            $pageCount, $resourcePath);
   		}
-  		if($dimension != null) {
+  		if($dimension !== null) {
   			$resourcePath = str_replace("{" . "dimension" . "}",
   			                            $dimension, $resourcePath);
   		}
-  		if($quality != null) {
+  		if($quality !== null) {
   			$resourcePath = str_replace("{" . "quality" . "}",
   			                            $quality, $resourcePath);
   		}
-  		if($usePdf != null) {
+  		if($usePdf !== null) {
   			$resourcePath = str_replace("{" . "usePdf" . "}",
   			                            $usePdf, $resourcePath);
   		}
-  		if($token != null) {
+  		if($token !== null) {
   			$resourcePath = str_replace("{" . "token" . "}",
   			                            $token, $resourcePath);
   		}
@@ -870,11 +870,11 @@ class DocApi {
       $queryParams = array();
       $headerParams = array();
 
-      if($userId != null) {
+      if($userId !== null) {
   			$resourcePath = str_replace("{" . "userId" . "}",
   			                            $userId, $resourcePath);
   		}
-  		if($fileId != null) {
+  		if($fileId !== null) {
   			$resourcePath = str_replace("{" . "fileId" . "}",
   			                            $fileId, $resourcePath);
   		}
@@ -911,11 +911,11 @@ class DocApi {
       $queryParams = array();
       $headerParams = array();
 
-      if($userId != null) {
+      if($userId !== null) {
   			$resourcePath = str_replace("{" . "userId" . "}",
   			                            $userId, $resourcePath);
   		}
-  		if($fileId != null) {
+  		if($fileId !== null) {
   			$resourcePath = str_replace("{" . "fileId" . "}",
   			                            $fileId, $resourcePath);
   		}

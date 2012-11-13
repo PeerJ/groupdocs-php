@@ -28,9 +28,9 @@ class FileSystemFolder {
       'guid' => 'string',
       'id' => 'float',
       'folder_count' => 'int',
-      'modified_on' => 'int',
+      'modified_on' => 'string',
       'dir' => 'bool',
-      'created_on' => 'int',
+      'created_on' => 'string',
       'name' => 'string',
       'owner' => 'UserInfo',
       'file_count' => 'int',
@@ -42,9 +42,9 @@ class FileSystemFolder {
   public $guid; // string
   public $id; // float
   public $folder_count; // int
-  public $modified_on; // int
+  public $modified_on; // string
   public $dir; // bool
-  public $created_on; // int
+  public $created_on; // string
   public $name; // string
   public $owner; // UserInfo
   public $file_count; // int

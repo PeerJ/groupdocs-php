@@ -50,7 +50,7 @@ class MgmtApi {
       $queryParams = array();
       $headerParams = array();
 
-      if($userId != null) {
+      if($userId !== null) {
   			$resourcePath = str_replace("{" . "userId" . "}",
   			                            $userId, $resourcePath);
   		}
@@ -87,7 +87,7 @@ class MgmtApi {
       $queryParams = array();
       $headerParams = array();
 
-      if($userId != null) {
+      if($userId !== null) {
   			$resourcePath = str_replace("{" . "userId" . "}",
   			                            $userId, $resourcePath);
   		}
@@ -124,7 +124,7 @@ class MgmtApi {
       $queryParams = array();
       $headerParams = array();
 
-      if($userId != null) {
+      if($userId !== null) {
   			$resourcePath = str_replace("{" . "userId" . "}",
   			                            $userId, $resourcePath);
   		}
@@ -161,11 +161,11 @@ class MgmtApi {
       $queryParams = array();
       $headerParams = array();
 
-      if($callerId != null) {
+      if($callerId !== null) {
   			$resourcePath = str_replace("{" . "callerId" . "}",
   			                            $callerId, $resourcePath);
   		}
-  		if($token != null) {
+  		if($token !== null) {
   			$resourcePath = str_replace("{" . "token" . "}",
   			                            $token, $resourcePath);
   		}
@@ -202,11 +202,11 @@ class MgmtApi {
       $queryParams = array();
       $headerParams = array();
 
-      if($callerId != null) {
+      if($callerId !== null) {
   			$resourcePath = str_replace("{" . "callerId" . "}",
   			                            $callerId, $resourcePath);
   		}
-  		if($token != null) {
+  		if($token !== null) {
   			$resourcePath = str_replace("{" . "token" . "}",
   			                            $token, $resourcePath);
   		}
@@ -243,11 +243,11 @@ class MgmtApi {
       $queryParams = array();
       $headerParams = array();
 
-      if($callerId != null) {
+      if($callerId !== null) {
   			$resourcePath = str_replace("{" . "callerId" . "}",
   			                            $callerId, $resourcePath);
   		}
-  		if($token != null) {
+  		if($token !== null) {
   			$resourcePath = str_replace("{" . "token" . "}",
   			                            $token, $resourcePath);
   		}
@@ -284,11 +284,11 @@ class MgmtApi {
       $queryParams = array();
       $headerParams = array();
 
-      if($callerId != null) {
+      if($callerId !== null) {
   			$resourcePath = str_replace("{" . "callerId" . "}",
   			                            $callerId, $resourcePath);
   		}
-  		if($userId != null) {
+  		if($userId !== null) {
   			$resourcePath = str_replace("{" . "userId" . "}",
   			                            $userId, $resourcePath);
   		}
@@ -326,11 +326,11 @@ class MgmtApi {
       $queryParams = array();
       $headerParams = array();
 
-      if($callerId != null) {
+      if($callerId !== null) {
   			$resourcePath = str_replace("{" . "callerId" . "}",
   			                            $callerId, $resourcePath);
   		}
-  		if($userId != null) {
+  		if($userId !== null) {
   			$resourcePath = str_replace("{" . "userId" . "}",
   			                            $userId, $resourcePath);
   		}
@@ -367,7 +367,7 @@ class MgmtApi {
       $queryParams = array();
       $headerParams = array();
 
-      if($callerId != null) {
+      if($callerId !== null) {
   			$resourcePath = str_replace("{" . "callerId" . "}",
   			                            $callerId, $resourcePath);
   		}
@@ -405,15 +405,15 @@ class MgmtApi {
       $queryParams = array();
       $headerParams = array();
 
-      if($callerId != null) {
+      if($callerId !== null) {
   			$resourcePath = str_replace("{" . "callerId" . "}",
   			                            $callerId, $resourcePath);
   		}
-  		if($userId != null) {
+  		if($userId !== null) {
   			$resourcePath = str_replace("{" . "userId" . "}",
   			                            $userId, $resourcePath);
   		}
-  		if($password != null) {
+  		if($password !== null) {
   			$resourcePath = str_replace("{" . "password" . "}",
   			                            $password, $resourcePath);
   		}
@@ -451,11 +451,11 @@ class MgmtApi {
       $queryParams = array();
       $headerParams = array();
 
-      if($callerId != null) {
+      if($callerId !== null) {
   			$resourcePath = str_replace("{" . "callerId" . "}",
   			                            $callerId, $resourcePath);
   		}
-  		if($userId != null) {
+  		if($userId !== null) {
   			$resourcePath = str_replace("{" . "userId" . "}",
   			                            $userId, $resourcePath);
   		}
@@ -492,11 +492,11 @@ class MgmtApi {
       $queryParams = array();
       $headerParams = array();
 
-      if($callerId != null) {
+      if($callerId !== null) {
   			$resourcePath = str_replace("{" . "callerId" . "}",
   			                            $callerId, $resourcePath);
   		}
-  		if($userId != null) {
+  		if($userId !== null) {
   			$resourcePath = str_replace("{" . "userId" . "}",
   			                            $userId, $resourcePath);
   		}
@@ -532,7 +532,7 @@ class MgmtApi {
       $queryParams = array();
       $headerParams = array();
 
-      if($userId != null) {
+      if($userId !== null) {
   			$resourcePath = str_replace("{" . "userId" . "}",
   			                            $userId, $resourcePath);
   		}
@@ -570,11 +570,11 @@ class MgmtApi {
       $queryParams = array();
       $headerParams = array();
 
-      if($userId != null) {
+      if($userId !== null) {
   			$resourcePath = str_replace("{" . "userId" . "}",
   			                            $userId, $resourcePath);
   		}
-  		if($provider != null) {
+  		if($provider !== null) {
   			$resourcePath = str_replace("{" . "provider" . "}",
   			                            $provider, $resourcePath);
   		}
@@ -612,11 +612,11 @@ class MgmtApi {
       $queryParams = array();
       $headerParams = array();
 
-      if($userId != null) {
+      if($userId !== null) {
   			$resourcePath = str_replace("{" . "userId" . "}",
   			                            $userId, $resourcePath);
   		}
-  		if($provider != null) {
+  		if($provider !== null) {
   			$resourcePath = str_replace("{" . "provider" . "}",
   			                            $provider, $resourcePath);
   		}
@@ -652,7 +652,7 @@ class MgmtApi {
       $queryParams = array();
       $headerParams = array();
 
-      if($userId != null) {
+      if($userId !== null) {
   			$resourcePath = str_replace("{" . "userId" . "}",
   			                            $userId, $resourcePath);
   		}
@@ -689,11 +689,11 @@ class MgmtApi {
       $queryParams = array();
       $headerParams = array();
 
-      if($callerId != null) {
+      if($callerId !== null) {
   			$resourcePath = str_replace("{" . "callerId" . "}",
   			                            $callerId, $resourcePath);
   		}
-  		if($userId != null) {
+  		if($userId !== null) {
   			$resourcePath = str_replace("{" . "userId" . "}",
   			                            $userId, $resourcePath);
   		}
@@ -731,11 +731,11 @@ class MgmtApi {
       $queryParams = array();
       $headerParams = array();
 
-      if($callerId != null) {
+      if($callerId !== null) {
   			$resourcePath = str_replace("{" . "callerId" . "}",
   			                            $callerId, $resourcePath);
   		}
-  		if($userId != null) {
+  		if($userId !== null) {
   			$resourcePath = str_replace("{" . "userId" . "}",
   			                            $userId, $resourcePath);
   		}
@@ -771,7 +771,7 @@ class MgmtApi {
       $queryParams = array();
       $headerParams = array();
 
-      if($userId != null) {
+      if($userId !== null) {
   			$resourcePath = str_replace("{" . "userId" . "}",
   			                            $userId, $resourcePath);
   		}
@@ -807,7 +807,7 @@ class MgmtApi {
       $queryParams = array();
       $headerParams = array();
 
-      if($userId != null) {
+      if($userId !== null) {
   			$resourcePath = str_replace("{" . "userId" . "}",
   			                            $userId, $resourcePath);
   		}
@@ -843,7 +843,7 @@ class MgmtApi {
       $queryParams = array();
       $headerParams = array();
 
-      if($adminId != null) {
+      if($adminId !== null) {
   			$resourcePath = str_replace("{" . "adminId" . "}",
   			                            $adminId, $resourcePath);
   		}
@@ -881,11 +881,11 @@ class MgmtApi {
       $queryParams = array();
       $headerParams = array();
 
-      if($adminId != null) {
+      if($adminId !== null) {
   			$resourcePath = str_replace("{" . "adminId" . "}",
   			                            $adminId, $resourcePath);
   		}
-  		if($userName != null) {
+  		if($userName !== null) {
   			$resourcePath = str_replace("{" . "userName" . "}",
   			                            $userName, $resourcePath);
   		}
@@ -922,11 +922,11 @@ class MgmtApi {
       $queryParams = array();
       $headerParams = array();
 
-      if($adminId != null) {
+      if($adminId !== null) {
   			$resourcePath = str_replace("{" . "adminId" . "}",
   			                            $adminId, $resourcePath);
   		}
-  		if($userName != null) {
+  		if($userName !== null) {
   			$resourcePath = str_replace("{" . "userName" . "}",
   			                            $userName, $resourcePath);
   		}
@@ -963,11 +963,11 @@ class MgmtApi {
       $queryParams = array();
       $headerParams = array();
 
-      if($userId != null) {
+      if($userId !== null) {
   			$resourcePath = str_replace("{" . "userId" . "}",
   			                            $userId, $resourcePath);
   		}
-  		if($area != null) {
+  		if($area !== null) {
   			$resourcePath = str_replace("{" . "area" . "}",
   			                            $area, $resourcePath);
   		}
@@ -1004,11 +1004,11 @@ class MgmtApi {
       $queryParams = array();
       $headerParams = array();
 
-      if($callerId != null) {
+      if($callerId !== null) {
   			$resourcePath = str_replace("{" . "callerId" . "}",
   			                            $callerId, $resourcePath);
   		}
-  		if($guid != null) {
+  		if($guid !== null) {
   			$resourcePath = str_replace("{" . "guid" . "}",
   			                            $guid, $resourcePath);
   		}
@@ -1045,11 +1045,11 @@ class MgmtApi {
       $queryParams = array();
       $headerParams = array();
 
-      if($userId != null) {
+      if($userId !== null) {
   			$resourcePath = str_replace("{" . "userId" . "}",
   			                            $userId, $resourcePath);
   		}
-  		if($area != null) {
+  		if($area !== null) {
   			$resourcePath = str_replace("{" . "area" . "}",
   			                            $area, $resourcePath);
   		}

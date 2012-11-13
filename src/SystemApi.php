@@ -50,7 +50,7 @@ class SystemApi {
       $queryParams = array();
       $headerParams = array();
 
-      if($callerId != null) {
+      if($callerId !== null) {
   			$resourcePath = str_replace("{" . "callerId" . "}",
   			                            $callerId, $resourcePath);
   		}
@@ -86,7 +86,7 @@ class SystemApi {
       $queryParams = array();
       $headerParams = array();
 
-      if($callerId != null) {
+      if($callerId !== null) {
   			$resourcePath = str_replace("{" . "callerId" . "}",
   			                            $callerId, $resourcePath);
   		}
@@ -123,11 +123,11 @@ class SystemApi {
       $queryParams = array();
       $headerParams = array();
 
-      if($callerId != null) {
+      if($callerId !== null) {
   			$resourcePath = str_replace("{" . "callerId" . "}",
   			                            $callerId, $resourcePath);
   		}
-  		if($family != null) {
+  		if($family !== null) {
   			$resourcePath = str_replace("{" . "family" . "}",
   			                            $family, $resourcePath);
   		}
@@ -165,11 +165,11 @@ class SystemApi {
       $queryParams = array();
       $headerParams = array();
 
-      if($userId != null) {
+      if($userId !== null) {
   			$resourcePath = str_replace("{" . "userId" . "}",
   			                            $userId, $resourcePath);
   		}
-  		if($productId != null) {
+  		if($productId !== null) {
   			$resourcePath = str_replace("{" . "productId" . "}",
   			                            $productId, $resourcePath);
   		}
@@ -205,7 +205,7 @@ class SystemApi {
       $queryParams = array();
       $headerParams = array();
 
-      if($callerId != null) {
+      if($callerId !== null) {
   			$resourcePath = str_replace("{" . "callerId" . "}",
   			                            $callerId, $resourcePath);
   		}
@@ -242,11 +242,11 @@ class SystemApi {
       $queryParams = array();
       $headerParams = array();
 
-      if($callerId != null) {
+      if($callerId !== null) {
   			$resourcePath = str_replace("{" . "callerId" . "}",
   			                            $callerId, $resourcePath);
   		}
-  		if($countryName != null) {
+  		if($countryName !== null) {
   			$resourcePath = str_replace("{" . "countryName" . "}",
   			                            $countryName, $resourcePath);
   		}

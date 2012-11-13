@@ -51,11 +51,11 @@ class AsyncApi {
       $queryParams = array();
       $headerParams = array();
 
-      if($userId != null) {
+      if($userId !== null) {
   			$resourcePath = str_replace("{" . "userId" . "}",
   			                            $userId, $resourcePath);
   		}
-  		if($jobId != null) {
+  		if($jobId !== null) {
   			$resourcePath = str_replace("{" . "jobId" . "}",
   			                            $jobId, $resourcePath);
   		}
@@ -92,11 +92,11 @@ class AsyncApi {
       $queryParams = array();
       $headerParams = array();
 
-      if($userId != null) {
+      if($userId !== null) {
   			$resourcePath = str_replace("{" . "userId" . "}",
   			                            $userId, $resourcePath);
   		}
-  		if($jobId != null) {
+  		if($jobId !== null) {
   			$resourcePath = str_replace("{" . "jobId" . "}",
   			                            $jobId, $resourcePath);
   		}
@@ -133,11 +133,11 @@ class AsyncApi {
       $queryParams = array();
       $headerParams = array();
 
-      if($userId != null) {
+      if($userId !== null) {
   			$resourcePath = str_replace("{" . "userId" . "}",
   			                            $userId, $resourcePath);
   		}
-  		if($statusIds != null) {
+  		if($statusIds !== null) {
   			$resourcePath = str_replace("{" . "statusIds" . "}",
   			                            $statusIds, $resourcePath);
   		}
@@ -175,15 +175,15 @@ class AsyncApi {
       $queryParams = array();
       $headerParams = array();
 
-      if($userId != null) {
+      if($userId !== null) {
   			$resourcePath = str_replace("{" . "userId" . "}",
   			                            $userId, $resourcePath);
   		}
-  		if($jobId != null) {
+  		if($jobId !== null) {
   			$resourcePath = str_replace("{" . "jobId" . "}",
   			                            $jobId, $resourcePath);
   		}
-  		if($format != null) {
+  		if($format !== null) {
   			$resourcePath = str_replace("{" . "format" . "}",
   			                            $format, $resourcePath);
   		}
@@ -220,7 +220,7 @@ class AsyncApi {
       $queryParams = array();
       $headerParams = array();
 
-      if($userId != null) {
+      if($userId !== null) {
   			$resourcePath = str_replace("{" . "userId" . "}",
   			                            $userId, $resourcePath);
   		}
@@ -257,11 +257,11 @@ class AsyncApi {
       $queryParams = array();
       $headerParams = array();
 
-      if($userId != null) {
+      if($userId !== null) {
   			$resourcePath = str_replace("{" . "userId" . "}",
   			                            $userId, $resourcePath);
   		}
-  		if($jobGuid != null) {
+  		if($jobGuid !== null) {
   			$resourcePath = str_replace("{" . "jobGuid" . "}",
   			                            $jobGuid, $resourcePath);
   		}
@@ -295,29 +295,29 @@ class AsyncApi {
 
    public function AddJobDocument($userId, $jobId, $fileId, $checkOwnership, $formats=null) {
   	  //parse inputs
-  	  $resourcePath = str_replace("*", "", "/async/{userId}/jobs/{jobId}/files/{fileId}?check_ownership={checkOwnership}&amp;out_formats={formats}");
+  	  $resourcePath = str_replace("*", "", "/async/{userId}/jobs/{jobId}/files/{fileId}?check_ownership={checkOwnership}&out_formats={formats}");
   	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "PUT";
       $queryParams = array();
       $headerParams = array();
 
-      if($userId != null) {
+      if($userId !== null) {
   			$resourcePath = str_replace("{" . "userId" . "}",
   			                            $userId, $resourcePath);
   		}
-  		if($jobId != null) {
+  		if($jobId !== null) {
   			$resourcePath = str_replace("{" . "jobId" . "}",
   			                            $jobId, $resourcePath);
   		}
-  		if($fileId != null) {
+  		if($fileId !== null) {
   			$resourcePath = str_replace("{" . "fileId" . "}",
   			                            $fileId, $resourcePath);
   		}
-  		if($checkOwnership != null) {
+  		if($checkOwnership !== null) {
   			$resourcePath = str_replace("{" . "checkOwnership" . "}",
   			                            $checkOwnership, $resourcePath);
   		}
-  		if($formats != null) {
+  		if($formats !== null) {
   			$resourcePath = str_replace("{" . "formats" . "}",
   			                            $formats, $resourcePath);
   		}
@@ -355,15 +355,15 @@ class AsyncApi {
       $queryParams = array();
       $headerParams = array();
 
-      if($userId != null) {
+      if($userId !== null) {
   			$resourcePath = str_replace("{" . "userId" . "}",
   			                            $userId, $resourcePath);
   		}
-  		if($jobGuid != null) {
+  		if($jobGuid !== null) {
   			$resourcePath = str_replace("{" . "jobGuid" . "}",
   			                            $jobGuid, $resourcePath);
   		}
-  		if($documentId != null) {
+  		if($documentId !== null) {
   			$resourcePath = str_replace("{" . "documentId" . "}",
   			                            $documentId, $resourcePath);
   		}
@@ -396,25 +396,25 @@ class AsyncApi {
 
    public function AddJobDocumentUrl($userId, $jobId, $absoluteUrl, $formats=null) {
   	  //parse inputs
-  	  $resourcePath = str_replace("*", "", "/async/{userId}/jobs/{jobId}/urls?absolute_url={absoluteUrl}&amp;out_formats={formats}");
+  	  $resourcePath = str_replace("*", "", "/async/{userId}/jobs/{jobId}/urls?absolute_url={absoluteUrl}&out_formats={formats}");
   	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "PUT";
       $queryParams = array();
       $headerParams = array();
 
-      if($userId != null) {
+      if($userId !== null) {
   			$resourcePath = str_replace("{" . "userId" . "}",
   			                            $userId, $resourcePath);
   		}
-  		if($jobId != null) {
+  		if($jobId !== null) {
   			$resourcePath = str_replace("{" . "jobId" . "}",
   			                            $jobId, $resourcePath);
   		}
-  		if($absoluteUrl != null) {
+  		if($absoluteUrl !== null) {
   			$resourcePath = str_replace("{" . "absoluteUrl" . "}",
   			                            $absoluteUrl, $resourcePath);
   		}
-  		if($formats != null) {
+  		if($formats !== null) {
   			$resourcePath = str_replace("{" . "formats" . "}",
   			                            $formats, $resourcePath);
   		}
@@ -452,11 +452,11 @@ class AsyncApi {
       $queryParams = array();
       $headerParams = array();
 
-      if($userId != null) {
+      if($userId !== null) {
   			$resourcePath = str_replace("{" . "userId" . "}",
   			                            $userId, $resourcePath);
   		}
-  		if($jobId != null) {
+  		if($jobId !== null) {
   			$resourcePath = str_replace("{" . "jobId" . "}",
   			                            $jobId, $resourcePath);
   		}
@@ -492,37 +492,37 @@ class AsyncApi {
 
    public function GetJobs($userId, $pageIndex=null, $pageSize=null, $DateTime=null, $statusIds=null, $actions=null, $excludedActions=null) {
   	  //parse inputs
-  	  $resourcePath = str_replace("*", "", "/async/{userId}/jobs?page={pageIndex}&amp;count={pageSize}&amp;date={date}&amp;statusIds={statusIds}&amp;actions={actions}&amp;excluded_actions={excludedActions}");
+  	  $resourcePath = str_replace("*", "", "/async/{userId}/jobs?page={pageIndex}&count={pageSize}&date={date}&statusIds={statusIds}&actions={actions}&excluded_actions={excludedActions}");
   	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "GET";
       $queryParams = array();
       $headerParams = array();
 
-      if($userId != null) {
+      if($userId !== null) {
   			$resourcePath = str_replace("{" . "userId" . "}",
   			                            $userId, $resourcePath);
   		}
-  		if($pageIndex != null) {
+  		if($pageIndex !== null) {
   			$resourcePath = str_replace("{" . "pageIndex" . "}",
   			                            $pageIndex, $resourcePath);
   		}
-  		if($pageSize != null) {
+  		if($pageSize !== null) {
   			$resourcePath = str_replace("{" . "pageSize" . "}",
   			                            $pageSize, $resourcePath);
   		}
-  		if($DateTime != null) {
+  		if($DateTime !== null) {
   			$resourcePath = str_replace("{" . "date" . "}",
   			                            $DateTime, $resourcePath);
   		}
-  		if($statusIds != null) {
+  		if($statusIds !== null) {
   			$resourcePath = str_replace("{" . "statusIds" . "}",
   			                            $statusIds, $resourcePath);
   		}
-  		if($actions != null) {
+  		if($actions !== null) {
   			$resourcePath = str_replace("{" . "actions" . "}",
   			                            $actions, $resourcePath);
   		}
-  		if($excludedActions != null) {
+  		if($excludedActions !== null) {
   			$resourcePath = str_replace("{" . "excludedActions" . "}",
   			                            $excludedActions, $resourcePath);
   		}
@@ -558,37 +558,37 @@ class AsyncApi {
 
    public function GetJobsDocuments($userId, $pageIndex=null, $pageSize=null, $actions=null, $excludedActions=null, $orderBy=null, $orderAsc=null) {
   	  //parse inputs
-  	  $resourcePath = str_replace("*", "", "/async/{userId}/jobs/documents?page={pageIndex}&amp;count={pageSize}&amp;actions={actions}&amp;excluded_actions={excludedActions}&amp;order_by={orderBy}&amp;order_asc={orderAsc}");
+  	  $resourcePath = str_replace("*", "", "/async/{userId}/jobs/documents?page={pageIndex}&count={pageSize}&actions={actions}&excluded_actions={excludedActions}&order_by={orderBy}&order_asc={orderAsc}");
   	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "GET";
       $queryParams = array();
       $headerParams = array();
 
-      if($userId != null) {
+      if($userId !== null) {
   			$resourcePath = str_replace("{" . "userId" . "}",
   			                            $userId, $resourcePath);
   		}
-  		if($pageIndex != null) {
+  		if($pageIndex !== null) {
   			$resourcePath = str_replace("{" . "pageIndex" . "}",
   			                            $pageIndex, $resourcePath);
   		}
-  		if($pageSize != null) {
+  		if($pageSize !== null) {
   			$resourcePath = str_replace("{" . "pageSize" . "}",
   			                            $pageSize, $resourcePath);
   		}
-  		if($actions != null) {
+  		if($actions !== null) {
   			$resourcePath = str_replace("{" . "actions" . "}",
   			                            $actions, $resourcePath);
   		}
-  		if($excludedActions != null) {
+  		if($excludedActions !== null) {
   			$resourcePath = str_replace("{" . "excludedActions" . "}",
   			                            $excludedActions, $resourcePath);
   		}
-  		if($orderBy != null) {
+  		if($orderBy !== null) {
   			$resourcePath = str_replace("{" . "orderBy" . "}",
   			                            $orderBy, $resourcePath);
   		}
-  		if($orderAsc != null) {
+  		if($orderAsc !== null) {
   			$resourcePath = str_replace("{" . "orderAsc" . "}",
   			                            $orderAsc, $resourcePath);
   		}
@@ -624,37 +624,37 @@ class AsyncApi {
 
    public function Convert($userId, $fileId, $targetType=null, $emailResults=null, $description=null, $printScript=null, $callbackUrl=null) {
   	  //parse inputs
-  	  $resourcePath = str_replace("*", "", "/async/{userId}/files/{fileId}?new_type={targetType}&amp;email_results={emailResults}&amp;new_description={description}&amp;print_script={printScript}&amp;callback={callbackUrl}");
+  	  $resourcePath = str_replace("*", "", "/async/{userId}/files/{fileId}?new_type={targetType}&email_results={emailResults}&new_description={description}&print_script={printScript}&callback={callbackUrl}");
   	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "POST";
       $queryParams = array();
       $headerParams = array();
 
-      if($userId != null) {
+      if($userId !== null) {
   			$resourcePath = str_replace("{" . "userId" . "}",
   			                            $userId, $resourcePath);
   		}
-  		if($fileId != null) {
+  		if($fileId !== null) {
   			$resourcePath = str_replace("{" . "fileId" . "}",
   			                            $fileId, $resourcePath);
   		}
-  		if($targetType != null) {
+  		if($targetType !== null) {
   			$resourcePath = str_replace("{" . "targetType" . "}",
   			                            $targetType, $resourcePath);
   		}
-  		if($emailResults != null) {
+  		if($emailResults !== null) {
   			$resourcePath = str_replace("{" . "emailResults" . "}",
   			                            $emailResults, $resourcePath);
   		}
-  		if($description != null) {
+  		if($description !== null) {
   			$resourcePath = str_replace("{" . "description" . "}",
   			                            $description, $resourcePath);
   		}
-  		if($printScript != null) {
+  		if($printScript !== null) {
   			$resourcePath = str_replace("{" . "printScript" . "}",
   			                            $printScript, $resourcePath);
   		}
-  		if($callbackUrl != null) {
+  		if($callbackUrl !== null) {
   			$resourcePath = str_replace("{" . "callbackUrl" . "}",
   			                            $callbackUrl, $resourcePath);
   		}

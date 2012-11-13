@@ -29,10 +29,10 @@ class GetJobResult {
       'out_formats' => 'array[string]',
       'email_results' => 'bool',
       'url_only' => 'bool',
-      'requested_time' => 'int',
+      'requested_time' => 'string',
       'id' => 'float',
       'guid' => 'string',
-      'scheduled_time' => 'int',
+      'scheduled_time' => 'string',
       'priority' => 'float',
       'name' => 'string',
       'callback_url' => 'string',
@@ -45,10 +45,10 @@ class GetJobResult {
   public $out_formats; // array[string]
   public $email_results; // bool
   public $url_only; // bool
-  public $requested_time; // int
+  public $requested_time; // string
   public $id; // float
   public $guid; // string
-  public $scheduled_time; // int
+  public $scheduled_time; // string
   public $priority; // float
   public $name; // string
   public $callback_url; // string

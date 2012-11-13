@@ -35,7 +35,7 @@ class QuestionnaireExecutionInfo {
       'approver' => 'UserIdentity',
       'owner' => 'UserIdentity',
       'questionnaire_name' => 'string',
-      'modified' => 'int'
+      'modified' => 'string'
 
     );
 
@@ -50,6 +50,6 @@ class QuestionnaireExecutionInfo {
   public $approver; // UserIdentity
   public $owner; // UserIdentity
   public $questionnaire_name; // string
-  public $modified; // int
+  public $modified; // string
   }
 

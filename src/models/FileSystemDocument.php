@@ -25,15 +25,15 @@ class FileSystemDocument {
 
   static $swaggerTypes = array(
       'sharers' => 'array[UserInfo]',
-      'modified_on' => 'int',
-      'created_on' => 'int',
+      'modified_on' => 'string',
+      'created_on' => 'string',
       'type' => 'string',
       'access' => 'string',
       'supported_types' => 'array[string]',
       'url' => 'string',
       'version' => 'int',
       'file_type' => 'string',
-      'size' => 'int',
+      'size' => 'string',
       'id' => 'float',
       'guid' => 'string',
       'thumbnail' => 'string',
@@ -44,15 +44,15 @@ class FileSystemDocument {
     );
 
   public $sharers; // array[UserInfo]
-  public $modified_on; // int
-  public $created_on; // int
+  public $modified_on; // string
+  public $created_on; // string
   public $type; // string
   public $access; // string
   public $supported_types; // array[string]
   public $url; // string
   public $version; // int
   public $file_type; // string
-  public $size; // int
+  public $size; // string
   public $id; // float
   public $guid; // string
   public $thumbnail; // string

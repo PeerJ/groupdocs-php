@@ -44,7 +44,7 @@ class SharedApi {
    * @return stream
 	 */
 
-   public function Download($guid, $fileName, $render=null) {
+   public function Download($guid, $fileName, $render=null, $outFileStream) {
   	  //parse inputs
   	  $resourcePath = str_replace("*", "", "/shared/files/{guid}?filename={fileName}&render={render}");
   	  $resourcePath = str_replace("{format}", "json", $resourcePath);
@@ -68,18 +68,8 @@ class SharedApi {
       if (! isset($body)) {
         $body = null;
       }
-  		$response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
-  		                                      $queryParams, $body, $headerParams);
-
-
-      if(! $response){
-          return null;
-        }
-
-  		$responseObject = $this->apiClient->deserialize($response,
-  		                                                'stream');
-  		return $responseObject;
-
+      return $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams, $outFileStream);
       }
   /**
 	 * GetXml
@@ -88,7 +78,7 @@ class SharedApi {
    * @return stream
 	 */
 
-   public function GetXml($guid) {
+   public function GetXml($guid, $outFileStream) {
   	  //parse inputs
   	  $resourcePath = str_replace("*", "", "/shared/files/{guid}/xml");
   	  $resourcePath = str_replace("{format}", "json", $resourcePath);
@@ -104,18 +94,8 @@ class SharedApi {
       if (! isset($body)) {
         $body = null;
       }
-  		$response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
-  		                                      $queryParams, $body, $headerParams);
-
-
-      if(! $response){
-          return null;
-        }
-
-  		$responseObject = $this->apiClient->deserialize($response,
-  		                                                'stream');
-  		return $responseObject;
-
+      return $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams, $outFileStream);
       }
   /**
 	 * GetPackage
@@ -124,7 +104,7 @@ class SharedApi {
    * @return stream
 	 */
 
-   public function GetPackage($path) {
+   public function GetPackage($path, $outFileStream) {
   	  //parse inputs
   	  $resourcePath = str_replace("*", "", "/shared/packages/{*path}");
   	  $resourcePath = str_replace("{format}", "json", $resourcePath);
@@ -140,18 +120,8 @@ class SharedApi {
       if (! isset($body)) {
         $body = null;
       }
-  		$response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
-  		                                      $queryParams, $body, $headerParams);
-
-
-      if(! $response){
-          return null;
-        }
-
-  		$responseObject = $this->apiClient->deserialize($response,
-  		                                                'stream');
-  		return $responseObject;
-
+      return $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams, $outFileStream);
       }
   
 }

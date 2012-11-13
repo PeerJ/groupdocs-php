@@ -66,27 +66,28 @@ class APIClient {
 	 * @return unknown
 	 */
 	public function callAPI($apiServer, $resourcePath, $method, $queryParams, $postData,
-		$headerParams) {
+		$headerParams, $outFileStream=null) {
 
 		$headers = array();
+		$headers[] = "Host: api.groupdocs.com";
 		
-		$filename = false;
+		$isFileUpload = false;
 		if (empty($postData)){
 			$headers[] = "Content-type: text/html";
 
-		} else if (is_string($postData) && strpos($postData, "file://") === 0) {
-			$filename = substr($postData, 7);
-			$headers[] = "Content-type: ".self::getMimeType($filename);
-			$headers[] = "Content-Length: ".filesize($filename);
+		} else if ($postData instanceof FileStream) {
+			
+			$headers[] = "Content-type: ". $postData->getContentType();
+			$headers[] = "Content-Length: ". $postData->getSize();
 
 		} else if (is_object($postData) or is_array($postData)) {
 			$headers[] = "Content-type: application/json";
 			$postData = json_encode(self::object_to_array($postData));
 		}
 
-		if (is_object($postData) or is_array($postData)) {
-			$postData = json_encode($postData);
-		}
+		// if (is_object($postData) or is_array($postData)) {
+			// $postData = json_encode($postData);
+		// }
 
 		$url = $apiServer . $resourcePath;
 
@@ -103,12 +104,12 @@ class APIClient {
 				$url = ($url . '?' . http_build_query($queryParams));
 			}
 		} else if ($method == self::$POST) {
-			if($filename){
+			if($isFileUpload){
 				curl_setopt($curl, CURLOPT_CUSTOMREQUEST, "POST");
 				curl_setopt($curl, CURLOPT_TIMEOUT, 0);
 				curl_setopt($curl, CURLOPT_PUT, true);
-				curl_setopt($curl, CURLOPT_INFILE, fopen($filename, "rb"));
-				curl_setopt($curl, CURLOPT_INFILESIZE, filesize($filename));
+				curl_setopt($curl, CURLOPT_INFILE, $postData->getInputStream());
+				curl_setopt($curl, CURLOPT_INFILESIZE, $postData->getSize());
 			} else {
 				curl_setopt($curl, CURLOPT_POST, true);
 				curl_setopt($curl, CURLOPT_POSTFIELDS, $postData);
@@ -125,29 +126,47 @@ class APIClient {
 		}
 
 		curl_setopt($curl, CURLOPT_URL, self::encodeURI($this->signer->signUrl($url)));
-
+		
+		if($outFileStream !== null){
+			curl_setopt($curl, CURLOPT_RETURNTRANSFER, false);
+			// curl_setopt($curl, CURLOPT_FILE, $outFileStream->getInputStream());
+			curl_setopt($curl, CURLOPT_HEADERFUNCTION, array($outFileStream, 'headerCallback'));
+			curl_setopt($curl, CURLOPT_WRITEFUNCTION, array($outFileStream, 'bodyCallback'));
+		}
+		
 		// Make the request
 		$response = curl_exec($curl);
 		$response_info = curl_getinfo($curl);
+		
+		// Close curl
+		curl_close($curl);
+		if($outFileStream !== null){
+			fclose($outFileStream->getInputStream());
+		}
+		
+		// var_dump($response_info);
 
 		// Handle the response
 		if ($response_info['http_code'] == 0) {
 			throw new Exception("TIMEOUT: api call to " . $url .
 				" took more than " . $timeoutSec . "s to return" );
 		} else if ($response_info['http_code'] == 200) {
-			$data = json_decode($response);
+			if($outFileStream !== null){
+				return $outFileStream;
+			} else {
+				return json_decode($response);
+			}
 		} else if ($response_info['http_code'] == 401) {
 			throw new Exception("Unauthorized API request to " . $url .
 					": ".$response );
 		} else if ($response_info['http_code'] == 404) {
-			$data = null;
+			return null;
 		} else {
 			throw new Exception("Can't connect to the api: " . $url .
 				" response code: " .
-				$response_info['http_code']);
+				$response_info['http_code'] .
+				" response body: " . $response); 
 		}
-
-		return $data;
 	}
 
 
@@ -253,15 +272,20 @@ class APIClient {
 	    return $data;
 	}
 
-	public static function getMimeType($filename){
+	public static function getMimeType($filePath){
 		$cont_type = null;
 		if (function_exists('finfo_file')) {
 	        $finfo = finfo_open(FILEINFO_MIME_TYPE);
-	        $cont_type = finfo_file($finfo, $filename);
+	        $cont_type = finfo_file($finfo, $filePath);
 	        finfo_close($finfo);
-	    } else {
-	        $cont_type = mime_content_type($filename);
-	    }
+	    } 
+		if($cont_type == null){
+			$cont_type = mime_content_type($filePath);
+		}
+		if($cont_type == null){
+			$cont_type = "application/octet-stream";
+		}
+		
 		return $cont_type;
 	}
 
@@ -289,5 +313,3 @@ class APIClient {
 	}
 
 }
-
-

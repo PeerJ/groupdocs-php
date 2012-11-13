@@ -1,4 +1,19 @@
 <?php 
+/**
+ *  Copyright 2012 GroupDocs.
+ *
+ *  Licensed under the Apache License, Version 2.0 (the "License");
+ *  you may not use this file except in compliance with the License.
+ *  You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *  Unless required by applicable law or agreed to in writing, software
+ *  distributed under the License is distributed on an "AS IS" BASIS,
+ *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *  See the License for the specific language governing permissions and
+ *  limitations under the License.
+ */
 
 class FileStream {
 	
@@ -31,9 +46,9 @@ class FileStream {
 	}
 	
 	public function getFileName(){
-        if ($this->fileName == null and $this->filePath != null)
+        if ($this->fileName == null and $this->filePath != null){
             $this->fileName = basename($this->filePath);
-		else if ($this->fileName == null and $this->downloadDirectory != null){
+		} else if ($this->fileName == null and $this->downloadDirectory != null){
 			if($this->outFileName != null){
 				$this->fileName = $this->outFileName;
 			}
@@ -42,10 +57,9 @@ class FileStream {
 	}
 	
 	public function getContentType(){
-        if ($this->contentType == null and $this->filePath != null)
+        if ($this->contentType == null and $this->filePath != null){
             $this->contentType = APIClient::getMimeType($this->filePath);
-		else if ($this->contentType == null and $this->downloadDirectory != null)
-            $this->contentType = $this->headers["Content-Type"];
+		}
         return $this->contentType;
 	}
 	
@@ -57,9 +71,9 @@ class FileStream {
 	}
 	
 	public function getInputStream(){
-        if ($this->inputStream == null and $this->filePath != null)
+        if ($this->inputStream == null and $this->filePath != null){
             $this->inputStream = fopen($this->filePath, "rb");
-		else if ($this->inputStream == null and $this->downloadDirectory != null){
+		} else if ($this->inputStream == null and $this->downloadDirectory != null){
 			$outFilePath = $this->downloadDirectory."/".$this->getFileName();
             $this->inputStream = fopen($outFilePath, "wb");
 		}
@@ -94,12 +108,16 @@ class FileStream {
 	        } else {
 	        	// guess from url
 	        	$url = curl_getinfo($ch, CURLINFO_EFFECTIVE_URL);
-				var_dump($url);
 	        	$this->fileName = basename(parse_url($url, PHP_URL_PATH));
 	        }
 		}
-
+		
         $this->headers[$name] = trim($value);
+
+		if( strcasecmp($name, 'Content-Type') == 0) {
+			$this->contentType = $this->headers[$name];
+		}
+
         return $len;
 	}
 

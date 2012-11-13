@@ -69,7 +69,6 @@ class APIClient {
 		$headerParams, $outFileStream=null) {
 
 		$headers = array();
-		$headers[] = "Host: api.groupdocs.com";
 		
 		$isFileUpload = false;
 		if (empty($postData)){
@@ -310,6 +309,10 @@ class APIClient {
 	public static function encodeURIComponent($str) {
 	    $revert = array('%21'=>'!', '%2A'=>'*', '%27'=>"'", '%28'=>'(', '%29'=>')');
 	    return strtr(rawurlencode($str), $revert);
+	}
+	
+	public static function readAsDataURL($filePath) {
+		return 'data:'.self::getMimeType($filePath).';base64,'.base64_encode(file_get_contents($filePath));
 	}
 
 }

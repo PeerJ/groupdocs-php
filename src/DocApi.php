@@ -731,24 +731,40 @@ class DocApi {
 	 * Returns a list of URLs pointing to document page images.
    * userId, string: GroupDocs user global unique identifier. (required)
    * fileId, string: Document global unique identifier. (required)
-   * firstPage, int: Document page number to start from. (optional)
-   * pageCount, int: Page count to return URLs for. (optional)
+   * first_page, int: Document page number to start from. (optional)
+   * page_count, int: Page count to return URLs for. (optional)
    * dimension, string: Image dimension in format '&lt;width&gt;x&lt;height&gt;' (one or both values can be omitted). (required)
    * quality, int: Image qualiry in range 1-100. (optional)
-   * usePdf, bool: A flag indicating whether a document should be converted to PDF format before generating the image. (optional)
+   * use_pdf, bool: A flag indicating whether a document should be converted to PDF format before generating the image. (optional)
    * token, string: A document viewer session token returned by the View Document request. (optional)
    * @return GetImageUrlsResponse
 	 */
 
-   public function GetDocumentPagesImageUrls($userId, $fileId, $firstPage=null, $pageCount=null, $dimension, $quality=null, $usePdf=null, $token=null) {
+   public function GetDocumentPagesImageUrls($userId, $fileId, $first_page=null, $page_count=null, $dimension, $quality=null, $use_pdf=null, $token=null) {
   	  //parse inputs
-  	  $resourcePath = str_replace("*", "", "/doc/{userId}/files/{fileId}/pages/images/{dimension}/urls?first_page={firstPage}&page_count={pageCount}&quality={quality}&use_pdf={usePdf}&token={token}");
-  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $resourcePath = str_replace("*", "", "/doc/{userId}/files/{fileId}/pages/images/{dimension}/urls?first_page={first_page}&page_count={page_count}&quality={quality}&use_pdf={use_pdf}&token={token}");
+  	  $resourcePath = substr($resourcePath, 0, strpos($resourcePath, "?"));
+	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "GET";
       $queryParams = array();
       $headerParams = array();
 
-      if($userId !== null) {
+      if($first_page !== null) {
+  		  $queryParams['first_page'] = $this->apiClient->toPathValue($first_page);
+  		}
+  		if($page_count !== null) {
+  		  $queryParams['page_count'] = $this->apiClient->toPathValue($page_count);
+  		}
+  		if($quality !== null) {
+  		  $queryParams['quality'] = $this->apiClient->toPathValue($quality);
+  		}
+  		if($use_pdf !== null) {
+  		  $queryParams['use_pdf'] = $this->apiClient->toPathValue($use_pdf);
+  		}
+  		if($token !== null) {
+  		  $queryParams['token'] = $this->apiClient->toPathValue($token);
+  		}
+  		if($userId !== null) {
   			$resourcePath = str_replace("{" . "userId" . "}",
   			                            $userId, $resourcePath);
   		}
@@ -756,29 +772,9 @@ class DocApi {
   			$resourcePath = str_replace("{" . "fileId" . "}",
   			                            $fileId, $resourcePath);
   		}
-  		if($firstPage !== null) {
-  			$resourcePath = str_replace("{" . "firstPage" . "}",
-  			                            $firstPage, $resourcePath);
-  		}
-  		if($pageCount !== null) {
-  			$resourcePath = str_replace("{" . "pageCount" . "}",
-  			                            $pageCount, $resourcePath);
-  		}
   		if($dimension !== null) {
   			$resourcePath = str_replace("{" . "dimension" . "}",
   			                            $dimension, $resourcePath);
-  		}
-  		if($quality !== null) {
-  			$resourcePath = str_replace("{" . "quality" . "}",
-  			                            $quality, $resourcePath);
-  		}
-  		if($usePdf !== null) {
-  			$resourcePath = str_replace("{" . "usePdf" . "}",
-  			                            $usePdf, $resourcePath);
-  		}
-  		if($token !== null) {
-  			$resourcePath = str_replace("{" . "token" . "}",
-  			                            $token, $resourcePath);
   		}
   		//make the API Call
       if (! isset($body)) {

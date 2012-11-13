@@ -34,13 +34,16 @@ class SiteController extends Controller {
                 move_uploaded_file($tmp_name, "$uploads_dir/$name");
 
                 //  GroupDocs SDK
-                Yii::import('application.vendors.groupdocs-php.api.APIClient');
-                Yii::import('application.vendors.groupdocs-php.api.StorageAPI');
-                Yii::import('application.vendors.groupdocs-php.model.StorageStorageInputFoldersInput');
-                Yii::import('application.vendors.groupdocs-php.model.UploadResponse');
-                Yii::import('application.vendors.groupdocs-php.model.UploadRequestResult');
+                Yii::import('application.vendors.groupdocs-php.APIClient', true);
+                Yii::import('application.vendors.groupdocs-php.StorageAPI');
+                Yii::import('application.vendors.groupdocs-php.GroupDocsRequestSigner');
+                Yii::import('application.vendors.groupdocs-php.models.StorageStorageInputFoldersInput');
+                Yii::import('application.vendors.groupdocs-php.models.UploadResponse');
+                Yii::import('application.vendors.groupdocs-php.models.UploadRequestResult');
                 // groupdocs api
-                $apiClient = new APIClient($apiKey, "https://api.groupdocs.com/v2.0");
+                // $apiClient = new APIClient($apiKey, "https://api.groupdocs.com/v2.0"); //old api - SDK v1.0
+                $signer = new GroupDocsRequestSigner($apiKey);
+                $apiClient = new APIClient($signer); // PHP SDK V1.1
                 $api = new StorageAPI($apiClient);
                 $result = $api->Upload($clientID, $name, 'uploaded', "file://$uploads_dir/$name");
                 unlink("$uploads_dir/$name");
@@ -74,18 +77,21 @@ class SiteController extends Controller {
                 $api_key = stripslashes(strip_tags($_GET['api_key']));
                 $file_id = stripslashes(strip_tags($_GET['file_id']));
             //  GroupDocs SDK include
-                Yii::import('application.vendors.groupdocs-php.model.ListAnnotationsResult');
-                Yii::import('application.vendors.groupdocs-php.model.ListAnnotationsResponse');
-                Yii::import('application.vendors.groupdocs-php.model.AnnotationInfo');
-                Yii::import('application.vendors.groupdocs-php.model.Rectangle');
-                Yii::import('application.vendors.groupdocs-php.model.Point');
-                Yii::import('application.vendors.groupdocs-php.model.Range');
-                Yii::import('application.vendors.groupdocs-php.model.AnnotationReplyInfo');
+                Yii::import('application.vendors.groupdocs-php.models.ListAnnotationsResult');
+                Yii::import('application.vendors.groupdocs-php.models.ListAnnotationsResponse');
+                Yii::import('application.vendors.groupdocs-php.models.AnnotationInfo');
+                Yii::import('application.vendors.groupdocs-php.models.Rectangle');
+                Yii::import('application.vendors.groupdocs-php.models.Point');
+                Yii::import('application.vendors.groupdocs-php.models.Range');
+                Yii::import('application.vendors.groupdocs-php.models.AnnotationReplyInfo');
             //  basic classes
-                Yii::import('application.vendors.groupdocs-php.api.APIClient');
-                Yii::import('application.vendors.groupdocs-php.api.AntAPI');
+                Yii::import('application.vendors.groupdocs-php.APIClient', true);
+                Yii::import('application.vendors.groupdocs-php.AntAPI');
+                Yii::import('application.vendors.groupdocs-php.GroupDocsRequestSigner');
             //  get list
-                $apiClient = new APIClient($api_key, "https://api.groupdocs.com/v2.0");
+                // $apiClient = new APIClient($apiKey, "https://api.groupdocs.com/v2.0"); //old api - SDK v1.0
+                $signer = new GroupDocsRequestSigner($apiKey);
+                $apiClient = new APIClient($signer); // PHP SDK V1.1
                 $AntAPI = new AntAPI($apiClient);
                 $annotations = $AntAPI->ListAnnotations($client_id, $file_id);
             //  build view

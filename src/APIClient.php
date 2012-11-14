@@ -176,9 +176,11 @@ class APIClient {
 	 */
 	public static function toPathValue($object) {
         if (is_array($object)) {
-            return implode(',', $object);
+            return implode(',', array_map(function($obj) {
+            	return var_export($obj, true);
+			}, $object));
         } else {
-            return $object;
+            return var_export($object, true);
         }
 	}
 

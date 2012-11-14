@@ -47,22 +47,21 @@ class SharedApi {
    public function Download($guid, $fileName, $render=null, $outFileStream) {
   	  //parse inputs
   	  $resourcePath = str_replace("*", "", "/shared/files/{guid}?filename={fileName}&render={render}");
-  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $resourcePath = substr($resourcePath, 0, strpos($resourcePath, "?"));
+	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "GET";
       $queryParams = array();
       $headerParams = array();
 
-      if($guid !== null) {
-  			$resourcePath = str_replace("{" . "guid" . "}",
-  			                            $guid, $resourcePath);
-  		}
-  		if($fileName !== null) {
-  			$resourcePath = str_replace("{" . "fileName" . "}",
-  			                            $fileName, $resourcePath);
+      if($fileName !== null) {
+  		  $queryParams['filename'] = $this->apiClient->toPathValue($fileName);
   		}
   		if($render !== null) {
-  			$resourcePath = str_replace("{" . "render" . "}",
-  			                            $render, $resourcePath);
+  		  $queryParams['render'] = $this->apiClient->toPathValue($render);
+  		}
+  		if($guid !== null) {
+  			$resourcePath = str_replace("{" . "guid" . "}",
+  			                            $guid, $resourcePath);
   		}
   		//make the API Call
       if (! isset($body)) {

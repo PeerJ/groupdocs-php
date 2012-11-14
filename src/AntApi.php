@@ -278,22 +278,22 @@ class AntApi {
    public function ListAnnotationReplies($userId, $annotationId, $after) {
   	  //parse inputs
   	  $resourcePath = str_replace("*", "", "/ant/{userId}/annotations/{annotationId}/replies?after={after}");
-  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $resourcePath = substr($resourcePath, 0, strpos($resourcePath, "?"));
+	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "GET";
       $queryParams = array();
       $headerParams = array();
 
-      if($userId !== null) {
+      if($after !== null) {
+  		  $queryParams['after'] = $this->apiClient->toPathValue($after);
+  		}
+  		if($userId !== null) {
   			$resourcePath = str_replace("{" . "userId" . "}",
   			                            $userId, $resourcePath);
   		}
   		if($annotationId !== null) {
   			$resourcePath = str_replace("{" . "annotationId" . "}",
   			                            $annotationId, $resourcePath);
-  		}
-  		if($after !== null) {
-  			$resourcePath = str_replace("{" . "after" . "}",
-  			                            $after, $resourcePath);
   		}
   		//make the API Call
       if (! isset($body)) {
@@ -467,10 +467,11 @@ class AntApi {
 	 * SetReviewerContacts
 	 * Get list of reviewer contacts
    * userId, string: User GUID (required)
+   * body, List[ReviewerContactInfo]: Reviewer Contacts Array (optional)
    * @return GetReviewerContactsResponse
 	 */
 
-   public function SetReviewerContacts($userId) {
+   public function SetReviewerContacts($userId, $body=null) {
   	  //parse inputs
   	  $resourcePath = str_replace("*", "", "/ant/{userId}/reviewerContacts");
   	  $resourcePath = str_replace("{format}", "json", $resourcePath);
@@ -650,6 +651,44 @@ class AntApi {
 
   	  $responseObject = $this->apiClient->deserialize($response,
   		                                                'SetReviewerRightsResponse');
+  	  return $responseObject;
+      }
+  /**
+	 * GetSharedLinkAccessRights
+	 * Get Shared Link Access Rights
+   * userId, string: User GUID (required)
+   * fileId, string: File ID (required)
+   * @return GetSharedLinkAccessRightsResponse
+	 */
+
+   public function GetSharedLinkAccessRights($userId, $fileId) {
+  	  //parse inputs
+  	  $resourcePath = str_replace("*", "", "/ant/{userId}/files/{fileId}/sharedLinkAccessRights");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "GET";
+      $queryParams = array();
+      $headerParams = array();
+
+      if($userId !== null) {
+  			$resourcePath = str_replace("{" . "userId" . "}",
+  			                            $userId, $resourcePath);
+  		}
+  		if($fileId !== null) {
+  			$resourcePath = str_replace("{" . "fileId" . "}",
+  			                            $fileId, $resourcePath);
+  		}
+  		//make the API Call
+      if (! isset($body)) {
+        $body = null;
+      }
+      $response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
+      if(! $response){
+        return null;
+      }
+
+  	  $responseObject = $this->apiClient->deserialize($response,
+  		                                                'GetSharedLinkAccessRightsResponse');
   	  return $responseObject;
       }
   /**

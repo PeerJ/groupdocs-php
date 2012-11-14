@@ -47,22 +47,20 @@ class PostApi {
    public function RenameByPost($userId, $fileId, $newName) {
   	  //parse inputs
   	  $resourcePath = str_replace("*", "", "/post/file.rename?user_id={userId}&file_id={fileId}&new_name={newName}");
-  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $resourcePath = substr($resourcePath, 0, strpos($resourcePath, "?"));
+	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "POST";
       $queryParams = array();
       $headerParams = array();
 
       if($userId !== null) {
-  			$resourcePath = str_replace("{" . "userId" . "}",
-  			                            $userId, $resourcePath);
+  		  $queryParams['user_id'] = $this->apiClient->toPathValue($userId);
   		}
   		if($fileId !== null) {
-  			$resourcePath = str_replace("{" . "fileId" . "}",
-  			                            $fileId, $resourcePath);
+  		  $queryParams['file_id'] = $this->apiClient->toPathValue($fileId);
   		}
   		if($newName !== null) {
-  			$resourcePath = str_replace("{" . "newName" . "}",
-  			                            $newName, $resourcePath);
+  		  $queryParams['new_name'] = $this->apiClient->toPathValue($newName);
   		}
   		//make the API Call
       if (! isset($body)) {
@@ -89,18 +87,17 @@ class PostApi {
    public function DeleteByPost($userId, $fileId) {
   	  //parse inputs
   	  $resourcePath = str_replace("*", "", "/post/file.delete?user_id={userId}&file_id={fileId}");
-  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $resourcePath = substr($resourcePath, 0, strpos($resourcePath, "?"));
+	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "POST";
       $queryParams = array();
       $headerParams = array();
 
       if($userId !== null) {
-  			$resourcePath = str_replace("{" . "userId" . "}",
-  			                            $userId, $resourcePath);
+  		  $queryParams['user_id'] = $this->apiClient->toPathValue($userId);
   		}
   		if($fileId !== null) {
-  			$resourcePath = str_replace("{" . "fileId" . "}",
-  			                            $fileId, $resourcePath);
+  		  $queryParams['file_id'] = $this->apiClient->toPathValue($fileId);
   		}
   		//make the API Call
       if (! isset($body)) {
@@ -127,18 +124,17 @@ class PostApi {
    public function DeleteFromFolderByPost($userId, $path) {
   	  //parse inputs
   	  $resourcePath = str_replace("*", "", "/post/file.delete.in?user_id={userId}&path={path}");
-  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $resourcePath = substr($resourcePath, 0, strpos($resourcePath, "?"));
+	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "POST";
       $queryParams = array();
       $headerParams = array();
 
       if($userId !== null) {
-  			$resourcePath = str_replace("{" . "userId" . "}",
-  			                            $userId, $resourcePath);
+  		  $queryParams['user_id'] = $this->apiClient->toPathValue($userId);
   		}
   		if($path !== null) {
-  			$resourcePath = str_replace("{" . "path" . "}",
-  			                            $path, $resourcePath);
+  		  $queryParams['path'] = $this->apiClient->toPathValue($path);
   		}
   		//make the API Call
       if (! isset($body)) {
@@ -166,22 +162,20 @@ class PostApi {
    public function CompressByPost($userId, $fileId, $archiveType) {
   	  //parse inputs
   	  $resourcePath = str_replace("*", "", "/post/file.compress?user_id={userId}&file_id={fileId}&archive_type={archiveType}");
-  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $resourcePath = substr($resourcePath, 0, strpos($resourcePath, "?"));
+	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "POST";
       $queryParams = array();
       $headerParams = array();
 
       if($userId !== null) {
-  			$resourcePath = str_replace("{" . "userId" . "}",
-  			                            $userId, $resourcePath);
+  		  $queryParams['user_id'] = $this->apiClient->toPathValue($userId);
   		}
   		if($fileId !== null) {
-  			$resourcePath = str_replace("{" . "fileId" . "}",
-  			                            $fileId, $resourcePath);
+  		  $queryParams['file_id'] = $this->apiClient->toPathValue($fileId);
   		}
   		if($archiveType !== null) {
-  			$resourcePath = str_replace("{" . "archiveType" . "}",
-  			                            $archiveType, $resourcePath);
+  		  $queryParams['archive_type'] = $this->apiClient->toPathValue($archiveType);
   		}
   		//make the API Call
       if (! isset($body)) {

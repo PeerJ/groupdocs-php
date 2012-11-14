@@ -147,18 +147,18 @@ class MgmtApi {
    public function GetUserProfileByResetToken($callerId, $token) {
   	  //parse inputs
   	  $resourcePath = str_replace("*", "", "/mgmt/{callerId}/reset-tokens?token={token}");
-  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $resourcePath = substr($resourcePath, 0, strpos($resourcePath, "?"));
+	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "GET";
       $queryParams = array();
       $headerParams = array();
 
-      if($callerId !== null) {
+      if($token !== null) {
+  		  $queryParams['token'] = $this->apiClient->toPathValue($token);
+  		}
+  		if($callerId !== null) {
   			$resourcePath = str_replace("{" . "callerId" . "}",
   			                            $callerId, $resourcePath);
-  		}
-  		if($token !== null) {
-  			$resourcePath = str_replace("{" . "token" . "}",
-  			                            $token, $resourcePath);
   		}
   		//make the API Call
       if (! isset($body)) {
@@ -185,18 +185,18 @@ class MgmtApi {
    public function GetUserProfileByVerifToken($callerId, $token) {
   	  //parse inputs
   	  $resourcePath = str_replace("*", "", "/mgmt/{callerId}/verif-tokens?token={token}");
-  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $resourcePath = substr($resourcePath, 0, strpos($resourcePath, "?"));
+	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "GET";
       $queryParams = array();
       $headerParams = array();
 
-      if($callerId !== null) {
+      if($token !== null) {
+  		  $queryParams['token'] = $this->apiClient->toPathValue($token);
+  		}
+  		if($callerId !== null) {
   			$resourcePath = str_replace("{" . "callerId" . "}",
   			                            $callerId, $resourcePath);
-  		}
-  		if($token !== null) {
-  			$resourcePath = str_replace("{" . "token" . "}",
-  			                            $token, $resourcePath);
   		}
   		//make the API Call
       if (! isset($body)) {
@@ -223,18 +223,18 @@ class MgmtApi {
    public function GetUserProfileByClaimedToken($callerId, $token) {
   	  //parse inputs
   	  $resourcePath = str_replace("*", "", "/mgmt/{callerId}/claimed-tokens?token={token}");
-  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $resourcePath = substr($resourcePath, 0, strpos($resourcePath, "?"));
+	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "GET";
       $queryParams = array();
       $headerParams = array();
 
-      if($callerId !== null) {
+      if($token !== null) {
+  		  $queryParams['token'] = $this->apiClient->toPathValue($token);
+  		}
+  		if($callerId !== null) {
   			$resourcePath = str_replace("{" . "callerId" . "}",
   			                            $callerId, $resourcePath);
-  		}
-  		if($token !== null) {
-  			$resourcePath = str_replace("{" . "token" . "}",
-  			                            $token, $resourcePath);
   		}
   		//make the API Call
       if (! isset($body)) {
@@ -373,22 +373,22 @@ class MgmtApi {
    public function CreateUserLogin($callerId, $userId, $password) {
   	  //parse inputs
   	  $resourcePath = str_replace("*", "", "/mgmt/{callerId}/users/{userId}/logins");
-  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $resourcePath = substr($resourcePath, 0, strpos($resourcePath, "?"));
+	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "POST";
       $queryParams = array();
       $headerParams = array();
 
-      if($callerId !== null) {
+      if($password !== null) {
+  		  $queryParams['password'] = $this->apiClient->toPathValue($password);
+  		}
+  		if($callerId !== null) {
   			$resourcePath = str_replace("{" . "callerId" . "}",
   			                            $callerId, $resourcePath);
   		}
   		if($userId !== null) {
   			$resourcePath = str_replace("{" . "userId" . "}",
   			                            $userId, $resourcePath);
-  		}
-  		if($password !== null) {
-  			$resourcePath = str_replace("{" . "password" . "}",
-  			                            $password, $resourcePath);
   		}
   		//make the API Call
       if (! isset($body)) {

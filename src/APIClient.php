@@ -143,8 +143,6 @@ class APIClient {
 			fclose($outFileStream->getInputStream());
 		}
 		
-		// var_dump($response_info);
-
 		// Handle the response
 		if ($response_info['http_code'] == 0) {
 			throw new Exception("TIMEOUT: api call to " . $url .

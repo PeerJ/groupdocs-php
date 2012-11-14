@@ -47,22 +47,21 @@ class ComparisonApi {
    public function DownloadResult($userId, $resultFileId, $format=null, $outFileStream) {
   	  //parse inputs
   	  $resourcePath = str_replace("*", "", "/comparison/{userId}/comparison/download?resultFileId={resultFileId}&format={format}");
-  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $resourcePath = substr($resourcePath, 0, strpos($resourcePath, "?"));
+	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "GET";
       $queryParams = array();
       $headerParams = array();
 
-      if($userId !== null) {
-  			$resourcePath = str_replace("{" . "userId" . "}",
-  			                            $userId, $resourcePath);
-  		}
-  		if($resultFileId !== null) {
-  			$resourcePath = str_replace("{" . "resultFileId" . "}",
-  			                            $resultFileId, $resourcePath);
+      if($resultFileId !== null) {
+  		  $queryParams['resultFileId'] = $this->apiClient->toPathValue($resultFileId);
   		}
   		if($format !== null) {
-  			$resourcePath = str_replace("{" . "format" . "}",
-  			                            $format, $resourcePath);
+  		  $queryParams['format'] = $this->apiClient->toPathValue($format);
+  		}
+  		if($userId !== null) {
+  			$resourcePath = str_replace("{" . "userId" . "}",
+  			                            $userId, $resourcePath);
   		}
   		//make the API Call
       if (! isset($body)) {
@@ -84,26 +83,24 @@ class ComparisonApi {
    public function Compare($userId, $sourceFileId, $targetFileId, $callbackUrl) {
   	  //parse inputs
   	  $resourcePath = str_replace("*", "", "/comparison/{userId}/comparison/compare?source={sourceFileId}&target={targetFileId}&callback={callbackUrl}");
-  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $resourcePath = substr($resourcePath, 0, strpos($resourcePath, "?"));
+	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "GET";
       $queryParams = array();
       $headerParams = array();
 
-      if($userId !== null) {
-  			$resourcePath = str_replace("{" . "userId" . "}",
-  			                            $userId, $resourcePath);
-  		}
-  		if($sourceFileId !== null) {
-  			$resourcePath = str_replace("{" . "sourceFileId" . "}",
-  			                            $sourceFileId, $resourcePath);
+      if($sourceFileId !== null) {
+  		  $queryParams['source'] = $this->apiClient->toPathValue($sourceFileId);
   		}
   		if($targetFileId !== null) {
-  			$resourcePath = str_replace("{" . "targetFileId" . "}",
-  			                            $targetFileId, $resourcePath);
+  		  $queryParams['target'] = $this->apiClient->toPathValue($targetFileId);
   		}
   		if($callbackUrl !== null) {
-  			$resourcePath = str_replace("{" . "callbackUrl" . "}",
-  			                            $callbackUrl, $resourcePath);
+  		  $queryParams['callback'] = $this->apiClient->toPathValue($callbackUrl);
+  		}
+  		if($userId !== null) {
+  			$resourcePath = str_replace("{" . "userId" . "}",
+  			                            $userId, $resourcePath);
   		}
   		//make the API Call
       if (! isset($body)) {
@@ -130,18 +127,18 @@ class ComparisonApi {
    public function GetChanges($userId, $resultFileId) {
   	  //parse inputs
   	  $resourcePath = str_replace("*", "", "/comparison/{userId}/comparison/changes?resultFileId={resultFileId}");
-  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $resourcePath = substr($resourcePath, 0, strpos($resourcePath, "?"));
+	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "GET";
       $queryParams = array();
       $headerParams = array();
 
-      if($userId !== null) {
+      if($resultFileId !== null) {
+  		  $queryParams['resultFileId'] = $this->apiClient->toPathValue($resultFileId);
+  		}
+  		if($userId !== null) {
   			$resourcePath = str_replace("{" . "userId" . "}",
   			                            $userId, $resourcePath);
-  		}
-  		if($resultFileId !== null) {
-  			$resourcePath = str_replace("{" . "resultFileId" . "}",
-  			                            $resultFileId, $resourcePath);
   		}
   		//make the API Call
       if (! isset($body)) {
@@ -169,18 +166,18 @@ class ComparisonApi {
    public function UpdateChanges($userId, $resultFileId, $body) {
   	  //parse inputs
   	  $resourcePath = str_replace("*", "", "/comparison/{userId}/comparison/changes?resultFileId={resultFileId}");
-  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $resourcePath = substr($resourcePath, 0, strpos($resourcePath, "?"));
+	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "PUT";
       $queryParams = array();
       $headerParams = array();
 
-      if($userId !== null) {
+      if($resultFileId !== null) {
+  		  $queryParams['resultFileId'] = $this->apiClient->toPathValue($resultFileId);
+  		}
+  		if($userId !== null) {
   			$resourcePath = str_replace("{" . "userId" . "}",
   			                            $userId, $resourcePath);
-  		}
-  		if($resultFileId !== null) {
-  			$resourcePath = str_replace("{" . "resultFileId" . "}",
-  			                            $resultFileId, $resourcePath);
   		}
   		//make the API Call
       if (! isset($body)) {
@@ -207,18 +204,18 @@ class ComparisonApi {
    public function GetDocumentDetails($userId, $guid) {
   	  //parse inputs
   	  $resourcePath = str_replace("*", "", "/comparison/{userId}/comparison/document?guid={guid}");
-  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $resourcePath = substr($resourcePath, 0, strpos($resourcePath, "?"));
+	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "GET";
       $queryParams = array();
       $headerParams = array();
 
-      if($userId !== null) {
+      if($guid !== null) {
+  		  $queryParams['guid'] = $this->apiClient->toPathValue($guid);
+  		}
+  		if($userId !== null) {
   			$resourcePath = str_replace("{" . "userId" . "}",
   			                            $userId, $resourcePath);
-  		}
-  		if($guid !== null) {
-  			$resourcePath = str_replace("{" . "guid" . "}",
-  			                            $guid, $resourcePath);
   		}
   		//make the API Call
       if (! isset($body)) {

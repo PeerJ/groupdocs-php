@@ -116,24 +116,32 @@ class AsyncApi {
 	 * Get job resources
    * userId, string: User GUID (required)
    * statusIds, string: Comma separated job status identifiers (required)
+   * actions, string: Actions (optional)
+   * excludedActions, string: Excluded actions (optional)
    * @return GetJobResourcesResponse
 	 */
 
-   public function GetJobResources($userId, $statusIds) {
+   public function GetJobResources($userId, $statusIds, $actions=null, $excludedActions=null) {
   	  //parse inputs
-  	  $resourcePath = str_replace("*", "", "/async/{userId}/jobs/resources?statusIds={statusIds}");
-  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $resourcePath = str_replace("*", "", "/async/{userId}/jobs/resources?statusIds={statusIds}&actions={actions}&excluded_actions={excludedActions}");
+  	  $resourcePath = substr($resourcePath, 0, strpos($resourcePath, "?"));
+	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "GET";
       $queryParams = array();
       $headerParams = array();
 
-      if($userId !== null) {
+      if($statusIds !== null) {
+  		  $queryParams['statusIds'] = $this->apiClient->toPathValue($statusIds);
+  		}
+  		if($actions !== null) {
+  		  $queryParams['actions'] = $this->apiClient->toPathValue($actions);
+  		}
+  		if($excludedActions !== null) {
+  		  $queryParams['excluded_actions'] = $this->apiClient->toPathValue($excludedActions);
+  		}
+  		if($userId !== null) {
   			$resourcePath = str_replace("{" . "userId" . "}",
   			                            $userId, $resourcePath);
-  		}
-  		if($statusIds !== null) {
-  			$resourcePath = str_replace("{" . "statusIds" . "}",
-  			                            $statusIds, $resourcePath);
   		}
   		//make the API Call
       if (! isset($body)) {
@@ -161,22 +169,22 @@ class AsyncApi {
    public function GetJobDocuments($userId, $jobId, $format=null) {
   	  //parse inputs
   	  $resourcePath = str_replace("*", "", "/async/{userId}/jobs/{jobId}/documents?format={format}");
-  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $resourcePath = substr($resourcePath, 0, strpos($resourcePath, "?"));
+	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "GET";
       $queryParams = array();
       $headerParams = array();
 
-      if($userId !== null) {
+      if($format !== null) {
+  		  $queryParams['format'] = $this->apiClient->toPathValue($format);
+  		}
+  		if($userId !== null) {
   			$resourcePath = str_replace("{" . "userId" . "}",
   			                            $userId, $resourcePath);
   		}
   		if($jobId !== null) {
   			$resourcePath = str_replace("{" . "jobId" . "}",
   			                            $jobId, $resourcePath);
-  		}
-  		if($format !== null) {
-  			$resourcePath = str_replace("{" . "format" . "}",
-  			                            $format, $resourcePath);
   		}
   		//make the API Call
       if (! isset($body)) {
@@ -278,12 +286,19 @@ class AsyncApi {
    public function AddJobDocument($userId, $jobId, $fileId, $checkOwnership, $formats=null) {
   	  //parse inputs
   	  $resourcePath = str_replace("*", "", "/async/{userId}/jobs/{jobId}/files/{fileId}?check_ownership={checkOwnership}&out_formats={formats}");
-  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $resourcePath = substr($resourcePath, 0, strpos($resourcePath, "?"));
+	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "PUT";
       $queryParams = array();
       $headerParams = array();
 
-      if($userId !== null) {
+      if($checkOwnership !== null) {
+  		  $queryParams['check_ownership'] = $this->apiClient->toPathValue($checkOwnership);
+  		}
+  		if($formats !== null) {
+  		  $queryParams['out_formats'] = $this->apiClient->toPathValue($formats);
+  		}
+  		if($userId !== null) {
   			$resourcePath = str_replace("{" . "userId" . "}",
   			                            $userId, $resourcePath);
   		}
@@ -294,14 +309,6 @@ class AsyncApi {
   		if($fileId !== null) {
   			$resourcePath = str_replace("{" . "fileId" . "}",
   			                            $fileId, $resourcePath);
-  		}
-  		if($checkOwnership !== null) {
-  			$resourcePath = str_replace("{" . "checkOwnership" . "}",
-  			                            $checkOwnership, $resourcePath);
-  		}
-  		if($formats !== null) {
-  			$resourcePath = str_replace("{" . "formats" . "}",
-  			                            $formats, $resourcePath);
   		}
   		//make the API Call
       if (! isset($body)) {
@@ -373,26 +380,25 @@ class AsyncApi {
    public function AddJobDocumentUrl($userId, $jobId, $absoluteUrl, $formats=null) {
   	  //parse inputs
   	  $resourcePath = str_replace("*", "", "/async/{userId}/jobs/{jobId}/urls?absolute_url={absoluteUrl}&out_formats={formats}");
-  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $resourcePath = substr($resourcePath, 0, strpos($resourcePath, "?"));
+	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "PUT";
       $queryParams = array();
       $headerParams = array();
 
-      if($userId !== null) {
+      if($absoluteUrl !== null) {
+  		  $queryParams['absolute_url'] = $this->apiClient->toPathValue($absoluteUrl);
+  		}
+  		if($formats !== null) {
+  		  $queryParams['out_formats'] = $this->apiClient->toPathValue($formats);
+  		}
+  		if($userId !== null) {
   			$resourcePath = str_replace("{" . "userId" . "}",
   			                            $userId, $resourcePath);
   		}
   		if($jobId !== null) {
   			$resourcePath = str_replace("{" . "jobId" . "}",
   			                            $jobId, $resourcePath);
-  		}
-  		if($absoluteUrl !== null) {
-  			$resourcePath = str_replace("{" . "absoluteUrl" . "}",
-  			                            $absoluteUrl, $resourcePath);
-  		}
-  		if($formats !== null) {
-  			$resourcePath = str_replace("{" . "formats" . "}",
-  			                            $formats, $resourcePath);
   		}
   		//make the API Call
       if (! isset($body)) {
@@ -463,38 +469,33 @@ class AsyncApi {
    public function GetJobs($userId, $pageIndex=null, $pageSize=null, $DateTime=null, $statusIds=null, $actions=null, $excludedActions=null) {
   	  //parse inputs
   	  $resourcePath = str_replace("*", "", "/async/{userId}/jobs?page={pageIndex}&count={pageSize}&date={date}&statusIds={statusIds}&actions={actions}&excluded_actions={excludedActions}");
-  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $resourcePath = substr($resourcePath, 0, strpos($resourcePath, "?"));
+	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "GET";
       $queryParams = array();
       $headerParams = array();
 
-      if($userId !== null) {
-  			$resourcePath = str_replace("{" . "userId" . "}",
-  			                            $userId, $resourcePath);
-  		}
-  		if($pageIndex !== null) {
-  			$resourcePath = str_replace("{" . "pageIndex" . "}",
-  			                            $pageIndex, $resourcePath);
+      if($pageIndex !== null) {
+  		  $queryParams['page'] = $this->apiClient->toPathValue($pageIndex);
   		}
   		if($pageSize !== null) {
-  			$resourcePath = str_replace("{" . "pageSize" . "}",
-  			                            $pageSize, $resourcePath);
+  		  $queryParams['count'] = $this->apiClient->toPathValue($pageSize);
   		}
   		if($DateTime !== null) {
-  			$resourcePath = str_replace("{" . "date" . "}",
-  			                            $DateTime, $resourcePath);
+  		  $queryParams['date'] = $this->apiClient->toPathValue($DateTime);
   		}
   		if($statusIds !== null) {
-  			$resourcePath = str_replace("{" . "statusIds" . "}",
-  			                            $statusIds, $resourcePath);
+  		  $queryParams['statusIds'] = $this->apiClient->toPathValue($statusIds);
   		}
   		if($actions !== null) {
-  			$resourcePath = str_replace("{" . "actions" . "}",
-  			                            $actions, $resourcePath);
+  		  $queryParams['actions'] = $this->apiClient->toPathValue($actions);
   		}
   		if($excludedActions !== null) {
-  			$resourcePath = str_replace("{" . "excludedActions" . "}",
-  			                            $excludedActions, $resourcePath);
+  		  $queryParams['excluded_actions'] = $this->apiClient->toPathValue($excludedActions);
+  		}
+  		if($userId !== null) {
+  			$resourcePath = str_replace("{" . "userId" . "}",
+  			                            $userId, $resourcePath);
   		}
   		//make the API Call
       if (! isset($body)) {
@@ -526,38 +527,33 @@ class AsyncApi {
    public function GetJobsDocuments($userId, $pageIndex=null, $pageSize=null, $actions=null, $excludedActions=null, $orderBy=null, $orderAsc=null) {
   	  //parse inputs
   	  $resourcePath = str_replace("*", "", "/async/{userId}/jobs/documents?page={pageIndex}&count={pageSize}&actions={actions}&excluded_actions={excludedActions}&order_by={orderBy}&order_asc={orderAsc}");
-  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $resourcePath = substr($resourcePath, 0, strpos($resourcePath, "?"));
+	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "GET";
       $queryParams = array();
       $headerParams = array();
 
-      if($userId !== null) {
-  			$resourcePath = str_replace("{" . "userId" . "}",
-  			                            $userId, $resourcePath);
-  		}
-  		if($pageIndex !== null) {
-  			$resourcePath = str_replace("{" . "pageIndex" . "}",
-  			                            $pageIndex, $resourcePath);
+      if($pageIndex !== null) {
+  		  $queryParams['page'] = $this->apiClient->toPathValue($pageIndex);
   		}
   		if($pageSize !== null) {
-  			$resourcePath = str_replace("{" . "pageSize" . "}",
-  			                            $pageSize, $resourcePath);
+  		  $queryParams['count'] = $this->apiClient->toPathValue($pageSize);
   		}
   		if($actions !== null) {
-  			$resourcePath = str_replace("{" . "actions" . "}",
-  			                            $actions, $resourcePath);
+  		  $queryParams['actions'] = $this->apiClient->toPathValue($actions);
   		}
   		if($excludedActions !== null) {
-  			$resourcePath = str_replace("{" . "excludedActions" . "}",
-  			                            $excludedActions, $resourcePath);
+  		  $queryParams['excluded_actions'] = $this->apiClient->toPathValue($excludedActions);
   		}
   		if($orderBy !== null) {
-  			$resourcePath = str_replace("{" . "orderBy" . "}",
-  			                            $orderBy, $resourcePath);
+  		  $queryParams['order_by'] = $this->apiClient->toPathValue($orderBy);
   		}
   		if($orderAsc !== null) {
-  			$resourcePath = str_replace("{" . "orderAsc" . "}",
-  			                            $orderAsc, $resourcePath);
+  		  $queryParams['order_asc'] = $this->apiClient->toPathValue($orderAsc);
+  		}
+  		if($userId !== null) {
+  			$resourcePath = str_replace("{" . "userId" . "}",
+  			                            $userId, $resourcePath);
   		}
   		//make the API Call
       if (! isset($body)) {
@@ -583,44 +579,44 @@ class AsyncApi {
    * description, string: Description (optional)
    * printScript, bool: Print (optional)
    * callbackUrl, string: Callback url (optional)
+   * checkDocumentOwnership, bool: Check Document Ownership (optional)
    * @return ConvertResponse
 	 */
 
-   public function Convert($userId, $fileId, $targetType=null, $emailResults=null, $description=null, $printScript=null, $callbackUrl=null) {
+   public function Convert($userId, $fileId, $targetType=null, $emailResults=null, $description=null, $printScript=null, $callbackUrl=null, $checkDocumentOwnership=null) {
   	  //parse inputs
-  	  $resourcePath = str_replace("*", "", "/async/{userId}/files/{fileId}?new_type={targetType}&email_results={emailResults}&new_description={description}&print_script={printScript}&callback={callbackUrl}");
-  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $resourcePath = str_replace("*", "", "/async/{userId}/files/{fileId}?new_type={targetType}&email_results={emailResults}&new_description={description}&print_script={printScript}&callback={callbackUrl}&checkDocumentOwnership={checkDocumentOwnership}");
+  	  $resourcePath = substr($resourcePath, 0, strpos($resourcePath, "?"));
+	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "POST";
       $queryParams = array();
       $headerParams = array();
 
-      if($userId !== null) {
+      if($targetType !== null) {
+  		  $queryParams['new_type'] = $this->apiClient->toPathValue($targetType);
+  		}
+  		if($emailResults !== null) {
+  		  $queryParams['email_results'] = $this->apiClient->toPathValue($emailResults);
+  		}
+  		if($description !== null) {
+  		  $queryParams['new_description'] = $this->apiClient->toPathValue($description);
+  		}
+  		if($printScript !== null) {
+  		  $queryParams['print_script'] = $this->apiClient->toPathValue($printScript);
+  		}
+  		if($callbackUrl !== null) {
+  		  $queryParams['callback'] = $this->apiClient->toPathValue($callbackUrl);
+  		}
+  		if($checkDocumentOwnership !== null) {
+  		  $queryParams['checkDocumentOwnership'] = $this->apiClient->toPathValue($checkDocumentOwnership);
+  		}
+  		if($userId !== null) {
   			$resourcePath = str_replace("{" . "userId" . "}",
   			                            $userId, $resourcePath);
   		}
   		if($fileId !== null) {
   			$resourcePath = str_replace("{" . "fileId" . "}",
   			                            $fileId, $resourcePath);
-  		}
-  		if($targetType !== null) {
-  			$resourcePath = str_replace("{" . "targetType" . "}",
-  			                            $targetType, $resourcePath);
-  		}
-  		if($emailResults !== null) {
-  			$resourcePath = str_replace("{" . "emailResults" . "}",
-  			                            $emailResults, $resourcePath);
-  		}
-  		if($description !== null) {
-  			$resourcePath = str_replace("{" . "description" . "}",
-  			                            $description, $resourcePath);
-  		}
-  		if($printScript !== null) {
-  			$resourcePath = str_replace("{" . "printScript" . "}",
-  			                            $printScript, $resourcePath);
-  		}
-  		if($callbackUrl !== null) {
-  			$resourcePath = str_replace("{" . "callbackUrl" . "}",
-  			                            $callbackUrl, $resourcePath);
   		}
   		//make the API Call
       if (! isset($body)) {

@@ -141,12 +141,19 @@ class MergeApi {
    public function FillQuestionnaire($userId, $collectorId, $datasourceId, $targetType=null, $emailResults=null) {
   	  //parse inputs
   	  $resourcePath = str_replace("*", "", "/merge/{userId}/questionnaires/collectors/{collectorId}/datasources/{datasourceId}?new_type={targetType}&email_results={emailResults}");
-  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $resourcePath = substr($resourcePath, 0, strpos($resourcePath, "?"));
+	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "POST";
       $queryParams = array();
       $headerParams = array();
 
-      if($userId !== null) {
+      if($targetType !== null) {
+  		  $queryParams['new_type'] = $this->apiClient->toPathValue($targetType);
+  		}
+  		if($emailResults !== null) {
+  		  $queryParams['email_results'] = $this->apiClient->toPathValue($emailResults);
+  		}
+  		if($userId !== null) {
   			$resourcePath = str_replace("{" . "userId" . "}",
   			                            $userId, $resourcePath);
   		}
@@ -158,13 +165,57 @@ class MergeApi {
   			$resourcePath = str_replace("{" . "datasourceId" . "}",
   			                            $datasourceId, $resourcePath);
   		}
-  		if($targetType !== null) {
-  			$resourcePath = str_replace("{" . "targetType" . "}",
-  			                            $targetType, $resourcePath);
+  		//make the API Call
+      if (! isset($body)) {
+        $body = null;
+      }
+      $response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
+      if(! $response){
+        return null;
+      }
+
+  	  $responseObject = $this->apiClient->deserialize($response,
+  		                                                'MergeTemplateResponse');
+  	  return $responseObject;
+      }
+  /**
+	 * FillExecution
+	 * Scheduled questionnaire execution fullfilment job
+   * userId, string: User global unique identifier (required)
+   * executionId, string: Execution global unique identifier to fill (required)
+   * datasourceId, string: Datasource identifier (required)
+   * targetType, string: Filled document type (optional)
+   * emailResults, string: Email results (optional)
+   * @return MergeTemplateResponse
+	 */
+
+   public function FillExecution($userId, $executionId, $datasourceId, $targetType=null, $emailResults=null) {
+  	  //parse inputs
+  	  $resourcePath = str_replace("*", "", "/merge/{userId}/questionnaires/executions/{executionId}/datasources/{datasourceId}?new_type={targetType}&email_results={emailResults}");
+  	  $resourcePath = substr($resourcePath, 0, strpos($resourcePath, "?"));
+	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "POST";
+      $queryParams = array();
+      $headerParams = array();
+
+      if($targetType !== null) {
+  		  $queryParams['new_type'] = $this->apiClient->toPathValue($targetType);
   		}
   		if($emailResults !== null) {
-  			$resourcePath = str_replace("{" . "emailResults" . "}",
-  			                            $emailResults, $resourcePath);
+  		  $queryParams['email_results'] = $this->apiClient->toPathValue($emailResults);
+  		}
+  		if($userId !== null) {
+  			$resourcePath = str_replace("{" . "userId" . "}",
+  			                            $userId, $resourcePath);
+  		}
+  		if($executionId !== null) {
+  			$resourcePath = str_replace("{" . "executionId" . "}",
+  			                            $executionId, $resourcePath);
+  		}
+  		if($datasourceId !== null) {
+  			$resourcePath = str_replace("{" . "datasourceId" . "}",
+  			                            $datasourceId, $resourcePath);
   		}
   		//make the API Call
       if (! isset($body)) {
@@ -194,12 +245,19 @@ class MergeApi {
    public function MergeDatasource($userId, $fileId, $datasourceId, $targetType=null, $emailResults=null) {
   	  //parse inputs
   	  $resourcePath = str_replace("*", "", "/merge/{userId}/files/{fileId}/datasources/{datasourceId}?new_type={targetType}&email_results={emailResults}");
-  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $resourcePath = substr($resourcePath, 0, strpos($resourcePath, "?"));
+	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "POST";
       $queryParams = array();
       $headerParams = array();
 
-      if($userId !== null) {
+      if($targetType !== null) {
+  		  $queryParams['new_type'] = $this->apiClient->toPathValue($targetType);
+  		}
+  		if($emailResults !== null) {
+  		  $queryParams['email_results'] = $this->apiClient->toPathValue($emailResults);
+  		}
+  		if($userId !== null) {
   			$resourcePath = str_replace("{" . "userId" . "}",
   			                            $userId, $resourcePath);
   		}
@@ -210,14 +268,6 @@ class MergeApi {
   		if($datasourceId !== null) {
   			$resourcePath = str_replace("{" . "datasourceId" . "}",
   			                            $datasourceId, $resourcePath);
-  		}
-  		if($targetType !== null) {
-  			$resourcePath = str_replace("{" . "targetType" . "}",
-  			                            $targetType, $resourcePath);
-  		}
-  		if($emailResults !== null) {
-  			$resourcePath = str_replace("{" . "emailResults" . "}",
-  			                            $emailResults, $resourcePath);
   		}
   		//make the API Call
       if (! isset($body)) {
@@ -248,30 +298,28 @@ class MergeApi {
    public function MergeDatasourceFields($userId, $fileId, $targetType=null, $emailResults=null, $assemblyName=null, $body) {
   	  //parse inputs
   	  $resourcePath = str_replace("*", "", "/merge/{userId}/files/{fileId}/datasources?new_type={targetType}&email_results={emailResults}&assembly_name={assemblyName}");
-  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $resourcePath = substr($resourcePath, 0, strpos($resourcePath, "?"));
+	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "POST";
       $queryParams = array();
       $headerParams = array();
 
-      if($userId !== null) {
+      if($targetType !== null) {
+  		  $queryParams['new_type'] = $this->apiClient->toPathValue($targetType);
+  		}
+  		if($emailResults !== null) {
+  		  $queryParams['email_results'] = $this->apiClient->toPathValue($emailResults);
+  		}
+  		if($assemblyName !== null) {
+  		  $queryParams['assembly_name'] = $this->apiClient->toPathValue($assemblyName);
+  		}
+  		if($userId !== null) {
   			$resourcePath = str_replace("{" . "userId" . "}",
   			                            $userId, $resourcePath);
   		}
   		if($fileId !== null) {
   			$resourcePath = str_replace("{" . "fileId" . "}",
   			                            $fileId, $resourcePath);
-  		}
-  		if($targetType !== null) {
-  			$resourcePath = str_replace("{" . "targetType" . "}",
-  			                            $targetType, $resourcePath);
-  		}
-  		if($emailResults !== null) {
-  			$resourcePath = str_replace("{" . "emailResults" . "}",
-  			                            $emailResults, $resourcePath);
-  		}
-  		if($assemblyName !== null) {
-  			$resourcePath = str_replace("{" . "assemblyName" . "}",
-  			                            $assemblyName, $resourcePath);
   		}
   		//make the API Call
       if (! isset($body)) {
@@ -348,10 +396,10 @@ class MergeApi {
   		  $queryParams['status'] = $this->apiClient->toPathValue($status);
   		}
   		if($pageNumber !== null) {
-  		  $queryParams['pageNumber'] = $this->apiClient->toPathValue($pageNumber);
+  		  $queryParams['page_number'] = $this->apiClient->toPathValue($pageNumber);
   		}
   		if($pageSize !== null) {
-  		  $queryParams['pageSize'] = $this->apiClient->toPathValue($pageSize);
+  		  $queryParams['page_size'] = $this->apiClient->toPathValue($pageSize);
   		}
   		if($userId !== null) {
   			$resourcePath = str_replace("{" . "userId" . "}",
@@ -807,22 +855,22 @@ class MergeApi {
    public function GetDataSource($userId, $datasourceId, $fields=null) {
   	  //parse inputs
   	  $resourcePath = str_replace("*", "", "/merge/{userId}/datasources/{datasourceId}?field={fields}");
-  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $resourcePath = substr($resourcePath, 0, strpos($resourcePath, "?"));
+	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "GET";
       $queryParams = array();
       $headerParams = array();
 
-      if($userId !== null) {
+      if($fields !== null) {
+  		  $queryParams['field'] = $this->apiClient->toPathValue($fields);
+  		}
+  		if($userId !== null) {
   			$resourcePath = str_replace("{" . "userId" . "}",
   			                            $userId, $resourcePath);
   		}
   		if($datasourceId !== null) {
   			$resourcePath = str_replace("{" . "datasourceId" . "}",
   			                            $datasourceId, $resourcePath);
-  		}
-  		if($fields !== null) {
-  			$resourcePath = str_replace("{" . "fields" . "}",
-  			                            $fields, $resourcePath);
   		}
   		//make the API Call
       if (! isset($body)) {
@@ -850,22 +898,22 @@ class MergeApi {
    public function GetQuestionnaireDataSources($userId, $questionnaireId, $includeFields=null) {
   	  //parse inputs
   	  $resourcePath = str_replace("*", "", "/merge/{userId}/questionnaires/{questionnaireId}/datasources?include_fields={includeFields}");
-  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $resourcePath = substr($resourcePath, 0, strpos($resourcePath, "?"));
+	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "GET";
       $queryParams = array();
       $headerParams = array();
 
-      if($userId !== null) {
+      if($includeFields !== null) {
+  		  $queryParams['include_fields'] = $this->apiClient->toPathValue($includeFields);
+  		}
+  		if($userId !== null) {
   			$resourcePath = str_replace("{" . "userId" . "}",
   			                            $userId, $resourcePath);
   		}
   		if($questionnaireId !== null) {
   			$resourcePath = str_replace("{" . "questionnaireId" . "}",
   			                            $questionnaireId, $resourcePath);
-  		}
-  		if($includeFields !== null) {
-  			$resourcePath = str_replace("{" . "includeFields" . "}",
-  			                            $includeFields, $resourcePath);
   		}
   		//make the API Call
       if (! isset($body)) {
@@ -994,6 +1042,44 @@ class MergeApi {
 
   	  $responseObject = $this->apiClient->deserialize($response,
   		                                                'GetQuestionnaireExecutionsResponse');
+  	  return $responseObject;
+      }
+  /**
+	 * GetQuestionnaireExecution
+	 * Get questionnaire execution
+   * userId, string: User GUID (required)
+   * executionId, string: Questionnaire execution global unique identifier (required)
+   * @return GetQuestionnaireExecutionResponse
+	 */
+
+   public function GetQuestionnaireExecution($userId, $executionId) {
+  	  //parse inputs
+  	  $resourcePath = str_replace("*", "", "/merge/{userId}/questionnaires/executions/{executionId}");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "GET";
+      $queryParams = array();
+      $headerParams = array();
+
+      if($userId !== null) {
+  			$resourcePath = str_replace("{" . "userId" . "}",
+  			                            $userId, $resourcePath);
+  		}
+  		if($executionId !== null) {
+  			$resourcePath = str_replace("{" . "executionId" . "}",
+  			                            $executionId, $resourcePath);
+  		}
+  		//make the API Call
+      if (! isset($body)) {
+        $body = null;
+      }
+      $response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
+      if(! $response){
+        return null;
+      }
+
+  	  $responseObject = $this->apiClient->deserialize($response,
+  		                                                'GetQuestionnaireExecutionResponse');
   	  return $responseObject;
       }
   /**
@@ -1349,22 +1435,22 @@ class MergeApi {
    public function GetQuestionnaireFields($userId, $questionnaireId, $includeGeometry=null) {
   	  //parse inputs
   	  $resourcePath = str_replace("*", "", "/merge/{userId}/questionnaires/{questionnaireId}/fields?include_geometry={includeGeometry}");
-  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $resourcePath = substr($resourcePath, 0, strpos($resourcePath, "?"));
+	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "GET";
       $queryParams = array();
       $headerParams = array();
 
-      if($userId !== null) {
+      if($includeGeometry !== null) {
+  		  $queryParams['include_geometry'] = $this->apiClient->toPathValue($includeGeometry);
+  		}
+  		if($userId !== null) {
   			$resourcePath = str_replace("{" . "userId" . "}",
   			                            $userId, $resourcePath);
   		}
   		if($questionnaireId !== null) {
   			$resourcePath = str_replace("{" . "questionnaireId" . "}",
   			                            $questionnaireId, $resourcePath);
-  		}
-  		if($includeGeometry !== null) {
-  			$resourcePath = str_replace("{" . "includeGeometry" . "}",
-  			                            $includeGeometry, $resourcePath);
   		}
   		//make the API Call
       if (! isset($body)) {

@@ -75,7 +75,7 @@ class APIClient {
 			$headers[] = "Content-type: text/html";
 
 		} else if ($postData instanceof FileStream) {
-			
+			$isFileUpload = true;
 			$headers[] = "Content-type: ". $postData->getContentType();
 			$headers[] = "Content-Length: ". $postData->getSize();
 
@@ -143,8 +143,6 @@ class APIClient {
 			fclose($outFileStream->getInputStream());
 		}
 		
-		// var_dump($response_info);
-
 		// Handle the response
 		if ($response_info['http_code'] == 0) {
 			throw new Exception("TIMEOUT: api call to " . $url .
@@ -178,9 +176,11 @@ class APIClient {
 	 */
 	public static function toPathValue($object) {
         if (is_array($object)) {
-            return implode(',', $object);
+            return implode(',', array_map(function($obj) {
+            	return var_export($obj, true);
+			}, $object));
         } else {
-            return $object;
+            return var_export($object, true);
         }
 	}
 

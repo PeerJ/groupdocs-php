@@ -93,22 +93,22 @@ class StorageApi {
       $headerParams = array();
 
       if($pageIndex !== null) {
-  		  $queryParams['pageIndex'] = $this->apiClient->toPathValue($pageIndex);
+  		  $queryParams['page'] = $this->apiClient->toPathValue($pageIndex);
   		}
   		if($pageSize !== null) {
-  		  $queryParams['pageSize'] = $this->apiClient->toPathValue($pageSize);
+  		  $queryParams['count'] = $this->apiClient->toPathValue($pageSize);
   		}
   		if($orderBy !== null) {
-  		  $queryParams['orderBy'] = $this->apiClient->toPathValue($orderBy);
+  		  $queryParams['order_by'] = $this->apiClient->toPathValue($orderBy);
   		}
   		if($orderAsc !== null) {
-  		  $queryParams['orderAsc'] = $this->apiClient->toPathValue($orderAsc);
+  		  $queryParams['order_asc'] = $this->apiClient->toPathValue($orderAsc);
   		}
   		if($filter !== null) {
   		  $queryParams['filter'] = $this->apiClient->toPathValue($filter);
   		}
   		if($fileTypes !== null) {
-  		  $queryParams['fileTypes'] = $this->apiClient->toPathValue($fileTypes);
+  		  $queryParams['file_types'] = $this->apiClient->toPathValue($fileTypes);
   		}
   		if($extended !== null) {
   		  $queryParams['extended'] = $this->apiClient->toPathValue($extended);
@@ -210,22 +210,22 @@ class StorageApi {
    public function Upload($userId, $path, $description=null, $body) {
   	  //parse inputs
   	  $resourcePath = str_replace("*", "", "/storage/{userId}/folders/{*path}?description={description}");
-  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $resourcePath = substr($resourcePath, 0, strpos($resourcePath, "?"));
+	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "POST";
       $queryParams = array();
       $headerParams = array();
 
-      if($userId !== null) {
+      if($description !== null) {
+  		  $queryParams['description'] = $this->apiClient->toPathValue($description);
+  		}
+  		if($userId !== null) {
   			$resourcePath = str_replace("{" . "userId" . "}",
   			                            $userId, $resourcePath);
   		}
   		if($path !== null) {
   			$resourcePath = str_replace("{" . "path" . "}",
   			                            $path, $resourcePath);
-  		}
-  		if($description !== null) {
-  			$resourcePath = str_replace("{" . "description" . "}",
-  			                            $description, $resourcePath);
   		}
   		//make the API Call
       if (! isset($body)) {
@@ -255,26 +255,25 @@ class StorageApi {
    public function Decompress($userId, $path, $description=null, $archiveType=null, $body) {
   	  //parse inputs
   	  $resourcePath = str_replace("*", "", "/storage/{userId}/decompress/{*path}?description={description}&archiveType={archiveType}");
-  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $resourcePath = substr($resourcePath, 0, strpos($resourcePath, "?"));
+	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "POST";
       $queryParams = array();
       $headerParams = array();
 
-      if($userId !== null) {
+      if($description !== null) {
+  		  $queryParams['description'] = $this->apiClient->toPathValue($description);
+  		}
+  		if($archiveType !== null) {
+  		  $queryParams['archiveType'] = $this->apiClient->toPathValue($archiveType);
+  		}
+  		if($userId !== null) {
   			$resourcePath = str_replace("{" . "userId" . "}",
   			                            $userId, $resourcePath);
   		}
   		if($path !== null) {
   			$resourcePath = str_replace("{" . "path" . "}",
   			                            $path, $resourcePath);
-  		}
-  		if($description !== null) {
-  			$resourcePath = str_replace("{" . "description" . "}",
-  			                            $description, $resourcePath);
-  		}
-  		if($archiveType !== null) {
-  			$resourcePath = str_replace("{" . "archiveType" . "}",
-  			                            $archiveType, $resourcePath);
   		}
   		//make the API Call
       if (! isset($body)) {
@@ -301,18 +300,18 @@ class StorageApi {
    public function UploadWeb($userId, $url) {
   	  //parse inputs
   	  $resourcePath = str_replace("*", "", "/storage/{userId}/urls?url={url}");
-  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $resourcePath = substr($resourcePath, 0, strpos($resourcePath, "?"));
+	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "POST";
       $queryParams = array();
       $headerParams = array();
 
-      if($userId !== null) {
+      if($url !== null) {
+  		  $queryParams['url'] = $this->apiClient->toPathValue($url);
+  		}
+  		if($userId !== null) {
   			$resourcePath = str_replace("{" . "userId" . "}",
   			                            $userId, $resourcePath);
-  		}
-  		if($url !== null) {
-  			$resourcePath = str_replace("{" . "url" . "}",
-  			                            $url, $resourcePath);
   		}
   		//make the API Call
       if (! isset($body)) {
@@ -340,22 +339,22 @@ class StorageApi {
    public function UploadGoogle($userId, $path, $fileId=null) {
   	  //parse inputs
   	  $resourcePath = str_replace("*", "", "/storage/{userId}/google/files/{*path}?file_id={fileId}");
-  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $resourcePath = substr($resourcePath, 0, strpos($resourcePath, "?"));
+	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "POST";
       $queryParams = array();
       $headerParams = array();
 
-      if($userId !== null) {
+      if($fileId !== null) {
+  		  $queryParams['file_id'] = $this->apiClient->toPathValue($fileId);
+  		}
+  		if($userId !== null) {
   			$resourcePath = str_replace("{" . "userId" . "}",
   			                            $userId, $resourcePath);
   		}
   		if($path !== null) {
   			$resourcePath = str_replace("{" . "path" . "}",
   			                            $path, $resourcePath);
-  		}
-  		if($fileId !== null) {
-  			$resourcePath = str_replace("{" . "fileId" . "}",
-  			                            $fileId, $resourcePath);
   		}
   		//make the API Call
       if (! isset($body)) {
@@ -461,12 +460,16 @@ class StorageApi {
    public function MoveFile($userId, $path, $mode=null, $Groupdocs_Copy=null, $Groupdocs_Move=null) {
   	  //parse inputs
   	  $resourcePath = str_replace("*", "", "/storage/{userId}/files/{*path}");
-  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $resourcePath = substr($resourcePath, 0, strpos($resourcePath, "?"));
+	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "PUT";
       $queryParams = array();
       $headerParams = array();
 
-      if($Groupdocs_Copy !== null) {
+      if($mode !== null) {
+  		  $queryParams['mode'] = $this->apiClient->toPathValue($mode);
+  		}
+  		if($Groupdocs_Copy !== null) {
   		 	$headerParams['Groupdocs-Copy'] = $this->apiClient->toPathValue($Groupdocs_Copy);
   		}
       if($Groupdocs_Move !== null) {
@@ -479,10 +482,6 @@ class StorageApi {
   		if($path !== null) {
   			$resourcePath = str_replace("{" . "path" . "}",
   			                            $path, $resourcePath);
-  		}
-  		if($mode !== null) {
-  			$resourcePath = str_replace("{" . "mode" . "}",
-  			                            $mode, $resourcePath);
   		}
   		//make the API Call
       if (! isset($body)) {
@@ -512,12 +511,16 @@ class StorageApi {
    public function MoveFolder($userId, $path, $mode=null, $Groupdocs_Move=null, $Groupdocs_Copy=null) {
   	  //parse inputs
   	  $resourcePath = str_replace("*", "", "/storage/{userId}/folders/{*path}?override_mode={mode}");
-  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $resourcePath = substr($resourcePath, 0, strpos($resourcePath, "?"));
+	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "PUT";
       $queryParams = array();
       $headerParams = array();
 
-      if($Groupdocs_Move !== null) {
+      if($mode !== null) {
+  		  $queryParams['override_mode'] = $this->apiClient->toPathValue($mode);
+  		}
+  		if($Groupdocs_Move !== null) {
   		 	$headerParams['Groupdocs-Move'] = $this->apiClient->toPathValue($Groupdocs_Move);
   		}
       if($Groupdocs_Copy !== null) {
@@ -530,10 +533,6 @@ class StorageApi {
   		if($path !== null) {
   			$resourcePath = str_replace("{" . "path" . "}",
   			                            $path, $resourcePath);
-  		}
-  		if($mode !== null) {
-  			$resourcePath = str_replace("{" . "mode" . "}",
-  			                            $mode, $resourcePath);
   		}
   		//make the API Call
       if (! isset($body)) {
@@ -643,22 +642,22 @@ class StorageApi {
    public function CreatePackage($userId, $packageName, $storeRelativePath=null, $body=null) {
   	  //parse inputs
   	  $resourcePath = str_replace("*", "", "/storage/{userId}/packages/{packageName}?storeRelativePath={storeRelativePath}");
-  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $resourcePath = substr($resourcePath, 0, strpos($resourcePath, "?"));
+	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "POST";
       $queryParams = array();
       $headerParams = array();
 
-      if($userId !== null) {
+      if($storeRelativePath !== null) {
+  		  $queryParams['storeRelativePath'] = $this->apiClient->toPathValue($storeRelativePath);
+  		}
+  		if($userId !== null) {
   			$resourcePath = str_replace("{" . "userId" . "}",
   			                            $userId, $resourcePath);
   		}
   		if($packageName !== null) {
   			$resourcePath = str_replace("{" . "packageName" . "}",
   			                            $packageName, $resourcePath);
-  		}
-  		if($storeRelativePath !== null) {
-  			$resourcePath = str_replace("{" . "storeRelativePath" . "}",
-  			                            $storeRelativePath, $resourcePath);
   		}
   		//make the API Call
       if (! isset($body)) {

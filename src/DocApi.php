@@ -51,38 +51,34 @@ class DocApi {
    public function ViewDocument($userId, $fileId, $pageNumber=null, $pageCount=null, $width=null, $quality=null, $usePdf=null) {
   	  //parse inputs
   	  $resourcePath = str_replace("*", "", "/doc/{userId}/files/{fileId}/thumbnails?page_number={pageNumber}&page_count={pageCount}&width={width}&quality={quality}&use_pdf={usePdf}");
-  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $resourcePath = substr($resourcePath, 0, strpos($resourcePath, "?"));
+	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "POST";
       $queryParams = array();
       $headerParams = array();
 
-      if($userId !== null) {
+      if($pageNumber !== null) {
+  		  $queryParams['page_number'] = $this->apiClient->toPathValue($pageNumber);
+  		}
+  		if($pageCount !== null) {
+  		  $queryParams['page_count'] = $this->apiClient->toPathValue($pageCount);
+  		}
+  		if($width !== null) {
+  		  $queryParams['width'] = $this->apiClient->toPathValue($width);
+  		}
+  		if($quality !== null) {
+  		  $queryParams['quality'] = $this->apiClient->toPathValue($quality);
+  		}
+  		if($usePdf !== null) {
+  		  $queryParams['use_pdf'] = $this->apiClient->toPathValue($usePdf);
+  		}
+  		if($userId !== null) {
   			$resourcePath = str_replace("{" . "userId" . "}",
   			                            $userId, $resourcePath);
   		}
   		if($fileId !== null) {
   			$resourcePath = str_replace("{" . "fileId" . "}",
   			                            $fileId, $resourcePath);
-  		}
-  		if($pageNumber !== null) {
-  			$resourcePath = str_replace("{" . "pageNumber" . "}",
-  			                            $pageNumber, $resourcePath);
-  		}
-  		if($pageCount !== null) {
-  			$resourcePath = str_replace("{" . "pageCount" . "}",
-  			                            $pageCount, $resourcePath);
-  		}
-  		if($width !== null) {
-  			$resourcePath = str_replace("{" . "width" . "}",
-  			                            $width, $resourcePath);
-  		}
-  		if($quality !== null) {
-  			$resourcePath = str_replace("{" . "quality" . "}",
-  			                            $quality, $resourcePath);
-  		}
-  		if($usePdf !== null) {
-  			$resourcePath = str_replace("{" . "usePdf" . "}",
-  			                            $usePdf, $resourcePath);
   		}
   		//make the API Call
       if (! isset($body)) {
@@ -110,22 +106,21 @@ class DocApi {
    public function GetDocumentViews($userId, $startIndex=null, $pageSize=null) {
   	  //parse inputs
   	  $resourcePath = str_replace("*", "", "/doc/{userId}/views?page_index={startIndex}&page_size={pageSize}");
-  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $resourcePath = substr($resourcePath, 0, strpos($resourcePath, "?"));
+	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "GET";
       $queryParams = array();
       $headerParams = array();
 
-      if($userId !== null) {
-  			$resourcePath = str_replace("{" . "userId" . "}",
-  			                            $userId, $resourcePath);
-  		}
-  		if($startIndex !== null) {
-  			$resourcePath = str_replace("{" . "startIndex" . "}",
-  			                            $startIndex, $resourcePath);
+      if($startIndex !== null) {
+  		  $queryParams['page_index'] = $this->apiClient->toPathValue($startIndex);
   		}
   		if($pageSize !== null) {
-  			$resourcePath = str_replace("{" . "pageSize" . "}",
-  			                            $pageSize, $resourcePath);
+  		  $queryParams['page_size'] = $this->apiClient->toPathValue($pageSize);
+  		}
+  		if($userId !== null) {
+  			$resourcePath = str_replace("{" . "userId" . "}",
+  			                            $userId, $resourcePath);
   		}
   		//make the API Call
       if (! isset($body)) {
@@ -345,22 +340,22 @@ class DocApi {
    public function SetDocumentAccessMode($userId, $fileId, $mode=null) {
   	  //parse inputs
   	  $resourcePath = str_replace("*", "", "/doc/{userId}/files/{fileId}/accessinfo?mode={mode}");
-  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $resourcePath = substr($resourcePath, 0, strpos($resourcePath, "?"));
+	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "PUT";
       $queryParams = array();
       $headerParams = array();
 
-      if($userId !== null) {
+      if($mode !== null) {
+  		  $queryParams['mode'] = $this->apiClient->toPathValue($mode);
+  		}
+  		if($userId !== null) {
   			$resourcePath = str_replace("{" . "userId" . "}",
   			                            $userId, $resourcePath);
   		}
   		if($fileId !== null) {
   			$resourcePath = str_replace("{" . "fileId" . "}",
   			                            $fileId, $resourcePath);
-  		}
-  		if($mode !== null) {
-  			$resourcePath = str_replace("{" . "mode" . "}",
-  			                            $mode, $resourcePath);
   		}
   		//make the API Call
       if (! isset($body)) {
@@ -502,22 +497,22 @@ class DocApi {
    public function SetDocumentUserStatus($userId, $fileId, $status) {
   	  //parse inputs
   	  $resourcePath = str_replace("*", "", "/doc/{userId}/files/{fileId}/sharer");
-  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $resourcePath = substr($resourcePath, 0, strpos($resourcePath, "?"));
+	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "PUT";
       $queryParams = array();
       $headerParams = array();
 
-      if($userId !== null) {
+      if($status !== null) {
+  		  $queryParams['status'] = $this->apiClient->toPathValue($status);
+  		}
+  		if($userId !== null) {
   			$resourcePath = str_replace("{" . "userId" . "}",
   			                            $userId, $resourcePath);
   		}
   		if($fileId !== null) {
   			$resourcePath = str_replace("{" . "fileId" . "}",
   			                            $fileId, $resourcePath);
-  		}
-  		if($status !== null) {
-  			$resourcePath = str_replace("{" . "status" . "}",
-  			                            $status, $resourcePath);
   		}
   		//make the API Call
       if (! isset($body)) {
@@ -548,34 +543,31 @@ class DocApi {
    public function GetSharedDocuments($userId, $sharesTypes=null, $pageIndex=null, $pageSize=null, $orderBy=null, $orderAsc=null) {
   	  //parse inputs
   	  $resourcePath = str_replace("*", "", "/doc/{userId}/shares/{sharesTypes}?page_index={pageIndex}&page_size={pageSize}&order_by={orderBy}&order_asc={orderAsc}");
-  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $resourcePath = substr($resourcePath, 0, strpos($resourcePath, "?"));
+	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "GET";
       $queryParams = array();
       $headerParams = array();
 
-      if($userId !== null) {
+      if($pageIndex !== null) {
+  		  $queryParams['page_index'] = $this->apiClient->toPathValue($pageIndex);
+  		}
+  		if($pageSize !== null) {
+  		  $queryParams['page_size'] = $this->apiClient->toPathValue($pageSize);
+  		}
+  		if($orderBy !== null) {
+  		  $queryParams['order_by'] = $this->apiClient->toPathValue($orderBy);
+  		}
+  		if($orderAsc !== null) {
+  		  $queryParams['order_asc'] = $this->apiClient->toPathValue($orderAsc);
+  		}
+  		if($userId !== null) {
   			$resourcePath = str_replace("{" . "userId" . "}",
   			                            $userId, $resourcePath);
   		}
   		if($sharesTypes !== null) {
   			$resourcePath = str_replace("{" . "sharesTypes" . "}",
   			                            $sharesTypes, $resourcePath);
-  		}
-  		if($pageIndex !== null) {
-  			$resourcePath = str_replace("{" . "pageIndex" . "}",
-  			                            $pageIndex, $resourcePath);
-  		}
-  		if($pageSize !== null) {
-  			$resourcePath = str_replace("{" . "pageSize" . "}",
-  			                            $pageSize, $resourcePath);
-  		}
-  		if($orderBy !== null) {
-  			$resourcePath = str_replace("{" . "orderBy" . "}",
-  			                            $orderBy, $resourcePath);
-  		}
-  		if($orderAsc !== null) {
-  			$resourcePath = str_replace("{" . "orderAsc" . "}",
-  			                            $orderAsc, $resourcePath);
   		}
   		//make the API Call
       if (! isset($body)) {
@@ -603,22 +595,22 @@ class DocApi {
    public function GetTemplateFields($userId, $fileId, $includeGeometry=null) {
   	  //parse inputs
   	  $resourcePath = str_replace("*", "", "/doc/{userId}/files/{fileId}/fields?include_geometry={includeGeometry}");
-  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $resourcePath = substr($resourcePath, 0, strpos($resourcePath, "?"));
+	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "GET";
       $queryParams = array();
       $headerParams = array();
 
-      if($userId !== null) {
+      if($includeGeometry !== null) {
+  		  $queryParams['include_geometry'] = $this->apiClient->toPathValue($includeGeometry);
+  		}
+  		if($userId !== null) {
   			$resourcePath = str_replace("{" . "userId" . "}",
   			                            $userId, $resourcePath);
   		}
   		if($fileId !== null) {
   			$resourcePath = str_replace("{" . "fileId" . "}",
   			                            $fileId, $resourcePath);
-  		}
-  		if($includeGeometry !== null) {
-  			$resourcePath = str_replace("{" . "includeGeometry" . "}",
-  			                            $includeGeometry, $resourcePath);
   		}
   		//make the API Call
       if (! isset($body)) {
@@ -698,10 +690,10 @@ class DocApi {
   		  $queryParams['quality'] = $this->apiClient->toPathValue($quality);
   		}
   		if($usePdf !== null) {
-  		  $queryParams['usePdf'] = $this->apiClient->toPathValue($usePdf);
+  		  $queryParams['use_pdf'] = $this->apiClient->toPathValue($usePdf);
   		}
   		if($expiresOn !== null) {
-  		  $queryParams['expiresOn'] = $this->apiClient->toPathValue($expiresOn);
+  		  $queryParams['expires'] = $this->apiClient->toPathValue($expiresOn);
   		}
   		if($userId !== null) {
   			$resourcePath = str_replace("{" . "userId" . "}",
@@ -731,35 +723,35 @@ class DocApi {
 	 * Returns a list of URLs pointing to document page images.
    * userId, string: GroupDocs user global unique identifier. (required)
    * fileId, string: Document global unique identifier. (required)
-   * first_page, int: Document page number to start from. (optional)
-   * page_count, int: Page count to return URLs for. (optional)
+   * firstPage, int: Document page number to start from. (optional)
+   * pageCount, int: Page count to return URLs for. (optional)
    * dimension, string: Image dimension in format '&lt;width&gt;x&lt;height&gt;' (one or both values can be omitted). (required)
    * quality, int: Image qualiry in range 1-100. (optional)
-   * use_pdf, bool: A flag indicating whether a document should be converted to PDF format before generating the image. (optional)
+   * usePdf, bool: A flag indicating whether a document should be converted to PDF format before generating the image. (optional)
    * token, string: A document viewer session token returned by the View Document request. (optional)
    * @return GetImageUrlsResponse
 	 */
 
-   public function GetDocumentPagesImageUrls($userId, $fileId, $first_page=null, $page_count=null, $dimension, $quality=null, $use_pdf=null, $token=null) {
+   public function GetDocumentPagesImageUrls($userId, $fileId, $firstPage=null, $pageCount=null, $dimension, $quality=null, $usePdf=null, $token=null) {
   	  //parse inputs
-  	  $resourcePath = str_replace("*", "", "/doc/{userId}/files/{fileId}/pages/images/{dimension}/urls?first_page={first_page}&page_count={page_count}&quality={quality}&use_pdf={use_pdf}&token={token}");
+  	  $resourcePath = str_replace("*", "", "/doc/{userId}/files/{fileId}/pages/images/{dimension}/urls?first_page={firstPage}&page_count={pageCount}&quality={quality}&use_pdf={usePdf}&token={token}");
   	  $resourcePath = substr($resourcePath, 0, strpos($resourcePath, "?"));
 	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "GET";
       $queryParams = array();
       $headerParams = array();
 
-      if($first_page !== null) {
-  		  $queryParams['first_page'] = $this->apiClient->toPathValue($first_page);
+      if($firstPage !== null) {
+  		  $queryParams['first_page'] = $this->apiClient->toPathValue($firstPage);
   		}
-  		if($page_count !== null) {
-  		  $queryParams['page_count'] = $this->apiClient->toPathValue($page_count);
+  		if($pageCount !== null) {
+  		  $queryParams['page_count'] = $this->apiClient->toPathValue($pageCount);
   		}
   		if($quality !== null) {
   		  $queryParams['quality'] = $this->apiClient->toPathValue($quality);
   		}
-  		if($use_pdf !== null) {
-  		  $queryParams['use_pdf'] = $this->apiClient->toPathValue($use_pdf);
+  		if($usePdf !== null) {
+  		  $queryParams['use_pdf'] = $this->apiClient->toPathValue($usePdf);
   		}
   		if($token !== null) {
   		  $queryParams['token'] = $this->apiClient->toPathValue($token);
@@ -833,18 +825,23 @@ class DocApi {
 	 * Removes edit lock for a document and replaces the document with its edited copy.
    * userId, string: GroupDocs user global unique identifier. (required)
    * fileId, string: Document global unique identifier. (required)
+   * lockId, string: Lock Id. (required)
    * @return RemoveEditLockResponse
 	 */
 
-   public function RemoveEditLock($userId, $fileId) {
+   public function RemoveEditLock($userId, $fileId, $lockId) {
   	  //parse inputs
   	  $resourcePath = str_replace("*", "", "/doc/{userId}/files/{fileId}/editlock");
-  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $resourcePath = substr($resourcePath, 0, strpos($resourcePath, "?"));
+	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "DELETE";
       $queryParams = array();
       $headerParams = array();
 
-      if($userId !== null) {
+      if($lockId !== null) {
+  		  $queryParams['lockId'] = $this->apiClient->toPathValue($lockId);
+  		}
+  		if($userId !== null) {
   			$resourcePath = str_replace("{" . "userId" . "}",
   			                            $userId, $resourcePath);
   		}

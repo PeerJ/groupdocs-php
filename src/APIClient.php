@@ -75,7 +75,7 @@ class APIClient {
 			$headers[] = "Content-type: text/html";
 
 		} else if ($postData instanceof FileStream) {
-			
+			$isFileUpload = true;
 			$headers[] = "Content-type: ". $postData->getContentType();
 			$headers[] = "Content-Length: ". $postData->getSize();
 

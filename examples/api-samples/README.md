@@ -20,6 +20,16 @@ This is the GroupDocs PHP SDK Api samples application written with FatFree frame
 * PHP Sockets extension (php_sockets.dll)
 * omposer.phar (http://getcomposer.org/download/ or use included version)
 
+### How to configure composer.json
+
+To download required version of PHP SDK with composer it's enough to set this setting to composer.json
+
+     {
+         "require": {
+             "groupdocs/groupdocs-php": "v1.2.0-p2"
+         }
+      }
+
 ### List of samples:
 
 * How to autorize to GroupDocs using the API and get user info

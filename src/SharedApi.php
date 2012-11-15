@@ -44,7 +44,7 @@ class SharedApi {
    * @return stream
 	 */
 
-   public function Download($guid, $fileName, $render=null, $outFileStream) {
+   public function Download($guid, $fileName, $render=null, FileStream $outFileStream) {
   	  //parse inputs
   	  $resourcePath = str_replace("*", "", "/shared/files/{guid}?filename={fileName}&render={render}");
   	  $resourcePath = substr($resourcePath, 0, strpos($resourcePath, "?"));
@@ -77,7 +77,7 @@ class SharedApi {
    * @return stream
 	 */
 
-   public function GetXml($guid, $outFileStream) {
+   public function GetXml($guid, FileStream $outFileStream) {
   	  //parse inputs
   	  $resourcePath = str_replace("*", "", "/shared/files/{guid}/xml");
   	  $resourcePath = str_replace("{format}", "json", $resourcePath);
@@ -103,7 +103,7 @@ class SharedApi {
    * @return stream
 	 */
 
-   public function GetPackage($path, $outFileStream) {
+   public function GetPackage($path, FileStream $outFileStream) {
   	  //parse inputs
   	  $resourcePath = str_replace("*", "", "/shared/packages/{*path}");
   	  $resourcePath = str_replace("{format}", "json", $resourcePath);

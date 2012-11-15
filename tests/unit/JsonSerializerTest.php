@@ -21,35 +21,35 @@ class JsonSerializerTest extends PHPUnit_Framework_TestCase {
 	}
 	
 	public function testPrimitiveSerilization() {
-		
+		$this->markTestIncomplete('This test has not been implemented yet.');
 	}
 	
 	public function testPrimitiveDeserilization() {
-		
+		$this->markTestIncomplete('This test has not been implemented yet.');
 	}
 	
 	public function testSimpleObjectSerilizationDeserilization() {
-		
+		$this->markTestIncomplete('This test has not been implemented yet.');
 	}
 	
 	public function testNestedObjectSerilizationDeserilization() {
-		
+		$this->markTestIncomplete('This test has not been implemented yet.');
 	}
 	
 	public function testListOfPrimitivesSerilization() {
-		
+		$this->markTestIncomplete('This test has not been implemented yet.');
 	}
 	
 	public function testListOfPrimitivesDeserilization() {
-		
+		$this->markTestIncomplete('This test has not been implemented yet.');
 	}
 	
 	public function testListOfObjectsSerilization() {
-		
+		$this->markTestIncomplete('This test has not been implemented yet.');
 	}
 	
 	public function testListOfObjectsDeserilization() {
-		
+		$this->markTestIncomplete('This test has not been implemented yet.');
 	}
 
 }

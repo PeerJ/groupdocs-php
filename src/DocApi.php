@@ -677,7 +677,7 @@ class DocApi {
    * @return stream
 	 */
 
-   public function GetDocumentPageImage($userId, $fileId, $pageNumber, $dimension, $quality=null, $usePdf=null, $expiresOn=null, $outFileStream) {
+   public function GetDocumentPageImage($userId, $fileId, $pageNumber, $dimension, $quality=null, $usePdf=null, $expiresOn=null, FileStream $outFileStream) {
   	  //parse inputs
   	  $resourcePath = str_replace("*", "", "/doc/{userId}/files/{fileId}/pages/{pageNumber}/images/{dimension}?quality={quality}&use_pdf={usePdf}&expires={expiresOn}");
   	  $resourcePath = substr($resourcePath, 0, strpos($resourcePath, "?"));

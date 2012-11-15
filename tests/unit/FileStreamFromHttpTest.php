@@ -15,7 +15,7 @@
  *  limitations under the License.
  */
 
-class TestFileStreamFromFile extends PHPUnit_Framework_TestCase {
+class TestFileStreamFromHttp extends PHPUnit_Framework_TestCase {
 
 	protected function setUp() {
         $this->fs = FileStream::fromFile(dirname(__FILE__)."/resources/test.doc");
@@ -24,22 +24,26 @@ class TestFileStreamFromFile extends PHPUnit_Framework_TestCase {
 	
 	public function test_size() {
 		$expected = 29696;
-		$this->assertEquals($expected, $this->fs->getSize());
+		// $this->assertEquals($expected, $this->fs->getSize());
+		$this->markTestIncomplete('This test has not been implemented yet.');
 	}
 
 	public function test_contentType() {
 		$expected = "application/msword";
-		$this->assertEquals($expected, $this->fs->getContentType());
+		// $this->assertEquals($expected, $this->fs->getContentType());
+		$this->markTestIncomplete('This test has not been implemented yet.');
 	}
 	
 	public function test_fileName() {
 		$expected = "test.doc";
-		$this->assertEquals($expected, $this->fs->getFileName());
+		// $this->assertEquals($expected, $this->fs->getFileName());
+		$this->markTestIncomplete('This test has not been implemented yet.');
 	}
 	
 	public function test_inputStream() {
 		$expected = true;
-		$this->assertEquals($expected, fclose($this->fs->getInputStream()));
+		// $this->assertEquals($expected, fclose($this->fs->getInputStream()));
+		$this->markTestIncomplete('This test has not been implemented yet.');
 	}
 
 }

@@ -44,7 +44,7 @@ class ComparisonApi {
    * @return stream
 	 */
 
-   public function DownloadResult($userId, $resultFileId, $format=null, $outFileStream) {
+   public function DownloadResult($userId, $resultFileId, $format=null, FileStream $outFileStream) {
   	  //parse inputs
   	  $resourcePath = str_replace("*", "", "/comparison/{userId}/comparison/download?resultFileId={resultFileId}&format={format}");
   	  $resourcePath = substr($resourcePath, 0, strpos($resourcePath, "?"));

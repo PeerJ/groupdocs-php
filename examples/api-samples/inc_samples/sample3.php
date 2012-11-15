@@ -24,7 +24,7 @@
         $apiClient = new APIClient($signer); // new way to create apiClient - PHP SDK 1.1
         $apiStorage = new StorageApi($apiClient);
        
-        $result = $apiStorage->Upload($clientID, $name, 'uploaded', "file://" . $tmp_name);
+        $result = $apiStorage->Upload($clientID, $name, 'uploaded', file_get_contents($tmp_name));
        
        // var_dump($result);exit;
         if ($result->status == 'Ok')

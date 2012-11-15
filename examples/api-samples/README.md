@@ -7,9 +7,10 @@ This is the GroupDocs PHP SDK Api samples application written with FatFree frame
 ### How to deploy and run samples
 
  1. Download api-samples folder or full SDK (you can find api-samples under examples folder).
- 2. Copy all files from api-samples folder to web root folder
- 3. Open console, cd to web root folder and run command: php composer.phar install (this will download GroupDocs PHP SDK into vendor folder and create autoload.php)
- 4. Restart apache and open "VIRTUALHOST_NAME"/index.php
+ 2. Copy all files from api-samples folder to web root folder.
+ 3. Configure composer.json to use required PHP SDK version.
+ 4. Open console, cd to web root folder and run command: php composer.phar install (this will download GroupDocs PHP SDK into vendor folder and create autoload.php).
+ 5. Restart apache and open "VIRTUALHOST_NAME"/index.php.
 
 ### Requirements:
 
@@ -17,6 +18,17 @@ This is the GroupDocs PHP SDK Api samples application written with FatFree frame
 * Apache ModRewrite
 * PHP Curl extension
 * PHP Sockets extension (php_sockets.dll)
+* omposer.phar (http://getcomposer.org/download/ or use included version)
+
+### How to configure composer.json
+
+To download required version of PHP SDK with composer it's enough to set this setting to composer.json
+
+     {
+         "require": {
+             "groupdocs/groupdocs-php": "v1.2.0-p2"
+         }
+      }
 
 ### List of samples:
 

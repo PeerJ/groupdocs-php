@@ -143,7 +143,7 @@ class StorageApi {
    * @return stream
 	 */
 
-   public function GetFile($userId, $fileId, $outFileStream) {
+   public function GetFile($userId, $fileId, FileStream $outFileStream) {
   	  //parse inputs
   	  $resourcePath = str_replace("*", "", "/storage/{userId}/files/{fileId}");
   	  $resourcePath = str_replace("{format}", "json", $resourcePath);
@@ -174,7 +174,7 @@ class StorageApi {
    * @return stream
 	 */
 
-   public function GetSharedFile($userEmail, $filePath, $outFileStream) {
+   public function GetSharedFile($userEmail, $filePath, FileStream $outFileStream) {
   	  //parse inputs
   	  $resourcePath = str_replace("*", "", "/storage/shared/{userEmail}/{*filePath}");
   	  $resourcePath = str_replace("{format}", "json", $resourcePath);

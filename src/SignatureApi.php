@@ -2461,7 +2461,7 @@ class SignatureApi {
    * @return stream
 	 */
 
-   public function GetSignedEnvelopeDocument($userId, $envelopeId, $documentId, $outFileStream) {
+   public function GetSignedEnvelopeDocument($userId, $envelopeId, $documentId, FileStream $outFileStream) {
   	  //parse inputs
   	  $resourcePath = str_replace("*", "", "/signature/{userId}/envelopes/{envelopeId}/document/{documentId}");
   	  $resourcePath = str_replace("{format}", "json", $resourcePath);
@@ -2577,7 +2577,7 @@ class SignatureApi {
    * @return stream
 	 */
 
-   public function GetSignedEnvelopeDocuments($userId, $envelopeId, $outFileStream) {
+   public function GetSignedEnvelopeDocuments($userId, $envelopeId, FileStream $outFileStream) {
   	  //parse inputs
   	  $resourcePath = str_replace("*", "", "/signature/{userId}/envelopes/{envelopeId}/documents/get");
   	  $resourcePath = str_replace("{format}", "json", $resourcePath);

@@ -277,10 +277,7 @@ class APIClient {
 	        $finfo = finfo_open(FILEINFO_MIME_TYPE);
 	        $cont_type = finfo_file($finfo, $filePath);
 	        finfo_close($finfo);
-	    } 
-		if($cont_type == null){
-			$cont_type = mime_content_type($filePath);
-		}
+	    }
 		if($cont_type == null){
 			$cont_type = "application/octet-stream";
 		}

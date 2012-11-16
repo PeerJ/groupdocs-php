@@ -10,7 +10,7 @@
     if (isset($clientId) AND isset($privateKey))
     {
         $uploadedFile = $_FILES['file'];
-       
+        
         $clientID = strip_tags(stripslashes(trim($clientId))); //ClientId==UserId
         $apiKey = strip_tags(stripslashes(trim($privateKey))); //ApiKey==PrivateKey
         
@@ -19,14 +19,14 @@
 
         $tmp_name = $uploadedFile['tmp_name']; //temp name of the file
         $name = $uploadedFile['name']; //original name of the file
-        
+        $fs = FileStream::fromFile($tmp_name);
         $signer = new GroupDocsRequestSigner($apiKey);
         $apiClient = new APIClient($signer); // new way to create apiClient - PHP SDK 1.1
         $apiStorage = new StorageApi($apiClient);
        
-        $result = $apiStorage->Upload($clientID, $name, 'uploaded', file_get_contents($tmp_name));
+        $result = $apiStorage->Upload($clientID, $name, 'uploaded', $fs);
        
-       // var_dump($result);exit;
+        // var_dump($result);exit;
         if ($result->status == 'Ok')
         {
            $massage = '<p>File was uploaded to GroupDocs. Here you can see your <strong>' . $name . '</strong> file in the GroupDocs Embedded Viewer.</p>';

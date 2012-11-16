@@ -54,8 +54,12 @@ class APIClient {
 	 */
 	function __construct($requestSigner = null) {
 		$this->signer = $requestSigner == null ? new DefaultRequestSigner() : $requestSigner;
+		$this->headers = array();
 	}
 
+	public function addHeaders(array $headers) {
+		$this->headers = $headers;
+	}
 
     /**
 	 * @param string $resourcePath path to method endpoint
@@ -69,13 +73,13 @@ class APIClient {
 		$headerParams, $outFileStream=null) {
 
 		$headers = array();
+		foreach ($this->headers as $key => $val) {
+			$headers[] = "$key: $val";
+		}
 		
 		if ($headerParams != null) {
 			foreach ($headerParams as $key => $val) {
 				$headers[] = "$key: $val";
-				if ($key == 'api_key') {
-				    $added_api_key = True;
-				}
 			}
 		}
 		

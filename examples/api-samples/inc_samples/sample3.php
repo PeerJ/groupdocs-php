@@ -33,6 +33,8 @@
            $iframe = '<iframe src="https://apps.groupdocs.com/document-viewer/Embed/' . $result->result->guid . '" frameborder="0" width="720" height="600"></iframe>';
            F3::set('massage', $massage);
            F3::set('iframe', $iframe);
+           F3::set('userId', $clientId);
+           F3::set('privateKey', $privateKey);
         } 
      }
     

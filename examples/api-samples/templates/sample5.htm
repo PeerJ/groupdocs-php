@@ -8,18 +8,19 @@
 	</style>
 </head>
 <body>
-<h3 style="text-align:center;"><a href="/index.php">GroupDocs PHP SDK Samples</a> - Sample4</h3>
+<h3 style="text-align:center;"><a href="/index.php">GroupDocs PHP SDK Samples</a> - Sample5</h3>
 
 <div class='samplecontent' style="padding:10px;">
-   Sample is under development. <i>This sample will show how to use download from GroupDocs using PHP SDK</i> <br/>
+   Sample is under development. <i>This sample will show how to Copy/Move file from GroupDocs using PHP SDK</i> <br/>
    
    <br/><p>You entered: 
    <p>UserId = {{@userId}}
    <p>PrivateKey = {{@privateKey}}
-   <p>FileId = {{@file_Id}}
+   <p>It's copied in {{@folder}} folder
+   <p>You pressed {{@button}} button
    <div id="requestForm" style="padding:20px; border:1px solid black;">
-   <p> Enter data for request and press "Download" button </p>
-   <form action="/sample4" method = "post" enctype = 'multipart/form-data'>
+   <p> Enter data for request and press "Copy" button </p>
+   <form action="/sample5" method = "post" enctype = 'multipart/form-data'>
        <label for='client_id'>GroupDocs Client ID</label>
        <br />
        <input type='text', name='client_id' value="{{@userId}}" />
@@ -30,9 +31,14 @@
        <br />
        <label for='private_key'>File ID</label>
        <br />
-       <input type='text', name='file_id'  value="{{@file_Id}}" />
+       <input type='text', name='file_id'  value="{{@file_id}}" />
        <br />
-       <input type='submit' value='Download'/>
+       <label for='private_key'>Folder in which you want to copy file</label>
+       <br />
+       <input type='text', name='folder'  value="{{@folder}}" />
+       <br />
+       <input name='copy' type='submit' value='Copy'/>
+       <input name='move' type='submit' value='Move'/>
    </form>
    </div>
    <br/>

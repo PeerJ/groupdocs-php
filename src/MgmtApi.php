@@ -147,7 +147,10 @@ class MgmtApi {
    public function GetUserProfileByResetToken($callerId, $token) {
   	  //parse inputs
   	  $resourcePath = str_replace("*", "", "/mgmt/{callerId}/reset-tokens?token={token}");
-  	  $resourcePath = substr($resourcePath, 0, strpos($resourcePath, "?"));
+  	  $pos = strpos($resourcePath, "?");
+	  if($pos !== false){
+  	  	$resourcePath = substr($resourcePath, 0, $pos);
+	  }
 	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "GET";
       $queryParams = array();
@@ -185,7 +188,10 @@ class MgmtApi {
    public function GetUserProfileByVerifToken($callerId, $token) {
   	  //parse inputs
   	  $resourcePath = str_replace("*", "", "/mgmt/{callerId}/verif-tokens?token={token}");
-  	  $resourcePath = substr($resourcePath, 0, strpos($resourcePath, "?"));
+  	  $pos = strpos($resourcePath, "?");
+	  if($pos !== false){
+  	  	$resourcePath = substr($resourcePath, 0, $pos);
+	  }
 	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "GET";
       $queryParams = array();
@@ -223,7 +229,10 @@ class MgmtApi {
    public function GetUserProfileByClaimedToken($callerId, $token) {
   	  //parse inputs
   	  $resourcePath = str_replace("*", "", "/mgmt/{callerId}/claimed-tokens?token={token}");
-  	  $resourcePath = substr($resourcePath, 0, strpos($resourcePath, "?"));
+  	  $pos = strpos($resourcePath, "?");
+	  if($pos !== false){
+  	  	$resourcePath = substr($resourcePath, 0, $pos);
+	  }
 	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "GET";
       $queryParams = array();
@@ -373,7 +382,10 @@ class MgmtApi {
    public function CreateUserLogin($callerId, $userId, $password) {
   	  //parse inputs
   	  $resourcePath = str_replace("*", "", "/mgmt/{callerId}/users/{userId}/logins");
-  	  $resourcePath = substr($resourcePath, 0, strpos($resourcePath, "?"));
+  	  $pos = strpos($resourcePath, "?");
+	  if($pos !== false){
+  	  	$resourcePath = substr($resourcePath, 0, $pos);
+	  }
 	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "POST";
       $queryParams = array();

@@ -69,7 +69,6 @@ class APIClient {
 		$headerParams, $outFileStream=null) {
 
 		$headers = array();
-		$headers[] = "Host: dev-api.groupdocs.com";
 		
 		if ($headerParams != null) {
 			foreach ($headerParams as $key => $val) {

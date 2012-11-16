@@ -2,7 +2,7 @@
 
     $clientId = F3::get('POST["client_id"]');
     $privateKey = F3::get('POST["private_key"]');
-    $file_id = F3::get('POST["file_id"]');
+    $fileGuId = F3::get('POST["file_id"]');
     $copy = F3::get('POST["copy"]');
     $move = F3::get('POST["move"]');
     $folder = F3::get('POST["folder"]');
@@ -13,12 +13,13 @@
         $api = new StorageApi($apiClient);
         $api->setBasePath("http://localhost:7000/v2.0");
         $files = $api->ListEntities($clientId, '', 0);
-       
+        $name = '';
         foreach ($files->result->files as $item) //selecting file names
         {
-           if($item->guid == $file_id)
+           if($item->guid == $fileGuId)
            {
             $name = $item->name;
+            $file_id = $item->id;
            }
         }
         

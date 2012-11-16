@@ -45,7 +45,10 @@ class AntApi {
 	 */
 
    public function CreateAnnotation($userId, $fileId, $body) {
-  	  //parse inputs
+      if( $userId === null || $fileId === null || $body === null ) {
+        throw new Exception("missing required parameters");
+      }
+      //parse inputs
   	  $resourcePath = str_replace("*", "", "/ant/{userId}/files/{fileId}/annotations");
   	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "POST";
@@ -83,7 +86,10 @@ class AntApi {
 	 */
 
    public function ListAnnotations($userId, $fileId) {
-  	  //parse inputs
+      if( $userId === null || $fileId === null ) {
+        throw new Exception("missing required parameters");
+      }
+      //parse inputs
   	  $resourcePath = str_replace("*", "", "/ant/{userId}/files/{fileId}/annotations");
   	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "GET";
@@ -121,7 +127,10 @@ class AntApi {
 	 */
 
    public function DeleteAnnotation($userId, $annotationId) {
-  	  //parse inputs
+      if( $userId === null || $annotationId === null ) {
+        throw new Exception("missing required parameters");
+      }
+      //parse inputs
   	  $resourcePath = str_replace("*", "", "/ant/{userId}/annotations/{annotationId}");
   	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "DELETE";
@@ -160,7 +169,10 @@ class AntApi {
 	 */
 
    public function CreateAnnotationReply($userId, $annotationId, $body) {
-  	  //parse inputs
+      if( $userId === null || $annotationId === null || $body === null ) {
+        throw new Exception("missing required parameters");
+      }
+      //parse inputs
   	  $resourcePath = str_replace("*", "", "/ant/{userId}/annotations/{annotationId}/replies");
   	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "POST";
@@ -199,7 +211,10 @@ class AntApi {
 	 */
 
    public function EditAnnotationReply($userId, $replyGuid, $body) {
-  	  //parse inputs
+      if( $userId === null || $replyGuid === null || $body === null ) {
+        throw new Exception("missing required parameters");
+      }
+      //parse inputs
   	  $resourcePath = str_replace("*", "", "/ant/{userId}/replies/{replyGuid}");
   	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "PUT";
@@ -237,7 +252,10 @@ class AntApi {
 	 */
 
    public function DeleteAnnotationReply($userId, $replyGuid) {
-  	  //parse inputs
+      if( $userId === null || $replyGuid === null ) {
+        throw new Exception("missing required parameters");
+      }
+      //parse inputs
   	  $resourcePath = str_replace("*", "", "/ant/{userId}/replies/{replyGuid}");
   	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "DELETE";
@@ -276,7 +294,10 @@ class AntApi {
 	 */
 
    public function ListAnnotationReplies($userId, $annotationId, $after) {
-  	  //parse inputs
+      if( $userId === null || $annotationId === null || $after === null ) {
+        throw new Exception("missing required parameters");
+      }
+      //parse inputs
   	  $resourcePath = str_replace("*", "", "/ant/{userId}/annotations/{annotationId}/replies?after={after}");
   	  $pos = strpos($resourcePath, "?");
 	  if($pos !== false){
@@ -323,7 +344,10 @@ class AntApi {
 	 */
 
    public function SetAnnotationCollaborators($userId, $fileId, $version, $body=null) {
-  	  //parse inputs
+      if( $userId === null || $fileId === null || $version === null ) {
+        throw new Exception("missing required parameters");
+      }
+      //parse inputs
   	  $resourcePath = str_replace("*", "", "/ant/{userId}/files/{fileId}/version/{version}/collaborators");
   	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "PUT";
@@ -365,7 +389,10 @@ class AntApi {
 	 */
 
    public function GetAnnotationCollaborators($userId, $fileId) {
-  	  //parse inputs
+      if( $userId === null || $fileId === null ) {
+        throw new Exception("missing required parameters");
+      }
+      //parse inputs
   	  $resourcePath = str_replace("*", "", "/ant/{userId}/files/{fileId}/collaborators");
   	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "GET";
@@ -404,7 +431,10 @@ class AntApi {
 	 */
 
    public function AddAnnotationCollaborator($userId, $fileId, $body=null) {
-  	  //parse inputs
+      if( $userId === null || $fileId === null ) {
+        throw new Exception("missing required parameters");
+      }
+      //parse inputs
   	  $resourcePath = str_replace("*", "", "/ant/{userId}/files/{fileId}/collaborators");
   	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "POST";
@@ -441,7 +471,10 @@ class AntApi {
 	 */
 
    public function GetReviewerContacts($userId) {
-  	  //parse inputs
+      if( $userId === null ) {
+        throw new Exception("missing required parameters");
+      }
+      //parse inputs
   	  $resourcePath = str_replace("*", "", "/ant/{userId}/contacts");
   	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "GET";
@@ -475,7 +508,10 @@ class AntApi {
 	 */
 
    public function SetReviewerContacts($userId, $body=null) {
-  	  //parse inputs
+      if( $userId === null ) {
+        throw new Exception("missing required parameters");
+      }
+      //parse inputs
   	  $resourcePath = str_replace("*", "", "/ant/{userId}/reviewerContacts");
   	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "PUT";
@@ -510,7 +546,10 @@ class AntApi {
 	 */
 
    public function MoveAnnotation($userId, $annotationId, $body) {
-  	  //parse inputs
+      if( $userId === null || $annotationId === null || $body === null ) {
+        throw new Exception("missing required parameters");
+      }
+      //parse inputs
   	  $resourcePath = str_replace("*", "", "/ant/{userId}/annotations/{annotationId}/position");
   	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "PUT";
@@ -549,7 +588,10 @@ class AntApi {
 	 */
 
    public function SetAnnotationAccess($userId, $annotationId, $body) {
-  	  //parse inputs
+      if( $userId === null || $annotationId === null || $body === null ) {
+        throw new Exception("missing required parameters");
+      }
+      //parse inputs
   	  $resourcePath = str_replace("*", "", "/ant/{userId}/annotations/{annotationId}/annotationAccess");
   	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "PUT";
@@ -588,7 +630,10 @@ class AntApi {
 	 */
 
    public function MoveAnnotationMarker($userId, $annotationId, $body) {
-  	  //parse inputs
+      if( $userId === null || $annotationId === null || $body === null ) {
+        throw new Exception("missing required parameters");
+      }
+      //parse inputs
   	  $resourcePath = str_replace("*", "", "/ant/{userId}/annotations/{annotationId}/markerPosition");
   	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "PUT";
@@ -627,7 +672,10 @@ class AntApi {
 	 */
 
    public function SetReviewerRights($userId, $fileId, $body) {
-  	  //parse inputs
+      if( $userId === null || $fileId === null || $body === null ) {
+        throw new Exception("missing required parameters");
+      }
+      //parse inputs
   	  $resourcePath = str_replace("*", "", "/ant/{userId}/files/{fileId}/reviewerRights");
   	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "PUT";
@@ -665,7 +713,10 @@ class AntApi {
 	 */
 
    public function GetSharedLinkAccessRights($userId, $fileId) {
-  	  //parse inputs
+      if( $userId === null || $fileId === null ) {
+        throw new Exception("missing required parameters");
+      }
+      //parse inputs
   	  $resourcePath = str_replace("*", "", "/ant/{userId}/files/{fileId}/sharedLinkAccessRights");
   	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "GET";
@@ -704,7 +755,10 @@ class AntApi {
 	 */
 
    public function SetSharedLinkAccessRights($userId, $fileId, $body) {
-  	  //parse inputs
+      if( $userId === null || $fileId === null || $body === null ) {
+        throw new Exception("missing required parameters");
+      }
+      //parse inputs
   	  $resourcePath = str_replace("*", "", "/ant/{userId}/files/{fileId}/sharedLinkAccessRights");
   	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "PUT";

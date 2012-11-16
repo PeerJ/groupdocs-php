@@ -43,7 +43,10 @@ class MgmtApi {
 	 */
 
    public function GetUserProfile($userId) {
-  	  //parse inputs
+      if( $userId === null ) {
+        throw new Exception("missing required parameters");
+      }
+      //parse inputs
   	  $resourcePath = str_replace("*", "", "/mgmt/{userId}/profile");
   	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "GET";
@@ -77,7 +80,10 @@ class MgmtApi {
 	 */
 
    public function UpdateUserProfile($userId, $body) {
-  	  //parse inputs
+      if( $userId === null || $body === null ) {
+        throw new Exception("missing required parameters");
+      }
+      //parse inputs
   	  $resourcePath = str_replace("*", "", "/mgmt/{userId}/profile");
   	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "PUT";
@@ -111,7 +117,10 @@ class MgmtApi {
 	 */
 
    public function ChangeUserPassword($userId, $body) {
-  	  //parse inputs
+      if( $userId === null || $body === null ) {
+        throw new Exception("missing required parameters");
+      }
+      //parse inputs
   	  $resourcePath = str_replace("*", "", "/mgmt/{userId}/profile/password");
   	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "PUT";
@@ -145,7 +154,10 @@ class MgmtApi {
 	 */
 
    public function GetUserProfileByResetToken($callerId, $token) {
-  	  //parse inputs
+      if( $callerId === null || $token === null ) {
+        throw new Exception("missing required parameters");
+      }
+      //parse inputs
   	  $resourcePath = str_replace("*", "", "/mgmt/{callerId}/reset-tokens?token={token}");
   	  $pos = strpos($resourcePath, "?");
 	  if($pos !== false){
@@ -186,7 +198,10 @@ class MgmtApi {
 	 */
 
    public function GetUserProfileByVerifToken($callerId, $token) {
-  	  //parse inputs
+      if( $callerId === null || $token === null ) {
+        throw new Exception("missing required parameters");
+      }
+      //parse inputs
   	  $resourcePath = str_replace("*", "", "/mgmt/{callerId}/verif-tokens?token={token}");
   	  $pos = strpos($resourcePath, "?");
 	  if($pos !== false){
@@ -227,7 +242,10 @@ class MgmtApi {
 	 */
 
    public function GetUserProfileByClaimedToken($callerId, $token) {
-  	  //parse inputs
+      if( $callerId === null || $token === null ) {
+        throw new Exception("missing required parameters");
+      }
+      //parse inputs
   	  $resourcePath = str_replace("*", "", "/mgmt/{callerId}/claimed-tokens?token={token}");
   	  $pos = strpos($resourcePath, "?");
 	  if($pos !== false){
@@ -268,7 +286,10 @@ class MgmtApi {
 	 */
 
    public function GetAlienUserProfile($callerId, $userId) {
-  	  //parse inputs
+      if( $callerId === null || $userId === null ) {
+        throw new Exception("missing required parameters");
+      }
+      //parse inputs
   	  $resourcePath = str_replace("*", "", "/mgmt/{callerId}/users/{userId}/profile");
   	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "GET";
@@ -307,7 +328,10 @@ class MgmtApi {
 	 */
 
    public function UpdateAlienUserProfile($callerId, $userId, $body) {
-  	  //parse inputs
+      if( $callerId === null || $userId === null || $body === null ) {
+        throw new Exception("missing required parameters");
+      }
+      //parse inputs
   	  $resourcePath = str_replace("*", "", "/mgmt/{callerId}/users/{userId}/profile");
   	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "PUT";
@@ -345,7 +369,10 @@ class MgmtApi {
 	 */
 
    public function CreateUser($callerId, $body) {
-  	  //parse inputs
+      if( $callerId === null || $body === null ) {
+        throw new Exception("missing required parameters");
+      }
+      //parse inputs
   	  $resourcePath = str_replace("*", "", "/mgmt/{callerId}/users");
   	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "POST";
@@ -380,7 +407,10 @@ class MgmtApi {
 	 */
 
    public function CreateUserLogin($callerId, $userId, $password) {
-  	  //parse inputs
+      if( $callerId === null || $userId === null || $password === null ) {
+        throw new Exception("missing required parameters");
+      }
+      //parse inputs
   	  $resourcePath = str_replace("*", "", "/mgmt/{callerId}/users/{userId}/logins");
   	  $pos = strpos($resourcePath, "?");
 	  if($pos !== false){
@@ -426,7 +456,10 @@ class MgmtApi {
 	 */
 
    public function ChangeAlienUserPassword($callerId, $userId, $body) {
-  	  //parse inputs
+      if( $callerId === null || $userId === null || $body === null ) {
+        throw new Exception("missing required parameters");
+      }
+      //parse inputs
   	  $resourcePath = str_replace("*", "", "/mgmt/{callerId}/users/{userId}/password");
   	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "PUT";
@@ -464,7 +497,10 @@ class MgmtApi {
 	 */
 
    public function ResetUserPassword($callerId, $userId) {
-  	  //parse inputs
+      if( $callerId === null || $userId === null ) {
+        throw new Exception("missing required parameters");
+      }
+      //parse inputs
   	  $resourcePath = str_replace("*", "", "/mgmt/{callerId}/users/{userId}/password");
   	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "DELETE";
@@ -501,7 +537,10 @@ class MgmtApi {
 	 */
 
    public function GetStorageProviders($userId) {
-  	  //parse inputs
+      if( $userId === null ) {
+        throw new Exception("missing required parameters");
+      }
+      //parse inputs
   	  $resourcePath = str_replace("*", "", "/mgmt/{userId}/storages");
   	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "GET";
@@ -536,7 +575,10 @@ class MgmtApi {
 	 */
 
    public function AddStorageProvider($userId, $provider, $body) {
-  	  //parse inputs
+      if( $userId === null || $provider === null || $body === null ) {
+        throw new Exception("missing required parameters");
+      }
+      //parse inputs
   	  $resourcePath = str_replace("*", "", "/mgmt/{userId}/storages/{provider}");
   	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "POST";
@@ -575,7 +617,10 @@ class MgmtApi {
 	 */
 
    public function UpdateStorageProvider($userId, $provider, $body) {
-  	  //parse inputs
+      if( $userId === null || $provider === null || $body === null ) {
+        throw new Exception("missing required parameters");
+      }
+      //parse inputs
   	  $resourcePath = str_replace("*", "", "/mgmt/{userId}/storages/{provider}");
   	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "PUT";
@@ -612,7 +657,10 @@ class MgmtApi {
 	 */
 
    public function GetRoles($userId) {
-  	  //parse inputs
+      if( $userId === null ) {
+        throw new Exception("missing required parameters");
+      }
+      //parse inputs
   	  $resourcePath = str_replace("*", "", "/mgmt/{userId}/roles");
   	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "GET";
@@ -646,7 +694,10 @@ class MgmtApi {
 	 */
 
    public function GetUserRoles($callerId, $userId) {
-  	  //parse inputs
+      if( $callerId === null || $userId === null ) {
+        throw new Exception("missing required parameters");
+      }
+      //parse inputs
   	  $resourcePath = str_replace("*", "", "/mgmt/{callerId}/users/{userId}/roles");
   	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "GET";
@@ -685,7 +736,10 @@ class MgmtApi {
 	 */
 
    public function SetUserRoles($callerId, $userId, $body) {
-  	  //parse inputs
+      if( $callerId === null || $userId === null || $body === null ) {
+        throw new Exception("missing required parameters");
+      }
+      //parse inputs
   	  $resourcePath = str_replace("*", "", "/mgmt/{callerId}/users/{userId}/roles");
   	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "PUT";
@@ -722,7 +776,10 @@ class MgmtApi {
 	 */
 
    public function GetAccount($userId) {
-  	  //parse inputs
+      if( $userId === null ) {
+        throw new Exception("missing required parameters");
+      }
+      //parse inputs
   	  $resourcePath = str_replace("*", "", "/mgmt/{userId}/account");
   	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "GET";
@@ -755,7 +812,10 @@ class MgmtApi {
 	 */
 
    public function DeleteAccount($userId) {
-  	  //parse inputs
+      if( $userId === null ) {
+        throw new Exception("missing required parameters");
+      }
+      //parse inputs
   	  $resourcePath = str_replace("*", "", "/mgmt/{userId}/account");
   	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "DELETE";
@@ -788,7 +848,10 @@ class MgmtApi {
 	 */
 
    public function GetAccountUsers($adminId) {
-  	  //parse inputs
+      if( $adminId === null ) {
+        throw new Exception("missing required parameters");
+      }
+      //parse inputs
   	  $resourcePath = str_replace("*", "", "/mgmt/{adminId}/account/users");
   	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "GET";
@@ -823,7 +886,10 @@ class MgmtApi {
 	 */
 
    public function UpdateAccountUser($adminId, $userName, $body) {
-  	  //parse inputs
+      if( $adminId === null || $userName === null || $body === null ) {
+        throw new Exception("missing required parameters");
+      }
+      //parse inputs
   	  $resourcePath = str_replace("*", "", "/mgmt/{adminId}/account/users/{userName}");
   	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "PUT";
@@ -861,7 +927,10 @@ class MgmtApi {
 	 */
 
    public function DeleteAccountUser($adminId, $userName) {
-  	  //parse inputs
+      if( $adminId === null || $userName === null ) {
+        throw new Exception("missing required parameters");
+      }
+      //parse inputs
   	  $resourcePath = str_replace("*", "", "/mgmt/{adminId}/account/users/{userName}");
   	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "DELETE";
@@ -899,7 +968,10 @@ class MgmtApi {
 	 */
 
    public function GetUserEmbedKey($userId, $area) {
-  	  //parse inputs
+      if( $userId === null || $area === null ) {
+        throw new Exception("missing required parameters");
+      }
+      //parse inputs
   	  $resourcePath = str_replace("*", "", "/mgmt/{userId}/embedkey/{area}");
   	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "GET";
@@ -937,7 +1009,10 @@ class MgmtApi {
 	 */
 
    public function GetUserEmbedKeyFromGuid($callerId, $guid) {
-  	  //parse inputs
+      if( $callerId === null || $guid === null ) {
+        throw new Exception("missing required parameters");
+      }
+      //parse inputs
   	  $resourcePath = str_replace("*", "", "/mgmt/{callerId}/embedkey/guid/{guid}");
   	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "GET";
@@ -975,7 +1050,10 @@ class MgmtApi {
 	 */
 
    public function GenerateKeyForUser($userId, $area) {
-  	  //parse inputs
+      if( $userId === null || $area === null ) {
+        throw new Exception("missing required parameters");
+      }
+      //parse inputs
   	  $resourcePath = str_replace("*", "", "/mgmt/{userId}/embedkey/new/{area}");
   	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "GET";

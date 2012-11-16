@@ -43,7 +43,10 @@ class SystemApi {
 	 */
 
    public function GetUserPlan($callerId) {
-  	  //parse inputs
+      if( $callerId === null ) {
+        throw new Exception("missing required parameters");
+      }
+      //parse inputs
   	  $resourcePath = str_replace("*", "", "/system/{callerId}/plan");
   	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "GET";
@@ -76,7 +79,10 @@ class SystemApi {
 	 */
 
    public function GetUserSubscriptionPlan($callerId) {
-  	  //parse inputs
+      if( $callerId === null ) {
+        throw new Exception("missing required parameters");
+      }
+      //parse inputs
   	  $resourcePath = str_replace("*", "", "/system/{callerId}/subscription");
   	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "GET";
@@ -110,7 +116,10 @@ class SystemApi {
 	 */
 
    public function GetSubscriptionPlans($callerId, $family) {
-  	  //parse inputs
+      if( $callerId === null || $family === null ) {
+        throw new Exception("missing required parameters");
+      }
+      //parse inputs
   	  $resourcePath = str_replace("*", "", "/system/{callerId}/plans/{family}");
   	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "GET";
@@ -149,7 +158,10 @@ class SystemApi {
 	 */
 
    public function SetSubscriptionPlan($userId, $productId, $body) {
-  	  //parse inputs
+      if( $userId === null || $productId === null || $body === null ) {
+        throw new Exception("missing required parameters");
+      }
+      //parse inputs
   	  $resourcePath = str_replace("*", "", "/system/{userId}/subscriptions/{productId}");
   	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "PUT";
@@ -186,7 +198,10 @@ class SystemApi {
 	 */
 
    public function GetCountries($callerId) {
-  	  //parse inputs
+      if( $callerId === null ) {
+        throw new Exception("missing required parameters");
+      }
+      //parse inputs
   	  $resourcePath = str_replace("*", "", "/system/{callerId}/countries");
   	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "GET";
@@ -220,7 +235,10 @@ class SystemApi {
 	 */
 
    public function GetStates($callerId, $countryName) {
-  	  //parse inputs
+      if( $callerId === null || $countryName === null ) {
+        throw new Exception("missing required parameters");
+      }
+      //parse inputs
   	  $resourcePath = str_replace("*", "", "/system/{callerId}/countries/{countryName}/states");
   	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "GET";

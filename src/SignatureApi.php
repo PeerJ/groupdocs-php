@@ -49,7 +49,10 @@ class SignatureApi {
 	 */
 
    public function ModifySignatureTemplateFieldLocation($userId, $templateId, $documentId, $recipientId, $fieldId, $locationId, $body=null) {
-  	  //parse inputs
+      if( $userId === null || $templateId === null || $documentId === null || $recipientId === null || $fieldId === null || $locationId === null ) {
+        throw new Exception("missing required parameters");
+      }
+      //parse inputs
   	  $resourcePath = str_replace("*", "", "/signature/{userId}/templates/{templateId}/documents/{documentId}/recipient/{recipientId}/fields/{fieldId}/locations/{locationId}");
   	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "PUT";
@@ -105,7 +108,10 @@ class SignatureApi {
 	 */
 
    public function GetSignatureTemplateFields($userId, $templateId, $documentId, $recipientId) {
-  	  //parse inputs
+      if( $userId === null || $templateId === null || $documentId === null || $recipientId === null ) {
+        throw new Exception("missing required parameters");
+      }
+      //parse inputs
   	  $resourcePath = str_replace("*", "", "/signature/{userId}/templates/{templateId}/fields?document={documentId}&recipient={recipientId}");
   	  $pos = strpos($resourcePath, "?");
 	  if($pos !== false){
@@ -154,7 +160,10 @@ class SignatureApi {
 	 */
 
    public function DeleteSignatureTemplateField($userId, $templateId, $fieldId) {
-  	  //parse inputs
+      if( $userId === null || $templateId === null || $fieldId === null ) {
+        throw new Exception("missing required parameters");
+      }
+      //parse inputs
   	  $resourcePath = str_replace("*", "", "/signature/{userId}/templates/{templateId}/fields/{fieldId}");
   	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "DELETE";
@@ -195,7 +204,10 @@ class SignatureApi {
 	 */
 
    public function GetSignatureTemplateResources($userId) {
-  	  //parse inputs
+      if( $userId === null ) {
+        throw new Exception("missing required parameters");
+      }
+      //parse inputs
   	  $resourcePath = str_replace("*", "", "/signature/{userId}/templates/resources");
   	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "GET";
@@ -229,7 +241,10 @@ class SignatureApi {
 	 */
 
    public function GetRolesList($userId, $id=null) {
-  	  //parse inputs
+      if( $userId === null ) {
+        throw new Exception("missing required parameters");
+      }
+      //parse inputs
   	  $resourcePath = str_replace("*", "", "/signature/{userId}/roles?id={roleId}");
   	  $pos = strpos($resourcePath, "?");
 	  if($pos !== false){
@@ -270,7 +285,10 @@ class SignatureApi {
 	 */
 
    public function AddContactIntegration($userId, $body=null) {
-  	  //parse inputs
+      if( $userId === null ) {
+        throw new Exception("missing required parameters");
+      }
+      //parse inputs
   	  $resourcePath = str_replace("*", "", "/signature/{userId}/integration");
   	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "POST";
@@ -304,7 +322,10 @@ class SignatureApi {
 	 */
 
    public function SignDocument($userId, $body=null) {
-  	  //parse inputs
+      if( $userId === null ) {
+        throw new Exception("missing required parameters");
+      }
+      //parse inputs
   	  $resourcePath = str_replace("*", "", "/signature/{userId}/sign");
   	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "POST";
@@ -338,7 +359,10 @@ class SignatureApi {
 	 */
 
    public function AddPredefinedList($userId, $body) {
-  	  //parse inputs
+      if( $userId === null || $body === null ) {
+        throw new Exception("missing required parameters");
+      }
+      //parse inputs
   	  $resourcePath = str_replace("*", "", "/signature/{userId}/list");
   	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "POST";
@@ -372,7 +396,10 @@ class SignatureApi {
 	 */
 
    public function DeletePredefinedList($userId, $listId) {
-  	  //parse inputs
+      if( $userId === null || $listId === null ) {
+        throw new Exception("missing required parameters");
+      }
+      //parse inputs
   	  $resourcePath = str_replace("*", "", "/signature/{userId}/lists/{listId}");
   	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "DELETE";
@@ -410,7 +437,10 @@ class SignatureApi {
 	 */
 
    public function GetFieldsList($userId, $fieldId=null) {
-  	  //parse inputs
+      if( $userId === null ) {
+        throw new Exception("missing required parameters");
+      }
+      //parse inputs
   	  $resourcePath = str_replace("*", "", "/signature/{userId}/fields?id={fieldId}");
   	  $pos = strpos($resourcePath, "?");
 	  if($pos !== false){
@@ -451,7 +481,10 @@ class SignatureApi {
 	 */
 
    public function CreateSignatureField($userId, $body=null) {
-  	  //parse inputs
+      if( $userId === null ) {
+        throw new Exception("missing required parameters");
+      }
+      //parse inputs
   	  $resourcePath = str_replace("*", "", "/signature/{userId}/field");
   	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "POST";
@@ -486,7 +519,10 @@ class SignatureApi {
 	 */
 
    public function ModifySignatureField($userId, $fieldId, $body=null) {
-  	  //parse inputs
+      if( $userId === null || $fieldId === null ) {
+        throw new Exception("missing required parameters");
+      }
+      //parse inputs
   	  $resourcePath = str_replace("*", "", "/signature/{userId}/fields/{fieldId}");
   	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "POST";
@@ -524,7 +560,10 @@ class SignatureApi {
 	 */
 
    public function DeleteSignatureField($userId, $fieldId) {
-  	  //parse inputs
+      if( $userId === null || $fieldId === null ) {
+        throw new Exception("missing required parameters");
+      }
+      //parse inputs
   	  $resourcePath = str_replace("*", "", "/signature/{userId}/fields/{fieldId}");
   	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "DELETE";
@@ -562,7 +601,10 @@ class SignatureApi {
 	 */
 
    public function ArchiveSignatureForm($userId, $formId) {
-  	  //parse inputs
+      if( $userId === null || $formId === null ) {
+        throw new Exception("missing required parameters");
+      }
+      //parse inputs
   	  $resourcePath = str_replace("*", "", "/signature/{userId}/forms/{formId}/archive");
   	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "PUT";
@@ -600,7 +642,10 @@ class SignatureApi {
 	 */
 
    public function CompleteSignatureForm($userId, $formId) {
-  	  //parse inputs
+      if( $userId === null || $formId === null ) {
+        throw new Exception("missing required parameters");
+      }
+      //parse inputs
   	  $resourcePath = str_replace("*", "", "/signature/{userId}/forms/{formId}/complete");
   	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "PUT";
@@ -641,7 +686,10 @@ class SignatureApi {
 	 */
 
    public function CreateSignatureForm($userId, $name=null, $templateId=null, $assemblyId=null, $body=null) {
-  	  //parse inputs
+      if( $userId === null ) {
+        throw new Exception("missing required parameters");
+      }
+      //parse inputs
   	  $resourcePath = str_replace("*", "", "/signature/{userId}/form?name={name}&templateId={templateId}&assemblyId={assemblyId}");
   	  $pos = strpos($resourcePath, "?");
 	  if($pos !== false){
@@ -688,7 +736,10 @@ class SignatureApi {
 	 */
 
    public function DeleteSignatureForm($userId, $formId) {
-  	  //parse inputs
+      if( $userId === null || $formId === null ) {
+        throw new Exception("missing required parameters");
+      }
+      //parse inputs
   	  $resourcePath = str_replace("*", "", "/signature/{userId}/forms/{formId}");
   	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "DELETE";
@@ -728,7 +779,10 @@ class SignatureApi {
 	 */
 
    public function AddSignatureFormDocument($userId, $formId, $documentId, $order=null) {
-  	  //parse inputs
+      if( $userId === null || $formId === null || $documentId === null ) {
+        throw new Exception("missing required parameters");
+      }
+      //parse inputs
   	  $resourcePath = str_replace("*", "", "/signature/{userId}/forms/{formId}/document/{documentId}?order={order}");
   	  $pos = strpos($resourcePath, "?");
 	  if($pos !== false){
@@ -778,7 +832,10 @@ class SignatureApi {
 	 */
 
    public function DeleteSignatureFormDocument($userId, $formId, $documentId) {
-  	  //parse inputs
+      if( $userId === null || $formId === null || $documentId === null ) {
+        throw new Exception("missing required parameters");
+      }
+      //parse inputs
   	  $resourcePath = str_replace("*", "", "/signature/{userId}/forms/{formId}/documents/{documentId}");
   	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "DELETE";
@@ -820,7 +877,10 @@ class SignatureApi {
 	 */
 
    public function GetSignatureFormDocuments($userId, $formId) {
-  	  //parse inputs
+      if( $userId === null || $formId === null ) {
+        throw new Exception("missing required parameters");
+      }
+      //parse inputs
   	  $resourcePath = str_replace("*", "", "/signature/{userId}/forms/{formId}/documents");
   	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "GET";
@@ -861,7 +921,10 @@ class SignatureApi {
 	 */
 
    public function AddSignatureFormField($userId, $formId, $documentId, $fieldId, $body=null) {
-  	  //parse inputs
+      if( $userId === null || $formId === null || $documentId === null || $fieldId === null ) {
+        throw new Exception("missing required parameters");
+      }
+      //parse inputs
   	  $resourcePath = str_replace("*", "", "/signature/{userId}/forms/{formId}/documents/{documentId}/field/{fieldId}");
   	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "POST";
@@ -911,7 +974,10 @@ class SignatureApi {
 	 */
 
    public function ModifySignatureFormFieldLocation($userId, $formId, $documentId, $fieldId, $locationId, $body=null) {
-  	  //parse inputs
+      if( $userId === null || $formId === null || $documentId === null || $fieldId === null || $locationId === null ) {
+        throw new Exception("missing required parameters");
+      }
+      //parse inputs
   	  $resourcePath = str_replace("*", "", "/signature/{userId}/forms/{formId}/documents/{documentId}/fields/{fieldId}/locations/{locationId}");
   	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "PUT";
@@ -963,7 +1029,10 @@ class SignatureApi {
 	 */
 
    public function DeleteSignatureFormFieldLocation($userId, $formId, $fieldId, $locationId) {
-  	  //parse inputs
+      if( $userId === null || $formId === null || $fieldId === null || $locationId === null ) {
+        throw new Exception("missing required parameters");
+      }
+      //parse inputs
   	  $resourcePath = str_replace("*", "", "/signature/{userId}/forms/{formId}/fields/{fieldId}/locations/{locationId}");
   	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "DELETE";
@@ -1012,7 +1081,10 @@ class SignatureApi {
 	 */
 
    public function ModifySignatureFormField($userId, $formId, $documentId, $fieldId, $body=null) {
-  	  //parse inputs
+      if( $userId === null || $formId === null || $documentId === null || $fieldId === null ) {
+        throw new Exception("missing required parameters");
+      }
+      //parse inputs
   	  $resourcePath = str_replace("*", "", "/signature/{userId}/forms/{formId}/documents/{documentId}/field/{fieldId}");
   	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "PUT";
@@ -1059,7 +1131,10 @@ class SignatureApi {
 	 */
 
    public function DeleteSignatureFormField($userId, $formId, $fieldId) {
-  	  //parse inputs
+      if( $userId === null || $formId === null || $fieldId === null ) {
+        throw new Exception("missing required parameters");
+      }
+      //parse inputs
   	  $resourcePath = str_replace("*", "", "/signature/{userId}/forms/{formId}/fields/{fieldId}");
   	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "DELETE";
@@ -1102,7 +1177,10 @@ class SignatureApi {
 	 */
 
    public function GetSignatureFormFields($userId, $formId, $documentId) {
-  	  //parse inputs
+      if( $userId === null || $formId === null || $documentId === null ) {
+        throw new Exception("missing required parameters");
+      }
+      //parse inputs
   	  $resourcePath = str_replace("*", "", "/signature/{userId}/forms/{formId}/documents/{documentId}/fields");
   	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "GET";
@@ -1144,7 +1222,10 @@ class SignatureApi {
 	 */
 
    public function GetSignatureForm($userId, $formId) {
-  	  //parse inputs
+      if( $userId === null || $formId === null ) {
+        throw new Exception("missing required parameters");
+      }
+      //parse inputs
   	  $resourcePath = str_replace("*", "", "/signature/{userId}/forms/{formId}");
   	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "GET";
@@ -1183,7 +1264,10 @@ class SignatureApi {
 	 */
 
    public function ModifySignatureForm($userId, $formId, $body=null) {
-  	  //parse inputs
+      if( $userId === null || $formId === null ) {
+        throw new Exception("missing required parameters");
+      }
+      //parse inputs
   	  $resourcePath = str_replace("*", "", "/signature/{userId}/forms/{formId}");
   	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "POST";
@@ -1221,7 +1305,10 @@ class SignatureApi {
 	 */
 
    public function PublishSignatureForm($userId, $formId) {
-  	  //parse inputs
+      if( $userId === null || $formId === null ) {
+        throw new Exception("missing required parameters");
+      }
+      //parse inputs
   	  $resourcePath = str_replace("*", "", "/signature/{userId}/forms/{formId}/publish");
   	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "PUT";
@@ -1260,7 +1347,10 @@ class SignatureApi {
 	 */
 
    public function RenameSignatureForm($userId, $formId, $name) {
-  	  //parse inputs
+      if( $userId === null || $formId === null || $name === null ) {
+        throw new Exception("missing required parameters");
+      }
+      //parse inputs
   	  $resourcePath = str_replace("*", "", "/signature/{userId}/forms/{formId}?new_name={name}");
   	  $pos = strpos($resourcePath, "?");
 	  if($pos !== false){
@@ -1306,7 +1396,10 @@ class SignatureApi {
 	 */
 
    public function UpdateSignatureFormFromTemplate($userId, $formId, $templateId) {
-  	  //parse inputs
+      if( $userId === null || $formId === null || $templateId === null ) {
+        throw new Exception("missing required parameters");
+      }
+      //parse inputs
   	  $resourcePath = str_replace("*", "", "/signature/{userId}/forms/{formId}/templates/{templateId}");
   	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "POST";
@@ -1353,7 +1446,10 @@ class SignatureApi {
 	 */
 
    public function GetSignatureForms($userId, $statusId=null, $page=null, $DateTime=null, $name=null, $records=null, $documentId=null) {
-  	  //parse inputs
+      if( $userId === null ) {
+        throw new Exception("missing required parameters");
+      }
+      //parse inputs
   	  $resourcePath = str_replace("*", "", "/signature/{userId}/forms?statusId={statusId}&records={count}&page={page}&document={originalDocumentMD5}&date={date}&name={name}");
   	  $pos = strpos($resourcePath, "?");
 	  if($pos !== false){
@@ -1409,7 +1505,10 @@ class SignatureApi {
 	 */
 
    public function GetSignatureFormResources($userId, $statusIds) {
-  	  //parse inputs
+      if( $userId === null || $statusIds === null ) {
+        throw new Exception("missing required parameters");
+      }
+      //parse inputs
   	  $resourcePath = str_replace("*", "", "/signature/{userId}/forms/resources?statusIds={statusIds}");
   	  $pos = strpos($resourcePath, "?");
 	  if($pos !== false){
@@ -1454,7 +1553,10 @@ class SignatureApi {
 	 */
 
    public function GetSignatureTemplates($userId, $page=null, $documentGuid=null, $recipientName=null, $name=null, $records=null) {
-  	  //parse inputs
+      if( $userId === null ) {
+        throw new Exception("missing required parameters");
+      }
+      //parse inputs
   	  $resourcePath = str_replace("*", "", "/signature/{userId}/templates?records={count}&page={page}&documentGuid={documentGuid}&recipientName={recipientName}&name={name}");
   	  $pos = strpos($resourcePath, "?");
 	  if($pos !== false){
@@ -1507,7 +1609,10 @@ class SignatureApi {
 	 */
 
    public function GetSignatureTemplate($userId, $templateId) {
-  	  //parse inputs
+      if( $userId === null || $templateId === null ) {
+        throw new Exception("missing required parameters");
+      }
+      //parse inputs
   	  $resourcePath = str_replace("*", "", "/signature/{userId}/templates/{templateId}");
   	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "GET";
@@ -1548,7 +1653,10 @@ class SignatureApi {
 	 */
 
    public function CreateSignatureTemplate($userId, $name=null, $templateId=null, $body=null, $envelopetId) {
-  	  //parse inputs
+      if( $userId === null || $envelopetId === null ) {
+        throw new Exception("missing required parameters");
+      }
+      //parse inputs
   	  $resourcePath = str_replace("*", "", "/signature/{userId}/template?name={name}&templateId={templateId}&envelopeId={envelopeId}");
   	  $pos = strpos($resourcePath, "?");
 	  if($pos !== false){
@@ -1596,7 +1704,10 @@ class SignatureApi {
 	 */
 
    public function ModifySignatureTemplate($userId, $templateId, $body=null) {
-  	  //parse inputs
+      if( $userId === null || $templateId === null ) {
+        throw new Exception("missing required parameters");
+      }
+      //parse inputs
   	  $resourcePath = str_replace("*", "", "/signature/{userId}/templates/{templateId}");
   	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "POST";
@@ -1635,7 +1746,10 @@ class SignatureApi {
 	 */
 
    public function RenameSignatureTemplate($userId, $templateId, $name) {
-  	  //parse inputs
+      if( $userId === null || $templateId === null || $name === null ) {
+        throw new Exception("missing required parameters");
+      }
+      //parse inputs
   	  $resourcePath = str_replace("*", "", "/signature/{userId}/templates/{templateId}?name={name}");
   	  $pos = strpos($resourcePath, "?");
 	  if($pos !== false){
@@ -1680,7 +1794,10 @@ class SignatureApi {
 	 */
 
    public function DeleteSignatureTemplate($userId, $templateId) {
-  	  //parse inputs
+      if( $userId === null || $templateId === null ) {
+        throw new Exception("missing required parameters");
+      }
+      //parse inputs
   	  $resourcePath = str_replace("*", "", "/signature/{userId}/templates/{templateId}");
   	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "DELETE";
@@ -1721,7 +1838,10 @@ class SignatureApi {
 	 */
 
    public function AddSignatureTemplateRecipient($userId, $templateId, $nickname, $roleId, $order=null) {
-  	  //parse inputs
+      if( $userId === null || $templateId === null || $nickname === null || $roleId === null ) {
+        throw new Exception("missing required parameters");
+      }
+      //parse inputs
   	  $resourcePath = str_replace("*", "", "/signature/{userId}/templates/{templateId}/recipient?nickname={nickname}&role={roleId}&order={order}");
   	  $pos = strpos($resourcePath, "?");
 	  if($pos !== false){
@@ -1772,7 +1892,10 @@ class SignatureApi {
 	 */
 
    public function GetSignatureTemplateRecipients($userId, $templateId) {
-  	  //parse inputs
+      if( $userId === null || $templateId === null ) {
+        throw new Exception("missing required parameters");
+      }
+      //parse inputs
   	  $resourcePath = str_replace("*", "", "/signature/{userId}/templates/{templateId}/recipients");
   	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "GET";
@@ -1811,7 +1934,10 @@ class SignatureApi {
 	 */
 
    public function DeleteSignatureTemplateRecipient($userId, $templateId, $recipientId) {
-  	  //parse inputs
+      if( $userId === null || $templateId === null || $recipientId === null ) {
+        throw new Exception("missing required parameters");
+      }
+      //parse inputs
   	  $resourcePath = str_replace("*", "", "/signature/{userId}/templates/{templateId}/recipients/{recipientId}");
   	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "DELETE";
@@ -1857,7 +1983,10 @@ class SignatureApi {
 	 */
 
    public function ModifySignatureTemplateRecipient($userId, $templateId, $recipientId, $nickname, $roleId, $order=null) {
-  	  //parse inputs
+      if( $userId === null || $templateId === null || $recipientId === null || $nickname === null || $roleId === null ) {
+        throw new Exception("missing required parameters");
+      }
+      //parse inputs
   	  $resourcePath = str_replace("*", "", "/signature/{userId}/templates/{templateId}/recipient/{recipientId}?nickname={nickname}&role={roleId}&order={order}");
   	  $pos = strpos($resourcePath, "?");
 	  if($pos !== false){
@@ -1914,7 +2043,10 @@ class SignatureApi {
 	 */
 
    public function AddSignatureTemplateDocument($userId, $templateId, $documentId, $order=null) {
-  	  //parse inputs
+      if( $userId === null || $templateId === null || $documentId === null ) {
+        throw new Exception("missing required parameters");
+      }
+      //parse inputs
   	  $resourcePath = str_replace("*", "", "/signature/{userId}/templates/{templateId}/document/{documentId}?order={order}");
   	  $pos = strpos($resourcePath, "?");
 	  if($pos !== false){
@@ -1963,7 +2095,10 @@ class SignatureApi {
 	 */
 
    public function GetSignatureTemplateDocuments($userId, $templateId) {
-  	  //parse inputs
+      if( $userId === null || $templateId === null ) {
+        throw new Exception("missing required parameters");
+      }
+      //parse inputs
   	  $resourcePath = str_replace("*", "", "/signature/{userId}/templates/{templateId}/documents");
   	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "GET";
@@ -2002,7 +2137,10 @@ class SignatureApi {
 	 */
 
    public function DeleteSignatureTemplateDocument($userId, $templateId, $documentId) {
-  	  //parse inputs
+      if( $userId === null || $templateId === null || $documentId === null ) {
+        throw new Exception("missing required parameters");
+      }
+      //parse inputs
   	  $resourcePath = str_replace("*", "", "/signature/{userId}/templates/{templateId}/documents/{documentId}");
   	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "DELETE";
@@ -2048,7 +2186,10 @@ class SignatureApi {
 	 */
 
    public function AddSignatureTemplateField($userId, $templateId, $documentId, $recipientId, $fieldId, $body=null) {
-  	  //parse inputs
+      if( $userId === null || $templateId === null || $documentId === null || $recipientId === null || $fieldId === null ) {
+        throw new Exception("missing required parameters");
+      }
+      //parse inputs
   	  $resourcePath = str_replace("*", "", "/signature/{userId}/templates/{templateId}/documents/{documentId}/recipient/{recipientId}/field/{fieldId}");
   	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "POST";
@@ -2101,7 +2242,10 @@ class SignatureApi {
 	 */
 
    public function ModifySignatureTemplateField($userId, $templateId, $documentId, $fieldId, $body=null) {
-  	  //parse inputs
+      if( $userId === null || $templateId === null || $documentId === null || $fieldId === null ) {
+        throw new Exception("missing required parameters");
+      }
+      //parse inputs
   	  $resourcePath = str_replace("*", "", "/signature/{userId}/templates/{templateId}/documents/{documentId}/field/{fieldId}");
   	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "PUT";
@@ -2149,7 +2293,10 @@ class SignatureApi {
 	 */
 
    public function DeleteSignatureTemplateFieldLocation($userId, $templateId, $fieldId, $locationId) {
-  	  //parse inputs
+      if( $userId === null || $templateId === null || $fieldId === null || $locationId === null ) {
+        throw new Exception("missing required parameters");
+      }
+      //parse inputs
   	  $resourcePath = str_replace("*", "", "/signature/{userId}/templates/{templateId}/fields/{fieldId}/locations/{locationId}");
   	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "DELETE";
@@ -2195,7 +2342,10 @@ class SignatureApi {
 	 */
 
    public function ArchiveSignatureEnvelope($userId, $envelopeId) {
-  	  //parse inputs
+      if( $userId === null || $envelopeId === null ) {
+        throw new Exception("missing required parameters");
+      }
+      //parse inputs
   	  $resourcePath = str_replace("*", "", "/signature/{userId}/envelopes/{envelopeId}/archive");
   	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "PUT";
@@ -2233,7 +2383,10 @@ class SignatureApi {
 	 */
 
    public function GetEnvelopeAuditLogs($userId, $envelopeId) {
-  	  //parse inputs
+      if( $userId === null || $envelopeId === null ) {
+        throw new Exception("missing required parameters");
+      }
+      //parse inputs
   	  $resourcePath = str_replace("*", "", "/signature/{userId}/envelopes/{envelopeId}/logs");
   	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "GET";
@@ -2274,7 +2427,10 @@ class SignatureApi {
 	 */
 
    public function CreateSignatureEnvelope($userId, $name=null, $body=null, $envelopeGuid=null, $templateGuid=null) {
-  	  //parse inputs
+      if( $userId === null ) {
+        throw new Exception("missing required parameters");
+      }
+      //parse inputs
   	  $resourcePath = str_replace("*", "", "/signature/{userId}/envelope?name={name}&templateId={templateId}&envelopeId={envelopeId}");
   	  $pos = strpos($resourcePath, "?");
 	  if($pos !== false){
@@ -2322,7 +2478,10 @@ class SignatureApi {
 	 */
 
    public function DeclineEnvelope($userId, $envelopeId, $recipientId) {
-  	  //parse inputs
+      if( $userId === null || $envelopeId === null || $recipientId === null ) {
+        throw new Exception("missing required parameters");
+      }
+      //parse inputs
   	  $resourcePath = str_replace("*", "", "/signature/{userId}/envelopes/{envelopeId}/recipient/{recipientId}/decline");
   	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "PUT";
@@ -2368,7 +2527,10 @@ class SignatureApi {
 	 */
 
    public function DelegateEnvelopeRecipient($userId, $envelopeId, $recipientId, $recipientEmail, $recipientFirstName, $recipientLastName) {
-  	  //parse inputs
+      if( $userId === null || $envelopeId === null || $recipientId === null || $recipientEmail === null || $recipientFirstName === null || $recipientLastName === null ) {
+        throw new Exception("missing required parameters");
+      }
+      //parse inputs
   	  $resourcePath = str_replace("*", "", "/signature/{userId}/envelopes/{envelopeId}/recipient/{recipientId}/delegate?email={recipientEmail}&firstname={recipientFirstName}&lastname={recipientLastName}");
   	  $pos = strpos($resourcePath, "?");
 	  if($pos !== false){
@@ -2423,7 +2585,10 @@ class SignatureApi {
 	 */
 
    public function DeleteSignatureEnvelope($userId, $envelopeId) {
-  	  //parse inputs
+      if( $userId === null || $envelopeId === null ) {
+        throw new Exception("missing required parameters");
+      }
+      //parse inputs
   	  $resourcePath = str_replace("*", "", "/signature/{userId}/envelopes/{envelopeId}");
   	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "DELETE";
@@ -2463,7 +2628,10 @@ class SignatureApi {
 	 */
 
    public function AddSignatureEnvelopeDocument($userId, $envelopeId, $documentId, $order=null) {
-  	  //parse inputs
+      if( $userId === null || $envelopeId === null || $documentId === null ) {
+        throw new Exception("missing required parameters");
+      }
+      //parse inputs
   	  $resourcePath = str_replace("*", "", "/signature/{userId}/envelopes/{envelopeId}/document/{documentId}?order={order}");
   	  $pos = strpos($resourcePath, "?");
 	  if($pos !== false){
@@ -2513,7 +2681,10 @@ class SignatureApi {
 	 */
 
    public function GetSignedEnvelopeDocument($userId, $envelopeId, $documentId, FileStream $outFileStream) {
-  	  //parse inputs
+      if( $userId === null || $envelopeId === null || $documentId === null ) {
+        throw new Exception("missing required parameters");
+      }
+      //parse inputs
   	  $resourcePath = str_replace("*", "", "/signature/{userId}/envelopes/{envelopeId}/document/{documentId}");
   	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "GET";
@@ -2549,7 +2720,10 @@ class SignatureApi {
 	 */
 
    public function DeleteSignatureEnvelopeDocument($userId, $envelopeId, $documentId) {
-  	  //parse inputs
+      if( $userId === null || $envelopeId === null || $documentId === null ) {
+        throw new Exception("missing required parameters");
+      }
+      //parse inputs
   	  $resourcePath = str_replace("*", "", "/signature/{userId}/envelopes/{envelopeId}/documents/{documentId}");
   	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "DELETE";
@@ -2591,7 +2765,10 @@ class SignatureApi {
 	 */
 
    public function GetSignatureEnvelopeDocuments($userId, $envelopeId) {
-  	  //parse inputs
+      if( $userId === null || $envelopeId === null ) {
+        throw new Exception("missing required parameters");
+      }
+      //parse inputs
   	  $resourcePath = str_replace("*", "", "/signature/{userId}/envelopes/{envelopeId}/documents");
   	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "GET";
@@ -2629,7 +2806,10 @@ class SignatureApi {
 	 */
 
    public function GetSignedEnvelopeDocuments($userId, $envelopeId, FileStream $outFileStream) {
-  	  //parse inputs
+      if( $userId === null || $envelopeId === null ) {
+        throw new Exception("missing required parameters");
+      }
+      //parse inputs
   	  $resourcePath = str_replace("*", "", "/signature/{userId}/envelopes/{envelopeId}/documents/get");
   	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "GET";
@@ -2664,7 +2844,10 @@ class SignatureApi {
 	 */
 
    public function AddSignatureEnvelopeField($userId, $envelopeId, $documentId, $recipientId, $fieldId, $body=null) {
-  	  //parse inputs
+      if( $userId === null || $envelopeId === null || $documentId === null || $recipientId === null || $fieldId === null ) {
+        throw new Exception("missing required parameters");
+      }
+      //parse inputs
   	  $resourcePath = str_replace("*", "", "/signature/{userId}/envelopes/{envelopeId}/documents/{documentId}/recipient/{recipientId}/field/{fieldId}");
   	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "POST";
@@ -2719,7 +2902,10 @@ class SignatureApi {
 	 */
 
    public function FillEnvelopeField($userId, $envelopeId, $documentId, $recipientId, $fieldId, $signatureId=null, $body=null) {
-  	  //parse inputs
+      if( $userId === null || $envelopeId === null || $documentId === null || $recipientId === null || $fieldId === null ) {
+        throw new Exception("missing required parameters");
+      }
+      //parse inputs
   	  $resourcePath = str_replace("*", "", "/signature/{userId}/envelopes/{envelopeId}/documents/{documentId}/recipient/{recipientId}/field/{fieldId}?signatureId={signatureId}");
   	  $pos = strpos($resourcePath, "?");
 	  if($pos !== false){
@@ -2781,7 +2967,10 @@ class SignatureApi {
 	 */
 
    public function ModifySignatureEnvelopeFieldLocation($userId, $envelopeId, $documentId, $recipientId, $fieldId, $locationId, $body=null) {
-  	  //parse inputs
+      if( $userId === null || $envelopeId === null || $documentId === null || $recipientId === null || $fieldId === null || $locationId === null ) {
+        throw new Exception("missing required parameters");
+      }
+      //parse inputs
   	  $resourcePath = str_replace("*", "", "/signature/{userId}/envelopes/{envelopeId}/documents/{documentId}/recipient/{recipientId}/fields/{fieldId}/locations/{locationId}");
   	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "PUT";
@@ -2837,7 +3026,10 @@ class SignatureApi {
 	 */
 
    public function DeleteSignatureEnvelopeFieldLocation($userId, $envelopeId, $fieldId, $locationId) {
-  	  //parse inputs
+      if( $userId === null || $envelopeId === null || $fieldId === null || $locationId === null ) {
+        throw new Exception("missing required parameters");
+      }
+      //parse inputs
   	  $resourcePath = str_replace("*", "", "/signature/{userId}/envelopes/{envelopeId}/fields/{fieldId}/locations/{locationId}");
   	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "DELETE";
@@ -2886,7 +3078,10 @@ class SignatureApi {
 	 */
 
    public function ModifySignatureEnvelopeField($userId, $envelopeId, $documentId, $fieldId, $body=null) {
-  	  //parse inputs
+      if( $userId === null || $envelopeId === null || $documentId === null || $fieldId === null ) {
+        throw new Exception("missing required parameters");
+      }
+      //parse inputs
   	  $resourcePath = str_replace("*", "", "/signature/{userId}/envelopes/{envelopeId}/documents/{documentId}/field/{fieldId}");
   	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "PUT";
@@ -2933,7 +3128,10 @@ class SignatureApi {
 	 */
 
    public function DeleteSignatureEnvelopeField($userId, $envelopeId, $fieldId) {
-  	  //parse inputs
+      if( $userId === null || $envelopeId === null || $fieldId === null ) {
+        throw new Exception("missing required parameters");
+      }
+      //parse inputs
   	  $resourcePath = str_replace("*", "", "/signature/{userId}/envelopes/{envelopeId}/fields/{fieldId}");
   	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "DELETE";
@@ -2977,7 +3175,10 @@ class SignatureApi {
 	 */
 
    public function GetSignatureEnvelopeFields($userId, $envelopeId, $documentId=null, $recipientId=null) {
-  	  //parse inputs
+      if( $userId === null || $envelopeId === null ) {
+        throw new Exception("missing required parameters");
+      }
+      //parse inputs
   	  $resourcePath = str_replace("*", "", "/signature/{userId}/envelopes/{envelopeId}/fields?document={documentId}&recipient={recipientId}");
   	  $pos = strpos($resourcePath, "?");
 	  if($pos !== false){
@@ -3025,7 +3226,10 @@ class SignatureApi {
 	 */
 
    public function GetSignatureEnvelope($userId, $envelopeId) {
-  	  //parse inputs
+      if( $userId === null || $envelopeId === null ) {
+        throw new Exception("missing required parameters");
+      }
+      //parse inputs
   	  $resourcePath = str_replace("*", "", "/signature/{userId}/envelopes/{envelopeId}");
   	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "GET";
@@ -3064,7 +3268,10 @@ class SignatureApi {
 	 */
 
    public function ModifySignatureEnvelope($userId, $envelopeId, $body=null) {
-  	  //parse inputs
+      if( $userId === null || $envelopeId === null ) {
+        throw new Exception("missing required parameters");
+      }
+      //parse inputs
   	  $resourcePath = str_replace("*", "", "/signature/{userId}/envelopes/{envelopeId}");
   	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "POST";
@@ -3107,7 +3314,10 @@ class SignatureApi {
 	 */
 
    public function AddSignatureEnvelopeRecipient($userId, $envelopeId, $recipientEmail, $recipientFirstName, $recipientLastName, $order=null, $role) {
-  	  //parse inputs
+      if( $userId === null || $envelopeId === null || $recipientEmail === null || $recipientFirstName === null || $recipientLastName === null || $role === null ) {
+        throw new Exception("missing required parameters");
+      }
+      //parse inputs
   	  $resourcePath = str_replace("*", "", "/signature/{userId}/envelopes/{envelopeId}/recipient?email={recipientEmail}&firstname={recipientFirstName}&lastname={recipientLastName}&role={roleId}&order={order}");
   	  $pos = strpos($resourcePath, "?");
 	  if($pos !== false){
@@ -3170,7 +3380,10 @@ class SignatureApi {
 	 */
 
    public function ModifySignatureEnvelopeRecipient($userId, $envelopeId, $recipientId, $recipientEmail, $recipientFirstName, $recipientLastName, $order=null, $role) {
-  	  //parse inputs
+      if( $userId === null || $envelopeId === null || $recipientId === null || $recipientEmail === null || $recipientFirstName === null || $recipientLastName === null || $role === null ) {
+        throw new Exception("missing required parameters");
+      }
+      //parse inputs
   	  $resourcePath = str_replace("*", "", "/signature/{userId}/envelopes/{envelopeId}/recipient/{recipientId}?email={recipientEmail}&firstname={recipientFirstName}&lastname={recipientLastName}&role={roleId}&order={order}");
   	  $pos = strpos($resourcePath, "?");
 	  if($pos !== false){
@@ -3232,7 +3445,10 @@ class SignatureApi {
 	 */
 
    public function DeleteSignatureEnvelopeRecipient($userId, $envelopeId, $recipientId) {
-  	  //parse inputs
+      if( $userId === null || $envelopeId === null || $recipientId === null ) {
+        throw new Exception("missing required parameters");
+      }
+      //parse inputs
   	  $resourcePath = str_replace("*", "", "/signature/{userId}/envelopes/{envelopeId}/recipients/{recipientId}");
   	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "DELETE";
@@ -3274,7 +3490,10 @@ class SignatureApi {
 	 */
 
    public function GetSignatureEnvelopeRecipients($userId, $envelopeId) {
-  	  //parse inputs
+      if( $userId === null || $envelopeId === null ) {
+        throw new Exception("missing required parameters");
+      }
+      //parse inputs
   	  $resourcePath = str_replace("*", "", "/signature/{userId}/envelopes/{envelopeId}/recipients");
   	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "GET";
@@ -3313,7 +3532,10 @@ class SignatureApi {
 	 */
 
    public function RenameSignatureEnvelope($userId, $envelopeId, $name) {
-  	  //parse inputs
+      if( $userId === null || $envelopeId === null || $name === null ) {
+        throw new Exception("missing required parameters");
+      }
+      //parse inputs
   	  $resourcePath = str_replace("*", "", "/signature/{userId}/envelopes/{envelopeId}?name={name}");
   	  $pos = strpos($resourcePath, "?");
 	  if($pos !== false){
@@ -3358,7 +3580,10 @@ class SignatureApi {
 	 */
 
    public function RestartExpiredSignatureEnvelope($userId, $envelopeId) {
-  	  //parse inputs
+      if( $userId === null || $envelopeId === null ) {
+        throw new Exception("missing required parameters");
+      }
+      //parse inputs
   	  $resourcePath = str_replace("*", "", "/signature/{userId}/envelopes/{envelopeId}/restart");
   	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "PUT";
@@ -3396,7 +3621,10 @@ class SignatureApi {
 	 */
 
    public function SignatureEnvelopeSend($userId, $envelopeId) {
-  	  //parse inputs
+      if( $userId === null || $envelopeId === null ) {
+        throw new Exception("missing required parameters");
+      }
+      //parse inputs
   	  $resourcePath = str_replace("*", "", "/signature/{userId}/envelopes/{envelopeId}/send");
   	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "PUT";
@@ -3435,7 +3663,10 @@ class SignatureApi {
 	 */
 
    public function SignEnvelope($userId, $envelopeId, $recipientId) {
-  	  //parse inputs
+      if( $userId === null || $envelopeId === null || $recipientId === null ) {
+        throw new Exception("missing required parameters");
+      }
+      //parse inputs
   	  $resourcePath = str_replace("*", "", "/signature/{userId}/envelopes/{envelopeId}/recipient/{recipientId}/sign");
   	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "PUT";
@@ -3483,7 +3714,10 @@ class SignatureApi {
 	 */
 
    public function GetSignatureEnvelopes($userId, $statusId=null, $page=null, $DateTime=null, $name=null, $records=null, $document=null, $recipient=null) {
-  	  //parse inputs
+      if( $userId === null ) {
+        throw new Exception("missing required parameters");
+      }
+      //parse inputs
   	  $resourcePath = str_replace("*", "", "/signature/{userId}/envelopes?statusId={statusId}&records={count}&page={page}&document={originalDocumentMD5}&recipient={recipientEmail}&date={date}&name={name}");
   	  $pos = strpos($resourcePath, "?");
 	  if($pos !== false){
@@ -3542,7 +3776,10 @@ class SignatureApi {
 	 */
 
    public function GetSignatureEnvelopeResources($userId, $statusIds=null) {
-  	  //parse inputs
+      if( $userId === null ) {
+        throw new Exception("missing required parameters");
+      }
+      //parse inputs
   	  $resourcePath = str_replace("*", "", "/signature/{userId}/envelopes/resources?statusIds={statusIds}");
   	  $pos = strpos($resourcePath, "?");
 	  if($pos !== false){
@@ -3585,7 +3822,10 @@ class SignatureApi {
 	 */
 
    public function GetRecipientSignatureEnvelopes($userId, $statusId=null, $page=null, $records=null) {
-  	  //parse inputs
+      if( $userId === null ) {
+        throw new Exception("missing required parameters");
+      }
+      //parse inputs
   	  $resourcePath = str_replace("*", "", "/signature/{userId}/envelopes/recipient?statusId={statusId}&records={count}&page={page}");
   	  $pos = strpos($resourcePath, "?");
 	  if($pos !== false){
@@ -3636,7 +3876,10 @@ class SignatureApi {
 	 */
 
    public function GetContacts($userId, $page=null, $firstName=null, $lastName=null, $email=null, $records=null) {
-  	  //parse inputs
+      if( $userId === null ) {
+        throw new Exception("missing required parameters");
+      }
+      //parse inputs
   	  $resourcePath = str_replace("*", "", "/signature/{userId}/contacts?firstName={firstName}&lastName={lastName}&email={email}&records={count}&page={page}");
   	  $pos = strpos($resourcePath, "?");
 	  if($pos !== false){
@@ -3689,7 +3932,10 @@ class SignatureApi {
 	 */
 
    public function AddContact($userId, $body) {
-  	  //parse inputs
+      if( $userId === null || $body === null ) {
+        throw new Exception("missing required parameters");
+      }
+      //parse inputs
   	  $resourcePath = str_replace("*", "", "/signature/{userId}/contact");
   	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "POST";
@@ -3724,7 +3970,10 @@ class SignatureApi {
 	 */
 
    public function ModifyContact($userId, $contactId, $body=null) {
-  	  //parse inputs
+      if( $userId === null || $contactId === null ) {
+        throw new Exception("missing required parameters");
+      }
+      //parse inputs
   	  $resourcePath = str_replace("*", "", "/signature/{userId}/contacts/{contactId}");
   	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "POST";
@@ -3762,7 +4011,10 @@ class SignatureApi {
 	 */
 
    public function DeleteContact($userId, $contactId) {
-  	  //parse inputs
+      if( $userId === null || $contactId === null ) {
+        throw new Exception("missing required parameters");
+      }
+      //parse inputs
   	  $resourcePath = str_replace("*", "", "/signature/{userId}/contacts/{contactId}");
   	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "DELETE";
@@ -3800,7 +4052,10 @@ class SignatureApi {
 	 */
 
    public function ImportContacts($userId, $body=null) {
-  	  //parse inputs
+      if( $userId === null ) {
+        throw new Exception("missing required parameters");
+      }
+      //parse inputs
   	  $resourcePath = str_replace("*", "", "/signature/{userId}/contacts");
   	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "POST";
@@ -3836,7 +4091,10 @@ class SignatureApi {
 	 */
 
    public function GetSignatures($userId, $page=null, $name=null, $records=null) {
-  	  //parse inputs
+      if( $userId === null ) {
+        throw new Exception("missing required parameters");
+      }
+      //parse inputs
   	  $resourcePath = str_replace("*", "", "/signature/{userId}/signatures?records={count}&page={page}&name={name}");
   	  $pos = strpos($resourcePath, "?");
 	  if($pos !== false){
@@ -3883,7 +4141,10 @@ class SignatureApi {
 	 */
 
    public function DeleteSignature($userId, $signatureId) {
-  	  //parse inputs
+      if( $userId === null || $signatureId === null ) {
+        throw new Exception("missing required parameters");
+      }
+      //parse inputs
   	  $resourcePath = str_replace("*", "", "/signature/{userId}/signatures/{signatureId}");
   	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "DELETE";
@@ -3922,7 +4183,10 @@ class SignatureApi {
 	 */
 
    public function CreateSignature($userId, $name, $body=null) {
-  	  //parse inputs
+      if( $userId === null || $name === null ) {
+        throw new Exception("missing required parameters");
+      }
+      //parse inputs
   	  $resourcePath = str_replace("*", "", "/signature/{userId}/signature?name={name}");
   	  $pos = strpos($resourcePath, "?");
 	  if($pos !== false){
@@ -3962,7 +4226,10 @@ class SignatureApi {
 	 */
 
    public function GetSignaturePredefinedLists($userId) {
-  	  //parse inputs
+      if( $userId === null ) {
+        throw new Exception("missing required parameters");
+      }
+      //parse inputs
   	  $resourcePath = str_replace("*", "", "/signature/{userId}/lists");
   	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "GET";

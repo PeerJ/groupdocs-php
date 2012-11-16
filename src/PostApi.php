@@ -45,7 +45,10 @@ class PostApi {
 	 */
 
    public function RenameByPost($userId, $fileId, $newName) {
-  	  //parse inputs
+      if( $userId === null || $fileId === null || $newName === null ) {
+        throw new Exception("missing required parameters");
+      }
+      //parse inputs
   	  $resourcePath = str_replace("*", "", "/post/file.rename?user_id={userId}&file_id={fileId}&new_name={newName}");
   	  $pos = strpos($resourcePath, "?");
 	  if($pos !== false){
@@ -88,7 +91,10 @@ class PostApi {
 	 */
 
    public function DeleteByPost($userId, $fileId) {
-  	  //parse inputs
+      if( $userId === null || $fileId === null ) {
+        throw new Exception("missing required parameters");
+      }
+      //parse inputs
   	  $resourcePath = str_replace("*", "", "/post/file.delete?user_id={userId}&file_id={fileId}");
   	  $pos = strpos($resourcePath, "?");
 	  if($pos !== false){
@@ -128,7 +134,10 @@ class PostApi {
 	 */
 
    public function DeleteFromFolderByPost($userId, $path) {
-  	  //parse inputs
+      if( $userId === null || $path === null ) {
+        throw new Exception("missing required parameters");
+      }
+      //parse inputs
   	  $resourcePath = str_replace("*", "", "/post/file.delete.in?user_id={userId}&path={path}");
   	  $pos = strpos($resourcePath, "?");
 	  if($pos !== false){
@@ -169,7 +178,10 @@ class PostApi {
 	 */
 
    public function CompressByPost($userId, $fileId, $archiveType) {
-  	  //parse inputs
+      if( $userId === null || $fileId === null || $archiveType === null ) {
+        throw new Exception("missing required parameters");
+      }
+      //parse inputs
   	  $resourcePath = str_replace("*", "", "/post/file.compress?user_id={userId}&file_id={fileId}&archive_type={archiveType}");
   	  $pos = strpos($resourcePath, "?");
 	  if($pos !== false){

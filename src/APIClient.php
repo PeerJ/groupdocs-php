@@ -69,6 +69,16 @@ class APIClient {
 		$headerParams, $outFileStream=null) {
 
 		$headers = array();
+		$headers[] = "Host: dev-api.groupdocs.com";
+		
+		if ($headerParams != null) {
+			foreach ($headerParams as $key => $val) {
+				$headers[] = "$key: $val";
+				if ($key == 'api_key') {
+				    $added_api_key = True;
+				}
+			}
+		}
 		
 		$isFileUpload = false;
 		if (empty($postData)){
@@ -277,10 +287,7 @@ class APIClient {
 	        $finfo = finfo_open(FILEINFO_MIME_TYPE);
 	        $cont_type = finfo_file($finfo, $filePath);
 	        finfo_close($finfo);
-	    } 
-		if($cont_type == null){
-			$cont_type = mime_content_type($filePath);
-		}
+	    }
 		if($cont_type == null){
 			$cont_type = "application/octet-stream";
 		}

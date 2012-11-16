@@ -141,7 +141,10 @@ class MergeApi {
    public function FillQuestionnaire($userId, $collectorId, $datasourceId, $targetType=null, $emailResults=null) {
   	  //parse inputs
   	  $resourcePath = str_replace("*", "", "/merge/{userId}/questionnaires/collectors/{collectorId}/datasources/{datasourceId}?new_type={targetType}&email_results={emailResults}");
-  	  $resourcePath = substr($resourcePath, 0, strpos($resourcePath, "?"));
+  	  $pos = strpos($resourcePath, "?");
+	  if($pos !== false){
+  	  	$resourcePath = substr($resourcePath, 0, $pos);
+	  }
 	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "POST";
       $queryParams = array();
@@ -193,7 +196,10 @@ class MergeApi {
    public function FillExecution($userId, $executionId, $datasourceId, $targetType=null, $emailResults=null) {
   	  //parse inputs
   	  $resourcePath = str_replace("*", "", "/merge/{userId}/questionnaires/executions/{executionId}/datasources/{datasourceId}?new_type={targetType}&email_results={emailResults}");
-  	  $resourcePath = substr($resourcePath, 0, strpos($resourcePath, "?"));
+  	  $pos = strpos($resourcePath, "?");
+	  if($pos !== false){
+  	  	$resourcePath = substr($resourcePath, 0, $pos);
+	  }
 	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "POST";
       $queryParams = array();
@@ -245,7 +251,10 @@ class MergeApi {
    public function MergeDatasource($userId, $fileId, $datasourceId, $targetType=null, $emailResults=null) {
   	  //parse inputs
   	  $resourcePath = str_replace("*", "", "/merge/{userId}/files/{fileId}/datasources/{datasourceId}?new_type={targetType}&email_results={emailResults}");
-  	  $resourcePath = substr($resourcePath, 0, strpos($resourcePath, "?"));
+  	  $pos = strpos($resourcePath, "?");
+	  if($pos !== false){
+  	  	$resourcePath = substr($resourcePath, 0, $pos);
+	  }
 	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "POST";
       $queryParams = array();
@@ -298,7 +307,10 @@ class MergeApi {
    public function MergeDatasourceFields($userId, $fileId, $targetType=null, $emailResults=null, $assemblyName=null, $body) {
   	  //parse inputs
   	  $resourcePath = str_replace("*", "", "/merge/{userId}/files/{fileId}/datasources?new_type={targetType}&email_results={emailResults}&assembly_name={assemblyName}");
-  	  $resourcePath = substr($resourcePath, 0, strpos($resourcePath, "?"));
+  	  $pos = strpos($resourcePath, "?");
+	  if($pos !== false){
+  	  	$resourcePath = substr($resourcePath, 0, $pos);
+	  }
 	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "POST";
       $queryParams = array();
@@ -386,7 +398,10 @@ class MergeApi {
    public function GetQuestionnaires($userId, $status=null, $pageNumber=null, $pageSize=null) {
   	  //parse inputs
   	  $resourcePath = str_replace("*", "", "/merge/{userId}/questionnaires?status={status}&page_number={pageNumber}&page_size={pageSize}");
-  	  $resourcePath = substr($resourcePath, 0, strpos($resourcePath, "?"));
+  	  $pos = strpos($resourcePath, "?");
+	  if($pos !== false){
+  	  	$resourcePath = substr($resourcePath, 0, $pos);
+	  }
 	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "GET";
       $queryParams = array();
@@ -855,7 +870,10 @@ class MergeApi {
    public function GetDataSource($userId, $datasourceId, $fields=null) {
   	  //parse inputs
   	  $resourcePath = str_replace("*", "", "/merge/{userId}/datasources/{datasourceId}?field={fields}");
-  	  $resourcePath = substr($resourcePath, 0, strpos($resourcePath, "?"));
+  	  $pos = strpos($resourcePath, "?");
+	  if($pos !== false){
+  	  	$resourcePath = substr($resourcePath, 0, $pos);
+	  }
 	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "GET";
       $queryParams = array();
@@ -898,7 +916,10 @@ class MergeApi {
    public function GetQuestionnaireDataSources($userId, $questionnaireId, $includeFields=null) {
   	  //parse inputs
   	  $resourcePath = str_replace("*", "", "/merge/{userId}/questionnaires/{questionnaireId}/datasources?include_fields={includeFields}");
-  	  $resourcePath = substr($resourcePath, 0, strpos($resourcePath, "?"));
+  	  $pos = strpos($resourcePath, "?");
+	  if($pos !== false){
+  	  	$resourcePath = substr($resourcePath, 0, $pos);
+	  }
 	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "GET";
       $queryParams = array();
@@ -1435,7 +1456,10 @@ class MergeApi {
    public function GetQuestionnaireFields($userId, $questionnaireId, $includeGeometry=null) {
   	  //parse inputs
   	  $resourcePath = str_replace("*", "", "/merge/{userId}/questionnaires/{questionnaireId}/fields?include_geometry={includeGeometry}");
-  	  $resourcePath = substr($resourcePath, 0, strpos($resourcePath, "?"));
+  	  $pos = strpos($resourcePath, "?");
+	  if($pos !== false){
+  	  	$resourcePath = substr($resourcePath, 0, $pos);
+	  }
 	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "GET";
       $queryParams = array();

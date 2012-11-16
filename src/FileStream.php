@@ -22,9 +22,10 @@ class FileStream {
 	private $size = null;
 	private $inputStream = null;
 	
-	private function __construct($inputFilePath=null, $downloadDirectory=null){
+	private function __construct($inputFilePath=null, $downloadDirectory=null, $outFileName=null){
 		$this->filePath = $inputFilePath;
 		$this->downloadDirectory = $downloadDirectory;
+		$this->outFileName = $outFileName;
 	}
 
 	public static function fromFile($inFilePath){
@@ -41,18 +42,16 @@ class FileStream {
 		if(!file_exists($downloadDirectory)){
 			throw new Exception("Directory $downloadDirectory doesn't exist.");
 		}
-		$instance = new self(null, $downloadDirectory);
-		$instance->fileName = $outFileName;
-		$instance->requestUrl = null;
-		return $instance;
+		return new self(null, $downloadDirectory, $outFileName);
 	}
 	
 	public function getFileName(){
         if ($this->fileName == null and $this->filePath != null){
             $this->fileName = basename($this->filePath);
 		} else if ($this->fileName == null and $this->downloadDirectory != null){
-        	// guess from url
-        	$this->fileName = basename(parse_url($this->requestUrl, PHP_URL_PATH));
+			if($this->outFileName != null){
+				$this->fileName = $this->outFileName;
+			}
 		}
         return $this->fileName;
 	}
@@ -91,7 +90,7 @@ class FileStream {
         
         list($name, $value) = explode(':', $string, 2);
 		
-		if($this->fileName == null){
+		if($this->getFileName() == null){
 	        if( strcasecmp($name, 'Content-Disposition') == 0) {
 	            $parts = explode(';', $value);
 	            if( count($parts) > 1 ) {
@@ -106,8 +105,10 @@ class FileStream {
 	                    }
 	                }
 	            }
-	        } else if($this->requestUrl == null){
-	        	$this->requestUrl = curl_getinfo($ch, CURLINFO_EFFECTIVE_URL);
+	        } else {
+	        	// guess from url
+	        	$url = curl_getinfo($ch, CURLINFO_EFFECTIVE_URL);
+	        	$this->fileName = basename(parse_url($url, PHP_URL_PATH));
 	        }
 		}
 		

@@ -47,7 +47,10 @@ class PostApi {
    public function RenameByPost($userId, $fileId, $newName) {
   	  //parse inputs
   	  $resourcePath = str_replace("*", "", "/post/file.rename?user_id={userId}&file_id={fileId}&new_name={newName}");
-  	  $resourcePath = substr($resourcePath, 0, strpos($resourcePath, "?"));
+  	  $pos = strpos($resourcePath, "?");
+	  if($pos !== false){
+  	  	$resourcePath = substr($resourcePath, 0, $pos);
+	  }
 	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "POST";
       $queryParams = array();
@@ -87,7 +90,10 @@ class PostApi {
    public function DeleteByPost($userId, $fileId) {
   	  //parse inputs
   	  $resourcePath = str_replace("*", "", "/post/file.delete?user_id={userId}&file_id={fileId}");
-  	  $resourcePath = substr($resourcePath, 0, strpos($resourcePath, "?"));
+  	  $pos = strpos($resourcePath, "?");
+	  if($pos !== false){
+  	  	$resourcePath = substr($resourcePath, 0, $pos);
+	  }
 	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "POST";
       $queryParams = array();
@@ -124,7 +130,10 @@ class PostApi {
    public function DeleteFromFolderByPost($userId, $path) {
   	  //parse inputs
   	  $resourcePath = str_replace("*", "", "/post/file.delete.in?user_id={userId}&path={path}");
-  	  $resourcePath = substr($resourcePath, 0, strpos($resourcePath, "?"));
+  	  $pos = strpos($resourcePath, "?");
+	  if($pos !== false){
+  	  	$resourcePath = substr($resourcePath, 0, $pos);
+	  }
 	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "POST";
       $queryParams = array();
@@ -162,7 +171,10 @@ class PostApi {
    public function CompressByPost($userId, $fileId, $archiveType) {
   	  //parse inputs
   	  $resourcePath = str_replace("*", "", "/post/file.compress?user_id={userId}&file_id={fileId}&archive_type={archiveType}");
-  	  $resourcePath = substr($resourcePath, 0, strpos($resourcePath, "?"));
+  	  $pos = strpos($resourcePath, "?");
+	  if($pos !== false){
+  	  	$resourcePath = substr($resourcePath, 0, $pos);
+	  }
 	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "POST";
       $queryParams = array();

@@ -55,6 +55,12 @@ class APIClient {
 	function __construct($requestSigner = null) {
 		$this->signer = $requestSigner == null ? new DefaultRequestSigner() : $requestSigner;
 		$this->headers = array();
+		$this->debug = false;
+	}
+
+	public function setDebug($flag, $html=true) {
+		$this->debug = $flag;
+		$this->newline = $html ? "<br />" : "\n";
 	}
 
 	public function addHeaders(array $headers) {
@@ -105,6 +111,10 @@ class APIClient {
 
 		$timeoutSec = 0;
 		$curl = curl_init();
+		if($this->debug){
+			// curl_setopt($curl, CURLOPT_HEADER, true); // Display headers; returns null response
+ 			curl_setopt($curl, CURLOPT_VERBOSE, true); // Display communication with server
+		}
 		curl_setopt($curl, CURLOPT_TIMEOUT, $timeoutSec);
 		curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
 		// return the result on success, rather than just TRUE
@@ -127,7 +137,6 @@ class APIClient {
 				curl_setopt($curl, CURLOPT_POSTFIELDS, $postData);
 			}
 		} else if ($method == self::$PUT) {
-			$json_data = json_encode($postData);
 			curl_setopt($curl, CURLOPT_CUSTOMREQUEST, "PUT");
 			curl_setopt($curl, CURLOPT_POSTFIELDS, $postData);
 		} else if ($method == self::$DELETE) {
@@ -146,6 +155,16 @@ class APIClient {
 			curl_setopt($curl, CURLOPT_WRITEFUNCTION, array($outFileStream, 'bodyCallback'));
 		}
 		
+		if($this->debug){
+			$body = "> Request Body: $this->newline";
+			if($isFileUpload){
+				print_r("$body >>>stream info: size=".$postData->getSize()." content-type=".$postData->getContentType());
+			} else {
+				print_r($body.$postData);
+			}
+			echo $this->newline;
+		}
+		
 		// Make the request
 		$response = curl_exec($curl);
 		$response_info = curl_getinfo($curl);
@@ -154,6 +173,16 @@ class APIClient {
 		curl_close($curl);
 		if($outFileStream !== null){
 			fclose($outFileStream->getInputStream());
+		}
+		
+		if($this->debug){
+			$body = "< Response Body: $this->newline";
+			if($outFileStream !== null){
+				print_r("$body <<<stream info: size=".$outFileStream->getSize()." content-type=".$outFileStream->getContentType()." filename=".$outFileStream->getFileName());
+			} else {
+				print_r($body.$response);
+			}
+			echo $this->newline;
 		}
 		
 		// Handle the response
@@ -167,14 +196,12 @@ class APIClient {
 				return json_decode($response);
 			}
 		} else if ($response_info['http_code'] == 401) {
-			throw new Exception("Unauthorized API request to " . $url .
-					": ".$response );
+			throw new Exception("Unauthorized API request to " . $url);
 		} else if ($response_info['http_code'] == 404) {
 			return null;
 		} else {
 			throw new Exception("Can't connect to the api: " . $url .
-				" response code: " .
-				$response_info['http_code'] .
+				" response code: " . $response_info['http_code'] .
 				" response body: " . $response); 
 		}
 	}
@@ -290,14 +317,10 @@ class APIClient {
 	        $finfo = finfo_open(FILEINFO_MIME_TYPE);
 	        $cont_type = finfo_file($finfo, $filePath);
 	        finfo_close($finfo);
-	    } 
-		if($cont_type == null){
-			$cont_type = mime_content_type($filePath);
-		}
+	    }
 		if($cont_type == null){
 			$cont_type = "application/octet-stream";
 		}
-		
 		return $cont_type;
 	}
 

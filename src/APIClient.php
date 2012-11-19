@@ -58,9 +58,10 @@ class APIClient {
 		$this->debug = false;
 	}
 
-	public function setDebug($flag, $html=true) {
+	public function setDebug($flag, $curlLogFilepath="php://stderr") {
 		$this->debug = $flag;
-		$this->newline = $html ? "<br />" : "\n";
+		$this->newline = "\n"; //$html ? "<br />" : "\n";
+		$this->curlLogFilepath = $curlLogFilepath;
 	}
 
 	public function addHeaders(array $headers) {
@@ -114,6 +115,7 @@ class APIClient {
 		if($this->debug){
 			// curl_setopt($curl, CURLOPT_HEADER, true); // Display headers; returns null response
  			curl_setopt($curl, CURLOPT_VERBOSE, true); // Display communication with server
+ 			curl_setopt($curl, CURLOPT_STDERR, $curl_log = fopen($this->curlLogFilepath, 'a+'));
 		}
 		curl_setopt($curl, CURLOPT_TIMEOUT, $timeoutSec);
 		curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
@@ -158,9 +160,9 @@ class APIClient {
 		if($this->debug){
 			$body = "> Request Body: $this->newline";
 			if($isFileUpload){
-				print_r("$body >>>stream info: size=".$postData->getSize()." content-type=".$postData->getContentType());
+				fwrite($curl_log, "$body >>>stream info: size=".$postData->getSize()." content-type=".$postData->getContentType());
 			} else {
-				print_r($body.$postData);
+				fwrite($curl_log, $body.$postData);
 			}
 			echo $this->newline;
 		}
@@ -178,11 +180,13 @@ class APIClient {
 		if($this->debug){
 			$body = "< Response Body: $this->newline";
 			if($outFileStream !== null){
-				print_r("$body <<<stream info: size=".$outFileStream->getSize()." content-type=".$outFileStream->getContentType()." filename=".$outFileStream->getFileName());
+				fwrite($curl_log, "$body <<<stream info: size=".$outFileStream->getSize()." content-type=".
+				$outFileStream->getContentType()." filename=".$outFileStream->getFileName());
 			} else {
-				print_r($body.$response);
+				fwrite($curl_log, $body.$response);
 			}
-			echo $this->newline;
+			fwrite($curl_log, $this->newline);
+			fclose($curl_log);
 		}
 		
 		// Handle the response

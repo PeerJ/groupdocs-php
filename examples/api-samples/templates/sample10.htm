@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<title>Powered by {{ @VERSION }}</title>
+	<style type="text/css">
+		{{ Web::minify('templates/',array('style.css'),FALSE) }}
+	</style>
+</head>
+<body>
+<h3 style="text-align:center;"><a href="/index.php">GroupDocs PHP SDK Samples</a> - Sample10</h3>
+
+<div class='samplecontent' style="padding:10px;">
+   Sample is under development. <i>This sample will show how to share a document to other users using PHP SDK</i> <br/>
+   
+   <br/><p>You entered: 
+   <p><h3><font color="red">{{@error}}</font></h3>
+   <p>User ID = {{@userId}}
+   <p>Private key = {{@privateKey}}
+   <p>File Id = {{@fileId}}
+   <p>Email = {{@email}}
+   <div id="requestForm" style="padding:20px; border:1px solid black;">
+   <p> Enter data for request and press "Make request" button </p>
+        <form action="/sample10" method = "post" enctype = 'multipart/form-data'>
+           <label for='client_id'>GroupDocs Client ID</label>
+            <br />
+            <input type='text', name='client_id' value="{{@userId}}" />
+            <br />
+            <label for='private_key'>GroupDocs Private Key</label>
+            <br />
+            <input type='text', name='private_key'  value="{{@privateKey}}" />
+            <br />
+            <label for='file_Id'>GroupDocs file ID</label>
+            <br />
+            <input type='text', name='fileId'  value="{{@fileId}}" />
+            <br />
+            <label for='email'>Your email</label>
+            <br />
+            <input type='text', name='email'  value="{{@email}}" />
+            <br />
+            <input type='submit' value='Make Request'/>
+        </form>
+   </div>
+   <div  style="padding:20px; border:1px solid black;">
+       <p><h3><font color="green">Document shared to user with e-mail <h1>{{@shared}}</h1></font></h3>
+   </div>
+   <br/>
+</div>
+
+<div style="padding:10px;">
+Choose anothe one sample:
+<ul>
+    <li> <a href="/sample1">Sample1 - How to login to GroupDocs using the API</li>
+    <li> <a href="/sample2">Sample2 - How to list files within GroupDocs Storage using the Storage API</li>
+    <li> <a href="/sample3">Sample3 - How to upload a file to GroupDocs using the Storage API</li>
+    <li> <a href="/sample4">Sample4 - How to download a file from GroupDocs Storage using the Storage API</li>
+    <li> <a href="/sample5">Sample5 - How to copy / move a file using the GroupDocs Storage API</li>
+    <li> <a href="/sample6">Sample6 - How to add a Signature to a document in GroupDocs Signature</li>
+    <li> <a href="/sample7">Sample7 - How to create a list of thumbnails for a document</li>
+    <li> <a href="/sample8">Sample8 - How to return a URL representing a single page of a Document</li>
+    <li> <a href="/sample9">Sample9 - How to generate a embedded Viewer URL for a DocumentI</li>
+    <li> <a href="/sample10">Sample10 - How to share a document to other users</li>
+</ul>
+</div>
+</body>
+</html>

@@ -30,6 +30,10 @@ To download required version of PHP SDK with composer it's enough to set this se
          }
       }
 
+To update sdk: php composer.phar update
+
+To see all available PHP SDK versions tags visit this page - https://packagist.org/packages/groupdocs/groupdocs-php
+
 ### List of samples:
 
 * How to autorize to GroupDocs using the API and get user info

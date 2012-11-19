@@ -11,7 +11,7 @@
         $mgmtApi = new MgmtApi($apiClient);
         $userAccountInfo = $mgmtApi->GetUserProfile($clientId);
         $api = new StorageApi($apiClient);
-        $api->setBasePath("http://localhost:7000/v2.0");
+       // $api->setBasePath("http://localhost:7000/v2.0");
         $files = $api->ListEntities($clientId, "", null, null, null, null, null, null, true); //geting all Entities from curent user
         $thumbnail = '';
         $name = '';

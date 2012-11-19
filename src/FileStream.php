@@ -22,10 +22,9 @@ class FileStream {
 	private $size = null;
 	private $inputStream = null;
 	
-	private function __construct($inputFilePath=null, $downloadDirectory=null, $outFileName=null){
+	private function __construct($inputFilePath=null, $downloadDirectory=null){
 		$this->filePath = $inputFilePath;
 		$this->downloadDirectory = $downloadDirectory;
-		$this->outFileName = $outFileName;
 	}
 
 	public static function fromFile($inFilePath){
@@ -42,16 +41,18 @@ class FileStream {
 		if(!file_exists($downloadDirectory)){
 			throw new Exception("Directory $downloadDirectory doesn't exist.");
 		}
-		return new self(null, $downloadDirectory, $outFileName);
+		$instance = new self(null, $downloadDirectory);
+		$instance->fileName = $outFileName;
+		$instance->requestUrl = null;
+		return $instance;
 	}
 	
 	public function getFileName(){
         if ($this->fileName == null and $this->filePath != null){
             $this->fileName = basename($this->filePath);
 		} else if ($this->fileName == null and $this->downloadDirectory != null){
-			if($this->outFileName != null){
-				$this->fileName = $this->outFileName;
-			}
+			// guess from url
+        	$this->fileName = basename(parse_url($this->requestUrl, PHP_URL_PATH));
 		}
         return $this->fileName;
 	}
@@ -90,7 +91,7 @@ class FileStream {
         
         list($name, $value) = explode(':', $string, 2);
 		
-		if($this->getFileName() == null){
+		if($this->fileName == null){
 	        if( strcasecmp($name, 'Content-Disposition') == 0) {
 	            $parts = explode(';', $value);
 	            if( count($parts) > 1 ) {
@@ -105,10 +106,8 @@ class FileStream {
 	                    }
 	                }
 	            }
-	        } else {
-	        	// guess from url
-	        	$url = curl_getinfo($ch, CURLINFO_EFFECTIVE_URL);
-	        	$this->fileName = basename(parse_url($url, PHP_URL_PATH));
+	        } else if($this->requestUrl == null){
+	        	$this->requestUrl = $this->getCurlInfo($ch, CURLINFO_EFFECTIVE_URL);
 	        }
 		}
 		
@@ -127,6 +126,10 @@ class FileStream {
         $this->size += $len;
         return $len;
     }
+	
+	public function getCurlInfo($ch, $name){
+		return curl_getinfo($ch, $name);
+	}
 
     private function unquote($string) {
         return str_replace(array("'", '"'), '', $string);

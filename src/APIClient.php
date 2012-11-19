@@ -54,8 +54,19 @@ class APIClient {
 	 */
 	function __construct($requestSigner = null) {
 		$this->signer = $requestSigner == null ? new DefaultRequestSigner() : $requestSigner;
+		$this->headers = array();
+		$this->debug = false;
 	}
 
+	public function setDebug($flag, $curlLogFilepath="php://stderr") {
+		$this->debug = $flag;
+		$this->newline = "\n"; //$html ? "<br />" : "\n";
+		$this->curlLogFilepath = $curlLogFilepath;
+	}
+
+	public function addHeaders(array $headers) {
+		$this->headers = $headers;
+	}
 
     /**
 	 * @param string $resourcePath path to method endpoint
@@ -69,13 +80,13 @@ class APIClient {
 		$headerParams, $outFileStream=null) {
 
 		$headers = array();
+		foreach ($this->headers as $key => $val) {
+			$headers[] = "$key: $val";
+		}
 		
 		if ($headerParams != null) {
 			foreach ($headerParams as $key => $val) {
 				$headers[] = "$key: $val";
-				if ($key == 'api_key') {
-				    $added_api_key = True;
-				}
 			}
 		}
 		
@@ -101,6 +112,11 @@ class APIClient {
 
 		$timeoutSec = 0;
 		$curl = curl_init();
+		if($this->debug){
+			// curl_setopt($curl, CURLOPT_HEADER, true); // Display headers; returns null response
+ 			curl_setopt($curl, CURLOPT_VERBOSE, true); // Display communication with server
+ 			curl_setopt($curl, CURLOPT_STDERR, $curl_log = fopen($this->curlLogFilepath, 'a+'));
+		}
 		curl_setopt($curl, CURLOPT_TIMEOUT, $timeoutSec);
 		curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
 		// return the result on success, rather than just TRUE
@@ -123,7 +139,6 @@ class APIClient {
 				curl_setopt($curl, CURLOPT_POSTFIELDS, $postData);
 			}
 		} else if ($method == self::$PUT) {
-			$json_data = json_encode($postData);
 			curl_setopt($curl, CURLOPT_CUSTOMREQUEST, "PUT");
 			curl_setopt($curl, CURLOPT_POSTFIELDS, $postData);
 		} else if ($method == self::$DELETE) {
@@ -142,6 +157,16 @@ class APIClient {
 			curl_setopt($curl, CURLOPT_WRITEFUNCTION, array($outFileStream, 'bodyCallback'));
 		}
 		
+		if($this->debug){
+			$body = "> Request Body: $this->newline";
+			if($isFileUpload){
+				fwrite($curl_log, "$body >>>stream info: size=".$postData->getSize()." content-type=".$postData->getContentType());
+			} else {
+				fwrite($curl_log, $body.$postData);
+			}
+			echo $this->newline;
+		}
+		
 		// Make the request
 		$response = curl_exec($curl);
 		$response_info = curl_getinfo($curl);
@@ -150,6 +175,18 @@ class APIClient {
 		curl_close($curl);
 		if($outFileStream !== null){
 			fclose($outFileStream->getInputStream());
+		}
+		
+		if($this->debug){
+			$body = "< Response Body: $this->newline";
+			if($outFileStream !== null){
+				fwrite($curl_log, "$body <<<stream info: size=".$outFileStream->getSize()." content-type=".
+				$outFileStream->getContentType()." filename=".$outFileStream->getFileName());
+			} else {
+				fwrite($curl_log, $body.$response);
+			}
+			fwrite($curl_log, $this->newline);
+			fclose($curl_log);
 		}
 		
 		// Handle the response
@@ -163,14 +200,12 @@ class APIClient {
 				return json_decode($response);
 			}
 		} else if ($response_info['http_code'] == 401) {
-			throw new Exception("Unauthorized API request to " . $url .
-					": ".$response );
+			throw new Exception("Unauthorized API request to " . $url);
 		} else if ($response_info['http_code'] == 404) {
 			return null;
 		} else {
 			throw new Exception("Can't connect to the api: " . $url .
-				" response code: " .
-				$response_info['http_code'] .
+				" response code: " . $response_info['http_code'] .
 				" response body: " . $response); 
 		}
 	}
@@ -290,7 +325,6 @@ class APIClient {
 		if($cont_type == null){
 			$cont_type = "application/octet-stream";
 		}
-		
 		return $cont_type;
 	}
 

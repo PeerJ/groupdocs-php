@@ -45,7 +45,10 @@ class SharedApi {
 	 */
 
    public function Download($guid, $fileName, $render=null, FileStream $outFileStream) {
-  	  //parse inputs
+      if( $guid === null || $fileName === null ) {
+        throw new Exception("missing required parameters");
+      }
+      //parse inputs
   	  $resourcePath = str_replace("*", "", "/shared/files/{guid}?filename={fileName}&render={render}");
   	  $pos = strpos($resourcePath, "?");
 	  if($pos !== false){
@@ -81,7 +84,10 @@ class SharedApi {
 	 */
 
    public function GetXml($guid, FileStream $outFileStream) {
-  	  //parse inputs
+      if( $guid === null ) {
+        throw new Exception("missing required parameters");
+      }
+      //parse inputs
   	  $resourcePath = str_replace("*", "", "/shared/files/{guid}/xml");
   	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "GET";
@@ -107,7 +113,10 @@ class SharedApi {
 	 */
 
    public function GetPackage($path, FileStream $outFileStream) {
-  	  //parse inputs
+      if( $path === null ) {
+        throw new Exception("missing required parameters");
+      }
+      //parse inputs
   	  $resourcePath = str_replace("*", "", "/shared/packages/{*path}");
   	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "GET";

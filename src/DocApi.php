@@ -49,7 +49,10 @@ class DocApi {
 	 */
 
    public function ViewDocument($userId, $fileId, $pageNumber=null, $pageCount=null, $width=null, $quality=null, $usePdf=null) {
-  	  //parse inputs
+      if( $userId === null || $fileId === null ) {
+        throw new Exception("missing required parameters");
+      }
+      //parse inputs
   	  $resourcePath = str_replace("*", "", "/doc/{userId}/files/{fileId}/thumbnails?page_number={pageNumber}&page_count={pageCount}&width={width}&quality={quality}&use_pdf={usePdf}");
   	  $pos = strpos($resourcePath, "?");
 	  if($pos !== false){
@@ -107,7 +110,10 @@ class DocApi {
 	 */
 
    public function GetDocumentViews($userId, $startIndex=null, $pageSize=null) {
-  	  //parse inputs
+      if( $userId === null ) {
+        throw new Exception("missing required parameters");
+      }
+      //parse inputs
   	  $resourcePath = str_replace("*", "", "/doc/{userId}/views?page_index={startIndex}&page_size={pageSize}");
   	  $pos = strpos($resourcePath, "?");
 	  if($pos !== false){
@@ -152,7 +158,10 @@ class DocApi {
 	 */
 
    public function ShareDocument($userId, $fileId, $body) {
-  	  //parse inputs
+      if( $userId === null || $fileId === null || $body === null ) {
+        throw new Exception("missing required parameters");
+      }
+      //parse inputs
   	  $resourcePath = str_replace("*", "", "/doc/{userId}/files/{fileId}/sharers");
   	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "PUT";
@@ -190,7 +199,10 @@ class DocApi {
 	 */
 
    public function UnshareDocument($userId, $fileId) {
-  	  //parse inputs
+      if( $userId === null || $fileId === null ) {
+        throw new Exception("missing required parameters");
+      }
+      //parse inputs
   	  $resourcePath = str_replace("*", "", "/doc/{userId}/files/{fileId}/sharers");
   	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "DELETE";
@@ -228,7 +240,10 @@ class DocApi {
 	 */
 
    public function GetFolderSharers($userId, $folderId) {
-  	  //parse inputs
+      if( $userId === null || $folderId === null ) {
+        throw new Exception("missing required parameters");
+      }
+      //parse inputs
   	  $resourcePath = str_replace("*", "", "/doc/{userId}/folders/{folderId}/sharers");
   	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "GET";
@@ -267,7 +282,10 @@ class DocApi {
 	 */
 
    public function ShareFolder($userId, $folderId, $body) {
-  	  //parse inputs
+      if( $userId === null || $folderId === null || $body === null ) {
+        throw new Exception("missing required parameters");
+      }
+      //parse inputs
   	  $resourcePath = str_replace("*", "", "/doc/{userId}/folders/{folderId}/sharers");
   	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "PUT";
@@ -305,7 +323,10 @@ class DocApi {
 	 */
 
    public function UnshareFolder($userId, $folderId) {
-  	  //parse inputs
+      if( $userId === null || $folderId === null ) {
+        throw new Exception("missing required parameters");
+      }
+      //parse inputs
   	  $resourcePath = str_replace("*", "", "/doc/{userId}/folders/{folderId}/sharers");
   	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "DELETE";
@@ -344,7 +365,10 @@ class DocApi {
 	 */
 
    public function SetDocumentAccessMode($userId, $fileId, $mode=null) {
-  	  //parse inputs
+      if( $userId === null || $fileId === null ) {
+        throw new Exception("missing required parameters");
+      }
+      //parse inputs
   	  $resourcePath = str_replace("*", "", "/doc/{userId}/files/{fileId}/accessinfo?mode={mode}");
   	  $pos = strpos($resourcePath, "?");
 	  if($pos !== false){
@@ -389,7 +413,10 @@ class DocApi {
 	 */
 
    public function GetDocumentAccessInfo($userId, $fileId) {
-  	  //parse inputs
+      if( $userId === null || $fileId === null ) {
+        throw new Exception("missing required parameters");
+      }
+      //parse inputs
   	  $resourcePath = str_replace("*", "", "/doc/{userId}/files/{fileId}/accessinfo");
   	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "GET";
@@ -427,7 +454,10 @@ class DocApi {
 	 */
 
    public function GetDocumentMetadata($userId, $fileId) {
-  	  //parse inputs
+      if( $userId === null || $fileId === null ) {
+        throw new Exception("missing required parameters");
+      }
+      //parse inputs
   	  $resourcePath = str_replace("*", "", "/doc/{userId}/files/{fileId}/metadata");
   	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "GET";
@@ -465,7 +495,10 @@ class DocApi {
 	 */
 
    public function GetDocumentMetadataByPath($userId, $path) {
-  	  //parse inputs
+      if( $userId === null || $path === null ) {
+        throw new Exception("missing required parameters");
+      }
+      //parse inputs
   	  $resourcePath = str_replace("*", "", "/doc/{userId}/files/{*path}");
   	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "GET";
@@ -504,7 +537,10 @@ class DocApi {
 	 */
 
    public function SetDocumentUserStatus($userId, $fileId, $status) {
-  	  //parse inputs
+      if( $userId === null || $fileId === null || $status === null ) {
+        throw new Exception("missing required parameters");
+      }
+      //parse inputs
   	  $resourcePath = str_replace("*", "", "/doc/{userId}/files/{fileId}/sharer");
   	  $pos = strpos($resourcePath, "?");
 	  if($pos !== false){
@@ -553,7 +589,10 @@ class DocApi {
 	 */
 
    public function GetSharedDocuments($userId, $sharesTypes=null, $pageIndex=null, $pageSize=null, $orderBy=null, $orderAsc=null) {
-  	  //parse inputs
+      if( $userId === null || $sharesTypes === null ) {
+        throw new Exception("missing required parameters");
+      }
+      //parse inputs
   	  $resourcePath = str_replace("*", "", "/doc/{userId}/shares/{sharesTypes}?page_index={pageIndex}&page_size={pageSize}&order_by={orderBy}&order_asc={orderAsc}");
   	  $pos = strpos($resourcePath, "?");
 	  if($pos !== false){
@@ -608,7 +647,10 @@ class DocApi {
 	 */
 
    public function GetTemplateFields($userId, $fileId, $includeGeometry=null) {
-  	  //parse inputs
+      if( $userId === null || $fileId === null ) {
+        throw new Exception("missing required parameters");
+      }
+      //parse inputs
   	  $resourcePath = str_replace("*", "", "/doc/{userId}/files/{fileId}/fields?include_geometry={includeGeometry}");
   	  $pos = strpos($resourcePath, "?");
 	  if($pos !== false){
@@ -653,7 +695,10 @@ class DocApi {
 	 */
 
    public function GetDocumentFormats($userId, $fileId) {
-  	  //parse inputs
+      if( $userId === null || $fileId === null ) {
+        throw new Exception("missing required parameters");
+      }
+      //parse inputs
   	  $resourcePath = str_replace("*", "", "/doc/{userId}/files/{fileId}/formats");
   	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "GET";
@@ -696,7 +741,10 @@ class DocApi {
 	 */
 
    public function GetDocumentPageImage($userId, $fileId, $pageNumber, $dimension, $quality=null, $usePdf=null, $expiresOn=null, FileStream $outFileStream) {
-  	  //parse inputs
+      if( $userId === null || $fileId === null || $pageNumber === null || $dimension === null ) {
+        throw new Exception("missing required parameters");
+      }
+      //parse inputs
   	  $resourcePath = str_replace("*", "", "/doc/{userId}/files/{fileId}/pages/{pageNumber}/images/{dimension}?quality={quality}&use_pdf={usePdf}&expires={expiresOn}");
   	  $pos = strpos($resourcePath, "?");
 	  if($pos !== false){
@@ -754,7 +802,10 @@ class DocApi {
 	 */
 
    public function GetDocumentPagesImageUrls($userId, $fileId, $firstPage=null, $pageCount=null, $dimension, $quality=null, $usePdf=null, $token=null) {
-  	  //parse inputs
+      if( $userId === null || $fileId === null || $dimension === null ) {
+        throw new Exception("missing required parameters");
+      }
+      //parse inputs
   	  $resourcePath = str_replace("*", "", "/doc/{userId}/files/{fileId}/pages/images/{dimension}/urls?first_page={firstPage}&page_count={pageCount}&quality={quality}&use_pdf={usePdf}&token={token}");
   	  $pos = strpos($resourcePath, "?");
 	  if($pos !== false){
@@ -815,7 +866,10 @@ class DocApi {
 	 */
 
    public function GetEditLock($userId, $fileId) {
-  	  //parse inputs
+      if( $userId === null || $fileId === null ) {
+        throw new Exception("missing required parameters");
+      }
+      //parse inputs
   	  $resourcePath = str_replace("*", "", "/doc/{userId}/files/{fileId}/editlock");
   	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "GET";
@@ -854,7 +908,10 @@ class DocApi {
 	 */
 
    public function RemoveEditLock($userId, $fileId, $lockId) {
-  	  //parse inputs
+      if( $userId === null || $fileId === null || $lockId === null ) {
+        throw new Exception("missing required parameters");
+      }
+      //parse inputs
   	  $resourcePath = str_replace("*", "", "/doc/{userId}/files/{fileId}/editlock");
   	  $pos = strpos($resourcePath, "?");
 	  if($pos !== false){

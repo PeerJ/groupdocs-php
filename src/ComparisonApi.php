@@ -45,7 +45,10 @@ class ComparisonApi {
 	 */
 
    public function DownloadResult($userId, $resultFileId, $format=null, FileStream $outFileStream) {
-  	  //parse inputs
+      if( $userId === null || $resultFileId === null ) {
+        throw new Exception("missing required parameters");
+      }
+      //parse inputs
   	  $resourcePath = str_replace("*", "", "/comparison/{userId}/comparison/download?resultFileId={resultFileId}&format={format}");
   	  $pos = strpos($resourcePath, "?");
 	  if($pos !== false){
@@ -84,7 +87,10 @@ class ComparisonApi {
 	 */
 
    public function Compare($userId, $sourceFileId, $targetFileId, $callbackUrl) {
-  	  //parse inputs
+      if( $userId === null || $sourceFileId === null || $targetFileId === null || $callbackUrl === null ) {
+        throw new Exception("missing required parameters");
+      }
+      //parse inputs
   	  $resourcePath = str_replace("*", "", "/comparison/{userId}/comparison/compare?source={sourceFileId}&target={targetFileId}&callback={callbackUrl}");
   	  $pos = strpos($resourcePath, "?");
 	  if($pos !== false){
@@ -131,7 +137,10 @@ class ComparisonApi {
 	 */
 
    public function GetChanges($userId, $resultFileId) {
-  	  //parse inputs
+      if( $userId === null || $resultFileId === null ) {
+        throw new Exception("missing required parameters");
+      }
+      //parse inputs
   	  $resourcePath = str_replace("*", "", "/comparison/{userId}/comparison/changes?resultFileId={resultFileId}");
   	  $pos = strpos($resourcePath, "?");
 	  if($pos !== false){
@@ -173,7 +182,10 @@ class ComparisonApi {
 	 */
 
    public function UpdateChanges($userId, $resultFileId, $body) {
-  	  //parse inputs
+      if( $userId === null || $resultFileId === null || $body === null ) {
+        throw new Exception("missing required parameters");
+      }
+      //parse inputs
   	  $resourcePath = str_replace("*", "", "/comparison/{userId}/comparison/changes?resultFileId={resultFileId}");
   	  $pos = strpos($resourcePath, "?");
 	  if($pos !== false){
@@ -214,7 +226,10 @@ class ComparisonApi {
 	 */
 
    public function GetDocumentDetails($userId, $guid) {
-  	  //parse inputs
+      if( $userId === null || $guid === null ) {
+        throw new Exception("missing required parameters");
+      }
+      //parse inputs
   	  $resourcePath = str_replace("*", "", "/comparison/{userId}/comparison/document?guid={guid}");
   	  $pos = strpos($resourcePath, "?");
 	  if($pos !== false){

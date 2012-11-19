@@ -17,33 +17,44 @@
 
 class TestFileStreamFromHttp extends PHPUnit_Framework_TestCase {
 
-	protected function setUp() {
-        $this->fs = FileStream::fromFile(dirname(__FILE__)."/resources/test.doc");
-	}
-	
-	
 	public function test_size() {
+		$filename = "out.doc";
+		$fs = FileStream::fromHttp(dirname(__FILE__), $filename);
+		$fs->bodyCallback(null, file_get_contents(dirname(__FILE__)."/resources/test.doc"));
+		
 		$expected = 29696;
-		// $this->assertEquals($expected, $this->fs->getSize());
-		$this->markTestIncomplete('This test has not been implemented yet.');
+		$this->assertEquals($expected, $fs->getSize());
+		$this->assertEquals(true, fclose($fs->getInputStream()));
+		unlink(dirname(__FILE__)."/".$filename);
 	}
 
 	public function test_contentType() {
+		$fs = FileStream::fromHttp(dirname(__FILE__), "out.doc");
+		$fs->headerCallback(null, "Content-Type: application/msword");
+		
 		$expected = "application/msword";
-		// $this->assertEquals($expected, $this->fs->getContentType());
-		$this->markTestIncomplete('This test has not been implemented yet.');
+		$this->assertEquals($expected, $fs->getContentType());
 	}
 	
-	public function test_fileName() {
+	public function test_fileNameFromHeader() {
+		$fs = FileStream::fromHttp(dirname(__FILE__));
+		$fs->headerCallback(null, "Content-Disposition: attachment; filename='test.doc'");
+		
 		$expected = "test.doc";
-		// $this->assertEquals($expected, $this->fs->getFileName());
-		$this->markTestIncomplete('This test has not been implemented yet.');
+		$this->assertEquals($expected, $fs->getFileName());
 	}
 	
-	public function test_inputStream() {
-		$expected = true;
-		// $this->assertEquals($expected, fclose($this->fs->getInputStream()));
-		$this->markTestIncomplete('This test has not been implemented yet.');
+	public function test_fileNameFromUrl() {
+		$requestUrl = "https://api.groupdocs.com/v2.0/storage/e50280a09d8188e3/files/ad9080c0d33c9ef8954aec2d16d8d5694dfba8233622ac2c8f077a667c07ae77?signature=m5eCNhZwRv8KlUKeeZmfVrtnSb4";
+		$fs = $this->getMockBuilder('FileStream')->disableOriginalConstructor()->setMethods(array('getCurlInfo'))->getMock();
+		$fs->expects($this->once())->method('getCurlInfo')->will($this->returnValue($requestUrl));
+		$fs->requestUrl = null;
+		$fs->filePath = null;
+		$fs->downloadDirectory = "something";
+		$fs->headerCallback(null, "Some-Header: value");
+		
+		$expected = "ad9080c0d33c9ef8954aec2d16d8d5694dfba8233622ac2c8f077a667c07ae77";
+		$this->assertEquals($expected, $fs->getFileName());
 	}
-
+	
 }

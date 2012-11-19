@@ -14,28 +14,25 @@
    Sample is under development. <i>This sample will show how to generate a embedded Viewer URL for a Document using PHP SDK</i> <br/>
    
    <br/><p>You entered: 
-   <p>UserId = {{@userId}}
-   <p>PrivateKey = {{@privateKey}}
+   <p><h3><font color="red">{{@error}}</font></h3>
    <p>File Id = {{@fileId}}
-   <p>Page number = {{@pageNumber}}
+   <p>Viewer URL = {{@url}}
+   <p>Height = {{@height}}
+   <p>Width = {{@width}}
    <div id="requestForm" style="padding:20px; border:1px solid black;">
    <p> Enter data for request and press "Make request" button </p>
         <form action="/sample9" method = "post" enctype = 'multipart/form-data'>
-            <label for='client_id'>GroupDocs Client ID</label>
-            <br />
-            <input type='text', name='client_id' value="{{@userId}}" />
-            <br />
-            <label for='private_key'>GroupDocs Private Key</label>
-            <br />
-            <input type='text', name='private_key'  value="{{@privateKey}}" />
-            <br />
             <label for='private_key'>GroupDocs file ID</label>
             <br />
             <input type='text', name='fileId'  value="{{@fileId}}" />
             <br />
-            <label for='private_key'>GroupDocs page number you would like to see (optional)</label>
+            <label for='private_key'>Width</label>
             <br />
-            <input type='text', name='pageNumber'  value="{{@pageNumber}}" />
+            <input type='text', name='width'  value="{{@width}}" />
+            <br />
+            <label for='private_key'>Height</label>
+            <br />
+            <input type='text', name='height'  value="{{@height}}" />
             <br />
             <input type='submit' value='Make Request'/>
         </form>

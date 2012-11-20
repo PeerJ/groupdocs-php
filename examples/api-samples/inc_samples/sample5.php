@@ -6,48 +6,76 @@
     $copy = F3::get('POST["copy"]');
     $move = F3::get('POST["move"]');
     $folder = F3::get('POST["folder"]');
-    if (isset($clientId) AND isset($privateKey))
+    
+    function copy_move($clientId, $privateKey, $fileGuId, $move=NULL, $copy=NULL, $folder)
     {
-        $signer = new GroupDocsRequestSigner($privateKey);
-        $apiClient = new APIClient($signer); // PHP SDK V1.1
-        $api = new StorageApi($apiClient);
-        $api->setBasePath("http://localhost:7000/v2.0");
-        $files = $api->ListEntities($clientId, '', 0);
-        $name = '';
-        foreach ($files->result->files as $item) //selecting file names
+        if (!isset($clientId) || !isset($privateKey) || !isset($fileGuId))
         {
-           if($item->guid == $fileGuId)
-           {
-            $name = $item->name;
-            $file_id = $item->id;
-           }
-        }
-        
-        if (isset($copy))
+            throw new Exception('You do not enter all parameters');
+        } 
+        else
         {
-             
-           $path = $folder . '/' . $name;
-           $file = $api->MoveFile($clientId, $path, NULL, $file_id, NULL); //download file
-           
-           F3::set('button', $copy);
-           
-        }
-        
-        if (isset($move))
-        {
-             
-           $path = $folder . '/' . $name;
-           $file = $api->MoveFile($clientId, $path, NULL, NULL, $file_id); //download file
-          
-           F3::set('button', $move);
-           
-        }
-        
-        F3::set('userId', $clientId);
-        F3::set('privateKey', $privateKey);
-        F3::set('file_Id', $file_id);
-        F3::set('folder', $folder);
-       
+            $signer = new GroupDocsRequestSigner($privateKey);
+            $apiClient = new APIClient($signer); // PHP SDK V1.1
+            $api = new StorageApi($apiClient);
+           // $api->setBasePath("http://localhost:7000/v2.0");
+            $files = $api->ListEntities($clientId, '', 0);
+            $name = '';
+            $file_id = '';
+            foreach ($files->result->files as $item) //selecting file names
+            {
+               if ($item->guid == $fileGuId)
+               {
+                $name = $item->name;
+                $file_id = $item->id;
+               }
+            }
+
+            if (isset($copy))
+            {
+
+               $path = $folder . '/' . $name;
+               $file = $api->MoveFile($clientId, $path, NULL, $file_id, NULL); //download file
+
+               return  F3::set('button', $copy);
+
+            }
+
+            if (isset($move))
+            {
+
+               $path = $folder . '/' . $name;
+               $file = $api->MoveFile($clientId, $path, NULL, NULL, $file_id); //download file
+
+               return F3::set('button', $move);
+
+            }
+         } 
     }
+    try 
+    {
+        copy_move($clientId, $privateKey, $fileGuId, $move, $copy, $folder);
+        $massage = "File was {{@button}}'ed to the {{@folder}} folder";
+    }
+    catch (Exception $e)
+    {
+        $error = 'ERROR: ' .  $e->getMessage() . "\n";
+        $massage = $error;
+    }
+//     try 
+//    {
+//        copy_move($clientId, $privateKey, $fileGuId, NULL, $copy, $folder);
+//        $massage = 'File was <font color="blue">{{@button}}</font> to the <font color="blue">{{@folder}}</font> folder';
+//    }
+//    catch (Exception $e)
+//    {
+//        $error = 'ERROR: ' .  $e->getMessage() . "\n";
+//        $massage = $error;
+//    }
+    F3::set('userId', $clientId);
+    F3::set('privateKey', $privateKey);
+    F3::set('file_Id', $fileGuId);
+    F3::set('folder', $folder);
+    f3::set('massage', $massage);
     
     echo Template::serve('sample5.htm');

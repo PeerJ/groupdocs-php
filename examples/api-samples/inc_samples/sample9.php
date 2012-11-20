@@ -8,17 +8,17 @@
     $width = f3::get('POST["width"]');
     $height = f3::get('POST["height"]');
     
-    function Iframe($file_Id, $width='400', $height='650'){
-        var_dump($file_Id);
-        if ($file_Id == "")
+    function Iframe($file_Id, $width='400', $height='650')
     {
-        throw new Exception('You do not enter FILE ID');
-    } 
-    else
-    {
-        $iframe = 'https://apps.groupdocs.com/document-viewer/embed/' . $file_Id . '?frameborder="0" width="'.$width.'" height="'.$height.'"';
-        return f3::set('url', $iframe);;
-    }
+        if (empty($file_Id))
+        {
+            throw new Exception('You do not enter FILE ID');
+        } 
+        else
+        {
+            $iframe = 'https://apps.groupdocs.com/document-viewer/embed/' . $file_Id . '?frameborder="0" width="'.$width.'" height="'.$height.'"';
+            return f3::set('url', $iframe);;
+        }
     }
     
     try 

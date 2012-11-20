@@ -36,7 +36,7 @@ To see all available PHP SDK versions tags visit this page - https://packagist.o
 
 ### List of samples:
 
-* How to autorize to GroupDocs using the API and get user info
+* How to authorize to GroupDocs using the API and get user info
 * How to list files within GroupDocs Storage using the Storage API
 * How to upload a file to GroupDocs using the Storage API
 * How to download a file from GroupDocs Storage using the Storage API
@@ -44,7 +44,7 @@ To see all available PHP SDK versions tags visit this page - https://packagist.o
 * How to add a Signature to a document in GroupDocs Signature
 * How to create a list of thumbnails for a document
 * How to return a URL representing a single page of a Document
-* How to generate a embedded Viewer URL for a DocumentI
+* How to generate an embedded Viewer URL for a Document
 * How to share a document to other users
 
 

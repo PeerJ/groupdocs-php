@@ -18,7 +18,6 @@
             $signer = new GroupDocsRequestSigner($privateKey);
             $apiClient = new APIClient($signer); // PHP SDK V1.1
             $api = new StorageApi($apiClient);
-           // $api->setBasePath("http://localhost:7000/v2.0");
             $files = $api->ListEntities($clientId, '', 0);
             $name = '';
             $file_id = '';
@@ -33,22 +32,18 @@
 
             if (isset($copy))
             {
-
                $path = $folder . '/' . $name;
                $file = $api->MoveFile($clientId, $path, NULL, $file_id, NULL); //download file
 
                return  F3::set('button', $copy);
-
             }
 
             if (isset($move))
             {
-
                $path = $folder . '/' . $name;
                $file = $api->MoveFile($clientId, $path, NULL, NULL, $file_id); //download file
 
                return F3::set('button', $move);
-
             }
          } 
     }
@@ -62,16 +57,6 @@
         $error = 'ERROR: ' .  $e->getMessage() . "\n";
         $massage = $error;
     }
-//     try 
-//    {
-//        copy_move($clientId, $privateKey, $fileGuId, NULL, $copy, $folder);
-//        $massage = 'File was <font color="blue">{{@button}}</font> to the <font color="blue">{{@folder}}</font> folder';
-//    }
-//    catch (Exception $e)
-//    {
-//        $error = 'ERROR: ' .  $e->getMessage() . "\n";
-//        $massage = $error;
-//    }
     F3::set('userId', $clientId);
     F3::set('privateKey', $privateKey);
     F3::set('file_Id', $fileGuId);

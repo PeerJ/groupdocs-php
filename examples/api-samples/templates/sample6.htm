@@ -6,51 +6,42 @@
 	<style type="text/css">
 		{{ Web::minify('templates/',array('style.css'),FALSE) }}
 	</style>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="http://dev-apps.groupdocs.com/content/signaturewidgets/groupdocs.sign.js"></script>
 </head>
 <body>
-<h3 style="text-align:center;"><a href="/index.php">GroupDocs PHP SDK Samples</a> - Sample1</h3>
+<h3 style="text-align:center;"><a href="/index.php">GroupDocs PHP SDK Samples</a> - Sample6</h3>
 
 <div class='samplecontent' style="padding:10px;">
-   Sample is under development. <i>This sample will show how to use signer to be autorized at GroupDocs and to get GroupDocs user infromation using PHP SDK</i> <br/>
+   <i>This sample will show how to add a Signature to a document in GroupDocs Signature using PHP SDK</i> <br/>
    
-   <br/><p>You entered: 
-   <p>UserId = {{@userId}}
-   <p>PrivateKey = {{@privateKey}}
-   <div  style="padding:20px; border:1px solid black;">
-        <p> Results: </p>
-        <table style="border:1px double black;">
-          <tr>
-              <th>Field</th><th>Value</th>
-          </tr>
-          <tr>
-               <td>First Name</td><td>{{@userInfo->firstname}}</td>
-          </tr>
-          <tr>
-               <td>Last Name</td><td>{{@userInfo->lastname}}</td>
-          </tr>
-          <tr>
-               <td>Nick Name</td><td>{{@userInfo->nickname}}</td>
-          </tr>
-          <tr>
-               <td>Primary Email</td><td>{{@userInfo->primary_email}}</td>
-          </tr>
-        </table>
-        
-   </div>
-   <br/>
-   <div id="requestForm" style="padding:20px; border:1px solid black;">
-   <p> Enter data for request and press "Make request" button </p>
-   <form action="/sample1" method = "post" enctype = 'multipart/form-data'>
+   <div id="files_form">
+    <form action='#' onsubmit="return false;">
+        <br />
         <label for='client_id'>GroupDocs Client ID</label>
         <br />
-        <input type='text', name='client_id' value="{{@userId}}" />
+        <input type='text', id='client_id' />
         <br />
         <label for='private_key'>GroupDocs Private Key</label>
         <br />
-        <input type='text', name='private_key'  value="{{@privateKey}}" />
+        <input type='text', id='private_key' />
         <br />
-        <input type='submit' value='Make Request'/>
+        <label for='file_document'>Document to sign</label>
+        <br />
+        <input type='file' id='fi_document'  />
+        <br />
+        <label for='file_signature'>Signature</label>
+        <br />
+        <input type='file' id='fi_signature'  />
+        <br />
+        <input type='button' id='btnLoad' value='Upload and sign the document' onclick='load();'>
     </form>
+    <iframe id="viewer" src="" frameborder="0" width="600" height="500"></iframe>
+    </div>
+    <div  style="padding:20px; border:1px solid black;">
+        <p> Results: </p>
+        {{ @iframe }}
     </div>
 </div>
 
@@ -69,5 +60,89 @@ Choose anothe one sample:
     <li> <a href="/sample10">Sample10 - How to share a document to other users</li>
 </ul>
 </div>
+<script type='text/javascript'>
+
+        function load() {
+            var inputDocument, inputSignature, fileDocument, fileSignature, frDocument, frSignature;
+
+            if (typeof window.FileReader !== 'function') {
+                $("body").append("p", "The file API isn't supported on this browser yet.");
+                return;
+            }
+
+            inputDocument = document.getElementById('fi_document');
+            if (!inputDocument) {
+                $("body").append("p", "Um, couldn't find the fileinput element.");
+            }
+            else if (!inputDocument.files) {
+                $("body").append("p", "This browser doesn't seem to support the `files` property of file inputs.");
+            }
+            else if (!inputDocument.files[0]) {
+                $("#files_form").append("<p class='error'>Please select a file before clicking 'Load'</p>");
+            }
+            else {
+                $('#sample6').fadeOut("slow");
+                fileDocument = inputDocument.files[0];
+                frDocument = new FileReader();
+                frDocument.onload = receivedDocument;
+                frDocument.readAsDataURL(fileDocument);
+            }
+
+            function receivedDocument() {
+
+                inputSignature = document.getElementById('fi_signature');
+                if (!inputSignature) {
+                    $("body").append("Um, couldn't find the fileinput element.");
+                }
+                else if (!inputSignature.files) {
+                    $("body").append("p", "This browser doesn't seem to support the `files` property of file inputs.");
+                }
+                else if (!inputSignature.files[0]) {
+                    $("body").append("<p>Please select a file before clicking 'Load'</p>");
+                }
+                else {
+                    fileSignature = inputSignature.files[0];
+                    frSignature = new FileReader();
+                    frSignature.onload = receivedSignature;
+                    frSignature.readAsDataURL(fileSignature);
+                }
+            }
+
+            function receivedSignature() {
+                var span = document.createElement('span');
+                span.innerHTML = ['<img class="thumb" width="100" src="', frSignature.result, '"/>'].join('');
+                signDocument();
+            }
+
+            function signDocument() {
+                $("body").sign({
+                    userId: $('#client_id').val(),
+                    privateKey: $('#private_key').val(),
+                    signMethod: "/sample6",
+                    onError: function (e, data) {
+                        alert(data);
+                    },
+                    onSigned: function (e, data) {
+                        var result = data;
+                        $("#sample6").attr("src", "https://apps.groupdocs.com/document-viewer/Embed/" + data.documentId);
+                        $('#sample6').fadeIn("slow");
+                    }
+                });
+                $("body").sign("addDocument", {
+                    name: fileDocument.name,
+                    data: frDocument.result
+                });
+                $("body").sign("addSigner", {
+                    name: 'Marketplace Team',
+                    top: 0.03319,
+                    left: 0.52171,
+                    width: 100,
+                    height: 40,
+                    data: frSignature.result
+                });
+                $("body").sign("sign");
+            }
+        }
+</script>
 </body>
 </html>

@@ -77,7 +77,7 @@ class APIClient {
 	 * @return unknown
 	 */
 	public function callAPI($apiServer, $resourcePath, $method, $queryParams, $postData,
-		$headerParams, $outFileStream=null) {
+		$headerParams, FileStream $outFileStream=null) {
 
 		$headers = array();
 		foreach ($this->headers as $key => $val) {
@@ -173,9 +173,6 @@ class APIClient {
 		
 		// Close curl
 		curl_close($curl);
-		if($outFileStream !== null){
-			fclose($outFileStream->getInputStream());
-		}
 		
 		if($this->debug){
 			$body = "< Response Body: $this->newline";
@@ -193,9 +190,14 @@ class APIClient {
 		if ($response_info['http_code'] == 0) {
 			throw new Exception("TIMEOUT: api call to " . $url .
 				" took more than " . $timeoutSec . "s to return" );
-		} else if ($response_info['http_code'] == 200) {
+		} else if ($response_info['http_code'] == 200 || $response_info['http_code'] == 201 || $response_info['http_code'] == 202) {
 			if($outFileStream !== null){
-				return $outFileStream;
+				if(in_array('Transfer-Encoding', $outFileStream->headers) or $outFileStream->getSize() > 0){
+					fclose($outFileStream->getInputStream());
+					return $outFileStream;
+				} else {
+					return null;
+				}
 			} else {
 				return json_decode($response);
 			}

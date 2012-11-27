@@ -44,7 +44,7 @@ class SystemApi {
 
    public function GetUserPlan($callerId) {
       if( $callerId === null ) {
-        throw new Exception("missing required parameters");
+        throw new ApiException("missing required parameters");
       }
       //parse inputs
   	  $resourcePath = str_replace("*", "", "/system/{callerId}/plan");
@@ -80,7 +80,7 @@ class SystemApi {
 
    public function GetUserSubscriptionPlan($callerId) {
       if( $callerId === null ) {
-        throw new Exception("missing required parameters");
+        throw new ApiException("missing required parameters");
       }
       //parse inputs
   	  $resourcePath = str_replace("*", "", "/system/{callerId}/subscription");
@@ -117,7 +117,7 @@ class SystemApi {
 
    public function GetSubscriptionPlans($callerId, $family) {
       if( $callerId === null || $family === null ) {
-        throw new Exception("missing required parameters");
+        throw new ApiException("missing required parameters");
       }
       //parse inputs
   	  $resourcePath = str_replace("*", "", "/system/{callerId}/plans/{family}");
@@ -159,7 +159,7 @@ class SystemApi {
 
    public function SetSubscriptionPlan($userId, $productId, $body) {
       if( $userId === null || $productId === null || $body === null ) {
-        throw new Exception("missing required parameters");
+        throw new ApiException("missing required parameters");
       }
       //parse inputs
   	  $resourcePath = str_replace("*", "", "/system/{userId}/subscriptions/{productId}");
@@ -199,7 +199,7 @@ class SystemApi {
 
    public function GetCountries($callerId) {
       if( $callerId === null ) {
-        throw new Exception("missing required parameters");
+        throw new ApiException("missing required parameters");
       }
       //parse inputs
   	  $resourcePath = str_replace("*", "", "/system/{callerId}/countries");
@@ -236,7 +236,7 @@ class SystemApi {
 
    public function GetStates($callerId, $countryName) {
       if( $callerId === null || $countryName === null ) {
-        throw new Exception("missing required parameters");
+        throw new ApiException("missing required parameters");
       }
       //parse inputs
   	  $resourcePath = str_replace("*", "", "/system/{callerId}/countries/{countryName}/states");

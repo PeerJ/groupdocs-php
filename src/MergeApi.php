@@ -47,7 +47,7 @@ class MergeApi {
 
    public function AddJobDocumentDataSource($userId, $jobId, $fileId, $datasourceId) {
       if( $userId === null || $jobId === null || $fileId === null || $datasourceId === null ) {
-        throw new Exception("missing required parameters");
+        throw new ApiException("missing required parameters");
       }
       //parse inputs
   	  $resourcePath = str_replace("*", "", "/merge/{userId}/jobs/{jobId}/files/{fileId}/datasources/{datasourceId}");
@@ -98,7 +98,7 @@ class MergeApi {
 
    public function AddJobDocumentDataSourceFields($userId, $jobId, $fileId, $body) {
       if( $userId === null || $jobId === null || $fileId === null || $body === null ) {
-        throw new Exception("missing required parameters");
+        throw new ApiException("missing required parameters");
       }
       //parse inputs
   	  $resourcePath = str_replace("*", "", "/merge/{userId}/jobs/{jobId}/files/{fileId}/datasources");
@@ -146,7 +146,7 @@ class MergeApi {
 
    public function FillQuestionnaire($userId, $collectorId, $datasourceId, $targetType=null, $emailResults=null) {
       if( $userId === null || $collectorId === null || $datasourceId === null ) {
-        throw new Exception("missing required parameters");
+        throw new ApiException("missing required parameters");
       }
       //parse inputs
   	  $resourcePath = str_replace("*", "", "/merge/{userId}/questionnaires/collectors/{collectorId}/datasources/{datasourceId}?new_type={targetType}&email_results={emailResults}");
@@ -204,7 +204,7 @@ class MergeApi {
 
    public function FillExecution($userId, $executionId, $datasourceId, $targetType=null, $emailResults=null) {
       if( $userId === null || $executionId === null || $datasourceId === null ) {
-        throw new Exception("missing required parameters");
+        throw new ApiException("missing required parameters");
       }
       //parse inputs
   	  $resourcePath = str_replace("*", "", "/merge/{userId}/questionnaires/executions/{executionId}/datasources/{datasourceId}?new_type={targetType}&email_results={emailResults}");
@@ -262,7 +262,7 @@ class MergeApi {
 
    public function MergeDatasource($userId, $fileId, $datasourceId, $targetType=null, $emailResults=null) {
       if( $userId === null || $fileId === null || $datasourceId === null ) {
-        throw new Exception("missing required parameters");
+        throw new ApiException("missing required parameters");
       }
       //parse inputs
   	  $resourcePath = str_replace("*", "", "/merge/{userId}/files/{fileId}/datasources/{datasourceId}?new_type={targetType}&email_results={emailResults}");
@@ -321,7 +321,7 @@ class MergeApi {
 
    public function MergeDatasourceFields($userId, $fileId, $targetType=null, $emailResults=null, $assemblyName=null, $body) {
       if( $userId === null || $fileId === null || $body === null ) {
-        throw new Exception("missing required parameters");
+        throw new ApiException("missing required parameters");
       }
       //parse inputs
   	  $resourcePath = str_replace("*", "", "/merge/{userId}/files/{fileId}/datasources?new_type={targetType}&email_results={emailResults}&assembly_name={assemblyName}");
@@ -375,7 +375,7 @@ class MergeApi {
 
    public function GetQuestionnaire($userId, $questionnaireId) {
       if( $userId === null || $questionnaireId === null ) {
-        throw new Exception("missing required parameters");
+        throw new ApiException("missing required parameters");
       }
       //parse inputs
   	  $resourcePath = str_replace("*", "", "/merge/{userId}/questionnaires/{questionnaireId}");
@@ -418,7 +418,7 @@ class MergeApi {
 
    public function GetQuestionnaires($userId, $status=null, $pageNumber=null, $pageSize=null) {
       if( $userId === null ) {
-        throw new Exception("missing required parameters");
+        throw new ApiException("missing required parameters");
       }
       //parse inputs
   	  $resourcePath = str_replace("*", "", "/merge/{userId}/questionnaires?status={status}&page_number={pageNumber}&page_size={pageSize}");
@@ -468,7 +468,7 @@ class MergeApi {
 
    public function CreateQuestionnaire($userId, $body) {
       if( $userId === null || $body === null ) {
-        throw new Exception("missing required parameters");
+        throw new ApiException("missing required parameters");
       }
       //parse inputs
   	  $resourcePath = str_replace("*", "", "/merge/{userId}/questionnaires");
@@ -506,7 +506,7 @@ class MergeApi {
 
    public function UpdateQuestionnaire($userId, $questionnaireId, $body) {
       if( $userId === null || $questionnaireId === null || $body === null ) {
-        throw new Exception("missing required parameters");
+        throw new ApiException("missing required parameters");
       }
       //parse inputs
   	  $resourcePath = str_replace("*", "", "/merge/{userId}/questionnaires/{questionnaireId}");
@@ -547,7 +547,7 @@ class MergeApi {
 
    public function DeleteQuestionnaire($userId, $questionnaireId) {
       if( $userId === null || $questionnaireId === null ) {
-        throw new Exception("missing required parameters");
+        throw new ApiException("missing required parameters");
       }
       //parse inputs
   	  $resourcePath = str_replace("*", "", "/merge/{userId}/questionnaires/{questionnaireId}");
@@ -588,7 +588,7 @@ class MergeApi {
 
    public function GetDocumentQuestionnaires($userId, $fileId) {
       if( $userId === null || $fileId === null ) {
-        throw new Exception("missing required parameters");
+        throw new ApiException("missing required parameters");
       }
       //parse inputs
   	  $resourcePath = str_replace("*", "", "/merge/{userId}/files/{fileId}/questionnaires");
@@ -630,7 +630,7 @@ class MergeApi {
 
    public function CreateDocumentQuestionnaire($userId, $fileId, $body) {
       if( $userId === null || $fileId === null || $body === null ) {
-        throw new Exception("missing required parameters");
+        throw new ApiException("missing required parameters");
       }
       //parse inputs
   	  $resourcePath = str_replace("*", "", "/merge/{userId}/files/{fileId}/questionnaires");
@@ -672,7 +672,7 @@ class MergeApi {
 
    public function AddDocumentQuestionnaire($userId, $fileId, $questionnaireId) {
       if( $userId === null || $fileId === null || $questionnaireId === null ) {
-        throw new Exception("missing required parameters");
+        throw new ApiException("missing required parameters");
       }
       //parse inputs
   	  $resourcePath = str_replace("*", "", "/merge/{userId}/files/{fileId}/questionnaires/{questionnaireId}");
@@ -718,7 +718,7 @@ class MergeApi {
 
    public function DeleteDocumentQuestionnaire($userId, $fileId, $questionnaireId) {
       if( $userId === null || $fileId === null || $questionnaireId === null ) {
-        throw new Exception("missing required parameters");
+        throw new ApiException("missing required parameters");
       }
       //parse inputs
   	  $resourcePath = str_replace("*", "", "/merge/{userId}/files/{fileId}/questionnaires/{questionnaireId}");
@@ -763,7 +763,7 @@ class MergeApi {
 
    public function AddDataSource($userId, $body) {
       if( $userId === null || $body === null ) {
-        throw new Exception("missing required parameters");
+        throw new ApiException("missing required parameters");
       }
       //parse inputs
   	  $resourcePath = str_replace("*", "", "/merge/{userId}/datasources");
@@ -801,7 +801,7 @@ class MergeApi {
 
    public function UpdateDataSource($userId, $datasourceId, $body) {
       if( $userId === null || $datasourceId === null || $body === null ) {
-        throw new Exception("missing required parameters");
+        throw new ApiException("missing required parameters");
       }
       //parse inputs
   	  $resourcePath = str_replace("*", "", "/merge/{userId}/datasources/{datasourceId}");
@@ -843,7 +843,7 @@ class MergeApi {
 
    public function UpdateDataSourceFields($userId, $datasourceId, $body) {
       if( $userId === null || $datasourceId === null || $body === null ) {
-        throw new Exception("missing required parameters");
+        throw new ApiException("missing required parameters");
       }
       //parse inputs
   	  $resourcePath = str_replace("*", "", "/merge/{userId}/datasources/{datasourceId}/fields");
@@ -884,7 +884,7 @@ class MergeApi {
 
    public function DeleteDataSource($userId, $datasourceId) {
       if( $userId === null || $datasourceId === null ) {
-        throw new Exception("missing required parameters");
+        throw new ApiException("missing required parameters");
       }
       //parse inputs
   	  $resourcePath = str_replace("*", "", "/merge/{userId}/datasources/{datasourceId}");
@@ -926,7 +926,7 @@ class MergeApi {
 
    public function GetDataSource($userId, $datasourceId, $fields=null) {
       if( $userId === null || $datasourceId === null ) {
-        throw new Exception("missing required parameters");
+        throw new ApiException("missing required parameters");
       }
       //parse inputs
   	  $resourcePath = str_replace("*", "", "/merge/{userId}/datasources/{datasourceId}?field={fields}");
@@ -975,7 +975,7 @@ class MergeApi {
 
    public function GetQuestionnaireDataSources($userId, $questionnaireId, $includeFields=null) {
       if( $userId === null || $questionnaireId === null ) {
-        throw new Exception("missing required parameters");
+        throw new ApiException("missing required parameters");
       }
       //parse inputs
   	  $resourcePath = str_replace("*", "", "/merge/{userId}/questionnaires/{questionnaireId}/datasources?include_fields={includeFields}");
@@ -1024,7 +1024,7 @@ class MergeApi {
 
    public function AddQuestionnaireExecution($userId, $collectorId, $body) {
       if( $userId === null || $collectorId === null || $body === null ) {
-        throw new Exception("missing required parameters");
+        throw new ApiException("missing required parameters");
       }
       //parse inputs
   	  $resourcePath = str_replace("*", "", "/merge/{userId}/questionnaires/collectors/{collectorId}/executions");
@@ -1065,7 +1065,7 @@ class MergeApi {
 
    public function GetQuestionnaireCollectorExecutions($userId, $collectorId) {
       if( $userId === null || $collectorId === null ) {
-        throw new Exception("missing required parameters");
+        throw new ApiException("missing required parameters");
       }
       //parse inputs
   	  $resourcePath = str_replace("*", "", "/merge/{userId}/questionnaires/collectors/{collectorId}/executions");
@@ -1106,7 +1106,7 @@ class MergeApi {
 
    public function GetQuestionnaireExecutions($userId, $questionnaireId) {
       if( $userId === null || $questionnaireId === null ) {
-        throw new Exception("missing required parameters");
+        throw new ApiException("missing required parameters");
       }
       //parse inputs
   	  $resourcePath = str_replace("*", "", "/merge/{userId}/questionnaires/{questionnaireId}/executions");
@@ -1147,7 +1147,7 @@ class MergeApi {
 
    public function GetQuestionnaireExecution($userId, $executionId) {
       if( $userId === null || $executionId === null ) {
-        throw new Exception("missing required parameters");
+        throw new ApiException("missing required parameters");
       }
       //parse inputs
   	  $resourcePath = str_replace("*", "", "/merge/{userId}/questionnaires/executions/{executionId}");
@@ -1188,7 +1188,7 @@ class MergeApi {
 
    public function DeleteQuestionnaireExecution($userId, $executionId) {
       if( $userId === null || $executionId === null ) {
-        throw new Exception("missing required parameters");
+        throw new ApiException("missing required parameters");
       }
       //parse inputs
   	  $resourcePath = str_replace("*", "", "/merge/{userId}/questionnaires/executions/{executionId}");
@@ -1230,7 +1230,7 @@ class MergeApi {
 
    public function UpdateQuestionnaireExecution($userId, $executionId, $body) {
       if( $userId === null || $executionId === null || $body === null ) {
-        throw new Exception("missing required parameters");
+        throw new ApiException("missing required parameters");
       }
       //parse inputs
   	  $resourcePath = str_replace("*", "", "/merge/{userId}/questionnaires/executions/{executionId}");
@@ -1272,7 +1272,7 @@ class MergeApi {
 
    public function UpdateQuestionnaireExecutionStatus($userId, $executionId, $body) {
       if( $userId === null || $executionId === null || $body === null ) {
-        throw new Exception("missing required parameters");
+        throw new ApiException("missing required parameters");
       }
       //parse inputs
   	  $resourcePath = str_replace("*", "", "/merge/{userId}/questionnaires/executions/{executionId}/status");
@@ -1313,7 +1313,7 @@ class MergeApi {
 
    public function GetQuestionnaireCollectors($userId, $questionnaireId) {
       if( $userId === null || $questionnaireId === null ) {
-        throw new Exception("missing required parameters");
+        throw new ApiException("missing required parameters");
       }
       //parse inputs
   	  $resourcePath = str_replace("*", "", "/merge/{userId}/questionnaires/{questionnaireId}/collectors");
@@ -1354,7 +1354,7 @@ class MergeApi {
 
    public function GetQuestionnaireCollector($userId, $collectorId) {
       if( $userId === null || $collectorId === null ) {
-        throw new Exception("missing required parameters");
+        throw new ApiException("missing required parameters");
       }
       //parse inputs
   	  $resourcePath = str_replace("*", "", "/merge/{userId}/questionnaires/collectors/{collectorId}");
@@ -1396,7 +1396,7 @@ class MergeApi {
 
    public function AddQuestionnaireCollector($userId, $questionnaireId, $body) {
       if( $userId === null || $questionnaireId === null || $body === null ) {
-        throw new Exception("missing required parameters");
+        throw new ApiException("missing required parameters");
       }
       //parse inputs
   	  $resourcePath = str_replace("*", "", "/merge/{userId}/questionnaires/{questionnaireId}/collectors");
@@ -1438,7 +1438,7 @@ class MergeApi {
 
    public function UpdateQuestionnaireCollector($userId, $collectorId, $body) {
       if( $userId === null || $collectorId === null || $body === null ) {
-        throw new Exception("missing required parameters");
+        throw new ApiException("missing required parameters");
       }
       //parse inputs
   	  $resourcePath = str_replace("*", "", "/merge/{userId}/questionnaires/collectors/{collectorId}");
@@ -1479,7 +1479,7 @@ class MergeApi {
 
    public function DeleteQuestionnaireCollector($userId, $collectorId) {
       if( $userId === null || $collectorId === null ) {
-        throw new Exception("missing required parameters");
+        throw new ApiException("missing required parameters");
       }
       //parse inputs
   	  $resourcePath = str_replace("*", "", "/merge/{userId}/questionnaires/collectors/{collectorId}");
@@ -1519,7 +1519,7 @@ class MergeApi {
 
    public function GetTemplates($userId) {
       if( $userId === null ) {
-        throw new Exception("missing required parameters");
+        throw new ApiException("missing required parameters");
       }
       //parse inputs
   	  $resourcePath = str_replace("*", "", "/merge/{userId}/templates");
@@ -1557,7 +1557,7 @@ class MergeApi {
 
    public function GetQuestionnaireFields($userId, $questionnaireId, $includeGeometry=null) {
       if( $userId === null || $questionnaireId === null ) {
-        throw new Exception("missing required parameters");
+        throw new ApiException("missing required parameters");
       }
       //parse inputs
   	  $resourcePath = str_replace("*", "", "/merge/{userId}/questionnaires/{questionnaireId}/fields?include_geometry={includeGeometry}");
@@ -1605,7 +1605,7 @@ class MergeApi {
 
    public function GetQuestionnaireMetadata($userId, $questionnaireId) {
       if( $userId === null || $questionnaireId === null ) {
-        throw new Exception("missing required parameters");
+        throw new ApiException("missing required parameters");
       }
       //parse inputs
   	  $resourcePath = str_replace("*", "", "/merge/{userId}/questionnaires/{questionnaireId}/metadata");
@@ -1647,7 +1647,7 @@ class MergeApi {
 
    public function UpdateQuestionnaireMetadata($userId, $questionnaireId, $body) {
       if( $userId === null || $questionnaireId === null || $body === null ) {
-        throw new Exception("missing required parameters");
+        throw new ApiException("missing required parameters");
       }
       //parse inputs
   	  $resourcePath = str_replace("*", "", "/merge/{userId}/questionnaires/{questionnaireId}/metadata");

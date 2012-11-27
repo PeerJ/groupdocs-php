@@ -46,7 +46,7 @@ class AntApi {
 
    public function CreateAnnotation($userId, $fileId, $body) {
       if( $userId === null || $fileId === null || $body === null ) {
-        throw new Exception("missing required parameters");
+        throw new ApiException("missing required parameters");
       }
       //parse inputs
   	  $resourcePath = str_replace("*", "", "/ant/{userId}/files/{fileId}/annotations");
@@ -87,7 +87,7 @@ class AntApi {
 
    public function ListAnnotations($userId, $fileId) {
       if( $userId === null || $fileId === null ) {
-        throw new Exception("missing required parameters");
+        throw new ApiException("missing required parameters");
       }
       //parse inputs
   	  $resourcePath = str_replace("*", "", "/ant/{userId}/files/{fileId}/annotations");
@@ -128,7 +128,7 @@ class AntApi {
 
    public function DeleteAnnotation($userId, $annotationId) {
       if( $userId === null || $annotationId === null ) {
-        throw new Exception("missing required parameters");
+        throw new ApiException("missing required parameters");
       }
       //parse inputs
   	  $resourcePath = str_replace("*", "", "/ant/{userId}/annotations/{annotationId}");
@@ -170,7 +170,7 @@ class AntApi {
 
    public function CreateAnnotationReply($userId, $annotationId, $body) {
       if( $userId === null || $annotationId === null || $body === null ) {
-        throw new Exception("missing required parameters");
+        throw new ApiException("missing required parameters");
       }
       //parse inputs
   	  $resourcePath = str_replace("*", "", "/ant/{userId}/annotations/{annotationId}/replies");
@@ -212,7 +212,7 @@ class AntApi {
 
    public function EditAnnotationReply($userId, $replyGuid, $body) {
       if( $userId === null || $replyGuid === null || $body === null ) {
-        throw new Exception("missing required parameters");
+        throw new ApiException("missing required parameters");
       }
       //parse inputs
   	  $resourcePath = str_replace("*", "", "/ant/{userId}/replies/{replyGuid}");
@@ -253,7 +253,7 @@ class AntApi {
 
    public function DeleteAnnotationReply($userId, $replyGuid) {
       if( $userId === null || $replyGuid === null ) {
-        throw new Exception("missing required parameters");
+        throw new ApiException("missing required parameters");
       }
       //parse inputs
   	  $resourcePath = str_replace("*", "", "/ant/{userId}/replies/{replyGuid}");
@@ -295,7 +295,7 @@ class AntApi {
 
    public function ListAnnotationReplies($userId, $annotationId, $after) {
       if( $userId === null || $annotationId === null || $after === null ) {
-        throw new Exception("missing required parameters");
+        throw new ApiException("missing required parameters");
       }
       //parse inputs
   	  $resourcePath = str_replace("*", "", "/ant/{userId}/annotations/{annotationId}/replies?after={after}");
@@ -345,7 +345,7 @@ class AntApi {
 
    public function SetAnnotationCollaborators($userId, $fileId, $version, $body=null) {
       if( $userId === null || $fileId === null || $version === null ) {
-        throw new Exception("missing required parameters");
+        throw new ApiException("missing required parameters");
       }
       //parse inputs
   	  $resourcePath = str_replace("*", "", "/ant/{userId}/files/{fileId}/version/{version}/collaborators");
@@ -390,7 +390,7 @@ class AntApi {
 
    public function GetAnnotationCollaborators($userId, $fileId) {
       if( $userId === null || $fileId === null ) {
-        throw new Exception("missing required parameters");
+        throw new ApiException("missing required parameters");
       }
       //parse inputs
   	  $resourcePath = str_replace("*", "", "/ant/{userId}/files/{fileId}/collaborators");
@@ -432,7 +432,7 @@ class AntApi {
 
    public function AddAnnotationCollaborator($userId, $fileId, $body=null) {
       if( $userId === null || $fileId === null ) {
-        throw new Exception("missing required parameters");
+        throw new ApiException("missing required parameters");
       }
       //parse inputs
   	  $resourcePath = str_replace("*", "", "/ant/{userId}/files/{fileId}/collaborators");
@@ -472,7 +472,7 @@ class AntApi {
 
    public function GetReviewerContacts($userId) {
       if( $userId === null ) {
-        throw new Exception("missing required parameters");
+        throw new ApiException("missing required parameters");
       }
       //parse inputs
   	  $resourcePath = str_replace("*", "", "/ant/{userId}/contacts");
@@ -509,7 +509,7 @@ class AntApi {
 
    public function SetReviewerContacts($userId, $body=null) {
       if( $userId === null ) {
-        throw new Exception("missing required parameters");
+        throw new ApiException("missing required parameters");
       }
       //parse inputs
   	  $resourcePath = str_replace("*", "", "/ant/{userId}/reviewerContacts");
@@ -547,7 +547,7 @@ class AntApi {
 
    public function MoveAnnotation($userId, $annotationId, $body) {
       if( $userId === null || $annotationId === null || $body === null ) {
-        throw new Exception("missing required parameters");
+        throw new ApiException("missing required parameters");
       }
       //parse inputs
   	  $resourcePath = str_replace("*", "", "/ant/{userId}/annotations/{annotationId}/position");
@@ -589,7 +589,7 @@ class AntApi {
 
    public function SetAnnotationAccess($userId, $annotationId, $body) {
       if( $userId === null || $annotationId === null || $body === null ) {
-        throw new Exception("missing required parameters");
+        throw new ApiException("missing required parameters");
       }
       //parse inputs
   	  $resourcePath = str_replace("*", "", "/ant/{userId}/annotations/{annotationId}/annotationAccess");
@@ -631,7 +631,7 @@ class AntApi {
 
    public function MoveAnnotationMarker($userId, $annotationId, $body) {
       if( $userId === null || $annotationId === null || $body === null ) {
-        throw new Exception("missing required parameters");
+        throw new ApiException("missing required parameters");
       }
       //parse inputs
   	  $resourcePath = str_replace("*", "", "/ant/{userId}/annotations/{annotationId}/markerPosition");
@@ -673,7 +673,7 @@ class AntApi {
 
    public function SetReviewerRights($userId, $fileId, $body) {
       if( $userId === null || $fileId === null || $body === null ) {
-        throw new Exception("missing required parameters");
+        throw new ApiException("missing required parameters");
       }
       //parse inputs
   	  $resourcePath = str_replace("*", "", "/ant/{userId}/files/{fileId}/reviewerRights");
@@ -714,7 +714,7 @@ class AntApi {
 
    public function GetSharedLinkAccessRights($userId, $fileId) {
       if( $userId === null || $fileId === null ) {
-        throw new Exception("missing required parameters");
+        throw new ApiException("missing required parameters");
       }
       //parse inputs
   	  $resourcePath = str_replace("*", "", "/ant/{userId}/files/{fileId}/sharedLinkAccessRights");
@@ -756,7 +756,7 @@ class AntApi {
 
    public function SetSharedLinkAccessRights($userId, $fileId, $body) {
       if( $userId === null || $fileId === null || $body === null ) {
-        throw new Exception("missing required parameters");
+        throw new ApiException("missing required parameters");
       }
       //parse inputs
   	  $resourcePath = str_replace("*", "", "/ant/{userId}/files/{fileId}/sharedLinkAccessRights");

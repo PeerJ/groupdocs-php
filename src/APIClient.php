@@ -148,7 +148,8 @@ class APIClient {
 			throw new Exception('Method ' . $method . ' is not recognized.');
 		}
 
-		curl_setopt($curl, CURLOPT_URL, self::encodeURI($this->signer->signUrl($url)));
+		$url = self::encodeURI($this->signer->signUrl($url));
+		curl_setopt($curl, CURLOPT_URL, $url);
 		
 		if($outFileStream !== null){
 			curl_setopt($curl, CURLOPT_RETURNTRANSFER, false);
@@ -188,7 +189,7 @@ class APIClient {
 		
 		// Handle the response
 		if ($response_info['http_code'] == 0) {
-			throw new Exception("TIMEOUT: api call to " . $url .
+			throw new ApiException("TIMEOUT: api call to " . $url .
 				" took more than " . $timeoutSec . "s to return" );
 		} else if ($response_info['http_code'] == 200 || $response_info['http_code'] == 201 || $response_info['http_code'] == 202) {
 			if($outFileStream !== null){
@@ -202,13 +203,19 @@ class APIClient {
 				return json_decode($response);
 			}
 		} else if ($response_info['http_code'] == 401) {
-			throw new Exception("Unauthorized API request to " . $url);
+			throw new ApiException("Unauthorized API request to " . $url, 401);
 		} else if ($response_info['http_code'] == 404) {
 			return null;
 		} else {
-			throw new Exception("Can't connect to the api: " . $url .
-				" response code: " . $response_info['http_code'] .
-				" response body: " . $response); 
+			$msg = $response;
+			if($outFileStream !== null and !empty($outFileStream->jsonError)){
+				$msg = $outFileStream->jsonError;
+			}
+			$jsonArray = json_decode($msg, true);
+			if(is_array($jsonArray)){
+				$msg = $jsonArray['error_message'];
+			}
+			throw new ApiException($msg, $response_info['http_code']); 
 		}
 	}
 
@@ -357,4 +364,14 @@ class APIClient {
 		return 'data:'.self::getMimeType($filePath).';base64,'.base64_encode(file_get_contents($filePath));
 	}
 
+}
+
+class ApiException extends Exception {
+	public function _construct($message, $code = 0, Exception $previous = null){
+		parent::__construct($message, $code, $previous);
+	}
+	
+	public function __toString() {
+        return __CLASS__ . ": [{$this->code}]: {$this->message}\n";
+    }
 }

@@ -50,7 +50,7 @@ class DocApi {
 
    public function ViewDocument($userId, $fileId, $pageNumber=null, $pageCount=null, $width=null, $quality=null, $usePdf=null) {
       if( $userId === null || $fileId === null ) {
-        throw new Exception("missing required parameters");
+        throw new ApiException("missing required parameters");
       }
       //parse inputs
   	  $resourcePath = str_replace("*", "", "/doc/{userId}/files/{fileId}/thumbnails?page_number={pageNumber}&page_count={pageCount}&width={width}&quality={quality}&use_pdf={usePdf}");
@@ -111,7 +111,7 @@ class DocApi {
 
    public function GetDocumentViews($userId, $startIndex=null, $pageSize=null) {
       if( $userId === null ) {
-        throw new Exception("missing required parameters");
+        throw new ApiException("missing required parameters");
       }
       //parse inputs
   	  $resourcePath = str_replace("*", "", "/doc/{userId}/views?page_index={startIndex}&page_size={pageSize}");
@@ -159,7 +159,7 @@ class DocApi {
 
    public function ShareDocument($userId, $fileId, $body) {
       if( $userId === null || $fileId === null || $body === null ) {
-        throw new Exception("missing required parameters");
+        throw new ApiException("missing required parameters");
       }
       //parse inputs
   	  $resourcePath = str_replace("*", "", "/doc/{userId}/files/{fileId}/sharers");
@@ -200,7 +200,7 @@ class DocApi {
 
    public function UnshareDocument($userId, $fileId) {
       if( $userId === null || $fileId === null ) {
-        throw new Exception("missing required parameters");
+        throw new ApiException("missing required parameters");
       }
       //parse inputs
   	  $resourcePath = str_replace("*", "", "/doc/{userId}/files/{fileId}/sharers");
@@ -241,7 +241,7 @@ class DocApi {
 
    public function GetFolderSharers($userId, $folderId) {
       if( $userId === null || $folderId === null ) {
-        throw new Exception("missing required parameters");
+        throw new ApiException("missing required parameters");
       }
       //parse inputs
   	  $resourcePath = str_replace("*", "", "/doc/{userId}/folders/{folderId}/sharers");
@@ -283,7 +283,7 @@ class DocApi {
 
    public function ShareFolder($userId, $folderId, $body) {
       if( $userId === null || $folderId === null || $body === null ) {
-        throw new Exception("missing required parameters");
+        throw new ApiException("missing required parameters");
       }
       //parse inputs
   	  $resourcePath = str_replace("*", "", "/doc/{userId}/folders/{folderId}/sharers");
@@ -324,7 +324,7 @@ class DocApi {
 
    public function UnshareFolder($userId, $folderId) {
       if( $userId === null || $folderId === null ) {
-        throw new Exception("missing required parameters");
+        throw new ApiException("missing required parameters");
       }
       //parse inputs
   	  $resourcePath = str_replace("*", "", "/doc/{userId}/folders/{folderId}/sharers");
@@ -366,7 +366,7 @@ class DocApi {
 
    public function SetDocumentAccessMode($userId, $fileId, $mode=null) {
       if( $userId === null || $fileId === null ) {
-        throw new Exception("missing required parameters");
+        throw new ApiException("missing required parameters");
       }
       //parse inputs
   	  $resourcePath = str_replace("*", "", "/doc/{userId}/files/{fileId}/accessinfo?mode={mode}");
@@ -414,7 +414,7 @@ class DocApi {
 
    public function GetDocumentAccessInfo($userId, $fileId) {
       if( $userId === null || $fileId === null ) {
-        throw new Exception("missing required parameters");
+        throw new ApiException("missing required parameters");
       }
       //parse inputs
   	  $resourcePath = str_replace("*", "", "/doc/{userId}/files/{fileId}/accessinfo");
@@ -455,7 +455,7 @@ class DocApi {
 
    public function GetDocumentMetadata($userId, $fileId) {
       if( $userId === null || $fileId === null ) {
-        throw new Exception("missing required parameters");
+        throw new ApiException("missing required parameters");
       }
       //parse inputs
   	  $resourcePath = str_replace("*", "", "/doc/{userId}/files/{fileId}/metadata");
@@ -496,7 +496,7 @@ class DocApi {
 
    public function GetDocumentMetadataByPath($userId, $path) {
       if( $userId === null || $path === null ) {
-        throw new Exception("missing required parameters");
+        throw new ApiException("missing required parameters");
       }
       //parse inputs
   	  $resourcePath = str_replace("*", "", "/doc/{userId}/files/{*path}");
@@ -538,7 +538,7 @@ class DocApi {
 
    public function SetDocumentUserStatus($userId, $fileId, $status) {
       if( $userId === null || $fileId === null || $status === null ) {
-        throw new Exception("missing required parameters");
+        throw new ApiException("missing required parameters");
       }
       //parse inputs
   	  $resourcePath = str_replace("*", "", "/doc/{userId}/files/{fileId}/sharer");
@@ -590,7 +590,7 @@ class DocApi {
 
    public function GetSharedDocuments($userId, $sharesTypes=null, $pageIndex=null, $pageSize=null, $orderBy=null, $orderAsc=null) {
       if( $userId === null || $sharesTypes === null ) {
-        throw new Exception("missing required parameters");
+        throw new ApiException("missing required parameters");
       }
       //parse inputs
   	  $resourcePath = str_replace("*", "", "/doc/{userId}/shares/{sharesTypes}?page_index={pageIndex}&page_size={pageSize}&order_by={orderBy}&order_asc={orderAsc}");
@@ -648,7 +648,7 @@ class DocApi {
 
    public function GetTemplateFields($userId, $fileId, $includeGeometry=null) {
       if( $userId === null || $fileId === null ) {
-        throw new Exception("missing required parameters");
+        throw new ApiException("missing required parameters");
       }
       //parse inputs
   	  $resourcePath = str_replace("*", "", "/doc/{userId}/files/{fileId}/fields?include_geometry={includeGeometry}");
@@ -696,7 +696,7 @@ class DocApi {
 
    public function GetDocumentFormats($userId, $fileId) {
       if( $userId === null || $fileId === null ) {
-        throw new Exception("missing required parameters");
+        throw new ApiException("missing required parameters");
       }
       //parse inputs
   	  $resourcePath = str_replace("*", "", "/doc/{userId}/files/{fileId}/formats");
@@ -742,7 +742,7 @@ class DocApi {
 
    public function GetDocumentPageImage($userId, $fileId, $pageNumber, $dimension, $quality=null, $usePdf=null, $expiresOn=null, FileStream $outFileStream) {
       if( $userId === null || $fileId === null || $pageNumber === null || $dimension === null ) {
-        throw new Exception("missing required parameters");
+        throw new ApiException("missing required parameters");
       }
       //parse inputs
   	  $resourcePath = str_replace("*", "", "/doc/{userId}/files/{fileId}/pages/{pageNumber}/images/{dimension}?quality={quality}&use_pdf={usePdf}&expires={expiresOn}");
@@ -803,7 +803,7 @@ class DocApi {
 
    public function GetDocumentPagesImageUrls($userId, $fileId, $firstPage=null, $pageCount=null, $dimension, $quality=null, $usePdf=null, $token=null) {
       if( $userId === null || $fileId === null || $dimension === null ) {
-        throw new Exception("missing required parameters");
+        throw new ApiException("missing required parameters");
       }
       //parse inputs
   	  $resourcePath = str_replace("*", "", "/doc/{userId}/files/{fileId}/pages/images/{dimension}/urls?first_page={firstPage}&page_count={pageCount}&quality={quality}&use_pdf={usePdf}&token={token}");
@@ -867,7 +867,7 @@ class DocApi {
 
    public function GetEditLock($userId, $fileId) {
       if( $userId === null || $fileId === null ) {
-        throw new Exception("missing required parameters");
+        throw new ApiException("missing required parameters");
       }
       //parse inputs
   	  $resourcePath = str_replace("*", "", "/doc/{userId}/files/{fileId}/editlock");
@@ -909,7 +909,7 @@ class DocApi {
 
    public function RemoveEditLock($userId, $fileId, $lockId) {
       if( $userId === null || $fileId === null || $lockId === null ) {
-        throw new Exception("missing required parameters");
+        throw new ApiException("missing required parameters");
       }
       //parse inputs
   	  $resourcePath = str_replace("*", "", "/doc/{userId}/files/{fileId}/editlock");

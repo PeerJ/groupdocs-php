@@ -44,7 +44,7 @@ class StorageApi {
 
    public function GetStorageInfo($userId) {
       if( $userId === null ) {
-        throw new Exception("missing required parameters");
+        throw new ApiException("missing required parameters");
       }
       //parse inputs
   	  $resourcePath = str_replace("*", "", "/storage/{userId}");
@@ -88,7 +88,7 @@ class StorageApi {
 
    public function ListEntities($userId, $path=null, $pageIndex=null, $pageSize=null, $orderBy=null, $orderAsc=null, $filter=null, $fileTypes=null, $extended=null) {
       if( $userId === null || $path === null ) {
-        throw new Exception("missing required parameters");
+        throw new ApiException("missing required parameters");
       }
       //parse inputs
   	  $resourcePath = str_replace("*", "", "/storage/{userId}/folders/{*path}?page={pageIndex}&count={pageSize}&order_by={orderBy}&order_asc={orderAsc}&filter={filter}&file_types={fileTypes}&extended={extended}");
@@ -154,7 +154,7 @@ class StorageApi {
 
    public function GetFile($userId, $fileId, FileStream $outFileStream) {
       if( $userId === null || $fileId === null ) {
-        throw new Exception("missing required parameters");
+        throw new ApiException("missing required parameters");
       }
       //parse inputs
   	  $resourcePath = str_replace("*", "", "/storage/{userId}/files/{fileId}");
@@ -188,7 +188,7 @@ class StorageApi {
 
    public function GetSharedFile($userEmail, $filePath, FileStream $outFileStream) {
       if( $userEmail === null || $filePath === null ) {
-        throw new Exception("missing required parameters");
+        throw new ApiException("missing required parameters");
       }
       //parse inputs
   	  $resourcePath = str_replace("*", "", "/storage/shared/{userEmail}/{*filePath}");
@@ -224,7 +224,7 @@ class StorageApi {
 
    public function Upload($userId, $path, $description=null, $body) {
       if( $userId === null || $path === null || $body === null ) {
-        throw new Exception("missing required parameters");
+        throw new ApiException("missing required parameters");
       }
       //parse inputs
   	  $resourcePath = str_replace("*", "", "/storage/{userId}/folders/{*path}?description={description}");
@@ -275,7 +275,7 @@ class StorageApi {
 
    public function Decompress($userId, $path, $description=null, $archiveType=null, $body) {
       if( $userId === null || $path === null || $body === null ) {
-        throw new Exception("missing required parameters");
+        throw new ApiException("missing required parameters");
       }
       //parse inputs
   	  $resourcePath = str_replace("*", "", "/storage/{userId}/decompress/{*path}?description={description}&archiveType={archiveType}");
@@ -326,7 +326,7 @@ class StorageApi {
 
    public function UploadWeb($userId, $url) {
       if( $userId === null || $url === null ) {
-        throw new Exception("missing required parameters");
+        throw new ApiException("missing required parameters");
       }
       //parse inputs
   	  $resourcePath = str_replace("*", "", "/storage/{userId}/urls?url={url}");
@@ -371,7 +371,7 @@ class StorageApi {
 
    public function UploadGoogle($userId, $path, $fileId=null) {
       if( $userId === null || $path === null ) {
-        throw new Exception("missing required parameters");
+        throw new ApiException("missing required parameters");
       }
       //parse inputs
   	  $resourcePath = str_replace("*", "", "/storage/{userId}/google/files/{*path}?file_id={fileId}");
@@ -419,7 +419,7 @@ class StorageApi {
 
    public function Delete($userId, $fileId) {
       if( $userId === null || $fileId === null ) {
-        throw new Exception("missing required parameters");
+        throw new ApiException("missing required parameters");
       }
       //parse inputs
   	  $resourcePath = str_replace("*", "", "/storage/{userId}/files/{fileId}");
@@ -460,7 +460,7 @@ class StorageApi {
 
    public function DeleteFromFolder($userId, $path) {
       if( $userId === null || $path === null ) {
-        throw new Exception("missing required parameters");
+        throw new ApiException("missing required parameters");
       }
       //parse inputs
   	  $resourcePath = str_replace("*", "", "/storage/{userId}/folders/{*path}");
@@ -504,7 +504,7 @@ class StorageApi {
 
    public function MoveFile($userId, $path, $mode=null, $Groupdocs_Copy=null, $Groupdocs_Move=null) {
       if( $userId === null || $path === null ) {
-        throw new Exception("missing required parameters");
+        throw new ApiException("missing required parameters");
       }
       //parse inputs
   	  $resourcePath = str_replace("*", "", "/storage/{userId}/files/{*path}");
@@ -561,7 +561,7 @@ class StorageApi {
 
    public function MoveFolder($userId, $path, $mode=null, $Groupdocs_Move=null, $Groupdocs_Copy=null) {
       if( $userId === null || $path === null ) {
-        throw new Exception("missing required parameters");
+        throw new ApiException("missing required parameters");
       }
       //parse inputs
   	  $resourcePath = str_replace("*", "", "/storage/{userId}/folders/{*path}?override_mode={mode}");
@@ -615,7 +615,7 @@ class StorageApi {
 
    public function Create($userId, $path) {
       if( $userId === null || $path === null ) {
-        throw new Exception("missing required parameters");
+        throw new ApiException("missing required parameters");
       }
       //parse inputs
   	  $resourcePath = str_replace("*", "", "/storage/{userId}/paths/{*path}");
@@ -657,7 +657,7 @@ class StorageApi {
 
    public function Compress($userId, $fileId, $archiveType=null) {
       if( $userId === null || $fileId === null || $archiveType === null ) {
-        throw new Exception("missing required parameters");
+        throw new ApiException("missing required parameters");
       }
       //parse inputs
   	  $resourcePath = str_replace("*", "", "/storage/{userId}/files/{fileId}/archive/{archiveType}");
@@ -704,7 +704,7 @@ class StorageApi {
 
    public function CreatePackage($userId, $packageName, $storeRelativePath=null, $body=null) {
       if( $userId === null || $packageName === null ) {
-        throw new Exception("missing required parameters");
+        throw new ApiException("missing required parameters");
       }
       //parse inputs
   	  $resourcePath = str_replace("*", "", "/storage/{userId}/packages/{packageName}?storeRelativePath={storeRelativePath}");
@@ -752,7 +752,7 @@ class StorageApi {
 
    public function MoveToTrash($userId, $path) {
       if( $userId === null || $path === null ) {
-        throw new Exception("missing required parameters");
+        throw new ApiException("missing required parameters");
       }
       //parse inputs
   	  $resourcePath = str_replace("*", "", "/storage/{userId}/trash/{*path}");
@@ -793,7 +793,7 @@ class StorageApi {
 
    public function RestoreFromTrash($userId, $path) {
       if( $userId === null || $path === null ) {
-        throw new Exception("missing required parameters");
+        throw new ApiException("missing required parameters");
       }
       //parse inputs
   	  $resourcePath = str_replace("*", "", "/storage/{userId}/trash/{*path}");

@@ -122,7 +122,13 @@ class FileStream {
 
 	public function bodyCallback($ch, $string) {
 		// this method is called multiple times
-        $len = fwrite($this->getInputStream(), $string);
+		$len = null;
+		if(!empty($this->headers['jsonerror'])){
+			$this->jsonError = $string;
+			$len = strlen($string);
+		} else {
+        	$len = fwrite($this->getInputStream(), $string);
+		}
         $this->size += $len;
         return $len;
     }

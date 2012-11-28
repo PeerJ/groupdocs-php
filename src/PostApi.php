@@ -46,7 +46,7 @@ class PostApi {
 
    public function RenameByPost($userId, $fileId, $newName) {
       if( $userId === null || $fileId === null || $newName === null ) {
-        throw new ApiException("missing required parameters");
+        throw new ApiException("missing required parameters", 400);
       }
       //parse inputs
   	  $resourcePath = str_replace("*", "", "/post/file.rename?user_id={userId}&file_id={fileId}&new_name={newName}");
@@ -92,7 +92,7 @@ class PostApi {
 
    public function DeleteByPost($userId, $fileId) {
       if( $userId === null || $fileId === null ) {
-        throw new ApiException("missing required parameters");
+        throw new ApiException("missing required parameters", 400);
       }
       //parse inputs
   	  $resourcePath = str_replace("*", "", "/post/file.delete?user_id={userId}&file_id={fileId}");
@@ -135,7 +135,7 @@ class PostApi {
 
    public function DeleteFromFolderByPost($userId, $path) {
       if( $userId === null || $path === null ) {
-        throw new ApiException("missing required parameters");
+        throw new ApiException("missing required parameters", 400);
       }
       //parse inputs
   	  $resourcePath = str_replace("*", "", "/post/file.delete.in?user_id={userId}&path={path}");
@@ -179,7 +179,7 @@ class PostApi {
 
    public function CompressByPost($userId, $fileId, $archiveType) {
       if( $userId === null || $fileId === null || $archiveType === null ) {
-        throw new ApiException("missing required parameters");
+        throw new ApiException("missing required parameters", 400);
       }
       //parse inputs
   	  $resourcePath = str_replace("*", "", "/post/file.compress?user_id={userId}&file_id={fileId}&archive_type={archiveType}");

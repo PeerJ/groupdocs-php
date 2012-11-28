@@ -44,7 +44,7 @@ class MgmtApi {
 
    public function GetUserProfile($userId) {
       if( $userId === null ) {
-        throw new ApiException("missing required parameters");
+        throw new ApiException("missing required parameters", 400);
       }
       //parse inputs
   	  $resourcePath = str_replace("*", "", "/mgmt/{userId}/profile");
@@ -81,7 +81,7 @@ class MgmtApi {
 
    public function UpdateUserProfile($userId, $body) {
       if( $userId === null || $body === null ) {
-        throw new ApiException("missing required parameters");
+        throw new ApiException("missing required parameters", 400);
       }
       //parse inputs
   	  $resourcePath = str_replace("*", "", "/mgmt/{userId}/profile");
@@ -118,7 +118,7 @@ class MgmtApi {
 
    public function ChangeUserPassword($userId, $body) {
       if( $userId === null || $body === null ) {
-        throw new ApiException("missing required parameters");
+        throw new ApiException("missing required parameters", 400);
       }
       //parse inputs
   	  $resourcePath = str_replace("*", "", "/mgmt/{userId}/profile/password");
@@ -155,7 +155,7 @@ class MgmtApi {
 
    public function GetUserProfileByResetToken($callerId, $token) {
       if( $callerId === null || $token === null ) {
-        throw new ApiException("missing required parameters");
+        throw new ApiException("missing required parameters", 400);
       }
       //parse inputs
   	  $resourcePath = str_replace("*", "", "/mgmt/{callerId}/reset-tokens?token={token}");
@@ -199,7 +199,7 @@ class MgmtApi {
 
    public function GetUserProfileByVerifToken($callerId, $token) {
       if( $callerId === null || $token === null ) {
-        throw new ApiException("missing required parameters");
+        throw new ApiException("missing required parameters", 400);
       }
       //parse inputs
   	  $resourcePath = str_replace("*", "", "/mgmt/{callerId}/verif-tokens?token={token}");
@@ -243,7 +243,7 @@ class MgmtApi {
 
    public function GetUserProfileByClaimedToken($callerId, $token) {
       if( $callerId === null || $token === null ) {
-        throw new ApiException("missing required parameters");
+        throw new ApiException("missing required parameters", 400);
       }
       //parse inputs
   	  $resourcePath = str_replace("*", "", "/mgmt/{callerId}/claimed-tokens?token={token}");
@@ -287,7 +287,7 @@ class MgmtApi {
 
    public function GetAlienUserProfile($callerId, $userId) {
       if( $callerId === null || $userId === null ) {
-        throw new ApiException("missing required parameters");
+        throw new ApiException("missing required parameters", 400);
       }
       //parse inputs
   	  $resourcePath = str_replace("*", "", "/mgmt/{callerId}/users/{userId}/profile");
@@ -329,7 +329,7 @@ class MgmtApi {
 
    public function UpdateAlienUserProfile($callerId, $userId, $body) {
       if( $callerId === null || $userId === null || $body === null ) {
-        throw new ApiException("missing required parameters");
+        throw new ApiException("missing required parameters", 400);
       }
       //parse inputs
   	  $resourcePath = str_replace("*", "", "/mgmt/{callerId}/users/{userId}/profile");
@@ -370,7 +370,7 @@ class MgmtApi {
 
    public function CreateUser($callerId, $body) {
       if( $callerId === null || $body === null ) {
-        throw new ApiException("missing required parameters");
+        throw new ApiException("missing required parameters", 400);
       }
       //parse inputs
   	  $resourcePath = str_replace("*", "", "/mgmt/{callerId}/users");
@@ -408,7 +408,7 @@ class MgmtApi {
 
    public function CreateUserLogin($callerId, $userId, $password) {
       if( $callerId === null || $userId === null || $password === null ) {
-        throw new ApiException("missing required parameters");
+        throw new ApiException("missing required parameters", 400);
       }
       //parse inputs
   	  $resourcePath = str_replace("*", "", "/mgmt/{callerId}/users/{userId}/logins");
@@ -457,7 +457,7 @@ class MgmtApi {
 
    public function ChangeAlienUserPassword($callerId, $userId, $body) {
       if( $callerId === null || $userId === null || $body === null ) {
-        throw new ApiException("missing required parameters");
+        throw new ApiException("missing required parameters", 400);
       }
       //parse inputs
   	  $resourcePath = str_replace("*", "", "/mgmt/{callerId}/users/{userId}/password");
@@ -498,7 +498,7 @@ class MgmtApi {
 
    public function ResetUserPassword($callerId, $userId) {
       if( $callerId === null || $userId === null ) {
-        throw new ApiException("missing required parameters");
+        throw new ApiException("missing required parameters", 400);
       }
       //parse inputs
   	  $resourcePath = str_replace("*", "", "/mgmt/{callerId}/users/{userId}/password");
@@ -538,7 +538,7 @@ class MgmtApi {
 
    public function GetStorageProviders($userId) {
       if( $userId === null ) {
-        throw new ApiException("missing required parameters");
+        throw new ApiException("missing required parameters", 400);
       }
       //parse inputs
   	  $resourcePath = str_replace("*", "", "/mgmt/{userId}/storages");
@@ -576,7 +576,7 @@ class MgmtApi {
 
    public function AddStorageProvider($userId, $provider, $body) {
       if( $userId === null || $provider === null || $body === null ) {
-        throw new ApiException("missing required parameters");
+        throw new ApiException("missing required parameters", 400);
       }
       //parse inputs
   	  $resourcePath = str_replace("*", "", "/mgmt/{userId}/storages/{provider}");
@@ -618,7 +618,7 @@ class MgmtApi {
 
    public function UpdateStorageProvider($userId, $provider, $body) {
       if( $userId === null || $provider === null || $body === null ) {
-        throw new ApiException("missing required parameters");
+        throw new ApiException("missing required parameters", 400);
       }
       //parse inputs
   	  $resourcePath = str_replace("*", "", "/mgmt/{userId}/storages/{provider}");
@@ -658,7 +658,7 @@ class MgmtApi {
 
    public function GetRoles($userId) {
       if( $userId === null ) {
-        throw new ApiException("missing required parameters");
+        throw new ApiException("missing required parameters", 400);
       }
       //parse inputs
   	  $resourcePath = str_replace("*", "", "/mgmt/{userId}/roles");
@@ -695,7 +695,7 @@ class MgmtApi {
 
    public function GetUserRoles($callerId, $userId) {
       if( $callerId === null || $userId === null ) {
-        throw new ApiException("missing required parameters");
+        throw new ApiException("missing required parameters", 400);
       }
       //parse inputs
   	  $resourcePath = str_replace("*", "", "/mgmt/{callerId}/users/{userId}/roles");
@@ -737,7 +737,7 @@ class MgmtApi {
 
    public function SetUserRoles($callerId, $userId, $body) {
       if( $callerId === null || $userId === null || $body === null ) {
-        throw new ApiException("missing required parameters");
+        throw new ApiException("missing required parameters", 400);
       }
       //parse inputs
   	  $resourcePath = str_replace("*", "", "/mgmt/{callerId}/users/{userId}/roles");
@@ -777,7 +777,7 @@ class MgmtApi {
 
    public function GetAccount($userId) {
       if( $userId === null ) {
-        throw new ApiException("missing required parameters");
+        throw new ApiException("missing required parameters", 400);
       }
       //parse inputs
   	  $resourcePath = str_replace("*", "", "/mgmt/{userId}/account");
@@ -813,7 +813,7 @@ class MgmtApi {
 
    public function DeleteAccount($userId) {
       if( $userId === null ) {
-        throw new ApiException("missing required parameters");
+        throw new ApiException("missing required parameters", 400);
       }
       //parse inputs
   	  $resourcePath = str_replace("*", "", "/mgmt/{userId}/account");
@@ -849,7 +849,7 @@ class MgmtApi {
 
    public function GetAccountUsers($adminId) {
       if( $adminId === null ) {
-        throw new ApiException("missing required parameters");
+        throw new ApiException("missing required parameters", 400);
       }
       //parse inputs
   	  $resourcePath = str_replace("*", "", "/mgmt/{adminId}/account/users");
@@ -887,7 +887,7 @@ class MgmtApi {
 
    public function UpdateAccountUser($adminId, $userName, $body) {
       if( $adminId === null || $userName === null || $body === null ) {
-        throw new ApiException("missing required parameters");
+        throw new ApiException("missing required parameters", 400);
       }
       //parse inputs
   	  $resourcePath = str_replace("*", "", "/mgmt/{adminId}/account/users/{userName}");
@@ -928,7 +928,7 @@ class MgmtApi {
 
    public function DeleteAccountUser($adminId, $userName) {
       if( $adminId === null || $userName === null ) {
-        throw new ApiException("missing required parameters");
+        throw new ApiException("missing required parameters", 400);
       }
       //parse inputs
   	  $resourcePath = str_replace("*", "", "/mgmt/{adminId}/account/users/{userName}");
@@ -969,7 +969,7 @@ class MgmtApi {
 
    public function GetUserEmbedKey($userId, $area) {
       if( $userId === null || $area === null ) {
-        throw new ApiException("missing required parameters");
+        throw new ApiException("missing required parameters", 400);
       }
       //parse inputs
   	  $resourcePath = str_replace("*", "", "/mgmt/{userId}/embedkey/{area}");
@@ -1010,7 +1010,7 @@ class MgmtApi {
 
    public function GetUserEmbedKeyFromGuid($callerId, $guid) {
       if( $callerId === null || $guid === null ) {
-        throw new ApiException("missing required parameters");
+        throw new ApiException("missing required parameters", 400);
       }
       //parse inputs
   	  $resourcePath = str_replace("*", "", "/mgmt/{callerId}/embedkey/guid/{guid}");
@@ -1051,7 +1051,7 @@ class MgmtApi {
 
    public function GenerateKeyForUser($userId, $area) {
       if( $userId === null || $area === null ) {
-        throw new ApiException("missing required parameters");
+        throw new ApiException("missing required parameters", 400);
       }
       //parse inputs
   	  $resourcePath = str_replace("*", "", "/mgmt/{userId}/embedkey/new/{area}");

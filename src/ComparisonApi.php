@@ -46,7 +46,7 @@ class ComparisonApi {
 
    public function DownloadResult($userId, $resultFileId, $format=null, FileStream $outFileStream) {
       if( $userId === null || $resultFileId === null ) {
-        throw new ApiException("missing required parameters");
+        throw new ApiException("missing required parameters", 400);
       }
       //parse inputs
   	  $resourcePath = str_replace("*", "", "/comparison/{userId}/comparison/download?resultFileId={resultFileId}&format={format}");
@@ -88,7 +88,7 @@ class ComparisonApi {
 
    public function Compare($userId, $sourceFileId, $targetFileId, $callbackUrl) {
       if( $userId === null || $sourceFileId === null || $targetFileId === null || $callbackUrl === null ) {
-        throw new ApiException("missing required parameters");
+        throw new ApiException("missing required parameters", 400);
       }
       //parse inputs
   	  $resourcePath = str_replace("*", "", "/comparison/{userId}/comparison/compare?source={sourceFileId}&target={targetFileId}&callback={callbackUrl}");
@@ -138,7 +138,7 @@ class ComparisonApi {
 
    public function GetChanges($userId, $resultFileId) {
       if( $userId === null || $resultFileId === null ) {
-        throw new ApiException("missing required parameters");
+        throw new ApiException("missing required parameters", 400);
       }
       //parse inputs
   	  $resourcePath = str_replace("*", "", "/comparison/{userId}/comparison/changes?resultFileId={resultFileId}");
@@ -183,7 +183,7 @@ class ComparisonApi {
 
    public function UpdateChanges($userId, $resultFileId, $body) {
       if( $userId === null || $resultFileId === null || $body === null ) {
-        throw new ApiException("missing required parameters");
+        throw new ApiException("missing required parameters", 400);
       }
       //parse inputs
   	  $resourcePath = str_replace("*", "", "/comparison/{userId}/comparison/changes?resultFileId={resultFileId}");
@@ -227,7 +227,7 @@ class ComparisonApi {
 
    public function GetDocumentDetails($userId, $guid) {
       if( $userId === null || $guid === null ) {
-        throw new ApiException("missing required parameters");
+        throw new ApiException("missing required parameters", 400);
       }
       //parse inputs
   	  $resourcePath = str_replace("*", "", "/comparison/{userId}/comparison/document?guid={guid}");

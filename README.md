@@ -16,7 +16,7 @@ To add SDK as a local, per-project dependency to your project, simply add a depe
 
 	{
 		"require": {
-			"groupdocs/groupdocs-php": "v1.1"
+			"groupdocs/groupdocs-php": "v1.2"
 		},
 		"require-dev": {
 			"phpunit/phpunit": "3.7.*"

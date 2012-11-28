@@ -10,12 +10,9 @@
     
     function Share($userId, $privateKey, $file_Id, $body)
     {
-        if ($file_Id == "" || $userId == "" || $privateKey == "" || $body == "")
-        {
-            throw new Exception('You do not enter FILE ID');
-        } 
-        else
-        {
+        if ($file_Id == "" || $userId == "" || $privateKey == "" || $body == "") {
+            throw new Exception('Please enter FILE ID');
+        } else {
             $signer = new GroupDocsRequestSigner($privateKey);
             $apiClient = new APIClient($signer); // PHP SDK V1.1
             $api = new StorageApi($apiClient);
@@ -23,8 +20,7 @@
             $name = '';
             foreach ($files->result->files as $item) //selecting file names
             {
-               if ($item->guid == $file_Id)
-               {
+               if ($item->guid == $file_Id) {
                 $name = $item->name;
                 $file_id = $item->id;
                }
@@ -36,15 +32,13 @@
         }
     }
     
-    try 
-    {
+    try {
         Share($clientId, $privateKey, $fileGuId, $sharer);
-    } 
-    catch (Exception $e)
-    {
+    } catch(Exception $e) {
         $error = 'ERROR: ' .  $e->getMessage() . "\n";
         f3::set('error', $error);
     }
+    
     F3::set('userId', $clientId);
     F3::set('privateKey', $privateKey);
     f3::set('fileId', $fileGuId);

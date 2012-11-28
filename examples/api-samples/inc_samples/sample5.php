@@ -9,12 +9,9 @@
     
     function copy_move($clientId, $privateKey, $fileGuId, $move=NULL, $copy=NULL, $folder)
     {
-        if (!isset($clientId) || !isset($privateKey) || !isset($fileGuId))
-        {
-            throw new Exception('You do not enter all parameters');
-        } 
-        else
-        {
+        if (!isset($clientId) || !isset($privateKey) || !isset($fileGuId)) {
+            throw new Exception('Please enter all required parameters');
+        } else {
             $signer = new GroupDocsRequestSigner($privateKey);
             $apiClient = new APIClient($signer); // PHP SDK V1.1
             $api = new StorageApi($apiClient);
@@ -23,23 +20,20 @@
             $file_id = '';
             foreach ($files->result->files as $item) //selecting file names
             {
-               if ($item->guid == $fileGuId)
-               {
-                $name = $item->name;
-                $file_id = $item->id;
+               if ($item->guid == $fileGuId) {
+                   $name = $item->name;
+                   $file_id = $item->id;
                }
             }
 
-            if (isset($copy))
-            {
+            if (isset($copy)) {
                $path = $folder . '/' . $name;
                $file = $api->MoveFile($clientId, $path, NULL, $file_id, NULL); //download file
 
                return  F3::set('button', $copy);
             }
 
-            if (isset($move))
-            {
+            if (isset($move)) {
                $path = $folder . '/' . $name;
                $file = $api->MoveFile($clientId, $path, NULL, NULL, $file_id); //download file
 
@@ -47,16 +41,15 @@
             }
          } 
     }
-    try 
-    {
+    
+    try {
         copy_move($clientId, $privateKey, $fileGuId, $move, $copy, $folder);
         $massage = "File was {{@button}}'ed to the {{@folder}} folder";
-    }
-    catch (Exception $e)
-    {
+    } catch(Exception $e) {
         $error = 'ERROR: ' .  $e->getMessage() . "\n";
         $massage = $error;
     }
+    
     F3::set('userId', $clientId);
     F3::set('privateKey', $privateKey);
     F3::set('file_Id', $fileGuId);

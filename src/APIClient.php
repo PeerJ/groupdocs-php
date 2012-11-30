@@ -44,8 +44,24 @@ class DefaultRequestSigner implements RequestSigner {
 
 class APIClient {
 	
-	const PACKAGE_NAME = "groupdocs-php";
-	const PACKAGE_VERSION = "1.3-dev";
+	private static $packageInfo;
+	
+	public static function getPackageInfo(){
+		if(is_null(self::$packageInfo)){
+			$json = file_get_contents(dirname(__FILE__)."/../composer.json");
+			$jsonArray = json_decode($json, true);
+			self::$packageInfo = array();
+			if(is_array($jsonArray)){
+				self::$packageInfo['version'] = $jsonArray['version'];
+				self::$packageInfo['name'] = $jsonArray['name'];
+				$pos = strpos(self::$packageInfo['name'], "/");
+				if($pos !== false){
+					self::$packageInfo['name'] = substr(self::$packageInfo['name'], $pos + 1);
+			  	}
+			}
+		}
+		return self::$packageInfo;
+	}
 
 	public static $POST = "POST";
 	public static $GET = "GET";
@@ -57,7 +73,8 @@ class APIClient {
 	 */
 	function __construct($requestSigner = null) {
 		$this->signer = $requestSigner == null ? new DefaultRequestSigner() : $requestSigner;
-		$this->headers = array("Groupdocs-Referer" => self::PACKAGE_NAME."/".self::PACKAGE_VERSION);
+		$info = self::getPackageInfo();
+		$this->headers = array("Groupdocs-Referer" => $info["name"]."/".$info["version"]);
 		$this->debug = false;
 	}
 

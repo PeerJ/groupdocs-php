@@ -18,7 +18,7 @@ This is the GroupDocs PHP SDK Api samples application written with FatFree frame
 * Apache ModRewrite
 * PHP Curl extension
 * PHP Sockets extension (php_sockets.dll)
-* omposer.phar (http://getcomposer.org/download/ or use included version)
+* composer.phar (http://getcomposer.org/download/ or use included version)
 
 ### How to configure composer.json
 
@@ -26,7 +26,7 @@ To download required version of PHP SDK with composer it's enough to set this se
 
      {
          "require": {
-             "groupdocs/groupdocs-php": "v1.2.0-p4"
+             "groupdocs/groupdocs-php": "v1.2"
          }
       }
 

@@ -48,7 +48,12 @@ class APIClient {
 	
 	public static function getPackageInfo(){
 		if(is_null(self::$packageInfo)){
-			$json = file_get_contents(dirname(__FILE__)."/../composer.json");
+			$filename = dirname(__FILE__)."/composer.json";
+			if(!file_exists($filename)){
+				$filename = dirname(__FILE__)."/../composer.json";
+			}
+			
+			$json = file_get_contents($filename);
 			$jsonArray = json_decode($json, true);
 			self::$packageInfo = array();
 			if(is_array($jsonArray)){

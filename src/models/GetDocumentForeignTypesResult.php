@@ -24,10 +24,10 @@
 class GetDocumentForeignTypesResult {
 
   static $swaggerTypes = array(
-      'types' => 'array[string]'
+      'types' => 'array[None]'
 
     );
 
-  public $types; // array[string]
+  public $types; // array[None]
   }
 

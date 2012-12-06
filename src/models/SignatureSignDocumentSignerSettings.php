@@ -24,22 +24,22 @@
 class SignatureSignDocumentSignerSettings {
 
   static $swaggerTypes = array(
+      'name' => 'string',
+      'top' => 'float',
+      'left' => 'float',
+      'width' => 'float',
       'height' => 'float',
       'placeSingatureOn' => 'string',
-      'width' => 'float',
-      'name' => 'string',
-      'data' => 'string',
-      'left' => 'float',
-      'top' => 'float'
+      'data' => 'string'
 
     );
 
+  public $name; // string
+  public $top; // float
+  public $left; // float
+  public $width; // float
   public $height; // float
   public $placeSingatureOn; // string
-  public $width; // float
-  public $name; // string
   public $data; // string
-  public $left; // float
-  public $top; // float
   }
 

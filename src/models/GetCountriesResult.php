@@ -24,10 +24,10 @@
 class GetCountriesResult {
 
   static $swaggerTypes = array(
-      'countries' => 'array[Country]'
+      'countries' => 'array[Some(Country)]'
 
     );
 
-  public $countries; // array[Country]
+  public $countries; // array[Some(Country)]
   }
 

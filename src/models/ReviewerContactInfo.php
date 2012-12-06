@@ -24,12 +24,12 @@
 class ReviewerContactInfo {
 
   static $swaggerTypes = array(
-      'FullName' => 'string',
-      'emailAddress' => 'string'
+      'emailAddress' => 'string',
+      'FullName' => 'string'
 
     );
 
-  public $FullName; // string
   public $emailAddress; // string
+  public $FullName; // string
   }
 

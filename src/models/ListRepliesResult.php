@@ -24,12 +24,12 @@
 class ListRepliesResult {
 
   static $swaggerTypes = array(
-      'replies' => 'array[AnnotationReplyInfo]',
-      'annotationGuid' => 'string'
+      'annotationGuid' => 'string',
+      'replies' => 'array[Some(AnnotationReplyInfo)]'
 
     );
 
-  public $replies; // array[AnnotationReplyInfo]
   public $annotationGuid; // string
+  public $replies; // array[Some(AnnotationReplyInfo)]
   }
 

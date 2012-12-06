@@ -24,12 +24,12 @@
 class GetJobsResult {
 
   static $swaggerTypes = array(
-      'jobs' => 'array[JobInfo]',
-      'count' => 'int'
+      'count' => 'int',
+      'jobs' => 'array[Some(JobInfo)]'
 
     );
 
-  public $jobs; // array[JobInfo]
   public $count; // int
+  public $jobs; // array[Some(JobInfo)]
   }
 

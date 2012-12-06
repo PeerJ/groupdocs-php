@@ -25,11 +25,11 @@ class ChangesResult {
 
   static $swaggerTypes = array(
       'result_file_Id' => 'string',
-      'changes' => 'array[ChangeInfo]'
+      'changes' => 'array[Some(ChangeInfo)]'
 
     );
 
   public $result_file_Id; // string
-  public $changes; // array[ChangeInfo]
+  public $changes; // array[Some(ChangeInfo)]
   }
 

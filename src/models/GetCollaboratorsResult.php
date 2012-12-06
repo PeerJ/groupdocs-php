@@ -24,18 +24,18 @@
 class GetCollaboratorsResult {
 
   static $swaggerTypes = array(
-      'sessionGuid' => 'string',
       'documentGuid' => 'string',
-      'collaborators' => 'array[ReviewerInfo]',
-      'shared_link_access_rights' => 'int',
-      'owner' => 'ReviewerInfo'
+      'sessionGuid' => 'string',
+      'owner' => 'ReviewerInfo',
+      'collaborators' => 'array[Some(ReviewerInfo)]',
+      'shared_link_access_rights' => 'int'
 
     );
 
-  public $sessionGuid; // string
   public $documentGuid; // string
-  public $collaborators; // array[ReviewerInfo]
-  public $shared_link_access_rights; // int
+  public $sessionGuid; // string
   public $owner; // ReviewerInfo
+  public $collaborators; // array[Some(ReviewerInfo)]
+  public $shared_link_access_rights; // int
   }
 

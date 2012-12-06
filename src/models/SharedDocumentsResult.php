@@ -25,11 +25,11 @@ class SharedDocumentsResult {
 
   static $swaggerTypes = array(
       'count' => 'int',
-      'documents' => 'array[SharedDocumentInfo]'
+      'documents' => 'array[Some(SharedDocumentInfo)]'
 
     );
 
   public $count; // int
-  public $documents; // array[SharedDocumentInfo]
+  public $documents; // array[Some(SharedDocumentInfo)]
   }
 

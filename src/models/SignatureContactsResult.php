@@ -25,11 +25,11 @@ class SignatureContactsResult {
 
   static $swaggerTypes = array(
       'count' => 'int',
-      'contacts' => 'array[SignatureContactInfo]'
+      'contacts' => 'array[Some(SignatureContactInfo)]'
 
     );
 
   public $count; // int
-  public $contacts; // array[SignatureContactInfo]
+  public $contacts; // array[Some(SignatureContactInfo)]
   }
 

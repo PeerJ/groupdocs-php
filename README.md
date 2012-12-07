@@ -28,7 +28,9 @@ To add SDK as a local, per-project dependency to your project, simply add a depe
 	$api = new AntAPI($apiClient);
 	$response = $api->ListAnnotations($userId, $fileId);
 
-
+###ChangeLog
+2012-12-07
+1.  Parameter check in function "deserialize" in APIClient.php fixed.
 
 ###[Sign, Manage, Annotate, Assemble, Compare and Convert Documents with GroupDocs](http://groupdocs.com)
 1. [Sign documents online with GroupDocs Signature](http://groupdocs.com/apps/signature)

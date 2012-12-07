@@ -14,11 +14,11 @@
  * @param string $className the class to attempt to load
  */
 function swagger_autoloader($className) {
-	$currentDir = substr(__FILE__, 0, strrpos(__FILE__, '/'));
-	if (file_exists($currentDir . '/' . $className . '.php')) {
-		include $currentDir . '/' . $className . '.php';
-	} elseif (file_exists($currentDir . '/models/' . $className . '.php')) {
-		include $currentDir . '/models/' . $className . '.php';
+	$currentDir = substr(__FILE__, 0, strrpos(__FILE__, DIRECTORY_SEPARATOR));
+	if (file_exists($currentDir . DIRECTORY_SEPARATOR . $className . '.php')) {
+		include $currentDir . DIRECTORY_SEPARATOR . $className . '.php';
+	} elseif (file_exists($currentDir . DIRECTORY_SEPARATOR . 'models' . DIRECTORY_SEPARATOR . $className . '.php')) {
+		include $currentDir . DIRECTORY_SEPARATOR . 'models' . DIRECTORY_SEPARATOR . $className . '.php';
 	}
 }
 spl_autoload_register('swagger_autoloader');
@@ -298,23 +298,26 @@ class APIClient {
 
 			// Need to handle possible pluralization differences
 			$true_property = $property;
-
-			if (! property_exists($class, $true_property)) {
-				if (property_exists($class, ucfirst($property))) {
-					$true_property = ucfirst($property);
-				} else if (property_exists($class, lcfirst($property))) {
-					$true_property = lcfirst($property);
-				} else if (substr($property, -1) == 's') {
-					$true_property = substr($property, 0, -1);
-					if (! property_exists($class, $true_property)) {
-						trigger_error("class $class has no property $property"
-							. " or $true_property", E_USER_WARNING);
-					}
-				} else {
-					trigger_error("class $class has no property $property",
-						E_USER_WARNING);
-				}
-			}
+            if (! property_exists($class, $true_property)) {
+               return;
+            }
+//			if (! property_exists($class, $true_property)) {
+//				if (property_exists($class, ucfirst($property))) {
+//					$true_property = ucfirst($property);
+//				} else if (property_exists($class, lcfirst($property))) {
+//					$true_property = lcfirst($property);
+//				} 
+//                else if (substr($property, -1) == 's') {
+//					$true_property = substr($property, 0, -1);
+//					if (! property_exists($class, $true_property)) {
+//						trigger_error("class $class has no property $property"
+//							. " or $true_property", E_USER_WARNING);
+//					}
+//				} else {
+//					trigger_error("class $class has no property $property",
+//						E_USER_WARNING);
+//				}
+//			}
 
 			$type = $classVars['swaggerTypes'][$true_property];
 			if (in_array($type, array('string', 'int', 'float', 'bool'))) {

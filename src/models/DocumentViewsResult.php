@@ -24,10 +24,10 @@
 class DocumentViewsResult {
 
   static $swaggerTypes = array(
-      'views' => 'array[DocumentViewInfo]'
+      'views' => 'array[Some(DocumentViewInfo)]'
 
     );
 
-  public $views; // array[DocumentViewInfo]
+  public $views; // array[Some(DocumentViewInfo)]
   }
 

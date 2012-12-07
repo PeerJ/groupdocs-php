@@ -24,24 +24,24 @@
 class QuestionnaireCollectorInfo {
 
   static $swaggerTypes = array(
-      'guid' => 'string',
       'id' => 'float',
-      'status' => 'string',
-      'resolved_exectuions' => 'int',
-      'questionnaire_id' => 'float',
-      'emails' => 'array[string]',
+      'guid' => 'string',
       'type' => 'string',
+      'status' => 'string',
+      'questionnaire_id' => 'float',
+      'resolved_exectuions' => 'int',
+      'emails' => 'array[None]',
       'modified' => 'string'
 
     );
 
-  public $guid; // string
   public $id; // float
-  public $status; // string
-  public $resolved_exectuions; // int
-  public $questionnaire_id; // float
-  public $emails; // array[string]
+  public $guid; // string
   public $type; // string
+  public $status; // string
+  public $questionnaire_id; // float
+  public $resolved_exectuions; // int
+  public $emails; // array[None]
   public $modified; // string
   }
 

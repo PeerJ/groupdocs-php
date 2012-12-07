@@ -24,12 +24,12 @@
 class SignatureEnvelopesResult {
 
   static $swaggerTypes = array(
-      'envelopes' => 'array[SignatureEnvelopeInfo]',
-      'envelopesCount' => 'int'
+      'envelopesCount' => 'int',
+      'envelopes' => 'array[Some(SignatureEnvelopeInfo)]'
 
     );
 
-  public $envelopes; // array[SignatureEnvelopeInfo]
   public $envelopesCount; // int
+  public $envelopes; // array[Some(SignatureEnvelopeInfo)]
   }
 

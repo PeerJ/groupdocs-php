@@ -24,10 +24,10 @@
 class TemplateFieldsResult {
 
   static $swaggerTypes = array(
-      'fields' => 'array[TemplateField]'
+      'fields' => 'array[Some(TemplateField)]'
 
     );
 
-  public $fields; // array[TemplateField]
+  public $fields; // array[Some(TemplateField)]
   }
 

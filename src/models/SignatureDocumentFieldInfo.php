@@ -25,24 +25,24 @@ class SignatureDocumentFieldInfo {
 
   static $swaggerTypes = array(
       'id' => 'string',
-      'acceptableValues' => 'string',
-      'locations' => 'array[SignatureDocumentFieldLocationInfo]',
-      'signatureFieldId' => 'float',
-      'fieldType' => 'int',
-      'mandatory' => 'bool',
       'name' => 'string',
+      'mandatory' => 'bool',
+      'signatureFieldId' => 'float',
+      'locations' => 'array[Some(SignatureDocumentFieldLocationInfo)]',
+      'fieldType' => 'int',
+      'acceptableValues' => 'string',
       'defaultValue' => 'string',
       'tooltip' => 'string'
 
     );
 
   public $id; // string
-  public $acceptableValues; // string
-  public $locations; // array[SignatureDocumentFieldLocationInfo]
-  public $signatureFieldId; // float
-  public $fieldType; // int
-  public $mandatory; // bool
   public $name; // string
+  public $mandatory; // bool
+  public $signatureFieldId; // float
+  public $locations; // array[Some(SignatureDocumentFieldLocationInfo)]
+  public $fieldType; // int
+  public $acceptableValues; // string
   public $defaultValue; // string
   public $tooltip; // string
   }

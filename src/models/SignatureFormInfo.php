@@ -25,31 +25,31 @@ class SignatureFormInfo {
 
   static $swaggerTypes = array(
       'id' => 'string',
-      'canParticipantDownloadForm' => 'bool',
-      'participantsCount' => 'float',
+      'name' => 'string',
+      'ownerGuid' => 'string',
       'templateGuid' => 'string',
       'createdTimeStamp' => 'string',
-      'documentsCount' => 'float',
       'status' => 'int',
+      'statusDateTime' => 'string',
+      'documentsCount' => 'float',
       'documentsPages' => 'float',
-      'ownerGuid' => 'string',
-      'name' => 'string',
-      'fieldsInFinalFileName' => 'array[string]',
-      'statusDateTime' => 'string'
+      'participantsCount' => 'float',
+      'fieldsInFinalFileName' => 'array[None]',
+      'canParticipantDownloadForm' => 'bool'
 
     );
 
   public $id; // string
-  public $canParticipantDownloadForm; // bool
-  public $participantsCount; // float
+  public $name; // string
+  public $ownerGuid; // string
   public $templateGuid; // string
   public $createdTimeStamp; // string
-  public $documentsCount; // float
   public $status; // int
-  public $documentsPages; // float
-  public $ownerGuid; // string
-  public $name; // string
-  public $fieldsInFinalFileName; // array[string]
   public $statusDateTime; // string
+  public $documentsCount; // float
+  public $documentsPages; // float
+  public $participantsCount; // float
+  public $fieldsInFinalFileName; // array[None]
+  public $canParticipantDownloadForm; // bool
   }
 

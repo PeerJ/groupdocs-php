@@ -24,34 +24,34 @@
 class SignatureTemplateInfo {
 
   static $swaggerTypes = array(
-      'ownerShouldSign' => 'bool',
-      'recipients' => 'array[SignatureTemplateRecipientInfo]',
-      'reminderTime' => 'float',
-      'emailSubject' => 'string',
       'id' => 'string',
+      'name' => 'string',
+      'ownerGuid' => 'string',
+      'reminderTime' => 'float',
       'stepExpireTime' => 'float',
       'templateExpireTime' => 'float',
-      'emailBody' => 'string',
+      'ownerShouldSign' => 'bool',
       'orderedSignature' => 'bool',
+      'emailSubject' => 'string',
+      'emailBody' => 'string',
       'documentsCount' => 'float',
-      'ownerGuid' => 'string',
       'documentsPages' => 'float',
-      'name' => 'string'
+      'recipients' => 'array[Some(SignatureTemplateRecipientInfo)]'
 
     );
 
-  public $ownerShouldSign; // bool
-  public $recipients; // array[SignatureTemplateRecipientInfo]
-  public $reminderTime; // float
-  public $emailSubject; // string
   public $id; // string
+  public $name; // string
+  public $ownerGuid; // string
+  public $reminderTime; // float
   public $stepExpireTime; // float
   public $templateExpireTime; // float
-  public $emailBody; // string
+  public $ownerShouldSign; // bool
   public $orderedSignature; // bool
+  public $emailSubject; // string
+  public $emailBody; // string
   public $documentsCount; // float
-  public $ownerGuid; // string
   public $documentsPages; // float
-  public $name; // string
+  public $recipients; // array[Some(SignatureTemplateRecipientInfo)]
   }
 

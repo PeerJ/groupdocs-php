@@ -25,11 +25,11 @@ class SignatureTemplateDocumentsResult {
 
   static $swaggerTypes = array(
       'templateId' => 'string',
-      'documents' => 'array[SignatureTemplateDocumentInfo]'
+      'documents' => 'array[Some(SignatureTemplateDocumentInfo)]'
 
     );
 
   public $templateId; // string
-  public $documents; // array[SignatureTemplateDocumentInfo]
+  public $documents; // array[Some(SignatureTemplateDocumentInfo)]
   }
 

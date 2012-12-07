@@ -24,10 +24,10 @@
 class GetTemplatesResult {
 
   static $swaggerTypes = array(
-      'templates' => 'array[TemplateInfo]'
+      'templates' => 'array[Some(TemplateInfo)]'
 
     );
 
-  public $templates; // array[TemplateInfo]
+  public $templates; // array[Some(TemplateInfo)]
   }
 

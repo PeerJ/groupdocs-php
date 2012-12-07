@@ -24,16 +24,16 @@
 class ListEntitiesResult {
 
   static $swaggerTypes = array(
-      'files' => 'array[FileSystemDocument]',
-      'count' => 'int',
       'path' => 'string',
-      'folders' => 'array[FileSystemFolder]'
+      'count' => 'int',
+      'folders' => 'array[Some(FileSystemFolder)]',
+      'files' => 'array[Some(FileSystemDocument)]'
 
     );
 
-  public $files; // array[FileSystemDocument]
-  public $count; // int
   public $path; // string
-  public $folders; // array[FileSystemFolder]
+  public $count; // int
+  public $folders; // array[Some(FileSystemFolder)]
+  public $files; // array[Some(FileSystemDocument)]
   }
 

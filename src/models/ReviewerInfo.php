@@ -24,22 +24,22 @@
 class ReviewerInfo {
 
   static $swaggerTypes = array(
-      'guid' => 'string',
       'id' => 'float',
-      'customEmailMessage' => 'string',
-      'color' => 'int',
+      'guid' => 'string',
       'primary_email' => 'string',
+      'firstname' => 'string',
       'access_rights' => 'int',
-      'firstname' => 'string'
+      'color' => 'int',
+      'customEmailMessage' => 'string'
 
     );
 
-  public $guid; // string
   public $id; // float
-  public $customEmailMessage; // string
-  public $color; // int
+  public $guid; // string
   public $primary_email; // string
-  public $access_rights; // int
   public $firstname; // string
+  public $access_rights; // int
+  public $color; // int
+  public $customEmailMessage; // string
   }
 

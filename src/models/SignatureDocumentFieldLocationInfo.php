@@ -24,28 +24,28 @@
 class SignatureDocumentFieldLocationInfo {
 
   static $swaggerTypes = array(
-      'locationHeight' => 'float',
       'id' => 'string',
-      'fontColor' => 'string',
-      'fontName' => 'string',
-      'page' => 'int',
-      'locationWidth' => 'float',
-      'locationX' => 'float',
-      'fontSize' => 'float',
       'fieldId' => 'string',
-      'locationY' => 'float'
+      'page' => 'int',
+      'locationX' => 'float',
+      'locationY' => 'float',
+      'locationWidth' => 'float',
+      'locationHeight' => 'float',
+      'fontName' => 'string',
+      'fontColor' => 'string',
+      'fontSize' => 'float'
 
     );
 
-  public $locationHeight; // float
   public $id; // string
-  public $fontColor; // string
-  public $fontName; // string
-  public $page; // int
-  public $locationWidth; // float
-  public $locationX; // float
-  public $fontSize; // float
   public $fieldId; // string
+  public $page; // int
+  public $locationX; // float
   public $locationY; // float
+  public $locationWidth; // float
+  public $locationHeight; // float
+  public $fontName; // string
+  public $fontColor; // string
+  public $fontSize; // float
   }
 

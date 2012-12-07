@@ -24,10 +24,10 @@
 class GetImageUrlsResult {
 
   static $swaggerTypes = array(
-      'url' => 'array[string]'
+      'url' => 'array[None]'
 
     );
 
-  public $url; // array[string]
+  public $url; // array[None]
   }
 

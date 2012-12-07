@@ -25,11 +25,11 @@ class SignatureFormFieldsResult {
 
   static $swaggerTypes = array(
       'formId' => 'string',
-      'fields' => 'array[SignatureFormFieldInfo]'
+      'fields' => 'array[Some(SignatureFormFieldInfo)]'
 
     );
 
   public $formId; // string
-  public $fields; // array[SignatureFormFieldInfo]
+  public $fields; // array[Some(SignatureFormFieldInfo)]
   }
 

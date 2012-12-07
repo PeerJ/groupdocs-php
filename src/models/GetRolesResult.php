@@ -24,10 +24,10 @@
 class GetRolesResult {
 
   static $swaggerTypes = array(
-      'roles' => 'array[RoleInfo]'
+      'roles' => 'array[Some(RoleInfo)]'
 
     );
 
-  public $roles; // array[RoleInfo]
+  public $roles; // array[Some(RoleInfo)]
   }
 

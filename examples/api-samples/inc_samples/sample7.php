@@ -5,9 +5,12 @@
     
     function ThumbnailList($clientId, $privateKey)
     {
-        if (empty($clientId) || empty($privateKey)) {
-            throw new Exception('Please enter all required parameters');
-        } else {
+        if (empty($clientId) || empty($privateKey))
+        {
+            throw new Exception('You do not enter you User id or Private key');
+        }
+        else
+        {
             F3::set('userId', $clientId);
             F3::set('privateKey', $privateKey);
             $signer = new GroupDocsRequestSigner($privateKey);
@@ -16,8 +19,10 @@
             $files = $api->ListEntities($clientId, "", null, null, null, null, null, null, true); //geting all Entities from curent user
             $thumbnail = '';
             $name = '';
-            for ($i=0; $i < count($files->result->files); $i++) {
-                if ($files->result->files[$i]->thumbnail !== "") {
+            for ($i=0; $i < count($files->result->files); $i++)
+            {
+                if($files->result->files[$i]->thumbnail !== "")
+                {
                     $fp = fopen(__DIR__ . '/../temp/thumbnail' . $i . '.jpg', 'w');
                     fwrite($fp, base64_decode($files->result->files[$i]->thumbnail));
                     fclose($fp);
@@ -29,12 +34,13 @@
             return F3::set('thumbnailList', $thumbnail);
         }
     }
-    
-    try {
+    try
+    {
         ThumbnailList($clientId, $privateKey);
-    } catch(Exception $e) {
+    }
+    catch (Exception $e)
+    {
         $error = 'ERROR: ' .  $e->getMessage() . "\n";
         f3::set('error', $error);
     }
-    
     echo Template::serve('sample7.htm');

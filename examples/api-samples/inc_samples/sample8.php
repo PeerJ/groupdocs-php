@@ -9,9 +9,12 @@
     
     function GetDocumentPages($clientId, $privateKey, $fileGuId, $pageNumber=0)
     {
-        if (empty($clientId) || empty($privateKey) || empty($fileGuId)) {
-            throw new Exception('Please enter all required parameters');
-        } else {
+        if (empty($clientId) || empty($privateKey) || empty($fileGuId))
+        {
+            throw new Exception('You do not enter all parameters');
+        }
+        else
+        {
             F3::set('userId', $clientId);
             F3::set('privateKey', $privateKey);
             $signer = new GroupDocsRequestSigner($privateKey);
@@ -21,14 +24,15 @@
             return f3::set('url', $URL->result->url[0]);
         }
     }
-    
-    try {
+    try
+    {
         GetDocumentPages($clientId, $privateKey, $fileGuId, $pageNumber);
-    } catch(Exception $e) {
+    }
+    catch (Exception $e)
+    {
         $error = 'ERROR: ' .  $e->getMessage() . "\n";
         f3::set('error', $error);
     }
-    
     f3::set('fileId', $fileGuId);
     f3::set('pageNumber', $pageNumber);
     echo Template::serve('sample8.htm');

@@ -5,31 +5,34 @@
     
     function FileList($clientId, $privateKey)
     {
-        if (empty($clientId) || empty($privateKey)) {
-            throw new Exception('Please enter all required parameters');
-        } else {
+        if (empty($clientId) || empty($privateKey))
+        {
+            throw new Exception('You do not enter you User id or Private key');
+        }
+        else
+        {
             $signer = new GroupDocsRequestSigner($privateKey);
             $apiClient = new APIClient($signer); // PHP SDK V1.1
             $api = new StorageApi($apiClient);
             $files = $api->ListEntities($clientId, '', 0); //geting all Entities from curent user
             $name = '';
-            
-            //selecting file names
-            foreach ($files->result->files as $item) {
+            foreach ($files->result->files as $item) //selecting file names
+            {
                 $name .= $item->name . '<br>';
             }
 
            return F3::set('filelist', $name);
         }
     }
-    
-    try {
+    try
+    {
         FileList($clientId, $privateKey);
-    } catch(Exception $e) {
+    }
+    catch (Exception $e)
+    {
         $error = 'ERROR: ' .  $e->getMessage() . "\n";
         f3::set('error', $error);
     }
-    
     F3::set('userId', $clientId);
     F3::set('privateKey', $privateKey);
     echo Template::serve('sample2.htm');

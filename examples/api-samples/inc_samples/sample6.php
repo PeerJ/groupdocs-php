@@ -3,36 +3,44 @@
     F3::set('userId', '');
     F3::set('privateKey', '');
     F3::set('fileId', '');
-
-    $postdata = file_get_contents("php://input"); // get raw post data
-
-
-    if (isset($postdata) AND !empty($postdata)) {
-        $jsonPostData = json_decode($postdata, true); //get json object from raw data with request parameters
-
-        $clientId = $jsonPostData['userId']; //get parameters from json object
-        $privateKey = $jsonPostData['privateKey'];
-        $documents = $jsonPostData['documents'];
-        $signers = $jsonPostData['signers'];
-        for ($i = 0; $i < count($signers); $i++) {
+    $postdata = file_get_contents("php://input");
+    
+    if (!empty($postdata))
+    {
+        $json_post_data = json_decode($postdata, true);
+        $clientId = $json_post_data['userId'];
+        $privateKey = $json_post_data['privateKey'];
+        $documents = $json_post_data['documents'];
+        $signers = $json_post_data['signers'];
+        for ($i = 0; $i < count($signers); $i++) 
+        {
             $signers[$i]['placeSingatureOn'] = '';
         }
-        $signer = new GroupDocsRequestSigner($privateKey); //create signer
-        $apiClient = new APIClient($signer); //create ApiClient
+        $signer = new GroupDocsRequestSigner($privateKey);
+        $apiClient = new APIClient($signer);
         $signatureApi = new SignatureApi($apiClient);
-        $settings = new SignatureSignDocumentSettings(); // create setting variable for signature SignDocument method
-        $settings->documents = $documents;
+        $settings = new SignatureSignDocumentSettings();
+        $settings->documents = $file;
         $settings->signers = $signers;
         $response = $signatureApi->SignDocument($clientId, $settings);
-
-        if ($response->status == "Ok") {
-            $return = json_encode(array("responseCode" => 200, "documentId" => $response->result->documentId));
+        $uploadedFile = $_FILES['file'];
+        $clientID = strip_tags(stripslashes(trim($clientId))); //ClientId==UserId
+        $apiKey = strip_tags(stripslashes(trim($privateKey))); //ApiKey==PrivateKey
+        if (null === $uploadedFile)
+        {
+            return new RedirectResponse("/sample3");
+        }
+        $tmp_name = $uploadedFile['tmp_name']; //temp name of the file
+        $name = $uploadedFile['name']; //original name of the file
+        $fs = FileStream::fromFile($tmp_name);    
+        $apiStorage = new StorageApi($apiClient);
+        $uploadResult = $apiStorage->Upload($clientID, $name, 'uploaded', $fs);
+        if ($uploadResult->status == "Ok")
+        {
+            $result = array();
+            $result = array('iframe' => '<iframe src="https://apps.groupdocs.com/document-viewer/Embed/' . $uploadResult->result->guid . '" frameborder="0" width="720" height="600"></iframe>',
+                            'name' => $name);
+            return f3::set('iframe', $result);
         }
     }
-    if (isset($return) AND !empty($return)) {
-        header('Content-type: application/json');
-        echo $return;
-    } else {
-        echo Template::serve('sample6.htm');
-    }
-
+    echo Template::serve('sample6.htm');

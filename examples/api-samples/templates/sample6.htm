@@ -14,16 +14,16 @@
 <h3 style="text-align:center;"><a href="/index.php">GroupDocs PHP SDK Samples</a> - Sample6</h3>
 
 <div class='samplecontent' style="padding:10px;">
-   <i>This sample will show how to add provided signature to provided document using PHP SDK. Signed file will be uploaded to GroupDocs account and its GUID will be returned and embed into webpage with GroupDocs Ebedded Viewer.</i> <br/>
-
+   <i>This sample will show how to add a Signature to a document in GroupDocs Signature using PHP SDK</i> <br/>
+   
    <div id="files_form">
     <form action='#' onsubmit="return false;">
         <br />
-        <label for='client_id'>GroupDocs ClientID</label>
+        <label for='client_id'>GroupDocs Client ID</label>
         <br />
         <input type='text', id='client_id' />
         <br />
-        <label for='private_key'>GroupDocs PrivateKey</label>
+        <label for='private_key'>GroupDocs Private Key</label>
         <br />
         <input type='text', id='private_key' />
         <br />
@@ -35,20 +35,18 @@
         <br />
         <input type='file' id='fi_signature'  />
         <br />
-        <br />
         <input type='button' id='btnLoad' value='Upload and sign the document' onclick='load();'>
-        <br />
-        <br />
     </form>
+    <iframe id="viewer" src="" frameborder="0" width="600" height="500"></iframe>
     </div>
     <div  style="padding:20px; border:1px solid black;">
-        <p> Results: <span id="results_status" style="color:red;display:none;"> (Please wait for ajax response) </span></p>
-        <iframe id="viewer" src="" frameborder="0" width="600" height="500"></iframe>
+        <p> Results: </p>
+        {{ @iframe }}
     </div>
 </div>
 
 <div style="padding:10px;">
-Choose another one sample:
+Choose anothe one sample:
 <ul>
     <li> <a href="/sample1">Sample1 - How to login to GroupDocs using the API</li>
     <li> <a href="/sample2">Sample2 - How to list files within GroupDocs Storage using the Storage API</li>
@@ -58,7 +56,7 @@ Choose another one sample:
     <li> <a href="/sample6">Sample6 - How to add a Signature to a document in GroupDocs Signature</li>
     <li> <a href="/sample7">Sample7 - How to create a list of thumbnails for a document</li>
     <li> <a href="/sample8">Sample8 - How to return a URL representing a single page of a Document</li>
-    <li> <a href="/sample9">Sample9 - How to generate an embedded Viewer URL for a Document</li>
+    <li> <a href="/sample9">Sample9 - How to generate a embedded Viewer URL for a DocumentI</li>
     <li> <a href="/sample10">Sample10 - How to share a document to other users</li>
 </ul>
 </div>
@@ -83,9 +81,7 @@ Choose another one sample:
                 $("#files_form").append("<p class='error'>Please select a file before clicking 'Load'</p>");
             }
             else {
-                $('#results_status').fadeIn("slow");
                 $('#sample6').fadeOut("slow");
-
                 fileDocument = inputDocument.files[0];
                 frDocument = new FileReader();
                 frDocument.onload = receivedDocument;
@@ -127,9 +123,9 @@ Choose another one sample:
                         alert(data);
                     },
                     onSigned: function (e, data) {
-                        $("#viewer").attr("src", "https://apps.groupdocs.com/document-viewer/Embed/" + data.documentId);
-                        $('#results_status').fadeOut("slow");
-                        $('#viewer').fadeIn("slow");
+                        var result = data;
+                        $("#sample6").attr("src", "https://apps.groupdocs.com/document-viewer/Embed/" + data.documentId);
+                        $('#sample6').fadeIn("slow");
                     }
                 });
                 $("body").sign("addDocument", {

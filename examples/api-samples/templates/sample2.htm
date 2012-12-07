@@ -11,7 +11,7 @@
 <h3 style="text-align:center;"><a href="/index.php">GroupDocs PHP SDK Samples</a> - Sample2</h3>
 
 <div class='samplecontent' style="padding:10px;">
-   <i>This sample will show how to use StorageApi to list all user files from GroupDocs account using PHP SDK</i> <br/>
+   <i>This sample will show how to use StorageApi to list user files using PHP SDK</i> <br/>
    
    <br/><p>You entered: 
    <p>UserId = {{@userId}}
@@ -20,11 +20,11 @@
    <div id="requestForm" style="padding:20px; border:1px solid black;">
    <p> Enter data for request and press "Make request" button </p>
    <form action="/sample2" method = "post" enctype = 'multipart/form-data'>
-       <label for='client_id'>GroupDocs ClientID</label>
+       <label for='client_id'>GroupDocs Client ID</label>
        <br />
        <input type='text', name='client_id' value="{{@userId}}" />
        <br />
-       <label for='private_key'>GroupDocs PrivateKey</label>
+       <label for='private_key'>GroupDocs Private Key</label>
        <br />
        <input type='text', name='private_key'  value="{{@privateKey}}" />
        <br />
@@ -32,7 +32,7 @@
    </form>
    </div>
    <div  style="padding:20px; border:1px solid black;">
-        <p>Results:</p>
+        <p> Results: </p>
         <table style="border:1px double black;">
           <tr>
               <th>Field</th><th>Value</th>
@@ -41,6 +41,7 @@
                <td>Files list</td><td>{{@filelist}}</td>
           </tr>
         </table>
+        
    </div>
    <br/>
  </div>
@@ -56,7 +57,7 @@ Choose anothe one sample:
     <li> <a href="/sample6">Sample6 - How to add a Signature to a document in GroupDocs Signature</li>
     <li> <a href="/sample7">Sample7 - How to create a list of thumbnails for a document</li>
     <li> <a href="/sample8">Sample8 - How to return a URL representing a single page of a Document</li>
-    <li> <a href="/sample9">Sample9 - How to generate an embedded Viewer URL for a Document</li>
+    <li> <a href="/sample9">Sample9 - How to generate a embedded Viewer URL for a DocumentI</li>
     <li> <a href="/sample10">Sample10 - How to share a document to other users</li>
 </ul>
 </div>

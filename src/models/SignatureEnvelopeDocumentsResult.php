@@ -25,11 +25,11 @@ class SignatureEnvelopeDocumentsResult {
 
   static $swaggerTypes = array(
       'envelopeId' => 'string',
-      'documents' => 'array[Some(SignatureEnvelopeDocumentInfo)]'
+      'documents' => 'array[SignatureEnvelopeDocumentInfo]'
 
     );
 
   public $envelopeId; // string
-  public $documents; // array[Some(SignatureEnvelopeDocumentInfo)]
+  public $documents; // array[SignatureEnvelopeDocumentInfo]
   }
 

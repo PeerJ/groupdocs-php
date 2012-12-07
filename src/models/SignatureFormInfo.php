@@ -34,7 +34,7 @@ class SignatureFormInfo {
       'documentsCount' => 'float',
       'documentsPages' => 'float',
       'participantsCount' => 'float',
-      'fieldsInFinalFileName' => 'array[None]',
+      'fieldsInFinalFileName' => 'array[string]',
       'canParticipantDownloadForm' => 'bool'
 
     );
@@ -49,7 +49,7 @@ class SignatureFormInfo {
   public $documentsCount; // float
   public $documentsPages; // float
   public $participantsCount; // float
-  public $fieldsInFinalFileName; // array[None]
+  public $fieldsInFinalFileName; // array[string]
   public $canParticipantDownloadForm; // bool
   }
 

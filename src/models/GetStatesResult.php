@@ -24,10 +24,10 @@
 class GetStatesResult {
 
   static $swaggerTypes = array(
-      'states' => 'array[Some(State)]'
+      'states' => 'array[State]'
 
     );
 
-  public $states; // array[Some(State)]
+  public $states; // array[State]
   }
 

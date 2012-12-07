@@ -24,10 +24,10 @@
 class GetDatasourcesResult {
 
   static $swaggerTypes = array(
-      'datasources' => 'array[Some(Datasource)]'
+      'datasources' => 'array[Datasource]'
 
     );
 
-  public $datasources; // array[Some(Datasource)]
+  public $datasources; // array[Datasource]
   }
 

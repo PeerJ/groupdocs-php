@@ -32,7 +32,7 @@ class SignatureEnvelopeDocumentInfo {
       'finalDocumentMD5' => 'string',
       'originalDocumentPagesCount' => 'int',
       'fieldsCount' => 'int',
-      'originalDocumentImportedFields' => 'array[Some(SignatureDocumentFieldInfo)]'
+      'originalDocumentImportedFields' => 'array[SignatureDocumentFieldInfo]'
 
     );
 
@@ -44,6 +44,6 @@ class SignatureEnvelopeDocumentInfo {
   public $finalDocumentMD5; // string
   public $originalDocumentPagesCount; // int
   public $fieldsCount; // int
-  public $originalDocumentImportedFields; // array[Some(SignatureDocumentFieldInfo)]
+  public $originalDocumentImportedFields; // array[SignatureDocumentFieldInfo]
   }
 

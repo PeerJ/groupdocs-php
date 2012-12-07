@@ -30,13 +30,13 @@ class FileSystemDocument {
       'file_type' => 'string',
       'size' => 'string',
       'thumbnail' => 'string',
-      'supported_types' => 'array[None]',
+      'supported_types' => 'array[string]',
       'id' => 'float',
       'guid' => 'string',
       'name' => 'string',
       'access' => 'string',
       'owner' => 'UserInfo',
-      'sharers' => 'array[Some(UserInfo)]',
+      'sharers' => 'array[UserInfo]',
       'dir' => 'bool',
       'modified_on' => 'string',
       'created_on' => 'string'
@@ -49,13 +49,13 @@ class FileSystemDocument {
   public $file_type; // string
   public $size; // string
   public $thumbnail; // string
-  public $supported_types; // array[None]
+  public $supported_types; // array[string]
   public $id; // float
   public $guid; // string
   public $name; // string
   public $access; // string
   public $owner; // UserInfo
-  public $sharers; // array[Some(UserInfo)]
+  public $sharers; // array[UserInfo]
   public $dir; // bool
   public $modified_on; // string
   public $created_on; // string

@@ -24,10 +24,10 @@
 class GetStorageProvidersResult {
 
   static $swaggerTypes = array(
-      'providers' => 'array[Some(StorageProviderInfo)]'
+      'providers' => 'array[StorageProviderInfo]'
 
     );
 
-  public $providers; // array[Some(StorageProviderInfo)]
+  public $providers; // array[StorageProviderInfo]
   }
 

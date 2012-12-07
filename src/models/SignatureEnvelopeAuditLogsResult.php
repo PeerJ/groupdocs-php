@@ -25,11 +25,11 @@ class SignatureEnvelopeAuditLogsResult {
 
   static $swaggerTypes = array(
       'envelopeId' => 'string',
-      'logs' => 'array[Some(SignatureEnvelopeAuditLogInfo)]'
+      'logs' => 'array[SignatureEnvelopeAuditLogInfo]'
 
     );
 
   public $envelopeId; // string
-  public $logs; // array[Some(SignatureEnvelopeAuditLogInfo)]
+  public $logs; // array[SignatureEnvelopeAuditLogInfo]
   }
 

@@ -30,9 +30,9 @@ class SignatureFormFieldInfo {
       'name' => 'string',
       'mandatory' => 'bool',
       'regularExpression' => 'string',
-      'data' => 'array[None]',
+      'data' => 'array[int]',
       'fillTimeStamp' => 'string',
-      'locations' => 'array[Some(SignatureFormFieldLocationInfo)]',
+      'locations' => 'array[SignatureFormFieldLocationInfo]',
       'fieldType' => 'int',
       'acceptableValues' => 'string',
       'defaultValue' => 'string'
@@ -45,9 +45,9 @@ class SignatureFormFieldInfo {
   public $name; // string
   public $mandatory; // bool
   public $regularExpression; // string
-  public $data; // array[None]
+  public $data; // array[int]
   public $fillTimeStamp; // string
-  public $locations; // array[Some(SignatureFormFieldLocationInfo)]
+  public $locations; // array[SignatureFormFieldLocationInfo]
   public $fieldType; // int
   public $acceptableValues; // string
   public $defaultValue; // string

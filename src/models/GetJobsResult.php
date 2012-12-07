@@ -25,11 +25,11 @@ class GetJobsResult {
 
   static $swaggerTypes = array(
       'count' => 'int',
-      'jobs' => 'array[Some(JobInfo)]'
+      'jobs' => 'array[JobInfo]'
 
     );
 
   public $count; // int
-  public $jobs; // array[Some(JobInfo)]
+  public $jobs; // array[JobInfo]
   }
 

@@ -26,7 +26,7 @@ class SharedDocumentInfo {
   static $swaggerTypes = array(
       'status' => 'string',
       'owner' => 'UserInfo',
-      'sharers' => 'array[Some(UserInfo)]',
+      'sharers' => 'array[UserInfo]',
       'shared_on' => 'string',
       'name' => 'string',
       'version' => 'int',
@@ -45,7 +45,7 @@ class SharedDocumentInfo {
 
   public $status; // string
   public $owner; // UserInfo
-  public $sharers; // array[Some(UserInfo)]
+  public $sharers; // array[UserInfo]
   public $shared_on; // string
   public $name; // string
   public $version; // int

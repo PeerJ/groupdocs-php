@@ -25,11 +25,11 @@ class GetAccountResult {
 
   static $swaggerTypes = array(
       'max_users' => 'int',
-      'users' => 'array[Some(UserInfo)]'
+      'users' => 'array[UserInfo]'
 
     );
 
   public $max_users; // int
-  public $users; // array[Some(UserInfo)]
+  public $users; // array[UserInfo]
   }
 

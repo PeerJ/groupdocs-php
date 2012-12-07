@@ -24,12 +24,12 @@
 class SignatureSignDocumentSettings {
 
   static $swaggerTypes = array(
-      'documents' => 'array[Some(SignatureSignDocumentDocumentSettings)]',
-      'signers' => 'array[Some(SignatureSignDocumentSignerSettings)]'
+      'documents' => 'array[SignatureSignDocumentDocumentSettings]',
+      'signers' => 'array[SignatureSignDocumentSignerSettings]'
 
     );
 
-  public $documents; // array[Some(SignatureSignDocumentDocumentSettings)]
-  public $signers; // array[Some(SignatureSignDocumentSignerSettings)]
+  public $documents; // array[SignatureSignDocumentDocumentSettings]
+  public $signers; // array[SignatureSignDocumentSignerSettings]
   }
 

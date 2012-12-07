@@ -25,11 +25,11 @@ class SharedUsersResult {
 
   static $swaggerTypes = array(
       'owner' => 'UserInfo',
-      'shared_users' => 'array[Some(UserInfo)]'
+      'shared_users' => 'array[UserInfo]'
 
     );
 
   public $owner; // UserInfo
-  public $shared_users; // array[Some(UserInfo)]
+  public $shared_users; // array[UserInfo]
   }
 

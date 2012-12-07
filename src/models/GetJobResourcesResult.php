@@ -24,10 +24,10 @@
 class GetJobResourcesResult {
 
   static $swaggerTypes = array(
-      'dates' => 'array[None]'
+      'dates' => 'array[string]'
 
     );
 
-  public $dates; // array[None]
+  public $dates; // array[string]
   }
 

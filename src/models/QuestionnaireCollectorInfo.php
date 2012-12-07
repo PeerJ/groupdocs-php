@@ -30,7 +30,7 @@ class QuestionnaireCollectorInfo {
       'status' => 'string',
       'questionnaire_id' => 'float',
       'resolved_exectuions' => 'int',
-      'emails' => 'array[None]',
+      'emails' => 'array[string]',
       'modified' => 'string'
 
     );
@@ -41,7 +41,7 @@ class QuestionnaireCollectorInfo {
   public $status; // string
   public $questionnaire_id; // float
   public $resolved_exectuions; // int
-  public $emails; // array[None]
+  public $emails; // array[string]
   public $modified; // string
   }
 

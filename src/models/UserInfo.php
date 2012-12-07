@@ -32,7 +32,7 @@ class UserInfo {
       'claimed_id' => 'string',
       'token' => 'string',
       'storage' => 'int',
-      'photo' => 'array[None]',
+      'photo' => 'array[int]',
       'active' => 'bool',
       'trial' => 'bool',
       'news_eanbled' => 'bool',
@@ -42,7 +42,7 @@ class UserInfo {
       'signedupOn' => 'string',
       'signedinOn' => 'string',
       'signin_count' => 'int',
-      'roles' => 'array[Some(RoleInfo)]',
+      'roles' => 'array[RoleInfo]',
       'id' => 'float',
       'guid' => 'string',
       'primary_email' => 'string'
@@ -57,7 +57,7 @@ class UserInfo {
   public $claimed_id; // string
   public $token; // string
   public $storage; // int
-  public $photo; // array[None]
+  public $photo; // array[int]
   public $active; // bool
   public $trial; // bool
   public $news_eanbled; // bool
@@ -67,7 +67,7 @@ class UserInfo {
   public $signedupOn; // string
   public $signedinOn; // string
   public $signin_count; // int
-  public $roles; // array[Some(RoleInfo)]
+  public $roles; // array[RoleInfo]
   public $id; // float
   public $guid; // string
   public $primary_email; // string

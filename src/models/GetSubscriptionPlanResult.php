@@ -24,12 +24,12 @@
 class GetSubscriptionPlanResult {
 
   static $swaggerTypes = array(
-      'metrics' => 'array[Some(ProductMetrics)]',
+      'metrics' => 'array[ProductMetrics]',
       'subscription' => 'SubscriptionPlanInfo'
 
     );
 
-  public $metrics; // array[Some(ProductMetrics)]
+  public $metrics; // array[ProductMetrics]
   public $subscription; // SubscriptionPlanInfo
   }
 

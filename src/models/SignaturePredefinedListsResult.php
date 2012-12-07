@@ -24,10 +24,10 @@
 class SignaturePredefinedListsResult {
 
   static $swaggerTypes = array(
-      'lists' => 'array[Some(SignaturePredefinedListInfo)]'
+      'lists' => 'array[SignaturePredefinedListInfo]'
 
     );
 
-  public $lists; // array[Some(SignaturePredefinedListInfo)]
+  public $lists; // array[SignaturePredefinedListInfo]
   }
 

@@ -24,14 +24,14 @@
 class SignatureEnvelopeResourcesResult {
 
   static $swaggerTypes = array(
-      'documents' => 'array[Some(SignatureEnvelopeDocumentInfo)]',
-      'recipients' => 'array[Some(SignatureEnvelopeRecipientInfo)]',
-      'dates' => 'array[None]'
+      'documents' => 'array[SignatureEnvelopeDocumentInfo]',
+      'recipients' => 'array[SignatureEnvelopeRecipientInfo]',
+      'dates' => 'array[string]'
 
     );
 
-  public $documents; // array[Some(SignatureEnvelopeDocumentInfo)]
-  public $recipients; // array[Some(SignatureEnvelopeRecipientInfo)]
-  public $dates; // array[None]
+  public $documents; // array[SignatureEnvelopeDocumentInfo]
+  public $recipients; // array[SignatureEnvelopeRecipientInfo]
+  public $dates; // array[string]
   }
 

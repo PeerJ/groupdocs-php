@@ -25,8 +25,8 @@ class QuestionnaireInfo {
 
   static $swaggerTypes = array(
       'resolved_executions' => 'int',
-      'pages' => 'array[Some(QuestionnairePageInfo)]',
-      'document_ids' => 'array[None]',
+      'pages' => 'array[QuestionnairePageInfo]',
+      'document_ids' => 'array[string]',
       'id' => 'float',
       'guid' => 'string',
       'name' => 'string',
@@ -40,8 +40,8 @@ class QuestionnaireInfo {
     );
 
   public $resolved_executions; // int
-  public $pages; // array[Some(QuestionnairePageInfo)]
-  public $document_ids; // array[None]
+  public $pages; // array[QuestionnairePageInfo]
+  public $document_ids; // array[string]
   public $id; // float
   public $guid; // string
   public $name; // string

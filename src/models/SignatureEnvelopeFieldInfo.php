@@ -32,10 +32,10 @@ class SignatureEnvelopeFieldInfo {
       'order' => 'float',
       'regularExpression' => 'string',
       'getDataFrom' => 'string',
-      'data' => 'array[None]',
+      'data' => 'array[int]',
       'fillTimeStamp' => 'string',
       'signatureFieldId' => 'float',
-      'locations' => 'array[Some(SignatureEnvelopeFieldLocationInfo)]',
+      'locations' => 'array[SignatureEnvelopeFieldLocationInfo]',
       'fieldType' => 'int',
       'acceptableValues' => 'string',
       'defaultValue' => 'string',
@@ -51,10 +51,10 @@ class SignatureEnvelopeFieldInfo {
   public $order; // float
   public $regularExpression; // string
   public $getDataFrom; // string
-  public $data; // array[None]
+  public $data; // array[int]
   public $fillTimeStamp; // string
   public $signatureFieldId; // float
-  public $locations; // array[Some(SignatureEnvelopeFieldLocationInfo)]
+  public $locations; // array[SignatureEnvelopeFieldLocationInfo]
   public $fieldType; // int
   public $acceptableValues; // string
   public $defaultValue; // string

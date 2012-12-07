@@ -27,10 +27,10 @@ class JobInputDocument {
       'status' => 'string',
       'proc_date' => 'string',
       'output_formats' => 'string',
-      'outputs' => 'array[Some(JobOutputDocument)]',
-      'job_errors' => 'array[Some(JobErrorInfo)]',
+      'outputs' => 'array[JobOutputDocument]',
+      'job_errors' => 'array[JobErrorInfo]',
       'actions' => 'string',
-      'supported_output_file_types' => 'array[None]',
+      'supported_output_file_types' => 'array[string]',
       'name' => 'string',
       'version' => 'int',
       'size' => 'string',
@@ -49,10 +49,10 @@ class JobInputDocument {
   public $status; // string
   public $proc_date; // string
   public $output_formats; // string
-  public $outputs; // array[Some(JobOutputDocument)]
-  public $job_errors; // array[Some(JobErrorInfo)]
+  public $outputs; // array[JobOutputDocument]
+  public $job_errors; // array[JobErrorInfo]
   public $actions; // string
-  public $supported_output_file_types; // array[None]
+  public $supported_output_file_types; // array[string]
   public $name; // string
   public $version; // int
   public $size; // string

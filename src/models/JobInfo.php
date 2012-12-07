@@ -25,7 +25,7 @@ class JobInfo {
 
   static $swaggerTypes = array(
       'id' => 'float',
-      'out_formats' => 'array[None]',
+      'out_formats' => 'array[string]',
       'actions' => 'string',
       'status' => 'string',
       'email_results' => 'bool',
@@ -41,7 +41,7 @@ class JobInfo {
     );
 
   public $id; // float
-  public $out_formats; // array[None]
+  public $out_formats; // array[string]
   public $actions; // string
   public $status; // string
   public $email_results; // bool

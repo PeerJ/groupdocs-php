@@ -34,7 +34,7 @@ class AnnotationInfo {
       'svgPath' => 'string',
       'type' => 'string',
       'access' => 'string',
-      'replies' => 'array[Some(AnnotationReplyInfo)]',
+      'replies' => 'array[AnnotationReplyInfo]',
       'createdOn' => 'string'
 
     );
@@ -49,7 +49,7 @@ class AnnotationInfo {
   public $svgPath; // string
   public $type; // string
   public $access; // string
-  public $replies; // array[Some(AnnotationReplyInfo)]
+  public $replies; // array[AnnotationReplyInfo]
   public $createdOn; // string
   }
 

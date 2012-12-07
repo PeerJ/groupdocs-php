@@ -28,7 +28,7 @@ class SignatureDocumentFieldInfo {
       'name' => 'string',
       'mandatory' => 'bool',
       'signatureFieldId' => 'float',
-      'locations' => 'array[Some(SignatureDocumentFieldLocationInfo)]',
+      'locations' => 'array[SignatureDocumentFieldLocationInfo]',
       'fieldType' => 'int',
       'acceptableValues' => 'string',
       'defaultValue' => 'string',
@@ -40,7 +40,7 @@ class SignatureDocumentFieldInfo {
   public $name; // string
   public $mandatory; // bool
   public $signatureFieldId; // float
-  public $locations; // array[Some(SignatureDocumentFieldLocationInfo)]
+  public $locations; // array[SignatureDocumentFieldLocationInfo]
   public $fieldType; // int
   public $acceptableValues; // string
   public $defaultValue; // string

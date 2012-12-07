@@ -27,7 +27,7 @@ class GetCollaboratorsResult {
       'documentGuid' => 'string',
       'sessionGuid' => 'string',
       'owner' => 'ReviewerInfo',
-      'collaborators' => 'array[Some(ReviewerInfo)]',
+      'collaborators' => 'array[ReviewerInfo]',
       'shared_link_access_rights' => 'int'
 
     );
@@ -35,7 +35,7 @@ class GetCollaboratorsResult {
   public $documentGuid; // string
   public $sessionGuid; // string
   public $owner; // ReviewerInfo
-  public $collaborators; // array[Some(ReviewerInfo)]
+  public $collaborators; // array[ReviewerInfo]
   public $shared_link_access_rights; // int
   }
 

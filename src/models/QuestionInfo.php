@@ -30,7 +30,7 @@ class QuestionInfo {
       'required' => 'bool',
       'disabled' => 'bool',
       'type' => 'string',
-      'answers' => 'array[Some(AnswerInfo)]'
+      'answers' => 'array[AnswerInfo]'
 
     );
 
@@ -40,6 +40,6 @@ class QuestionInfo {
   public $required; // bool
   public $disabled; // bool
   public $type; // string
-  public $answers; // array[Some(AnswerInfo)]
+  public $answers; // array[AnswerInfo]
   }
 

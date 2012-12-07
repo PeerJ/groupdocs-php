@@ -30,7 +30,7 @@ class ViewDocumentResult {
       'page_size' => 'Dimension',
       'url' => 'string',
       'doc_type' => 'string',
-      'image_urls' => 'array[None]',
+      'image_urls' => 'array[string]',
       'token' => 'string',
       'id' => 'float',
       'guid' => 'string'
@@ -43,7 +43,7 @@ class ViewDocumentResult {
   public $page_size; // Dimension
   public $url; // string
   public $doc_type; // string
-  public $image_urls; // array[None]
+  public $image_urls; // array[string]
   public $token; // string
   public $id; // float
   public $guid; // string

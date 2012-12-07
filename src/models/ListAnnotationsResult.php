@@ -26,12 +26,12 @@ class ListAnnotationsResult {
   static $swaggerTypes = array(
       'documentGuid' => 'string',
       'sessionGuid' => 'string',
-      'annotations' => 'array[Some(AnnotationInfo)]'
+      'annotations' => 'array[AnnotationInfo]'
 
     );
 
   public $documentGuid; // string
   public $sessionGuid; // string
-  public $annotations; // array[Some(AnnotationInfo)]
+  public $annotations; // array[AnnotationInfo]
   }
 

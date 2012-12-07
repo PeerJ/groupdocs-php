@@ -25,11 +25,11 @@ class SignatureTemplateRecipientsResult {
 
   static $swaggerTypes = array(
       'templateId' => 'string',
-      'recipients' => 'array[Some(SignatureTemplateRecipientInfo)]'
+      'recipients' => 'array[SignatureTemplateRecipientInfo]'
 
     );
 
   public $templateId; // string
-  public $recipients; // array[Some(SignatureTemplateRecipientInfo)]
+  public $recipients; // array[SignatureTemplateRecipientInfo]
   }
 

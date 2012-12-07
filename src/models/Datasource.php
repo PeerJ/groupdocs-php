@@ -27,7 +27,7 @@ class Datasource {
       'id' => 'float',
       'questionnaire_id' => 'float',
       'descr' => 'string',
-      'fields' => 'array[Some(DatasourceField)]',
+      'fields' => 'array[DatasourceField]',
       'created_on' => 'string',
       'modified_on' => 'string'
 
@@ -36,7 +36,7 @@ class Datasource {
   public $id; // float
   public $questionnaire_id; // float
   public $descr; // string
-  public $fields; // array[Some(DatasourceField)]
+  public $fields; // array[DatasourceField]
   public $created_on; // string
   public $modified_on; // string
   }

@@ -36,7 +36,7 @@ class SignatureTemplateInfo {
       'emailBody' => 'string',
       'documentsCount' => 'float',
       'documentsPages' => 'float',
-      'recipients' => 'array[Some(SignatureTemplateRecipientInfo)]'
+      'recipients' => 'array[SignatureTemplateRecipientInfo]'
 
     );
 
@@ -52,6 +52,6 @@ class SignatureTemplateInfo {
   public $emailBody; // string
   public $documentsCount; // float
   public $documentsPages; // float
-  public $recipients; // array[Some(SignatureTemplateRecipientInfo)]
+  public $recipients; // array[SignatureTemplateRecipientInfo]
   }
 

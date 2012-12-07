@@ -25,11 +25,11 @@ class GetDocumentQuestionnairesResult {
 
   static $swaggerTypes = array(
       'document_id' => 'float',
-      'questionnaires' => 'array[Some(QuestionnaireInfo)]'
+      'questionnaires' => 'array[QuestionnaireInfo]'
 
     );
 
   public $document_id; // float
-  public $questionnaires; // array[Some(QuestionnaireInfo)]
+  public $questionnaires; // array[QuestionnaireInfo]
   }
 

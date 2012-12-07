@@ -25,11 +25,11 @@ class SignatureFormsResult {
 
   static $swaggerTypes = array(
       'count' => 'int',
-      'forms' => 'array[Some(SignatureFormInfo)]'
+      'forms' => 'array[SignatureFormInfo]'
 
     );
 
   public $count; // int
-  public $forms; // array[Some(SignatureFormInfo)]
+  public $forms; // array[SignatureFormInfo]
   }
 

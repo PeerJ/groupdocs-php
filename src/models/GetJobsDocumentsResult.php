@@ -25,11 +25,11 @@ class GetJobsDocumentsResult {
 
   static $swaggerTypes = array(
       'count' => 'int',
-      'entries' => 'array[Some(JobDocumentsEntry)]'
+      'entries' => 'array[JobDocumentsEntry]'
 
     );
 
   public $count; // int
-  public $entries; // array[Some(JobDocumentsEntry)]
+  public $entries; // array[JobDocumentsEntry]
   }
 

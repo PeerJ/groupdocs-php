@@ -39,7 +39,7 @@ class SignatureEnvelopeInfo {
       'emailBody' => 'string',
       'documentsCount' => 'float',
       'documentsPages' => 'float',
-      'recipients' => 'array[Some(SignatureEnvelopeRecipientInfo)]'
+      'recipients' => 'array[SignatureEnvelopeRecipientInfo]'
 
     );
 
@@ -58,6 +58,6 @@ class SignatureEnvelopeInfo {
   public $emailBody; // string
   public $documentsCount; // float
   public $documentsPages; // float
-  public $recipients; // array[Some(SignatureEnvelopeRecipientInfo)]
+  public $recipients; // array[SignatureEnvelopeRecipientInfo]
   }
 

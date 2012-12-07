@@ -24,10 +24,10 @@
 class GetQuestionnaireCollectorsResult {
 
   static $swaggerTypes = array(
-      'collectors' => 'array[Some(QuestionnaireCollectorInfo)]'
+      'collectors' => 'array[QuestionnaireCollectorInfo]'
 
     );
 
-  public $collectors; // array[Some(QuestionnaireCollectorInfo)]
+  public $collectors; // array[QuestionnaireCollectorInfo]
   }
 

@@ -24,10 +24,10 @@
 class GetReviewerContactsResult {
 
   static $swaggerTypes = array(
-      'reviewerContacts' => 'array[Some(ReviewerContactInfo)]'
+      'reviewerContacts' => 'array[ReviewerContactInfo]'
 
     );
 
-  public $reviewerContacts; // array[Some(ReviewerContactInfo)]
+  public $reviewerContacts; // array[ReviewerContactInfo]
   }
 

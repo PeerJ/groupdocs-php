@@ -31,7 +31,7 @@ class FileSystemFolder {
       'name' => 'string',
       'access' => 'string',
       'owner' => 'UserInfo',
-      'sharers' => 'array[Some(UserInfo)]',
+      'sharers' => 'array[UserInfo]',
       'dir' => 'bool',
       'modified_on' => 'string',
       'created_on' => 'string'
@@ -45,7 +45,7 @@ class FileSystemFolder {
   public $name; // string
   public $access; // string
   public $owner; // UserInfo
-  public $sharers; // array[Some(UserInfo)]
+  public $sharers; // array[UserInfo]
   public $dir; // bool
   public $modified_on; // string
   public $created_on; // string

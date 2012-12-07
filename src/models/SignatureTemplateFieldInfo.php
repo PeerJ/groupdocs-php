@@ -32,7 +32,7 @@ class SignatureTemplateFieldInfo {
       'order' => 'float',
       'regularExpression' => 'string',
       'signatureFieldId' => 'float',
-      'locations' => 'array[Some(SignatureTemplateFieldLocationInfo)]',
+      'locations' => 'array[SignatureTemplateFieldLocationInfo]',
       'fieldType' => 'int',
       'acceptableValues' => 'string',
       'defaultValue' => 'string',
@@ -48,7 +48,7 @@ class SignatureTemplateFieldInfo {
   public $order; // float
   public $regularExpression; // string
   public $signatureFieldId; // float
-  public $locations; // array[Some(SignatureTemplateFieldLocationInfo)]
+  public $locations; // array[SignatureTemplateFieldLocationInfo]
   public $fieldType; // int
   public $acceptableValues; // string
   public $defaultValue; // string

@@ -8,12 +8,9 @@
     
     function UserInfo($clientId, $privateKey)
     {
-        if (empty($clientId) || empty($privateKey))
-        {
-            throw new Exception('You do not enter you User id or Private key');
-        }
-        else
-        {
+        if (empty($clientId) || empty($privateKey)) {
+            throw new Exception('Please enter all required parameters');
+        } else {
             F3::set('userId', $clientId);
             F3::set('privateKey', $privateKey);
 
@@ -22,18 +19,15 @@
 
             $mgmtApi = new MgmtApi($apiClient);
             $userAccountInfo = $mgmtApi->GetUserProfile($clientId);
-            if(isset($userAccountInfo->result) AND isset($userAccountInfo->result->user))
-            {
-            return F3::set('userInfo', $userAccountInfo->result->user);
+            if (isset($userAccountInfo->result) AND isset($userAccountInfo->result->user)) {
+                return F3::set('userInfo', $userAccountInfo->result->user);
             }
         }
     }
-     try
-    {
+     
+    try {
         UserInfo($clientId, $privateKey);
-    }
-    catch (Exception $e)
-    {
+    } catch (Exception $e) {
         $error = 'ERROR: ' .  $e->getMessage() . "\n";
         f3::set('error', $error);
     }

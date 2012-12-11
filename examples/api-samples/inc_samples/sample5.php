@@ -10,13 +10,18 @@
     function copy_move($clientId, $privateKey, $fileName, $move=NULL, $copy=NULL, $path)
     {
         if (!isset($clientId) || !isset($privateKey) || !isset($fileGuId)) {
-        } else {
-        }else{            $signer = new GroupDocsRequestSigner($privateKey);
+			
+			throw new Exception('You do not enter all parameters');
+			
+        }else{   
+		
+			$signer = new GroupDocsRequestSigner($privateKey);
             $apiClient = new APIClient($signer); // PHP SDK V1.1
             $api = new StorageApi($apiClient);
             $files = $api->ListEntities($clientId, '', 0);
             $name = '';
             $file_id = '';
+			
             foreach ($files->result->files as $item) //selecting file names
             {
                if ($item->guid == $fileGuId) {

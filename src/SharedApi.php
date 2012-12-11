@@ -27,7 +27,7 @@ class SharedApi {
 	  $this->apiClient = $apiClient;
 	}
 
-	public static function create($apiClient) {
+	public static function newInstance($apiClient) {
 	  return new self($apiClient);
 	}
 

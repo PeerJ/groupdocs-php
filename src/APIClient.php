@@ -298,26 +298,24 @@ class APIClient {
 
 			// Need to handle possible pluralization differences
 			$true_property = $property;
-            if (! property_exists($class, $true_property)) {
-               return;
-            }
-//			if (! property_exists($class, $true_property)) {
-//				if (property_exists($class, ucfirst($property))) {
-//					$true_property = ucfirst($property);
-//				} else if (property_exists($class, lcfirst($property))) {
-//					$true_property = lcfirst($property);
-//				} 
-//                else if (substr($property, -1) == 's') {
-//					$true_property = substr($property, 0, -1);
-//					if (! property_exists($class, $true_property)) {
-//						trigger_error("class $class has no property $property"
-//							. " or $true_property", E_USER_WARNING);
-//					}
-//				} else {
-//					trigger_error("class $class has no property $property",
-//						E_USER_WARNING);
-//				}
-//			}
+
+			if (! property_exists($class, $true_property)) {
+				if (property_exists($class, ucfirst($property))) {
+					$true_property = ucfirst($property);
+				} else if (property_exists($class, lcfirst($property))) {
+					$true_property = lcfirst($property);
+				} else if (substr($property, -1) == 's') {
+					$true_property = substr($property, 0, -1);
+					if (! property_exists($class, $true_property)) {
+						trigger_error("class $class has no property $property"
+							. " or $true_property", E_USER_WARNING);
+					}
+				} else {
+					// trigger_error("class $class has no property $property", E_USER_WARNING);
+					// ignore newly added attributes
+					break;
+				}
+			}
 
 			$type = $classVars['swaggerTypes'][$true_property];
 			if (in_array($type, array('string', 'int', 'float', 'bool'))) {

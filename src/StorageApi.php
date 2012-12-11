@@ -27,6 +27,10 @@ class StorageApi {
 	  $this->apiClient = $apiClient;
 	}
 
+	public static function create($apiClient) {
+	  return new self($apiClient);
+	}
+
     public function setBasePath($basePath) {
 	  $this->basePath = $basePath;
 	}

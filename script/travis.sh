@@ -1,11 +1,8 @@
-#/bin/sh
-
-set -e
-set -x
+#!/bin/sh -ex
 
 # unit tests
 phpunit
 
 # integration tests
 cd tests/samples-ui-tests
-mvn -s settings.xml clean test
+mvn -qs settings.xml clean test

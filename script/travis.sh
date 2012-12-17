@@ -8,4 +8,4 @@ phpunit
 
 # integration tests
 cd tests/sample-ui-tests
-mvn -s settings.xml clean test
+mvn -qs settings.xml clean test

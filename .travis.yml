@@ -1,10 +1,9 @@
 language: php
-
 php:
   - 5.3
-
 before_script:
-    - curl -s http://getcomposer.org/installer | php
-    - php composer.phar --dev install
-
-script: phpunit
+  - curl -s http://getcomposer.org/installer | php
+  - php composer.phar --dev install
+  - git clone --branch=master --depth=100 --quiet git://github.com/groupdocs/groupdocs-sdk-samples-uitests.git tests/samples-ui-tests
+script:
+  - script/travis.sh

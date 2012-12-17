@@ -7,5 +7,5 @@ set -x
 phpunit
 
 # integration tests
-cd tests/sample-ui-tests
+cd tests/samples-ui-tests
 mvn -s settings.xml clean test

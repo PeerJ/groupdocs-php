@@ -130,7 +130,7 @@ Choose another one sample:
                     onSigned: function (e, data) {
                         $("#viewer").attr("src", "https://apps.groupdocs.com/document-viewer/Embed/" + data.documentId);
                         $('#results_status').fadeOut("slow");
-                        setTimeout($('#viewer').fadeIn("slow"), 5000);
+                        $('#viewer').fadeIn("slow");
                     }
                 });
                 $("body").sign("addDocument", {

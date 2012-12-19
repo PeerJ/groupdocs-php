@@ -27,7 +27,7 @@ class StorageProviderInfo {
       'id' => 'float',
       'provider' => 'string',
       'type' => 'string',
-      'token' => 'array[int]',
+      'token' => 'string',
       'publicKey' => 'string',
       'privateKey' => 'string',
       'rootFolder' => 'string',
@@ -39,7 +39,7 @@ class StorageProviderInfo {
   public $id; // float
   public $provider; // string
   public $type; // string
-  public $token; // array[int]
+  public $token; // string
   public $publicKey; // string
   public $privateKey; // string
   public $rootFolder; // string

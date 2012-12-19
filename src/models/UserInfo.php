@@ -32,7 +32,7 @@ class UserInfo {
       'claimed_id' => 'string',
       'token' => 'string',
       'storage' => 'int',
-      'photo' => 'array[int]',
+      'photo' => 'string',
       'active' => 'bool',
       'trial' => 'bool',
       'news_eanbled' => 'bool',
@@ -57,7 +57,7 @@ class UserInfo {
   public $claimed_id; // string
   public $token; // string
   public $storage; // int
-  public $photo; // array[int]
+  public $photo; // string
   public $active; // bool
   public $trial; // bool
   public $news_eanbled; // bool

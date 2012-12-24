@@ -1,5 +1,5 @@
 <?php
-    //<i>This sample will show how to use <b>GetFile</b> to download a file from GroupDocs Storage using the Storage API</i>
+    //<i>This sample will show how to use <b>GetFile</b> method from Storage Api to download a file from GroupDocs Storage</i>
 
     //###Set variables and get POST data
     $clientId = F3::get('POST["client_id"]');
@@ -23,7 +23,7 @@
             
             //###Make a request to Storage API using clientId
             
-            //Obtaining all Entities from curent user
+            //Obtaining all Entities from current user
             $files = $api->ListEntities($clientId, '', 0);
             //Selecting file names
             foreach ($files->result->files as $item) 
@@ -40,9 +40,9 @@
             $outFileStream =  FileStream::fromHttp(dirname(__FILE__). '/../temp', $name);
             //Downlaoding of file
             $file = $api->GetFile($clientId, $file_id, $outFileStream);
-            //Massage for Viewer
-            $massage = '<font color="green">File was downloaded to the <font color="blue">' . $outFileStream->downloadDirectory . '</font> folder</font> <br />';
-            return f3::set('massage', $massage);
+            //If request was successfull - set message variable for template
+            $message = '<font color="green">File was downloaded to the <font color="blue">' . $outFileStream->downloadDirectory . '</font> folder</font> <br />';
+            return f3::set('message', $message);
         }
     }   
     try {

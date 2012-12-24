@@ -1,5 +1,5 @@
 <?php
-    //<i>This sample will show how to use <b>GetDocumentPagesImageUrls</b> to return a URL representing a single page of a Document</i>
+    //<i>This sample will show how to use <b>GetDocumentPagesImageUrls</b> method from Doc Api to return a URL representing a single page of a Document</i>
 
     //###Set variables and get POST data
     F3::set('userId', '');
@@ -30,7 +30,7 @@
             
             //Obtaining URl of entered page 
             $URL = $docApi->GetDocumentPagesImageUrls($clientId, $fileGuId, (int)$pageNumber, 1, '600x750');
-            //Return image URL to the Viewer
+            //If request was successfull - set url variable for template
             return f3::set('url', $URL->result->url[0]);
         }
     }

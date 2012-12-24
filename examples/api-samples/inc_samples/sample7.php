@@ -1,5 +1,5 @@
 <?php
-    //<i>This sample will show how to use <b>ListEntities</b> create a list of thumbnails for a document using Storage API</i>
+    //<i>This sample will show how to use <b>ListEntities</b> method from Storage Api to create a list of thumbnails for a document</i>
 
     //###Set variables and get POST data
     $clientId = F3::get('POST["client_id"]');
@@ -24,7 +24,7 @@
             $api = new StorageApi($apiClient);
             //###Make request to Storage
 
-            //Geting all Entities with thumbnails from curent user
+            //Geting all Entities with thumbnails from current user
             $files = $api->ListEntities($clientId, "", null, null, null, null, null, null, true);
             //Obtaining all thumbnails
             $thumbnail = '';
@@ -43,7 +43,7 @@
                                   . $name = $files->result->files[$i]->name . '</img> <br>';
                 }            
             }
-            //Retur HTML representation to Viewer
+            //If request was successfull - set thumbnailList variable for template
             return F3::set('thumbnailList', $thumbnail);
         }
     }

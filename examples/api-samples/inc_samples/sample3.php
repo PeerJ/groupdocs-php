@@ -1,11 +1,11 @@
 <?php
-    //<i>This sample will show how to use <b>Upload</b> to upload file to GroupDocs Storage using the Storage API</i>
+    //<i>This sample will show how to use <b>Upload</b> method from Storage Api to upload file to GroupDocs Storage </i>
 
     //###Set variables and get POST data
     F3::set('userId', '');
     F3::set('privateKey', '');
     F3::set('fileId', '');
-    F3::set('massage', '');
+    F3::set('message', '');
     F3::set('iframe', '');
     $clientId = F3::get('POST["client_id"]');
     $privateKey = F3::get('POST["private_key"]');
@@ -26,9 +26,9 @@
             if (null === $uploadedFile) {
                 return new RedirectResponse("/sample3");
             }
-            //temp name of the file
+            //Temp name of the file
             $tmp_name = $uploadedFile['tmp_name']; 
-            //original name of the file
+            //Original name of the file
             $name = $uploadedFile['name'];
             //Creat file stream
             $fs = FileStream::fromFile($tmp_name);
@@ -44,7 +44,7 @@
             
             //###Make a request to Storage API using clientId
             
-            //Upload file to curent user storage
+            //Upload file to current user storage
             $uploadResult = $apiStorage->Upload($clientID, $name, 'uploaded', $fs);
             
             //###Check if file uploaded successfully
@@ -53,7 +53,7 @@
                 $result = array();
                 $result = array('iframe' => '<iframe src="https://apps.groupdocs.com/document-viewer/Embed/' . $uploadResult->result->guid . '" frameborder="0" width="720" height="600"></iframe>',
                                 'name' => $name);
-                //Return of result array
+                //If request was successfull - set result variable for template
                 return $result;
             } 
         }  
@@ -61,8 +61,8 @@
      
      try {
          $upload = Upload($clientId, $privateKey);
-         $massage = '<p>File was uploaded to GroupDocs. Here you can see your <strong>' . $upload['name'] . '</strong> file in the GroupDocs Embedded Viewer.</p>';
-         F3::set('massage', $massage);
+         $message = '<p>File was uploaded to GroupDocs. Here you can see your <strong>' . $upload['name'] . '</strong> file in the GroupDocs Embedded Viewer.</p>';
+         F3::set('message', $message);
          F3::set('iframe', $upload['iframe']);
      } catch(Exception $e) {
          $error = 'ERROR: ' .  $e->getMessage() . "\n";

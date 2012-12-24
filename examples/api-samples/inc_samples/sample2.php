@@ -1,5 +1,5 @@
 <?php
-//<i>This sample will show how to use <b>ListEntities</b> to list files within GroupDocs Storage using the Storage API</i>
+//<i>This sample will show how to use <b>ListEntities</b> method from Storage  API  to list files within GroupDocs Storage</i>
 
 //###Set variables and get POST data
 
@@ -23,7 +23,7 @@
             
             //###Make a request to Storage API using clientId
             
-            //Obtaining all Entities from curent user
+            //Obtaining all Entities from current user
             $files = $api->ListEntities($clientId, '', 0); 
                         
             //Obtaining file names
@@ -32,7 +32,7 @@
                 $name .= $item->name . '<br>';
             }
             
-           //Returning file names to the Viewer
+           //If request was successfull - set filelist variable for template
            return F3::set('filelist', $name);
         }
     }

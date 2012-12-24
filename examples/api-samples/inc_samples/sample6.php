@@ -1,5 +1,5 @@
 <?php
-    //<i>This sample will show how to use <b>SignDocument</b> to Sign Document and upload it to user storage using the Storage API</i>
+    //<i>This sample will show how to use <b>SignDocument</b> method from Signature Api to Sign Document and upload it to user storage</i>
 
     //###Set variables and get POST data
     F3::set('userId', '');
@@ -36,11 +36,11 @@
         
         //###Make a request to Signature Api for sign document
         
-        //Sign document using curent user id and sign settings
+        //Sign document using current user id and sign settings
         $response = $signatureApi->SignDocument($clientId, $settings);
         //Check is file signed and uploaded successfully
         if ($response->status == "Ok") {
-            //Post json object to Viewer
+            //Post json object to template
             $return = json_encode(array("responseCode" => 200, "documentId" => $response->result->documentId));
         }
     }

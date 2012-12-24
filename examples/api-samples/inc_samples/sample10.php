@@ -1,5 +1,5 @@
 <?php
-    //<i>This sample will show how to use <b>ShareDocument</b> to share a document to other users</i>
+    //<i>This sample will show how to use <b>ShareDocument</b> method from Doc Api to share a document to other users</i>
 
     //###Set variables and get POST data
 
@@ -27,7 +27,7 @@
             $api = new StorageApi($apiClient);
             //###Make request to Storage
 
-            //Geting all Entities from curent user
+            //Geting all Entities from current user
             $files = $api->ListEntities($userId, '', 0);
             //Selecting file names
             $name = '';
@@ -42,7 +42,7 @@
             $docApi = new DocApi($apiClient);
             //Make request to user storage for sharing document
             $URL = $docApi->ShareDocument($userId, $file_id, $body);
-            //Return shared document to the Viewer
+            //If request was successfull - set shared variable for template
             return f3::set('shared', $body['0']);
         }
     }

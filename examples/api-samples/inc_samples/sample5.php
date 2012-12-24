@@ -1,5 +1,5 @@
 <?php
-   //<i>This sample will show how to use <b>GetFile</b> to download a file from GroupDocs Storage using the Storage API</i>
+   //<i>This sample will show how to use <b>MoveFile</b> method from Storage Api to copy/move a file in GroupDocs Storage </i>
 
     //###Set variables and get POST data
     $clientId = F3::get('POST["client_id"]');
@@ -29,7 +29,7 @@
             
              //###Make a request to Storage API using clientId
             
-            //Obtaining all Entities from curent user
+            //Obtaining all Entities from current user
             $files = $api->ListEntities($clientId, '', 0);
             //Obtaining file name and id by fileGuID
             $name = '';
@@ -59,7 +59,7 @@
                $path = $folder . '/' . $name;
                //Request to Storage for copying
                $file = $api->MoveFile($clientId, $path, NULL, NULL, $file_id); //download file
-               //Returning to Viewer what button was pressed
+                //If request was successfull - set button variable for template
                return F3::set('button', $move);
             }
          } 
@@ -67,17 +67,17 @@
     
     try {
         copy_move($clientId, $privateKey, $fileName, $move, $copy, $path);
-        $massage = "File was {{@button}}'ed to the {{@folder}} folder";
+        $message = "File was {{@button}}'ed to the {{@folder}} folder";
     } catch(Exception $e) {
 
         $error = 'ERROR: ' .  $e->getMessage() . "\n";
-        $massage = $error;
+        $message = $error;
     }
     //Process template
     F3::set('userId', $clientId);
     F3::set('privateKey', $privateKey);
     F3::set('file_Name', $fileName);
     F3::set('folder', $path);
-    f3::set('massage', $massage);
+    f3::set('message', $message);
     
     echo Template::serve('sample5.htm');

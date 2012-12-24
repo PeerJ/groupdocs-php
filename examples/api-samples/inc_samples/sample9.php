@@ -1,5 +1,5 @@
 <?php
-    //<i>This sample will show how to use <b>fileGuId</b> to generate an embedded Viewer URL for a Document</i>
+    //<i>This sample will show how to use <b>GuId</b> of file to generate an embedded Viewer URL for a Document</i>
 
     //###Set variables and get POST data
     F3::set('userId', '');
@@ -18,7 +18,7 @@
         } else {
             //Generation of iframe URL using fileGuId
             $iframe = 'https://apps.groupdocs.com/document-viewer/embed/' . $file_Id . '?frameborder="0" width="'.$width.'" height="'.$height.'"';
-            //Return iframe URL to Viewer
+            //If request was successfull - set url variable for template
             return f3::set('url', $iframe);
         }
     }

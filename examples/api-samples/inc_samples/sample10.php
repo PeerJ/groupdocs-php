@@ -1,4 +1,7 @@
 <?php
+    //<i>This sample will show how to use <b>ShareDocument</b> to share a document to other users</i>
+
+    //###Set variables and get POST data
 
     F3::set('userId', '');
     F3::set('privateKey', '');
@@ -10,24 +13,36 @@
     
     function Share($userId, $privateKey, $file_Id, $body)
     {
+        //### Check file id, user, private key and body
         if ($file_Id == "" || $userId == "" || $privateKey == "" || $body == "") {
             throw new Exception('Please enter FILE ID');
         } else {
+            //###Create Signer, ApiClient and Storage Api objects
+
+            //Create signer object
             $signer = new GroupDocsRequestSigner($privateKey);
-            $apiClient = new APIClient($signer); // PHP SDK V1.1
+            //Create apiClient object
+            $apiClient = new APIClient($signer);
+            //Create Storage Api object
             $api = new StorageApi($apiClient);
+            //###Make request to Storage
+
+            //Geting all Entities from curent user
             $files = $api->ListEntities($userId, '', 0);
+            //Selecting file names
             $name = '';
-            foreach ($files->result->files as $item) //selecting file names
+            foreach ($files->result->files as $item)
             {
                if ($item->guid == $file_Id) {
                 $name = $item->name;
                 $file_id = $item->id;
                }
             }
+            //###Create DocApi object
             $docApi = new DocApi($apiClient);
+            //Make request to user storage for sharing document
             $URL = $docApi->ShareDocument($userId, $file_id, $body);
-            
+            //Return shared document to the Viewer
             return f3::set('shared', $body['0']);
         }
     }
@@ -38,7 +53,7 @@
         $error = 'ERROR: ' .  $e->getMessage() . "\n";
         f3::set('error', $error);
     }
-    
+    //Process template
     F3::set('userId', $clientId);
     F3::set('privateKey', $privateKey);
     f3::set('fileId', $fileGuId);

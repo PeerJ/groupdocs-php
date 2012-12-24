@@ -1,34 +1,50 @@
 <?php
+    //<i>This sample will show how to use <b>SignDocument</b> to Sign Document and upload it to user storage using the Storage API</i>
 
+    //###Set variables and get POST data
     F3::set('userId', '');
     F3::set('privateKey', '');
     F3::set('fileId', '');
+    // get raw post data
+    $postdata = file_get_contents("php://input"); 
 
-    $postdata = file_get_contents("php://input"); // get raw post data
-
-
+    //Check postdata
     if (isset($postdata) AND !empty($postdata)) {
-        $jsonPostData = json_decode($postdata, true); //get json object from raw data with request parameters
-
-        $clientId = $jsonPostData['userId']; //get parameters from json object
+        //Get json object from raw data with request parameters
+        $jsonPostData = json_decode($postdata, true);
+        //Get parameters from json object
+        $clientId = $jsonPostData['userId']; 
         $privateKey = $jsonPostData['privateKey'];
         $documents = $jsonPostData['documents'];
         $signers = $jsonPostData['signers'];
+        //Determination of placeSingatureOn parameter
         for ($i = 0; $i < count($signers); $i++) {
             $signers[$i]['placeSingatureOn'] = '';
         }
-        $signer = new GroupDocsRequestSigner($privateKey); //create signer
-        $apiClient = new APIClient($signer); //create ApiClient
+        //###Create Signer, ApiClient and Storage Api objects
+
+        //Create signer object
+        $signer = new GroupDocsRequestSigner($privateKey);
+        //Create apiClient object
+        $apiClient = new APIClient($signer);
+        //Create Storage Api object
         $signatureApi = new SignatureApi($apiClient);
-        $settings = new SignatureSignDocumentSettings(); // create setting variable for signature SignDocument method
+        //Create setting variable for signature SignDocument method
+        $settings = new SignatureSignDocumentSettings();
         $settings->documents = $documents;
         $settings->signers = $signers;
+        
+        //###Make a request to Signature Api for sign document
+        
+        //Sign document using curent user id and sign settings
         $response = $signatureApi->SignDocument($clientId, $settings);
-
+        //Check is file signed and uploaded successfully
         if ($response->status == "Ok") {
+            //Post json object to Viewer
             $return = json_encode(array("responseCode" => 200, "documentId" => $response->result->documentId));
         }
     }
+    //Process template
     if (isset($return) AND !empty($return)) {
         header('Content-type: application/json');
         echo $return;

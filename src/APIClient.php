@@ -148,11 +148,11 @@ class APIClient {
 		curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
 		curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
 
-		if ($method == self::$GET) {
-			if (! empty($queryParams)) {
-				$url = ($url . '?' . http_build_query($queryParams));
-			}
-		} else if ($method == self::$POST) {
+		if (! empty($queryParams)) {
+			$url = ($url . '?' . http_build_query($queryParams));
+		}
+
+		if ($method == self::$POST) {
 			if($isFileUpload){
 				curl_setopt($curl, CURLOPT_CUSTOMREQUEST, "POST");
 				curl_setopt($curl, CURLOPT_TIMEOUT, 0);

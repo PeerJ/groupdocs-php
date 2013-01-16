@@ -169,8 +169,6 @@ class APIClient {
 		} else if ($method == self::$DELETE) {
 			curl_setopt($curl, CURLOPT_CUSTOMREQUEST, "DELETE");
 			curl_setopt($curl, CURLOPT_POSTFIELDS, $postData);
-		} else {
-			throw new Exception('Method ' . $method . ' is not recognized.');
 		}
 
 		$url = self::encodeURI($this->signer->signUrl($url));

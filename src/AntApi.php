@@ -472,7 +472,7 @@ class AntApi {
 	 * Delete document reviewer
    * userId, string: User GUID (required)
    * fileId, string: File ID (required)
-   * reviewerId, System.Decimal,System: Reviewer ID (required)
+   * reviewerId, string: Reviewer ID (required)
    * @return AddCollaboratorResponse
 	 */
 

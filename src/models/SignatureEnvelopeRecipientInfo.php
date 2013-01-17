@@ -33,7 +33,7 @@ class SignatureEnvelopeRecipientInfo {
       'roleId' => 'float',
       'status' => 'int',
       'statusMessage' => 'string',
-      'statusDateTime' => 'DateTime',
+      'statusDateTime' => 'string',
       'delegatedRecipientId' => 'float',
       'signatureFingerprint' => 'string',
       'signatureHost' => 'string',
@@ -51,7 +51,7 @@ class SignatureEnvelopeRecipientInfo {
   public $roleId; // float
   public $status; // int
   public $statusMessage; // string
-  public $statusDateTime; // DateTime
+  public $statusDateTime; // string
   public $delegatedRecipientId; // float
   public $signatureFingerprint; // string
   public $signatureHost; // string

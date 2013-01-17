@@ -40,12 +40,387 @@ class MergeApi {
 	}
 
   /**
+	 * GetQuestionnaireCollectors
+	 * Get questionnaire collectors
+   * userId, string: User global unique identifier (required)
+   * questionnaireId, string: Questionnaire identifier (required)
+   * @return GetQuestionnaireCollectorsResponse
+	 */
+
+   public function GetQuestionnaireCollectors($userId, $questionnaireId) {
+      if( $userId === null || $questionnaireId === null ) {
+        throw new ApiException("missing required parameters", 400);
+      }
+      //parse inputs
+  	  $resourcePath = str_replace("*", "", "/merge/{userId}/questionnaires/{questionnaireId}/collectors");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "GET";
+      $queryParams = array();
+      $headerParams = array();
+
+      if($userId !== null) {
+  			$resourcePath = str_replace("{" . "userId" . "}",
+  			                            $userId, $resourcePath);
+  		}
+  		if($questionnaireId !== null) {
+  			$resourcePath = str_replace("{" . "questionnaireId" . "}",
+  			                            $questionnaireId, $resourcePath);
+  		}
+  		//make the API Call
+      if (! isset($body)) {
+        $body = null;
+      }
+      $response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
+      if(! $response){
+        return null;
+      }
+
+  	  $responseObject = $this->apiClient->deserialize($response,
+  		                                                'GetQuestionnaireCollectorsResponse');
+  	  return $responseObject;
+      }
+  /**
+	 * GetQuestionnaireCollector
+	 * Returns questionnaire collector
+   * userId, string: User global unique identifier (required)
+   * collectorId, string: Questionnaire collector global unique identifier (required)
+   * @return GetQuestionnaireCollectorResponse
+	 */
+
+   public function GetQuestionnaireCollector($userId, $collectorId) {
+      if( $userId === null || $collectorId === null ) {
+        throw new ApiException("missing required parameters", 400);
+      }
+      //parse inputs
+  	  $resourcePath = str_replace("*", "", "/merge/{userId}/questionnaires/collectors/{collectorId}");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "GET";
+      $queryParams = array();
+      $headerParams = array();
+
+      if($userId !== null) {
+  			$resourcePath = str_replace("{" . "userId" . "}",
+  			                            $userId, $resourcePath);
+  		}
+  		if($collectorId !== null) {
+  			$resourcePath = str_replace("{" . "collectorId" . "}",
+  			                            $collectorId, $resourcePath);
+  		}
+  		//make the API Call
+      if (! isset($body)) {
+        $body = null;
+      }
+      $response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
+      if(! $response){
+        return null;
+      }
+
+  	  $responseObject = $this->apiClient->deserialize($response,
+  		                                                'GetQuestionnaireCollectorResponse');
+  	  return $responseObject;
+      }
+  /**
+	 * AddQuestionnaireCollector
+	 * Add questionnaire collector
+   * userId, string: User global unique identifier (required)
+   * questionnaireId, string: Questionnaire identifier (required)
+   * body, QuestionnaireCollectorInfo: Questionnaire collector to be added (required)
+   * @return AddQuestionnaireCollectorResponse
+	 */
+
+   public function AddQuestionnaireCollector($userId, $questionnaireId, $body) {
+      if( $userId === null || $questionnaireId === null || $body === null ) {
+        throw new ApiException("missing required parameters", 400);
+      }
+      //parse inputs
+  	  $resourcePath = str_replace("*", "", "/merge/{userId}/questionnaires/{questionnaireId}/collectors");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "POST";
+      $queryParams = array();
+      $headerParams = array();
+
+      if($userId !== null) {
+  			$resourcePath = str_replace("{" . "userId" . "}",
+  			                            $userId, $resourcePath);
+  		}
+  		if($questionnaireId !== null) {
+  			$resourcePath = str_replace("{" . "questionnaireId" . "}",
+  			                            $questionnaireId, $resourcePath);
+  		}
+  		//make the API Call
+      if (! isset($body)) {
+        $body = null;
+      }
+      $response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
+      if(! $response){
+        return null;
+      }
+
+  	  $responseObject = $this->apiClient->deserialize($response,
+  		                                                'AddQuestionnaireCollectorResponse');
+  	  return $responseObject;
+      }
+  /**
+	 * UpdateQuestionnaireCollector
+	 * Update questionnaire collector
+   * userId, string: User global unique identifier (required)
+   * collectorId, string: Questionnaire collector global unique identifier (required)
+   * body, QuestionnaireCollectorInfo: Questionnaire collector data (required)
+   * @return UpdateQuestionnaireCollectorResponse
+	 */
+
+   public function UpdateQuestionnaireCollector($userId, $collectorId, $body) {
+      if( $userId === null || $collectorId === null || $body === null ) {
+        throw new ApiException("missing required parameters", 400);
+      }
+      //parse inputs
+  	  $resourcePath = str_replace("*", "", "/merge/{userId}/questionnaires/collectors/{collectorId}");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "PUT";
+      $queryParams = array();
+      $headerParams = array();
+
+      if($userId !== null) {
+  			$resourcePath = str_replace("{" . "userId" . "}",
+  			                            $userId, $resourcePath);
+  		}
+  		if($collectorId !== null) {
+  			$resourcePath = str_replace("{" . "collectorId" . "}",
+  			                            $collectorId, $resourcePath);
+  		}
+  		//make the API Call
+      if (! isset($body)) {
+        $body = null;
+      }
+      $response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
+      if(! $response){
+        return null;
+      }
+
+  	  $responseObject = $this->apiClient->deserialize($response,
+  		                                                'UpdateQuestionnaireCollectorResponse');
+  	  return $responseObject;
+      }
+  /**
+	 * DeleteQuestionnaireCollector
+	 * Removes questionnaire collector
+   * userId, string: User global unique identifier (required)
+   * collectorId, string: Questionnaire collector global unique identifier (required)
+   * @return DeleteQuestionnaireCollectorResponse
+	 */
+
+   public function DeleteQuestionnaireCollector($userId, $collectorId) {
+      if( $userId === null || $collectorId === null ) {
+        throw new ApiException("missing required parameters", 400);
+      }
+      //parse inputs
+  	  $resourcePath = str_replace("*", "", "/merge/{userId}/questionnaires/collectors/{collectorId}");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "DELETE";
+      $queryParams = array();
+      $headerParams = array();
+
+      if($userId !== null) {
+  			$resourcePath = str_replace("{" . "userId" . "}",
+  			                            $userId, $resourcePath);
+  		}
+  		if($collectorId !== null) {
+  			$resourcePath = str_replace("{" . "collectorId" . "}",
+  			                            $collectorId, $resourcePath);
+  		}
+  		//make the API Call
+      if (! isset($body)) {
+        $body = null;
+      }
+      $response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
+      if(! $response){
+        return null;
+      }
+
+  	  $responseObject = $this->apiClient->deserialize($response,
+  		                                                'DeleteQuestionnaireCollectorResponse');
+  	  return $responseObject;
+      }
+  /**
+	 * GetTemplates
+	 * Get template documents information
+   * userId, string: User global unique identifier (required)
+   * @return GetTemplatesResponse
+	 */
+
+   public function GetTemplates($userId) {
+      if( $userId === null ) {
+        throw new ApiException("missing required parameters", 400);
+      }
+      //parse inputs
+  	  $resourcePath = str_replace("*", "", "/merge/{userId}/templates");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "GET";
+      $queryParams = array();
+      $headerParams = array();
+
+      if($userId !== null) {
+  			$resourcePath = str_replace("{" . "userId" . "}",
+  			                            $userId, $resourcePath);
+  		}
+  		//make the API Call
+      if (! isset($body)) {
+        $body = null;
+      }
+      $response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
+      if(! $response){
+        return null;
+      }
+
+  	  $responseObject = $this->apiClient->deserialize($response,
+  		                                                'GetTemplatesResponse');
+  	  return $responseObject;
+      }
+  /**
+	 * GetQuestionnaireFields
+	 * Get questionnaire fields
+   * userId, string: User global unique identifier (required)
+   * questionnaireId, string: Questionnaire global unique identifier (required)
+   * includeGeometry, bool: A flag indicating whether fields coordinates and size should be included into the response. (optional)
+   * @return TemplateFieldsResponse
+	 */
+
+   public function GetQuestionnaireFields($userId, $questionnaireId, $includeGeometry=null) {
+      if( $userId === null || $questionnaireId === null ) {
+        throw new ApiException("missing required parameters", 400);
+      }
+      //parse inputs
+  	  $resourcePath = str_replace("*", "", "/merge/{userId}/questionnaires/{questionnaireId}/fields?include_geometry={includeGeometry}");
+  	  $pos = strpos($resourcePath, "?");
+	  if($pos !== false){
+  	  	$resourcePath = substr($resourcePath, 0, $pos);
+	  }
+	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "GET";
+      $queryParams = array();
+      $headerParams = array();
+
+      if($includeGeometry !== null) {
+  		  $queryParams['include_geometry'] = $this->apiClient->toPathValue($includeGeometry);
+  		}
+  		if($userId !== null) {
+  			$resourcePath = str_replace("{" . "userId" . "}",
+  			                            $userId, $resourcePath);
+  		}
+  		if($questionnaireId !== null) {
+  			$resourcePath = str_replace("{" . "questionnaireId" . "}",
+  			                            $questionnaireId, $resourcePath);
+  		}
+  		//make the API Call
+      if (! isset($body)) {
+        $body = null;
+      }
+      $response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
+      if(! $response){
+        return null;
+      }
+
+  	  $responseObject = $this->apiClient->deserialize($response,
+  		                                                'TemplateFieldsResponse');
+  	  return $responseObject;
+      }
+  /**
+	 * GetQuestionnaireMetadata
+	 * Get questionnaire metadata
+   * userId, string: User global unique identifier (required)
+   * questionnaireId, string: Questionnaire global unique identifier (required)
+   * @return GetQuestionnaireMetadataResponse
+	 */
+
+   public function GetQuestionnaireMetadata($userId, $questionnaireId) {
+      if( $userId === null || $questionnaireId === null ) {
+        throw new ApiException("missing required parameters", 400);
+      }
+      //parse inputs
+  	  $resourcePath = str_replace("*", "", "/merge/{userId}/questionnaires/{questionnaireId}/metadata");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "GET";
+      $queryParams = array();
+      $headerParams = array();
+
+      if($userId !== null) {
+  			$resourcePath = str_replace("{" . "userId" . "}",
+  			                            $userId, $resourcePath);
+  		}
+  		if($questionnaireId !== null) {
+  			$resourcePath = str_replace("{" . "questionnaireId" . "}",
+  			                            $questionnaireId, $resourcePath);
+  		}
+  		//make the API Call
+      if (! isset($body)) {
+        $body = null;
+      }
+      $response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
+      if(! $response){
+        return null;
+      }
+
+  	  $responseObject = $this->apiClient->deserialize($response,
+  		                                                'GetQuestionnaireMetadataResponse');
+  	  return $responseObject;
+      }
+  /**
+	 * UpdateQuestionnaireMetadata
+	 * Update questionnaire metadata
+   * userId, string: User global unique identifier (required)
+   * questionnaireId, string: Questionnaire global unique identifier (required)
+   * body, QuestionnaireMetadata: Questionnaire metadata to update (required)
+   * @return UpdateQuestionnaireResponse
+	 */
+
+   public function UpdateQuestionnaireMetadata($userId, $questionnaireId, $body) {
+      if( $userId === null || $questionnaireId === null || $body === null ) {
+        throw new ApiException("missing required parameters", 400);
+      }
+      //parse inputs
+  	  $resourcePath = str_replace("*", "", "/merge/{userId}/questionnaires/{questionnaireId}/metadata");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "PUT";
+      $queryParams = array();
+      $headerParams = array();
+
+      if($userId !== null) {
+  			$resourcePath = str_replace("{" . "userId" . "}",
+  			                            $userId, $resourcePath);
+  		}
+  		if($questionnaireId !== null) {
+  			$resourcePath = str_replace("{" . "questionnaireId" . "}",
+  			                            $questionnaireId, $resourcePath);
+  		}
+  		//make the API Call
+      if (! isset($body)) {
+        $body = null;
+      }
+      $response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
+      if(! $response){
+        return null;
+      }
+
+  	  $responseObject = $this->apiClient->deserialize($response,
+  		                                                'UpdateQuestionnaireResponse');
+  	  return $responseObject;
+      }
+  /**
 	 * AddJobDocumentDataSource
 	 * Add job document datasource
    * userId, string: User GUID (required)
-   * jobId, string: Job indetifier (required)
-   * fileId, string: File indetifier (required)
-   * datasourceId, string: Datasource indetifier (required)
+   * jobId, int: Job indetifier (required)
+   * fileId, int: File indetifier (required)
+   * datasourceId, int: Datasource indetifier (required)
    * @return AddDocumentDataSourceResponse
 	 */
 
@@ -1305,381 +1680,6 @@ class MergeApi {
 
   	  $responseObject = $this->apiClient->deserialize($response,
   		                                                'UpdateQuestionnaireExecutionResponse');
-  	  return $responseObject;
-      }
-  /**
-	 * GetQuestionnaireCollectors
-	 * Get questionnaire collectors
-   * userId, string: User global unique identifier (required)
-   * questionnaireId, string: Questionnaire identifier (required)
-   * @return GetQuestionnaireCollectorsResponse
-	 */
-
-   public function GetQuestionnaireCollectors($userId, $questionnaireId) {
-      if( $userId === null || $questionnaireId === null ) {
-        throw new ApiException("missing required parameters", 400);
-      }
-      //parse inputs
-  	  $resourcePath = str_replace("*", "", "/merge/{userId}/questionnaires/{questionnaireId}/collectors");
-  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
-  	  $method = "GET";
-      $queryParams = array();
-      $headerParams = array();
-
-      if($userId !== null) {
-  			$resourcePath = str_replace("{" . "userId" . "}",
-  			                            $userId, $resourcePath);
-  		}
-  		if($questionnaireId !== null) {
-  			$resourcePath = str_replace("{" . "questionnaireId" . "}",
-  			                            $questionnaireId, $resourcePath);
-  		}
-  		//make the API Call
-      if (! isset($body)) {
-        $body = null;
-      }
-      $response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
-  		                                      $queryParams, $body, $headerParams);
-      if(! $response){
-        return null;
-      }
-
-  	  $responseObject = $this->apiClient->deserialize($response,
-  		                                                'GetQuestionnaireCollectorsResponse');
-  	  return $responseObject;
-      }
-  /**
-	 * GetQuestionnaireCollector
-	 * Returns questionnaire collector
-   * userId, string: User global unique identifier (required)
-   * collectorId, string: Questionnaire collector global unique identifier (required)
-   * @return GetQuestionnaireCollectorResponse
-	 */
-
-   public function GetQuestionnaireCollector($userId, $collectorId) {
-      if( $userId === null || $collectorId === null ) {
-        throw new ApiException("missing required parameters", 400);
-      }
-      //parse inputs
-  	  $resourcePath = str_replace("*", "", "/merge/{userId}/questionnaires/collectors/{collectorId}");
-  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
-  	  $method = "GET";
-      $queryParams = array();
-      $headerParams = array();
-
-      if($userId !== null) {
-  			$resourcePath = str_replace("{" . "userId" . "}",
-  			                            $userId, $resourcePath);
-  		}
-  		if($collectorId !== null) {
-  			$resourcePath = str_replace("{" . "collectorId" . "}",
-  			                            $collectorId, $resourcePath);
-  		}
-  		//make the API Call
-      if (! isset($body)) {
-        $body = null;
-      }
-      $response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
-  		                                      $queryParams, $body, $headerParams);
-      if(! $response){
-        return null;
-      }
-
-  	  $responseObject = $this->apiClient->deserialize($response,
-  		                                                'GetQuestionnaireCollectorResponse');
-  	  return $responseObject;
-      }
-  /**
-	 * AddQuestionnaireCollector
-	 * Add questionnaire collector
-   * userId, string: User global unique identifier (required)
-   * questionnaireId, string: Questionnaire identifier (required)
-   * body, QuestionnaireCollectorInfo: Questionnaire collector to be added (required)
-   * @return AddQuestionnaireCollectorResponse
-	 */
-
-   public function AddQuestionnaireCollector($userId, $questionnaireId, $body) {
-      if( $userId === null || $questionnaireId === null || $body === null ) {
-        throw new ApiException("missing required parameters", 400);
-      }
-      //parse inputs
-  	  $resourcePath = str_replace("*", "", "/merge/{userId}/questionnaires/{questionnaireId}/collectors");
-  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
-  	  $method = "POST";
-      $queryParams = array();
-      $headerParams = array();
-
-      if($userId !== null) {
-  			$resourcePath = str_replace("{" . "userId" . "}",
-  			                            $userId, $resourcePath);
-  		}
-  		if($questionnaireId !== null) {
-  			$resourcePath = str_replace("{" . "questionnaireId" . "}",
-  			                            $questionnaireId, $resourcePath);
-  		}
-  		//make the API Call
-      if (! isset($body)) {
-        $body = null;
-      }
-      $response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
-  		                                      $queryParams, $body, $headerParams);
-      if(! $response){
-        return null;
-      }
-
-  	  $responseObject = $this->apiClient->deserialize($response,
-  		                                                'AddQuestionnaireCollectorResponse');
-  	  return $responseObject;
-      }
-  /**
-	 * UpdateQuestionnaireCollector
-	 * Update questionnaire collector
-   * userId, string: User global unique identifier (required)
-   * collectorId, string: Questionnaire collector global unique identifier (required)
-   * body, QuestionnaireCollectorInfo: Questionnaire collector data (required)
-   * @return UpdateQuestionnaireCollectorResponse
-	 */
-
-   public function UpdateQuestionnaireCollector($userId, $collectorId, $body) {
-      if( $userId === null || $collectorId === null || $body === null ) {
-        throw new ApiException("missing required parameters", 400);
-      }
-      //parse inputs
-  	  $resourcePath = str_replace("*", "", "/merge/{userId}/questionnaires/collectors/{collectorId}");
-  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
-  	  $method = "PUT";
-      $queryParams = array();
-      $headerParams = array();
-
-      if($userId !== null) {
-  			$resourcePath = str_replace("{" . "userId" . "}",
-  			                            $userId, $resourcePath);
-  		}
-  		if($collectorId !== null) {
-  			$resourcePath = str_replace("{" . "collectorId" . "}",
-  			                            $collectorId, $resourcePath);
-  		}
-  		//make the API Call
-      if (! isset($body)) {
-        $body = null;
-      }
-      $response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
-  		                                      $queryParams, $body, $headerParams);
-      if(! $response){
-        return null;
-      }
-
-  	  $responseObject = $this->apiClient->deserialize($response,
-  		                                                'UpdateQuestionnaireCollectorResponse');
-  	  return $responseObject;
-      }
-  /**
-	 * DeleteQuestionnaireCollector
-	 * Removes questionnaire collector
-   * userId, string: User global unique identifier (required)
-   * collectorId, string: Questionnaire collector global unique identifier (required)
-   * @return DeleteQuestionnaireCollectorResponse
-	 */
-
-   public function DeleteQuestionnaireCollector($userId, $collectorId) {
-      if( $userId === null || $collectorId === null ) {
-        throw new ApiException("missing required parameters", 400);
-      }
-      //parse inputs
-  	  $resourcePath = str_replace("*", "", "/merge/{userId}/questionnaires/collectors/{collectorId}");
-  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
-  	  $method = "DELETE";
-      $queryParams = array();
-      $headerParams = array();
-
-      if($userId !== null) {
-  			$resourcePath = str_replace("{" . "userId" . "}",
-  			                            $userId, $resourcePath);
-  		}
-  		if($collectorId !== null) {
-  			$resourcePath = str_replace("{" . "collectorId" . "}",
-  			                            $collectorId, $resourcePath);
-  		}
-  		//make the API Call
-      if (! isset($body)) {
-        $body = null;
-      }
-      $response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
-  		                                      $queryParams, $body, $headerParams);
-      if(! $response){
-        return null;
-      }
-
-  	  $responseObject = $this->apiClient->deserialize($response,
-  		                                                'DeleteQuestionnaireCollectorResponse');
-  	  return $responseObject;
-      }
-  /**
-	 * GetTemplates
-	 * Get template documents information
-   * userId, string: User global unique identifier (required)
-   * @return GetTemplatesResponse
-	 */
-
-   public function GetTemplates($userId) {
-      if( $userId === null ) {
-        throw new ApiException("missing required parameters", 400);
-      }
-      //parse inputs
-  	  $resourcePath = str_replace("*", "", "/merge/{userId}/templates");
-  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
-  	  $method = "GET";
-      $queryParams = array();
-      $headerParams = array();
-
-      if($userId !== null) {
-  			$resourcePath = str_replace("{" . "userId" . "}",
-  			                            $userId, $resourcePath);
-  		}
-  		//make the API Call
-      if (! isset($body)) {
-        $body = null;
-      }
-      $response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
-  		                                      $queryParams, $body, $headerParams);
-      if(! $response){
-        return null;
-      }
-
-  	  $responseObject = $this->apiClient->deserialize($response,
-  		                                                'GetTemplatesResponse');
-  	  return $responseObject;
-      }
-  /**
-	 * GetQuestionnaireFields
-	 * Get questionnaire fields
-   * userId, string: User global unique identifier (required)
-   * questionnaireId, string: Questionnaire global unique identifier (required)
-   * includeGeometry, bool: A flag indicating whether fields coordinates and size should be included into the response. (optional)
-   * @return TemplateFieldsResponse
-	 */
-
-   public function GetQuestionnaireFields($userId, $questionnaireId, $includeGeometry=null) {
-      if( $userId === null || $questionnaireId === null ) {
-        throw new ApiException("missing required parameters", 400);
-      }
-      //parse inputs
-  	  $resourcePath = str_replace("*", "", "/merge/{userId}/questionnaires/{questionnaireId}/fields?include_geometry={includeGeometry}");
-  	  $pos = strpos($resourcePath, "?");
-	  if($pos !== false){
-  	  	$resourcePath = substr($resourcePath, 0, $pos);
-	  }
-	  $resourcePath = str_replace("{format}", "json", $resourcePath);
-  	  $method = "GET";
-      $queryParams = array();
-      $headerParams = array();
-
-      if($includeGeometry !== null) {
-  		  $queryParams['include_geometry'] = $this->apiClient->toPathValue($includeGeometry);
-  		}
-  		if($userId !== null) {
-  			$resourcePath = str_replace("{" . "userId" . "}",
-  			                            $userId, $resourcePath);
-  		}
-  		if($questionnaireId !== null) {
-  			$resourcePath = str_replace("{" . "questionnaireId" . "}",
-  			                            $questionnaireId, $resourcePath);
-  		}
-  		//make the API Call
-      if (! isset($body)) {
-        $body = null;
-      }
-      $response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
-  		                                      $queryParams, $body, $headerParams);
-      if(! $response){
-        return null;
-      }
-
-  	  $responseObject = $this->apiClient->deserialize($response,
-  		                                                'TemplateFieldsResponse');
-  	  return $responseObject;
-      }
-  /**
-	 * GetQuestionnaireMetadata
-	 * Get questionnaire metadata
-   * userId, string: User global unique identifier (required)
-   * questionnaireId, string: Questionnaire global unique identifier (required)
-   * @return GetQuestionnaireMetadataResponse
-	 */
-
-   public function GetQuestionnaireMetadata($userId, $questionnaireId) {
-      if( $userId === null || $questionnaireId === null ) {
-        throw new ApiException("missing required parameters", 400);
-      }
-      //parse inputs
-  	  $resourcePath = str_replace("*", "", "/merge/{userId}/questionnaires/{questionnaireId}/metadata");
-  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
-  	  $method = "GET";
-      $queryParams = array();
-      $headerParams = array();
-
-      if($userId !== null) {
-  			$resourcePath = str_replace("{" . "userId" . "}",
-  			                            $userId, $resourcePath);
-  		}
-  		if($questionnaireId !== null) {
-  			$resourcePath = str_replace("{" . "questionnaireId" . "}",
-  			                            $questionnaireId, $resourcePath);
-  		}
-  		//make the API Call
-      if (! isset($body)) {
-        $body = null;
-      }
-      $response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
-  		                                      $queryParams, $body, $headerParams);
-      if(! $response){
-        return null;
-      }
-
-  	  $responseObject = $this->apiClient->deserialize($response,
-  		                                                'GetQuestionnaireMetadataResponse');
-  	  return $responseObject;
-      }
-  /**
-	 * UpdateQuestionnaireMetadata
-	 * Update questionnaire metadata
-   * userId, string: User global unique identifier (required)
-   * questionnaireId, string: Questionnaire global unique identifier (required)
-   * body, QuestionnaireMetadata: Questionnaire metadata to update (required)
-   * @return UpdateQuestionnaireResponse
-	 */
-
-   public function UpdateQuestionnaireMetadata($userId, $questionnaireId, $body) {
-      if( $userId === null || $questionnaireId === null || $body === null ) {
-        throw new ApiException("missing required parameters", 400);
-      }
-      //parse inputs
-  	  $resourcePath = str_replace("*", "", "/merge/{userId}/questionnaires/{questionnaireId}/metadata");
-  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
-  	  $method = "PUT";
-      $queryParams = array();
-      $headerParams = array();
-
-      if($userId !== null) {
-  			$resourcePath = str_replace("{" . "userId" . "}",
-  			                            $userId, $resourcePath);
-  		}
-  		if($questionnaireId !== null) {
-  			$resourcePath = str_replace("{" . "questionnaireId" . "}",
-  			                            $questionnaireId, $resourcePath);
-  		}
-  		//make the API Call
-      if (! isset($body)) {
-        $body = null;
-      }
-      $response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
-  		                                      $queryParams, $body, $headerParams);
-      if(! $response){
-        return null;
-      }
-
-  	  $responseObject = $this->apiClient->deserialize($response,
-  		                                                'UpdateQuestionnaireResponse');
   	  return $responseObject;
       }
   

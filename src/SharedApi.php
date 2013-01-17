@@ -43,13 +43,13 @@ class SharedApi {
 	 * Download
 	 * Download
    * guid, string: GUID (required)
-   * fileName, string: File name (required)
+   * fileName, string: File name (optional)
    * render, bool: Render (optional)
    * @return stream
 	 */
 
-   public function Download($guid, $fileName, $render=null, FileStream $outFileStream) {
-      if( $guid === null || $fileName === null ) {
+   public function Download($guid, $fileName=null, $render=null, FileStream $outFileStream) {
+      if( $guid === null ) {
         throw new ApiException("missing required parameters", 400);
       }
       //parse inputs

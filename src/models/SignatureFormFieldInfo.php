@@ -35,7 +35,8 @@ class SignatureFormFieldInfo {
       'locations' => 'array[SignatureFormFieldLocationInfo]',
       'fieldType' => 'int',
       'acceptableValues' => 'string',
-      'defaultValue' => 'string'
+      'defaultValue' => 'string',
+      'tooltip' => 'string'
 
     );
 
@@ -51,5 +52,6 @@ class SignatureFormFieldInfo {
   public $fieldType; // int
   public $acceptableValues; // string
   public $defaultValue; // string
+  public $tooltip; // string
   }
 

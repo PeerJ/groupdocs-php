@@ -27,7 +27,8 @@ class ReviewerInfo {
       'id' => 'float',
       'guid' => 'string',
       'primary_email' => 'string',
-      'firstname' => 'string',
+      'firstName' => 'string',
+      'lastName' => 'string',
       'access_rights' => 'int',
       'color' => 'int',
       'customEmailMessage' => 'string'
@@ -37,7 +38,8 @@ class ReviewerInfo {
   public $id; // float
   public $guid; // string
   public $primary_email; // string
-  public $firstname; // string
+  public $firstName; // string
+  public $lastName; // string
   public $access_rights; // int
   public $color; // int
   public $customEmailMessage; // string

@@ -37,7 +37,8 @@ class SignatureTemplateFieldLocationInfo {
       'fontSize' => 'float',
       'fontBold' => 'bool',
       'fontItalic' => 'bool',
-      'fontUnderline' => 'bool'
+      'fontUnderline' => 'bool',
+      'align' => 'int'
 
     );
 
@@ -55,5 +56,6 @@ class SignatureTemplateFieldLocationInfo {
   public $fontBold; // bool
   public $fontItalic; // bool
   public $fontUnderline; // bool
+  public $align; // int
   }
 

@@ -52,7 +52,7 @@ class AsyncApi {
         throw new ApiException("missing required parameters", 400);
       }
       //parse inputs
-  	  $resourcePath = str_replace("*", "", "/async/{userId}/jobs/{jobId}?format=xml");
+  	  $resourcePath = str_replace("*", "", "/async/{userId}/jobs/{jobId}");
   	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "GET";
       $queryParams = array();

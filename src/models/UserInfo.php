@@ -39,6 +39,8 @@ class UserInfo {
       'alerts_eanbled' => 'bool',
       'support_eanbled' => 'bool',
       'support_email' => 'string',
+      'annotation_branded' => 'bool',
+      'viewer_branded' => 'bool',
       'signedupOn' => 'string',
       'signedinOn' => 'string',
       'signin_count' => 'int',
@@ -64,6 +66,8 @@ class UserInfo {
   public $alerts_eanbled; // bool
   public $support_eanbled; // bool
   public $support_email; // string
+  public $annotation_branded; // bool
+  public $viewer_branded; // bool
   public $signedupOn; // string
   public $signedinOn; // string
   public $signin_count; // int

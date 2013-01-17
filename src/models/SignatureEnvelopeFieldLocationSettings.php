@@ -35,7 +35,8 @@ class SignatureEnvelopeFieldLocationSettings {
       'fontBold' => 'bool',
       'fontItalic' => 'bool',
       'fontUnderline' => 'bool',
-      'forceNewField' => 'bool'
+      'forceNewField' => 'bool',
+      'align' => 'int'
 
     );
 
@@ -51,5 +52,6 @@ class SignatureEnvelopeFieldLocationSettings {
   public $fontItalic; // bool
   public $fontUnderline; // bool
   public $forceNewField; // bool
+  public $align; // int
   }
 

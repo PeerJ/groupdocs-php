@@ -39,7 +39,8 @@ class SignatureFieldInfo {
       'isSystem' => 'bool',
       'fieldType' => 'int',
       'acceptableValues' => 'string',
-      'defaultValue' => 'string'
+      'defaultValue' => 'string',
+      'align' => 'int'
 
     );
 
@@ -59,5 +60,6 @@ class SignatureFieldInfo {
   public $fieldType; // int
   public $acceptableValues; // string
   public $defaultValue; // string
+  public $align; // int
   }
 

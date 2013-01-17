@@ -32,6 +32,8 @@ class ViewDocumentResult {
       'doc_type' => 'string',
       'image_urls' => 'array[string]',
       'token' => 'string',
+      'pageHtml' => 'string',
+      'pageCss' => 'string',
       'id' => 'float',
       'guid' => 'string'
 
@@ -45,6 +47,8 @@ class ViewDocumentResult {
   public $doc_type; // string
   public $image_urls; // array[string]
   public $token; // string
+  public $pageHtml; // string
+  public $pageCss; // string
   public $id; // float
   public $guid; // string
   }

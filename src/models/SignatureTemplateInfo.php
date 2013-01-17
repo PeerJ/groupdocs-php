@@ -36,7 +36,9 @@ class SignatureTemplateInfo {
       'emailBody' => 'string',
       'documentsCount' => 'float',
       'documentsPages' => 'float',
-      'recipients' => 'array[SignatureTemplateRecipientInfo]'
+      'recipients' => 'array[SignatureTemplateRecipientInfo]',
+      'waterMarkText' => 'string',
+      'waterMarkImage' => 'string'
 
     );
 
@@ -53,5 +55,7 @@ class SignatureTemplateInfo {
   public $documentsCount; // float
   public $documentsPages; // float
   public $recipients; // array[SignatureTemplateRecipientInfo]
+  public $waterMarkText; // string
+  public $waterMarkImage; // string
   }
 

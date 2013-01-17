@@ -26,12 +26,16 @@ class SignatureFormSettings {
   static $swaggerTypes = array(
       'name' => 'string',
       'fieldsInFinalFileName' => 'string',
-      'canParticipantDownloadForm' => 'bool'
+      'canParticipantDownloadForm' => 'bool',
+      'waterMarkText' => 'string',
+      'waterMarkImage' => 'string'
 
     );
 
   public $name; // string
   public $fieldsInFinalFileName; // string
   public $canParticipantDownloadForm; // bool
+  public $waterMarkText; // string
+  public $waterMarkImage; // string
   }
 

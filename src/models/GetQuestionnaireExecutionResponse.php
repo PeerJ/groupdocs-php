@@ -26,12 +26,14 @@ class GetQuestionnaireExecutionResponse {
   static $swaggerTypes = array(
       'result' => 'GetQuestionnaireExecutionResult',
       'status' => 'string',
-      'error_message' => 'string'
+      'error_message' => 'string',
+      'composedOn' => 'string'
 
     );
 
   public $result; // GetQuestionnaireExecutionResult
   public $status; // string
   public $error_message; // string
+  public $composedOn; // string
   }
 

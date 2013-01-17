@@ -30,7 +30,9 @@ class SignatureTemplateSettings {
       'stepExpireTime' => 'float',
       'envelopeExpireTime' => 'float',
       'emailSubject' => 'string',
-      'emailBody' => 'string'
+      'emailBody' => 'string',
+      'waterMarkText' => 'string',
+      'waterMarkImage' => 'string'
 
     );
 
@@ -41,5 +43,7 @@ class SignatureTemplateSettings {
   public $envelopeExpireTime; // float
   public $emailSubject; // string
   public $emailBody; // string
+  public $waterMarkText; // string
+  public $waterMarkImage; // string
   }
 

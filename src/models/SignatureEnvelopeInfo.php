@@ -39,7 +39,9 @@ class SignatureEnvelopeInfo {
       'emailBody' => 'string',
       'documentsCount' => 'float',
       'documentsPages' => 'float',
-      'recipients' => 'array[SignatureEnvelopeRecipientInfo]'
+      'recipients' => 'array[SignatureEnvelopeRecipientInfo]',
+      'waterMarkText' => 'string',
+      'waterMarkImage' => 'string'
 
     );
 
@@ -59,5 +61,7 @@ class SignatureEnvelopeInfo {
   public $documentsCount; // float
   public $documentsPages; // float
   public $recipients; // array[SignatureEnvelopeRecipientInfo]
+  public $waterMarkText; // string
+  public $waterMarkImage; // string
   }
 

@@ -42,7 +42,8 @@ class SignatureFormFieldSettings {
       'forceNewField' => 'bool',
       'acceptableValues' => 'string',
       'defaultValue' => 'string',
-      'tooltip' => 'string'
+      'tooltip' => 'string',
+      'align' => 'int'
 
     );
 
@@ -65,5 +66,6 @@ class SignatureFormFieldSettings {
   public $acceptableValues; // string
   public $defaultValue; // string
   public $tooltip; // string
+  public $align; // int
   }
 

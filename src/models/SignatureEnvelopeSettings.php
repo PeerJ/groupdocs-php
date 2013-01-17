@@ -31,7 +31,9 @@ class SignatureEnvelopeSettings {
       'envelopeExpireTime' => 'float',
       'emailSubject' => 'string',
       'emailBody' => 'string',
-      'isDemo' => 'bool'
+      'isDemo' => 'bool',
+      'waterMarkText' => 'string',
+      'waterMarkImage' => 'string'
 
     );
 
@@ -43,5 +45,7 @@ class SignatureEnvelopeSettings {
   public $emailSubject; // string
   public $emailBody; // string
   public $isDemo; // bool
+  public $waterMarkText; // string
+  public $waterMarkImage; // string
   }
 

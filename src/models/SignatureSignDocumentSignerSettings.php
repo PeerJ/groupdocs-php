@@ -29,7 +29,7 @@ class SignatureSignDocumentSignerSettings {
       'left' => 'float',
       'width' => 'float',
       'height' => 'float',
-      'placeSingatureOn' => 'string',
+      'placeSignatureOn' => 'string',
       'data' => 'string'
 
     );
@@ -39,7 +39,7 @@ class SignatureSignDocumentSignerSettings {
   public $left; // float
   public $width; // float
   public $height; // float
-  public $placeSingatureOn; // string
+  public $placeSignatureOn; // string
   public $data; // string
   }
 

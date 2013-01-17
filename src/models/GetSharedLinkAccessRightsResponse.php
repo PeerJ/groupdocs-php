@@ -26,12 +26,14 @@ class GetSharedLinkAccessRightsResponse {
   static $swaggerTypes = array(
       'result' => 'GetSharedLinkAccessRightsResult',
       'status' => 'string',
-      'error_message' => 'string'
+      'error_message' => 'string',
+      'composedOn' => 'string'
 
     );
 
   public $result; // GetSharedLinkAccessRightsResult
   public $status; // string
   public $error_message; // string
+  public $composedOn; // string
   }
 

@@ -468,6 +468,52 @@ class AntApi {
   	  return $responseObject;
       }
   /**
+	 * DeleteDocumentReviewer
+	 * Delete document reviewer
+   * userId, string: User GUID (required)
+   * fileId, string: File ID (required)
+   * reviewerId, System.Decimal,System: Reviewer ID (required)
+   * @return AddCollaboratorResponse
+	 */
+
+   public function DeleteDocumentReviewer($userId, $fileId, $reviewerId) {
+      if( $userId === null || $fileId === null || $reviewerId === null ) {
+        throw new ApiException("missing required parameters", 400);
+      }
+      //parse inputs
+  	  $resourcePath = str_replace("*", "", "/ant/{userId}/files/{fileId}/collaborators/{reviewerId}");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "DELETE";
+      $queryParams = array();
+      $headerParams = array();
+
+      if($userId !== null) {
+  			$resourcePath = str_replace("{" . "userId" . "}",
+  			                            $userId, $resourcePath);
+  		}
+  		if($fileId !== null) {
+  			$resourcePath = str_replace("{" . "fileId" . "}",
+  			                            $fileId, $resourcePath);
+  		}
+  		if($reviewerId !== null) {
+  			$resourcePath = str_replace("{" . "reviewerId" . "}",
+  			                            $reviewerId, $resourcePath);
+  		}
+  		//make the API Call
+      if (! isset($body)) {
+        $body = null;
+      }
+      $response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
+      if(! $response){
+        return null;
+      }
+
+  	  $responseObject = $this->apiClient->deserialize($response,
+  		                                                'AddCollaboratorResponse');
+  	  return $responseObject;
+      }
+  /**
 	 * GetReviewerContacts
 	 * Get list of reviewer contacts
    * userId, string: User GUID (required)
@@ -789,6 +835,90 @@ class AntApi {
 
   	  $responseObject = $this->apiClient->deserialize($response,
   		                                                'SetSharedLinkAccessRightsResponse');
+  	  return $responseObject;
+      }
+  /**
+	 * SetSessionCallbackUrl
+	 * Set Session Web Hook Callback Url
+   * userId, string: User GUID (required)
+   * fileId, string: File GUID (required)
+   * body, string: Callback Url (required)
+   * @return SetSessionCallbackUrlResponse
+	 */
+
+   public function SetSessionCallbackUrl($userId, $fileId, $body) {
+      if( $userId === null || $fileId === null || $body === null ) {
+        throw new ApiException("missing required parameters", 400);
+      }
+      //parse inputs
+  	  $resourcePath = str_replace("*", "", "/ant/{userId}/files/{fileId}/sessionCallbackUrl");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "PUT";
+      $queryParams = array();
+      $headerParams = array();
+
+      if($userId !== null) {
+  			$resourcePath = str_replace("{" . "userId" . "}",
+  			                            $userId, $resourcePath);
+  		}
+  		if($fileId !== null) {
+  			$resourcePath = str_replace("{" . "fileId" . "}",
+  			                            $fileId, $resourcePath);
+  		}
+  		//make the API Call
+      if (! isset($body)) {
+        $body = null;
+      }
+      $response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
+      if(! $response){
+        return null;
+      }
+
+  	  $responseObject = $this->apiClient->deserialize($response,
+  		                                                'SetSessionCallbackUrlResponse');
+  	  return $responseObject;
+      }
+  /**
+	 * SaveTextField
+	 * Save Text Of Text Field
+   * userId, string: User GUID (required)
+   * annotationId, string: Annotation ID (required)
+   * body, TextFieldInfo: Text (required)
+   * @return SaveAnnotationTextResponse
+	 */
+
+   public function SaveTextField($userId, $annotationId, $body) {
+      if( $userId === null || $annotationId === null || $body === null ) {
+        throw new ApiException("missing required parameters", 400);
+      }
+      //parse inputs
+  	  $resourcePath = str_replace("*", "", "/ant/{userId}/annotations/{annotationId}/textFieldInfo");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "PUT";
+      $queryParams = array();
+      $headerParams = array();
+
+      if($userId !== null) {
+  			$resourcePath = str_replace("{" . "userId" . "}",
+  			                            $userId, $resourcePath);
+  		}
+  		if($annotationId !== null) {
+  			$resourcePath = str_replace("{" . "annotationId" . "}",
+  			                            $annotationId, $resourcePath);
+  		}
+  		//make the API Call
+      if (! isset($body)) {
+        $body = null;
+      }
+      $response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
+      if(! $response){
+        return null;
+      }
+
+  	  $responseObject = $this->apiClient->deserialize($response,
+  		                                                'SaveAnnotationTextResponse');
   	  return $responseObject;
       }
   

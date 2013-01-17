@@ -35,7 +35,10 @@ class AnnotationInfo {
       'type' => 'string',
       'access' => 'string',
       'replies' => 'array[AnnotationReplyInfo]',
-      'createdOn' => 'string'
+      'createdOn' => 'string',
+      'fieldText' => 'string',
+      'fontFamily' => 'string',
+      'fontSize' => 'float'
 
     );
 
@@ -51,5 +54,8 @@ class AnnotationInfo {
   public $access; // string
   public $replies; // array[AnnotationReplyInfo]
   public $createdOn; // string
+  public $fieldText; // string
+  public $fontFamily; // string
+  public $fontSize; // float
   }
 

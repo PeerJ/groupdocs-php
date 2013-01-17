@@ -121,7 +121,7 @@ class APIClient {
 
 		} else if ($postData instanceof FileStream) {
 			$isFileUpload = true;
-			$headers[] = "Content-type: ". $postData->getContentType();
+			$headers[] = "Content-type: application/octet-stream";
 			$headers[] = "Content-Length: ". $postData->getSize();
 
 		} else if (is_object($postData) or is_array($postData)) {

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>Powered by {{ @VERSION }}</title>
+    <style type="text/css">
+        {{ Web::minify('templates/',array('style.css'),FALSE) }}
+    </style>
+</head>
+<body>
+<h3 style="text-align:center;"><a href="/index.php">GroupDocs PHP SDK Samples</a> - Sample16</h3>
+
+<div class='samplecontent' style="padding:10px;">
+    <i>This sample will show how to insert Assembly questionary into webpage using PHP SDK</i> <br/>
+
+    <br/><p>You entered:
+    <p>File ID = {{@fileId}}
+    <p><font color="red">{{@error}}</font>
+    <div id="requestForm" style="padding:20px; border:1px solid black;">
+        <p> Enter data for request and press "Make request" button </p>
+        <form action="/sample16" method = "post" enctype = 'multipart/form-data'>
+            <label for='file_id'>FileID</label>
+            <br />
+            <input type='text', name='file_id'  value="{{@fileId}}" />
+            <br />
+            <input type='submit' value='Make Request'/>
+        </form>
+    </div>
+    <div  style="padding:20px; border:1px solid black;">
+        <p> Results: </p>
+        {{ @iframe }}
+    </div>
+</div>
+
+<div style="padding:10px;">
+    Choose anothe one sample:
+    <ul>
+        <li> <a href="/sample1">Sample1 - How to login to GroupDocs using the API</a></li>
+        <li> <a href="/sample2">Sample2 - How to list files within GroupDocs Storage using the Storage API</a></li>
+        <li> <a href="/sample3">Sample3 - How to upload a file to GroupDocs using the Storage API</a></li>
+        <li> <a href="/sample4">Sample4 - How to download a file from GroupDocs Storage using the Storage API</a></li>
+        <li> <a href="/sample5">Sample5 - How to copy / move a file using the GroupDocs Storage API</a></li>
+        <li> <a href="/sample6">Sample6 - How to add a Signature to a document in GroupDocs Signature</a></li>
+        <li> <a href="/sample7">Sample7 - How to create a list of thumbnails for a document</a></li>
+        <li> <a href="/sample8">Sample8 - How to return a URL representing a single page of a Document</a></li>
+        <li> <a href="/sample9">Sample9 - How to generate an embedded Viewer URL for a Document</a></li>
+        <li> <a href="/sample10">Sample10 - How to share a document to other users</a></li>
+        <li> <a href="/sample11">Sample11 - How programmatically create and post an annotation into document. How to delete the annotation</a></li>
+        <li> <a href="/sample12">Sample12 - How to list all annotations from document</a></li>
+        <li> <a href="/sample13">Sample13 - How to add collaborator to doc with annotations</a></li>
+        <li> <a href="/sample14">Sample14 - How to check the list of shares for a folder</a></li>
+        <li> <a href="/sample15">Sample15 - How to check the number of document's views</a></li>
+        <li> <a href="/sample16">Sample16 - How to insert Assembly questionary into webpage</a></li>
+        <li> <a href="/sample17">Sample17 - How to upload a file into the storage and compress it into zip archive</a></li>
+        <li> <a href="/sample18">Sample18 - How to convert Doc to Docx, Docx to Doc, Docx to PDF and PPT to PDF</a></li>
+    </ul>
+</div>
+
+</body>
+</html>

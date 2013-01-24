@@ -22,6 +22,13 @@ F3::route('GET|POST /sample7','sample7.php');
 F3::route('GET|POST /sample8','sample8.php');
 F3::route('GET|POST /sample9','sample9.php');
 F3::route('GET|POST /sample10','sample10.php');
+F3::route('GET|POST /sample11','sample11.php');
+F3::route('GET|POST /sample12','sample12.php');
+F3::route('GET|POST /sample13','sample13.php');
+F3::route('GET|POST /sample14','sample14.php');
+F3::route('GET|POST /sample15','sample15.php');
+F3::route('GET|POST /sample16','sample16.php');
+F3::route('GET|POST /sample17','sample17.php');
 
 F3::route('GET /about_framework.php','about');
 

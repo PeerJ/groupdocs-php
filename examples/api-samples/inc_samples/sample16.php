@@ -1,9 +1,7 @@
 <?php
-    /*
-     * This sample will show how to insert Assembly questionary into webpage using PHP SDK
-     */
-
-    ### Set variables and get POST data
+    //### This sample will show how to insert Assembly questionary into webpage using PHP SDK
+     
+    //### Set variables and get POST data
     F3::set('fileId', '');
     $fileId = F3::get('POST["file_id"]');
 
@@ -13,7 +11,7 @@
         } else {
             F3::set('fileId', $fileId);
 
-            # Construct iframe using fileId
+            // Construct iframe using fileId
             $iframe = '<iframe src="https://apps.groupdocs.com/assembly2/questionnaire-assembly/' . $fileId . '" frameborder="0" width="100%" height="600"></iframe>';
 
             F3::set('iframe', $iframe);

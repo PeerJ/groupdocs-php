@@ -1,9 +1,8 @@
 <?php
-    /*
-     * This sample will show how to list all annotations from document
-     */
+    //###This sample will show how to list all annotations from document
+     
 
-    ### Set variables and get POST data
+    //### Set variables and get POST data
     F3::set('userId', '');
     F3::set('privateKey', '');
     F3::set('fileId', '');

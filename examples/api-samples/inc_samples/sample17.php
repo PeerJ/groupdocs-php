@@ -1,9 +1,7 @@
 <?php
-    /*
-     * This sample will how to upload a file into the storage and compress it into zip archive using PHP SDK
-     */
+    //### This sample will how to upload a file into the storage and compress it into zip archive using PHP SDK
 
-    ### Set variables and get POST data
+    //### Set variables and get POST data
     F3::set('userId', '');
     F3::set('privateKey', '');
     F3::set('fileId', '');
@@ -27,7 +25,7 @@
             $clientID = strip_tags(stripslashes(trim($clientId))); //ClientId==UserId
             $apiKey = strip_tags(stripslashes(trim($privateKey))); //ApiKey==PrivateKey
 
-            ###Check uploaded file
+            //###Check uploaded file
             if (null === $uploadedFile) {
                 return new RedirectResponse("/sample17");
             }
@@ -38,7 +36,7 @@
             // Creat file stream
             $fs = FileStream::fromFile($tmp_name);
 
-            ### Create Signer, ApiClient and Storage Api objects
+            //### Create Signer, ApiClient and Storage Api objects
 
             // Create signer object
             $signer = new GroupDocsRequestSigner($apiKey);
@@ -47,13 +45,13 @@
             // Create Storage Api object
             $apiStorage = new StorageApi($apiClient);
 
-            ### Make a request to Storage API using clientId
+            //### Make a request to Storage API using clientId
 
             // Upload file to current user storage
             $uploadResult = $apiStorage->Upload($clientID, $name, 'uploaded', $fs);
 
             $result = array();
-            ### Check if file uploaded successfully
+            //### Check if file uploaded successfully
             if ($uploadResult->status == "Ok") {
                 // compress uploaded file into "zip" archive
                 $compress = $apiStorage->Compress($clientId, $uploadResult->result->id, "zip");

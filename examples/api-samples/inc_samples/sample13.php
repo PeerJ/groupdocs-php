@@ -1,9 +1,7 @@
 <?php
-    /*
-    * This sample will show how to add collaborator to doc with annotations
-    */
-
-    ### Set variables and get POST data
+    //### This sample will show how to add collaborator to doc with annotations
+    
+    //### Set variables and get POST data
     F3::set('userId', '');
     F3::set('privateKey', '');
     F3::set('fileId', '');
@@ -14,7 +12,7 @@
     $collaborations = F3::get('POST["collaborations"]');
 
     function addCollaborator($clientId, $privateKey, $fileId, $collaborations) {
-        # Remove NULL value
+        // Remove NULL value
         $collaborations = (is_array($collaborations)) ? array_filter($collaborations, 'strlen') : array();
 
         if (empty($clientId) || empty($privateKey) || empty($fileId) || (is_array($collaborations) && !count($collaborations))) {
@@ -26,17 +24,17 @@
             F3::set('fileId', $fileId);
             F3::set('collaborations', $collaborations);
 
-            #### Create Signer, ApiClient and Annotation Api objects
-            # Create signer object
+            //### Create Signer, ApiClient and Annotation Api objects
+            // Create signer object
             $signer = new GroupDocsRequestSigner($privateKey);
 
-            # Create apiClient object
+            // Create apiClient object
             $apiClient = new ApiClient($signer);
 
-            # Create Annotation object
+            // Create Annotation object
             $ant = new AntApi($apiClient);
 
-            # Make a request to Annotation API using clientId and fileId
+            // Make a request to Annotation API using clientId and fileId
             $response = $ant->SetAnnotationCollaborators($clientId, $fileId, "v2.0", $collaborations);
 
             // Check the result of the request

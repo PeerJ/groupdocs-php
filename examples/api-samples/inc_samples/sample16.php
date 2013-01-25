@@ -14,7 +14,7 @@
             F3::set('fileId', $fileId);
 
             # Construct iframe using fileId
-            $iframe = '<iframe src="https://apps.groupdocs.com/document-viewer/Embed/' . $fileId . '" frameborder="0" width="720" height="600"></iframe>';
+            $iframe = '<iframe src="https://apps.groupdocs.com/assembly2/questionnaire-assembly/' . $fileId . '" frameborder="0" width="100%" height="600"></iframe>';
 
             F3::set('iframe', $iframe);
         }

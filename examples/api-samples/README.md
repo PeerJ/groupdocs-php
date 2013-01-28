@@ -46,6 +46,13 @@ To see all available PHP SDK versions tags visit this page - https://packagist.o
 * How to return a URL representing a single page of a Document
 * How to generate an embedded Viewer URL for a Document
 * How to share a document to other users
+* How programmatically create and post an annotation into document. How to delete the annotation
+* How to list all annotations from document
+* How to add collaborator to doc with annotations
+* How to check the list of shares for a folder
+* How to check the number of document's views
+* How to insert Assembly questionary into webpage
+* How to upload a file into the storage and compress it into zip archive
 
 
 

@@ -1,9 +1,8 @@
 <?php
-    /*
-     * This sample will show how programmatically create and post an annotation into document. How to delete the annotation
-     */
+    //### This sample will show how programmatically create and post an annotation into document. How to delete the annotation
+     
 
-    ### Set variables and get POST data
+    //### Set variables and get POST data
     F3::set('userId', '');
     F3::set('privateKey', '');
     F3::set('fileId', '');
@@ -17,33 +16,33 @@
             throw new Exception('Please enter all required parameters');
         } else {
 
-            #### Create Signer, ApiClient and Annotation Api objects
-            # Create signer object
+            //### Create Signer, ApiClient and Annotation Api objects
+            // Create signer object
             $signer = new GroupDocsRequestSigner($privateKey);
-            # Create apiClient object
+            // Create apiClient object
             $apiClient = new ApiClient($signer);
-            # Create Annotation object
+            // Create Annotation object
             $ant = new AntApi($apiClient);
 
             $annotationType = F3::get('POST["annotation_type"]');
             $replyText = F3::get('POST["text"]');
 
-            # Delete annotation if Delete Button clicked
+            // Delete annotation if Delete Button clicked
             if (F3::get('POST["delete_annotation"]') == "1") {
                 $ant->DeleteAnnotation($clientId, F3::get('POST["annotationId"]'));
                 return;
             }
 
-            # Required parameters
+            // Required parameters
             $allParams = array('annotation_type', 'box_x', 'box_y', 'text');
 
-            # Added required parameters depends on  annotation type ['type' or 'area']
+            // Added required parameters depends on  annotation type ['type' or 'area']
             if ($annotationType == "text")
                 $allParams = array_merge($allParams, array('box_width', 'box_height', 'annotationPosition_x', 'annotationPosition_y', 'range_position', 'range_length'));
             elseif ($annotationType == "area")
                 $allParams = array_merge($allParams, array('box_width', 'box_height'));
 
-            # Checking required parameters
+           // Checking required parameters
             foreach ($allParams as $param) {
                 $needParam = F3::get('POST["' . $param .'"]');
                 if ( !isset($needParam) or empty($needParam)) {
@@ -53,17 +52,17 @@
 
             $types = array('text' => "0", "area" => "1", "point" => "2");
 
-            # reply text
+            // reply text
             $reply = new AnnotationReplyInfo();
             $reply->text = $replyText;
 
-            # Annotation Info
+            // Annotation Info
             $ann = new AnnotationInfo();
             $ann->replies = array($reply);
             $ann->type = $types[$annotationType];
 
-            # construct annotation info depends on annotation type
-            # text annotation
+            // construct annotation info depends on annotation type
+            // text annotation
             if ($annotationType == "text") {
 
                 $range = new Range();
@@ -84,7 +83,7 @@
                 $ann->annotationPosition = $point;
                 $ann->range = $range;
 
-            # area annotation
+            // area annotation
             } elseif ($annotationType == "area") {
 
                 $box = new Rectangle();
@@ -100,7 +99,7 @@
                 $ann->box = $box;
                 $ann->annotationPosition = $point;
 
-            # point annotation
+            // point annotation
             } elseif ($annotationType == "point") {
 
                 $box = new Rectangle();

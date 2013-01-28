@@ -1,9 +1,7 @@
 <?php
-    /*
-     * This sample will show how to check the list of shares for a folder using PHP SDK
-     */
-
-    ### Set variables and get POST data
+    //### This sample will show how to check the list of shares for a folder using PHP SDK
+     
+    //### Set variables and get POST data
     F3::set('userId', '');
     F3::set('privateKey', '');
     F3::set('path', '');
@@ -21,7 +19,7 @@
             F3::set('privateKey', $privateKey);
             F3::set('path', $path);
 
-            # parse input path
+            // parse input path
             $newPath = "";
             $array = explode("/", $path);
             if (count($array) > 1) {
@@ -31,24 +29,24 @@
                 $lastFolder = array_pop($array);
             }
 
-            # initialization some variables
+            // initialization some variables
             $folderId = null;
             $users = "";
 
-            ### Create Signer, ApiClient, StorageApi and Document Api objects
-            # Create signer object
+            //### Create Signer, ApiClient, StorageApi and Document Api objects
+            // Create signer object
             $signer = new GroupDocsRequestSigner($privateKey);
 
-            # Create apiClient object
+            // Create apiClient object
             $apiClient = new ApiClient($signer);
 
-            # Create Storage object
+            // Create Storage object
             $storage = new StorageApi($apiClient);
 
-            # Create Document object
+            // Create Document object
             $doc = new DocApi($apiClient);
 
-            # get folder ID
+            // get folder ID
             $list = $storage->ListEntities($clientId, $newPath);
             if ($list->status == "Ok") {
                 foreach ($list->result->folders as $folder) {
@@ -59,9 +57,9 @@
                 }
             }
 
-            ### Get list of shares
+            //### Get list of shares
             if ( !is_null($folderId)) {
-                # Make a request to Document API
+                // Make a request to Document API
                 $shares = $doc->GetFolderSharers($clientId, $folderId);
                 if ($shares->status == "Ok" and count($shares->result->shared_users)) {
                     foreach ($shares->result->shared_users as $k => $user) {

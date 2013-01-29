@@ -30,21 +30,27 @@
             <br />
             <input type='text', name='private_key'  value="{{@privateKey}}" />
             <br />
-            <label for='file_id'>FileID</label>
+            <label for='fileId'>FileID</label>
             <br />
             <input type='text', name='fileId'  value="{{@fileId}}" />
             <br />
-            <label>Email</label>
+            <label>Collaborations</label>
             <br />
-            <input type='text' name='email'  value="" />
+            <div id="collaborators">
+                <div>
+                    <input type='text' name='email'  value="" />
+                </div>
+            </div>
             <br />
             <input type='submit' value='Make Request'/>
         </form>
     </div>
     <div  style="padding:20px; border:1px solid black;">
         <p> Results: </p>
-        <p>New collaboration:
-            {{ @collaboration }}
+        <p>New collaborations:
+            <repeat group="{{ @result->collaborators }}" value="{{ @item }}">
+                <font color="green">{{ @item->primary_email }}</font>
+            </repeat>
         </p>
     </div>
 </div>
@@ -73,11 +79,11 @@
     </ul>
 </div>
 
-<script>
+<!--<script>
     $(function() {
         $('.moreInput').click(function() {
             var obj = $(this);
-            $('#collaborators').append('<div><input type="text" name="collaborations[]"  value="" /> <span class="remove" style="cursor:pointer;">remove</span></div>');
+            $('#email').append('<div><input type="text" name="email[]"  value="" /> <span class="remove" style="cursor:pointer;">remove</span></div>');
         });
 
         $('.remove').live('click', function() {
@@ -85,7 +91,7 @@
             obj.parent('div').remove();
         });
     });
-</script>
+</script>-->
 
 </body>
 </html>

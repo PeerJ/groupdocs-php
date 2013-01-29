@@ -57,10 +57,9 @@
                 $compress = $apiStorage->Compress($clientId, $uploadResult->result->id, "zip");
                 if ($compress->status == "Ok") {
                     // Generation of Embeded Viewer URL with uploaded file GuId
-                    $result = array(
-                        'iframe' => '<iframe src="https://apps.groupdocs.com/document-viewer/Embed/' . $uploadResult->result->guid . '" frameborder="0" width="720" height="600"></iframe>',
-                        'name' => $name
-                    );
+                    
+                    $result = preg_replace("/\.[a-z]{3}/", ".zip", $name);
+
                 }
             }
             return $result;
@@ -69,7 +68,7 @@
 
     try {
         $upload = UploadAndZip($clientId, $privateKey);
-        $message = '<p>File was uploaded to GroupDocs and Compress into zip archive. Here you can see your <strong>' . $upload['name'] . '</strong> file in the GroupDocs Embedded Viewer.</p>';
+        $message = '<p>Archive created and saved successfully as ' . $upload;
         F3::set('message', $message);
         F3::set('iframe', $upload['iframe']);
     } catch(Exception $e) {

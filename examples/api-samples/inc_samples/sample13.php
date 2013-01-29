@@ -13,16 +13,16 @@
 
     function addCollaborator($clientId, $privateKey, $fileId, $collaborations) {
         // Remove NULL value
-        //$collaborations = (is_array($collaborations)) ? array_filter($collaborations, 'strlen') : array();
+        $collaborations = (is_array($collaborations)) ? array_filter($collaborations, 'strlen') : array();
 
-        if (empty($clientId) || empty($privateKey) || empty($fileId) || !count($collaborations)) {
+        if (empty($clientId) || empty($privateKey) || empty($fileId) || (is_array($collaborations) && !count($collaborations))) {
             throw new Exception('Please enter all required parameters');
         } else {
 
             F3::set('userId', $clientId);
             F3::set('privateKey', $privateKey);
             F3::set('fileId', $fileId);
-            F3::set('collaboration', $collaborations[0]);
+            F3::set('collaborations', $collaborations);
 
             //### Create Signer, ApiClient and Annotation Api objects
             // Create signer object

@@ -46,7 +46,7 @@
             <br />
             <input type='text', name='private_key'  value="{{@privateKey}}" />
             <br />
-            <label for='file_id'>FileID</label>
+            <label for='fileId'>FileID</label>
             <br />
             <input type='text', name='fileId'  value="{{@fileId}}" />
             <br />
@@ -56,7 +56,7 @@
             <select name="annotation_type" id="annotation_type">
                 <option value="text">Text</option>
                 <option value="area">Area</option>
-                <option value="point">Point</option>
+                <option selected value="point">Point</option>
             </select>
             <br />
 
@@ -71,7 +71,7 @@
                     <input minlength="0" name="box_y" placeholder="double" type="text" value="">
                 </div>
 
-                <div id="box-params">
+                <div id="box-params" style="display:none;">
                     <div>
                         <span>Box Width</span>
                         <input minlength="0" name="box_width" placeholder="double" type="text" value="">
@@ -82,7 +82,7 @@
                     </div>
                 </div>
 
-                <div id="annotation-position">
+                <div id="annotation-position" style="display:none;">
                     <div>
                         <span>Annotation Position X</span>
                         <input minlength="0" name="annotationPosition_x" placeholder="double" type="text" value="">
@@ -94,7 +94,7 @@
                 </div>
 
 
-                <div id="text-params">
+                <div id="text-params" style="display:none;">
                     <div>
                         <span>Range Position</span>
                         <input minlength="0" name="range_position" placeholder="double" type="text" value="">

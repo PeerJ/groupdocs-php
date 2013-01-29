@@ -123,9 +123,12 @@
             $createResult = $ant->CreateAnnotation($clientId, $fileId, $ann);
             if ($createResult->status == "Ok") {
                 if ($createResult->result) {
+                    
+                    $iframe = 'https://apps.groupdocs.com//document-annotation2/embed/' . $createResult->result->documentGuid . '?frameborder="0" width="720" height="600"';
                     F3::set('annotationId', $createResult->result->annotationGuid);
                     F3::set('annotationType', $annotationType);
                     F3::set('annotationText', $replyText);
+                    F3::set('url', $iframe);
                 }
             }
         }

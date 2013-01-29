@@ -18,6 +18,21 @@
     <p>UserId = {{@userId}}
     <p>PrivateKey = {{@privateKey}}
     <p>FileId = {{@fileId}}
+        <table style="border:1px double black;">
+            <tr>
+                <th colspan="2">Field</th>
+            </tr>
+            <tr>
+                <td>Annotation Id</td><td>{{@annotationId}}</td>
+            </tr>
+            <tr>
+                <td>Annotation Type</td><td>{{@annotationType}}</td>
+            </tr>
+            <tr>
+                <td>Annotation Text</td><td>{{@annotationText}}</td>
+            </tr>
+           
+        </table>
     <p><font color="red">{{@error}}</font>
     <div id="requestForm" style="padding:20px; border:1px solid black;">
         <p> Enter data for request and press "Make request" button </p>
@@ -97,25 +112,7 @@
             </fieldset>
 
             <input type='submit' value='Make Request'/>
-
-    </div>
-
-    <div  style="padding:20px; border:1px solid black;">
-        <p> Results: </p>
-        <table style="border:1px double black;">
-            <tr>
-                <th colspan="2">Field</th>
-            </tr>
-            <tr>
-                <td>Annotation Id</td><td>{{@annotationId}}</td>
-            </tr>
-            <tr>
-                <td>Annotation Type</td><td>{{@annotationType}}</td>
-            </tr>
-            <tr>
-                <td>Annotation Text</td><td>{{@annotationText}}</td>
-            </tr>
-
+             
             <check if="{{ @annotationId }}">
                 <true>
                     <tr>
@@ -125,11 +122,13 @@
                     </tr>
                 </true>
             </check>
-        </table>
+
+         </form>
+
     </div>
-
-    </form>
-
+   <div  style="padding:20px; border:1px solid black;">
+        <iframe src="{{@url}}"></iframe>
+   </div>
 </div>
 
 <div style="padding:10px;">

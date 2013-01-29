@@ -32,25 +32,19 @@
             <br />
             <label for='file_id'>FileID</label>
             <br />
-            <input type='text', name='file_id'  value="{{@fileId}}" />
+            <input type='text', name='fileId'  value="{{@fileId}}" />
             <br />
-            <label>Collaborations</label>
+            <label>Email</label>
             <br />
-            <div id="collaborators">
-                <div>
-                    <input type='text' name='collaborations[]'  value="" /> <span class="moreInput" style="cursor:pointer;">more</span>
-                </div>
-            </div>
+            <input type='text' name='email'  value="" />
             <br />
             <input type='submit' value='Make Request'/>
         </form>
     </div>
     <div  style="padding:20px; border:1px solid black;">
         <p> Results: </p>
-        <p>New collaborations:
-            <repeat group="{{ @result->collaborators }}" value="{{ @item }}">
-                {{ @item->primary_email }},
-            </repeat>
+        <p>New collaboration:
+            {{ @collaboration }}
         </p>
     </div>
 </div>

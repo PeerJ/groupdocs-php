@@ -8,7 +8,7 @@
     F3::set('fileId', '');
     $clientId = F3::get('POST["client_id"]');
     $privateKey = F3::get('POST["private_key"]');
-    $fileId = F3::get('POST["file_id"]');
+    $fileId = F3::get('POST["fileId"]');
 
     function CreateAnnotation($clientId, $privateKey, $fileId)
     {

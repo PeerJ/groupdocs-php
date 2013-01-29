@@ -8,21 +8,21 @@
     F3::set('collaborations', '');
     $clientId = F3::get('POST["client_id"]');
     $privateKey = F3::get('POST["private_key"]');
-    $fileId = F3::get('POST["file_id"]');
-    $collaborations = F3::get('POST["collaborations"]');
+    $fileId = F3::get('POST["fileId"]');
+    $collaborations = array(F3::get('POST["email"]'));
 
     function addCollaborator($clientId, $privateKey, $fileId, $collaborations) {
         // Remove NULL value
-        $collaborations = (is_array($collaborations)) ? array_filter($collaborations, 'strlen') : array();
+        //$collaborations = (is_array($collaborations)) ? array_filter($collaborations, 'strlen') : array();
 
-        if (empty($clientId) || empty($privateKey) || empty($fileId) || (is_array($collaborations) && !count($collaborations))) {
+        if (empty($clientId) || empty($privateKey) || empty($fileId) || !count($collaborations)) {
             throw new Exception('Please enter all required parameters');
         } else {
 
             F3::set('userId', $clientId);
             F3::set('privateKey', $privateKey);
             F3::set('fileId', $fileId);
-            F3::set('collaborations', $collaborations);
+            F3::set('collaboration', $collaborations[0]);
 
             //### Create Signer, ApiClient and Annotation Api objects
             // Create signer object

@@ -3,7 +3,7 @@
      
     //### Set variables and get POST data
     F3::set('fileId', '');
-    $fileId = F3::get('POST["file_id"]');
+    $fileId = F3::get('POST["fileId"]');
 
     function AssebmlyQuestionary($fileId) {
         if (empty($fileId)) {

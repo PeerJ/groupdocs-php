@@ -9,7 +9,7 @@
 
     $clientId = F3::get('POST["client_id"]');
     $privateKey = F3::get('POST["private_key"]');
-    $fileId = F3::get('POST["file_id"]');
+    $fileId = F3::get('POST["fileId"]');
 
     function ListAnnotations($clientId, $privateKey, $fileId) {
         if (empty($clientId) || empty($privateKey) || empty($fileId)) {

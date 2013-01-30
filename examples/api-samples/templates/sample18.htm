@@ -17,11 +17,11 @@
 		<p>Client Id = {{@userId}}</p>
 		<p>Private Key = {{@privateKey}}</p>
 		<p>File Id = {{@fileId}} </p>
-		<p>Convert type = {{@convert_type}}</p>
+		<p>Convert to type = {{@convert_type}}</p>
     <br />
     <p><font color="red">{{@error}}</font>
     <div id="requestForm" style="padding:20px; border:1px solid black;">
-        <p> Enter data for request and press "Make request" button </p>
+        <p> Enter data for request and press "Make request" button. In the dropbox please check the document type you want to convert the initial document.</p>
         <form action="/sample18" method = "post" enctype = 'multipart/form-data'>
             <label for='client_id'>GroupDocs Client ID</label>
             <br />

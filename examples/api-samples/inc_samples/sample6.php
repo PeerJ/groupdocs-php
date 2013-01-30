@@ -19,7 +19,7 @@
         $signers = $jsonPostData['signers'];
         //Determination of placeSingatureOn parameter
         for ($i = 0; $i < count($signers); $i++) {
-            $signers[$i]['placeSingatureOn'] = '';
+            $signers[$i]['placeSignatureOn'] = '';
         }
         //###Create Signer, ApiClient and Storage Api objects
 
@@ -39,9 +39,10 @@
         //Sign document using current user id and sign settings
         $response = $signatureApi->SignDocument($clientId, $settings);
         //Check is file signed and uploaded successfully
+        
         if ($response->status == "Ok") {
             //Post json object to template
-            $return = json_encode(array("responseCode" => 200, "documentId" => $response->result->documentId));
+            $return = json_encode(array("responseCode" => 200, "documentId" => $response->result->documents[0]->documentId));
         }
     }
     //Process template

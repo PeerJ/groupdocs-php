@@ -86,12 +86,12 @@ class ComparisonApi {
    * userId, string: User GUID (required)
    * sourceFileId, string: Source File GUID (required)
    * targetFileId, string: Target File GUID (required)
-   * callbackUrl, string: Callback Url (required)
+   * callbackUrl, string: Callback Url (optional)
    * @return CompareResponse
 	 */
 
    public function Compare($userId, $sourceFileId, $targetFileId, $callbackUrl) {
-      if( $userId === null || $sourceFileId === null || $targetFileId === null || $callbackUrl === null ) {
+      if( $userId === null || $sourceFileId === null || $targetFileId === null ) {
         throw new ApiException("missing required parameters", 400);
       }
       //parse inputs

@@ -38,13 +38,10 @@
                 sleep(5);
                 
                 $jobInfo = $asyncApi->GetJobDocuments($clientId, $info->result->job_id);
-                
-                if($jobInfo->result->outputs[0]->guid != "") {
-                    // Construct iframe using fileId
-                    $guid = $jobInfo->result->outputs[0]->guid;
-                    $iframe = '<iframe src="https://apps.groupdocs.com/document-viewer/embed/' . $guid . '" frameborder="0" width="100%" height="600"></iframe>';
+                // Construct iframe using fileId
+                $guid = $jobInfo->result->outputs[0]->guid;
+                $iframe = '<iframe src="https://apps.groupdocs.com/document-viewer/embed/' . $guid . '" frameborder="0" width="100%" height="600"></iframe>';
 
-                }
             }
             //If request was successfull - set url variable for template
             

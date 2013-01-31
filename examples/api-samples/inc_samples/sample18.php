@@ -31,13 +31,9 @@
             if($convert->status == "Ok") {
                 sleep(5);
                 $jobInfo = $api->GetJobDocuments($clientId, $convert->result->job_id);
-                
-                if($jobInfo->result->inputs[0]->outputs[0]->guid != "") {
-                    // Construct iframe using fileId
-                    $guid = $jobInfo->result->inputs[0]->outputs[0]->guid;
-                    $iframe = '<iframe src="https://apps.groupdocs.com/document-viewer/embed/' . $guid . '" frameborder="0" width="100%" height="600"></iframe>';
+                $guid = $jobInfo->result->inputs[0]->outputs[0]->guid;
+                $iframe = '<iframe src="https://apps.groupdocs.com/document-viewer/embed/' . $guid . '" frameborder="0" width="100%" height="600"></iframe>';
 
-                }
             }
             
             return F3::set('iframe', $iframe);

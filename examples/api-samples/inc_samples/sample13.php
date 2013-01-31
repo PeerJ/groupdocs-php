@@ -13,6 +13,8 @@
 
     function addCollaborator($clientId, $privateKey, $fileId, $collaborations) {
         // Remove NULL value
+        var_dump($fileId);
+        var_dump($collaborations);
         $collaborations = (is_array($collaborations)) ? array_filter($collaborations, 'strlen') : array();
 
         if (empty($clientId) || empty($privateKey) || empty($fileId) || (is_array($collaborations) && !count($collaborations))) {

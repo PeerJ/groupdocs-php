@@ -8,40 +8,45 @@
 	</style>
 </head>
 <body>
-<h3 style="text-align:center;"><a href="/index.php">GroupDocs PHP SDK Samples</a> - Sample4</h3>
+<h3 style="text-align:center;"><a href="/index.php">GroupDocs PHP SDK Samples</a> - Sample20</h3>
 
 <div class='samplecontent' style="padding:10px;">
-   <i>This sample will show how to download particular file from GroupDocs account using PHP SDK</i> <br/>
+   <i>This sample will show how to Compare documents using PHP SDK</i> <br/>
    
    <br/><p>You entered: 
    <p>UserId = {{@userId}}
    <p>PrivateKey = {{@privateKey}}
-   <p>FileId = {{@file_Id}}
+   <p>Result File Id = {{@resultFileId}}
+          
    <p><font color="red">{{@error}}</font>
    <div id="requestForm" style="padding:20px; border:1px solid black;">
-   <p> Enter data for request and press "Download" button </p>
-   <form action="/sample4" method = "post" enctype = 'multipart/form-data'>
-       <label for='client_id'>GroupDocs ClientID</label>
-       <br />
-       <input type='text', name='client_id' value="{{@userId}}" />
-       <br />
-       <label for='private_key'>GroupDocs PrivateKey</label>
-       <br />
-       <input type='text', name='private_key'  value="{{@privateKey}}" />
-       <br />
-       <label for='private_key'>FileID</label>
-       <br />
-       <input type='text', name='fileId'  value="{{@file_Id}}" />
-       <br />
-       <input type='submit' value='Download'/>
-   </form>
-   {{@message}}
+   <p> Enter data for request and press "Make request" button </p>
+        <form action="/sample20" method = "post" enctype = 'multipart/form-data'>
+            <label for='client_id'>GroupDocs ClientID</label>
+            <br />
+            <input type='text', name='client_id' value="{{@userId}}" />
+            <br />
+            <label for='private_key'>GroupDocs PrivateKey</label>
+            <br />
+            <input type='text', name='private_key'  value="{{@privateKey}}" />
+            <br />
+            <label for='resultFileId'>Compared FileId</label>
+            <br />
+            <input type='text', name='resultFileId'  value="{{@resultFileId}}" />
+            <br />
+            
+            <input type='submit' value='Make Request'/>
+        </form>
+   </div>
+   <div  style="padding:20px; border:1px solid black;">
+        <p> Results: </p>
+           {{@change}}
    </div>
    <br/>
- </div>
+</div>
 
 <div style="padding:10px;">
-Choose another one sample:
+Choose anothe one sample:
 <ul>
     <li> <a href="/sample1">Sample1 - How to login to GroupDocs using the API</li>
     <li> <a href="/sample2">Sample2 - How to list files within GroupDocs Storage using the Storage API</li>

@@ -52,20 +52,21 @@
                 //Generation of Embeded Viewer URL with uploaded file GuId
                 $signature = new SignatureApi($apiClient);
                 $envelop = $signature->CreateSignatureEnvelope($clientID, $name);
-
                 $addDocument = $signature->AddSignatureEnvelopeDocument($clientID, $envelop->result->envelope->id, $uploadResult->result->guid);
                 $recipient = $signature->GetRolesList($clientID);
 
                 for($i = 0; $i < count($recipient->result->roles); $i++) {
                     if($recipient->result->roles[$i]->name == "Signer") {
-                        $recipientRole = $recipient->result->roles[$i]->id;
+                        $roleId = $recipient->result->roles[$i]->id;
                     }
                 }
-                $addRecipient = $signature->AddSignatureEnvelopeRecipient($clientID, $envelop->result->envelope->id, "test@groupdocs.com", "TestName", "TestLastName", null, $recipientRole);
-                $send = $signature->SignatureEnvelopeSend($clientID, $envelop->result->envelope->id);
 
+                $addRecipient = $signature->AddSignatureEnvelopeRecipient($clientID, $envelop->result->envelope->id, "test@groupdocs.com", "TestName", "TestLastName", null, $roleId);
+                $getRecipient = $signature->GetSignatureEnvelopeRecipients($clientId, $envelop->result->envelope->id);
+                $recipientId = $getRecipient->result->recipients[0]->id;
+                $send = $signature->SignatureEnvelopeSend($clientID, $envelop->result->envelope->id);
                 $result = array();
-                $result = array('iframe' => '<iframe src="https://apps.groupdocs.com/signature/signembed/'. $envelop->result->envelope->id .'/'. $recipientRole . '" frameborder="0" width="720" height="600"></iframe>',
+                $result = array('iframe' => '<iframe src="https://apps.groupdocs.com/signature/signembed/'. $envelop->result->envelope->id .'/'. $recipientId . '" frameborder="0" width="720" height="600"></iframe>',
                                 'name' => $name);
                 //If request was successfull - set result variable for template
                 return $result;

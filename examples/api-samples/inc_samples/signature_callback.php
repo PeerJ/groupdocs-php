@@ -8,11 +8,14 @@
  */
     $post = f3::get('POST');
 
-    $fp = fopen(__DIR__ . '/../temp/sign.txt', 'w');
+    if(!empty($post)) {
+        $fp = fopen(__DIR__ . '/../temp/sign.txt', 'w');
 
-    foreach($post as $name => $content) {
-        fwrite($fp, $name . ' => ' . $content . " ; ");
+        foreach($post as $name => $content) {
+            fwrite($fp, $name . ' => ' . $content . " ; ");
+        }
+
+        fclose($fp);
     }
 
-    fclose($fp);
 header('Location: /sample21');

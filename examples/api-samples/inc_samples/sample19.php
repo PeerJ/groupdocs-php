@@ -26,25 +26,27 @@
             $signer = new GroupDocsRequestSigner($privateKey);
             //Create apiClient object
             $apiClient = new APIClient($signer);
-            //Create DocApi object
+            //Create ComparisonApi object
             $CompareApi = new ComparisonApi($apiClient);
-            //###Make request to DocApi using user id
-            
-            //Obtaining URl of entered page 
-            $info = $CompareApi->Compare($clientId, $sourceFileId, $targetFileId, $callbackUrl);
 
+            //###Make request to ComparisonApi using user id
+            //Compare documents
+            $info = $CompareApi->Compare($clientId, $sourceFileId, $targetFileId, $callbackUrl);
+            //Check request status
             if($info->status == "Ok") {
+                //Create CAsyncApi object
                 $asyncApi = new AsyncApi($apiClient);
+                //Delay necessary that the inquiry would manage to be processed
                 sleep(5);
-                
+                //Make request to api for get document info by job id
                 $jobInfo = $asyncApi->GetJobDocuments($clientId, $info->result->job_id);
-                // Construct iframe using fileId
+                //Get file guid
                 $guid = $jobInfo->result->outputs[0]->guid;
+                // Construct iframe using fileId
                 $iframe = '<iframe src="https://apps.groupdocs.com/document-viewer/embed/' . $guid . '" frameborder="0" width="100%" height="600"></iframe>';
 
             }
             //If request was successfull - set url variable for template
-            
             return F3::set('iframe', $iframe);
         }
     }

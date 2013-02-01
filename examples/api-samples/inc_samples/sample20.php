@@ -24,30 +24,31 @@
             $signer = new GroupDocsRequestSigner($privateKey);
             //Create apiClient object
             $apiClient = new APIClient($signer);
-            //Create DocApi object
+            //Create ComparisonApi object
             $CompareApi = new ComparisonApi($apiClient);
-            //###Make request to DocApi using user id
-            
-            //Obtaining URl of entered page 
+
+            //###Make request to ComparisonApi using user id
+            //Get changes list for document
             $info = $CompareApi->GetChanges($clientId, $resultFileId);
-            
+            //Check request status
             if($info->status == "Ok") {
-                
-                $array = array();
-                $subArray = array();
+                //###Create table with changes for template
                 $table = "<table class='border'>";
                 $table .= "<tr><td><font color='green'>Change Name</font></td><td><font color='green'>Change</font></td></tr>";
+                //Count of iterations
                 for($i = 0; $i < count($info->result->changes); $i++) {
-
+                    //Cycle for the massif of the top level
                     foreach($info->result->changes[$i] as $name => $content){
                         $table .= "<tr>";
+                        //Check is curent element is object
                         if(is_object($content)){
-                            
+                            //If object make cycle for the curent object
                             foreach($content as $subName => $subContent) {
 
                                 $table .= "<tr><td>$subName</td><td>$subContent</td></tr>";
                             }
                         } elseif(!is_object($content)) {
+                            //Get curent element data
                             $table .= "<td>$name</td><td>" . $content . "</td>";
                             $table .= "</tr>";
                         }

@@ -25,17 +25,23 @@
             $signer = new GroupDocsRequestSigner($privateKey);
             //Create apiClient object
             $apiClient = new APIClient($signer);
+            //Create AsyncApi object
             $api = new AsyncApi($apiClient);
+            //Make request to api for convert file
             $convert = $api->Convert($clientId, $fileId, $convert_type, null, null, null, null, null);
-            
+            //Check request status
             if($convert->status == "Ok") {
+                //Delay necessary that the inquiry would manage to be processed
                 sleep(5);
+                //Make request to api for get document info by job id
                 $jobInfo = $api->GetJobDocuments($clientId, $convert->result->job_id);
+                //Get file guid
                 $guid = $jobInfo->result->inputs[0]->outputs[0]->guid;
+                //Generating iframe
                 $iframe = '<iframe src="https://apps.groupdocs.com/document-viewer/embed/' . $guid . '" frameborder="0" width="100%" height="600"></iframe>';
 
             }
-            
+            //If request was successfull - set url variable for template
             return F3::set('iframe', $iframe);
         }
     }

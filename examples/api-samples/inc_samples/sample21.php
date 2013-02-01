@@ -70,7 +70,7 @@
                 $addRecipient = $signature->AddSignatureEnvelopeRecipient($clientID, $envelop->result->envelope->id, $email, $signName, $lastName, null, $roleId);
                 $getRecipient = $signature->GetSignatureEnvelopeRecipients($clientId, $envelop->result->envelope->id);
                 $recipientId = $getRecipient->result->recipients[0]->id;
-                $callBack = "http://groupdocs-php-samples.herokuapp.com/signature_callback.php";
+                $callBack = "http://groupdocs-php-samples.herokuapp.com/signature_callback";
                 $send = $signature->SignatureEnvelopeSend($clientID, $envelop->result->envelope->id, $callBack);
 
                 $result = array();

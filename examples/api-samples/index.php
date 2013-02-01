@@ -32,6 +32,8 @@ F3::route('GET|POST /sample17','sample17.php');
 F3::route('GET|POST /sample18','sample18.php');
 F3::route('GET|POST /sample19','sample19.php');
 F3::route('GET|POST /sample20','sample20.php');
+F3::route('GET|POST /sample21','sample21.php');
+F3::route('GET|POST /signature_callback','signature_callback.php');
 
 F3::route('GET /about_framework.php','about');
 

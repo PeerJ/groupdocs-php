@@ -16,6 +16,9 @@
    <br/><p>You entered: 
    <p>UserId = {{@userId}}
    <p>PrivateKey = {{@privateKey}}
+   <p>Email = {{@email}}
+   <p>Name = {{@name}}
+   <p>Last Name = {{@lastName}}
    <p><font color="red">{{@error}}</font>
    <br/>
    <div id="requestForm" style="padding:20px; border:1px solid black;">
@@ -28,6 +31,18 @@
         <label for='private_key'>GroupDocs PrivateKey</label>
         <br />
         <input type='text', name='private_key' />
+        <br />
+        <label for='email'>Email</label>
+        <br />
+        <input type='text', name='email' />
+        <br />
+        <label for='name'>Name</label>
+        <br />
+        <input type='text', name='name' />
+        <br />
+        <label for='lastName'>Last Name</label>
+        <br />
+        <input type='text', name='lastName' />
         <br />
         <label for='file'>File</label>
         <br />

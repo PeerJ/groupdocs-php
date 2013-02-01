@@ -9,8 +9,14 @@
     F3::set('iframe', '');
     $clientId = F3::get('POST["client_id"]');
     $privateKey = F3::get('POST["private_key"]');
+    $email = f3::get('POST["email"]');
+    $signName = f3::get('POST["name"]');
+    $lastName = f3::get('POST["lastName"]');
+    f3::set('email', $email);
+    f3::set('name', $signName);
+    f3::set('lastName', $lastName);
     
-    function Upload($clientId, $privateKey)
+    function Upload($clientId, $privateKey, $email, $signName, $lastName)
     {
         //###Check clientId and privateKey
         if (empty($clientId) || empty($privateKey)) {
@@ -61,10 +67,12 @@
                     }
                 }
 
-                $addRecipient = $signature->AddSignatureEnvelopeRecipient($clientID, $envelop->result->envelope->id, "test@groupdocs.com", "TestName", "TestLastName", null, $roleId);
+                $addRecipient = $signature->AddSignatureEnvelopeRecipient($clientID, $envelop->result->envelope->id, $email, $signName, $lastName, null, $roleId);
                 $getRecipient = $signature->GetSignatureEnvelopeRecipients($clientId, $envelop->result->envelope->id);
                 $recipientId = $getRecipient->result->recipients[0]->id;
-                $send = $signature->SignatureEnvelopeSend($clientID, $envelop->result->envelope->id);
+                $callBack = "http://groupdocs-php-samples.herokuapp.com/signature_callback.php";
+                $send = $signature->SignatureEnvelopeSend($clientID, $envelop->result->envelope->id, $callBack);
+
                 $result = array();
                 $result = array('iframe' => '<iframe src="https://apps.groupdocs.com/signature/signembed/'. $envelop->result->envelope->id .'/'. $recipientId . '" frameborder="0" width="720" height="600"></iframe>',
                                 'name' => $name);
@@ -75,7 +83,7 @@
      }
      
      try {
-         $upload = Upload($clientId, $privateKey);
+         $upload = Upload($clientId, $privateKey, $email, $signName, $lastName);
          $message = '<p>File was uploaded to GroupDocs. Here you can see your <strong>' . $upload['name'] . '</strong> file in the GroupDocs Embedded Viewer.</p>';
          F3::set('message', $message);
          F3::set('iframe', $upload['iframe']);

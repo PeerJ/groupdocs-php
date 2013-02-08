@@ -90,7 +90,7 @@
      }
      
      try {
-         $upload = sendEnvelo($clientId, $privateKey, $email, $signName, $lastName);
+         $upload = sendEnvelop($clientId, $privateKey, $email, $signName, $lastName);
          $message = '<p>File was uploaded to GroupDocs. Here you can see your <strong>' . $upload['name'] . '</strong> file in the GroupDocs Embedded Viewer.</p>';
          F3::set('message', $message);
          F3::set('iframe', $upload['iframe']);

@@ -71,4 +71,4 @@
      //Process template
      F3::set('userId', $clientId);
      F3::set('privateKey', $privateKey);
-     echo Template::serve('sample3.htm');
+     echo Template::serve('sample03.htm');

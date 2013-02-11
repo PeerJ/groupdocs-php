@@ -44,4 +44,4 @@
     //Process template
     f3::set('fileId', $fileGuId);
     f3::set('pageNumber', $pageNumber);
-    echo Template::serve('sample8.htm');
+    echo Template::serve('sample08.htm');

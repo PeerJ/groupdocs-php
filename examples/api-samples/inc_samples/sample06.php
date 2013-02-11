@@ -50,6 +50,6 @@
         header('Content-type: application/json');
         echo $return;
     } else {
-        echo Template::serve('sample6.htm');
+        echo Template::serve('sample06.htm');
     }
 

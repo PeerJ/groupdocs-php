@@ -35,4 +35,4 @@
     F3::set('width', $width);
     F3::set('height', $height);
     f3::set('fileId', $fileGuId);
-    echo Template::serve('sample9.htm');
+    echo Template::serve('sample09.htm');

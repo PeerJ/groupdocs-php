@@ -56,9 +56,10 @@
                     $table .= "<tr bgcolor='#808080'><td></td><td></td></tr>";
                 }
                 $table .= "</table>";
+                return f3::set('change', $table);
             }
             //If request was successfull - set url variable for template
-            return f3::set('change', $table);
+//            return f3::set('change', $table);
         }
     }
     

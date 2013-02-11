@@ -56,4 +56,4 @@
     F3::set('privateKey', $privateKey);
     F3::set('file_Id', $file_id);
     
-    echo Template::serve('sample4.htm');
+    echo Template::serve('sample04.htm');

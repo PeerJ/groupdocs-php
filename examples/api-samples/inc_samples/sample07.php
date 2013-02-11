@@ -55,4 +55,4 @@
         f3::set('error', $error);
     }
     //Process template
-    echo Template::serve('sample7.htm');
+    echo Template::serve('sample07.htm');

@@ -1,5 +1,5 @@
 <?php
-    //<i>This sample will show how to use <b>GetDocumentPagesImageUrls</b> method from Doc Api to return a URL representing a single page of a Document</i>
+    //<i>This sample will show how to use <b>Compare</b> method from ComparisonApi to return a URL representing a single page of a Document</i>
 
     //###Set variables and get POST data
     F3::set('userId', '');
@@ -30,7 +30,9 @@
             $CompareApi = new ComparisonApi($apiClient);
 
             //###Make request to ComparisonApi using user id
-            //Compare documents
+            
+            //Comparison of documents were: $clientId - user GuId, $sourceFileId - source file Guid in which will be provided compare, 
+            //$targetFileId - file GuId with wich will compare sourceFile, $callbackUrl - Url which will be executed after compare
             $info = $CompareApi->Compare($clientId, $sourceFileId, $targetFileId, $callbackUrl);
             //Check request status
             if($info->status == "Ok") {

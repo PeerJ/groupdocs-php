@@ -9,18 +9,18 @@ F3::set('IMPORTS','inc_samples/');
 
 F3::route('GET /','home');
 F3::route('GET /index.php','home');
-F3::route('GET|POST /sample1','sample1.php'); //route for GET and POST requests
+F3::route('GET|POST /sample01','sample01.php'); //route for GET and POST requests
 //F3::route('GET /sample1','sample1.php'); //we can have saparate handles for GET and POST requests
 //F3::route('POST /sample1','sample1.php');
 
-F3::route('GET|POST /sample2','sample2.php');
-F3::route('GET|POST /sample3','sample3.php');
-F3::route('GET|POST /sample4','sample4.php');
-F3::route('GET|POST /sample5','sample5.php');
-F3::route('GET|POST /sample6','sample6.php');
-F3::route('GET|POST /sample7','sample7.php');
-F3::route('GET|POST /sample8','sample8.php');
-F3::route('GET|POST /sample9','sample9.php');
+F3::route('GET|POST /sample02','sample02.php');
+F3::route('GET|POST /sample03','sample03.php');
+F3::route('GET|POST /sample04','sample04.php');
+F3::route('GET|POST /sample05','sample05.php');
+F3::route('GET|POST /sample06','sample06.php');
+F3::route('GET|POST /sample07','sample07.php');
+F3::route('GET|POST /sample08','sample08.php');
+F3::route('GET|POST /sample09','sample09.php');
 F3::route('GET|POST /sample10','sample10.php');
 F3::route('GET|POST /sample11','sample11.php');
 F3::route('GET|POST /sample12','sample12.php');
@@ -33,6 +33,7 @@ F3::route('GET|POST /sample18','sample18.php');
 F3::route('GET|POST /sample19','sample19.php');
 F3::route('GET|POST /sample20','sample20.php');
 F3::route('GET|POST /sample21','sample21.php');
+F3::route('GET|POST /sample22','sample22.php');
 F3::route('GET|POST /signature_callback','signature_callback.php');
 F3::route('GET|POST /signature_check_file.php','signature_check_file.php');
 

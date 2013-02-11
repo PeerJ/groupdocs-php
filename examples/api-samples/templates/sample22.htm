@@ -12,7 +12,7 @@
 <h3 style="text-align:center;"><a href="/index.php">GroupDocs PHP SDK Samples</a> - Sample22</h3>
 
 <div class='samplecontent' style="padding:10px;">
-    <i>This sample will show how to add collaborator to doc with annotations using PHP SDK</i> <br/>
+    <i>This sample will show how create or update user and add him to collaborators using PHP SDK</i> <br/>
     <br />
     <a href="/docs/sample22.html">Docs for this sample</a>
     <br />
@@ -53,13 +53,8 @@
         </form>
     </div>
     <div  style="padding:20px; border:1px solid black;">
-        <p> Results: </p>
-        <p>New collaborations:
-            <repeat group="{{ @result->collaborators }}" value="{{ @item }}">
-                <font color="green">{{ @item->primary_email }}</font>
-            </repeat>
-        </p>
-    </div>
+        <iframe src="{{@url}}"></iframe>
+   </div>
 </div>
 
 <div style="padding:10px;">
@@ -86,6 +81,7 @@
         <li> <a href="/sample19">Sample19 - How to Compare documents using PHP SDK</a></li>
         <li> <a href="/sample20">Sample20 - How to Get Compare Change list for document using PHP SDK</a></li>
         <li> <a href="/sample21">Sample21 - How to Create and Upload Envelop to GroupDocs account using PHP SDK</a></li>
+        <li> <a href="/sample22">Sample22 - This sample will show how create or update user and add him to collaborators using PHP SDK</a></li>
     </ul>
 </div>
 

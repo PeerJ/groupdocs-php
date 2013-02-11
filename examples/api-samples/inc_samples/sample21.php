@@ -75,7 +75,7 @@
                 $getRecipient = $signature->GetSignatureEnvelopeRecipients($clientId, $envelop->result->envelope->id);
                 $recipientId = $getRecipient->result->recipients[0]->id;
                 //Url for callback
-                $callBack = "http://groupdocs-php-samples.herokuapp.com/signature_callback";
+                $callBack = "http://groupdocs-php-samples.herokuapp.com/callbacks/signature_callback";
                 //Send envelop with callback url
                 $send = $signature->SignatureEnvelopeSend($clientID, $envelop->result->envelope->id, $callBack);
 

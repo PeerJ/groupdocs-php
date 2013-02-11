@@ -40,17 +40,24 @@
             // Make a request to Annotation API using clientId and fileId
             $user_info = $mgmtApi->GetUserProfile($clientId);
             $user = $user_info->result->user;
-            $user->nickname = $email;
             $user->firstname = $first_name;
             $user->lastname = $last_name;
-//            $user_info->result->user = $user;
-            $newUser = $mgmtApi->UpdateAccountUser($clientId, "another19", $user);
-            var_dump($user);
+            $user->active = true;
+            $user->primary_email = $email;
+            
+            $newUser = $mgmtApi->UpdateAccountUser($clientId, $first_name, $user);
+            
             // Check the result of the request
-//            if (isset($response->result)) {
-//                // If request was successfull - set annotations variable for template
-//                return F3::set('result', $response->result);
-//            }
+            if ($newUser->status == "Ok") {
+                // If request was successfull - set annotations variable for template
+                $ant = new AntApi($apiClient);
+                $addCollaborator = $ant->AddAnnotationCollaborator($newUser->result->guid, $fileId);
+                $callBack = "http://groupdocs-php-samples.herokuapp.com/callbacks/annotation_callback";
+//                $setCallBack = $ant->SetSessionCallbackUrl($newUser->result->guid, $fileId, $callBack);
+                $iframe = 'https://apps.groupdocs.com//document-annotation2/embed/' . $fileId . '?frameborder="0" width="720" height="600"';
+
+                return F3::set('url', $iframe);
+            }
         }
     }
 

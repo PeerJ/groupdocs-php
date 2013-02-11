@@ -34,8 +34,10 @@ F3::route('GET|POST /sample19','sample19.php');
 F3::route('GET|POST /sample20','sample20.php');
 F3::route('GET|POST /sample21','sample21.php');
 F3::route('GET|POST /sample22','sample22.php');
-F3::route('GET|POST /signature_callback','signature_callback.php');
-F3::route('GET|POST /signature_check_file.php','signature_check_file.php');
+F3::route('GET|POST /callbacks/signature_callback','signature_callback.php');
+F3::route('GET|POST /callbacks/signature_check_file.php','signature_check_file.php');
+F3::route('GET|POST /callbacks/annotation_callback','annotation_callback.php');
+F3::route('GET|POST /callbacks/annotation_check_file.php','annotation_check_file.php');
 
 F3::route('GET /about_framework.php','about');
 

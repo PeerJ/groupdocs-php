@@ -38,18 +38,27 @@
             // Create MgmtApi object
             $mgmtApi = new MgmtApi($apiClient);
             //Create User info object
+//            $mgmtApi->setBasePath("https://stage-api.groupdocs.com/v2.0");
+//            $colUser = $mgmtApi->GetAccountUsers($clientId);
+//            for($i = 1; $i < count($colUser->result->users); $i++) {
+//               $del = $mgmtApi->DeleteAccountUser($clientId, $colUser->result->users[1]->nickname);
+//            }
+            $role = new RoleInfo();
+            $role->id = 3;
+            $role->name = "User";
             $user = new UserInfo();
             //Set nick name as entered first name
             $user->nickname = $firstName;
-            //Set first name as entere first name
+            //Set first name as entered first name
             $user->firstname = $firstName;
-            //Set last name as entere last name
+            //Set last name as entered last name
             $user->lastname = $lastName;
-            //Set email as entere email
+            //Set email as entered email
             $user->primary_email = $email;
+            $user->roles = $role;
             //Creating of new user. $clientId - user id, $firstName - entered first name, $user - object with new user info
             $newUser = $mgmtApi->UpdateAccountUser($clientId, $firstName, $user);
-            // Check the result of the request
+            //Check the result of the request
             if ($newUser->status == "Ok") {
                 //### If request was successfull
                 

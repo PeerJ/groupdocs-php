@@ -55,7 +55,7 @@
             $user->lastname = $lastName;
             //Set email as entered email
             $user->primary_email = $email;
-            $user->roles = $role;
+           // $user->roles = $role;
             //Creating of new user. $clientId - user id, $firstName - entered first name, $user - object with new user info
             $newUser = $mgmtApi->UpdateAccountUser($clientId, $firstName, $user);
             //Check the result of the request

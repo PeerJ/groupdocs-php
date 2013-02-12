@@ -30,33 +30,25 @@
             F3::set('last_name', $lastName);
 
             //### Create Signer, ApiClient and Mgmt Api objects
+            
             // Create signer object
             $signer = new GroupDocsRequestSigner($privateKey);
-
             // Create apiClient object
             $apiClient = new ApiClient($signer);
-
             // Create MgmtApi object
             $mgmtApi = new MgmtApi($apiClient);
-
-            // Make a request to Mgmt API using clientId
-            $userInfo = $mgmtApi->GetUserProfile($clientId);
-            //Get user info data
-            $user = $userInfo->result->user;
-            
-            //###Change user data
-            
-            //Change first name to entered first name
+            //Create User info object
+            $user = new UserInfo();
+            //Set nick name as entered first name
+            $user->nickname = $firstName;
+            //Set first name as entere first name
             $user->firstname = $firstName;
-            //Change last name to entered last name
+            //Set last name as entere last name
             $user->lastname = $lastName;
-            //Activate new user
-            $user->active = true;
-            //Change email to entered email
+            //Set email as entere email
             $user->primary_email = $email;
             //Creating of new user. $clientId - user id, $firstName - entered first name, $user - object with new user info
             $newUser = $mgmtApi->UpdateAccountUser($clientId, $firstName, $user);
-            
             // Check the result of the request
             if ($newUser->status == "Ok") {
                 //### If request was successfull
@@ -80,6 +72,8 @@
                 $iframe = 'https://apps.groupdocs.com//document-annotation2/embed/' . $fileId . '?&uid=' . $newUser->result->guid . '&download=true frameborder="0" width="720" height="600"';
                 //Set variable with work results for template
                 return F3::set('url', $iframe);
+            } else {
+                return F3::set("message", $newUser->error_message);
             }
         }
     }

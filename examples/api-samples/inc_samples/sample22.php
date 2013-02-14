@@ -37,15 +37,8 @@
             $apiClient = new ApiClient($signer);
             // Create MgmtApi object
             $mgmtApi = new MgmtApi($apiClient);
-            //Create User info object
-//            $mgmtApi->setBasePath("https://stage-api.groupdocs.com/v2.0");
-//            $colUser = $mgmtApi->GetAccountUsers($clientId);
-//            for($i = 1; $i < count($colUser->result->users); $i++) {
-//               $del = $mgmtApi->DeleteAccountUser($clientId, $colUser->result->users[1]->nickname);
-//            }
-            $role = new RoleInfo();
-            $role->id = 3;
-            $role->name = "User";
+            //###Create User info object
+            
             $user = new UserInfo();
             //Set nick name as entered first name
             $user->nickname = $firstName;
@@ -55,15 +48,18 @@
             $user->lastname = $lastName;
             //Set email as entered email
             $user->primary_email = $email;
-            $user->roles = $role;
             //Creating of new user. $clientId - user id, $firstName - entered first name, $user - object with new user info
-            $newUser = $mgmtApi->UpdateAccountUser($clientId, $firstName, $user);
+            $newUser = $mgmtApi->UpdateAccountUser($clientId, $email, $user);
             //Check the result of the request
             if ($newUser->status == "Ok") {
                 //### If request was successfull
                 
                 //Create Annotation api object
                 $ant = new AntApi($apiClient);
+                //Create array with entered email for SetAnnotationCollaborators method 
+                $arrayEmail = array($email);
+                //Make request to Ant api for set new user as annotation collaborator
+                $addCollaborator = $ant->SetAnnotationCollaborators($clientId, $fileId, "2.0", $arrayEmail);
                 //Make request to Annotation api to receive all collaborators for entered file id
                 $getCollaborators = $ant->GetAnnotationCollaborators($clientId, $fileId);
                 //Set reviewers rights for new user. $newUser->result->guid - GuId of created user, $fileId - entered file id, 

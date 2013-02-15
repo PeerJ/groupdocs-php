@@ -25,7 +25,7 @@
             $apiClient = new APIClient($signer);
             //Create Storage Api object
             $api = new DocApi($apiClient);
-            $api->setBasePath("https://stage-api.groupdocs.com/v2.0");
+           
             $pageImage = $api->ViewDocument($clientId, $fileGuId, 0, -1);
             if($pageImage->status == "Ok") {
                               

@@ -7,8 +7,9 @@
     $clientId = F3::get('POST["client_id"]');
     $privateKey = F3::get('POST["private_key"]');
     $fileGuId = f3::get('POST["fileId"]');
+    $basePath = f3::get('POST["server_type"]');
    
-    function getPageImages($fileGuId, $clientId, $privateKey)
+    function Iframe($fileGuId, $clientId, $privateKey, $basePath)
     {
         //###Check fileGuId
         if (empty($fileGuId) || empty($clientId) || empty($privateKey)) {
@@ -25,20 +26,28 @@
             $apiClient = new APIClient($signer);
             //Create Storage Api object
             $api = new DocApi($apiClient);
-            $api->setBasePath("https://stage-api.groupdocs.com/v2.0");
-            $pageImage = $api->ViewDocument($clientId, $fileGuId, 0, -1);
+            
+            $api->setBasePath($basePath);
+            $pageImage = $api->ViewDocument($clientId, $fileGuId, 0, -1, 100, null);
+           
             if($pageImage->status == "Ok") {
-                              
                 //Generation of iframe URL using fileGuId
-                $iframe = 'https://stage-apps.groupdocs.com/document-viewer/embed/' . $pageImage->result->guid . '?frameborder="0" width="500" height="650"';
-                //If request was successfull - set url variable for template
+                if($basePath == "https://api.groupdocs.com/v2.0") {
+                    $iframe = 'https://apps.groupdocs.com/document-viewer/embed/' . $pageImage->result->guid . '?frameborder="0" width="500" height="650"';
+                    //If request was successfull - set url variable for template
+                } elseif($basePath == "https://dev-api.groupdocs.com/v2.0") {
+                    $iframe = 'https://dev-apps.groupdocs.com/document-viewer/embed/' . $pageImage->result->guid . '?frameborder="0" width="500" height="650"';
+                } elseif($basePath == "https://stage-api.groupdocs.com/v2.0") {
+                    $iframe = 'https://stage-apps.groupdocs.com/document-viewer/embed/' . $pageImage->result->guid . '?frameborder="0" width="500" height="650"';
+                }
+                
             }
             return f3::set('url', $iframe);
         }
     }
     
     try {
-        getPageImages($fileGuId, $clientId, $privateKey);
+        Iframe($fileGuId, $clientId, $privateKey, $basePath);
     } catch(Exception $e) {
         $error = 'ERROR: ' .  $e->getMessage() . "\n";
         f3::set('error', $error);

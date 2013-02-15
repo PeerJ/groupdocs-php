@@ -8,7 +8,7 @@
     $privateKey = F3::get('POST["private_key"]');
     $fileGuId = f3::get('POST["fileId"]');
    
-    function Iframe($fileGuId, $clientId, $privateKey)
+    function getPageImages($fileGuId, $clientId, $privateKey)
     {
         //###Check fileGuId
         if (empty($fileGuId) || empty($clientId) || empty($privateKey)) {
@@ -25,20 +25,20 @@
             $apiClient = new APIClient($signer);
             //Create Storage Api object
             $api = new DocApi($apiClient);
-
-//            $fileMetaData = $api->GetDocumentMetadata($clientId, $fileGuId);
+            $api->setBasePath("https://stage-api.groupdocs.com/v2.0");
             $pageImage = $api->ViewDocument($clientId, $fileGuId, 0, -1);
-           
-
-//Generation of iframe URL using fileGuId
-            $iframe = 'https://apps.groupdocs.com/document-viewer/embed/' . $pageImage->result->guid . '?frameborder="0" width="500" height="650"';
-            //If request was successfull - set url variable for template
+            if($pageImage->status == "Ok") {
+                              
+                //Generation of iframe URL using fileGuId
+                $iframe = 'https://stage-apps.groupdocs.com/document-viewer/embed/' . $pageImage->result->guid . '?frameborder="0" width="500" height="650"';
+                //If request was successfull - set url variable for template
+            }
             return f3::set('url', $iframe);
         }
     }
     
     try {
-        Iframe($fileGuId, $clientId, $privateKey);
+        getPageImages($fileGuId, $clientId, $privateKey);
     } catch(Exception $e) {
         $error = 'ERROR: ' .  $e->getMessage() . "\n";
         f3::set('error', $error);

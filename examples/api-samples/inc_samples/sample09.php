@@ -17,7 +17,7 @@
             throw new Exception('Please enter FILE ID');
         } else {
             //Generation of iframe URL using fileGuId
-            $iframe = 'https://apps.groupdocs.com/document-viewer/embed/' . $file_Id . '?frameborder="0" width="'.$width.'" height="'.$height.'"';
+            $iframe = 'https://apps.groupdocs.com/document-viewer/embed/' . $file_Id . '?frameborder="0" width="450" height="650"';
             //If request was successfull - set url variable for template
             return f3::set('url', $iframe);
         }

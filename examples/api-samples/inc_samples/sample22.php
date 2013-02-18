@@ -40,6 +40,7 @@
             //###Create User info object
             
             $user = new UserInfo();
+           
             //Set nick name as entered first name
             $user->nickname = $firstName;
             //Set first name as entered first name

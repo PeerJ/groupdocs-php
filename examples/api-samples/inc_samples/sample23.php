@@ -26,22 +26,28 @@
             $apiClient = new APIClient($signer);
             //Create Storage Api object
             $api = new DocApi($apiClient);
-            
+            //Set url to choose whot server to use
             $api->setBasePath($basePath);
+            //Make request yo the Api to get images for all document pages
             $pageImage = $api->ViewDocument($clientId, $fileGuId, 0, -1, 100, null);
-           
+            //Check the result of the request
             if($pageImage->status == "Ok") {
-                //Generation of iframe URL using fileGuId
+                 //### If request was successfull
+               
+                //Generation of iframe URL using $pageImage->result->guid
+                //iframe to prodaction server
                 if($basePath == "https://api.groupdocs.com/v2.0") {
                     $iframe = 'https://apps.groupdocs.com/document-viewer/embed/' . $pageImage->result->guid . '?frameborder="0" width="500" height="650"';
-                    //If request was successfull - set url variable for template
+                //iframe to dev server
                 } elseif($basePath == "https://dev-api.groupdocs.com/v2.0") {
                     $iframe = 'https://dev-apps.groupdocs.com/document-viewer/embed/' . $pageImage->result->guid . '?frameborder="0" width="500" height="650"';
+                //iframe to test server
                 } elseif($basePath == "https://stage-api.groupdocs.com/v2.0") {
                     $iframe = 'https://stage-apps.groupdocs.com/document-viewer/embed/' . $pageImage->result->guid . '?frameborder="0" width="500" height="650"';
                 }
                 
             }
+            //Set variable with results for template
             return f3::set('url', $iframe);
         }
     }

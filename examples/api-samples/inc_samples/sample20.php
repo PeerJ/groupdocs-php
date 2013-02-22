@@ -26,10 +26,11 @@
             $apiClient = new APIClient($signer);
             //Create ComparisonApi object
             $CompareApi = new ComparisonApi($apiClient);
-
+//            $CompareApi->setBasePath("https://stage-api.groupdocs.com/v2.0");
             //###Make request to ComparisonApi using user id
             //Get changes list for document
             $info = $CompareApi->GetChanges($clientId, $resultFileId);
+            
             //Check request status
             if($info->status == "Ok") {
                 //###Create table with changes for template

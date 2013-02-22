@@ -47,7 +47,9 @@
             $apiClient = new APIClient($signer);
             //Create Storage Api object
             $apiStorage = new StorageApi($apiClient);
-            
+            $basePath = f3::get('POST["server_type"]');
+            //Declare which Server to use
+            $apiStorage->setBasePath($basePath);
             //###Make a request to Storage API using clientId
             
             //Upload file to current user storage
@@ -57,6 +59,7 @@
             if ($uploadResult->status == "Ok") {
                 //Create SignatureApi object
                 $signature = new SignatureApi($apiClient);
+                $signature->setBasePath($basePath);
                 //Create envilope using user id and entered by user name
                 $envelop = $signature->CreateSignatureEnvelope($clientID, $name);
                 //Add uploaded document to envelope
@@ -75,13 +78,24 @@
                 $getRecipient = $signature->GetSignatureEnvelopeRecipients($clientId, $envelop->result->envelope->id);
                 $recipientId = $getRecipient->result->recipients[0]->id;
                 //Url for callback
-                $callBack = "http://groupdocs-php-samples.herokuapp.com/callbacks/signature_callback";
+                $callbackUrl = f3::get('POST["callbackUrl"]');
+                F3::set("callbackUrl", $callbackUrl);
                 //Send envelop with callback url
-                $send = $signature->SignatureEnvelopeSend($clientID, $envelop->result->envelope->id, $callBack);
-
+                $send = $signature->SignatureEnvelopeSend($clientID, $envelop->result->envelope->id, $callbackUrl);
+                
+                if($basePath == "https://api.groupdocs.com/v2.0") {
+                    $iframe = '<iframe src="https://apps.groupdocs.com/signature/signembed/'. $envelop->result->envelope->id .'/'. $recipientId . '" frameborder="0" width="720" height="600"></iframe>';
+                //iframe to dev server
+                } elseif($basePath == "https://dev-api.groupdocs.com/v2.0") {
+                    $iframe = '<iframe src="https://dev-apps.groupdocs.com/signature/signembed/'. $envelop->result->envelope->id .'/'. $recipientId . '" frameborder="0" width="720" height="600"></iframe>';
+                //iframe to test server
+                } elseif($basePath == "https://stage-api.groupdocs.com/v2.0") {
+                    $iframe = '<iframe src="https://stage-apps.groupdocs.com/signature/signembed/'. $envelop->result->envelope->id .'/'. $recipientId . '" frameborder="0" width="720" height="600"></iframe>';
+                }
+                
                 $result = array();
                 //Make iframe
-                $result = array('iframe' => '<iframe src="https://apps.groupdocs.com/signature/signembed/'. $envelop->result->envelope->id .'/'. $recipientId . '" frameborder="0" width="720" height="600"></iframe>',
+                $result = array('iframe' => $iframe,
                                 'name' => $name);
                 //If request was successfull - set result variable for template
                 return $result;

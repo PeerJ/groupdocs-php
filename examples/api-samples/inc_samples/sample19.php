@@ -10,8 +10,9 @@
     $sourceFileId = f3::get('POST["sourceFileId"]');
     $targetFileId = f3::get('POST["targetFileId"]');
     $callbackUrl = f3::get('POST["callbackUrl"]');
+    $basePath = f3::get('POST["server_type"]');
        
-    function Compare($clientId, $privateKey, $sourceFileId, $targetFileId, $callbackUrl)
+    function Compare($clientId, $privateKey, $sourceFileId, $targetFileId, $callbackUrl, $basePath)
     {
          //### Check clientId, privateKey and fileGuId
         if (empty($clientId) || empty($privateKey) || empty($sourceFileId) || empty($targetFileId)) {
@@ -28,9 +29,9 @@
             $apiClient = new APIClient($signer);
             //Create ComparisonApi object
             $CompareApi = new ComparisonApi($apiClient);
-
+            $CompareApi->setBasePath("https://stage-api.groupdocs.com/v2.0");
             //###Make request to ComparisonApi using user id
-            
+            $CompareApi->setBasePath($basePath);
             //Comparison of documents were: $clientId - user GuId, $sourceFileId - source file Guid in which will be provided compare, 
             //$targetFileId - file GuId with wich will compare sourceFile, $callbackUrl - Url which will be executed after compare
             $info = $CompareApi->Compare($clientId, $sourceFileId, $targetFileId, $callbackUrl);
@@ -38,6 +39,7 @@
             if($info->status == "Ok") {
                 //Create CAsyncApi object
                 $asyncApi = new AsyncApi($apiClient);
+                $asyncApi->setBasePath($basePath);
                 //Delay necessary that the inquiry would manage to be processed
                 sleep(5);
                 //Make request to api for get document info by job id
@@ -45,7 +47,15 @@
                 //Get file guid
                 $guid = $jobInfo->result->outputs[0]->guid;
                 // Construct iframe using fileId
-                $iframe = '<iframe src="https://apps.groupdocs.com/document-viewer/embed/' . $guid . '" frameborder="0" width="100%" height="600"></iframe>';
+                if($basePath == "https://api.groupdocs.com/v2.0") {
+                    $iframe = 'https://apps.groupdocs.com/document-viewer/embed/' . $guid . '?frameborder="0" width="500" height="650"';
+                //iframe to dev server
+                } elseif($basePath == "https://dev-api.groupdocs.com/v2.0") {
+                    $iframe = 'https://dev-apps.groupdocs.com/document-viewer/embed/' . $guid . '?frameborder="0" width="500" height="650"';
+                //iframe to test server
+                } elseif($basePath == "https://stage-api.groupdocs.com/v2.0") {
+                    $iframe = 'https://stage-apps.groupdocs.com/document-viewer/embed/' . $guid . '?frameborder="0" width="500" height="650"';
+                }
 
             }
             //If request was successfull - set url variable for template
@@ -54,7 +64,7 @@
     }
     
     try {
-         Compare($clientId, $privateKey, $sourceFileId, $targetFileId, $callbackUrl);
+         Compare($clientId, $privateKey, $sourceFileId, $targetFileId, $callbackUrl, $basePath);
         
     } catch(Exception $e) {
         $error = 'ERROR: ' .  $e->getMessage() . "\n";

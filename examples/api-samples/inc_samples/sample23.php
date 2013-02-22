@@ -11,7 +11,7 @@
    
     function Iframe($fileGuId, $clientId, $privateKey, $basePath)
     {
-        //###Check fileGuId
+        //###Check if user entered all parameters
         if (empty($fileGuId) || empty($clientId) || empty($privateKey)) {
             throw new Exception('Please enter FILE ID');
         } else {
@@ -24,7 +24,7 @@
             $signer = new GroupDocsRequestSigner($privateKey);
             //Create apiClient object
             $apiClient = new APIClient($signer);
-            //Create Storage Api object
+            //Create Doc Api object
             $api = new DocApi($apiClient);
             //Set url to choose whot server to use
             $api->setBasePath($basePath);

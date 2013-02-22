@@ -26,12 +26,14 @@
             <span class="nv">$apiClient</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">APIClient</span><span class="p">(</span><span class="nv">$signer</span><span class="p">);</span>
 </pre></div>             </td>           </tr>                               <tr id="section-9">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-9">&#182;</a>               </div>               <p>Create ComparisonApi object</p>             </td>             <td class="code">               <div class="highlight"><pre>
             <span class="nv">$CompareApi</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">ComparisonApi</span><span class="p">(</span><span class="nv">$apiClient</span><span class="p">);</span>
+</pre></div>             </td>           </tr>                               <tr id="section-10">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-10">&#182;</a>               </div>               <pre><code>       $CompareApi-&gt;setBasePath("https://stage-api.groupdocs.com/v2.0");
+</code></pre>
 
-</pre></div>             </td>           </tr>                               <tr id="section-10">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-10">&#182;</a>               </div>               <h3>Make request to ComparisonApi using user id</h3>
+<h3>Make request to ComparisonApi using user id</h3>
 
 <p>Get changes list for document</p>             </td>             <td class="code">               <div class="highlight"><pre>
             <span class="nv">$info</span> <span class="o">=</span> <span class="nv">$CompareApi</span><span class="o">-&gt;</span><span class="na">GetChanges</span><span class="p">(</span><span class="nv">$clientId</span><span class="p">,</span> <span class="nv">$resultFileId</span><span class="p">);</span>
-            <span class="nb">var_dump</span><span class="p">(</span><span class="nv">$info</span><span class="p">);</span>
+            
 </pre></div>             </td>           </tr>                               <tr id="section-11">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-11">&#182;</a>               </div>               <p>Check request status</p>             </td>             <td class="code">               <div class="highlight"><pre>
             <span class="k">if</span><span class="p">(</span><span class="nv">$info</span><span class="o">-&gt;</span><span class="na">status</span> <span class="o">==</span> <span class="s2">&quot;Ok&quot;</span><span class="p">)</span> <span class="p">{</span>
 </pre></div>             </td>           </tr>                               <tr id="section-12">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-12">&#182;</a>               </div>               <h3>Create table with changes for template</h3>             </td>             <td class="code">               <div class="highlight"><pre>

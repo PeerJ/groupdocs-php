@@ -49,7 +49,9 @@
             // get folder ID
             $list = $storage->ListEntities($clientId, $newPath);
             if ($list->status == "Ok") {
+                
                 foreach ($list->result->folders as $folder) {
+                   
                     if ($folder->name == $lastFolder) {
                         $folderId = $folder->id;
                         break;

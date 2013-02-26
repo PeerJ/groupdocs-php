@@ -1,5 +1,6 @@
 <?php
 require_once __DIR__.'/FatFree_Framework/lib/base.php';
+require_once __DIR__.'/inc_samples/links.php';
 require_once __DIR__.'/vendor/autoload.php';
 F3::set('CACHE',FALSE);
 F3::set('DEBUG',1);

@@ -63,8 +63,9 @@
                 
                 //Create envilope using user id and entered by user name
                 $envelop = $signature->CreateSignatureEnvelope($clientID, $name);
-                sleep(5);
+//                sleep(5);
                 //Add uploaded document to envelope
+
                 $addDocument = $signature->AddSignatureEnvelopeDocument($clientID, $envelop->result->envelope->id, $uploadResult->result->guid);
                 //Get role list for curent user
                 $recipient = $signature->GetRolesList($clientID);
@@ -86,13 +87,14 @@
                 $send = $signature->SignatureEnvelopeSend($clientID, $envelop->result->envelope->id, $callbackUrl);
                 
                 if($basePath == "https://api.groupdocs.com/v2.0") {
-                    $iframe = '<iframe src="https://apps.groupdocs.com/signature/signembed/'. $envelop->result->envelope->id .'/'. $recipientId . 'frameborder="0" width="720" height="600"></iframe>';
+                //iframe to prodaction server
+                    $iframe = '<iframe src="https://apps.groupdocs.com/signature/signembed/'. $envelop->result->envelope->id .'/'. $recipientId . '?frameborder="0" width="720" height="600"></iframe>';
                 //iframe to dev server
                 } elseif($basePath == "https://dev-api.groupdocs.com/v2.0") {
-                    $iframe = '<iframe src="https://dev-apps.groupdocs.com/signature/signembed/'. $envelop->result->envelope->id .'/'. $recipientId . 'frameborder="0" width="720" height="600"></iframe>';
+                    $iframe = '<iframe src="https://dev-apps.groupdocs.com/signature/signembed/'. $envelop->result->envelope->id .'/'. $recipientId . '?frameborder="0" width="720" height="600"></iframe>';
                 //iframe to test server
                 } elseif($basePath == "https://stage-api.groupdocs.com/v2.0") {
-                    $iframe = '<iframe src="https://stage-apps.groupdocs.com/signature/signembed/'. $envelop->result->envelope->id .'/'. $recipientId . 'frameborder="0" width="720" height="600"></iframe>';
+                    $iframe = '<iframe src="https://stage-apps.groupdocs.com/signature/signembed/'. $envelop->result->envelope->id .'/'. $recipientId . '?frameborder="0" width="720" height="600"></iframe>';
                 }
                 
                 $result = array();

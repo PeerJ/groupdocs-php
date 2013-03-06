@@ -29,11 +29,11 @@
             $apiClient = new APIClient($signer);
             //Create Storage Api object
             $apiStorage = new StorageApi($apiClient);
-            
             //###Make a request to Storage API using clientId
             
             //Upload file to current user storage using entere URl to the file
             $uploadResult = $apiStorage->UploadWeb($clientID, $url);
+
             //###Check if file uploaded successfully
             if ($uploadResult->status == "Ok") {
                 //Generation of Embeded Viewer URL with uploaded file GuId

@@ -66,6 +66,7 @@
                 if ($shares->status == "Ok" and count($shares->result->shared_users)) {
                     foreach ($shares->result->shared_users as $k => $user) {
                         $users .= $user->primary_email;
+                        $users .= $user->nickname;
                         $users .= (count($shares->result->shared_users) == $k+1) ? '' : ', ';
                     }
                 }

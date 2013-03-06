@@ -28,7 +28,7 @@
             //Create AsyncApi object
             $api = new AsyncApi($apiClient);
             //Make request to api for convert file
-            $convert = $api->Convert($clientId, $fileId, $convert_type, null, null, null, null, null);
+            $convert = $api->Convert($clientId, $fileId, null, null, null, null, $convert_type);
             //Check request status
             if($convert->status == "Ok") {
                 //Delay necessary that the inquiry would manage to be processed

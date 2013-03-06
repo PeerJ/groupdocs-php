@@ -33,7 +33,6 @@
 
             // Create Annotation object
             $ant = new AntApi($apiClient);
-            var_dump($collaborations);
             // Make a request to Annotation API using clientId and fileId
             $response = $ant->SetAnnotationCollaborators($clientId, $fileId, "v2.0", $collaborations);
 

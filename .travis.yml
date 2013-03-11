@@ -6,6 +6,3 @@ before_script:
   - php composer.phar --dev install
   - export DISPLAY=:99.0
   - sh -e /etc/init.d/xvfb start
-script:
-  - phpunit
-  - script/travis.sh

@@ -8,7 +8,7 @@ GroupDocs PHP SDK [![Build Status](https://secure.travis-ci.org/groupdocs/groupd
 ## Installation
 
 You can use the [Composer](http://getcomposer.org/) to download and install SDK.
-GroupDocs SDK is now in [Packagist](https://packagist.org/packages/groupdocs/groupdocs-php).
+GroupDocs SDK is now in [Packagist](https://packagist.org/packages/groupdocs/groupdocs-php). Please check our packagist repository to find the latest SDK package version for `composer.json` file.
 
 ### Composer
 
@@ -16,12 +16,14 @@ To add SDK as a local, per-project dependency to your project, simply add a depe
 
 	{
 		"require": {
-			"groupdocs/groupdocs-php": "1.3.0"
+			"groupdocs/groupdocs-php": "1.3.1"
 		},
 		"require-dev": {
 			"phpunit/phpunit": "3.7.*"
 		}
 	}
+	
+To get the lastest SDK code from master branch use "dev-master" version. With this version the top revision of the master branch will be cloned by composer.
 
 ### Usage Example
 	$apiClient = new APIClient(new GroupDocsRequestSigner($privateKey));
@@ -29,7 +31,14 @@ To add SDK as a local, per-project dependency to your project, simply add a depe
 	$response = $api->ListAnnotations($userId, $fileId);
 
 ###ChangeLog
+
+2013-03-11
+
+1. Service update to fix and clean travis build
+2. SDK v 1.3.1 released.
+
 2012-12-07
+
 1. Parameter check in function "deserialize" in APIClient.php fixed.
 2. Adjusted examples to tests
 

@@ -18,10 +18,10 @@
 class AbstractIntegrationTest extends PHPUnit_Framework_TestCase {
 
 	protected function setUp() {
-		$privateKey = "28090f3458bc1f97d9e0262a0768c308"; //TODO get it from command line
+		$privateKey = "701b7b219b50dfa23b0b513d03e9f0d0"; //TODO get it from command line
 		$this->apiClient = new APIClient(new GroupDocsRequestSigner($privateKey));
 		$this->apiClient->setDebug(true);
-		$this->userId = "a9f81d75a3a7df86";
+		$this->userId = "b912b34d1621a895";
 	}
 	
 	public function testDummy(){

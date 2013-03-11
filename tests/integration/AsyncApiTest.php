@@ -15,14 +15,9 @@
  *  limitations under the License.
  */
 
-class AbstractIntegrationTest extends PHPUnit_Framework_TestCase {
+require_once("AbstractIntegrationTest.php");
 
-	protected function setUp() {
-		$privateKey = "28090f3458bc1f97d9e0262a0768c308"; //TODO get it from command line
-		$this->apiClient = new APIClient(new GroupDocsRequestSigner($privateKey));
-		$this->apiClient->setDebug(true);
-		$this->userId = "a9f81d75a3a7df86";
-	}
+class AsyncApiTest extends AbstractIntegrationTest {
+
 	
 }
-

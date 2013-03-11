@@ -4,5 +4,6 @@ php:
 before_script:
   - curl -s http://getcomposer.org/installer | php
   - php composer.phar --dev install
-  - export DISPLAY=:99.0
-  - sh -e /etc/init.d/xvfb start
+ 
+script:
+  - phpunit

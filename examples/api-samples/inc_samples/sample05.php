@@ -7,12 +7,12 @@
     $fileName = F3::get('POST["srcPath"]');
     $copy = F3::get('POST["copy"]');
     $move = F3::get('POST["move"]');
-    $path = F3::get('POST["destPath"]');
+    $folder = F3::get('POST["destPath"]');
     
-    function copy_move($clientId, $privateKey, $fileName, $move=NULL, $copy=NULL, $path)
+    function copy_move($clientId, $privateKey, $fileName, $move=NULL, $copy=NULL, $folder)
     {
         //###Check clientId, privateKey and file Id
-        if (!isset($clientId) || !isset($privateKey) || !isset($fileGuId)) {
+        if (!isset($clientId) || !isset($privateKey) || !isset($fileName)) {
 			
 			throw new Exception('You do not enter all parameters');
 			
@@ -37,17 +37,17 @@
 			
             foreach ($files->result->files as $item)
             {
-               if ($item->guid == $fileGuId) {
+               if ($item->guid == $fileName) {
                    $name = $item->name;
                    $file_id = $item->id;
                }
             }
             //###Make request for file copying/movement
             
+            //Where to copy/move file
+            $path = $folder . '/' . $name;
             //If user choose copy
             if (isset($copy)) {
-               //Where to copy
-               $path = $folder . '/' . $name;
                //Request to Storage for copying
                $file = $api->MoveFile($clientId, $path, NULL, $file_id, NULL); //download file
                //Returning to Viewer what button was pressed
@@ -55,19 +55,19 @@
             }
             //If user choose move
             if (isset($move)) {
-                //Where to move
-               $path = $folder . '/' . $name;
                //Request to Storage for copying
                $file = $api->MoveFile($clientId, $path, NULL, NULL, $file_id); //download file
                 //If request was successfull - set button variable for template
                return F3::set('button', $move);
             }
+            var_dump($path);
+           
          } 
     }
     
     try {
-        copy_move($clientId, $privateKey, $fileName, $move, $copy, $path);
-        $message = "File was {{@button}}'ed to the {{@folder}} folder";
+        copy_move($clientId, $privateKey, $fileName, $move, $copy, $folder);
+        $message = 'File was {{@button}}\'ed to the <font color="blue">{{@folder}}</font> folder';
     } catch(Exception $e) {
 
         $error = 'ERROR: ' .  $e->getMessage() . "\n";
@@ -77,7 +77,7 @@
     F3::set('userId', $clientId);
     F3::set('privateKey', $privateKey);
     F3::set('file_Name', $fileName);
-    F3::set('folder', $path);
+    F3::set('folder', $folder);
     f3::set('message', $message);
     
     echo Template::serve('sample05.htm');

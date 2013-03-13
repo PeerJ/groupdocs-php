@@ -6,5 +6,5 @@
  * Time: 9:15
  * To change this template use File | Settings | File Templates.
  */
-    $lines = file(__DIR__ . '/../temp/annotation_add.txt');
+    $lines = file(__DIR__ . '/../../temp/annotation_add.txt');
     echo var_dump($lines);

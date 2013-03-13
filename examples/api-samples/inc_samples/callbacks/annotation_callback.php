@@ -9,7 +9,7 @@
     $post = f3::get('POST');
 
     if(!empty($post)) {
-        $fp = fopen(__DIR__ . '/../temp/annotation_add.txt', 'w');
+        $fp = fopen(__DIR__ . '/../../temp/annotation_add.txt', 'w');
 
         foreach($post as $name => $content) {
             fwrite($fp, $name . ' => ' . $content . " ; ");

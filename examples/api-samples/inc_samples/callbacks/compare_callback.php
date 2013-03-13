@@ -9,7 +9,7 @@
     $post = f3::get('POST');
 
     if(!empty($post)) {
-        $fp = fopen(__DIR__ . '/../../temp/sign.txt', 'w');
+        $fp = fopen(__DIR__ . '/../../temp/compare.txt', 'w');
 
         foreach($post as $name => $content) {
             fwrite($fp, $name . ' => ' . $content . " ; ");

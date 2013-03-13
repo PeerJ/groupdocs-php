@@ -29,7 +29,7 @@
             $apiClient = new APIClient($signer);
             //Create ComparisonApi object
             $CompareApi = new ComparisonApi($apiClient);
-            $CompareApi->setBasePath("https://stage-api.groupdocs.com/v2.0");
+            $CompareApi->setBasePath($basePath);
             //###Make request to ComparisonApi using user id
             $CompareApi->setBasePath($basePath);
             //Comparison of documents were: $clientId - user GuId, $sourceFileId - source file Guid in which will be provided compare, 

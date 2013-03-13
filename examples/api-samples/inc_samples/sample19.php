@@ -41,20 +41,29 @@
                 $asyncApi = new AsyncApi($apiClient);
                 $asyncApi->setBasePath($basePath);
                 //Delay necessary that the inquiry would manage to be processed
-                sleep(5);
+               
                 //Make request to api for get document info by job id
-                $jobInfo = $asyncApi->GetJobDocuments($clientId, $info->result->job_id);
+                
+                for ($i = 0; $i <= 5; $i++) {
+                    $jobInfo = $asyncApi->GetJobDocuments($clientId, $info->result->job_id);
+                    if ($jobInfo->result->job_status == "Completed" || $jobInfo->result->job_status == "Archived") {
+                        break;
+                    } elseif ($jobInfo->result->job_status == "Postponed") {
+                        throw new Exception('Job is failure');
+                    }
+                    sleep(1);
+                }
                 //Get file guid
                 $guid = $jobInfo->result->outputs[0]->guid;
                 // Construct iframe using fileId
                 if($basePath == "https://api.groupdocs.com/v2.0") {
-                    $iframe = 'https://apps.groupdocs.com/document-viewer/embed/' . $guid . '?frameborder="0" width="500" height="650"';
+                    $iframe = 'https://apps.groupdocs.com/document-viewer/embed/' . $guid . ' frameborder="0" width="500" height="650"';
                 //iframe to dev server
                 } elseif($basePath == "https://dev-api.groupdocs.com/v2.0") {
-                    $iframe = 'https://dev-apps.groupdocs.com/document-viewer/embed/' . $guid . '?frameborder="0" width="500" height="650"';
+                    $iframe = 'https://dev-apps.groupdocs.com/document-viewer/embed/' . $guid . ' frameborder="0" width="500" height="650"';
                 //iframe to test server
                 } elseif($basePath == "https://stage-api.groupdocs.com/v2.0") {
-                    $iframe = 'https://stage-apps.groupdocs.com/document-viewer/embed/' . $guid . '?frameborder="0" width="500" height="650"';
+                    $iframe = 'https://stage-apps.groupdocs.com/document-viewer/embed/' . $guid . ' frameborder="0" width="500" height="650"';
                 }
 
             }

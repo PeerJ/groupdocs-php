@@ -6,5 +6,5 @@
  * Time: 9:15
  * To change this template use File | Settings | File Templates.
  */
-    $lines = file(__DIR__ . '/../../temp/compare.txt');
-    echo var_dump($lines);
+    $lines = file(__DIR__ . '/../../temp/compare_request_log.txt');
+	var_dump($lines);

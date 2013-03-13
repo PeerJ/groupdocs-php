@@ -32,26 +32,38 @@
             $CompareApi->setBasePath($basePath);
             //###Make request to ComparisonApi using user id
             $CompareApi->setBasePath($basePath);
-            //Comparison of documents were: $clientId - user GuId, $sourceFileId - source file Guid in which will be provided compare, 
-            //$targetFileId - file GuId with wich will compare sourceFile, $callbackUrl - Url which will be executed after compare
+            //Comparison of documents where: $clientId - user GuId, $sourceFileId - source file Guid in which will be provided compare, 
+            //$targetFileId - file GuId with wich will compare sourceFile, $callbackUrl - Url which will be executed after compare,
+            
             $info = $CompareApi->Compare($clientId, $sourceFileId, $targetFileId, $callbackUrl);
+            //###Example of handling callback request:
+            //  You can handle callback request in separate php file or in the same one. Our service will post JSON data via post request. 
+            //In PHP you should get raw data like this:
+            //     $json = file_get_contents("php://input"); - get callback data
+            //     $fp = fopen(__DIR__ . '/../../temp/signature_request_log.txt', 'a'); - open file for data write
+            //     fwrite($fp, $json . "\r\n"); - write data to the file
+            //     fclose($fp); - close file
+            
             //Check request status
             if($info->status == "Ok") {
-                //Create CAsyncApi object
+                //Create AsyncApi object
                 $asyncApi = new AsyncApi($apiClient);
                 $asyncApi->setBasePath($basePath);
-                //Delay necessary that the inquiry would manage to be processed
-               
-                //Make request to api for get document info by job id
-                
+                //### Check job status
+                                
                 for ($i = 0; $i <= 5; $i++) {
+                    //Delay necessary that the inquiry would manage to be processed
+                    sleep(5);                    
+                    //Make request to api for get document info by job id
                     $jobInfo = $asyncApi->GetJobDocuments($clientId, $info->result->job_id);
+                    //Check job status, if status is Completed or Archived exit from cycle
                     if ($jobInfo->result->job_status == "Completed" || $jobInfo->result->job_status == "Archived") {
                         break;
+                    //If job status Postponed throw exception with error
                     } elseif ($jobInfo->result->job_status == "Postponed") {
                         throw new Exception('Job is failure');
                     }
-                    sleep(1);
+                    
                 }
                 //Get file guid
                 $guid = $jobInfo->result->outputs[0]->guid;

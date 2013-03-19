@@ -40,6 +40,9 @@
                 //Generating iframe
                 $iframe = '<iframe src="https://apps.groupdocs.com/document-viewer/embed/' . $guid . '" frameborder="0" width="100%" height="600"></iframe>';
 
+            } else {
+                $error_message = $convert->error_message;
+                return f3::set('error_message', $error_message);
             }
             //If request was successfull - set url variable for template
             return F3::set('iframe', $iframe);

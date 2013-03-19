@@ -35,8 +35,12 @@
                 sleep(5);
                 //Make request to api for get document info by job id
                 $jobInfo = $api->GetJobDocuments($clientId, $convert->result->job_id);
-                //Get file guid
-                $guid = $jobInfo->result->inputs[0]->outputs[0]->guid;
+                if ($jobInfo->result->inputs[0]->outputs[0]->guid != "") {
+                    //Get file guid
+                    $guid = $jobInfo->result->inputs[0]->outputs[0]->guid;
+                } else {
+                    throw new Exception('File GuId is empty');
+                }
                 //Generating iframe
                 $iframe = '<iframe src="https://apps.groupdocs.com/document-viewer/embed/' . $guid . '" frameborder="0" width="100%" height="600"></iframe>';
 

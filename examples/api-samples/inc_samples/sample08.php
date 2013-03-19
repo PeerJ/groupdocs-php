@@ -27,10 +27,11 @@
             //Create DocApi object
             $docApi = new DocApi($apiClient);
             //###Make request to DocApi using user id
-            
+            $docApi->setBasePath("https://dev-api.groupdocs.com/v2.0");
             //Obtaining URl of entered page 
-            $URL = $docApi->GetDocumentPagesImageUrls($clientId, $fileGuId, (int)$pageNumber, 1, '600x750');
+            $URL = $docApi->GetDocumentPagesHtmlUrls($clientId, $fileGuId, (int)$pageNumber, 1);
             //If request was successfull - set url variable for template
+//            var_dump($URL);
             return f3::set('url', $URL->result->url[0]);
         }
     }

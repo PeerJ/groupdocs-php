@@ -34,7 +34,7 @@
                 //Delay necessary that the inquiry would manage to be processed
                 sleep(5);
                 //Make request to api for get document info by job id
-                $jobInfo = $api->GetJobDocuments($clientId, $convert->result->job_id);
+                $jobInfo = $api->GetJobDocuments($clientId, $convert->result->job_id, "");
                 if ($jobInfo->result->inputs[0]->outputs[0]->guid != "") {
                     //Get file guid
                     $guid = $jobInfo->result->inputs[0]->outputs[0]->guid;

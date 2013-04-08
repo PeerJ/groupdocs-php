@@ -43,11 +43,12 @@
             $apiClient = new APIClient($signer);
             //Create Storage Api object
             $apiStorage = new StorageApi($apiClient);
-            
+            //Check if user entered base path
             if ($basePath == "") {
+                //If base base is empty seting base path to prod server
                 $basePath = 'https://api.groupdocs.com/v2.0';
             }
-            
+            //Set base path
             $apiStorage->setBasePath($basePath);
             //###Make a request to Storage API using clientId
             
@@ -66,6 +67,9 @@
                 //iframe to test server
                 } elseif($basePath == "https://stage-api.groupdocs.com/v2.0") {
                     $iframe = 'https://stage-apps.groupdocs.com/document-viewer/embed/' . $guid;
+                //Iframe to realtime server
+                } elseif ($basePath == "http://realtime-api.groupdocs.com") {
+                    $iframe = 'https://realtime-apps.groupdocs.com/document-viewer/embed/' . $guid;
                 }
 
                 //Generation of Embeded Viewer URL with uploaded file GuId

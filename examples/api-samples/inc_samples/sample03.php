@@ -60,16 +60,16 @@
                 
                 $guid = $uploadResult->result->guid;
                  if($basePath == "https://api.groupdocs.com/v2.0") {
-                    $iframe = 'https://apps.groupdocs.com/document-viewer/embed/' . $guid;
+                    $iframe = 'http://apps.groupdocs.com/document-viewer/embed/' . $guid;
                 //iframe to dev server
                 } elseif($basePath == "https://dev-api.groupdocs.com/v2.0") {
-                    $iframe = 'https://dev-apps.groupdocs.com/document-viewer/embed/' . $guid;
+                    $iframe = 'http://dev-apps.groupdocs.com/document-viewer/embed/' . $guid;
                 //iframe to test server
                 } elseif($basePath == "https://stage-api.groupdocs.com/v2.0") {
-                    $iframe = 'https://stage-apps.groupdocs.com/document-viewer/embed/' . $guid;
+                    $iframe = 'http://stage-apps.groupdocs.com/document-viewer/embed/' . $guid;
                 //Iframe to realtime server
                 } elseif ($basePath == "http://realtime-api.groupdocs.com") {
-                    $iframe = 'https://realtime-apps.groupdocs.com/document-viewer/embed/' . $guid;
+                    $iframe = 'http://realtime-apps.groupdocs.com/document-viewer/embed/' . $guid;
                 }
 
                 //Generation of Embeded Viewer URL with uploaded file GuId

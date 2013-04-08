@@ -7,6 +7,7 @@
     F3::set('fileId', '');
     F3::set('message', '');
     F3::set('iframe', '');
+    F3::set('basePath', '');
     $clientId = F3::get('POST["client_id"]');
     $privateKey = F3::get('POST["private_key"]');
     $basePath = f3::get('POST["server_type"]');
@@ -42,6 +43,11 @@
             $apiClient = new APIClient($signer);
             //Create Storage Api object
             $apiStorage = new StorageApi($apiClient);
+            
+            if ($basePath == "") {
+                $basePath = 'https://api.groupdocs.com/v2.0';
+            }
+            
             $apiStorage->setBasePath($basePath);
             //###Make a request to Storage API using clientId
             
@@ -77,6 +83,7 @@
          $message = '<p>File was uploaded to GroupDocs. Here you can see your <strong>' . $upload['name'] . '</strong> file in the GroupDocs Embedded Viewer.</p>';
          F3::set('message', $message);
          F3::set('iframe', $upload['iframe']);
+        
      } catch(Exception $e) {
          $error = 'ERROR: ' .  $e->getMessage() . "\n";
          f3::set('error', $error);
@@ -84,5 +91,6 @@
      //Process template
      F3::set('userId', $clientId);
      F3::set('privateKey', $privateKey);
+     F3::set('basePath', $basePath);
      echo Template::serve('sample03.htm');
 ?>

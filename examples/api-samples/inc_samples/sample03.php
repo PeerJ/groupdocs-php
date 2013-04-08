@@ -9,8 +9,9 @@
     F3::set('iframe', '');
     $clientId = F3::get('POST["client_id"]');
     $privateKey = F3::get('POST["private_key"]');
+    $basePath = f3::get('POST["server_type"]');
     
-    function Upload($clientId, $privateKey)
+    function Upload($clientId, $privateKey, $basePath)
     {
         //###Check clientId and privateKey
         if (empty($clientId) || empty($privateKey)) {
@@ -41,7 +42,7 @@
             $apiClient = new APIClient($signer);
             //Create Storage Api object
             $apiStorage = new StorageApi($apiClient);
-            
+            $apiStorage->setBasePath($basePath);
             //###Make a request to Storage API using clientId
             
             //Upload file to current user storage
@@ -49,9 +50,21 @@
             
             //###Check if file uploaded successfully
             if ($uploadResult->status == "Ok") {
+                
+                $guid = $uploadResult->result->guid;
+                 if($basePath == "https://api.groupdocs.com/v2.0") {
+                    $iframe = 'https://apps.groupdocs.com/document-viewer/embed/' . $guid;
+                //iframe to dev server
+                } elseif($basePath == "https://dev-api.groupdocs.com/v2.0") {
+                    $iframe = 'https://dev-apps.groupdocs.com/document-viewer/embed/' . $guid;
+                //iframe to test server
+                } elseif($basePath == "https://stage-api.groupdocs.com/v2.0") {
+                    $iframe = 'https://stage-apps.groupdocs.com/document-viewer/embed/' . $guid;
+                }
+
                 //Generation of Embeded Viewer URL with uploaded file GuId
                 $result = array();
-                $result = array('iframe' => '<iframe src="https://apps.groupdocs.com/document-viewer/Embed/' . $uploadResult->result->guid . '" frameborder="0" width="720" height="600"></iframe>',
+                $result = array('iframe' => '<iframe src="'.$iframe.'" frameborder="0" width="800" height="650"></iframe>',
                                 'name' => $name);
                 //If request was successfull - set result variable for template
                 return $result;
@@ -60,7 +73,7 @@
      }
      
      try {
-         $upload = Upload($clientId, $privateKey);
+         $upload = Upload($clientId, $privateKey, $basePath);
          $message = '<p>File was uploaded to GroupDocs. Here you can see your <strong>' . $upload['name'] . '</strong> file in the GroupDocs Embedded Viewer.</p>';
          F3::set('message', $message);
          F3::set('iframe', $upload['iframe']);
@@ -72,3 +85,4 @@
      F3::set('userId', $clientId);
      F3::set('privateKey', $privateKey);
      echo Template::serve('sample03.htm');
+?>

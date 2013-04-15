@@ -41,7 +41,9 @@ class SignatureEnvelopeInfo {
       'documentsPages' => 'float',
       'recipients' => 'array[SignatureEnvelopeRecipientInfo]',
       'waterMarkText' => 'string',
-      'waterMarkImage' => 'string'
+      'waterMarkImage' => 'string',
+      'attachSignedDocument' => 'bool',
+      'includeViewLink' => 'bool'
 
     );
 
@@ -63,5 +65,7 @@ class SignatureEnvelopeInfo {
   public $recipients; // array[SignatureEnvelopeRecipientInfo]
   public $waterMarkText; // string
   public $waterMarkImage; // string
+  public $attachSignedDocument; // bool
+  public $includeViewLink; // bool
   }
 

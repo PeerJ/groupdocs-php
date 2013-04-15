@@ -37,7 +37,8 @@ class SignatureFormInfo {
       'fieldsInFinalFileName' => 'array[string]',
       'canParticipantDownloadForm' => 'bool',
       'waterMarkText' => 'string',
-      'waterMarkImage' => 'string'
+      'waterMarkImage' => 'string',
+      'fieldsCount' => 'float'
 
     );
 
@@ -55,5 +56,6 @@ class SignatureFormInfo {
   public $canParticipantDownloadForm; // bool
   public $waterMarkText; // string
   public $waterMarkImage; // string
+  public $fieldsCount; // float
   }
 

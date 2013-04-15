@@ -802,7 +802,7 @@ class DocApi {
         throw new ApiException("missing required parameters", 400);
       }
       //parse inputs
-  	  $resourcePath = str_replace("*", "", "/doc/{userId}/files/{fileId}/pages/{pageNumber}/images/{dimension}?quality={quality}&use_pdf={usePdf}&expires={expiresOn}");
+  	  $resourcePath = str_replace("*", "", "/doc/{userId}/files/{fileId}/pages/{pageNumber}/images/{dimension}?quality={quality}&use_pdf={usePdf}&expires={expiresOn}&v={version}");
   	  $pos = strpos($resourcePath, "?");
 	  if($pos !== false){
   	  	$resourcePath = substr($resourcePath, 0, $pos);

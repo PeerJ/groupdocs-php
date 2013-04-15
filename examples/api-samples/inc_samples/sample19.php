@@ -29,9 +29,15 @@
             $apiClient = new APIClient($signer);
             //Create ComparisonApi object
             $CompareApi = new ComparisonApi($apiClient);
+            if ($basePath == "") {
+                //If base base is empty seting base path to prod server
+                $basePath = 'https://api.groupdocs.com/v2.0';
+            }
+            //Set base path
             $CompareApi->setBasePath($basePath);
+            
             //###Make request to ComparisonApi using user id
-            $CompareApi->setBasePath($basePath);
+            
             //Comparison of documents where: $clientId - user GuId, $sourceFileId - source file Guid in which will be provided compare, 
             //$targetFileId - file GuId with wich will compare sourceFile, $callbackUrl - Url which will be executed after compare,
             
@@ -76,7 +82,9 @@
                 //iframe to test server
                 } elseif($basePath == "https://stage-api.groupdocs.com/v2.0") {
                     $iframe = 'https://stage-apps.groupdocs.com/document-viewer/embed/' . $guid . ' frameborder="0" width="500" height="650"';
-                }
+                } elseif ($basePath == "http://realtime-api.groupdocs.com") {
+                   $iframe = 'http://realtime-apps.groupdocs.com/document-viewer/embed/' . $guid . '" frameborder="0" width="100%" height="600"></iframe>';
+               }
 
             }
             //If request was successfull - set url variable for template

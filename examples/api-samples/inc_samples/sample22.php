@@ -38,7 +38,12 @@
             $apiClient = new ApiClient($signer);
             // Create MgmtApi object
             $mgmtApi = new MgmtApi($apiClient);
-            //Declare which server to use
+            //Declare which Server to use
+             if ($basePath == "") {
+                //If base base is empty seting base path to prod server
+                $basePath = 'https://api.groupdocs.com/v2.0';
+            }
+            //Set base path
             $mgmtApi->setBasePath($basePath);
              //###Create User info object
             
@@ -69,6 +74,7 @@
                 
                 //Create Annotation api object
                 $ant = new AntApi($apiClient);
+                $ant->setBasePath($basePath);
                 //Create array with entered email for SetAnnotationCollaborators method 
                 $arrayEmail = array($email);
                 //Make request to Ant api for set new user as annotation collaborator
@@ -96,6 +102,8 @@
                 //iframe to test server
                 } elseif($basePath == "https://stage-api.groupdocs.com/v2.0") {
                     $iframe = 'https://stage-apps.groupdocs.com//document-annotation2/embed/' . $fileId . '?&uid=' . $newUser->result->guid . '&download=true frameborder="0" width="720" height="600"';
+                } elseif ($basePath == "http://realtime-api.groupdocs.com") {
+                    $iframe = 'http://realtime-apps.groupdocs.com/document-annotation2/embed/' . $fileId . '?&uid=' . $newUser->result->guid . '&download=true frameborder="0" width="720" height="600"';
                 }
                 //Set variable with work results for template
                 return F3::set('url', $iframe);

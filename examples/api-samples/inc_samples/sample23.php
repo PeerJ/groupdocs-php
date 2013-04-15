@@ -15,7 +15,6 @@
         if (empty($fileGuId) || empty($clientId) || empty($privateKey)) {
             throw new Exception('Please enter FILE ID');
         } else {
-           
             F3::set('userId', $clientId);
             F3::set('privateKey', $privateKey);
             //###Create Signer, ApiClient and Storage Api objects
@@ -27,6 +26,11 @@
             //Create Doc Api object
             $api = new DocApi($apiClient);
             //Set url to choose whot server to use
+            if ($basePath == "") {
+                //If base base is empty seting base path to prod server
+                $basePath = 'https://api.groupdocs.com/v2.0';
+            }
+            //Set base path
             $api->setBasePath($basePath);
             //Make request yo the Api to get images for all document pages
             $pageImage = $api->ViewDocument($clientId, $fileGuId, 0, -1, 100, null);
@@ -44,6 +48,8 @@
                 //iframe to test server
                 } elseif($basePath == "https://stage-api.groupdocs.com/v2.0") {
                     $iframe = 'https://stage-apps.groupdocs.com/document-viewer/embed/' . $pageImage->result->guid . '?frameborder="0" width="500" height="650"';
+                } elseif ($basePath == "http://realtime-api.groupdocs.com") {
+                    $iframe = 'http://realtime-apps.groupdocs.com/document-viewer/embed/' . $pageImage->result->guid . '?frameborder="0" width="500" height="650"';
                 }
                 
             }

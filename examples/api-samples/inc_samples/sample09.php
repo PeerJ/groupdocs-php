@@ -16,8 +16,21 @@
         if (empty($file_Id)) {
             throw new Exception('Please enter FILE ID');
         } else {
+            //Get base path
+            $basePath = f3::get('POST["server_type"]');
             //Generation of iframe URL using fileGuId
-            $iframe = 'https://apps.groupdocs.com/document-viewer/embed/' . $file_Id . '?frameborder="0" width="450" height="650"';
+             if($basePath == "https://api.groupdocs.com/v2.0") {
+                $iframe = 'http://apps.groupdocs.com/document-viewer/embed/' . $file_Id . '?frameborder="0" width="450" height="650"';
+            //iframe to dev server
+            } elseif($basePath == "https://dev-api.groupdocs.com/v2.0") {
+                $iframe = 'http://dev-apps.groupdocs.com/document-viewer/embed/' . $file_Id . '?frameborder="0" width="450" height="650"';
+            //iframe to test server
+            } elseif($basePath == "https://stage-api.groupdocs.com/v2.0") {
+                $iframe = 'http://stage-apps.groupdocs.com/document-viewer/embed/' . $file_Id . '?frameborder="0" width="450" height="650"';
+            //Iframe to realtime server
+            } elseif ($basePath == "http://realtime-api.groupdocs.com") {
+                $iframe = 'http://realtime-apps.groupdocs.com/document-viewer/embed/' . $file_Id . '?frameborder="0" width="450" height="650"';
+            }
             //If request was successfull - set url variable for template
             return f3::set('url', $iframe);
         }

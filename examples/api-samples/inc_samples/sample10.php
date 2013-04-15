@@ -17,6 +17,8 @@
         if ($file_Id == "" || $userId == "" || $privateKey == "" || $body == "") {
             throw new Exception('Please enter FILE ID');
         } else {
+            //Get base path
+            $basePath = f3::get('POST["server_type"]');
             //###Create Signer, ApiClient and Storage Api objects
 
             //Create signer object
@@ -25,6 +27,12 @@
             $apiClient = new APIClient($signer);
             //Create Storage Api object
             $api = new StorageApi($apiClient);
+             if ($basePath == "") {
+                //If base base is empty seting base path to prod server
+                $basePath = 'https://api.groupdocs.com/v2.0';
+            }
+            //Set base path
+            $api->setBasePath($basePath);
             //###Make request to Storage
 
             //Geting all Entities from current user
@@ -40,6 +48,7 @@
             }
             //###Create DocApi object
             $docApi = new DocApi($apiClient);
+            $docApi->setBasePath($basePath);
             //Make request to user storage for sharing document
             $URL = $docApi->ShareDocument($userId, $file_id, $body);
             //If request was successfull - set shared variable for template

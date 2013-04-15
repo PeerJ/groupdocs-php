@@ -49,6 +49,11 @@
             $apiStorage = new StorageApi($apiClient);
             $basePath = f3::get('POST["server_type"]');
             //Declare which Server to use
+             if ($basePath == "") {
+                //If base base is empty seting base path to prod server
+                $basePath = 'https://api.groupdocs.com/v2.0';
+            }
+            //Set base path
             $apiStorage->setBasePath($basePath);
             //###Make a request to Storage API using clientId
             
@@ -63,7 +68,7 @@
                 
                 //Create envilope using user id and entered by user name
                 $envelop = $signature->CreateSignatureEnvelope($clientID, $name);
-//                sleep(5);
+                sleep(5);
                 //Add uploaded document to envelope
 
                 $addDocument = $signature->AddSignatureEnvelopeDocument($clientID, $envelop->result->envelope->id, $uploadResult->result->guid);
@@ -95,7 +100,10 @@
                 //iframe to test server
                 } elseif($basePath == "https://stage-api.groupdocs.com/v2.0") {
                     $iframe = '<iframe src="https://stage-apps.groupdocs.com/signature/signembed/'. $envelop->result->envelope->id .'/'. $recipientId . '?frameborder="0" width="720" height="600"></iframe>';
-                }
+                } elseif ($basePath == "http://realtime-api.groupdocs.com") {
+                   $iframe = 'http://realtime-apps.groupdocs.com/signature/signembed/'. $envelop->result->envelope->id .'/'. $recipientId . '?frameborder="0" width="720" height="600"></iframe>';
+               }
+
                 
                 $result = array();
                 //Make iframe

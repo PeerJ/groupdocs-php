@@ -10,9 +10,21 @@
             throw new Exception('Please enter all required parameters');
         } else {
             F3::set('fileId', $fileId);
-
-            // Construct iframe using fileId
-            $iframe = '<iframe src="https://apps.groupdocs.com/assembly2/questionnaire-assembly/' . $fileId . '" frameborder="0" width="100%" height="600"></iframe>';
+            //Get base path
+            $basePath = f3::get('POST["server_type"]');
+            //Generation of iframe URL using fileGuId
+             if($basePath == "https://api.groupdocs.com/v2.0") {
+                $iframe = 'http://apps.groupdocs.com/assembly2/questionnaire-assembly/' . $fileId . '" frameborder="0" width="100%" height="600"></iframe>';
+            //iframe to dev server
+            } elseif($basePath == "https://dev-api.groupdocs.com/v2.0") {
+                $iframe = 'http://dev-apps.groupdocs.com/assembly2/questionnaire-assembly/' . $fileId . '" frameborder="0" width="100%" height="600"></iframe>';
+            //iframe to test server
+            } elseif($basePath == "https://stage-api.groupdocs.com/v2.0") {
+                $iframe = 'http://stage-apps.groupdocs.com/assembly2/questionnaire-assembly/' . $fileId . '" frameborder="0" width="100%" height="600"></iframe>';
+            //Iframe to realtime server
+            } elseif ($basePath == "http://realtime-api.groupdocs.com") {
+                $iframe = 'http://realtime-apps.groupdocs.com/assembly2/questionnaire-assembly/' . $fileId . '" frameborder="0" width="100%" height="600"></iframe>';
+            }
 
             F3::set('iframe', $iframe);
         }

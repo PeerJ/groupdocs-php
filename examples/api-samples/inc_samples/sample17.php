@@ -17,7 +17,8 @@
         if (empty($clientId) || empty($privateKey)) {
             throw new Exception('Please enter all required parameters');
         } else {
-
+            //Get base path
+            $basePath = f3::get('POST["server_type"]');
             // Get uploaded file
             $uploadedFile = $_FILES['file'];
 
@@ -44,7 +45,12 @@
             $apiClient = new APIClient($signer);
             // Create Storage Api object
             $apiStorage = new StorageApi($apiClient);
-
+            if ($basePath == "") {
+                //If base base is empty seting base path to prod server
+                $basePath = 'https://api.groupdocs.com/v2.0';
+            }
+            //Set base path
+            $apiStorage->setBasePath($basePath);
             //### Make a request to Storage API using clientId
 
             // Upload file to current user storage

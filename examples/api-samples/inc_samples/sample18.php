@@ -15,7 +15,8 @@
         if (empty($fileId)|| empty($privateKey) || empty($fileId) || empty($convert_type)) {
             throw new Exception('Please enter all required parameters');
         } else {
-           
+            //Get base path
+            $basePath = f3::get('POST["server_type"]');
              //Set variables for Viewer
             F3::set('userId', $clientId);
             F3::set('privateKey', $privateKey);
@@ -27,6 +28,12 @@
             $apiClient = new APIClient($signer);
             //Create AsyncApi object
             $api = new AsyncApi($apiClient);
+            if ($basePath == "") {
+                //If base base is empty seting base path to prod server
+                $basePath = 'https://api.groupdocs.com/v2.0';
+            }
+            //Set base path
+            $api->setBasePath($basePath);
             //Make request to api for convert file
             $convert = $api->Convert($clientId, $fileId, null, null, null, null, $convert_type);
             //Check request status
@@ -41,8 +48,19 @@
                 } else {
                     throw new Exception('File GuId is empty');
                 }
-                //Generating iframe
-                $iframe = '<iframe src="https://apps.groupdocs.com/document-viewer/embed/' . $guid . '" frameborder="0" width="100%" height="600"></iframe>';
+                //Generation of iframe URL using fileGuId
+                if($basePath == "https://api.groupdocs.com/v2.0") {
+                   $iframe = 'http://apps.groupdocs.com/document-viewer/embed/' . $guid . '" frameborder="0" width="100%" height="600"></iframe>';
+               //iframe to dev server
+               } elseif($basePath == "https://dev-api.groupdocs.com/v2.0") {
+                   $iframe = 'http://dev-apps.groupdocs.com/document-viewer/embed/' . $guid . '" frameborder="0" width="100%" height="600"></iframe>';
+               //iframe to test server
+               } elseif($basePath == "https://stage-api.groupdocs.com/v2.0") {
+                   $iframe = 'http://stage-apps.groupdocs.com/document-viewer/embed/' . $guid . '" frameborder="0" width="100%" height="600"></iframe>';
+               //Iframe to realtime server
+               } elseif ($basePath == "http://realtime-api.groupdocs.com") {
+                   $iframe = 'http://realtime-apps.groupdocs.com/document-viewer/embed/' . $guid . '" frameborder="0" width="100%" height="600"></iframe>';
+               }
 
             } else {
                 $error_message = $convert->error_message;

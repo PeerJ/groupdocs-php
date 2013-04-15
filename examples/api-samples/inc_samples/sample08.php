@@ -15,6 +15,8 @@
         if (empty($clientId) || empty($privateKey) || empty($fileGuId)) {
             throw new Exception('Please enter all required parameters');
         } else {
+            //Get base path
+            $basePath = f3::get('POST["server_type"]');
             //Set variables for Viewer
             F3::set('userId', $clientId);
             F3::set('privateKey', $privateKey);
@@ -26,8 +28,15 @@
             $apiClient = new APIClient($signer);
             //Create DocApi object
             $docApi = new DocApi($apiClient);
+            //Check if user entered base path
+            if ($basePath == "") {
+                //If base base is empty seting base path to prod server
+                $basePath = 'https://api.groupdocs.com/v2.0';
+            }
+            //Set base path
+            $docApi->setBasePath($basePath);
             //###Make request to DocApi using user id
-            $docApi->setBasePath("https://dev-api.groupdocs.com/v2.0");
+            
             //Obtaining URl of entered page 
             $URL = $docApi->GetDocumentPagesHtmlUrls($clientId, $fileGuId, (int)$pageNumber, 1);
             //If request was successfull - set url variable for template

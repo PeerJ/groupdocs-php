@@ -37,13 +37,9 @@
             <br />
             <input type='text', name='fileId'  value="{{@fileId}}" />
             <br />
-            <label for='server_type'>Choose Server</label>
+            <label for='server_type'>Choose Server<span class="optional">(Optional)</span></label>
             <br />
-            <select name="server_type" id="server_type">
-                <option selected value="https://api.groupdocs.com/v2.0">Prod</option>
-                <option value="https://dev-api.groupdocs.com/v2.0">Dev</option>
-                <option value="https://stage-api.groupdocs.com/v2.0">Stage</option>
-            </select>
+            <input type ="text" name="server_type" id="server_type" />
             <br />
             <input type='submit' value='Make Request'/>
         </form>

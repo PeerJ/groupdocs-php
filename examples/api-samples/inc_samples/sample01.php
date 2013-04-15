@@ -13,6 +13,8 @@
         if (empty($clientId) || empty($privateKey)) {
             throw new Exception('Please enter all required parameters');
         } else {
+            //Get base path
+            $basePath = f3::get('POST["server_type"]');
             F3::set('userId', $clientId);
             F3::set('privateKey', $privateKey);
             //###Create Signer, ApiClient and Management Api objects
@@ -24,7 +26,13 @@
             
             //Create Management Api object
             $mgmtApi = new MgmtApi($apiClient);
-            
+            //Check if user entered base path
+            if ($basePath == "") {
+                //If base base is empty seting base path to prod server
+                $basePath = 'https://api.groupdocs.com/v2.0';
+            }
+            //Set base path
+            $mgmtApi->setBasePath($basePath);
             //###Make a request to Management API using clientId
             $userAccountInfo = $mgmtApi->GetUserProfile($clientId);
             

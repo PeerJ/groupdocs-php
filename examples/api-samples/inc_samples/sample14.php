@@ -15,6 +15,8 @@
         if (empty($clientId) || empty($privateKey) || empty($path)) {
             throw new Exception('Please enter all required parameters');
         } else {
+            //Get base path
+            $basePath = f3::get('POST["server_type"]');
             F3::set('userId', $clientId);
             F3::set('privateKey', $privateKey);
             F3::set('path', $path);
@@ -45,7 +47,13 @@
 
             // Create Document object
             $doc = new DocApi($apiClient);
-
+            if ($basePath == "") {
+                //If base base is empty seting base path to prod server
+                $basePath = 'https://api.groupdocs.com/v2.0';
+            }
+            //Set base path
+            $storage->setBasePath($basePath);
+            $doc->setBasePath($basePath);
             // get folder ID
             $list = $storage->ListEntities($clientId, $newPath);
             if ($list->status == "Ok") {

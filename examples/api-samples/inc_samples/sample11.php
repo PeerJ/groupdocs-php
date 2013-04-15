@@ -15,7 +15,8 @@
         if (empty($clientId) || empty($privateKey) || empty($fileId)) {
             throw new Exception('Please enter all required parameters');
         } else {
-
+            //Get base path
+            $basePath = f3::get('POST["server_type"]');
             //### Create Signer, ApiClient and Annotation Api objects
             // Create signer object
             $signer = new GroupDocsRequestSigner($privateKey);
@@ -23,7 +24,12 @@
             $apiClient = new ApiClient($signer);
             // Create Annotation object
             $ant = new AntApi($apiClient);
-
+             if ($basePath == "") {
+                //If base base is empty seting base path to prod server
+                $basePath = 'https://api.groupdocs.com/v2.0';
+            }
+            //Set base path
+            $ant->setBasePath($basePath);
             $annotationType = F3::get('POST["annotation_type"]');
             $replyText = F3::get('POST["text"]');
 
@@ -123,8 +129,19 @@
             $createResult = $ant->CreateAnnotation($clientId, $fileId, $ann);
             if ($createResult->status == "Ok") {
                 if ($createResult->result) {
-                    
-                    $iframe = 'https://apps.groupdocs.com//document-annotation2/embed/' . $createResult->result->documentGuid . '?frameborder="0" width="720" height="600"';
+                     //Generation of iframe URL using fileGuId
+                    if($basePath == "https://api.groupdocs.com/v2.0") {
+                        $iframe = 'http://apps.groupdocs.com/document-annotation2/embed/' . $createResult->result->documentGuid . '?frameborder="0" width="720" height="600"';
+                    //iframe to dev server
+                    } elseif($basePath == "https://dev-api.groupdocs.com/v2.0") {
+                        $iframe = 'http://dev-apps.groupdocs.com/document-annotation2/embed/' . $createResult->result->documentGuid . '?frameborder="0" width="720" height="600"';
+                    //iframe to test server
+                    } elseif($basePath == "https://stage-api.groupdocs.com/v2.0") {
+                        $iframe = 'http://stage-apps.groupdocs.com/document-annotation2/embed/' . $createResult->result->documentGuid . '?frameborder="0" width="720" height="600"';
+                    //Iframe to realtime server
+                    } elseif ($basePath == "http://realtime-api.groupdocs.com") {
+                        $iframe = 'http://realtime-apps.groupdocs.com/document-annotation2/embed/' . $createResult->result->documentGuid . '?frameborder="0" width="720" height="600"';
+                    }
                     F3::set('annotationId', $createResult->result->annotationGuid);
                     F3::set('annotationType', $annotationType);
                     F3::set('annotationText', $replyText);

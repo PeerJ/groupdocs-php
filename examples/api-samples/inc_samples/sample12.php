@@ -15,7 +15,8 @@
         if (empty($clientId) || empty($privateKey) || empty($fileId)) {
             throw new Exception('Please enter all required parameters');
         } else {
-
+            //Get base path
+            $basePath = f3::get('POST["server_type"]');
             F3::set('userId', $clientId);
             F3::set('privateKey', $privateKey);
             F3::set('fileId', $fileId);
@@ -29,7 +30,12 @@
 
             # Create Annotation object
             $ant = new AntApi($apiClient);
-
+            if ($basePath == "") {
+                //If base base is empty seting base path to prod server
+                $basePath = 'https://api.groupdocs.com/v2.0';
+            }
+            //Set base path
+            $ant->setBasePath($basePath);
             # Make a request to Annotation API using clientId and fileId
             $list = $ant->ListAnnotations($clientId, $fileId);
 

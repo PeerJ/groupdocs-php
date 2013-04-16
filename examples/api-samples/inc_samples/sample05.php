@@ -50,9 +50,7 @@
                 //Get uploaded file
                 $uploadedFile = $_FILES['file'];
                 //###Check uploaded file
-                if (null === $uploadedFile) {
-                    return new RedirectResponse("/sample3");
-                }
+                
                 //Temp name of the file
                 $tmp_name = $uploadedFile['tmp_name']; 
                 //Original name of the file

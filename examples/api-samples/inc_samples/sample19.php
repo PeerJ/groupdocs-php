@@ -7,20 +7,25 @@
     f3::set('result', "");
     $clientId = F3::get('POST["client_id"]');
     $privateKey = F3::get('POST["private_key"]');
-    $sourceFileId = f3::get('POST["sourceFileId"]');
-    $targetFileId = f3::get('POST["targetFileId"]');
+    
     $callbackUrl = f3::get('POST["callbackUrl"]');
     $basePath = f3::get('POST["server_type"]');
        
-    function Compare($clientId, $privateKey, $sourceFileId, $targetFileId, $callbackUrl, $basePath)
+    function Compare($clientId, $privateKey, $callbackUrl, $basePath)
     {
          //### Check clientId, privateKey and fileGuId
-        if (empty($clientId) || empty($privateKey) || empty($sourceFileId) || empty($targetFileId)) {
+        if (empty($clientId) || empty($privateKey)) {
             throw new Exception('Please enter all required parameters');
         } else {
             //Set variables for Viewer
             F3::set('userId', $clientId);
             F3::set('privateKey', $privateKey);
+            $sourceFileId = "";
+            $targetFileId = "";
+            $firstFileId = f3::get('POST["sourceFileId"]');
+            $secondFileId = f3::get('POST["targetFileId"]');
+            $url = F3::get('POST["url"]');
+            $targetUrl = F3::get('POST["target_url"]'); 
             //###Create Signer, ApiClient and Storage Api objects
 
             //Create signer object
@@ -29,13 +34,93 @@
             $apiClient = new APIClient($signer);
             //Create ComparisonApi object
             $CompareApi = new ComparisonApi($apiClient);
+             //Create Storage Api object
+            $apiStorage = new StorageApi($apiClient);
             if ($basePath == "") {
                 //If base base is empty seting base path to prod server
                 $basePath = 'https://api.groupdocs.com/v2.0';
             }
             //Set base path
             $CompareApi->setBasePath($basePath);
-            
+            $apiStorage->setBasePath($basePath);
+            if ($firstFileId != "" || $secondFileId != "") {
+                if ($firstFileId != "") {
+                    $sourceFileId = $firstFileId;
+                }
+                if ($secondFileId != "") {
+                    $targetFileId = $secondFileId;
+                }
+            }
+            if ($_FILES['file']["name"] != "" || $_FILES["target_file"]["name"] != "") {
+                if ($_FILES['file']["name"] != "") {
+                    //Temp name of the file
+                    $tmp_name = $_FILES['file']['tmp_name']; 
+                    //Original name of the file
+                    $name = $_FILES['file']['name'];
+                    //Creat file stream
+                    $fs = FileStream::fromFile($tmp_name);
+                    //###Make a request to Storage API using clientId
+                    //Upload file to current user storage
+                    $uploadResult = $apiStorage->Upload($clientId, $name, 'uploaded', "", $fs);
+
+                    //###Check if file uploaded successfully
+                    if ($uploadResult->status == "Ok") {
+                        //Get file GUID
+                        $sourceFileId = $uploadResult->result->guid;
+                        $firstFileId = "";
+                    //If it isn't uploaded throw exception to template
+                    } else {
+                        throw new Exception($uploadResult->error_message);
+                    }
+                }
+                if ($_FILES['target_file']["name"] != "") {
+                    //Temp name of the file
+                    $tmp_name = $_FILES["target_file"]['tmp_name']; 
+                    //Original name of the file
+                    $name = $_FILES["target_file"]['name'];
+                    //Creat file stream
+                    $fs = FileStream::fromFile($tmp_name);
+                    //###Make a request to Storage API using clientId
+                    //Upload file to current user storage
+                    $uploadResult = $apiStorage->Upload($clientId, $name, 'uploaded', "", $fs);
+
+                    //###Check if file uploaded successfully
+                    if ($uploadResult->status == "Ok") {
+                        //Get file GUID
+                        $targetFileId = $uploadResult->result->guid;
+                        $secondFileId = "";
+                    //If it isn't uploaded throw exception to template
+                    } else {
+                        throw new Exception($uploadResult->error_message);
+                    }
+                }
+            }
+            if ($url != "" || $targetUrl != "") {
+                if ($url != "") {
+                    //Upload file from URL
+                    $uploadResult = $apiStorage->UploadWeb($clientId, $url);
+                    //Check is file uploaded
+                    if ($uploadResult->status == "Ok") {
+                        //Get file GUID
+                        $sourceFileId = $uploadResult->result->guid;
+                    //If it isn't uploaded throw exception to template
+                    } else {
+                        throw new Exception($uploadResult->error_message);
+                    }
+                }
+                if ($targetUrl != "") {
+                    //Upload file from URL
+                    $uploadResult = $apiStorage->UploadWeb($clientId, $targetUrl);
+                    //Check is file uploaded
+                    if ($uploadResult->status == "Ok") {
+                        //Get file GUID
+                        $targetFileId = $uploadResult->result->guid;
+                    //If it isn't uploaded throw exception to template
+                    } else {
+                        throw new Exception($uploadResult->error_message);
+                    }
+                }
+            }
             //###Make request to ComparisonApi using user id
             
             //Comparison of documents where: $clientId - user GuId, $sourceFileId - source file Guid in which will be provided compare, 
@@ -83,25 +168,24 @@
                 } elseif($basePath == "https://stage-api.groupdocs.com/v2.0") {
                     $iframe = 'https://stage-apps.groupdocs.com/document-viewer/embed/' . $guid . ' frameborder="0" width="500" height="650"';
                 } elseif ($basePath == "http://realtime-api.groupdocs.com") {
-                   $iframe = 'http://realtime-apps.groupdocs.com/document-viewer/embed/' . $guid . '" frameborder="0" width="100%" height="600"></iframe>';
+                   $iframe = 'http://realtime-apps.groupdocs.com/document-viewer/embed/' . $guid . '" frameborder="0" width="100%" height="600"';
                }
 
             }
             //If request was successfull - set url variable for template
-            return F3::set('iframe', $iframe);
+             f3::set('sourceFileId', $sourceFileId);
+             f3::set('targetFileId', $targetFileId);
+             return F3::set('iframe', $iframe);
         }
     }
     
     try {
-         Compare($clientId, $privateKey, $sourceFileId, $targetFileId, $callbackUrl, $basePath);
+         Compare($clientId, $privateKey, $callbackUrl, $basePath);
         
     } catch(Exception $e) {
         $error = 'ERROR: ' .  $e->getMessage() . "\n";
         f3::set('error', $error);
     }
     //Process template
-    f3::set('sourceFileId', $sourceFileId);
-    f3::set('targetFileId', $targetFileId);
     f3::set('callbackURL', $callbackUrl);
-//    f3::set('result', $result);
     echo Template::serve('sample19.htm');

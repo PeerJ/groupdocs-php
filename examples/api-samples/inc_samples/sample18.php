@@ -90,8 +90,10 @@
                 //Get entered by user file GUID
                 $fileGuId = $fileId;
             }
+            $callbackUrl = f3::get('POST["callbackUrl"]');
+            F3::set("callbackUrl", $callbackUrl);
             //Make request to api for convert file
-            $convert = $api->Convert($clientId, $fileGuId, null, null, null, null, $convert_type);
+            $convert = $api->Convert($clientId, $fileGuId, null, null, null, $callbackUrl, $convert_type);
             //Check request status
             if($convert->status == "Ok") {
                 //Delay necessary that the inquiry would manage to be processed

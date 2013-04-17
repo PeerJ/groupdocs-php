@@ -14,6 +14,14 @@
         if (empty($clientId)|| empty($privateKey) || empty($convert_type)) {
             throw new Exception('Please enter all required parameters');
         } else {
+            //path to settings file - temporary save userId and apiKey like to property file
+            $infoFile = fopen(__DIR__ . '/../user_info.txt', 'w');
+            fwrite($infoFile, $clientId . "\r\n" . $privateKey);        
+            fclose($infoFile);
+             //check if Downloads folder exists and remove it to clean all old files
+            if (file_exists(__DIR__ . '/../downloads')) {
+                rmdir(__DIR__ . '/../downloads');
+            } 
             //Get base path
             $basePath = f3::get('POST["server_type"]');
              //Set variables for Viewer

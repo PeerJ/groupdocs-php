@@ -11,6 +11,8 @@
         if (empty($clientId) || empty($privateKey)) {
             throw new Exception('Please enter all required parameters');
         } else {
+            //Get base path
+            $basePath = f3::get('POST["server_type"]');
             //Set variables for Viewer
             F3::set('userId', $clientId);
             F3::set('privateKey', $privateKey);
@@ -22,6 +24,13 @@
             $apiClient = new APIClient($signer);
             //Create Storage Api object
             $api = new StorageApi($apiClient);
+            //Check if user entered base path
+            if ($basePath == "") {
+                //If base base is empty seting base path to prod server
+                $basePath = 'https://api.groupdocs.com/v2.0';
+            }
+            //Set base path
+            $api->setBasePath($basePath);
             //###Make request to Storage
 
             //Geting all Entities with thumbnails from current user

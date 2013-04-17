@@ -12,6 +12,7 @@
         if (!isset($clientId) || !isset($privateKey) || !isset($file_id)) {
             throw new Exception('Please enter all required parameterss');
         } else {
+            $basePath = f3::get('POST["server_type"]');
              //###Create Signer, ApiClient and Storage Api objects
             
             //Create signer object
@@ -20,18 +21,25 @@
             $apiClient = new APIClient($signer);
             //Create Storage Api object
             $api = new StorageApi($apiClient);
+            $docApi = new DocApi($apiClient);
+            //Check if user entered base path
+            if ($basePath == "") {
+                //If base base is empty seting base path to prod server
+                $basePath = 'https://api.groupdocs.com/v2.0';
+            }
+            //Set base path
+            $api->setBasePath($basePath);
+            $docApi->setBasePath($basePath);
+            //###Make a request to Doc API using clientId and file id
             
-            //###Make a request to Storage API using clientId
-            
-            //Obtaining all Entities from current user
-            $files = $api->ListEntities($clientId, '', 0);
+            //Obtaining all Metadata for file
+            $docInfo = $docApi->GetDocumentMetadata($clientId, $file_id);
             //Selecting file names
-            foreach ($files->result->files as $item) 
-            {
+            if ($docInfo->status == "Ok") { 
                //Obtaining file name for entered file Id
-               if ($item->guid == $file_id) {
-                   $name = $item->name;
-               }
+               $name = $docInfo->result->last_view->document->name;
+            } else {
+                throw new Exception($docInfo->error_message);
             }
             
             //###Make a request to Storage Api for dowloading file

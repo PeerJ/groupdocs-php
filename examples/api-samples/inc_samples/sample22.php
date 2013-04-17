@@ -12,13 +12,12 @@
     $privateKey = F3::get('POST["private_key"]');
     $email = F3::get('POST["email"]');
     $firstName = F3::get('POST["first_name"]');
-    $fileId = F3::get('POST["fileId"]');
     $lastName = F3::get('POST["last_name"]');
     $basePath = f3::get('POST["server_type"]');
 
-    function updateUser($clientId, $privateKey, $email, $firstName, $fileId, $lastName, $basePath) {
+    function updateUser($clientId, $privateKey, $email, $firstName, $lastName, $basePath) {
         //Check if all requared parameters were transferred
-        if (empty($clientId) || empty($privateKey) || empty($email) || empty($firstName) || empty($fileId) || empty($lastName)) {
+        if (empty($clientId) || empty($privateKey) || empty($email) || empty($firstName) || empty($lastName)) {
             //if not send error message
             throw new Exception('Please enter all required parameters');
         } else {
@@ -27,9 +26,7 @@
             F3::set('privateKey', $privateKey);
             F3::set('email', $email);
             F3::set('first_name', $firstName);
-            F3::set('fileId', $fileId);
             F3::set('last_name', $lastName);
-
             //### Create Signer, ApiClient and Mgmt Api objects
             
             // Create signer object
@@ -38,8 +35,68 @@
             $apiClient = new ApiClient($signer);
             // Create MgmtApi object
             $mgmtApi = new MgmtApi($apiClient);
-            //Declare which server to use
+            //Create Storage Api object
+            $apiStorage = new StorageApi($apiClient);
+            //Declare which Server to use
+             if ($basePath == "") {
+                //If base base is empty seting base path to prod server
+                $basePath = 'https://api.groupdocs.com/v2.0';
+            }
+            //Set base path
             $mgmtApi->setBasePath($basePath);
+            $apiStorage->setBasePath($basePath);
+            //Get entered by user data
+            $url = F3::get('POST["url"]');
+            $file = $_FILES['file'];
+            $fileGuId = f3::get('POST["fileId"]');
+            $fileId = "";
+            //Check is file GUID entered
+            if ($fileGuId != "") {
+                $fileId = $fileGuId;
+            }
+            if ($url != "") {
+                //Upload file from URL
+                $uploadResult = $apiStorage->UploadWeb($clientId, $url);
+                //Check is file uploaded
+                if ($uploadResult->status == "Ok") {
+                    //Get file GUID
+                    $fileId = $uploadResult->result->guid;
+                    
+                //If it isn't uploaded throw exception to template
+                } else {
+                    throw new Exception($uploadResult->error_message);
+                }
+            }
+            //Check is local file chosen
+            if ($file["name"] != "") {
+                //Get uploaded file
+                $uploadedFile = $_FILES['file'];
+              
+
+                //###Check uploaded file
+                if (null === $uploadedFile) {
+                    return new RedirectResponse("/sample21");
+                }
+                //Temp name of the file
+                $tmp_name = $uploadedFile['tmp_name']; 
+                //Original name of the file
+                $name = $uploadedFile['name'];
+                //Creat file stream
+                $fs = FileStream::fromFile($tmp_name);
+
+
+                //###Make a request to Storage API using clientId
+
+                //Upload file to current user storage
+                $uploadResult = $apiStorage->Upload($clientId, $name, 'uploaded', "", $fs);
+                //###Check if file uploaded successfully
+                if ($uploadResult->status == "Ok") {
+                    $fileId = $uploadResult->result->guid;
+                   
+                } else {
+                    throw new Exception($uploadResult->error_message);
+                }
+            }
              //###Create User info object
             
             //Create User info object
@@ -69,35 +126,51 @@
                 
                 //Create Annotation api object
                 $ant = new AntApi($apiClient);
+                $ant->setBasePath($basePath);
                 //Create array with entered email for SetAnnotationCollaborators method 
                 $arrayEmail = array($email);
                 //Make request to Ant api for set new user as annotation collaborator
                 $addCollaborator = $ant->SetAnnotationCollaborators($clientId, $fileId, "2.0", $arrayEmail);
-                //Make request to Annotation api to receive all collaborators for entered file id
-                $getCollaborators = $ant->GetAnnotationCollaborators($clientId, $fileId);
-                //Set reviewers rights for new user. $newUser->result->guid - GuId of created user, $fileId - entered file id, 
-                //$getCollaborators->result->collaborators - array of collabotors in which new user will be added
-                $setReviewer = $ant->SetReviewerRights($newUser->result->guid, $fileId, $getCollaborators->result->collaborators);
-                //Create calback from entered URL
-                $callbackUrl = f3::get('POST["callbackUrl"]');
-                F3::set("callbackUrl", $callbackUrl);
-                //Createing an array with data for callBack session
-                $arrayForJson = array($newUser->result->guid, $fileId, $callbackUrl);
-                //Encoding to json array with data for callBack session
-                $json = json_encode($arrayForJson);
-                //Make request to Annotation api to set CallBack session
-                $setCallBack = $ant->SetSessionCallbackUrl($json, "", "");
-                //Generating iframe for template
-                if($basePath == "https://api.groupdocs.com/v2.0") {
-                    $iframe = 'https://apps.groupdocs.com//document-annotation2/embed/' . $fileId . '?&uid=' . $newUser->result->guid . '&download=true frameborder="0" width="720" height="600"';
-                //iframe to dev server
-                } elseif($basePath == "https://dev-api.groupdocs.com/v2.0") {
-                    $iframe = 'https://dev-apps.groupdocs.com//document-annotation2/embed/' . $fileId . '?&uid=' . $newUser->result->guid . '&download=true frameborder="0" width="720" height="600"';
-                //iframe to test server
-                } elseif($basePath == "https://stage-api.groupdocs.com/v2.0") {
-                    $iframe = 'https://stage-apps.groupdocs.com//document-annotation2/embed/' . $fileId . '?&uid=' . $newUser->result->guid . '&download=true frameborder="0" width="720" height="600"';
+                if ($addCollaborator->status == "Ok") {
+                    //Make request to Annotation api to receive all collaborators for entered file id
+                    $getCollaborators = $ant->GetAnnotationCollaborators($clientId, $fileId);
+                    if ($getCollaborators->status == "Ok") {
+                        //Set reviewers rights for new user. $newUser->result->guid - GuId of created user, $fileId - entered file id, 
+                        //$getCollaborators->result->collaborators - array of collabotors in which new user will be added
+                        $setReviewer = $ant->SetReviewerRights($newUser->result->guid, $fileId, $getCollaborators->result->collaborators);
+                        if ($setReviewer->status == "Ok") {
+                            //Create calback from entered URL
+                            $callbackUrl = f3::get('POST["callbackUrl"]');
+                            F3::set("callbackUrl", $callbackUrl);
+                            //Createing an array with data for callBack session
+                            $arrayForJson = array($newUser->result->guid, $fileId, $callbackUrl);
+                            //Encoding to json array with data for callBack session
+                            $json = json_encode($arrayForJson);
+                            //Make request to Annotation api to set CallBack session
+                            $setCallBack = $ant->SetSessionCallbackUrl($json, "", "");
+                            //Generating iframe for template
+                            if($basePath == "https://api.groupdocs.com/v2.0") {
+                                $iframe = 'https://apps.groupdocs.com//document-annotation2/embed/' . $fileId . '?&uid=' . $newUser->result->guid . '&download=true frameborder="0" width="720" height="600"';
+                            //iframe to dev server
+                            } elseif($basePath == "https://dev-api.groupdocs.com/v2.0") {
+                                $iframe = 'https://dev-apps.groupdocs.com//document-annotation2/embed/' . $fileId . '?&uid=' . $newUser->result->guid . '&download=true frameborder="0" width="720" height="600"';
+                            //iframe to test server
+                            } elseif($basePath == "https://stage-api.groupdocs.com/v2.0") {
+                                $iframe = 'https://stage-apps.groupdocs.com//document-annotation2/embed/' . $fileId . '?&uid=' . $newUser->result->guid . '&download=true frameborder="0" width="720" height="600"';
+                            } elseif ($basePath == "http://realtime-api.groupdocs.com") {
+                                $iframe = 'http://realtime-apps.groupdocs.com/document-annotation2/embed/' . $fileId . '?&uid=' . $newUser->result->guid . '&download=true frameborder="0" width="720" height="600"';
+                            }
+                        } else {
+                            throw new Exception($setReviewer->error_message);
+                        }
+                    } else {
+                        throw new Exception($getCollaborators->error_message);
+                    }
+                } else {
+                    throw new Exception($addCollaborator->error_message);
                 }
                 //Set variable with work results for template
+                F3::set('fileId', $fileId);
                 return F3::set('url', $iframe);
             } else {
                 return F3::set("message", $newUser->error_message);
@@ -106,7 +179,7 @@
     }
 
     try {
-        updateUser($clientId, $privateKey, $email, $firstName, $fileId, $lastName, $basePath);
+        updateUser($clientId, $privateKey, $email, $firstName, $lastName, $basePath);
     } catch (Exception $e) {
         $error = 'ERROR: ' .  $e->getMessage() . "\n";
         f3::set('error', $error);

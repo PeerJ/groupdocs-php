@@ -8,14 +8,19 @@
     F3::set('fileId', '');
     $clientId = F3::get('POST["client_id"]');
     $privateKey = F3::get('POST["private_key"]');
-    $fileId = F3::get('POST["fileId"]');
+    
 
-    function CreateAnnotation($clientId, $privateKey, $fileId)
+    function CreateAnnotation($clientId, $privateKey)
     {
-        if (empty($clientId) || empty($privateKey) || empty($fileId)) {
+        if (empty($clientId) || empty($privateKey)) {
             throw new Exception('Please enter all required parameters');
         } else {
-
+            //Get base path
+            $basePath = f3::get('POST["server_type"]');
+            //Get entered by user data
+            $fileGuId = F3::get('POST["fileId"]');
+            $url = F3::get('POST["url"]');
+            $file = $_FILES['file'];
             //### Create Signer, ApiClient and Annotation Api objects
             // Create signer object
             $signer = new GroupDocsRequestSigner($privateKey);
@@ -23,7 +28,54 @@
             $apiClient = new ApiClient($signer);
             // Create Annotation object
             $ant = new AntApi($apiClient);
+             //Create Storage Api object
+            $api = new StorageApi($apiClient);
+             if ($basePath == "") {
+                //If base base is empty seting base path to prod server
+                $basePath = 'https://api.groupdocs.com/v2.0';
+            }
+            //Set base path
+            $ant->setBasePath($basePath);
+            $api->setBasePath($basePath);
+             //Check if user choose upload file from URL
+            if ($url != "") {
+                $fileGuId = "";
+                //Upload file from URL
+                $uploadResult = $api->UploadWeb($clientId, $url);
+                //Check is file uploaded
+                if ($uploadResult->status == "Ok") {
+                    //Get file GUID
+                    $fileId = $uploadResult->result->guid;
+                //If it isn't uploaded throw exception to template
+                } else {
+                    throw new Exception($uploadResult->error_message);
+                }
+            }
+            //Check is user choose upload local file
+            if ($_FILES['file']["name"] != "") {
+                $fileGuId = "";
+                //Temp name of the file
+                $tmp_name = $file['tmp_name']; 
+                //Original name of the file
+                $name = $file['name'];
+                //Creat file stream
+                $fs = FileStream::fromFile($tmp_name);
+                //###Make a request to Storage API using clientId
+                //Upload file to current user storage
+                $uploadResult = $api->Upload($clientId, $name, 'uploaded', "", $fs);
 
+                //###Check if file uploaded successfully
+                if ($uploadResult->status == "Ok") {
+                    //Get file GUID
+                    $fileId = $uploadResult->result->guid;
+                //If it isn't uploaded throw exception to template
+                } else {
+                    throw new Exception($uploadResult->error_message);
+                }
+            }
+            if ($fileGuId != "") {
+                $fileId = $fileGuId;
+            }
             $annotationType = F3::get('POST["annotation_type"]');
             $replyText = F3::get('POST["text"]');
 
@@ -123,8 +175,19 @@
             $createResult = $ant->CreateAnnotation($clientId, $fileId, $ann);
             if ($createResult->status == "Ok") {
                 if ($createResult->result) {
-                    
-                    $iframe = 'https://apps.groupdocs.com//document-annotation2/embed/' . $createResult->result->documentGuid . '?frameborder="0" width="720" height="600"';
+                     //Generation of iframe URL using fileGuId
+                    if($basePath == "https://api.groupdocs.com/v2.0") {
+                        $iframe = 'http://apps.groupdocs.com/document-annotation2/embed/' . $createResult->result->documentGuid . '?frameborder="0" width="720" height="600"';
+                    //iframe to dev server
+                    } elseif($basePath == "https://dev-api.groupdocs.com/v2.0") {
+                        $iframe = 'http://dev-apps.groupdocs.com/document-annotation2/embed/' . $createResult->result->documentGuid . '?frameborder="0" width="720" height="600"';
+                    //iframe to test server
+                    } elseif($basePath == "https://stage-api.groupdocs.com/v2.0") {
+                        $iframe = 'http://stage-apps.groupdocs.com/document-annotation2/embed/' . $createResult->result->documentGuid . '?frameborder="0" width="720" height="600"';
+                    //Iframe to realtime server
+                    } elseif ($basePath == "http://realtime-api.groupdocs.com") {
+                        $iframe = 'http://realtime-apps.groupdocs.com/document-annotation2/embed/' . $createResult->result->documentGuid . '?frameborder="0" width="720" height="600"';
+                    }
                     F3::set('annotationId', $createResult->result->annotationGuid);
                     F3::set('annotationType', $annotationType);
                     F3::set('annotationText', $replyText);
@@ -135,7 +198,7 @@
     }
 
     try {
-        CreateAnnotation($clientId, $privateKey, $fileId);
+        CreateAnnotation($clientId, $privateKey);
     } catch (Exception $e) {
         $error = 'ERROR: ' .  $e->getMessage() . "\n";
         f3::set('error', $error);

@@ -12,6 +12,8 @@
         if (empty($clientId) || empty($privateKey)) {
             throw new Exception('Please enter all required parameters');
         } else {
+            //Get base path
+            $basePath = f3::get('POST["server_type"]');
              //###Create Signer, ApiClient and Storage Api objects
             
             //Create signer object
@@ -20,7 +22,13 @@
             $apiClient = new APIClient($signer); // PHP SDK V1.1
             //Create Storage Api object
             $api = new StorageApi($apiClient);
-            
+            //Check if user entered base path
+            if ($basePath == "") {
+                //If base base is empty seting base path to prod server
+                $basePath = 'https://api.groupdocs.com/v2.0';
+            }
+            //Set base path
+            $api->setBasePath($basePath);
             //###Make a request to Storage API using clientId
             
             //Obtaining all Entities from current user

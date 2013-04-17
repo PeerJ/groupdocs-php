@@ -17,7 +17,8 @@
 			throw new Exception('You do not enter all parameters');
 			
         }else{   
-           
+           //Get base path
+           $basePath = f3::get('POST["server_type"]');
             //###Create Signer, ApiClient and Storage Api objects
 
             //Create signer object
@@ -26,15 +27,57 @@
             $apiClient = new APIClient($signer); 
             //Create Storage Api object
             $api = new StorageApi($apiClient);
-            
-             //###Make a request to Storage API using clientId
+            //Check if user entered base path
+            if ($basePath == "") {
+                //If base base is empty seting base path to prod server
+                $basePath = 'https://api.groupdocs.com/v2.0';
+            }
+            //Set base path
+            $api->setBasePath($basePath);
+            //Set empty file id
+            $file_id = '';
+            //Get entered URL
+            $url = F3::get('POST["url"]');
+            //Check is URL entered
+            if ($url != "") {
+                //Upload file from URL
+                $uploadResult = $api->UploadWeb($clientId, $url);
+                //Check upload status
+                if ($uploadResult->status == "Ok") {
+                    //Get file GUID
+                    $file_id = $uploadResult->result->guid;
+                } else {
+                    throw new Exception($uploadResult->error_message);
+                }
+            }
+            //Check is local file chosen
+            if ($_FILES['file']["name"] != "") {
+                //Get uploaded file
+                $uploadedFile = $_FILES['file'];
+                //###Check uploaded file
+                
+                //Temp name of the file
+                $tmp_name = $uploadedFile['tmp_name']; 
+                //Original name of the file
+                $name = $uploadedFile['name'];
+                //Creat file stream
+                $fs = FileStream::fromFile($tmp_name);
+                //###Make a request to Storage API using clientId
+                //Upload file to current user storage
+                $uploadResult = $api->Upload($clientId, $name, 'uploaded', "", $fs);
+
+                //###Check if file uploaded successfully
+                if ($uploadResult->status == "Ok") {
+                    //Get file GUID
+                    $file_id = $uploadResult->result->guid;
+                }
+            }
+            //###Make a request to Storage API using clientId
             
             //Obtaining all Entities from current user
             $files = $api->ListEntities($clientId, '', 0);
             //Obtaining file name and id by fileGuID
             $name = '';
-            $file_id = '';
-			
             foreach ($files->result->files as $item)
             {
                if ($item->guid == $fileName) {
@@ -60,7 +103,6 @@
                 //If request was successfull - set button variable for template
                return F3::set('button', $move);
             }
-            var_dump($path);
            
          } 
     }

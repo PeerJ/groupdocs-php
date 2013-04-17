@@ -19,6 +19,7 @@
              //Set variables for Viewer
             F3::set('userId', $clientId);
             F3::set('privateKey', $privateKey);
+            //Get entered by user data
             $url = F3::get('POST["url"]');
             $file = $_FILES['file'];
             $fileId = f3::get('POST["fileId"]');

@@ -20,6 +20,7 @@
             //Set variables for Viewer
             F3::set('userId', $clientId);
             F3::set('privateKey', $privateKey);
+            //Get entered by user data
             $sourceFileId = "";
             $targetFileId = "";
             $firstFileId = f3::get('POST["sourceFileId"]');
@@ -43,6 +44,7 @@
             //Set base path
             $CompareApi->setBasePath($basePath);
             $apiStorage->setBasePath($basePath);
+            //Check entered source file GUID and target file GUID
             if ($firstFileId != "" || $secondFileId != "") {
                 if ($firstFileId != "") {
                     $sourceFileId = $firstFileId;
@@ -51,6 +53,7 @@
                     $targetFileId = $secondFileId;
                 }
             }
+            //Check is user choose local files to upload and compare
             if ($_FILES['file']["name"] != "" || $_FILES["target_file"]["name"] != "") {
                 if ($_FILES['file']["name"] != "") {
                     //Temp name of the file
@@ -73,6 +76,7 @@
                         throw new Exception($uploadResult->error_message);
                     }
                 }
+                //Check is user choose upload and compare file from URL
                 if ($_FILES['target_file']["name"] != "") {
                     //Temp name of the file
                     $tmp_name = $_FILES["target_file"]['tmp_name']; 

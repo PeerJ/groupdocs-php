@@ -38,22 +38,14 @@
             //Set base path
             $apiStorage->setBasePath($basePath);
             $url = F3::get('POST["url"]');
+            //Check is URL entered
             if ($url != "") {
-                
+                //Upload file from URL
                 $uploadResult = $apiStorage->UploadWeb($clientID, $url);
+                //CHeck upload status
                 if ($uploadResult->status == "Ok") {
+                    //Get uploaded file GUID
                     $id = $uploadResult->result->id;
-                    //Obtaining all Entities from current user
-//                    $files = $apiStorage->ListEntities($clientID, 'My Web Documents', 0);
-//                    //Obtaining file name and id by fileGuID
-//                    $name = '';
-//                    foreach ($files->result->files as $item)
-//                    {
-//                       if ($item->guid == $uploadResult->result->guid) {
-//                           $name = $item->name;
-//                       }
-//                    }
-//                    $file = $apiStorage->MoveFile($clientID, $name, NULL, NULL, $id);
                 } else {
                     throw new Exception($uploadResult->error_message);
                 }
@@ -61,9 +53,6 @@
            
                 // Get uploaded file
                 $uploadedFile = $_FILES['file'];
-
-
-
                 //###Check uploaded file
                 if (null === $uploadedFile) {
                     return new RedirectResponse("/sample17");

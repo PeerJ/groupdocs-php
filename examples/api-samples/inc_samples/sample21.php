@@ -22,24 +22,10 @@
         if (empty($clientId) || empty($privateKey)) {
             throw new Exception('Please enter all required parameters');
         } else {
-            //Get uploaded file
-            $uploadedFile = $_FILES['file'];
-            //Deleting of tags, slashes and  space from clientId and privateKey
-            $clientID = strip_tags(stripslashes(trim($clientId))); //ClientId==UserId
-            $apiKey = strip_tags(stripslashes(trim($privateKey))); //ApiKey==PrivateKey
-            
-            //###Check uploaded file
-            if (null === $uploadedFile) {
-                return new RedirectResponse("/sample21");
-            }
-            //Temp name of the file
-            $tmp_name = $uploadedFile['tmp_name']; 
-            //Original name of the file
-            $name = $uploadedFile['name'];
-            //Creat file stream
-            $fs = FileStream::fromFile($tmp_name);
-            
-            //###Create Signer, ApiClient and Storage Api objects
+             //Deleting of tags, slashes and  space from clientId and privateKey
+             $clientID = strip_tags(stripslashes(trim($clientId))); //ClientId==UserId
+             $apiKey = strip_tags(stripslashes(trim($privateKey))); //ApiKey==PrivateKey
+             //###Create Signer, ApiClient and Storage Api objects
             
             //Create signer object
             $signer = new GroupDocsRequestSigner($apiKey);
@@ -55,63 +41,154 @@
             }
             //Set base path
             $apiStorage->setBasePath($basePath);
-            //###Make a request to Storage API using clientId
+            //Get entered by user data
+            $name = "";
+            $fileGuId = "";
+            $url = F3::get('POST["url"]');
+            $file = $_FILES['file'];
+            $fileId = f3::get('POST["fileId"]');
+            //Check is URL entered
+            if ($url != "") {
+                //Upload file from URL
+                $uploadResult = $apiStorage->UploadWeb($clientID, $url);
+                //Check is file uploaded
+                if ($uploadResult->status == "Ok") {
+                    //Get file GUID
+                    $fileGuId = $uploadResult->result->guid;
+                    //###Make a request to Storage API using clientId
             
-            //Upload file to current user storage
-            $uploadResult = $apiStorage->Upload($clientID, $name, 'uploaded', $fs);
+                    //Obtaining all Entities from current user
+                    $files = $apiStorage->ListEntities($clientID, 'My Web Documents', 0);
+                    //Obtaining file name and id by fileGuID
+                    foreach ($files->result->files as $item)
+                    {
+                       if ($item->guid == $fileGuId) {
+                           $name = $item->name;
+                       }
+                    }
+                //If it isn't uploaded throw exception to template
+                } else {
+                    throw new Exception($uploadResult->error_message);
+                }
+            }
+            //Check is local file chosen
+            if ($file["name"] != "") {
+                //Get uploaded file
+                $uploadedFile = $_FILES['file'];
+              
+
+                //###Check uploaded file
+                if (null === $uploadedFile) {
+                    return new RedirectResponse("/sample21");
+                }
+                //Temp name of the file
+                $tmp_name = $uploadedFile['tmp_name']; 
+                //Original name of the file
+                $name = $uploadedFile['name'];
+                //Creat file stream
+                $fs = FileStream::fromFile($tmp_name);
+
+
+                //###Make a request to Storage API using clientId
+
+                //Upload file to current user storage
+                $uploadResult = $apiStorage->Upload($clientID, $name, 'uploaded', "", $fs);
+                //###Check if file uploaded successfully
+                if ($uploadResult->status == "Ok") {
+                    $fileGuId = $uploadResult->result->guid;
+                    $name = $uploadResult->result->adj_name;
+                } else {
+                    throw new Exception($uploadResult->error_message);
+                }
+            }
+            //Check is user choose file GUID
+            if ($fileId != "") {
+                //Get entered by user file GUID
+                $fileGuId = $fileId;
+                //###Make a request to Storage API using clientId
             
-            //###Check if file uploaded successfully
-            if ($uploadResult->status == "Ok") {
-                //Create SignatureApi object
-                $signature = new SignatureApi($apiClient);
-                $signature->setBasePath($basePath);
-                
-                //Create envilope using user id and entered by user name
-                $envelop = $signature->CreateSignatureEnvelope($clientID, $name);
+                //Obtaining all Entities from current user
+                $files = $apiStorage->ListEntities($clientID, '', 0);
+                //Obtaining file name and id by fileGuID
+                foreach ($files->result->files as $item)
+                {
+                   if ($item->guid == $fileGuId) {
+                       $name = $item->name;
+                   }
+                }
+            }
+            
+            //Create SignatureApi object
+            $signature = new SignatureApi($apiClient);
+            $signature->setBasePath($basePath);
+
+            //Create envilope using user id and entered by user name
+            $envelop = $signature->CreateSignatureEnvelope($clientID, $name);
+            if ($envelop->status == "Ok") {
                 sleep(5);
                 //Add uploaded document to envelope
 
-                $addDocument = $signature->AddSignatureEnvelopeDocument($clientID, $envelop->result->envelope->id, $uploadResult->result->guid);
-                //Get role list for curent user
-                $recipient = $signature->GetRolesList($clientID);
-                //Get id of role which can sign
-                for($i = 0; $i < count($recipient->result->roles); $i++) {
-                    if($recipient->result->roles[$i]->name == "Signer") {
-                        $roleId = $recipient->result->roles[$i]->id;
+                $addDocument = $signature->AddSignatureEnvelopeDocument($clientID, $envelop->result->envelope->id, $fileGuId);
+                if ($addDocument->status == "Ok") {
+                    //Get role list for curent user
+                    $recipient = $signature->GetRolesList($clientID);
+                    if ($recipient->status == "Ok" ) {
+                        //Get id of role which can sign
+                        for($i = 0; $i < count($recipient->result->roles); $i++) {
+                            if($recipient->result->roles[$i]->name == "Signer") {
+                                $roleId = $recipient->result->roles[$i]->id;
+                            }
+                        }
+                        //Add recipient to envelope
+                        $addRecipient = $signature->AddSignatureEnvelopeRecipient($clientID, $envelop->result->envelope->id, $email, $signName, $lastName, null, $roleId);
+                        if ($addRecipient->status == "Ok") {
+                            //Get recipient id
+                            $getRecipient = $signature->GetSignatureEnvelopeRecipients($clientID, $envelop->result->envelope->id);
+                            if ($getRecipient->status == "Ok") {
+                                $recipientId = $getRecipient->result->recipients[0]->id;
+                                //Url for callback
+                                $callbackUrl = f3::get('POST["callbackUrl"]');
+                                F3::set("callbackUrl", $callbackUrl);
+                                //Send envelop with callback url
+                                $send = $signature->SignatureEnvelopeSend($clientID, $envelop->result->envelope->id, $callbackUrl);
+                                if ($send->status == "Ok") {
+                                    if($basePath == "https://api.groupdocs.com/v2.0") {
+                                    //iframe to prodaction server
+                                        $iframe = '<iframe src="https://apps.groupdocs.com/signature/signembed/'. $envelop->result->envelope->id .'/'. $recipientId . '?frameborder="0" width="720" height="600"></iframe>';
+                                    //iframe to dev server
+                                    } elseif($basePath == "https://dev-api.groupdocs.com/v2.0") {
+                                        $iframe = '<iframe src="https://dev-apps.groupdocs.com/signature/signembed/'. $envelop->result->envelope->id .'/'. $recipientId . '?frameborder="0" width="720" height="600"></iframe>';
+                                    //iframe to test server
+                                    } elseif($basePath == "https://stage-api.groupdocs.com/v2.0") {
+                                        $iframe = '<iframe src="https://stage-apps.groupdocs.com/signature/signembed/'. $envelop->result->envelope->id .'/'. $recipientId . '?frameborder="0" width="720" height="600"></iframe>';
+                                    } elseif ($basePath == "http://realtime-api.groupdocs.com") {
+                                       $iframe = 'http://realtime-apps.groupdocs.com/signature/signembed/'. $envelop->result->envelope->id .'/'. $recipientId . '?frameborder="0" width="720" height="600"></iframe>';
+                                   }
+                                } else {
+                                    throw new Exception($send->error_message);
+                                }
+                            } else {
+                                throw new Exception($getRecipient->error_message);
+                            }
+                        } else {
+                            throw new Exception($addRecipient->error_message);
+                        }
+                    } else {
+                        throw new Exception($recipient->error_message);
                     }
+                } else {
+                    throw new Exception($addDocument->error_message);
                 }
-                //Add recipient to envelope
-                $addRecipient = $signature->AddSignatureEnvelopeRecipient($clientID, $envelop->result->envelope->id, $email, $signName, $lastName, null, $roleId);
-                //Get recipient id
-                $getRecipient = $signature->GetSignatureEnvelopeRecipients($clientId, $envelop->result->envelope->id);
-                $recipientId = $getRecipient->result->recipients[0]->id;
-                //Url for callback
-                $callbackUrl = f3::get('POST["callbackUrl"]');
-                F3::set("callbackUrl", $callbackUrl);
-                //Send envelop with callback url
-                $send = $signature->SignatureEnvelopeSend($clientID, $envelop->result->envelope->id, $callbackUrl);
-                
-                if($basePath == "https://api.groupdocs.com/v2.0") {
-                //iframe to prodaction server
-                    $iframe = '<iframe src="https://apps.groupdocs.com/signature/signembed/'. $envelop->result->envelope->id .'/'. $recipientId . '?frameborder="0" width="720" height="600"></iframe>';
-                //iframe to dev server
-                } elseif($basePath == "https://dev-api.groupdocs.com/v2.0") {
-                    $iframe = '<iframe src="https://dev-apps.groupdocs.com/signature/signembed/'. $envelop->result->envelope->id .'/'. $recipientId . '?frameborder="0" width="720" height="600"></iframe>';
-                //iframe to test server
-                } elseif($basePath == "https://stage-api.groupdocs.com/v2.0") {
-                    $iframe = '<iframe src="https://stage-apps.groupdocs.com/signature/signembed/'. $envelop->result->envelope->id .'/'. $recipientId . '?frameborder="0" width="720" height="600"></iframe>';
-                } elseif ($basePath == "http://realtime-api.groupdocs.com") {
-                   $iframe = 'http://realtime-apps.groupdocs.com/signature/signembed/'. $envelop->result->envelope->id .'/'. $recipientId . '?frameborder="0" width="720" height="600"></iframe>';
-               }
-
-                
-                $result = array();
-                //Make iframe
-                $result = array('iframe' => $iframe,
-                                'name' => $name);
-                //If request was successfull - set result variable for template
-                return $result;
-            } 
+            } else {
+                throw new Exception($envelop->error_message);
+            }
+            $result = array();
+            //Make iframe
+            $result = array('iframe' => $iframe,
+                            'name' => $name);
+            //If request was successfull - set result variable for template
+            return $result;
+             
         }  
      }
      

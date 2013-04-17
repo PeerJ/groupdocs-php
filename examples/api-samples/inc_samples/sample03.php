@@ -37,12 +37,14 @@
             }
             //Set base path
             $apiStorage->setBasePath($basePath);
+            //Check URL entered
             if ($url != "") {
-                
+                //Upload file from URL
                 $uploadResult = $apiStorage->UploadWeb($clientID, $url);
+                //Check upload status
                 if ($uploadResult->status == "Ok") {
+                    //Get file GUID
                     $guid = $uploadResult->result->guid;
-                   
                 } else {
                     throw new Exception($uploadResult->error_message);
                 }
@@ -67,7 +69,7 @@
 
                 //###Check if file uploaded successfully
                 if ($uploadResult->status == "Ok") {
-
+                    //Get file GUID
                     $guid = $uploadResult->result->guid;
                 }
             }

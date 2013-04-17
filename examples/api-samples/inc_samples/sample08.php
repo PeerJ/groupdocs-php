@@ -14,6 +14,7 @@
         if (empty($clientId) || empty($privateKey)) {
             throw new Exception('Please enter all required parameters');
         } else {
+            //Get entered by user data
             $fileGuId = "";
             $url = F3::get('POST["url"]');
             $file = $_FILES['file'];

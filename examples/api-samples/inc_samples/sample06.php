@@ -15,8 +15,10 @@
 			throw new Exception('You do not enter all parameters');
 			
         }else{   
+            //Get chosen local file
             $fi_document = $_FILES["fi_document"];
             $fi_signature = $_FILES["fi_signature"];
+            //Check is both file chosen
             if ($fi_document == null || $fi_signature == null) {
                 throw new Exception("please choose document to sign and signature file");
             }

@@ -17,6 +17,7 @@
         } else {
             //Get base path
             $basePath = f3::get('POST["server_type"]');
+            //Get entered by user data
             $fileGuId = F3::get('POST["fileId"]');
             $url = F3::get('POST["url"]');
             $file = $_FILES['file'];

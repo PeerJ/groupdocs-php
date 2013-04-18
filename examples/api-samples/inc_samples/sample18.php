@@ -20,7 +20,7 @@
             fclose($infoFile);
              //check if Downloads folder exists and remove it to clean all old files
             if (file_exists(__DIR__ . '/../downloads')) {
-                rmdir(__DIR__ . '/../downloads');
+                delFolder(__DIR__ . '/../downloads/');
             } 
             //Get base path
             $basePath = f3::get('POST["server_type"]');
@@ -128,6 +128,24 @@
             F3::set('fileId', $fileId);
             return F3::set('iframe', $iframe);
         }
+    }
+    
+    function delFolder($path) {
+        $item = array();
+        $item = scandir($path);
+        $item = array_slice($item, 2);
+				
+        if (count($item) > 0) {
+            for ($i = 0; $i < count($item); $i++) {
+                $next = $path . "\\" . $item[$i];
+         
+                    unlink($next);
+                }
+                
+               
+            }
+        
+        rmdir($path);
     }
 
     try {

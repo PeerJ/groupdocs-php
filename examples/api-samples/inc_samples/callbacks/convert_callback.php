@@ -29,6 +29,6 @@
     }
     //Obtaining file stream of downloading file and definition of folder where to download file
     $outFileStream =  FileStream::fromHttp($downloadFolder, $name);
-    $download = $apiStorage->GetFile($clientId, $guid, $outFileStream);
+    $download = $apiStorage->GetFile(trim($clientId), $guid, $outFileStream);
     
 ?>

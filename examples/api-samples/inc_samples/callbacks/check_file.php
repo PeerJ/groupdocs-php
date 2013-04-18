@@ -4,12 +4,13 @@
     //counter to not wait forever
     $counter = 0;
     $downloadFolder = __DIR__ . '/../../downloads';
+	
     do {
         if ($counter >= 10) {
             $result = "Error";
             break;
         }
-        sleep(5000);
+        sleep(5);
         if (!file_exists($downloadFolder)) {
             $di = mkdir($downloadFolder);
         }
@@ -29,5 +30,6 @@
     if ($result == "Error") {
          return "File was not found. Looks like something went wrong.";
     }
-    return $result;
+	
+    echo $result;
 ?>

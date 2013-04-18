@@ -129,19 +129,23 @@
             return F3::set('iframe', $iframe);
         }
     }
-    
+    //### Delete downloads folder and all files in this folder
     function delFolder($path) {
         $item = array();
+        //Get all items fron folder
         $item = scandir($path);
+        //Remove from array "." and ".."
         $item = array_slice($item, 2);
+        //Check is there was files
         if (count($item) > 0) {
+            //Delete files from folder
             for ($i = 0; $i < count($item); $i++) {
                 $next = $path . "\\" . $item[$i];
-                if (file_exists($next)) {
-                    unlink($next);
-                }
+                unlink($next);
+                
             }
         }
+        //Delete folder
         rmdir($path);
     }
 

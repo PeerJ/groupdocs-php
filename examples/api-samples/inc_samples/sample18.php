@@ -14,6 +14,14 @@
         if (empty($clientId)|| empty($privateKey) || empty($convert_type)) {
             throw new Exception('Please enter all required parameters');
         } else {
+            //path to settings file - temporary save userId and apiKey like to property file
+            $infoFile = fopen(__DIR__ . '/../user_info.txt', 'w');
+            fwrite($infoFile, $clientId . "\r\n" . $privateKey);        
+            fclose($infoFile);
+             //check if Downloads folder exists and remove it to clean all old files
+            if (file_exists(__DIR__ . '/../downloads')) {
+                delFolder(__DIR__ . '/../downloads/');
+            } 
             //Get base path
             $basePath = f3::get('POST["server_type"]');
              //Set variables for Viewer
@@ -82,8 +90,10 @@
                 //Get entered by user file GUID
                 $fileGuId = $fileId;
             }
+            $callbackUrl = f3::get('POST["callbackUrl"]');
+            F3::set("callbackUrl", $callbackUrl);
             //Make request to api for convert file
-            $convert = $api->Convert($clientId, $fileGuId, null, null, null, null, $convert_type);
+            $convert = $api->Convert($clientId, $fileGuId, null, null, null, $callbackUrl, $convert_type);
             //Check request status
             if($convert->status == "Ok") {
                 //Delay necessary that the inquiry would manage to be processed
@@ -118,6 +128,20 @@
             F3::set('fileId', $fileId);
             return F3::set('iframe', $iframe);
         }
+    }
+    
+    function delFolder($path) {
+        $item = array();
+        $item = scandir($path);
+        $item = array_slice($item, 2);
+        if (count($item) > 0) {
+            for ($i = 0; $i < count($item); $i++) {
+                $next = $path . "\\" . $item[$i];
+
+                    unlink($next);
+            }
+        }
+        rmdir($path);
     }
 
     try {

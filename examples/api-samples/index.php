@@ -42,6 +42,9 @@ F3::route('GET|POST /callbacks/annotation_callback','callbacks/annotation_callba
 F3::route('GET|POST /callbacks/annotation_check_file','callbacks/annotation_check_file.php');
 F3::route('GET|POST /callbacks/compare_callback','callbacks/compare_callback.php');
 F3::route('GET|POST /callbacks/compare_check_file','callbacks/compare_check_file.php');
+F3::route('GET|POST /callbacks/convert_callback','callbacks/convert_callback.php');
+F3::route('GET|POST /callbacks/check_file','callbacks/check_file.php');
+F3::route('GET|POST /callbacks/download_file','callbacks/download_file.php');
 
 F3::route('GET /about_framework.php','about');
 

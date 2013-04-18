@@ -67,6 +67,7 @@
                             <option value="docx">Docx</option>
                             <option value="ppt">PPT</option>
             </select>
+            <span id="results_status" style="color:red;display:none;"> (Please wait for ajax response) </span>
         </form>
         <br>
         <a href="/templates/testdocument.html">Download sample HTML file 1</a> <br>
@@ -82,6 +83,28 @@
 
  <include href="links.htm" />
  <script type="text/javascript">
+     $(document).ready(setTimeout(check, 5000));
+            
+         function check() {
+             
+             if (($("input[name=callback]").val() != "") && (document.getElementById("result") != null)) {
+                 $('#results_status').fadeIn("slow");
+                 form = document.forms.form;
+                 $.ajax({
+                     type: 'POST',
+                     url: '/callbacks/check_file',
+                     success: function (data) {
+                         $('#results_status').fadeOut("slow");
+                         div = document.getElementById("link");
+                         p = document.createElement("p");
+                         p.innerHTML = "<br /> File " + data + " was downloaded.";
+                         div.appendChild(p);
+                         $("#downloadframe").attr("src", "/callbacks/download_file?FileName=" + data);
+                     },
+                     dataType: "text"
+                 });
+             }
+         }
     function display(_element_id) {
 
              if (_element_id == "guid") {

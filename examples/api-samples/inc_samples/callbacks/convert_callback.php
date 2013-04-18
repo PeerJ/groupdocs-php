@@ -4,25 +4,26 @@
     $clientId = $userInfo[0];
     $privateKey = $userInfo[1];
     $json = file_get_contents("php://input");
-    $callBack_data = json_decode($json);
-    $jobId = $callBack_data["SourceId"];
+	$callBack_data = json_decode($json, true);
+	$jobId = $callBack_data["SourceId"];
+	 
     //Create signer object
-    $signer = new GroupDocsRequestSigner($privateKey);
+    $signer = new GroupDocsRequestSigner(trim($privateKey));
     //Create apiClient object
     $apiClient = new APIClient($signer);
     //Create AsyncApi object
     $api = new AsyncApi($apiClient);
     //Create Storage Api object
     $apiStorage = new StorageApi($apiClient);
-    $jobInfo = $api->GetJobDocuments($clientId, $jobId, "");
-        if ($jobInfo->status == "Ok") {
-            //Get file guid
+	sleep(5);
+	$jobInfo = $api->GetJobDocuments(trim($clientId), $jobId, "");
+	if ($jobInfo->status == "Ok") {
+		   //Get file guid
             $guid = $jobInfo->result->inputs[0]->outputs[0]->guid;
             $name = $jobInfo->result->inputs[0]->outputs[0]->name;
-        } else {
-            throw new Exception($jobInfo->error_message);
-        }
-    $downloadFolder = __DIR__ . '/../../downloads';
+			
+    }
+    $downloadFolder = dirname(__FILE__). '/../../downloads';
     if (!file_exists($downloadFolder)) {
         mkdir($downloadFolder);
     }

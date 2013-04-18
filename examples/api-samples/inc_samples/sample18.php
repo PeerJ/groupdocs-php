@@ -134,17 +134,13 @@
         $item = array();
         $item = scandir($path);
         $item = array_slice($item, 2);
-				
         if (count($item) > 0) {
             for ($i = 0; $i < count($item); $i++) {
                 $next = $path . "\\" . $item[$i];
-         
+
                     unlink($next);
-                }
-                
-               
             }
-        
+        }
         rmdir($path);
     }
 

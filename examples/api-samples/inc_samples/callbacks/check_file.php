@@ -34,6 +34,7 @@
             continue;
         //If file downloaded get file name and break.
         } else {
+            array_slice($name, 2);
             $result = $name; //get the name of the fist file in the directory
             break;
         }

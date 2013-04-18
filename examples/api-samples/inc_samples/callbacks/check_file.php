@@ -23,8 +23,9 @@
         //Get all elements from folder
         while (($file = readdir($filePaths)) !== false) {
             //Get downloaded file name
-            var_dump($file);
-            $name = $file;
+            if ($file != "." && $file != "..") {
+                $name = $file;
+            }
         }
         //Close folder
         closedir($filePaths);

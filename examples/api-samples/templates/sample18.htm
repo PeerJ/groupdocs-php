@@ -101,9 +101,14 @@
                          $('#results_status').fadeOut("slow");
                          div = document.getElementById("link");
                          p = document.createElement("p");
-                         p.innerHTML = "<br /> File " + data + " was downloaded.";
+                         if (data == "File was not found. Looks like something went wrong.") {
+                             p.innerHTML = "<br /> " + data ;
+                         } else {
+                             p.innerHTML = "<br /> File " + data + " was downloaded.";
+							 $("#downloadframe").attr("src", "/callbacks/download_file?FileName=" + data);
+                         }
                          div.appendChild(p);
-                         $("#downloadframe").attr("src", "/callbacks/download_file?FileName=" + data);
+                        
                      },
                      dataType: "text"
                  });

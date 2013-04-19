@@ -6,7 +6,7 @@
     <style type="text/css">
         {{ Web::minify('templates/',array('style.css'),FALSE) }}
     </style>
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js" ></script>
 </head>
 <body>
 <h3 style="text-align:center;"><a href="/index.php">GroupDocs PHP SDK Samples</a> - Sample22</h3>
@@ -68,18 +68,16 @@
             <br />
             <input type='text', name='url'  value="" id="urlfield" style="display:none;" />
             <br />
-            <label for='callbackUrl'>callbackUrl<span class="optional">(Optional)</span></label>
-            <br />
-            <input type='text', name='callbackUrl'  value="{{@callbackURL}}" />
-            <br />
             <label for='server_type'>Base path<span class="optional">(Optional)</span></label>
             <br />
             <input type ="text" name="server_type" id="server_type" />
             <br />
             <input type='submit' value='Make Request'/>
-        </form>
+			
+		</form>
+      
     </div>
-    <div  style="padding:20px; border:1px solid black;">
+    <div  id="result" style="padding:20px; border:1px solid black;">
         Result: 
         <iframe src="{{@url}}"></iframe>
    </div>
@@ -87,6 +85,7 @@
 
  <include href="links.htm" />
  <script type="text/javascript">
+	
     function display(_element_id) {
 
              if (_element_id == "guid") {

@@ -4,14 +4,16 @@
     //Get user data from text file
     $clientId = $userInfo[0];
     $privateKey = $userInfo[1];
+	
     //Get raw data
     $json = file_get_contents("php://input");
     //Decode json with raw data to array
 	$callBack_data = json_decode($json, true);
+	
     //Get job id from array
 	$jobId = $callBack_data["SourceId"];
-	 
-    //Create signer object
+	//Create signer object
+	
     $signer = new GroupDocsRequestSigner(trim($privateKey));
     //Create apiClient object
     $apiClient = new APIClient($signer);
@@ -21,12 +23,14 @@
     $apiStorage = new StorageApi($apiClient);
 	sleep(5);
     //Make request to Async API to get job info
+	 
 	$jobInfo = $api->GetJobDocuments(trim($clientId), $jobId, "");
+	
 	if ($jobInfo->status == "Ok") {
 		   //Get file guid
-            $guid = $jobInfo->result->inputs[0]->outputs[0]->guid;
+            $guid = $jobInfo->result->outputs[0]->guid;
             //Get file name
-            $name = $jobInfo->result->inputs[0]->outputs[0]->name;
+            $name = $jobInfo->result->outputs[0]->name;
 			
     }
     //Local path to the downloads folder
@@ -39,6 +43,6 @@
     //Obtaining file stream of downloading file and definition of folder where to download file
     $outFileStream =  FileStream::fromHttp($downloadFolder, $name);
     //Download file from GroupDocs.
-    $download = $apiStorage->GetFile(trim($clientId), $guid, $outFileStream);
+	$download = $apiStorage->GetFile(trim($clientId), $guid, $outFileStream);
     
 ?>

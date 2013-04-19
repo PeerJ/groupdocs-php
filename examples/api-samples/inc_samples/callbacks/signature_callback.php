@@ -1,13 +1,38 @@
 <?php
-/**
- * Created by JetBrains PhpStorm.
- * User: svarog
- * Date: 01.02.13
- * Time: 9:15
- * To change this template use File | Settings | File Templates.
- */
- $json = file_get_contents("php://input");
-$fp = fopen(__DIR__ . '/../../temp/signature_request_log.txt', 'a');
-fwrite($fp, $json . "\r\n");
-
-fclose($fp);
+	//Local path to the text file with user data
+    $userInfo = file(__DIR__ . '/../../user_info.txt');
+    //Get user data from text file
+    $clientId = trim($userInfo[0]);
+    $privateKey = trim($userInfo[1]);
+    //Get raw data
+    $json = file_get_contents("php://input");
+    //Decode json with raw data to array
+	$callBack_data = json_decode($json, true);
+    //Get job id from array
+	$envelopeId = $callBack_data["SourceId"];
+    //Create signer object
+    $signer = new GroupDocsRequestSigner(trim($privateKey));
+    //Create apiClient object
+    $apiClient = new APIClient($signer);
+    //Create AsyncApi object
+    $api = new SignatureApi($apiClient);
+    //Create Storage Api object
+    $apiStorage = new StorageApi($apiClient);
+	$document = $api->GetSignatureEnvelopeDocuments($clientId, $envelopeId);
+	if ($document->status == "Ok") {
+		$guid = $document->result->documents[0]->documentId;
+		$name = $document->result->documents[0]->name;
+	}
+    //Local path to the downloads folder
+    $downloadFolder = dirname(__FILE__). '/../../downloads';
+    //Check is folder exist
+    if (!file_exists($downloadFolder)) {
+        //If folder don't exist create it
+        mkdir($downloadFolder);
+    }
+    //Obtaining file stream of downloading file and definition of folder where to download file
+    $outFileStream =  FileStream::fromHttp($downloadFolder, $name);
+    //Download file from GroupDocs.
+    $download = $apiStorage->GetFile($clientId, $guid, $outFileStream);
+    
+?>

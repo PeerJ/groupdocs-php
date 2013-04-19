@@ -22,6 +22,14 @@
         if (empty($clientId) || empty($privateKey)) {
             throw new Exception('Please enter all required parameters');
         } else {
+			//path to settings file - temporary save userId and apiKey like to property file
+            $infoFile = fopen(__DIR__ . '/../user_info.txt', 'w');
+            fwrite($infoFile, $clientId . "\r\n" . $privateKey);        
+            fclose($infoFile);
+             //check if Downloads folder exists and remove it to clean all old files
+            if (file_exists(__DIR__ . '/../downloads')) {
+                delFolder(__DIR__ . '/../downloads/');
+            } 
              //Deleting of tags, slashes and  space from clientId and privateKey
              $clientID = strip_tags(stripslashes(trim($clientId))); //ClientId==UserId
              $apiKey = strip_tags(stripslashes(trim($privateKey))); //ApiKey==PrivateKey
@@ -149,7 +157,7 @@
                                 //Url for callback
                                 $callbackUrl = f3::get('POST["callbackUrl"]');
                                 F3::set("callbackUrl", $callbackUrl);
-                                //Send envelop with callback url
+								
                                 $send = $signature->SignatureEnvelopeSend($clientID, $envelop->result->envelope->id, $callbackUrl);
                                 if ($send->status == "Ok") {
                                     if($basePath == "https://api.groupdocs.com/v2.0") {
@@ -192,6 +200,26 @@
         }  
      }
      
+	  //### Delete downloads folder and all files in this folder
+    function delFolder($path) {
+        $item = array();
+        //Get all items fron folder
+        $item = scandir($path);
+        //Remove from array "." and ".."
+        $item = array_slice($item, 2);
+        //Check is there was files
+        if (count($item) > 0) {
+            //Delete files from folder
+            for ($i = 0; $i < count($item); $i++) {
+                $next = $path . "\\" . $item[$i];
+                unlink($next);
+                
+            }
+        }
+        //Delete folder
+        rmdir($path);
+    }
+	
      try {
          $upload = sendEnvelop($clientId, $privateKey, $email, $signName, $lastName);
          $message = '<p>File was uploaded to GroupDocs. Here you can see your <strong>' . $upload['name'] . '</strong> file in the GroupDocs Embedded Viewer.</p>';

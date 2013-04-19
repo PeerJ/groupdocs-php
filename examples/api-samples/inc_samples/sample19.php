@@ -17,6 +17,14 @@
         if (empty($clientId) || empty($privateKey)) {
             throw new Exception('Please enter all required parameters');
         } else {
+            //path to settings file - temporary save userId and apiKey like to property file
+            $infoFile = fopen(__DIR__ . '/../user_info.txt', 'w');
+            fwrite($infoFile, $clientId . "\r\n" . $privateKey);        
+            fclose($infoFile);
+             //check if Downloads folder exists and remove it to clean all old files
+            if (file_exists(__DIR__ . '/../downloads')) {
+                delFolder(__DIR__ . '/../downloads/');
+            } 
             //Set variables for Viewer
             F3::set('userId', $clientId);
             F3::set('privateKey', $privateKey);
@@ -181,6 +189,26 @@
              f3::set('targetFileId', $targetFileId);
              return F3::set('iframe', $iframe);
         }
+    }
+    
+    //### Delete downloads folder and all files in this folder
+    function delFolder($path) {
+        $item = array();
+        //Get all items fron folder
+        $item = scandir($path);
+        //Remove from array "." and ".."
+        $item = array_slice($item, 2);
+        //Check is there was files
+        if (count($item) > 0) {
+            //Delete files from folder
+            for ($i = 0; $i < count($item); $i++) {
+                $next = $path . "\\" . $item[$i];
+                unlink($next);
+                
+            }
+        }
+        //Delete folder
+        rmdir($path);
     }
     
     try {

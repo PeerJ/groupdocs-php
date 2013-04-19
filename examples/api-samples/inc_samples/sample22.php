@@ -21,6 +21,14 @@
             //if not send error message
             throw new Exception('Please enter all required parameters');
         } else {
+			//path to settings file - temporary save userId and apiKey like to property file
+            $infoFile = fopen(__DIR__ . '/../user_info.txt', 'w');
+            fwrite($infoFile, $clientId . "\r\n" . $privateKey);        
+            fclose($infoFile);
+             //check if Downloads folder exists and remove it to clean all old files
+            if (file_exists(__DIR__ . '/../downloads')) {
+                delFolder(__DIR__ . '/../downloads/');
+            } 
             //Set variables for template "You are entered" block
             F3::set('userId', $clientId);
             F3::set('privateKey', $privateKey);
@@ -139,15 +147,6 @@
                         //$getCollaborators->result->collaborators - array of collabotors in which new user will be added
                         $setReviewer = $ant->SetReviewerRights($newUser->result->guid, $fileId, $getCollaborators->result->collaborators);
                         if ($setReviewer->status == "Ok") {
-                            //Create calback from entered URL
-                            $callbackUrl = f3::get('POST["callbackUrl"]');
-                            F3::set("callbackUrl", $callbackUrl);
-                            //Createing an array with data for callBack session
-                            $arrayForJson = array($newUser->result->guid, $fileId, $callbackUrl);
-                            //Encoding to json array with data for callBack session
-                            $json = json_encode($arrayForJson);
-                            //Make request to Annotation api to set CallBack session
-                            $setCallBack = $ant->SetSessionCallbackUrl($json, "", "");
                             //Generating iframe for template
                             if($basePath == "https://api.groupdocs.com/v2.0") {
                                 $iframe = 'https://apps.groupdocs.com//document-annotation2/embed/' . $fileId . '?&uid=' . $newUser->result->guid . '&download=true frameborder="0" width="720" height="600"';
@@ -176,6 +175,26 @@
                 return F3::set("message", $newUser->error_message);
             }
         }
+    }
+	
+	  //### Delete downloads folder and all files in this folder
+    function delFolder($path) {
+        $item = array();
+        //Get all items fron folder
+        $item = scandir($path);
+        //Remove from array "." and ".."
+        $item = array_slice($item, 2);
+        //Check is there was files
+        if (count($item) > 0) {
+            //Delete files from folder
+            for ($i = 0; $i < count($item); $i++) {
+                $next = $path . "\\" . $item[$i];
+                unlink($next);
+                
+            }
+        }
+        //Delete folder
+        rmdir($path);
     }
 
     try {

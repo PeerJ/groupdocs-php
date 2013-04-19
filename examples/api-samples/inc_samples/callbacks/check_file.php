@@ -3,6 +3,7 @@
     $result = "";
     //counter to not wait forever
     $counter = 0;
+	$name = "";
     //Local path to the downloads folder
     $downloadFolder = __DIR__ . '/../../downloads';
 	//Check folder for downloaded file
@@ -43,8 +44,9 @@
     } while (true);
     //Check result
     if ($result == "Error") {
-         return "File was not found. Looks like something went wrong.";
-    }
-	//Return file name to the template for ajax
-    echo $result;
+         echo "File was not found. Looks like something went wrong.";
+    } else {
+		//Return file name to the template for ajax
+		echo $result;
+	}
 ?>

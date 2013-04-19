@@ -23,7 +23,9 @@
         //Get all elements from folder
         while (($file = readdir($filePaths)) !== false) {
             //Get downloaded file name
-            $name = $file;
+            if ($file != "." && $file != "..") {
+                $name = $file;
+            }
         }
         //Close folder
         closedir($filePaths);
@@ -34,6 +36,7 @@
             continue;
         //If file downloaded get file name and break.
         } else {
+            
             $result = $name; //get the name of the fist file in the directory
             break;
         }

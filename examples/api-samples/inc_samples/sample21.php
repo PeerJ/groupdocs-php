@@ -202,6 +202,7 @@
      
 	  //### Delete downloads folder and all files in this folder
     function delFolder($path) {
+        $next = null;
         $item = array();
         //Get all items fron folder
         $item = scandir($path);

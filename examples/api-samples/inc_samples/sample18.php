@@ -143,8 +143,9 @@
             //Delete files from folder
             for ($i = 0; $i < count($item); $i++) {
                 $next = $path . "\\" . $item[$i];
-                unlink($next);
-                
+                if (file_exists($next)) {
+                    unlink($next);
+                }
             }
         }
         //Delete folder

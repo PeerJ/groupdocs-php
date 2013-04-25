@@ -4,15 +4,15 @@
     //###Set variables and get POST data
     $clientId = F3::get('POST["client_id"]');
     $privateKey = F3::get('POST["private_key"]');
-    $fileName = F3::get('POST["srcPath"]');
+   
     $copy = F3::get('POST["copy"]');
     $move = F3::get('POST["move"]');
     $folder = F3::get('POST["destPath"]');
     
-    function copy_move($clientId, $privateKey, $fileName, $move=NULL, $copy=NULL, $folder)
+    function copy_move($clientId, $privateKey, $move=NULL, $copy=NULL, $folder)
     {
         //###Check clientId, privateKey and file Id
-        if (!isset($clientId) || !isset($privateKey) || !isset($fileName)) {
+        if (!isset($clientId) || !isset($privateKey)) {
 			
 			throw new Exception('You do not enter all parameters');
 			
@@ -38,6 +38,10 @@
             $file_id = '';
             //Get entered URL
             $url = F3::get('POST["url"]');
+            $fileName = F3::get('POST["srcPath"]');
+            if ($fileName != "") {
+                $file_id = $fileName;
+            }
             //Check is URL entered
             if ($url != "") {
                 //Upload file from URL
@@ -101,6 +105,7 @@
                //Request to Storage for copying
                $file = $api->MoveFile($clientId, $path, NULL, NULL, $file_id); //download file
                 //If request was successfull - set button variable for template
+                F3::set('file_Name', $file_id);
                return F3::set('button', $move);
             }
            
@@ -108,7 +113,7 @@
     }
     
     try {
-        copy_move($clientId, $privateKey, $fileName, $move, $copy, $folder);
+        copy_move($clientId, $privateKey, $move, $copy, $folder);
         $message = 'File was {{@button}}\'ed to the <font color="blue">{{@folder}}</font> folder';
     } catch(Exception $e) {
 
@@ -118,7 +123,6 @@
     //Process template
     F3::set('userId', $clientId);
     F3::set('privateKey', $privateKey);
-    F3::set('file_Name', $fileName);
     F3::set('folder', $folder);
     f3::set('message', $message);
     

@@ -65,7 +65,7 @@
 
                 //###Check uploaded file
                 if (null === $uploadedFile) {
-                    return new RedirectResponse("/sample21");
+                    return new RedirectResponse("/sample23");
                 }
                 //Temp name of the file
                 $tmp_name = $uploadedFile['tmp_name']; 

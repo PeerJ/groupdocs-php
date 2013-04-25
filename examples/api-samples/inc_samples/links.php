@@ -23,7 +23,8 @@ $links = array('<a href="sample01">Sample01 - How to login to GroupDocs using th
                '<a href="/sample21">Sample21 - How to Create and Upload Envelop to GroupDocs account using PHP SDK</a>',
                '<a href="/sample22">Sample22 - This sample will show how create or update user and add him to collaborators using PHP SDK</a>',
                '<a href="/sample23">Sample23 - How to  View Document pages as images using PHP SDK</a>',
-               '<a href="sample24">Sample24 - How to upload file from URL to GroupDocs account using PHP SDK</a>');
+               '<a href="sample24">Sample24 - How to upload file from URL to GroupDocs account using PHP SDK</a>',
+               '<a href="sample25">Sample25 - How to convert DOCX with template fields file into PDF using PHP SDK</a>');
 F3::set('links', $links);
 
 ?>

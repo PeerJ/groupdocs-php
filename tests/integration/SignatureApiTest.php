@@ -27,7 +27,7 @@ class SignatureApiTest extends AbstractIntegrationTest {
 		$lastName = null;
 		$email = null;
 		$records = null;
-		$response = SignatureApi::create($this->apiClient)->GetContacts($userId, $page, $firstName, $lastName, $email, $records);
+		$response = SignatureApi::newInstance($this->apiClient)->GetContacts($userId, $page, $firstName, $lastName, $email, $records);
 		assertThat($response, notNullValue());
 		
 	}

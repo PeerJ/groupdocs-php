@@ -20,7 +20,7 @@ class FileStreamFromHttpTest extends PHPUnit_Framework_TestCase {
 	public function test_size() {
 		$filename = "out.doc";
 		$fs = FileStream::fromHttp(dirname(__FILE__), $filename);
-		$fs->bodyCallback(null, file_get_contents(dirname(__FILE__)."/resources/test.doc"));
+		$fs->bodyCallback(null, file_get_contents(dirname(__FILE__)."/../unit/resources/test.doc"));
 		
 		$expected = 29696;
 		$this->assertEquals($expected, $fs->getSize());

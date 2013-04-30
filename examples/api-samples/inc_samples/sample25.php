@@ -1,5 +1,5 @@
 <?php
-    //<i>This sample will show how to use <b>GuId</b> of file to generate an embedded Viewer URL for a Document</i>
+    //<i>This sample will show how to merge data fields in docx file with data source and get result file as PDF file</i>
 
     //###Set variables and get POST data
     F3::set('userId', '');

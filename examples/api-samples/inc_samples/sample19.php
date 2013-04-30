@@ -170,6 +170,7 @@
                 }
                 //Get file guid
                 $guid = $jobInfo->result->outputs[0]->guid;
+                $iframe = 'https://apps.groupdocs.com/document-viewer/embed/';
                 // Construct iframe using fileId
                 if($basePath == "https://api.groupdocs.com/v2.0") {
                     $iframe = 'https://apps.groupdocs.com/document-viewer/embed/' . $guid . ' frameborder="0" width="500" height="650"';

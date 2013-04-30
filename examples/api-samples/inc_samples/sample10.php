@@ -95,6 +95,7 @@
             $docApi = new DocApi($apiClient);
             $docApi->setBasePath($basePath);
             //Make request to user storage for sharing document
+         
             $URL = $docApi->ShareDocument($userId, $file_id, $body);
             //If request was successfull - set shared variable for template
             

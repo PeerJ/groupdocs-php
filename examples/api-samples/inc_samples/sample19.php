@@ -35,6 +35,7 @@
             $secondFileId = f3::get('POST["targetFileId"]');
             $url = F3::get('POST["url"]');
             $targetUrl = F3::get('POST["target_url"]'); 
+            $iframe = "";
             //###Create Signer, ApiClient and Storage Api objects
 
             //Create signer object
@@ -184,6 +185,8 @@
                    $iframe = 'http://realtime-apps.groupdocs.com/document-viewer/embed/' . $guid . '" frameborder="0" width="100%" height="600"';
                }
 
+            } else {
+                throw new Exception($info->error_message);
             }
             //If request was successfull - set url variable for template
              f3::set('sourceFileId', $sourceFileId);

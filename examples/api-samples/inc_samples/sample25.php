@@ -117,7 +117,7 @@
                         //### Check job status
                          for ($n = 0; $n <= 5; $n++) {
                              //Delay necessary that the inquiry would manage to be processed
-                             sleep(5);                    
+                             sleep(2);                    
                              //Make request to api for get document info by job id
                              $jobInfo = $api->GetJobDocuments($clientId, $job->result->job_id);
                              //Check job status, if status is Completed or Archived exit from cycle
@@ -129,8 +129,12 @@
 
                              }
                          }
+                         if ($jobInfo->result->job_status == "Pending") {
+                             throw new Exception("Job is pending");
+                         }
                          //Get file guid
                          $guid = $jobInfo->result->inputs[0]->outputs[0]->guid;
+                          F3::set('fileId', $guid);
                           //Get file name
                          $name = $jobInfo->result->inputs[0]->outputs[0]->name;
                          //Local path to the downloads folder

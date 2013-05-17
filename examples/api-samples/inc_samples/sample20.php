@@ -65,6 +65,8 @@
                 }
                 $table .= "</table>";
                 return f3::set('change', $table);
+            } else {
+                throw new Exception($info->error_message);
             }
             //If request was successfull - set url variable for template
 //            return f3::set('change', $table);

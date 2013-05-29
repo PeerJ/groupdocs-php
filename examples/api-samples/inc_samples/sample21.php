@@ -166,12 +166,6 @@
                                             throw new Exception("You use a wrong file, it's don't content any fields for sign");
                                         }
                                         for ($n = 0; $n < count($fields); $n++) {
-//                                            $fieldSettings = new SignatureEnvelopeFieldSettings();
-//                                            $fieldSettings->name = $fields[$n]->name;
-//                                            $fieldSettings->locationHeight = $fields[$n]->locations[0]->locationHeight;
-//                                            $fieldSettings->locationWidth = $fields[$n]->locations[0]->locationWidth;
-//                                            $fieldSettings->locationX = $fields[$n]->locations[0]->locationX;
-//                                            $fieldSettings->locationY = $fields[$n]->locations[0]->locationY;
                                             $addEnvelopField = $signature->AddSignatureEnvelopeField($clientID, $envelop->result->envelope->id, $getDocuments->result->documents[0]->documentId, $recipientId, $fields[$n]->id);
                                         }
                                         $send = $signature->SignatureEnvelopeSend($clientID, $envelop->result->envelope->id, $callbackUrl);

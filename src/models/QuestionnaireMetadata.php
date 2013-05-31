@@ -36,7 +36,8 @@ class QuestionnaireMetadata {
       'folder' => 'string',
       'emails' => 'string',
       'output_format' => 'string',
-      'open_on_completion' => 'bool'
+      'open_on_completion' => 'bool',
+      'allowed_operations' => 'int'
 
     );
 
@@ -53,5 +54,6 @@ class QuestionnaireMetadata {
   public $emails; // string
   public $output_format; // string
   public $open_on_completion; // bool
+  public $allowed_operations; // int
   }
 

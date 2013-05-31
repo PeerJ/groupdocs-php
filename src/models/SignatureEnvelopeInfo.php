@@ -27,6 +27,7 @@ class SignatureEnvelopeInfo {
       'id' => 'string',
       'name' => 'string',
       'creationDateTime' => 'string',
+      'updatedDateTime' => 'string',
       'ownerGuid' => 'string',
       'status' => 'int',
       'statusDateTime' => 'string',
@@ -50,6 +51,7 @@ class SignatureEnvelopeInfo {
   public $id; // string
   public $name; // string
   public $creationDateTime; // string
+  public $updatedDateTime; // string
   public $ownerGuid; // string
   public $status; // int
   public $statusDateTime; // string

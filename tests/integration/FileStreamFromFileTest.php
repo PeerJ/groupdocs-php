@@ -15,10 +15,10 @@
  *  limitations under the License.
  */
 
-class FileStreamFromFileTest extends PHPUnit_Framework_TestCase {
+class TestFileStreamFromFile extends PHPUnit_Framework_TestCase {
 
 	protected function setUp() {
-        $this->fs = FileStream::fromFile(dirname(__FILE__)."/../unit/resources/test.doc");
+        $this->fs = FileStream::fromFile(dirname(__FILE__)."/resources/test.doc");
 	}
 	
 	

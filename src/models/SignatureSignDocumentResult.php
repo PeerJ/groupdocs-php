@@ -24,10 +24,10 @@
 class SignatureSignDocumentResult {
 
   static $swaggerTypes = array(
-      'documentId' => 'string'
+      'documents' => 'array[SignatureSignDocumentInfo]'
 
     );
 
-  public $documentId; // string
+  public $documents; // array[SignatureSignDocumentInfo]
   }
 

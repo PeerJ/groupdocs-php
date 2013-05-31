@@ -26,12 +26,14 @@ class SignatureFormParticipantInfo {
   static $swaggerTypes = array(
       'id' => 'string',
       'documentGuid' => 'string',
-      'fillDateTime' => 'string'
+      'fillDateTime' => 'string',
+      'status' => 'int'
 
     );
 
   public $id; // string
   public $documentGuid; // string
   public $fillDateTime; // string
+  public $status; // int
   }
 

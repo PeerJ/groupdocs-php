@@ -19,18 +19,5 @@ require_once("AbstractIntegrationTest.php");
 
 class SignatureApiTest extends AbstractIntegrationTest {
 
-	public function testGetContacts(){
-
-		$userId = $this->userId;
-		$page = null;
-		$firstName = null;
-		$lastName = null;
-		$email = null;
-		$records = null;
-		$response = SignatureApi::newInstance($this->apiClient)->GetContacts($userId, $page, $firstName, $lastName, $email, $records);
-		assertThat($response, notNullValue());
-		
-	}
-	
 	
 }

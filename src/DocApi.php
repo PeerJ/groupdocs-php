@@ -1227,6 +1227,52 @@ class DocApi {
   		                                                'RemoveTagsResponse');
   	  return $responseObject;
       }
+  /**
+	 * GetDocumentContent
+	 * Returns document content
+   * userId, string: GroupDocs user global unique identifier. (required)
+   * fileId, string: Document global unique identifier. (required)
+   * contentType, string: Content type. (required)
+   * @return GetDocumentContentResponse
+	 */
+
+   public function GetDocumentContent($userId, $fileId, $contentType) {
+      if( $userId === null || $fileId === null || $contentType === null ) {
+        throw new ApiException("missing required parameters", 400);
+      }
+      //parse inputs
+  	  $resourcePath = str_replace("*", "", "/doc/{userId}/files/{fileId}/content/{contentType}");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "GET";
+      $queryParams = array();
+      $headerParams = array();
+
+      if($userId !== null) {
+  			$resourcePath = str_replace("{" . "userId" . "}",
+  			                            $userId, $resourcePath);
+  		}
+  		if($fileId !== null) {
+  			$resourcePath = str_replace("{" . "fileId" . "}",
+  			                            $fileId, $resourcePath);
+  		}
+  		if($contentType !== null) {
+  			$resourcePath = str_replace("{" . "contentType" . "}",
+  			                            $contentType, $resourcePath);
+  		}
+  		//make the API Call
+      if (! isset($body)) {
+        $body = null;
+      }
+      $response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
+      if(! $response){
+        return null;
+      }
+
+  	  $responseObject = $this->apiClient->deserialize($response,
+  		                                                'GetDocumentContentResponse');
+  	  return $responseObject;
+      }
   
 }
 

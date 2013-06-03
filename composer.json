@@ -1,6 +1,6 @@
 {
     "name": "groupdocs/groupdocs-php",
-    "version": "1.4.0",
+    "version": "1.5.0",
     "type": "library",
     "description": "GroupDocs API library for PHP",
     "keywords": ["groupdocs"],

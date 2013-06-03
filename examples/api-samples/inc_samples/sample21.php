@@ -148,7 +148,7 @@
                             }
                         }
                         //Add recipient to envelope
-                        $addRecipient = $signature->AddSignatureEnvelopeRecipient($clientID, $envelop->result->envelope->id, $email, $signName, $lastName, null, $roleId);
+                        $addRecipient = $signature->AddSignatureEnvelopeRecipient($clientID, $envelop->result->envelope->id, $email, $signName, $lastName, $roleId, null);
                         if ($addRecipient->status == "Ok") {
                             //Get recipient id
                             $getRecipient = $signature->GetSignatureEnvelopeRecipients($clientID, $envelop->result->envelope->id);

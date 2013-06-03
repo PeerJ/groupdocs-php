@@ -1,5 +1,5 @@
 <?php
-    //<i>This sample will show how to use <b>GetDocumentPagesImageUrls</b> method from Doc Api to return a URL representing a single page of a Document</i>
+    //<i>This sample will show how to use <b>GetChanges</b> method from ComparisonApi to return a list of changes of a Document</i>
 
     //###Set variables and get POST data
     F3::set('userId', '');
@@ -53,11 +53,11 @@
                             //If object make cycle for the curent object
                             foreach($content as $subName => $subContent) {
 
-                                $table .= "<tr><td>$subName</td><td>$subContent</td></tr>";
+                                $table .= "<tr><td>" . $subName . "</td><td>" . $subContent . "</td></tr>";
                             }
                         } elseif(!is_object($content)) {
                             //Get curent element data
-                            $table .= "<td>$name</td><td>" . $content . "</td>";
+                            $table .= "<td>" . $name . "</td><td>" . $content . "</td>";
                             $table .= "</tr>";
                         }
                     }

@@ -19,5 +19,7 @@ require_once("AbstractIntegrationTest.php");
 
 class AntApiTest extends AbstractIntegrationTest {
 
-	
+	public function testDummy(){
+            assertThat(true, notNullValue());
+        } 
 }

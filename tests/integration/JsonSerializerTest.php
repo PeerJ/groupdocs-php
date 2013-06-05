@@ -15,7 +15,7 @@
  *  limitations under the License.
  */
 
-class TestJsonSerializer extends PHPUnit_Framework_TestCase {
+class JsonSerializerTest extends PHPUnit_Framework_TestCase {
 
 	protected function setUp() {
 	}

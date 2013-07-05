@@ -20,23 +20,23 @@
     <p>ClientID = {{@userId}}
     <p>PrivateKey = {{@privateKey}}
     <p>FileId = {{@fileId}}
-    <p><font color="red">{{@error}}</font>
+    <p><span style="color: red">{{@error}}</span>
     <div id="requestForm" style="padding:20px; border:1px solid black;">
         <p> Enter data for request and press "Make request" button </p>
         <form action="sample13" method = "post" enctype = 'multipart/form-data'>
             <label for='client_id'>GroupDocs ClientID</label>
             <br />
-            <input type='text' name='client_id' value="{{@userId}}" />
+            <input type='text' name='client_id' id="client_id" value="{{@userId}}" />
             <br />
             <label for='private_key'>GroupDocs PrivateKey</label>
             <br />
-            <input type='text' name='private_key'  value="{{@privateKey}}" />
+            <input type='text' name='private_key' id="private_key" value="{{@privateKey}}" />
             <br />
             <input type="radio" name="sourse" value="guid" id="id" onClick="display('guid');" checked>File ID (GUID) </input>
             <br />
             <input type="radio" name="sourse" value="local" id="localField" onClick="display('local');" >Upload local file </input>
             <br />
-            <input type="radio" name="sourse" value="url" id="urlField" onClick="display('url');" >Upload file from URL </input>
+            <input type="radio" name="sourse" value="url" id="urlFieldId" onClick="display('url');" >Upload file from URL </input>
             <br />
             <br />
             <label for='private_key' id="guid">GroupDocs fileID</label>
@@ -70,7 +70,7 @@
         <p> Results: </p>
         <p>New collaborations:
             <repeat group="{{ @result->collaborators }}" value="{{ @item }}">
-                <font color="green">{{ @item->primary_email }}</font>
+                <span style="color: green">{{ @item->primary_email }}</span>
             </repeat>
         </p>
     </div>

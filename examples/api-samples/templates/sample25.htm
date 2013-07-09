@@ -20,25 +20,25 @@
    <p>PrivateKey = {{@privateKey}}
    <p>File Id = {{@fileId}}
    
-   <p><font color="red">{{@error}}</font>
+   <p><span style="color: red">{{@error}}</span>
    <div id="requestForm" style="padding:20px; border:1px solid black;">
    <p> Enter data for request and press "Make request" button </p>
         <form action="sample25" method = "post" enctype = 'multipart/form-data'>
             <br />
             <label for='client_id'>GroupDocs Client ID</label>
             <br />
-            <input type='text' name='client_id' value="{{@userId}}" />
+            <input type='text' name='client_id' id="client_id" value="{{@userId}}" />
             <br />
             <label for='private_key'>GroupDocs PrivateKey</label>
             <br />
-            <input type='text' name='private_key'  value="{{@privateKey}}" />
+            <input type='text' name='private_key' id="private_key" value="{{@privateKey}}" />
             <br />
             <br />
             <input type="radio" name="sourse" value="guid" id="id" onClick="display('guid');" >File ID (GUID) </input>
             <br />
             <input type="radio" name="sourse" value="local" id="localField" onClick="display('local');" checked>Upload local file </input>
             <br />
-            <input type="radio" name="sourse" value="url" id="urlField" onClick="display('url');" >Upload file from URL </input>
+            <input type="radio" name="sourse" value="url" id="urlFieldR" onClick="display('url');" >Upload file from URL </input>
             <br />
             
             <label for='private_key' id="guid" style="display:none;">GroupDocs fileID</label>
@@ -61,7 +61,7 @@
         </form>
    </div>
    <div  style="padding:20px; border:1px solid black;">
-        <font color="green">{{@message}}</font>
+        <span style="color: green">{{@message}}</span>
         <iframe frameborder="0" width="800" height="650" src="{{@url}}"></iframe>
    </div>
    <br/>

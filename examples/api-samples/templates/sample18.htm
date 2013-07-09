@@ -16,29 +16,29 @@
     <br />
     <span class="documentation"><a href="/docs/sample18.html">Docs for this sample</a></span>
     <br />
-    <p><font color="green">You entered: </font></p>
+    <p><span style="color: green">You entered: </span></p>
 		<p>ClientID = {{@userId}}</p>
 		<p>Private Key = {{@privateKey}}</p>
 		<p>File Id = {{@fileId}} </p>
 		<p>Convert type = {{@convert_type}}</p>
     <br />
-    <p><font color="red">{{@error}}</font>
+    <p><span style="color: red">{{@error}}</span>
     <div id="requestForm" style="padding:20px; border:1px solid black;">
         <p> Enter data for request and press "Make request" button </p>
         <form action="sample18" method = "post" enctype = 'multipart/form-data'>
             <label for='client_id'>GroupDocs Client ID</label>
             <br />
-            <input type='text' name='client_id' value="{{@userId}}" />
+            <input type='text' name='client_id' id="client_id" value="{{@userId}}" />
             <br />
             <label for='private_key'>GroupDocs Private Key</label>
             <br />
-            <input type='text' name='private_key'  value="{{@privateKey}}" />
+            <input type='text' name='private_key' id="private_key" value="{{@privateKey}}" />
             <br />
             <input type="radio" name="sourse" value="guid" id="id" onClick="display('guid');" checked>File ID (GUID) </input>
             <br />
             <input type="radio" name="sourse" value="local" id="localField" onClick="display('local');" >Upload local file </input>
             <br />
-            <input type="radio" name="sourse" value="url" id="urlField" onClick="display('url');" >Upload file from URL </input>
+            <input type="radio" name="sourse" value="url" id="urlFieldR" onClick="display('url');" >Upload file from URL </input>
             <br />
             <br />
             <label for='private_key' id="guid">GroupDocs fileID</label>
@@ -55,7 +55,7 @@
             <br />
             <label for='callbackUrl'>callbackUrl<span class="optional">(Optional)<br />For test Callback you can use this URL: http://groupdocs-php-samples.herokuapp.com/callbacks/convert_callback</span></label>
             <br />
-            <input type='text' name='callbackUrl'  value="{{@callbackUrl}}" />
+            <input type='text' name='callbackUrl' id="callbackUrl" value="{{@callbackUrl}}" />
             <br />
             <label for='server_type'>Base path<span class="optional">(Optional)</span></label>
             <br />
@@ -80,7 +80,7 @@
     </div>
     <div  id="result" style="padding:20px; border:1px solid black;">
         <p> Results: </p>
-        <p><font color="red">{{@error_message}}</font>
+        <p><span style="color: red">{{@error_message}}</span>
         <iframe src="{{ @iframe }}"></iframe>
     </div>
 </div>

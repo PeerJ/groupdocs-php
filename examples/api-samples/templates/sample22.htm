@@ -24,46 +24,44 @@
     <p>First Name = {{@first_name}}
     <p>Last Name = {{@last_name}}
     <p>CallBack URL = {{@callbackUrl}}
-    <p><font color="red">{{@error}}{{@message}}</font>
+    <p><span style="color: red">{{@error}}{{@message}}</span>
     <div id="requestForm" style="padding:20px; border:1px solid black;">
         <p> Enter data for request and press "Make request" button </p>
         <form action="sample22" method = "post" enctype = 'multipart/form-data'>
             <br />
             <label for='client_id'>GroupDocs Client ID</label>
             <br />
-            <input type='text' name='client_id' value="{{@userId}}" />
+            <input type='text' name='client_id' id="client_id" value="{{@userId}}" />
             <br />
             <label for='private_key'>GroupDocs PrivateKey</label>
             <br />
-            <input type='text' name='private_key'  value="{{@privateKey}}" />
+            <input type='text' name='private_key' id="private_key" value="{{@privateKey}}" />
             <br />
             <label for='email'>Email</label>
             <br />
-            <input type='text' name='email' value="{{@email}}" />
+            <input type='text' name='email' id="email" value="{{@email}}" />
             <br />
             <label for='first_name'>First Name</label>
             <br />
-            <input type='text' name='first_name'  value="{{@first_name}}" />
+            <input type='text' name='first_name' id="first_name" value="{{@first_name}}" />
             <br />
             <label for='last_name'>Last Name</label>
             <br />
-            <input type='text' name='last_name'  value="{{@last_name}}" />
+            <input type='text' name='last_name' id="last_name" value="{{@last_name}}" />
             <br />
             <input type="radio" name="sourse" value="guid" id="id" onClick="display('guid');" checked>File ID (GUID) </input>
             <br />
             <input type="radio" name="sourse" value="local" id="localField" onClick="display('local');" >Upload local file </input>
             <br />
-            <input type="radio" name="sourse" value="url" id="urlField" onClick="display('url');" >Upload file from URL </input>
+            <input type="radio" name="sourse" value="url" id="urlFieldR" onClick="display('url');" >Upload file from URL </input>
             <br />
             <br />
             <label for='private_key' id="guid">GroupDocs fileID</label>
             <br />
             <input type='text' name='fileId' id="guidfield" value="{{@fileId}}" />
-
             <label for='file' id="file" style="display:none;">Local file</label>
             <br />
             <input type='file' name='file' id="filefield" style="display:none;" />
-
             <label for='private_key' style="display:none;" id="url">File URL</label>
             <br />
             <input type='text' name='url'  value="" id="urlfield" style="display:none;" />
@@ -73,16 +71,13 @@
             <input type ="text" name="server_type" id="server_type" />
             <br />
             <input type='submit' value='Make Request'/>
-			
 		</form>
-      
     </div>
     <div  id="result" style="padding:20px; border:1px solid black;">
         Result: 
         <iframe src="{{@url}}"></iframe>
    </div>
 </div>
-
  <include href="links.htm" />
  <script type="text/javascript">
 	

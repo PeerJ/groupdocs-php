@@ -58,7 +58,12 @@
             <input type='text' name='url'  value="" id="urlfield" style="display:none;" />
             <br />
             <br />
-            <label for="sex">Whot is your sex?</label>
+            <div style="background-color:#e5e5e5;border:3px double gray;width:700px;padding:3px;font-size:10pt;">
+            <label for='name'>What is your name?</label>
+            <br />
+            <input type='text' name='name' value="{{@name}}" />
+            <br />
+            <label for="sex">What is your sex?</label>
             <input type="checkbox" name="sex" value="Man" /><label for="sex">Man</label>
             <input type="checkbox" name="sex" value="Woman" /><label for="sex">Woman</label>
             <br />
@@ -72,17 +77,15 @@
             <br />
             <label for="sunrise">Do you like sunrise</label>
             <select name="sunrise">
-                <option value="Yes">Yes I do</option>
+                <option value="Yes">Yes</option>
                 <option value="No">No</option>
             </select>
             <br />
-            <br />
-            <label for='name'>What is your name?</label>
-            <br />
-            <input type='text' name='name' value="{{@name}}" />
+            </div>
             <br />
             <label for='server_type'>Base path<span class="optional">(Optional)</span></label>
             <br />
+            
             <input type ="text" name="server_type" id="server_type" />
             <br />
             <label for="type">Select type of the result file</label>
@@ -91,7 +94,7 @@
                 <option value="docx">DOCX</option>
                 <option value="pdf">PDF</option>
             </select>
-            <input type='submit' value='Make Request'/>
+            <input type='submit' value='Assemble'/>
         </form>
    </div>
    <div  style="padding:20px; border:1px solid black;">

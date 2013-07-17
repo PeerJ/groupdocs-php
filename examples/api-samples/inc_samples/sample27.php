@@ -50,17 +50,34 @@
             f3::set("name", $name);
             $file = $_FILES['file'];
             $fileGuId = "";
+             $url = F3::get('POST["url"]');
+            $file = $_FILES['file'];
+            $fileId = f3::get('POST["fileId"]');
+            //Check if user choose upload file from URL
+            if ($url != "") {
+                //Upload file from URL
+                $uploadResult = $apiStorage->UploadWeb($clientId, $url);
+                //Check is file uploaded
+                if ($uploadResult->status == "Ok") {
+                    //Get file GUID
+                    $fileGuId = $uploadResult->result->guid;
+                    $fileId = "";
+                //If it isn't uploaded throw exception to template
+                } else {
+                    throw new Exception($uploadResult->error_message);
+                }
+            }
             //Check is user choose upload local file
             if ($_FILES['file']["name"] != "") {
                 //Temp name of the file
                 $tmp_name = $file['tmp_name']; 
                 //Original name of the file
-                $fileName = $file['name'];
+                $name = $file['name'];
                 //Creat file stream
                 $fs = FileStream::fromFile($tmp_name);
                 //###Make a request to Storage API using clientId
                 //Upload file to current user storage
-                $uploadResult = $apiStorage->Upload($clientId, $fileName, 'uploaded', "", $fs);
+                $uploadResult = $apiStorage->Upload($clientId, $name, 'uploaded', "", $fs);
 
                 //###Check if file uploaded successfully
                 if ($uploadResult->status == "Ok") {
@@ -72,6 +89,11 @@
                 } else {
                     throw new Exception($uploadResult->error_message);
                 }
+            }
+            //Check is user choose file GUID
+            if ($fileId != "") {
+                //Get entered by user file GUID
+                $fileGuId = $fileId;
             }
             $enteredData = array("sex" => $sex, "age" => $age, "sunrise" => $sunrise, "name" => $name);
             $resultType = f3::get('POST["type"]');

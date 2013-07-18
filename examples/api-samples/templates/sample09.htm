@@ -11,7 +11,7 @@
 <h3 style="text-align:center;"><a href="/index.php">GroupDocs PHP SDK Samples</a> - Sample9</h3>
 
 <div class='samplecontent' style="padding:10px;">
-   <span class="description"><i>This sample will show how to generate an embedded Viewer URL for particular Document in the GroupDocs account using PHP SDK</i></span> <br/>
+   <span class="description"><i>This sample will show how to generate an embedded Viewer/Annotation URL for a Document in the GroupDocs account using PHP SDK</i></span> <br/>
     <br />
     <span class="documentation"><a href="/docs/sample09.html">Docs for this sample</a></span>
     <br />
@@ -21,6 +21,7 @@
    <p>File Id = {{@fileId}}
    <p>Height = {{@height}}
    <p>Width = {{@width}}
+   <p>Iframe type = {{@iframeType}}</p>
    <p>Viewer URL = {{@url}}
    <p><span style="color: red">{{@error}}</span>
    <div id="requestForm" style="padding:20px; border:1px solid black;">
@@ -52,7 +53,12 @@
             <label for='urlfieldId' style="display:none;" id="url">File URL</label>
             <br />
             <input type='text' name='url'  value="" id="urlfieldId" style="display:none;" />
-            <br />
+             <br />
+            <label for="iframeType">What app you want to generate?  Viewer / Annotation</label>
+             <br />
+             <input type="radio" name="iframeType" value="viewer" checked>Viewer</input>
+             <input type="radio" name="iframeType" value="annotation">Annotation</input>
+             <br />
             <label for='private_key'>Width<span class="optional">(Optional)</span></label>
             <br />
             <input type='text' name='width'  value="{{@width}}" />
@@ -69,7 +75,7 @@
         </form>
    </div>
    <div  style="padding:20px; border:1px solid black;">
-        <iframe src="{{@url}}"></iframe>
+        <iframe src="{{@url}}" frameborder="0" width="{{@width}}" height="{{@height}}"></iframe>
    </div>
    <br/>
 </div>

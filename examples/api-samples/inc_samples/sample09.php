@@ -17,6 +17,8 @@
         } else {
             F3::set('userId', $clientId);
             F3::set('privateKey', $privateKey);
+            $iframeType = f3::get('POST["iframeType"]');
+            f3::set("iframeType", $iframeType);
             //Get base path
             $basePath = f3::get('POST["server_type"]');
             //Get entered by user data
@@ -81,18 +83,34 @@
                 //Get entered by user file GUID
                 $fileGuId = $fileId;
             }
-            //Generation of iframe URL using fileGuId
-             if($basePath == "https://api.groupdocs.com/v2.0") {
-                $iframe = 'http://apps.groupdocs.com/document-viewer/embed/' . $fileGuId . '?frameborder="0" width="450" height="650"';
-            //iframe to dev server
-            } elseif($basePath == "https://dev-api.groupdocs.com/v2.0") {
-                $iframe = 'http://dev-apps.groupdocs.com/document-viewer/embed/' . $fileGuId . '?frameborder="0" width="450" height="650"';
-            //iframe to test server
-            } elseif($basePath == "https://stage-api.groupdocs.com/v2.0") {
-                $iframe = 'http://stage-apps.groupdocs.com/document-viewer/embed/' . $fileGuId . '?frameborder="0" width="450" height="650"';
-            //Iframe to realtime server
-            } elseif ($basePath == "http://realtime-api.groupdocs.com") {
-                $iframe = 'http://realtime-apps.groupdocs.com/document-viewer/embed/' . $fileGuId . '?frameborder="0" width="450" height="650"';
+            if($iframeType == "viewer") {
+                //Generation of iframe URL using fileGuId
+                 if($basePath == "https://api.groupdocs.com/v2.0") {
+                    $iframe = 'http://apps.groupdocs.com/document-viewer/embed/' . $fileGuId;
+                //iframe to dev server
+                } elseif($basePath == "https://dev-api.groupdocs.com/v2.0") {
+                    $iframe = 'http://dev-apps.groupdocs.com/document-viewer/embed/' . $fileGuId;
+                //iframe to test server
+                } elseif($basePath == "https://stage-api.groupdocs.com/v2.0") {
+                    $iframe = 'http://stage-apps.groupdocs.com/document-viewer/embed/' . $fileGuId;
+                //Iframe to realtime server
+                } elseif ($basePath == "http://realtime-api.groupdocs.com") {
+                    $iframe = 'http://realtime-apps.groupdocs.com/document-viewer/embed/' . $fileGuId;
+                }
+            }
+            if($iframeType == "annotation"){
+                  if($basePath == "https://api.groupdocs.com/v2.0") {
+                    $iframe = 'http://apps.groupdocs.com/document-annotation2/embed/' . $fileGuId;
+                //iframe to dev server
+                } elseif($basePath == "https://dev-api.groupdocs.com/v2.0") {
+                    $iframe = 'http://dev-apps.groupdocs.com/document-annotation2/embed/' . $fileGuId;
+                //iframe to test server
+                } elseif($basePath == "https://stage-api.groupdocs.com/v2.0") {
+                    $iframe = 'http://stage-apps.groupdocs.com/document-annotation2/embed/' . $fileGuId;
+                //Iframe to realtime server
+                } elseif ($basePath == "http://realtime-api.groupdocs.com") {
+                    $iframe = 'http://realtime-apps.groupdocs.com/document-annotation2/embed/' . $fileGuId;
+                }
             }
             //If request was successfull - set url variable for template
             f3::set('fileId', $fileGuId);

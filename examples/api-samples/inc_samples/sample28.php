@@ -46,7 +46,7 @@
                     for($i = 0; $i < count($list->result->annotations); $i++) {
                          $del = $ant->DeleteAnnotation($clientId, $list->result->annotations[$i]->guid);
                          if($del->status == "Ok") {
-                             $message = '<span style="color: green">All annotation was deleted successfully</span>';
+                             $message = '<span style="color: green">All annotation were deleted successfully</span>';
                               //### If request was successfull
                           //Generation of iframe URL using $pageImage->result->guid
                           //iframe to prodaction server

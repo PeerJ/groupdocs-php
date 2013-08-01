@@ -15,7 +15,7 @@
  *  limitations under the License.
  */
 
-class FileStreamFromHttpTest extends PHPUnit_Framework_TestCase {
+class TestFileStreamFromHttp extends PHPUnit_Framework_TestCase {
 	
 	public function test_size() {
 		$filename = "out.doc";

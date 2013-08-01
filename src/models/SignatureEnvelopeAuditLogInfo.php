@@ -25,6 +25,7 @@ class SignatureEnvelopeAuditLogInfo {
 
   static $swaggerTypes = array(
       'id' => 'string',
+      'type' => 'int',
       'DateTime' => 'string',
       'userName' => 'string',
       'action' => 'string',
@@ -34,6 +35,7 @@ class SignatureEnvelopeAuditLogInfo {
     );
 
   public $id; // string
+  public $type; // int
   public $DateTime; // string
   public $userName; // string
   public $action; // string

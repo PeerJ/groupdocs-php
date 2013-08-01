@@ -27,6 +27,7 @@ class QuestionnaireInfo {
       'resolved_executions' => 'int',
       'pages' => 'array[QuestionnairePageInfo]',
       'document_ids' => 'array[string]',
+      'formats' => 'array[string]',
       'id' => 'float',
       'guid' => 'string',
       'name' => 'string',
@@ -47,6 +48,7 @@ class QuestionnaireInfo {
   public $resolved_executions; // int
   public $pages; // array[QuestionnairePageInfo]
   public $document_ids; // array[string]
+  public $formats; // array[string]
   public $id; // float
   public $guid; // string
   public $name; // string

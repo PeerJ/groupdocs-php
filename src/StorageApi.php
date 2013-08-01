@@ -562,12 +562,12 @@ class StorageApi {
    * userId, string: User GUID (required)
    * path, string: Destination Path (required)
    * mode, string: Mode (optional)
-   * Groupdocs_Copy, string: Source path (copy) (optional)
    * Groupdocs_Move, string: Source path (move) (optional)
+   * Groupdocs_Copy, string: Source path (copy) (optional)
    * @return FolderMoveResponse
 	 */
 
-   public function MoveFolder($userId, $path, $mode=null, $Groupdocs_Copy=null, $Groupdocs_Move=null) {
+   public function MoveFolder($userId, $path, $mode=null, $Groupdocs_Move=null, $Groupdocs_Copy=null) {
       if( $userId === null || $path === null ) {
         throw new ApiException("missing required parameters", 400);
       }
@@ -585,11 +585,11 @@ class StorageApi {
       if($mode !== null) {
   		  $queryParams['override_mode'] = $this->apiClient->toPathValue($mode);
   		}
-  		if($Groupdocs_Copy !== null) {
-  		 	$headerParams['Groupdocs-Copy'] = $this->apiClient->toPathValue($Groupdocs_Copy);
-  		}
-      if($Groupdocs_Move !== null) {
+  		if($Groupdocs_Move !== null) {
   		 	$headerParams['Groupdocs-Move'] = $this->apiClient->toPathValue($Groupdocs_Move);
+  		}
+      if($Groupdocs_Copy !== null) {
+  		 	$headerParams['Groupdocs-Copy'] = $this->apiClient->toPathValue($Groupdocs_Copy);
   		}
       if($userId !== null) {
   			$resourcePath = str_replace("{" . "userId" . "}",

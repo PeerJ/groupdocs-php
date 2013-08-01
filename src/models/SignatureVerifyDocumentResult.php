@@ -24,10 +24,16 @@
 class SignatureVerifyDocumentResult {
 
   static $swaggerTypes = array(
-      'authentic' => 'bool'
+      'authentic' => 'bool',
+      'datesSigned' => 'array[string]',
+      'references' => 'array[string]',
+      'recipients' => 'array[SignatureEnvelopeRecipientInfo]'
 
     );
 
   public $authentic; // bool
+  public $datesSigned; // array[string]
+  public $references; // array[string]
+  public $recipients; // array[SignatureEnvelopeRecipientInfo]
   }
 

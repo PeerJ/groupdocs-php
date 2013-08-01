@@ -38,7 +38,9 @@ class SignatureFormInfo {
       'canParticipantDownloadForm' => 'bool',
       'waterMarkText' => 'string',
       'waterMarkImage' => 'string',
-      'fieldsCount' => 'float'
+      'fieldsCount' => 'float',
+      'notifyOwnerOnSign' => 'bool',
+      'attachSignedDocument' => 'bool'
 
     );
 
@@ -57,5 +59,7 @@ class SignatureFormInfo {
   public $waterMarkText; // string
   public $waterMarkImage; // string
   public $fieldsCount; // float
+  public $notifyOwnerOnSign; // bool
+  public $attachSignedDocument; // bool
   }
 

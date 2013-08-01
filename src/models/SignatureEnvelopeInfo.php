@@ -44,7 +44,9 @@ class SignatureEnvelopeInfo {
       'waterMarkText' => 'string',
       'waterMarkImage' => 'string',
       'attachSignedDocument' => 'bool',
-      'includeViewLink' => 'bool'
+      'includeViewLink' => 'bool',
+      'canBeCommented' => 'bool',
+      'inPersonSign' => 'bool'
 
     );
 
@@ -69,5 +71,7 @@ class SignatureEnvelopeInfo {
   public $waterMarkImage; // string
   public $attachSignedDocument; // bool
   public $includeViewLink; // bool
+  public $canBeCommented; // bool
+  public $inPersonSign; // bool
   }
 

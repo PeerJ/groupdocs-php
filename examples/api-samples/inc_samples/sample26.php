@@ -35,6 +35,7 @@
         if ($userData->status == "Ok") {
             //If status Ok get all user data
             $result = $userData->result->user;
+   
         } else {
             throw new Exception ($userData->error_message);
         }

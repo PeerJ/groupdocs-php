@@ -110,6 +110,35 @@ class SharedApi {
   		                                      $queryParams, $body, $headerParams, $outFileStream);
       }
   /**
+	 * GetHtml
+	 * Get html
+   * guid, string: GUID (required)
+   * @return stream
+	 */
+
+   public function GetHtml($guid, FileStream $outFileStream) {
+      if( $guid === null ) {
+        throw new ApiException("missing required parameters", 400);
+      }
+      //parse inputs
+  	  $resourcePath = str_replace("*", "", "/shared/files/{guid}/html");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "GET";
+      $queryParams = array();
+      $headerParams = array();
+
+      if($guid !== null) {
+  			$resourcePath = str_replace("{" . "guid" . "}",
+  			                            $guid, $resourcePath);
+  		}
+  		//make the API Call
+      if (! isset($body)) {
+        $body = null;
+      }
+      return $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams, $outFileStream);
+      }
+  /**
 	 * GetPackage
 	 * Get package
    * path, string: Path (required)

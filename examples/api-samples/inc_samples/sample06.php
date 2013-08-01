@@ -50,13 +50,16 @@
             $apiClient = new APIClient($signature);
             //Create Storage Api object
             $signatureApi = new SignatureApi($apiClient);
-            //Check if user entered base path
+            //Create AsyncApi object
+            $asyncApi = new AsyncApi($apiClient);
+             //Check if user entered base path
             if ($basePath == "") {
                 //If base base is empty seting base path to prod server
                 $basePath = 'https://api.groupdocs.com/v2.0';
             }
             //Set base path
             $signatureApi->setBasePath($basePath);
+            $asyncApi->setBasePath($basePath);
             //Create setting variable for signature SignDocument method
             $settings = new SignatureSignDocumentSettings();
             $settings->documents = array(get_object_vars($document));
@@ -69,7 +72,13 @@
             $iframe = "";
             //Check is file signed and uploaded successfully
             if ($response->status == "Ok") {
-               $guid = $response->result->documents[0]->documentId;
+                $getDocumentStatus = $signatureApi->GetSignDocumentStatus($clientId, $response->result->jobId);
+                //Get file guid
+                if ($getDocumentStatus->status == "Ok") {
+                    $guid = $getDocumentStatus->result->documents[0]->documentId;
+                } else {
+                    throw new Exception($getDocumentStatus->error_message);
+                }
 
                  if($basePath == "https://api.groupdocs.com/v2.0") {
                     $iframe = 'http://apps.groupdocs.com/document-viewer/embed/' . $guid;
@@ -83,6 +92,8 @@
                 } elseif ($basePath == "http://realtime-api.groupdocs.com") {
                     $iframe = 'http://realtime-apps.groupdocs.com/document-viewer/embed/' . $guid;
                 }
+            } else {
+                throw new Exception($response->error_message);
             }
             return $iframe;
         }

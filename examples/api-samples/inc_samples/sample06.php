@@ -72,6 +72,7 @@
             $iframe = "";
             //Check is file signed and uploaded successfully
             if ($response->status == "Ok") {
+                sleep(5);
                 $getDocumentStatus = $signatureApi->GetSignDocumentStatus($clientId, $response->result->jobId);
                 //Get file guid
                 if ($getDocumentStatus->status == "Ok") {

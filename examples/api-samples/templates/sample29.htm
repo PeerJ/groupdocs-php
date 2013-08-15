@@ -32,8 +32,8 @@
         </form>
          <span id="results_status" style="color:red;display:none;"> (Please wait for ajax response) </span>
     </div>
-    <div id="iframe" style="padding:20px; border:1px solid black; display: none;">
-              
+    <div id="iframeDiv" style="padding:20px; border:1px solid black; display: none;">
+              <iframe id="iframe" frameborder="0" width="800" height="650" src=""></iframe>
     </div>
 </div>
 
@@ -53,22 +53,17 @@
                     error = result['error'];
 
                     if (iframe != null) {
-                        var result = document.createElement('iframe');
-                        result.setAttribute("frameborder", "0");
-                        result.setAttribute("width", "750");
-                        result.setAttribute("height", "800");
-                        result.setAttribute("src", iframe);
+                        
                         var button = document.getElementById("gdButton").style.display = "block";
-
                         var preLoad = document.getElementById("results_status");
                         preLoad.style.display = "none";
-                        var iframe = document.getElementById("iframe");
-                        iframe.appendChild(result);
-                        iframe.style.display = "block";
+                        var iframeDiv = document.getElementById("iframeDiv");
+                          var iframeShow = document.getElementById("iframe");
+                          iframeShow.setAttribute("src", iframe);
+                        iframeDiv.style.display = "block";
                     } else if (error != null) {
                         var message = '<span style="color:red;>' + error + '</span>';
-                        var iframe = document.getElementById("iframe");
-                        iframe.appendChild(message);
+                       
                         iframe.style.display = "block";
 
                     }

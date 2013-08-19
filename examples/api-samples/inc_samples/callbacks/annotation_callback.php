@@ -19,7 +19,7 @@ $infoFile = fopen(__DIR__ . '/user_info.txt', 'w');
     //Create apiClient object
     $apiClient = new APIClient($signer);
     //Create AsyncApi object
-    $api = new AsyncApi($apiClient);
+    $asyncApi = new AsyncApi($apiClient);
     //Create Storage Api object
     $apiStorage = new StorageApi($apiClient);
 	sleep(5);
@@ -27,7 +27,7 @@ $infoFile = fopen(__DIR__ . '/user_info.txt', 'w');
 	 $infoFile = fopen(__DIR__ . '/user_info.txt', 'w');
             fwrite($infoFile, $jobId);        
             fclose($infoFile);
-	$jobInfo = $api->GetJobDocuments(trim($clientId), $jobId, "");
+	$jobInfo = $asyncApi->GetJobDocuments(trim($clientId), $jobId, "");
 	if ($jobInfo->status == "Ok") {
 		   //Get file guid
             $guid = $jobInfo->result->inputs[0]->outputs[0]->guid;
@@ -47,4 +47,3 @@ $infoFile = fopen(__DIR__ . '/user_info.txt', 'w');
     //Download file from GroupDocs.
     $download = $apiStorage->GetFile(trim($clientId), $guid, $outFileStream);
     
-?>

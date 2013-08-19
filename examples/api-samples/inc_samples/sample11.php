@@ -10,7 +10,7 @@
     $privateKey = F3::get('POST["private_key"]');
     
 
-    function CreateAnnotation($clientId, $privateKey)
+    function createAnnotation($clientId, $privateKey)
     {
         if (empty($clientId) || empty($privateKey)) {
             throw new Exception('Please enter all required parameters');
@@ -27,21 +27,21 @@
             // Create apiClient object
             $apiClient = new ApiClient($signer);
             // Create Annotation object
-            $ant = new AntApi($apiClient);
+            $antApi = new AntApi($apiClient);
              //Create Storage Api object
-            $api = new StorageApi($apiClient);
+            $storageApi = new StorageApi($apiClient);
              if ($basePath == "") {
                 //If base base is empty seting base path to prod server
                 $basePath = 'https://api.groupdocs.com/v2.0';
             }
             //Set base path
-            $ant->setBasePath($basePath);
-            $api->setBasePath($basePath);
+            $antApi->setBasePath($basePath);
+            $storageApi->setBasePath($basePath);
              //Check if user choose upload file from URL
             if ($url != "") {
                 $fileGuId = "";
                 //Upload file from URL
-                $uploadResult = $api->UploadWeb($clientId, $url);
+                $uploadResult = $storageApi->UploadWeb($clientId, $url);
                 //Check is file uploaded
                 if ($uploadResult->status == "Ok") {
                     //Get file GUID
@@ -62,7 +62,7 @@
                 $fs = FileStream::fromFile($tmp_name);
                 //###Make a request to Storage API using clientId
                 //Upload file to current user storage
-                $uploadResult = $api->Upload($clientId, $name, 'uploaded', "", $fs);
+                $uploadResult = $storageApi->Upload($clientId, $name, 'uploaded', "", $fs);
 
                 //###Check if file uploaded successfully
                 if ($uploadResult->status == "Ok") {
@@ -81,7 +81,7 @@
 
             // Delete annotation if Delete Button clicked
             if (F3::get('POST["delete_annotation"]') == "1") {
-                $ant->DeleteAnnotation($clientId, F3::get('POST["annotationId"]'));
+                $antApi->DeleteAnnotation($clientId, F3::get('POST["annotationId"]'));
                 return;
             }
 
@@ -90,7 +90,8 @@
 
             // Added required parameters depends on  annotation type ['type' or 'area']
             if ($annotationType == "text")
-                $allParams = array_merge($allParams, array('box_width', 'box_height', 'annotationPosition_x', 'annotationPosition_y', 'range_position', 'range_length'));
+                $allParams = array_merge($allParams, array('box_width', 'box_height', 'annotationPosition_x',
+                    'annotationPosition_y', 'range_position', 'range_length'));
             elseif ($annotationType == "area")
                 $allParams = array_merge($allParams, array('box_width', 'box_height'));
 
@@ -109,9 +110,9 @@
             $reply->text = $replyText;
 
             // Annotation Info
-            $ann = new AnnotationInfo();
-            $ann->replies = array($reply);
-            $ann->type = $types[$annotationType];
+            $annotationInfo = new AnnotationInfo();
+            $annotationInfo->replies = array($reply);
+            $annotationInfo->type = $types[$annotationType];
 
             // construct annotation info depends on annotation type
             // text annotation
@@ -131,9 +132,9 @@
                 $point->x = F3::get('POST["annotationPosition_x"]');
                 $point->y = F3::get('POST["annotationPosition_y"]');
 
-                $ann->box = $box;
-                $ann->annotationPosition = $point;
-                $ann->range = $range;
+                $annotationInfo->box = $box;
+                $annotationInfo->annotationPosition = $point;
+                $annotationInfo->range = $range;
 
             // area annotation
             } elseif ($annotationType == "area") {
@@ -148,8 +149,8 @@
                 $point->x = 0;
                 $point->y = 0;
 
-                $ann->box = $box;
-                $ann->annotationPosition = $point;
+                $annotationInfo->box = $box;
+                $annotationInfo->annotationPosition = $point;
 
             // point annotation
             } elseif ($annotationType == "point") {
@@ -164,41 +165,47 @@
                 $point->x = 0;
                 $point->y = 0;
 
-                $ann->box = $box;
-                $ann->annotationPosition = $point;
+                $annotationInfo->box = $box;
+                $annotationInfo->annotationPosition = $point;
             }
 
             F3::set('userId', $clientId);
             F3::set('privateKey', $privateKey);
             F3::set('fileId', $fileId);
 
-            $createResult = $ant->CreateAnnotation($clientId, $fileId, $ann);
-            if ($createResult->status == "Ok") {
-                if ($createResult->result) {
+            $createAnnotation = $antApi->CreateAnnotation($clientId, $fileId, $ann);
+            if ($createAnnotation->status == "Ok") {
+                if ($createAnnotation->result) {
                      //Generation of iframe URL using fileGuId
                     if($basePath == "https://api.groupdocs.com/v2.0") {
-                        $iframe = 'http://apps.groupdocs.com/document-annotation2/embed/' . $createResult->result->documentGuid . '?frameborder="0" width="720" height="600"';
+                        $iframe = 'http://apps.groupdocs.com/document-annotation2/embed/' . 
+                                $createAnnotation->result->documentGuid . '?frameborder="0" width="720" height="600"';
                     //iframe to dev server
                     } elseif($basePath == "https://dev-api.groupdocs.com/v2.0") {
-                        $iframe = 'http://dev-apps.groupdocs.com/document-annotation2/embed/' . $createResult->result->documentGuid . '?frameborder="0" width="720" height="600"';
+                        $iframe = 'http://dev-apps.groupdocs.com/document-annotation2/embed/' . 
+                                $createAnnotation->result->documentGuid . '?frameborder="0" width="720" height="600"';
                     //iframe to test server
                     } elseif($basePath == "https://stage-api.groupdocs.com/v2.0") {
-                        $iframe = 'http://stage-apps.groupdocs.com/document-annotation2/embed/' . $createResult->result->documentGuid . '?frameborder="0" width="720" height="600"';
+                        $iframe = 'http://stage-apps.groupdocs.com/document-annotation2/embed/' . 
+                                $createAnnotation->result->documentGuid . '?frameborder="0" width="720" height="600"';
                     //Iframe to realtime server
                     } elseif ($basePath == "http://realtime-api.groupdocs.com") {
-                        $iframe = 'http://realtime-apps.groupdocs.com/document-annotation2/embed/' . $createResult->result->documentGuid . '?frameborder="0" width="720" height="600"';
+                        $iframe = 'http://realtime-apps.groupdocs.com/document-annotation2/embed/' .
+                                $createAnnotation->result->documentGuid . '?frameborder="0" width="720" height="600"';
                     }
-                    F3::set('annotationId', $createResult->result->annotationGuid);
+                    F3::set('annotationId', $createAnnotation->result->annotationGuid);
                     F3::set('annotationType', $annotationType);
                     F3::set('annotationText', $replyText);
                     F3::set('url', $iframe);
                 }
+            } else {
+                throw new Exception($createAnnotation->error_message);
             }
         }
     }
 
     try {
-        CreateAnnotation($clientId, $privateKey);
+        createAnnotation($clientId, $privateKey);
     } catch (Exception $e) {
         $error = 'ERROR: ' .  $e->getMessage() . "\n";
         f3::set('error', $error);

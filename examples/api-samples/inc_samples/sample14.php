@@ -10,7 +10,7 @@
     $privateKey = F3::get('POST["private_key"]');
     $path = F3::get('POST["path"]');
 
-    function ListOfShares($clientId, $privateKey, $path) {
+    function listOfShares($clientId, $privateKey, $path) {
 
         if (empty($clientId) || empty($privateKey) || empty($path)) {
             throw new Exception('Please enter all required parameters');
@@ -38,54 +38,52 @@
             //### Create Signer, ApiClient, StorageApi and Document Api objects
             // Create signer object
             $signer = new GroupDocsRequestSigner($privateKey);
-
             // Create apiClient object
             $apiClient = new ApiClient($signer);
-
             // Create Storage object
-            $storage = new StorageApi($apiClient);
-
+            $storageApi = new StorageApi($apiClient);
             // Create Document object
-            $doc = new DocApi($apiClient);
+            $docApi = new DocApi($apiClient);
             if ($basePath == "") {
                 //If base base is empty seting base path to prod server
                 $basePath = 'https://api.groupdocs.com/v2.0';
             }
             //Set base path
-            $storage->setBasePath($basePath);
-            $doc->setBasePath($basePath);
+            $storageApi->setBasePath($basePath);
+            $docApi->setBasePath($basePath);
             // get folder ID
-            $list = $storage->ListEntities($clientId, $newPath);
+            $list = $storageApi->ListEntities($clientId, $newPath);
             if ($list->status == "Ok") {
-                
                 foreach ($list->result->folders as $folder) {
-                   
                     if ($folder->name == $lastFolder) {
                         $folderId = $folder->id;
                         break;
                     }
                 }
+            } else {
+                throw new Exception($list->error_message);
             }
 
             //### Get list of shares
             if ( !is_null($folderId)) {
                 // Make a request to Document API
-                $shares = $doc->GetFolderSharers($clientId, $folderId);
+                $shares = $docApi->GetFolderSharers($clientId, $folderId);
                 if ($shares->status == "Ok" and count($shares->result->shared_users)) {
                     foreach ($shares->result->shared_users as $k => $user) {
                         $users .= $user->primary_email;
                         $users .= $user->nickname;
                         $users .= (count($shares->result->shared_users) == $k+1) ? '' : ', ';
                     }
+                } else {
+                    throw new Exception($shares->error_message);
                 }
             }
-
             F3::set('users', $users);
         }
     }
 
     try {
-        ListOfShares($clientId, $privateKey, $path);
+        listOfShares($clientId, $privateKey, $path);
     } catch (Exception $e) {
         $error = 'ERROR: ' .  $e->getMessage() . "\n";
         f3::set('error', $error);

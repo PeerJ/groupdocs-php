@@ -42,7 +42,8 @@
             if($info->status == "Ok") {
                 //###Create table with changes for template
                 $table = "<table class='border'>";
-                $table .= "<tr><td><font color='green'>Change Name</font></td><td><font color='green'>Change</font></td></tr>";
+                $table .= "<tr><td><font color='green'>Change Name</font></td><td>
+                    <font color='green'>Change</font></td></tr>";
                 //Count of iterations
                 for($i = 0; $i < count($info->result->changes); $i++) {
                     //Cycle for the massif of the top level

@@ -1,7 +1,6 @@
 <?php
+
 //###This sample will show how to list all annotations from document
-
-
 //### Set variables and get POST data
 F3::set('userId', '');
 F3::set('privateKey', '');
@@ -38,7 +37,7 @@ function DeleteFile($clientId, $privateKey, $fileId) {
         if ($delFile->status == "Ok") {
             // If status "ok" - show Mesege
             $message = '<span style="color: green">Done, file deleted from your GroupDocs Storage </span>';
-        }else{
+        } else {
             $message = '<span style="color: red">Error, this file exists or file was deleted  </span>';
         }
         return F3::set('message', $message);
@@ -48,7 +47,7 @@ function DeleteFile($clientId, $privateKey, $fileId) {
 try {
     DeleteFile($clientId, $privateKey, $fileId);
 } catch (Exception $e) {
-    $error = 'ERROR: ' .  $e->getMessage() . "\n";
+    $error = 'ERROR: ' . $e->getMessage() . "\n";
     f3::set('error', $error);
 }
 

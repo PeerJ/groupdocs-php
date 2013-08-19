@@ -15,10 +15,10 @@
     //Create apiClient object
     $apiClient = new APIClient($signer);
     //Create AsyncApi object
-    $api = new SignatureApi($apiClient);
+    $signatureApi = new SignatureApi($apiClient);
     //Create Storage Api object
     $apiStorage = new StorageApi($apiClient);
-	$document = $api->GetSignatureEnvelopeDocuments($clientId, $envelopeId);
+	$document = $signatureApi->GetSignatureEnvelopeDocuments($clientId, $envelopeId);
 	if ($document->status == "Ok") {
 		$guid = $document->result->documents[0]->documentId;
 		$name = $document->result->documents[0]->name;
@@ -35,4 +35,3 @@
     //Download file from GroupDocs.
     $download = $apiStorage->GetFile($clientId, $guid, $outFileStream);
     
-?>

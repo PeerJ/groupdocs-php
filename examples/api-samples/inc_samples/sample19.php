@@ -11,7 +11,7 @@
     $callbackUrl = f3::get('POST["callbackUrl"]');
     $basePath = f3::get('POST["server_type"]');
        
-    function Compare($clientId, $privateKey, $callbackUrl, $basePath)
+    function compare($clientId, $privateKey, $callbackUrl, $basePath)
     {
          //### Check clientId, privateKey and fileGuId
         if (empty($clientId) || empty($privateKey)) {
@@ -37,7 +37,6 @@
             $targetUrl = F3::get('POST["target_url"]'); 
             $iframe = "";
             //###Create Signer, ApiClient and Storage Api objects
-
             //Create signer object
             $signer = new GroupDocsRequestSigner($privateKey);
             //Create apiClient object
@@ -135,10 +134,8 @@
                 }
             }
             //###Make request to ComparisonApi using user id
-            
             //Comparison of documents where: $clientId - user GuId, $sourceFileId - source file Guid in which will be provided compare, 
             //$targetFileId - file GuId with wich will compare sourceFile, $callbackUrl - Url which will be executed after compare,
-            
             $info = $CompareApi->Compare($clientId, $sourceFileId, $targetFileId, $callbackUrl);
             //###Example of handling callback request:
             //  You can handle callback request in separate php file or in the same one. Our service will post JSON data via post request. 
@@ -147,42 +144,47 @@
             //     $fp = fopen(__DIR__ . '/../../temp/signature_request_log.txt', 'a'); - open file for data write
             //     fwrite($fp, $json . "\r\n"); - write data to the file
             //     fclose($fp); - close file
-            
             //Check request status
             if($info->status == "Ok") {
                 //Create AsyncApi object
                 $asyncApi = new AsyncApi($apiClient);
                 $asyncApi->setBasePath($basePath);
                 //### Check job status
-                                
                 for ($i = 0; $i <= 5; $i++) {
                     //Delay necessary that the inquiry would manage to be processed
                     sleep(5);                    
                     //Make request to api for get document info by job id
                     $jobInfo = $asyncApi->GetJobDocuments($clientId, $info->result->job_id);
-                    //Check job status, if status is Completed or Archived exit from cycle
-                    if ($jobInfo->result->job_status == "Completed" || $jobInfo->result->job_status == "Archived") {
-                        break;
-                    //If job status Postponed throw exception with error
-                    } elseif ($jobInfo->result->job_status == "Postponed") {
-                        throw new Exception('Job is failure');
+                    if ($jobInfo->status == "Ok") {
+                        //Check job status, if status is Completed or Archived exit from cycle
+                        if ($jobInfo->result->job_status == "Completed" || $jobInfo->result->job_status == "Archived") {
+                            break;
+                        //If job status Postponed throw exception with error
+                        } elseif ($jobInfo->result->job_status == "Postponed") {
+                            throw new Exception('Job is failure');
+                        }
+                    } else {
+                        throw new Exception($jobInfo->error_message);
                     }
-                    
                 }
                 //Get file guid
                 $guid = $jobInfo->result->outputs[0]->guid;
                 $iframe = 'https://apps.groupdocs.com/document-viewer/embed/';
                 // Construct iframe using fileId
                 if($basePath == "https://api.groupdocs.com/v2.0") {
-                    $iframe = 'https://apps.groupdocs.com/document-viewer/embed/' . $guid . ' frameborder="0" width="500" height="650"';
+                    $iframe = 'https://apps.groupdocs.com/document-viewer/embed/' . 
+                            $guid . ' frameborder="0" width="500" height="650"';
                 //iframe to dev server
                 } elseif($basePath == "https://dev-api.groupdocs.com/v2.0") {
-                    $iframe = 'https://dev-apps.groupdocs.com/document-viewer/embed/' . $guid . ' frameborder="0" width="500" height="650"';
+                    $iframe = 'https://dev-apps.groupdocs.com/document-viewer/embed/' . 
+                            $guid . ' frameborder="0" width="500" height="650"';
                 //iframe to test server
                 } elseif($basePath == "https://stage-api.groupdocs.com/v2.0") {
-                    $iframe = 'https://stage-apps.groupdocs.com/document-viewer/embed/' . $guid . ' frameborder="0" width="500" height="650"';
+                    $iframe = 'https://stage-apps.groupdocs.com/document-viewer/embed/' . 
+                            $guid . ' frameborder="0" width="500" height="650"';
                 } elseif ($basePath == "http://realtime-api.groupdocs.com") {
-                   $iframe = 'http://realtime-apps.groupdocs.com/document-viewer/embed/' . $guid . '" frameborder="0" width="100%" height="600"';
+                   $iframe = 'http://realtime-apps.groupdocs.com/document-viewer/embed/' . 
+                           $guid . '" frameborder="0" width="100%" height="600"';
                }
 
             } else {

@@ -10,7 +10,7 @@
     $privateKey = F3::get('POST["private_key"]');
     $convert_type = F3::get('POST["convert_type"]');
 
-    function Convert($clientId, $privateKey, $convert_type) {
+    function convert($clientId, $privateKey, $convert_type) {
         if (empty($clientId)|| empty($privateKey) || empty($convert_type)) {
             throw new Exception('Please enter all required parameters');
         } else {
@@ -32,13 +32,12 @@
             $file = $_FILES['file'];
             $fileId = f3::get('POST["fileId"]');
             //###Create Signer, ApiClient and Storage Api objects
-
             //Create signer object
             $signer = new GroupDocsRequestSigner($privateKey);
             //Create apiClient object
             $apiClient = new APIClient($signer);
             //Create AsyncApi object
-            $api = new AsyncApi($apiClient);
+            $asyncApi = new AsyncApi($apiClient);
             //Create Storage Api object
             $apiStorage = new StorageApi($apiClient);
             if ($basePath == "") {
@@ -46,7 +45,7 @@
                 $basePath = 'https://api.groupdocs.com/v2.0';
             }
             //Set base path
-            $api->setBasePath($basePath);
+            $asyncApi->setBasePath($basePath);
             $apiStorage->setBasePath($basePath);
             //Check if user choose upload file from URL
             if ($url != "") {
@@ -73,13 +72,11 @@
                 //###Make a request to Storage API using clientId
                 //Upload file to current user storage
                 $uploadResult = $apiStorage->Upload($clientId, $name, 'uploaded', "", $fs);
-
                 //###Check if file uploaded successfully
                 if ($uploadResult->status == "Ok") {
                     //Get file GUID
                     $fileGuId = $uploadResult->result->guid;
                     $fileId = "";
-                   
                 //If it isn't uploaded throw exception to template
                 } else {
                     throw new Exception($uploadResult->error_message);
@@ -93,13 +90,13 @@
             $callbackUrl = f3::get('POST["callbackUrl"]');
             F3::set("callbackUrl", $callbackUrl);
             //Make request to api for convert file
-            $convert = $api->Convert($clientId, $fileGuId, null, null, null, $callbackUrl, $convert_type);
+            $convert = $asyncApi->Convert($clientId, $fileGuId, null, null, null, $callbackUrl, $convert_type);
             //Check request status
             if($convert->status == "Ok") {
                 //Delay necessary that the inquiry would manage to be processed
                 sleep(5);
                 //Make request to api for get document info by job id
-                $jobInfo = $api->GetJobDocuments($clientId, $convert->result->job_id, "");
+                $jobInfo = $asyncApi->GetJobDocuments($clientId, $convert->result->job_id, "");
 				
                 if ($jobInfo->result->inputs[0]->outputs[0]->guid != "") {
                     //Get file guid
@@ -109,16 +106,20 @@
                 }
                 //Generation of iframe URL using fileGuId
                 if($basePath == "https://api.groupdocs.com/v2.0") {
-                   $iframe = 'http://apps.groupdocs.com/document-viewer/embed/' . $guid . '" frameborder="0" width="100%" height="600"';
+                   $iframe = 'http://apps.groupdocs.com/document-viewer/embed/' . 
+                           $guid . '" frameborder="0" width="100%" height="600"';
                //iframe to dev server
                } elseif($basePath == "https://dev-api.groupdocs.com/v2.0") {
-                   $iframe = 'http://dev-apps.groupdocs.com/document-viewer/embed/' . $guid . '" frameborder="0" width="100%" height="600"';
+                   $iframe = 'http://dev-apps.groupdocs.com/document-viewer/embed/' . 
+                           $guid . '" frameborder="0" width="100%" height="600"';
                //iframe to test server
                } elseif($basePath == "https://stage-api.groupdocs.com/v2.0") {
-                   $iframe = 'http://stage-apps.groupdocs.com/document-viewer/embed/' . $guid . '" frameborder="0" width="100%" height="600"';
+                   $iframe = 'http://stage-apps.groupdocs.com/document-viewer/embed/' . 
+                           $guid . '" frameborder="0" width="100%" height="600"';
                //Iframe to realtime server
                } elseif ($basePath == "http://realtime-api.groupdocs.com") {
-                   $iframe = 'http://realtime-apps.groupdocs.com/document-viewer/embed/' . $guid . '" frameborder="0" width="100%" height="600"';
+                   $iframe = 'http://realtime-apps.groupdocs.com/document-viewer/embed/' .
+                           $guid . '" frameborder="0" width="100%" height="600"';
                }
 
             } else {
@@ -153,7 +154,7 @@
     }
 
     try {
-        Convert($clientId, $privateKey, $convert_type);
+        convert($clientId, $privateKey, $convert_type);
     } catch (Exception $e) {
         $error = 'ERROR: ' .  $e->getMessage() . "\n";
         f3::set('error', $error);

@@ -9,7 +9,8 @@ $privateKey = F3::get('POST["private_key"]');
 function fileList($clientId, $privateKey) {
     //###Check clientId and privateKey
     if (empty($clientId) || empty($privateKey)) {
-        throw new Exception('Please enter all required parameters');
+         $error = 'Please enter all required parameters';
+         f3::set('error', $error);
     } else {
         //Get base path
         $basePath = f3::get('POST["server_type"]');
@@ -29,29 +30,28 @@ function fileList($clientId, $privateKey) {
         $storageApi->setBasePath($basePath);
         //###Make a request to Storage API using clientId
         //Obtaining all Entities from current user
-        $files = $storageApi->ListEntities($clientId, '', 0);
-        if ($files->status == "Ok") {
-            //Obtaining file names
-            $name = '';
-            foreach ($files->result->files as $item) {
-                $name .= $item->name . '<br>';
-            }
+        try {
+            $files = $storageApi->ListEntities($clientId, '', 0);
+            if ($files->status == "Ok") {
+                //Obtaining file names
+                $name = '';
+                foreach ($files->result->files as $item) {
+                    $name .= $item->name . '<br>';
+                }
 
-            //If request was successfull - set filelist variable for template
-            return F3::set('filelist', $name);
-        } else {
-            throw new Exception($files->error_message);
+                //If request was successfull - set filelist variable for template
+                return F3::set('filelist', $name);
+            } else {
+                throw new Exception($files->error_message);
+            }
+        } catch (Exception $e) {
+            $error = 'ERROR: ' . $e->getMessage() . "\n";
+            f3::set('error', $error);
         }
     }
 }
 
-try {
-    fileList($clientId, $privateKey);
-} catch (Exception $e) {
-    $error = 'ERROR: ' . $e->getMessage() . "\n";
-    f3::set('error', $error);
-}
-
+fileList($clientId, $privateKey);
 //Process template
 F3::set('userId', $clientId);
 F3::set('privateKey', $privateKey);

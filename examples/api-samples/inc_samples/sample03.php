@@ -16,7 +16,8 @@ $url = F3::get('POST["url"]');
 function upload($clientId, $privateKey, $basePath, $url) {
     //###Check clientId and privateKey
     if (empty($clientId) || empty($privateKey)) {
-        throw new Exception('Please enter all required parameters');
+         $error = 'Please enter all required parameters';
+         f3::set('error', $error);
     } else {
         //Deleting of tags, slashes and  space from clientId and privateKey
         $clientID = strip_tags(stripslashes(trim($clientId))); //ClientId==UserId
@@ -38,13 +39,18 @@ function upload($clientId, $privateKey, $basePath, $url) {
         //Check URL entered
         if ($url != "") {
             //Upload file from URL
-            $uploadResult = $apiStorage->UploadWeb($clientID, $url);
-            //Check upload status
-            if ($uploadResult->status == "Ok") {
-                //Get file GUID
-                $guid = $uploadResult->result->guid;
-            } else {
-                throw new Exception($uploadResult->error_message);
+            try {
+                $uploadResult = $apiStorage->UploadWeb($clientID, $url);
+                //Check upload status
+                if ($uploadResult->status == "Ok") {
+                    //Get file GUID
+                    $guid = $uploadResult->result->guid;
+                } else {
+                    throw new Exception($uploadResult->error_message);
+                }
+            } catch (Exception $e) {
+                $error = 'ERROR: ' . $e->getMessage() . "\n";
+                f3::set('error', $error);
             }
         } else {
             //Get uploaded file
@@ -54,23 +60,28 @@ function upload($clientId, $privateKey, $basePath, $url) {
                 return new RedirectResponse("/sample3");
             }
             //Temp name of the file
-            $tmp_name = $uploadedFile['tmp_name'];
+            $tmpName = $uploadedFile['tmp_name'];
             //Original name of the file
             $name = $uploadedFile['name'];
             //Creat file stream
-            $fs = FileStream::fromFile($tmp_name);
+            $fs = FileStream::fromFile($tmpName);
             //###Make a request to Storage API using clientId
             $callbackUrl = f3::get('POST["callbackUrl"]');
             F3::set("callbackUrl", $callbackUrl);
             //Upload file to current user storage
-            $uploadResult = $apiStorage->Upload($clientID, $name, 'uploaded', $callbackUrl, $fs);
+            try {
+                $uploadResult = $apiStorage->Upload($clientID, $name, 'uploaded', $callbackUrl, $fs);
 
-            //###Check if file uploaded successfully
-            if ($uploadResult->status == "Ok") {
-                //Get file GUID
-                $guid = $uploadResult->result->guid;
-            } else {
-                throw new Exception($uploadResult->error_message);
+                //###Check if file uploaded successfully
+                if ($uploadResult->status == "Ok") {
+                    //Get file GUID
+                    $guid = $uploadResult->result->guid;
+                } else {
+                    throw new Exception($uploadResult->error_message);
+                }
+            } catch (Exception $e) {
+                $error = 'ERROR: ' . $e->getMessage() . "\n";
+                f3::set('error', $error);
             }
         }
         if ($basePath == "https://api.groupdocs.com/v2.0") {
@@ -89,21 +100,16 @@ function upload($clientId, $privateKey, $basePath, $url) {
         //Generation of Embeded Viewer URL with uploaded file GuId
         $result = '<iframe src="' . $iframe . '" frameborder="0" width="800" height="650"></iframe>';
         //If request was successfull - set result variable for template
+        $message = '<p>File was uploaded to GroupDocs. Here you can see your file in the GroupDocs Embedded Viewer.</p>';
+        F3::set('message', $message);
+        F3::set('iframe', $result);
+        F3::set('userId', $clientId);
+        F3::set('privateKey', $privateKey);
+        F3::set('basePath', $basePath);
         return $result;
     }
 }
 
-try {
-    $upload = upload($clientId, $privateKey, $basePath, $url);
-    $message = '<p>File was uploaded to GroupDocs. Here you can see your file in the GroupDocs Embedded Viewer.</p>';
-    F3::set('message', $message);
-    F3::set('iframe', $upload);
-} catch (Exception $e) {
-    $error = 'ERROR: ' . $e->getMessage() . "\n";
-    f3::set('error', $error);
-}
+upload($clientId, $privateKey, $basePath, $url);
 //Process template
-F3::set('userId', $clientId);
-F3::set('privateKey', $privateKey);
-F3::set('basePath', $basePath);
 echo Template::serve('sample03.htm');

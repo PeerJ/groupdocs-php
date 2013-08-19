@@ -34,7 +34,7 @@
         <br />
         <input type="radio" name="sourse" value="local" id="localField" onClick="display('local');" checked>Local file </input>
                                                                          <br />
-        <input type="radio" name="sourse" value="url" id="urlField" onClick="display('url');" >From URL </input>
+        <input type="radio" name="sourse" value="url" id="urlRadio" onClick="display('url');" >From URL </input>
                                                                      <br />
          
         <br />
@@ -42,9 +42,9 @@
         <br />
         <input type='file' name='file' id="filefield" />
         
-        <label for='urlfieldId' style="display:none;" id="url">File URL</label>
+        <label for='urlfield' style="display:none;" id="url">File URL</label>
         <br />
-        <input type='text' name='url'  value="" id="urlfieldId" style="display:none;" />
+        <input type='text' name='url'  value="" id="urlfield" style="display:none;" />
         <br />
         <label for='callbackUrl'>callbackUrl<span class="optional">(Optional)</span></label>
         <br />

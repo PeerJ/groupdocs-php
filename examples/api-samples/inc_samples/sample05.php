@@ -11,9 +11,9 @@ $folder = F3::get('POST["destPath"]');
 
 function copy_move($clientId, $privateKey, $move = NULL, $copy = NULL, $folder) {
     //###Check clientId, privateKey and file Id
-    if (!isset($clientId) || !isset($privateKey)) {
-
-        throw new Exception('You do not enter all parameters');
+    if (!isset($clientId) || !isset($privateKey) || $folder == "") {
+        $error = 'Please enter all required parameters';
+        f3::set('error', $error);
     } else {
         //Get base path
         $basePath = f3::get('POST["server_type"]');
@@ -23,32 +23,37 @@ function copy_move($clientId, $privateKey, $move = NULL, $copy = NULL, $folder) 
         //Create apiClient object
         $apiClient = new APIClient($signer);
         //Create Storage Api object
-        $api = new StorageApi($apiClient);
+        $storageApi = new StorageApi($apiClient);
         //Check if user entered base path
         if ($basePath == "") {
             //If base base is empty seting base path to prod server
             $basePath = 'https://api.groupdocs.com/v2.0';
         }
         //Set base path
-        $api->setBasePath($basePath);
+        $storageApi->setBasePath($basePath);
         //Set empty file id
-        $file_id = '';
+        $fileId = '';
         //Get entered URL
         $url = F3::get('POST["url"]');
         $fileName = F3::get('POST["srcPath"]');
         if ($fileName != "") {
-            $file_id = $fileName;
+            $fileId = $fileName;
         }
         //Check is URL entered
         if ($url != "") {
             //Upload file from URL
-            $uploadResult = $api->UploadWeb($clientId, $url);
-            //Check upload status
-            if ($uploadResult->status == "Ok") {
-                //Get file GUID
-                $file_id = $uploadResult->result->guid;
-            } else {
-                throw new Exception($uploadResult->error_message);
+            try {
+                $uploadResult = $storageApi->UploadWeb($clientId, $url);
+                //Check upload status
+                if ($uploadResult->status == "Ok") {
+                    //Get file GUID
+                    $fileId = $uploadResult->result->guid;
+                } else {
+                    throw new Exception($uploadResult->error_message);
+                }
+            } catch (Exception $e) {
+                $error = 'ERROR: ' . $e->getMessage() . "\n";
+                $message = $error;
             }
         }
         //Check is local file chosen
@@ -57,65 +62,78 @@ function copy_move($clientId, $privateKey, $move = NULL, $copy = NULL, $folder) 
             $uploadedFile = $_FILES['file'];
             //###Check uploaded file
             //Temp name of the file
-            $tmp_name = $uploadedFile['tmp_name'];
+            $tmpName = $uploadedFile['tmp_name'];
             //Original name of the file
             $name = $uploadedFile['name'];
             //Creat file stream
-            $fs = FileStream::fromFile($tmp_name);
+            $fs = FileStream::fromFile($tmpName);
             //###Make a request to Storage API using clientId
             //Upload file to current user storage
-            $uploadResult = $api->Upload($clientId, $name, 'uploaded', "", $fs);
+            try {
+                $uploadResult = $storageApi->Upload($clientId, $name, 'uploaded', "", $fs);
 
-            //###Check if file uploaded successfully
-            if ($uploadResult->status == "Ok") {
-                //Get file GUID
-                $file_id = $uploadResult->result->guid;
+                //###Check if file uploaded successfully
+                if ($uploadResult->status == "Ok") {
+                    //Get file GUID
+                    $fileId = $uploadResult->result->guid;
+                }
+            } catch (Exception $e) {
+                $error = 'ERROR: ' . $e->getMessage() . "\n";
+                $message = $error;
             }
         }
         //###Make a request to Storage API using clientId
         //Obtaining all Entities from current user
-        $files = $api->ListEntities($clientId, '', 0);
-        //Obtaining file name and id by fileGuID
-        $name = '';
-        foreach ($files->result->files as $item) {
-            if ($item->guid == $fileName) {
-                $name = $item->name;
-                $file_id = $item->id;
+        try {
+            $files = $storageApi->ListEntities($clientId, '', 0);
+            //Obtaining file name and id by fileGuID
+            $name = '';
+            foreach ($files->result->files as $item) {
+                if ($item->guid == $fileName) {
+                    $name = $item->name;
+                    $fileId = $item->id;
+                }
             }
-        }
-        //###Make request for file copying/movement
-        //Where to copy/move file
-        $path = $folder . '/' . $name;
-        //If user choose copy
-        if (isset($copy)) {
-            //Request to Storage for copying
-            $file = $api->MoveFile($clientId, $path, NULL, $file_id, NULL); //download file
-            //Returning to Viewer what button was pressed
-            return F3::set('button', $copy);
-        }
-        //If user choose move
-        if (isset($move)) {
-            //Request to Storage for copying
-            $file = $api->MoveFile($clientId, $path, NULL, NULL, $file_id); //download file
-            //If request was successfull - set button variable for template
-            F3::set('file_Name', $file_id);
-            return F3::set('button', $move);
+            //###Make request for file copying/movement
+            //Where to copy/move file
+            $path = $folder . '/' . $name;
+            //If user choose copy
+            if (isset($copy)) {
+                //Request to Storage for copying
+                try {
+                    $file = $storageApi->MoveFile($clientId, $path, NULL, $fileId, NULL); //download file
+                    //Returning to Viewer what button was pressed
+                    F3::set('button', $copy);
+                } catch (Exception $e) {
+                    $error = 'ERROR: ' . $e->getMessage() . "\n";
+                    $message = $error;
+                }
+            }
+            //If user choose move
+            if (isset($move)) {
+                //Request to Storage for copying
+                try {
+                    $file = $storageApi->MoveFile($clientId, $path, NULL, NULL, $fileId); //download file
+                    //If request was successfull - set button variable for template
+                    F3::set('file_Name', $fileId);
+                    F3::set('button', $move);
+                } catch (Exception $e) {
+                    $error = 'ERROR: ' . $e->getMessage() . "\n";
+                    $message = $error;
+                }
+            }
+            $message = 'File was {{@button}}\'ed to the <font color="blue">{{@folder}}</font> folder';
+            //Process template
+            F3::set('userId', $clientId);
+            F3::set('privateKey', $privateKey);
+            F3::set('folder', $folder);
+            f3::set('message', $message);
+        } catch (Exception $e) {
+            $error = 'ERROR: ' . $e->getMessage() . "\n";
+            $message = $error;
         }
     }
 }
 
-try {
-    copy_move($clientId, $privateKey, $move, $copy, $folder);
-    $message = 'File was {{@button}}\'ed to the <font color="blue">{{@folder}}</font> folder';
-} catch (Exception $e) {
-
-    $error = 'ERROR: ' . $e->getMessage() . "\n";
-    $message = $error;
-}
-//Process template
-F3::set('userId', $clientId);
-F3::set('privateKey', $privateKey);
-F3::set('folder', $folder);
-f3::set('message', $message);
-
+copy_move($clientId, $privateKey, $move, $copy, $folder);
 echo Template::serve('sample05.htm');

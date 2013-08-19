@@ -34,16 +34,16 @@
        <br />
        <input type="radio" name="sourse" value="local" id="localField" onClick="display('local');" >Upload local file </input>
        <br />
-       <input type="radio" name="sourse" value="url" id="urlField" onClick="display('url');" >Upload file from URL </input>
+       <input type="radio" name="sourse" value="url" id="urlRadio" onClick="display('url');" >Upload file from URL </input>
        <br />
        <br /> 
        <label for='guidfield' id="guid">File ID (GUID)</label>
        <br />
        <input type='text' name='srcPath'  id="guidfield" value="{{@file_Name}}" />
        <br />
-       <label for='urlfieldId' style="display:none;" id="url">Upload file from URL</label>
+       <label for='urlfield' style="display:none;" id="url">Upload file from URL</label>
         <br />
-        <input type='text' name='url'  value="" id="urlfieldId" style="display:none;" />
+        <input type='text' name='url'  value="" id="urlfield" style="display:none;" />
         
         <label for='file' id="file" style="display:none;">Upload local file</label>
         <br />

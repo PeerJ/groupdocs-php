@@ -10,7 +10,8 @@ $privateKey = F3::get('POST["private_key"]');
 
 function userInfo($clientId, $privateKey) {
     if (empty($clientId) || empty($privateKey)) {
-        throw new Exception('Please enter all required parameters');
+         $error = 'Please enter all required parameters';
+         f3::set('error', $error);
     } else {
         //Get base path
         $basePath = f3::get('POST["server_type"]');
@@ -30,24 +31,24 @@ function userInfo($clientId, $privateKey) {
         }
         //Set base path
         $mgmtApi->setBasePath($basePath);
-        //###Make a request to Management API using clientId
-        $userAccountInfo = $mgmtApi->GetUserProfile($clientId);
+        try {
+            //###Make a request to Management API using clientId
+            $userAccountInfo = $mgmtApi->GetUserProfile($clientId);
 
-        //Check the result of the request
-        if ($userAccountInfo->status == "Ok") {
-            //If request was successfull - set userInfo variable for template
-            return F3::set('userInfo', $userAccountInfo->result->user);
-        } else {
-            throw new Exception($userAccountInfo->error_message);
+            //Check the result of the request
+            if ($userAccountInfo->status == "Ok") {
+                //If request was successfull - set userInfo variable for template
+                return F3::set('userInfo', $userAccountInfo->result->user);
+            } else {
+                throw new Exception($userAccountInfo->error_message);
+            }
+        } catch (Exception $e) {
+            $error = 'ERROR: ' . $e->getMessage() . "\n";
+            f3::set('error', $error);
         }
     }
 }
 
-try {
-    userInfo($clientId, $privateKey);
-} catch (Exception $e) {
-    $error = 'ERROR: ' . $e->getMessage() . "\n";
-    f3::set('error', $error);
-}
+userInfo($clientId, $privateKey);
 //Process template
 echo Template::serve('sample01.htm');

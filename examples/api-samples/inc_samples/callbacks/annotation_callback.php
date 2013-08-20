@@ -21,7 +21,7 @@ $infoFile = fopen(__DIR__ . '/user_info.txt', 'w');
     //Create AsyncApi object
     $asyncApi = new AsyncApi($apiClient);
     //Create Storage Api object
-    $apiStorage = new StorageApi($apiClient);
+    $storageApi = new StorageApi($apiClient);
 	sleep(5);
     //Make request to Async API to get job info
 	 $infoFile = fopen(__DIR__ . '/user_info.txt', 'w');
@@ -45,5 +45,5 @@ $infoFile = fopen(__DIR__ . '/user_info.txt', 'w');
     //Obtaining file stream of downloading file and definition of folder where to download file
     $outFileStream =  FileStream::fromHttp($downloadFolder, $name);
     //Download file from GroupDocs.
-    $download = $apiStorage->GetFile(trim($clientId), $guid, $outFileStream);
+    $download = $storageApi->GetFile(trim($clientId), $guid, $outFileStream);
     

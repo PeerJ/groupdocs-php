@@ -27,10 +27,10 @@ function deleteFile($clientId, $privateKey, $fileId) {
         # Create apiClient object
         $apiClient = new ApiClient($signer);
         # Create Storage object
-        $apiStorage = new StorageApi($apiClient);
+        $storageApi = new StorageApi($apiClient);
         # Delete file from Api Storage
         try {
-            $delFile = $apiStorage->Delete($clientId, $fileId);
+            $delFile = $storageApi->Delete($clientId, $fileId);
             // Check the result of the request
             if ($delFile->status == "Ok") {
                 // If status "ok" - show Mesege

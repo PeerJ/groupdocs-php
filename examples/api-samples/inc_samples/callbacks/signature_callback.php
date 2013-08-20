@@ -17,7 +17,7 @@
     //Create AsyncApi object
     $signatureApi = new SignatureApi($apiClient);
     //Create Storage Api object
-    $apiStorage = new StorageApi($apiClient);
+    $storageApi = new StorageApi($apiClient);
 	$document = $signatureApi->GetSignatureEnvelopeDocuments($clientId, $envelopeId);
 	if ($document->status == "Ok") {
 		$guid = $document->result->documents[0]->documentId;
@@ -33,5 +33,5 @@
     //Obtaining file stream of downloading file and definition of folder where to download file
     $outFileStream =  FileStream::fromHttp($downloadFolder, $name);
     //Download file from GroupDocs.
-    $download = $apiStorage->GetFile($clientId, $guid, $outFileStream);
+    $download = $storageApi->GetFile($clientId, $guid, $outFileStream);
     

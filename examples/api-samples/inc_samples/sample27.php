@@ -23,7 +23,7 @@ function createQuestionary($clientId, $privateKey, $basePath) {
         //Create Doc Api object
         $docApi = new DocApi($apiClient);
         //Create Storage Api object
-        $apiStorage = new StorageApi($apiClient);
+        $storageApi = new StorageApi($apiClient);
         //Create AsyncApi object
         $api = new AsyncApi($apiClient);
         $mergApi = new MergeApi($apiClient);
@@ -34,7 +34,7 @@ function createQuestionary($clientId, $privateKey, $basePath) {
         }
         //Set base path
         $docApi->setBasePath($basePath);
-        $apiStorage->setBasePath($basePath);
+        $storageApi->setBasePath($basePath);
         $api->setBasePath($basePath);
         $mergApi->setBasePath($basePath);
         //Get entered by user data
@@ -54,7 +54,7 @@ function createQuestionary($clientId, $privateKey, $basePath) {
         //Check if user choose upload file from URL
         if ($url != "") {
             //Upload file from URL
-            $uploadResult = $apiStorage->UploadWeb($clientId, $url);
+            $uploadResult = $storageApi->UploadWeb($clientId, $url);
             //Check is file uploaded
             if ($uploadResult->status == "Ok") {
                 //Get file GUID
@@ -68,14 +68,14 @@ function createQuestionary($clientId, $privateKey, $basePath) {
         //Check is user choose upload local file
         if ($_FILES['file']["name"] != "") {
             //Temp name of the file
-            $tmp_name = $file['tmp_name'];
+            $tmpName = $file['tmp_name'];
             //Original name of the file
             $name = $file['name'];
             //Creat file stream
-            $fs = FileStream::fromFile($tmp_name);
+            $fs = FileStream::fromFile($tmpName);
             //###Make a request to Storage API using clientId
             //Upload file to current user storage
-            $uploadResult = $apiStorage->Upload($clientId, $name, 'uploaded', "", $fs);
+            $uploadResult = $storageApi->Upload($clientId, $name, 'uploaded', "", $fs);
 
             //###Check if file uploaded successfully
             if ($uploadResult->status == "Ok") {
@@ -154,7 +154,7 @@ function createQuestionary($clientId, $privateKey, $basePath) {
                 //Obtaining file stream of downloading file and definition of folder where to download file
                 $outFileStream = FileStream::fromHttp($downloadFolder, $name);
                 //Download file from GroupDocs.
-                $download = $apiStorage->GetFile($clientId, $guid, $outFileStream);
+                $download = $storageApi->GetFile($clientId, $guid, $outFileStream);
                 f3::set("message", "File was converted and downloaded to the " . $downloadFolder . "/" . $name);
                 //### If request was successfull
                 //Generation of iframe URL using $pageImage->result->guid

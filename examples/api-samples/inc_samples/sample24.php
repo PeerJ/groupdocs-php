@@ -26,17 +26,17 @@ function Upload($clientId, $privateKey, $url) {
         //Create apiClient object
         $apiClient = new APIClient($signer);
         //Create Storage Api object
-        $apiStorage = new StorageApi($apiClient);
+        $storageApi = new StorageApi($apiClient);
         //Set url to choose whot server to use
         if ($basePath == "") {
             //If base base is empty seting base path to prod server
             $basePath = 'https://api.groupdocs.com/v2.0';
         }
         //Set base path
-        $apiStorage->setBasePath($basePath);
+        $storageApi->setBasePath($basePath);
         //###Make a request to Storage API using clientId
         //Upload file to current user storage using entere URl to the file
-        $uploadResult = $apiStorage->UploadWeb($clientID, $url);
+        $uploadResult = $storageApi->UploadWeb($clientID, $url);
 
         //###Check if file uploaded successfully
         if ($uploadResult->status == "Ok") {

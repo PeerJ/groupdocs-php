@@ -19,7 +19,7 @@ $apiClient = new APIClient($signer);
 //Create AsyncApi object
 $asyncApi = new AsyncApi($apiClient);
 //Create Storage Api object
-$apiStorage = new StorageApi($apiClient);
+$storageApi = new StorageApi($apiClient);
 sleep(5);
 //Make request to Async API to get job info
 $jobInfo = $asyncApi->GetJobDocuments(trim($clientId), $jobId, "");
@@ -39,6 +39,6 @@ if (!file_exists($downloadFolder)) {
 //Obtaining file stream of downloading file and definition of folder where to download file
 $outFileStream = FileStream::fromHttp($downloadFolder, $name);
 //Download file from GroupDocs.
-$download = $apiStorage->GetFile(trim($clientId), $guid, $outFileStream);
+$download = $storageApi->GetFile(trim($clientId), $guid, $outFileStream);
 
 

@@ -43,7 +43,7 @@ function updateUser($clientId, $privateKey, $email, $firstName, $lastName, $base
         // Create MgmtApi object
         $mgmtApi = new MgmtApi($apiClient);
         //Create Storage Api object
-        $apiStorage = new StorageApi($apiClient);
+        $storageApi = new StorageApi($apiClient);
         //Declare which Server to use
         if ($basePath == "") {
             //If base base is empty seting base path to prod server
@@ -51,7 +51,7 @@ function updateUser($clientId, $privateKey, $email, $firstName, $lastName, $base
         }
         //Set base path
         $mgmtApi->setBasePath($basePath);
-        $apiStorage->setBasePath($basePath);
+        $storageApi->setBasePath($basePath);
         //Get entered by user data
         $url = F3::get('POST["url"]');
         $file = $_FILES['file'];
@@ -63,7 +63,7 @@ function updateUser($clientId, $privateKey, $email, $firstName, $lastName, $base
         }
         if ($url != "") {
             //Upload file from URL
-            $uploadResult = $apiStorage->UploadWeb($clientId, $url);
+            $uploadResult = $storageApi->UploadWeb($clientId, $url);
             //Check is file uploaded
             if ($uploadResult->status == "Ok") {
                 //Get file GUID
@@ -85,16 +85,16 @@ function updateUser($clientId, $privateKey, $email, $firstName, $lastName, $base
                 return new RedirectResponse("/sample21");
             }
             //Temp name of the file
-            $tmp_name = $uploadedFile['tmp_name'];
+            $tmpName = $uploadedFile['tmp_name'];
             //Original name of the file
             $name = $uploadedFile['name'];
             //Creat file stream
-            $fs = FileStream::fromFile($tmp_name);
+            $fs = FileStream::fromFile($tmpName);
 
 
             //###Make a request to Storage API using clientId
             //Upload file to current user storage
-            $uploadResult = $apiStorage->Upload($clientId, $name, 'uploaded', "", $fs);
+            $uploadResult = $storageApi->Upload($clientId, $name, 'uploaded', "", $fs);
             //###Check if file uploaded successfully
             if ($uploadResult->status == "Ok") {
                 $fileId = $uploadResult->result->guid;

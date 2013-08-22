@@ -77,12 +77,13 @@
             <input type ="text" name="server_type" id="server_type" />
             <br />
             <input type='submit' value='Signature'/>
+            <span id="results_status" style="color:red;display:none;"> (Please wait for ajax response) </span>
         </form>
     </div>
     <div  style="padding:20px; border:1px solid black;">
         <p> Results: </p>
         <font color="green">{{@message}}</font>
-        <iframe src="{{@url}}" width = '800' height = '1000'></iframe>
+        <iframe id='downloadframe' src="{{@url}}" width = '800' height = '1000'></iframe>
     </div>
     <br/>
 </div>

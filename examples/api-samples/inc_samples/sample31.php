@@ -23,6 +23,14 @@ function createQuestionary($clientId, $privateKey, $basePath)
     if (empty($clientId) || empty($privateKey)) {
         throw new Exception('Please enter FILE ID');
     } else {
+        //path to settings file - temporary save userId and apiKey like to property file
+        $infoFile = fopen(__DIR__ . '/../user_info.txt', 'w');
+        fwrite($infoFile, $clientId . "\r\n" . $privateKey);
+        fclose($infoFile);
+        //check if Downloads folder exists and remove it to clean all old files
+        if (file_exists(__DIR__ . '/../downloads')) {
+            delFolder(__DIR__ . '/../downloads/');
+        }
         F3::set('userId', $clientId);
         F3::set('privateKey', $privateKey);
         //###Create Signer, ApiClient and Storage Api objects
@@ -55,11 +63,13 @@ function createQuestionary($clientId, $privateKey, $basePath)
         $country = f3::get('POST["country"]');
         $city = f3::get('POST["city"]');
         $street = f3::get('POST["street"]');
+        $callbackUrl = f3::get('POST["callbackUrl"]');
         f3::set("email", $email);
         f3::set("country", $country);
         f3::set("name", $name);
         f3::set("street", $street);
         f3::set("city", $city);
+        f3::set("callbackUrl", $callbackUrl);
         $enteredData = array("email" => $email, "country" => $country, "name" => $name, "street" => $street, "city" =>$city);
         //Create new Datasource object
         $dataSource = new Datasource();
@@ -146,7 +156,7 @@ function createQuestionary($clientId, $privateKey, $basePath)
                                             $signFieldEnvelopSettings->page = "1";
                                             $addSignField = $signatureApi->AddSignatureEnvelopeField($clientId, $envelop->result->envelope->id, $getDocuments->result->documents[0]->documentId, $recipientId, "0545e589fb3e27c9bb7a1f59d0e3fcb9", $signFieldEnvelopSettings);
                                             if($addSignField->status == "Ok") {
-                                                $send = $signatureApi->SignatureEnvelopeSend($clientId, $envelop->result->envelope->id, "");
+                                                $send = $signatureApi->SignatureEnvelopeSend($clientId, $envelop->result->envelope->id, $callbackUrl);
                                                 if ($send->status == "Ok") {
                                                     $envelopeId = $envelop->result->envelope->id;
                                                     if ($basePath == "https://api.groupdocs.com/v2.0") {
@@ -199,6 +209,28 @@ function createQuestionary($clientId, $privateKey, $basePath)
         //Set variable with results for template
         return f3::set('url', $iframe);
     }
+}
+//### Delete downloads folder and all files in this folder
+function delFolder($path) {
+    $next = null;
+    $item = array();
+    //Get all items fron folder
+    $item = scandir($path);
+    //Remove from array "." and ".."
+    $item = array_slice($item, 2);
+    //Check is there was files
+    if (count($item) > 0) {
+        //Delete files from folder
+        for ($i = 0; $i < count($item); $i++) {
+            $next = $path . "\\" . $item[$i];
+            if (file_exists($next)) {
+                unlink($next);
+            }
+
+        }
+    }
+    //Delete folder
+    rmdir($path);
 }
 
 try {

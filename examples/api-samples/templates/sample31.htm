@@ -44,6 +44,11 @@
             <input type='text' name='template_guid' value="{{@template_guid}}" />
             <br />
             <br />
+            <label for='callbackUrl'>callbackUrl<span class="optional">(Optional)For test Callback you can use this URL: http://groupdocs-php-samples.herokuapp.com/callbacks/signature_callback</span></label>
+            <br />
+            <input type='text' name='callbackUrl' id="callbackUrl" value="{{@callbackUrl}}" />
+            <br />
+            <br />
             <div style="background-color:#e5e5e5;border:3px double gray;width:700px;padding:3px;font-size:10pt;">
                 <label for='email'>What is your email?</label>
                 <input type='text' name='email' value="{{@email}}" />
@@ -83,6 +88,34 @@
 </div>
 
 <include href="links.htm" />
+<script type="text/javascript">
+    $(document).ready(setTimeout(check, 5000));
 
+    function check() {
+
+        if (($("input[name=callbackUrl]").val() != "") && (document.getElementById("result") != null)) {
+            $('#results_status').fadeIn("slow");
+            form = document.forms.form;
+            $.ajax({
+                type: 'POST',
+                url: '/callbacks/check_file',
+                success: function (data) {
+                    $('#results_status').fadeOut("slow");
+                    div = document.getElementById("link");
+                    p = document.createElement("p");
+                    if (data == "File was not found. Looks like something went wrong.") {
+                        p.innerHTML = "<br /> " + data ;
+                    } else {
+                        p.innerHTML = "<br /> Thank you the document " + data + " has been sent";
+                        $("#downloadframe").attr("src", "/callbacks/download_file?FileName=" + data);
+                    }
+                    div.appendChild(p);
+
+                },
+                dataType: "text"
+            });
+        }
+    }
+</script>
 </body>
 </html>

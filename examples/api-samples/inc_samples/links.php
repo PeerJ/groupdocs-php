@@ -25,11 +25,12 @@ $links = array('<a href="sample01">Sample01 - How to login to GroupDocs using th
                '<a href="/sample23">Sample23 - How to  View Document pages as images using PHP SDK</a>',
                '<a href="sample24">Sample24 - How to upload file from URL to GroupDocs account using PHP SDK</a>',
                '<a href="sample25">Sample25 - How to convert DOCX with template fields file into PDF using PHP SDK</a>',
-               '<a href="sample25">Sample26 - How to use login method in the API</a>',
-               '<a href="sample25">Sample27 - How to create your own questionary using forms and show the result document using PHP SDK</a>',
-               '<a href="sample25">Sample28 - How to delete all annotations from document</a>',
-               '<a href="sample25">Sample29 - How to use Filepicker.io to upload document and get it\'s URL</a>',
-               '<a href="sample25">Sample30 - How to delete file from GroupDocs Storage using PHP SDK</a>');
+               '<a href="sample26">Sample26 - How to use login method in the API</a>',
+               '<a href="sample27">Sample27 - How to create your own questionary using forms and show the result document using PHP SDK</a>',
+               '<a href="sample28">Sample28 - How to delete all annotations from document</a>',
+               '<a href="sample29">Sample29 - How to use Filepicker.io to upload document and get it\'s URL</a>',
+               '<a href="sample30">Sample30 - How to delete file from GroupDocs Storage using PHP SDK</a>',
+               '<a href="sample31">Sample31 - How to dinamically create Signature Form using data from HTM form</a>');
 F3::set('links', $links);
 
 ?>

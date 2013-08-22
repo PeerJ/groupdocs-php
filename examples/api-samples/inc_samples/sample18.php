@@ -108,7 +108,7 @@ if (empty($clientId) || empty($privateKey) || empty($convert_type)) {
             try {
                 //Make request to api for get document info by job id
                 $jobInfo = $asyncApi->GetJobDocuments($clientId, $convert->result->job_id, "");
-
+                $guid = '';
                 if ($jobInfo->result->inputs[0]->outputs[0]->guid != "") {
                     //Get file guid
                     $guid = $jobInfo->result->inputs[0]->outputs[0]->guid;

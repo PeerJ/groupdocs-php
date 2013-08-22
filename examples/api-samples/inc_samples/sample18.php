@@ -113,7 +113,7 @@ if (empty($clientId) || empty($privateKey) || empty($convert_type)) {
                     //Get file guid
                     $guid = $jobInfo->result->inputs[0]->outputs[0]->guid;
                 } else {
-                    throw new Exception('File GuId is empty');
+                    throw new Exception($jobInfo->error_message);
                 }
             } catch (Exception $e) {
                 $error = 'ERROR: ' . $e->getMessage() . "\n";

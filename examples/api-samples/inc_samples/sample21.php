@@ -153,7 +153,7 @@ if (empty($clientId) || empty($privateKey)) {
             sleep(5);
             //Add uploaded document to envelope
 
-            $addDocument = $signature->AddSignatureEnvelopeDocument($clientID, $envelop->result->envelope->id, $fileGuId);
+            $addDocument = $signature->AddSignatureEnvelopeDocument($clientID, $envelop->result->envelope->id, $fileGuId, null, true);
             try {
                 if ($addDocument->status == "Ok") {
                     //Get role list for curent user
@@ -175,6 +175,7 @@ if (empty($clientId) || empty($privateKey)) {
                                         $getRecipient = $signature->GetSignatureEnvelopeRecipients($clientID, $envelop->result->envelope->id);
                                         if ($getRecipient->status == "Ok") {
                                             $recipientId = $getRecipient->result->recipients[0]->id;
+
                                             //Url for callback
                                             $callbackUrl = f3::get('POST["callbackUrl"]');
                                             F3::set("callbackUrl", $callbackUrl);
@@ -182,56 +183,48 @@ if (empty($clientId) || empty($privateKey)) {
                                                 $getDocuments = $signature->GetSignatureEnvelopeDocuments($clientID, $envelop->result->envelope->id);
                                                 if ($getDocuments->status == "Ok") {
                                                     try {
-                                                        $getFields = $signature->GetSignatureEnvelopeFields($clientID, $envelop->result->envelope->id, $getDocuments->result->documents[0]->documentId, $recipientId);
-                                                        if ($getFields->status == "Ok") {
-                                                            $fields = $getFields->result->fields;
-                                                            if (count($fields) == 0) {
-                                                                throw new Exception("You use a wrong file, it's don't content any fields for sign");
-                                                            }
-                                                            for ($n = 0; $n < count($fields); $n++) {
-                                                                try {
-                                                                    $addEnvelopField = $signature->AddSignatureEnvelopeField($clientID, $envelop->result->envelope->id, $getDocuments->result->documents[0]->documentId, $recipientId, $fields[$n]->id);
-                                                                    if ($addEnvelopField->status != "Ok") {
-                                                                        throw new Exception($addEnvelopField->error_message);
-                                                                    }
-                                                                } catch (Exception $e) {
-                                                                    $error = 'ERROR: ' . $e->getMessage() . "\n";
-                                                                    f3::set('error', $error);
+//                                                       
+                                                        $signFieldEnvelopSettings = new SignatureEnvelopeFieldSettings();
+                                                        $signFieldEnvelopSettings->locationX = "0.15";
+                                                        $signFieldEnvelopSettings->locationY = "0.73";
+                                                        $signFieldEnvelopSettings->locationWidth = "150";
+                                                        $signFieldEnvelopSettings->locationHeight = "50";
+                                                        $signFieldEnvelopSettings->name = "test" . rand(0, 500);
+                                                        $signFieldEnvelopSettings->forceNewField = true;
+                                                        $signFieldEnvelopSettings->page = "1";
+                                                        $addEnvelopField = $signature->AddSignatureEnvelopeField($clientID, $envelop->result->envelope->id, $getDocuments->result->documents[0]->documentId, $recipientId, "0545e589fb3e27c9bb7a1f59d0e3fcb9", $signFieldEnvelopSettings);
+//                                                                       
+                                                        try {
+                                                            $send = $signature->SignatureEnvelopeSend($clientID, $envelop->result->envelope->id, $callbackUrl);
+                                                            if ($send->status == "Ok") {
+                                                                if ($basePath == "https://api.groupdocs.com/v2.0") {
+                                                                    //iframe to prodaction server
+                                                                    $iframe = '<iframe src="https://apps.groupdocs.com/signature/signembed/' .
+                                                                            $envelop->result->envelope->id . '/' . $recipientId . '?frameborder="0" width="720" height="600"></iframe>';
+                                                                    //iframe to dev server
+                                                                } elseif ($basePath == "https://dev-api.groupdocs.com/v2.0") {
+                                                                    $iframe = '<iframe src="https://dev-apps.groupdocs.com/signature/signembed/' .
+                                                                            $envelop->result->envelope->id . '/' . $recipientId . '?frameborder="0" width="720" height="600"></iframe>';
+                                                                    //iframe to test server
+                                                                } elseif ($basePath == "https://stage-api.groupdocs.com/v2.0") {
+                                                                    $iframe = '<iframe src="https://stage-apps.groupdocs.com/signature/signembed/' .
+                                                                            $envelop->result->envelope->id . '/' . $recipientId . '?frameborder="0" width="720" height="600"></iframe>';
+                                                                } elseif ($basePath == "http://realtime-api.groupdocs.com") {
+                                                                    $iframe = 'http://realtime-apps.groupdocs.com/signature/signembed/' .
+                                                                            $envelop->result->envelope->id . '/' . $recipientId . '?frameborder="0" width="720" height="600"></iframe>';
                                                                 }
+                                                                $message = '<p>File was uploaded to GroupDocs. Here you can see your <strong>' .
+                                                                        $name . '</strong> file in the GroupDocs Embedded Viewer.</p>';
+                                                                F3::set('message', $message);
+                                                                F3::set('iframe', $iframe);
+                                                            } else {
+                                                                throw new Exception($send->error_message);
                                                             }
-                                                            try {
-                                                                $send = $signature->SignatureEnvelopeSend($clientID, $envelop->result->envelope->id, $callbackUrl);
-                                                                if ($send->status == "Ok") {
-                                                                    if ($basePath == "https://api.groupdocs.com/v2.0") {
-                                                                        //iframe to prodaction server
-                                                                        $iframe = '<iframe src="https://apps.groupdocs.com/signature/signembed/' .
-                                                                                $envelop->result->envelope->id . '/' . $recipientId . '?frameborder="0" width="720" height="600"></iframe>';
-                                                                        //iframe to dev server
-                                                                    } elseif ($basePath == "https://dev-api.groupdocs.com/v2.0") {
-                                                                        $iframe = '<iframe src="https://dev-apps.groupdocs.com/signature/signembed/' .
-                                                                                $envelop->result->envelope->id . '/' . $recipientId . '?frameborder="0" width="720" height="600"></iframe>';
-                                                                        //iframe to test server
-                                                                    } elseif ($basePath == "https://stage-api.groupdocs.com/v2.0") {
-                                                                        $iframe = '<iframe src="https://stage-apps.groupdocs.com/signature/signembed/' .
-                                                                                $envelop->result->envelope->id . '/' . $recipientId . '?frameborder="0" width="720" height="600"></iframe>';
-                                                                    } elseif ($basePath == "http://realtime-api.groupdocs.com") {
-                                                                        $iframe = 'http://realtime-apps.groupdocs.com/signature/signembed/' .
-                                                                                $envelop->result->envelope->id . '/' . $recipientId . '?frameborder="0" width="720" height="600"></iframe>';
-                                                                    }
-                                                                    $message = '<p>File was uploaded to GroupDocs. Here you can see your <strong>' .
-                                                                            $name . '</strong> file in the GroupDocs Embedded Viewer.</p>';
-                                                                    F3::set('message', $message);
-                                                                    F3::set('iframe', $iframe);
-                                                                } else {
-                                                                    throw new Exception($send->error_message);
-                                                                }
-                                                            } catch (Exception $e) {
-                                                                $error = 'ERROR: ' . $e->getMessage() . "\n";
-                                                                f3::set('error', $error);
-                                                            }
-                                                        } else {
-                                                            throw new Exception($getFields->error_message);
+                                                        } catch (Exception $e) {
+                                                            $error = 'ERROR: ' . $e->getMessage() . "\n";
+                                                            f3::set('error', $error);
                                                         }
+//                                                       
                                                     } catch (Exception $e) {
                                                         $error = 'ERROR: ' . $e->getMessage() . "\n";
                                                         f3::set('error', $error);

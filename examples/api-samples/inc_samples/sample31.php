@@ -156,6 +156,7 @@ function createQuestionary($clientId, $privateKey, $basePath)
                                             $signFieldEnvelopSettings->page = "1";
                                             $addSignField = $signatureApi->AddSignatureEnvelopeField($clientId, $envelop->result->envelope->id, $getDocuments->result->documents[0]->documentId, $recipientId, "0545e589fb3e27c9bb7a1f59d0e3fcb9", $signFieldEnvelopSettings);
                                             if($addSignField->status == "Ok") {
+                                                  
                                                 $send = $signatureApi->SignatureEnvelopeSend($clientId, $envelop->result->envelope->id, $callbackUrl);
                                                 if ($send->status == "Ok") {
                                                     $envelopeId = $envelop->result->envelope->id;

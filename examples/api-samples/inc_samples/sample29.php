@@ -22,14 +22,14 @@ if (isset($_POST) AND !empty($_POST)) {
             //iframe to dev server
         } elseif ($basePath == "https://dev-api.groupdocs.com/v2.0") {
             $iframe = 'https://dev-apps.groupdocs.com/document-viewer/embed?url=' . $url . '&user_id=' . $clientId;
-            ;
+            
             //iframe to test server
         } elseif ($basePath == "https://stage-api.groupdocs.com/v2.0") {
             $iframe = 'https://stage-apps.groupdocs.com/document-viewer/embed?url=' . $url . '&user_id=' . $clientId;
-            ;
+            
         } elseif ($basePath == "http://realtime-api.groupdocs.com") {
             $iframe = 'http://realtime-apps.groupdocs.com/document-viewer/embed?url=' . $url . '&user_id=' . $clientId;
-            ;
+            
         }
         //Create json string with result data
         $result = json_encode(array("iframe" => $iframe, "error" => $error));

@@ -25,7 +25,7 @@ class AbstractIntegrationTest extends PHPUnit_Framework_TestCase {
 	}
 	
 	public function test_api() {
-                $expected = 28090f3458bc1f97d9e0262a0768c308;
+                $expected = "28090f3458bc1f97d9e0262a0768c308";
                 $this->assertEquals($expected, $this->apiClient->signer->privateKey);
         }
 	

@@ -57,6 +57,7 @@ function createQuestionary($clientId, $privateKey, $basePath)
         $apiStorage->setBasePath($basePath);
         $api->setBasePath($basePath);
         $mergApi->setBasePath($basePath);
+        $signatureApi->setBasePath($basePath);
         //Get entered by user data
         $name = f3::get('POST["name"]');
         $email = f3::get('POST["email"]');
@@ -77,6 +78,7 @@ function createQuestionary($clientId, $privateKey, $basePath)
         $array = array();
         //Loop for fields creataion
         foreach ($enteredData as $fieldName => $data) {
+           
             //Create new DatasourceField object
             $field = new DatasourceField();
             //Set DatasourceFiled data
@@ -119,7 +121,7 @@ function createQuestionary($clientId, $privateKey, $basePath)
                 if ($envelop->status == "Ok") {
                     sleep(5);
                     //Add uploaded document to envelope
-                    $addDocument = $signatureApi->AddSignatureEnvelopeDocument($clientId, $envelop->result->envelope->id, $guid);
+                    $addDocument = $signatureApi->AddSignatureEnvelopeDocument($clientId, $envelop->result->envelope->id, $guid, null, true);
                     if ($addDocument->status == "Ok") {
                         //Get role list for curent user
                         $recipient = $signatureApi->GetRolesList($clientId);
@@ -146,17 +148,16 @@ function createQuestionary($clientId, $privateKey, $basePath)
                                         $getDocuments = $signatureApi->GetSignatureEnvelopeDocuments($clientId, $envelop->result->envelope->id);
                                         if ($getDocuments->status == "Ok") {
 
-                                            $signFieldEnvelopSettings = new SignatureEnvelopeFieldSettings();
-                                            $signFieldEnvelopSettings->locationX = "0.15";
-                                            $signFieldEnvelopSettings->locationY = "0.73";
-                                            $signFieldEnvelopSettings->locationWidth = "150";
-                                            $signFieldEnvelopSettings->locationHeight = "50";
-                                            $signFieldEnvelopSettings->name = $fieldName;
-                                            $signFieldEnvelopSettings->forceNewField=true;
-                                            $signFieldEnvelopSettings->page = "1";
-                                            $addSignField = $signatureApi->AddSignatureEnvelopeField($clientId, $envelop->result->envelope->id, $getDocuments->result->documents[0]->documentId, $recipientId, "0545e589fb3e27c9bb7a1f59d0e3fcb9", $signFieldEnvelopSettings);
-                                            if($addSignField->status == "Ok") {
-                                                  
+//                                            $signFieldEnvelopSettings = new SignatureEnvelopeFieldSettings();
+//                                            $signFieldEnvelopSettings->locationX = "0.05";
+//                                            $signFieldEnvelopSettings->locationY = "0.53";
+//                                            $signFieldEnvelopSettings->locationWidth = "150";
+//                                            $signFieldEnvelopSettings->locationHeight = "50";
+//                                            $signFieldEnvelopSettings->name = $fieldName;
+//                                            $signFieldEnvelopSettings->forceNewField=true;
+//                                            $signFieldEnvelopSettings->page = "1";
+//                                            $addSignField = $signatureApi->AddSignatureEnvelopeField($clientId, $envelop->result->envelope->id, $getDocuments->result->documents[0]->documentId, $recipientId, "0545e589fb3e27c9bb7a1f59d0e3fcb9", $signFieldEnvelopSettings);
+//                                            if($addSignField->status == "Ok") {
                                                 $send = $signatureApi->SignatureEnvelopeSend($clientId, $envelop->result->envelope->id, $callbackUrl);
                                                 if ($send->status == "Ok") {
                                                     $envelopeId = $envelop->result->envelope->id;
@@ -176,9 +177,9 @@ function createQuestionary($clientId, $privateKey, $basePath)
                                                     throw new Exception($send->error_message);
                                                 }
 
-                                                }else {
-                                                throw new Exception($addSignField->error_message);
-                                            }
+//                                                }else {
+//                                                throw new Exception($addSignField->error_message);
+//                                            }
                                             }else {
                                             throw new Exception($getDocuments->error_message);
                                         }

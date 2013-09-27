@@ -189,9 +189,9 @@ function createQuestionary($clientId, $privateKey, $basePath)
                                 }else {
                                     throw new Exception($addRecipient->error_message);
                                 }
-                            }else {
-                                throw new Exception($createSignField->error_message);
-                            }
+//                            }else {
+//                                throw new Exception($createSignField->error_message);
+//                            }
                         }else {
                             throw new Exception($recipient->error_message);
                         }

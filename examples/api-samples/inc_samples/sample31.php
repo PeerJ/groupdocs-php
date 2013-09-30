@@ -132,66 +132,41 @@ function createQuestionary($clientId, $privateKey, $basePath)
                                     $roleId = $recipient->result->roles[$i]->id;
                                 }
                             }
-//                            $fieldSettings = new SignatureFieldSettings();
-//                            $fieldName = "signSample" . rand(0, 500);
-//                            $fieldSettings->name = $fieldName;
-//                            $createSignField = $signatureApi->CreateSignatureField($clientId, $fieldSettings);
-//
-//                            if($createSignField->status == "Ok") {
-                                //Add recipient to envelope
-                                $addRecipient = $signatureApi->AddSignatureEnvelopeRecipient($clientId, $envelop->result->envelope->id, 'test@test.com', 'test', 'test', $roleId, null);
-                                if ($addRecipient->status == "Ok") {
-                                    //Get recipient id
-                                    $getRecipient = $signatureApi->GetSignatureEnvelopeRecipients($clientId, $envelop->result->envelope->id);
-                                    if ($getRecipient->status == "Ok") {
-                                        $recipientId = $getRecipient->result->recipients[0]->id;
-                                        $getDocuments = $signatureApi->GetSignatureEnvelopeDocuments($clientId, $envelop->result->envelope->id);
-                                        if ($getDocuments->status == "Ok") {
-
-//                                            $signFieldEnvelopSettings = new SignatureEnvelopeFieldSettings();
-//                                            $signFieldEnvelopSettings->locationX = "0.05";
-//                                            $signFieldEnvelopSettings->locationY = "0.53";
-//                                            $signFieldEnvelopSettings->locationWidth = "150";
-//                                            $signFieldEnvelopSettings->locationHeight = "50";
-//                                            $signFieldEnvelopSettings->name = $fieldName;
-//                                            $signFieldEnvelopSettings->forceNewField=true;
-//                                            $signFieldEnvelopSettings->page = "1";
-//                                            $addSignField = $signatureApi->AddSignatureEnvelopeField($clientId, $envelop->result->envelope->id, $getDocuments->result->documents[0]->documentId, $recipientId, "0545e589fb3e27c9bb7a1f59d0e3fcb9", $signFieldEnvelopSettings);
-//                                            if($addSignField->status == "Ok") {
-                                                $send = $signatureApi->SignatureEnvelopeSend($clientId, $envelop->result->envelope->id, $callbackUrl);
-                                                if ($send->status == "Ok") {
-                                                    $envelopeId = $envelop->result->envelope->id;
-                                                    if ($basePath == "https://api.groupdocs.com/v2.0") {
-                                                        $iframe = 'https://apps.groupdocs.com/signature2/signembed/' . $envelopeId . '/' . $recipientId;
-                                                        //iframe to dev server
-                                                    } elseif ($basePath == "https://dev-api.groupdocs.com/v2.0") {
-                                                        $iframe = 'https://dev-apps.groupdocs.com/signature2/signembed/' . $envelopeId . '/' . $recipientId;
-                                                        //iframe to test server
-                                                    } elseif ($basePath == "https://stage-api.groupdocs.com/v2.0") {
-                                                        $iframe = 'https://stage-apps.groupdocs.com/signature2/signembed/' . $envelopeId . '/' . $recipientId;
-                                                    } elseif ($basePath == "http://realtime-api.groupdocs.com") {
-                                                        $iframe = 'https://relatime-apps.groupdocs.com/signature2/signembed/' . $envelopeId . '/' . $recipientId;
-                                                    }
-
-                                                }else {
-                                                    throw new Exception($send->error_message);
-                                                }
-
-//                                                }else {
-//                                                throw new Exception($addSignField->error_message);
-//                                            }
-                                            }else {
-                                            throw new Exception($getDocuments->error_message);
-                                        }
-                                    }else {
-                                        throw new Exception($getRecipient->error_message);
-                                    }
-                                }else {
-                                    throw new Exception($addRecipient->error_message);
-                                }
-//                            }else {
-//                                throw new Exception($createSignField->error_message);
-//                            }
+							//Add recipient to envelope
+							$addRecipient = $signatureApi->AddSignatureEnvelopeRecipient($clientId, $envelop->result->envelope->id, 'test@test.com', 'test', 'test', $roleId, null);
+							if ($addRecipient->status == "Ok") {
+								//Get recipient id
+								$getRecipient = $signatureApi->GetSignatureEnvelopeRecipients($clientId, $envelop->result->envelope->id);
+								if ($getRecipient->status == "Ok") {
+									$recipientId = $getRecipient->result->recipients[0]->id;
+									$getDocuments = $signatureApi->GetSignatureEnvelopeDocuments($clientId, $envelop->result->envelope->id);
+									if ($getDocuments->status == "Ok") {
+											$send = $signatureApi->SignatureEnvelopeSend($clientId, $envelop->result->envelope->id, $callbackUrl);
+											if ($send->status == "Ok") {
+												$envelopeId = $envelop->result->envelope->id;
+												if ($basePath == "https://api.groupdocs.com/v2.0") {
+													$iframe = 'https://apps.groupdocs.com/signature2/signembed/' . $envelopeId . '/' . $recipientId;
+													//iframe to dev server
+												} elseif ($basePath == "https://dev-api.groupdocs.com/v2.0") {
+													$iframe = 'https://dev-apps.groupdocs.com/signature2/signembed/' . $envelopeId . '/' . $recipientId;
+													//iframe to test server
+												} elseif ($basePath == "https://stage-api.groupdocs.com/v2.0") {
+													$iframe = 'https://stage-apps.groupdocs.com/signature2/signembed/' . $envelopeId . '/' . $recipientId;
+												} elseif ($basePath == "http://realtime-api.groupdocs.com") {
+													$iframe = 'https://relatime-apps.groupdocs.com/signature2/signembed/' . $envelopeId . '/' . $recipientId;
+												}
+											}else {
+												throw new Exception($send->error_message);
+											}
+										}else {
+										throw new Exception($getDocuments->error_message);
+									}
+								}else {
+									throw new Exception($getRecipient->error_message);
+								}
+							}else {
+								throw new Exception($addRecipient->error_message);
+							}
                         }else {
                             throw new Exception($recipient->error_message);
                         }

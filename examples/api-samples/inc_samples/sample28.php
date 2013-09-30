@@ -1,6 +1,6 @@
 <?php
 
-//###This sample will show how to list all annotations from document
+//###This sample will show how to delete all annotations from document
 //### Set variables and get POST data
 F3::set('userId', '');
 F3::set('privateKey', '');
@@ -42,7 +42,9 @@ function DeleteAnnotations($clientId, $privateKey, $fileId) {
         // Check the result of the request
         if ($list->status == "Ok") {
             if (!empty($list->result->annotations)) {
+				// Loop for annotations
                 for ($i = 0; $i < count($list->result->annotations); $i++) {
+					// Delete annotation using it's GUID
                     $del = $ant->DeleteAnnotation($clientId, $list->result->annotations[$i]->guid);
                     if ($del->status == "Ok") {
                         $message = '<span style="color: green">All annotation were deleted successfully</span>';

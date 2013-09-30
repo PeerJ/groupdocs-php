@@ -132,12 +132,12 @@ function createQuestionary($clientId, $privateKey, $basePath)
                                     $roleId = $recipient->result->roles[$i]->id;
                                 }
                             }
-                            $fieldSettings = new SignatureFieldSettings();
-                            $fieldName = "signSample" . rand(0, 500);
-                            $fieldSettings->name = $fieldName;
-                            $createSignField = $signatureApi->CreateSignatureField($clientId, $fieldSettings);
-
-                            if($createSignField->status == "Ok") {
+//                            $fieldSettings = new SignatureFieldSettings();
+//                            $fieldName = "signSample" . rand(0, 500);
+//                            $fieldSettings->name = $fieldName;
+//                            $createSignField = $signatureApi->CreateSignatureField($clientId, $fieldSettings);
+//
+//                            if($createSignField->status == "Ok") {
                                 //Add recipient to envelope
                                 $addRecipient = $signatureApi->AddSignatureEnvelopeRecipient($clientId, $envelop->result->envelope->id, 'test@test.com', 'test', 'test', $roleId, null);
                                 if ($addRecipient->status == "Ok") {

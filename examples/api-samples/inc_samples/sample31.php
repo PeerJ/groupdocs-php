@@ -1,6 +1,6 @@
 <?php
-//<i>This sample will show how to dinamically create your own questionary using forms and build signature form from the result document using PHP SDK</i>
 
+//<i>This sample will show how to dinamically create your own questionary using forms and build signature form from the result document using PHP SDK</i>
 //###Set variables and get POST data
 F3::set('userId', '');
 F3::set('privateKey', '');
@@ -14,10 +14,7 @@ $country = f3::get('POST["country"]');
 $city = f3::get('POST["city"]');
 $street = f3::get('POST["street"]');
 
-
-
-function createQuestionary($clientId, $privateKey, $basePath)
-{
+function createQuestionary($clientId, $privateKey, $basePath) {
     $templateGuid = F3::get('POST["template_guid"]');
     //###Check if user entered all parameters
     if (empty($clientId) || empty($privateKey)) {
@@ -34,7 +31,6 @@ function createQuestionary($clientId, $privateKey, $basePath)
         F3::set('userId', $clientId);
         F3::set('privateKey', $privateKey);
         //###Create Signer, ApiClient and Storage Api objects
-
         //Create signer object
         $signer = new GroupDocsRequestSigner($privateKey);
         //Create apiClient object
@@ -71,14 +67,14 @@ function createQuestionary($clientId, $privateKey, $basePath)
         f3::set("street", $street);
         f3::set("city", $city);
         f3::set("callbackUrl", $callbackUrl);
-        $enteredData = array("email" => $email, "country" => $country, "name" => $name, "street" => $street, "city" =>$city);
+        $enteredData = array("email" => $email, "country" => $country, "name" => $name, "street" => $street, "city" => $city);
         //Create new Datasource object
         $dataSource = new Datasource();
         //Create empty array
         $array = array();
         //Loop for fields creataion
         foreach ($enteredData as $fieldName => $data) {
-           
+
             //Create new DatasourceField object
             $field = new DatasourceField();
             //Set DatasourceFiled data
@@ -125,55 +121,55 @@ function createQuestionary($clientId, $privateKey, $basePath)
                     if ($addDocument->status == "Ok") {
                         //Get role list for curent user
                         $recipient = $signatureApi->GetRolesList($clientId);
-                        if ($recipient->status == "Ok" ) {
+                        if ($recipient->status == "Ok") {
                             //Get id of role which can sign
-                            for($i = 0; $i < count($recipient->result->roles); $i++) {
-                                if($recipient->result->roles[$i]->name == "Signer") {
+                            for ($i = 0; $i < count($recipient->result->roles); $i++) {
+                                if ($recipient->result->roles[$i]->name == "Signer") {
                                     $roleId = $recipient->result->roles[$i]->id;
                                 }
                             }
-							//Add recipient to envelope
-							$addRecipient = $signatureApi->AddSignatureEnvelopeRecipient($clientId, $envelop->result->envelope->id, 'test@test.com', 'test', 'test', $roleId, null);
-							if ($addRecipient->status == "Ok") {
-								//Get recipient id
-								$getRecipient = $signatureApi->GetSignatureEnvelopeRecipients($clientId, $envelop->result->envelope->id);
-								if ($getRecipient->status == "Ok") {
-									$recipientId = $getRecipient->result->recipients[0]->id;
-									$getDocuments = $signatureApi->GetSignatureEnvelopeDocuments($clientId, $envelop->result->envelope->id);
-									if ($getDocuments->status == "Ok") {
-											$send = $signatureApi->SignatureEnvelopeSend($clientId, $envelop->result->envelope->id, $callbackUrl);
-											if ($send->status == "Ok") {
-												$envelopeId = $envelop->result->envelope->id;
-												if ($basePath == "https://api.groupdocs.com/v2.0") {
-													$iframe = 'https://apps.groupdocs.com/signature2/signembed/' . $envelopeId . '/' . $recipientId;
-													//iframe to dev server
-												} elseif ($basePath == "https://dev-api.groupdocs.com/v2.0") {
-													$iframe = 'https://dev-apps.groupdocs.com/signature2/signembed/' . $envelopeId . '/' . $recipientId;
-													//iframe to test server
-												} elseif ($basePath == "https://stage-api.groupdocs.com/v2.0") {
-													$iframe = 'https://stage-apps.groupdocs.com/signature2/signembed/' . $envelopeId . '/' . $recipientId;
-												} elseif ($basePath == "http://realtime-api.groupdocs.com") {
-													$iframe = 'https://relatime-apps.groupdocs.com/signature2/signembed/' . $envelopeId . '/' . $recipientId;
-												}
-											}else {
-												throw new Exception($send->error_message);
-											}
-										}else {
-										throw new Exception($getDocuments->error_message);
-									}
-								}else {
-									throw new Exception($getRecipient->error_message);
-								}
-							}else {
-								throw new Exception($addRecipient->error_message);
-							}
-                        }else {
+                            //Add recipient to envelope
+                            $addRecipient = $signatureApi->AddSignatureEnvelopeRecipient($clientId, $envelop->result->envelope->id, 'test@test.com', 'test', 'test', $roleId, null);
+                            if ($addRecipient->status == "Ok") {
+                                //Get recipient id
+                                $getRecipient = $signatureApi->GetSignatureEnvelopeRecipients($clientId, $envelop->result->envelope->id);
+                                if ($getRecipient->status == "Ok") {
+                                    $recipientId = $getRecipient->result->recipients[0]->id;
+                                    $getDocuments = $signatureApi->GetSignatureEnvelopeDocuments($clientId, $envelop->result->envelope->id);
+                                    if ($getDocuments->status == "Ok") {
+                                        $send = $signatureApi->SignatureEnvelopeSend($clientId, $envelop->result->envelope->id, $callbackUrl);
+                                        if ($send->status == "Ok") {
+                                            $envelopeId = $envelop->result->envelope->id;
+                                            if ($basePath == "https://api.groupdocs.com/v2.0") {
+                                                $iframe = 'https://apps.groupdocs.com/signature2/signembed/' . $envelopeId . '/' . $recipientId;
+                                                //iframe to dev server
+                                            } elseif ($basePath == "https://dev-api.groupdocs.com/v2.0") {
+                                                $iframe = 'https://dev-apps.groupdocs.com/signature2/signembed/' . $envelopeId . '/' . $recipientId;
+                                                //iframe to test server
+                                            } elseif ($basePath == "https://stage-api.groupdocs.com/v2.0") {
+                                                $iframe = 'https://stage-apps.groupdocs.com/signature2/signembed/' . $envelopeId . '/' . $recipientId;
+                                            } elseif ($basePath == "http://realtime-api.groupdocs.com") {
+                                                $iframe = 'https://relatime-apps.groupdocs.com/signature2/signembed/' . $envelopeId . '/' . $recipientId;
+                                            }
+                                        } else {
+                                            throw new Exception($send->error_message);
+                                        }
+                                    } else {
+                                        throw new Exception($getDocuments->error_message);
+                                    }
+                                } else {
+                                    throw new Exception($getRecipient->error_message);
+                                }
+                            } else {
+                                throw new Exception($addRecipient->error_message);
+                            }
+                        } else {
                             throw new Exception($recipient->error_message);
                         }
                     } else {
                         throw new Exception($addDocument->error_message);
                     }
-                }else {
+                } else {
                     throw new Exception($envelop->error_message);
                 }
             } else {
@@ -187,6 +183,7 @@ function createQuestionary($clientId, $privateKey, $basePath)
         return f3::set('url', $iframe);
     }
 }
+
 //### Delete downloads folder and all files in this folder
 function delFolder($path) {
     $next = null;
@@ -203,7 +200,6 @@ function delFolder($path) {
             if (file_exists($next)) {
                 unlink($next);
             }
-
         }
     }
     //Delete folder
@@ -212,8 +208,8 @@ function delFolder($path) {
 
 try {
     createQuestionary($clientId, $privateKey, $basePath);
-} catch(Exception $e) {
-    $error = 'ERROR: ' .  $e->getMessage() . "\n";
+} catch (Exception $e) {
+    $error = 'ERROR: ' . $e->getMessage() . "\n";
     f3::set('error', $error);
 }
 //Process template

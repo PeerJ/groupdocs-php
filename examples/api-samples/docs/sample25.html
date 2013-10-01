@@ -1,192 +1,948 @@
-<!DOCTYPE html>  <html> <head>   <title>sample25.php</title>   <meta http-equiv="content-type" content="text/html; charset=UTF-8">   <link rel="stylesheet" media="all" href="docco.css" /> </head> <body>   <div id="container">     <div id="background"></div>            <div id="jump_to">         Jump To &hellip;         <div id="jump_wrapper">           <div id="jump_page">                                           <a class="source" href="sample01.html">                 sample01.php               </a>                                           <a class="source" href="sample02.html">                 sample02.php               </a>                                           <a class="source" href="sample03.html">                 sample03.php               </a>                                           <a class="source" href="sample04.html">                 sample04.php               </a>                                           <a class="source" href="sample05.html">                 sample05.php               </a>                                           <a class="source" href="sample06.html">                 sample06.php               </a>                                           <a class="source" href="sample07.html">                 sample07.php               </a>                                           <a class="source" href="sample08.html">                 sample08.php               </a>                                           <a class="source" href="sample09.html">                 sample09.php               </a>                                           <a class="source" href="sample10.html">                 sample10.php               </a>                                           <a class="source" href="sample11.html">                 sample11.php               </a>                                           <a class="source" href="sample12.html">                 sample12.php               </a>                                           <a class="source" href="sample13.html">                 sample13.php               </a>                                           <a class="source" href="sample14.html">                 sample14.php               </a>                                           <a class="source" href="sample15.html">                 sample15.php               </a>                                           <a class="source" href="sample16.html">                 sample16.php               </a>                                           <a class="source" href="sample17.html">                 sample17.php               </a>                                           <a class="source" href="sample18.html">                 sample18.php               </a>                                           <a class="source" href="sample19.html">                 sample19.php               </a>                                           <a class="source" href="sample20.html">                 sample20.php               </a>                                           <a class="source" href="sample21.html">                 sample21.php               </a>                                           <a class="source" href="sample22.html">                 sample22.php               </a>                                           <a class="source" href="sample23.html">                 sample23.php               </a>                                           <a class="source" href="sample24.html">                 sample24.php               </a>                                           <a class="source" href="sample25.html">                 sample25.php               </a>                                           <a class="source" href="sample26.html">                 sample26.php               </a>                                           <a class="source" href="sample27.html">                 sample27.php               </a>                                           <a class="source" href="sample28.html">                 sample28.php               </a>                                           <a class="source" href="sample29.html">                 sample29.php               </a>                                           <a class="source" href="sample30.html">                 sample30.php               </a>                        </div>         </div>       </div>          <table cellpadding="0" cellspacing="0">       <thead>         <tr>           <th class="docs">             <h1>               sample25.php             </h1>           </th>           <th class="code">           </th>         </tr>       </thead>       <tbody>                               <tr id="section-1">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-1">&#182;</a>               </div>                            </td>             <td class="code">               <div class="highlight"><pre><span class="cp">&lt;?php</span>
+<!DOCTYPE html>
 
-</pre></div>             </td>           </tr>                               <tr id="section-2">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-2">&#182;</a>               </div>               <p><i>This sample will show how to merge data fields in docx file with data source and get result file as PDF file</i></p>
+<html>
+<head>
+  <title>sample25.php</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+  <link rel="stylesheet" media="all" href="docco.css" />
+</head>
+<body>
+  <div id="container">
+    <div id="background"></div>
+    
+    <ul class="sections">
+        
+          <li id="title">
+              <div class="annotation">
+                  <h1>sample25.php</h1>
+              </div>
+          </li>
+        
+        
+        
+        <li id="section-1">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-1">&#182;</a>
+              </div>
+              
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="preprocessor">&lt;?php</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-2">
+            <div class="annotation">
+              
+              <div class="pilwrap for-h3">
+                <a class="pilcrow" href="#section-2">&#182;</a>
+              </div>
+              <h3><i>This sample will show how to merge data fields in docx file with data source and get result file as PDF file</i></h3>
+<p>Set variables and get POST data</p>
 
-<h3>Set variables and get POST data</h3>             </td>             <td class="code">               <div class="highlight"><pre>
-<span class="nx">F3</span><span class="o">::</span><span class="na">set</span><span class="p">(</span><span class="s1">&#39;userId&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">);</span>
-<span class="nx">F3</span><span class="o">::</span><span class="na">set</span><span class="p">(</span><span class="s1">&#39;privateKey&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">);</span>
-<span class="nv">$clientId</span> <span class="o">=</span> <span class="nx">F3</span><span class="o">::</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;POST[&quot;client_id&quot;]&#39;</span><span class="p">);</span>
-<span class="nv">$privateKey</span> <span class="o">=</span> <span class="nx">F3</span><span class="o">::</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;POST[&quot;private_key&quot;]&#39;</span><span class="p">);</span>
-<span class="nv">$basePath</span> <span class="o">=</span> <span class="nx">f3</span><span class="o">::</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;POST[&quot;server_type&quot;]&#39;</span><span class="p">);</span>
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>F3::set(<span class="string">'userId'</span>, <span class="string">''</span>);
+F3::set(<span class="string">'privateKey'</span>, <span class="string">''</span>);
+<span class="variable">$clientId</span> = F3::get(<span class="string">'POST["client_id"]'</span>);
+<span class="variable">$privateKey</span> = F3::get(<span class="string">'POST["private_key"]'</span>);
+<span class="variable">$basePath</span> = f3::get(<span class="string">'POST["server_type"]'</span>);
 
-<span class="k">function</span> <span class="nf">mergeFields</span><span class="p">(</span><span class="nv">$clientId</span><span class="p">,</span> <span class="nv">$privateKey</span><span class="p">,</span> <span class="nv">$basePath</span><span class="p">)</span> <span class="p">{</span>
-</pre></div>             </td>           </tr>                               <tr id="section-3">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-3">&#182;</a>               </div>               <h3>Check if user entered all parameters</h3>             </td>             <td class="code">               <div class="highlight"><pre>
-    <span class="k">if</span> <span class="p">(</span><span class="k">empty</span><span class="p">(</span><span class="nv">$clientId</span><span class="p">)</span> <span class="o">||</span> <span class="k">empty</span><span class="p">(</span><span class="nv">$privateKey</span><span class="p">))</span> <span class="p">{</span>
-        <span class="k">throw</span> <span class="k">new</span> <span class="nx">Exception</span><span class="p">(</span><span class="s1">&#39;Please enter FILE ID&#39;</span><span class="p">);</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-        <span class="nx">F3</span><span class="o">::</span><span class="na">set</span><span class="p">(</span><span class="s1">&#39;userId&#39;</span><span class="p">,</span> <span class="nv">$clientId</span><span class="p">);</span>
-        <span class="nx">F3</span><span class="o">::</span><span class="na">set</span><span class="p">(</span><span class="s1">&#39;privateKey&#39;</span><span class="p">,</span> <span class="nv">$privateKey</span><span class="p">);</span>
-</pre></div>             </td>           </tr>                               <tr id="section-4">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-4">&#182;</a>               </div>               <h3>Create Signer, ApiClient and Storage Api objects</h3>
+<span class="function"><span class="keyword">function</span> <span class="title">mergeFields</span><span class="params">(<span class="variable">$clientId</span>, <span class="variable">$privateKey</span>, <span class="variable">$basePath</span>)</span> {</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-3">
+            <div class="annotation">
+              
+              <div class="pilwrap for-h3">
+                <a class="pilcrow" href="#section-3">&#182;</a>
+              </div>
+              <h3>Check if user entered all parameters</h3>
 
-<p>Create signer object</p>             </td>             <td class="code">               <div class="highlight"><pre>
-        <span class="nv">$signer</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">GroupDocsRequestSigner</span><span class="p">(</span><span class="nv">$privateKey</span><span class="p">);</span>
-</pre></div>             </td>           </tr>                               <tr id="section-5">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-5">&#182;</a>               </div>               <p>Create apiClient object</p>             </td>             <td class="code">               <div class="highlight"><pre>
-        <span class="nv">$apiClient</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">APIClient</span><span class="p">(</span><span class="nv">$signer</span><span class="p">);</span>
-</pre></div>             </td>           </tr>                               <tr id="section-6">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-6">&#182;</a>               </div>               <p>Create Doc Api object</p>             </td>             <td class="code">               <div class="highlight"><pre>
-        <span class="nv">$docApi</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">DocApi</span><span class="p">(</span><span class="nv">$apiClient</span><span class="p">);</span>
-</pre></div>             </td>           </tr>                               <tr id="section-7">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-7">&#182;</a>               </div>               <p>Create Storage Api object</p>             </td>             <td class="code">               <div class="highlight"><pre>
-        <span class="nv">$apiStorage</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">StorageApi</span><span class="p">(</span><span class="nv">$apiClient</span><span class="p">);</span>
-</pre></div>             </td>           </tr>                               <tr id="section-8">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-8">&#182;</a>               </div>               <p>Create AsyncApi object</p>             </td>             <td class="code">               <div class="highlight"><pre>
-        <span class="nv">$api</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">AsyncApi</span><span class="p">(</span><span class="nv">$apiClient</span><span class="p">);</span>
-        <span class="nv">$mergApi</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">MergeApi</span><span class="p">(</span><span class="nv">$apiClient</span><span class="p">);</span>
-</pre></div>             </td>           </tr>                               <tr id="section-9">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-9">&#182;</a>               </div>               <p>Set url to choose whot server to use</p>             </td>             <td class="code">               <div class="highlight"><pre>
-        <span class="k">if</span> <span class="p">(</span><span class="nv">$basePath</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span><span class="p">)</span> <span class="p">{</span>
-</pre></div>             </td>           </tr>                               <tr id="section-10">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-10">&#182;</a>               </div>               <p>If base base is empty seting base path to prod server</p>             </td>             <td class="code">               <div class="highlight"><pre>
-            <span class="nv">$basePath</span> <span class="o">=</span> <span class="s1">&#39;https://api.groupdocs.com/v2.0&#39;</span><span class="p">;</span>
-        <span class="p">}</span>
-</pre></div>             </td>           </tr>                               <tr id="section-11">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-11">&#182;</a>               </div>               <p>Set base path</p>             </td>             <td class="code">               <div class="highlight"><pre>
-        <span class="nv">$docApi</span><span class="o">-&gt;</span><span class="na">setBasePath</span><span class="p">(</span><span class="nv">$basePath</span><span class="p">);</span>
-        <span class="nv">$apiStorage</span><span class="o">-&gt;</span><span class="na">setBasePath</span><span class="p">(</span><span class="nv">$basePath</span><span class="p">);</span>
-        <span class="nv">$api</span><span class="o">-&gt;</span><span class="na">setBasePath</span><span class="p">(</span><span class="nv">$basePath</span><span class="p">);</span>
-        <span class="nv">$mergApi</span><span class="o">-&gt;</span><span class="na">setBasePath</span><span class="p">(</span><span class="nv">$basePath</span><span class="p">);</span>
-</pre></div>             </td>           </tr>                               <tr id="section-12">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-12">&#182;</a>               </div>               <p>Get entered by user data</p>             </td>             <td class="code">               <div class="highlight"><pre>
-        <span class="nv">$url</span> <span class="o">=</span> <span class="nx">F3</span><span class="o">::</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;POST[&quot;url&quot;]&#39;</span><span class="p">);</span>
-        <span class="nv">$file</span> <span class="o">=</span> <span class="nv">$_FILES</span><span class="p">[</span><span class="s1">&#39;file&#39;</span><span class="p">];</span>
-        <span class="nv">$fileId</span> <span class="o">=</span> <span class="nx">f3</span><span class="o">::</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;POST[&quot;fileId&quot;]&#39;</span><span class="p">);</span>
-</pre></div>             </td>           </tr>                               <tr id="section-13">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-13">&#182;</a>               </div>               <p>Check if user choose upload file from URL</p>             </td>             <td class="code">               <div class="highlight"><pre>
-        <span class="k">if</span> <span class="p">(</span><span class="nv">$url</span> <span class="o">!=</span> <span class="s2">&quot;&quot;</span><span class="p">)</span> <span class="p">{</span>
-</pre></div>             </td>           </tr>                               <tr id="section-14">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-14">&#182;</a>               </div>               <p>Upload file from URL</p>             </td>             <td class="code">               <div class="highlight"><pre>
-            <span class="nv">$uploadResult</span> <span class="o">=</span> <span class="nv">$apiStorage</span><span class="o">-&gt;</span><span class="na">UploadWeb</span><span class="p">(</span><span class="nv">$clientId</span><span class="p">,</span> <span class="nv">$url</span><span class="p">);</span>
-</pre></div>             </td>           </tr>                               <tr id="section-15">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-15">&#182;</a>               </div>               <p>Check is file uploaded</p>             </td>             <td class="code">               <div class="highlight"><pre>
-            <span class="k">if</span> <span class="p">(</span><span class="nv">$uploadResult</span><span class="o">-&gt;</span><span class="na">status</span> <span class="o">==</span> <span class="s2">&quot;Ok&quot;</span><span class="p">)</span> <span class="p">{</span>
-</pre></div>             </td>           </tr>                               <tr id="section-16">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-16">&#182;</a>               </div>               <p>Get file GUID</p>             </td>             <td class="code">               <div class="highlight"><pre>
-                <span class="nv">$fileGuId</span> <span class="o">=</span> <span class="nv">$uploadResult</span><span class="o">-&gt;</span><span class="na">result</span><span class="o">-&gt;</span><span class="na">guid</span><span class="p">;</span>
-                <span class="nv">$fileId</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">;</span>
-</pre></div>             </td>           </tr>                               <tr id="section-17">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-17">&#182;</a>               </div>               <p>If it isn't uploaded throw exception to template</p>             </td>             <td class="code">               <div class="highlight"><pre>
-            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-                <span class="k">throw</span> <span class="k">new</span> <span class="nx">Exception</span><span class="p">(</span><span class="nv">$uploadResult</span><span class="o">-&gt;</span><span class="na">error_message</span><span class="p">);</span>
-            <span class="p">}</span>
-        <span class="p">}</span>
-</pre></div>             </td>           </tr>                               <tr id="section-18">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-18">&#182;</a>               </div>               <p>Check is user choose upload local file</p>             </td>             <td class="code">               <div class="highlight"><pre>
-        <span class="k">if</span> <span class="p">(</span><span class="nv">$_FILES</span><span class="p">[</span><span class="s1">&#39;file&#39;</span><span class="p">][</span><span class="s2">&quot;name&quot;</span><span class="p">]</span> <span class="o">!=</span> <span class="s2">&quot;&quot;</span><span class="p">)</span> <span class="p">{</span>
-</pre></div>             </td>           </tr>                               <tr id="section-19">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-19">&#182;</a>               </div>               <p>Temp name of the file</p>             </td>             <td class="code">               <div class="highlight"><pre>
-            <span class="nv">$tmp_name</span> <span class="o">=</span> <span class="nv">$file</span><span class="p">[</span><span class="s1">&#39;tmp_name&#39;</span><span class="p">];</span>
-</pre></div>             </td>           </tr>                               <tr id="section-20">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-20">&#182;</a>               </div>               <p>Original name of the file</p>             </td>             <td class="code">               <div class="highlight"><pre>
-            <span class="nv">$name</span> <span class="o">=</span> <span class="nv">$file</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">];</span>
-</pre></div>             </td>           </tr>                               <tr id="section-21">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-21">&#182;</a>               </div>               <p>Creat file stream</p>             </td>             <td class="code">               <div class="highlight"><pre>
-            <span class="nv">$fs</span> <span class="o">=</span> <span class="nx">FileStream</span><span class="o">::</span><span class="na">fromFile</span><span class="p">(</span><span class="nv">$tmp_name</span><span class="p">);</span>
-</pre></div>             </td>           </tr>                               <tr id="section-22">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-22">&#182;</a>               </div>               <h3>Make a request to Storage API using clientId</h3>
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    <span class="keyword">if</span> (<span class="keyword">empty</span>(<span class="variable">$clientId</span>) || <span class="keyword">empty</span>(<span class="variable">$privateKey</span>)) {
+        <span class="keyword">throw</span> <span class="keyword">new</span> <span class="keyword">Exception</span>(<span class="string">'Please enter FILE ID'</span>);
+    } <span class="keyword">else</span> {
+        F3::set(<span class="string">'userId'</span>, <span class="variable">$clientId</span>);
+        F3::set(<span class="string">'privateKey'</span>, <span class="variable">$privateKey</span>);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-4">
+            <div class="annotation">
+              
+              <div class="pilwrap for-h3">
+                <a class="pilcrow" href="#section-4">&#182;</a>
+              </div>
+              <h3>Create Signer, ApiClient and Storage Api objects</h3>
+<p>Create signer object</p>
 
-<p>Upload file to current user storage</p>             </td>             <td class="code">               <div class="highlight"><pre>
-            <span class="nv">$uploadResult</span> <span class="o">=</span> <span class="nv">$apiStorage</span><span class="o">-&gt;</span><span class="na">Upload</span><span class="p">(</span><span class="nv">$clientId</span><span class="p">,</span> <span class="nv">$name</span><span class="p">,</span> <span class="s1">&#39;uploaded&#39;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="nv">$fs</span><span class="p">);</span>
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        <span class="variable">$signer</span> = <span class="keyword">new</span> GroupDocsRequestSigner(<span class="variable">$privateKey</span>);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-5">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-5">&#182;</a>
+              </div>
+              <p>Create apiClient object</p>
 
-</pre></div>             </td>           </tr>                               <tr id="section-23">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-23">&#182;</a>               </div>               <h3>Check if file uploaded successfully</h3>             </td>             <td class="code">               <div class="highlight"><pre>
-            <span class="k">if</span> <span class="p">(</span><span class="nv">$uploadResult</span><span class="o">-&gt;</span><span class="na">status</span> <span class="o">==</span> <span class="s2">&quot;Ok&quot;</span><span class="p">)</span> <span class="p">{</span>
-</pre></div>             </td>           </tr>                               <tr id="section-24">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-24">&#182;</a>               </div>               <p>Get file GUID</p>             </td>             <td class="code">               <div class="highlight"><pre>
-                <span class="nv">$fileGuId</span> <span class="o">=</span> <span class="nv">$uploadResult</span><span class="o">-&gt;</span><span class="na">result</span><span class="o">-&gt;</span><span class="na">guid</span><span class="p">;</span>
-                <span class="nv">$fileId</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">;</span>
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        <span class="variable">$apiClient</span> = <span class="keyword">new</span> APIClient(<span class="variable">$signer</span>);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-6">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-6">&#182;</a>
+              </div>
+              <p>Create Doc Api object</p>
 
-</pre></div>             </td>           </tr>                               <tr id="section-25">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-25">&#182;</a>               </div>               <p>If it isn't uploaded throw exception to template</p>             </td>             <td class="code">               <div class="highlight"><pre>
-            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-                <span class="k">throw</span> <span class="k">new</span> <span class="nx">Exception</span><span class="p">(</span><span class="nv">$uploadResult</span><span class="o">-&gt;</span><span class="na">error_message</span><span class="p">);</span>
-            <span class="p">}</span>
-        <span class="p">}</span>
-</pre></div>             </td>           </tr>                               <tr id="section-26">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-26">&#182;</a>               </div>               <p>Check is user choose file GUID</p>             </td>             <td class="code">               <div class="highlight"><pre>
-        <span class="k">if</span> <span class="p">(</span><span class="nv">$fileId</span> <span class="o">!=</span> <span class="s2">&quot;&quot;</span><span class="p">)</span> <span class="p">{</span>
-</pre></div>             </td>           </tr>                               <tr id="section-27">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-27">&#182;</a>               </div>               <p>Get entered by user file GUID</p>             </td>             <td class="code">               <div class="highlight"><pre>
-            <span class="nv">$fileGuId</span> <span class="o">=</span> <span class="nv">$fileId</span><span class="p">;</span>
-        <span class="p">}</span>
-</pre></div>             </td>           </tr>                               <tr id="section-28">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-28">&#182;</a>               </div>               <p>Get feilds from template</p>             </td>             <td class="code">               <div class="highlight"><pre>
-        <span class="nv">$fields</span> <span class="o">=</span> <span class="nv">$docApi</span><span class="o">-&gt;</span><span class="na">GetTemplateFields</span><span class="p">(</span><span class="nv">$clientId</span><span class="p">,</span> <span class="nv">$fileGuId</span><span class="p">);</span>
-</pre></div>             </td>           </tr>                               <tr id="section-29">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-29">&#182;</a>               </div>               <p>Check status</p>             </td>             <td class="code">               <div class="highlight"><pre>
-        <span class="k">if</span> <span class="p">(</span><span class="nv">$fields</span><span class="o">-&gt;</span><span class="na">status</span> <span class="o">==</span> <span class="s2">&quot;Ok&quot;</span><span class="p">)</span> <span class="p">{</span>
-</pre></div>             </td>           </tr>                               <tr id="section-30">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-30">&#182;</a>               </div>               <p>Create new Datasource object</p>             </td>             <td class="code">               <div class="highlight"><pre>
-            <span class="nv">$dataSource</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Datasource</span><span class="p">();</span>
-</pre></div>             </td>           </tr>                               <tr id="section-31">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-31">&#182;</a>               </div>               <p>Create empty array</p>             </td>             <td class="code">               <div class="highlight"><pre>
-            <span class="nv">$array</span> <span class="o">=</span> <span class="k">array</span><span class="p">();</span>
-</pre></div>             </td>           </tr>                               <tr id="section-32">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-32">&#182;</a>               </div>               <p>Loop for fields creataion</p>             </td>             <td class="code">               <div class="highlight"><pre>
-            <span class="k">for</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nv">$i</span> <span class="o">&lt;</span> <span class="nb">count</span><span class="p">(</span><span class="nv">$fields</span><span class="o">-&gt;</span><span class="na">result</span><span class="o">-&gt;</span><span class="na">fields</span><span class="p">);</span> <span class="nv">$i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-</pre></div>             </td>           </tr>                               <tr id="section-33">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-33">&#182;</a>               </div>               <p>Create new DatasourceField object</p>             </td>             <td class="code">               <div class="highlight"><pre>
-                <span class="nv">$field</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">DatasourceField</span><span class="p">();</span>
-</pre></div>             </td>           </tr>                               <tr id="section-34">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-34">&#182;</a>               </div>               <p>Set DatasourceFiled data</p>             </td>             <td class="code">               <div class="highlight"><pre>
-                <span class="nv">$field</span><span class="o">-&gt;</span><span class="na">name</span> <span class="o">=</span> <span class="nv">$fields</span><span class="o">-&gt;</span><span class="na">result</span><span class="o">-&gt;</span><span class="na">fields</span><span class="p">[</span><span class="nv">$i</span><span class="p">]</span><span class="o">-&gt;</span><span class="na">name</span><span class="p">;</span>
-                <span class="nv">$field</span><span class="o">-&gt;</span><span class="na">type</span> <span class="o">=</span> <span class="s2">&quot;text&quot;</span><span class="p">;</span>
-                <span class="nv">$field</span><span class="o">-&gt;</span><span class="na">values</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s2">&quot;value1&quot;</span><span class="p">,</span> <span class="s2">&quot;value2&quot;</span><span class="p">);</span>
-</pre></div>             </td>           </tr>                               <tr id="section-35">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-35">&#182;</a>               </div>               <p>Push DatasourceField to array</p>             </td>             <td class="code">               <div class="highlight"><pre>
-                <span class="nb">array_push</span><span class="p">(</span><span class="nv">$array</span><span class="p">,</span> <span class="nv">$field</span><span class="p">);</span>
-            <span class="p">}</span>
-</pre></div>             </td>           </tr>                               <tr id="section-36">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-36">&#182;</a>               </div>               <p>Set array feilds array to the Datasourc</p>             </td>             <td class="code">               <div class="highlight"><pre>
-            <span class="nv">$dataSource</span><span class="o">-&gt;</span><span class="na">fields</span> <span class="o">=</span> <span class="nv">$array</span><span class="p">;</span>
-</pre></div>             </td>           </tr>                               <tr id="section-37">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-37">&#182;</a>               </div>               <p>Add Datasource to GroupDocs</p>             </td>             <td class="code">               <div class="highlight"><pre>
-            <span class="nv">$addDataSource</span> <span class="o">=</span> <span class="nv">$mergApi</span><span class="o">-&gt;</span><span class="na">AddDataSource</span><span class="p">(</span><span class="nv">$clientId</span><span class="p">,</span> <span class="nv">$dataSource</span><span class="p">);</span>
-</pre></div>             </td>           </tr>                               <tr id="section-38">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-38">&#182;</a>               </div>               <p>Check status</p>             </td>             <td class="code">               <div class="highlight"><pre>
-            <span class="k">if</span> <span class="p">(</span><span class="nv">$addDataSource</span><span class="o">-&gt;</span><span class="na">status</span> <span class="o">==</span> <span class="s2">&quot;Ok&quot;</span><span class="p">)</span> <span class="p">{</span>
-</pre></div>             </td>           </tr>                               <tr id="section-39">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-39">&#182;</a>               </div>               <p>If status ok merge Datasource to new pdf file</p>             </td>             <td class="code">               <div class="highlight"><pre>
-                <span class="nv">$job</span> <span class="o">=</span> <span class="nv">$mergApi</span><span class="o">-&gt;</span><span class="na">MergeDatasource</span><span class="p">(</span><span class="nv">$clientId</span><span class="p">,</span> <span class="nv">$fileGuId</span><span class="p">,</span> <span class="nv">$addDataSource</span><span class="o">-&gt;</span><span class="na">result</span><span class="o">-&gt;</span><span class="na">datasource_id</span><span class="p">,</span> <span class="s2">&quot;pdf&quot;</span><span class="p">,</span> <span class="k">null</span><span class="p">);</span>
-</pre></div>             </td>           </tr>                               <tr id="section-40">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-40">&#182;</a>               </div>               <p>Check status</p>             </td>             <td class="code">               <div class="highlight"><pre>
-                <span class="k">if</span> <span class="p">(</span><span class="nv">$job</span><span class="o">-&gt;</span><span class="na">status</span> <span class="o">==</span> <span class="s2">&quot;Ok&quot;</span><span class="p">)</span> <span class="p">{</span>
-</pre></div>             </td>           </tr>                               <tr id="section-41">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-41">&#182;</a>               </div>               <h3>Check job status</h3>             </td>             <td class="code">               <div class="highlight"><pre>
-                    <span class="k">for</span> <span class="p">(</span><span class="nv">$n</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nv">$n</span> <span class="o">&lt;=</span> <span class="mi">5</span><span class="p">;</span> <span class="nv">$n</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-</pre></div>             </td>           </tr>                               <tr id="section-42">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-42">&#182;</a>               </div>               <p>Delay necessary that the inquiry would manage to be processed</p>             </td>             <td class="code">               <div class="highlight"><pre>
-                        <span class="nb">sleep</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
-</pre></div>             </td>           </tr>                               <tr id="section-43">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-43">&#182;</a>               </div>               <p>Make request to api for get document info by job id</p>             </td>             <td class="code">               <div class="highlight"><pre>
-                        <span class="nv">$jobInfo</span> <span class="o">=</span> <span class="nv">$api</span><span class="o">-&gt;</span><span class="na">GetJobDocuments</span><span class="p">(</span><span class="nv">$clientId</span><span class="p">,</span> <span class="nv">$job</span><span class="o">-&gt;</span><span class="na">result</span><span class="o">-&gt;</span><span class="na">job_id</span><span class="p">);</span>
-</pre></div>             </td>           </tr>                               <tr id="section-44">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-44">&#182;</a>               </div>               <p>Check job status, if status is Completed or Archived exit from cycle</p>             </td>             <td class="code">               <div class="highlight"><pre>
-                        <span class="k">if</span> <span class="p">(</span><span class="nv">$jobInfo</span><span class="o">-&gt;</span><span class="na">result</span><span class="o">-&gt;</span><span class="na">job_status</span> <span class="o">==</span> <span class="s2">&quot;Completed&quot;</span> <span class="o">||</span> <span class="nv">$jobInfo</span><span class="o">-&gt;</span><span class="na">result</span><span class="o">-&gt;</span><span class="na">job_status</span> <span class="o">==</span> <span class="s2">&quot;Archived&quot;</span><span class="p">)</span> <span class="p">{</span>
-                            <span class="k">break</span><span class="p">;</span>
-</pre></div>             </td>           </tr>                               <tr id="section-45">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-45">&#182;</a>               </div>               <p>If job status Postponed throw exception with error</p>             </td>             <td class="code">               <div class="highlight"><pre>
-                        <span class="p">}</span> <span class="k">elseif</span> <span class="p">(</span><span class="nv">$jobInfo</span><span class="o">-&gt;</span><span class="na">result</span><span class="o">-&gt;</span><span class="na">job_status</span> <span class="o">==</span> <span class="s2">&quot;Postponed&quot;</span><span class="p">)</span> <span class="p">{</span>
-                            <span class="k">throw</span> <span class="k">new</span> <span class="nx">Exception</span><span class="p">(</span><span class="s2">&quot;Job is failed&quot;</span><span class="p">);</span>
-                        <span class="p">}</span>
-                    <span class="p">}</span>
-                    <span class="k">if</span> <span class="p">(</span><span class="nv">$jobInfo</span><span class="o">-&gt;</span><span class="na">result</span><span class="o">-&gt;</span><span class="na">job_status</span> <span class="o">==</span> <span class="s2">&quot;Pending&quot;</span><span class="p">)</span> <span class="p">{</span>
-                        <span class="k">throw</span> <span class="k">new</span> <span class="nx">Exception</span><span class="p">(</span><span class="s2">&quot;Job is pending&quot;</span><span class="p">);</span>
-                    <span class="p">}</span>
-</pre></div>             </td>           </tr>                               <tr id="section-46">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-46">&#182;</a>               </div>               <p>Get file guid</p>             </td>             <td class="code">               <div class="highlight"><pre>
-                    <span class="nv">$guid</span> <span class="o">=</span> <span class="nv">$jobInfo</span><span class="o">-&gt;</span><span class="na">result</span><span class="o">-&gt;</span><span class="na">inputs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-&gt;</span><span class="na">outputs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-&gt;</span><span class="na">guid</span><span class="p">;</span>
-                    <span class="nx">F3</span><span class="o">::</span><span class="na">set</span><span class="p">(</span><span class="s1">&#39;fileId&#39;</span><span class="p">,</span> <span class="nv">$guid</span><span class="p">);</span>
-</pre></div>             </td>           </tr>                               <tr id="section-47">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-47">&#182;</a>               </div>               <p>Get file name</p>             </td>             <td class="code">               <div class="highlight"><pre>
-                    <span class="nv">$name</span> <span class="o">=</span> <span class="nv">$jobInfo</span><span class="o">-&gt;</span><span class="na">result</span><span class="o">-&gt;</span><span class="na">inputs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-&gt;</span><span class="na">outputs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-&gt;</span><span class="na">name</span><span class="p">;</span>
-</pre></div>             </td>           </tr>                               <tr id="section-48">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-48">&#182;</a>               </div>               <p>Local path to the downloads folder</p>             </td>             <td class="code">               <div class="highlight"><pre>
-                    <span class="nv">$downloadFolder</span> <span class="o">=</span> <span class="nb">dirname</span><span class="p">(</span><span class="k">__FILE__</span><span class="p">)</span> <span class="o">.</span> <span class="s1">&#39;/../downloads&#39;</span><span class="p">;</span>
-</pre></div>             </td>           </tr>                               <tr id="section-49">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-49">&#182;</a>               </div>               <p>Check is folder exist</p>             </td>             <td class="code">               <div class="highlight"><pre>
-                    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nb">file_exists</span><span class="p">(</span><span class="nv">$downloadFolder</span><span class="p">))</span> <span class="p">{</span>
-</pre></div>             </td>           </tr>                               <tr id="section-50">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-50">&#182;</a>               </div>               <p>If folder don't exist create it</p>             </td>             <td class="code">               <div class="highlight"><pre>
-                        <span class="nb">mkdir</span><span class="p">(</span><span class="nv">$downloadFolder</span><span class="p">);</span>
-                    <span class="p">}</span>
-</pre></div>             </td>           </tr>                               <tr id="section-51">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-51">&#182;</a>               </div>               <p>Obtaining file stream of downloading file and definition of folder where to download file</p>             </td>             <td class="code">               <div class="highlight"><pre>
-                    <span class="nv">$outFileStream</span> <span class="o">=</span> <span class="nx">FileStream</span><span class="o">::</span><span class="na">fromHttp</span><span class="p">(</span><span class="nv">$downloadFolder</span><span class="p">,</span> <span class="nv">$name</span><span class="p">);</span>
-</pre></div>             </td>           </tr>                               <tr id="section-52">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-52">&#182;</a>               </div>               <p>Download file from GroupDocs.</p>             </td>             <td class="code">               <div class="highlight"><pre>
-                    <span class="nv">$download</span> <span class="o">=</span> <span class="nv">$apiStorage</span><span class="o">-&gt;</span><span class="na">GetFile</span><span class="p">(</span><span class="nv">$clientId</span><span class="p">,</span> <span class="nv">$guid</span><span class="p">,</span> <span class="nv">$outFileStream</span><span class="p">);</span>
-                    <span class="nx">f3</span><span class="o">::</span><span class="na">set</span><span class="p">(</span><span class="s2">&quot;message&quot;</span><span class="p">,</span> <span class="s2">&quot;File was converted and downloaded to the &quot;</span> <span class="o">.</span> <span class="nv">$downloadFolder</span> <span class="o">.</span> <span class="s2">&quot;/&quot;</span> <span class="o">.</span> <span class="nv">$name</span><span class="p">);</span>
-</pre></div>             </td>           </tr>                               <tr id="section-53">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-53">&#182;</a>               </div>               <h3>If request was successfull</h3>
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        <span class="variable">$docApi</span> = <span class="keyword">new</span> DocApi(<span class="variable">$apiClient</span>);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-7">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-7">&#182;</a>
+              </div>
+              <p>Create Storage Api object</p>
 
-<p>Generation of iframe URL using $pageImage->result->guid
-iframe to prodaction server</p>             </td>             <td class="code">               <div class="highlight"><pre>
-                    <span class="k">if</span> <span class="p">(</span><span class="nv">$basePath</span> <span class="o">==</span> <span class="s2">&quot;https://api.groupdocs.com/v2.0&quot;</span><span class="p">)</span> <span class="p">{</span>
-                        <span class="nv">$iframe</span> <span class="o">=</span> <span class="s1">&#39;https://apps.groupdocs.com/document-viewer/embed/&#39;</span> <span class="o">.</span> <span class="nv">$guid</span><span class="p">;</span>
-</pre></div>             </td>           </tr>                               <tr id="section-54">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-54">&#182;</a>               </div>               <p>iframe to dev server</p>             </td>             <td class="code">               <div class="highlight"><pre>
-                    <span class="p">}</span> <span class="k">elseif</span> <span class="p">(</span><span class="nv">$basePath</span> <span class="o">==</span> <span class="s2">&quot;https://dev-api.groupdocs.com/v2.0&quot;</span><span class="p">)</span> <span class="p">{</span>
-                        <span class="nv">$iframe</span> <span class="o">=</span> <span class="s1">&#39;https://dev-apps.groupdocs.com/document-viewer/embed/&#39;</span> <span class="o">.</span> <span class="nv">$guid</span><span class="p">;</span>
-</pre></div>             </td>           </tr>                               <tr id="section-55">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-55">&#182;</a>               </div>               <p>iframe to test server</p>             </td>             <td class="code">               <div class="highlight"><pre>
-                    <span class="p">}</span> <span class="k">elseif</span> <span class="p">(</span><span class="nv">$basePath</span> <span class="o">==</span> <span class="s2">&quot;https://stage-api.groupdocs.com/v2.0&quot;</span><span class="p">)</span> <span class="p">{</span>
-                        <span class="nv">$iframe</span> <span class="o">=</span> <span class="s1">&#39;https://stage-apps.groupdocs.com/document-viewer/embed/&#39;</span> <span class="o">.</span> <span class="nv">$guid</span><span class="p">;</span>
-                    <span class="p">}</span> <span class="k">elseif</span> <span class="p">(</span><span class="nv">$basePath</span> <span class="o">==</span> <span class="s2">&quot;http://realtime-api.groupdocs.com&quot;</span><span class="p">)</span> <span class="p">{</span>
-                        <span class="nv">$iframe</span> <span class="o">=</span> <span class="s1">&#39;http://realtime-apps.groupdocs.com/document-viewer/embed/&#39;</span> <span class="o">.</span> <span class="nv">$guid</span><span class="p">;</span>
-                    <span class="p">}</span>
-                <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-                    <span class="k">throw</span> <span class="k">new</span> <span class="nx">Exception</span><span class="p">(</span><span class="nv">$job</span><span class="o">-&gt;</span><span class="na">error_message</span><span class="p">);</span>
-                <span class="p">}</span>
-            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-                <span class="k">throw</span> <span class="k">new</span> <span class="nx">Exception</span><span class="p">(</span><span class="nv">$addDataSource</span><span class="o">-&gt;</span><span class="na">error_message</span><span class="p">);</span>
-            <span class="p">}</span>
-        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-            <span class="k">throw</span> <span class="k">new</span> <span class="nx">Exception</span><span class="p">(</span><span class="nv">$fields</span><span class="o">-&gt;</span><span class="na">error_message</span><span class="p">);</span>
-        <span class="p">}</span>
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        <span class="variable">$storageApi</span> = <span class="keyword">new</span> StorageApi(<span class="variable">$apiClient</span>);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-8">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-8">&#182;</a>
+              </div>
+              <p>Create AsyncApi object</p>
 
-</pre></div>             </td>           </tr>                               <tr id="section-56">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-56">&#182;</a>               </div>               <p>Set variable with results for template</p>             </td>             <td class="code">               <div class="highlight"><pre>
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        <span class="variable">$api</span> = <span class="keyword">new</span> AsyncApi(<span class="variable">$apiClient</span>);
+        <span class="variable">$mergApi</span> = <span class="keyword">new</span> MergeApi(<span class="variable">$apiClient</span>);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-9">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-9">&#182;</a>
+              </div>
+              <p>Set url to choose whot server to use</p>
 
-        <span class="k">return</span> <span class="nx">f3</span><span class="o">::</span><span class="na">set</span><span class="p">(</span><span class="s1">&#39;url&#39;</span><span class="p">,</span> <span class="nv">$iframe</span><span class="p">);</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        <span class="keyword">if</span> (<span class="variable">$basePath</span> == <span class="string">""</span>) {</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-10">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-10">&#182;</a>
+              </div>
+              <p>If base base is empty seting base path to prod server</p>
 
-<span class="k">try</span> <span class="p">{</span>
-    <span class="nx">mergeFields</span><span class="p">(</span><span class="nv">$clientId</span><span class="p">,</span> <span class="nv">$privateKey</span><span class="p">,</span> <span class="nv">$basePath</span><span class="p">);</span>
-<span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">Exception</span> <span class="nv">$e</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nv">$error</span> <span class="o">=</span> <span class="s1">&#39;ERROR: &#39;</span> <span class="o">.</span> <span class="nv">$e</span><span class="o">-&gt;</span><span class="na">getMessage</span><span class="p">()</span> <span class="o">.</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
-    <span class="nx">f3</span><span class="o">::</span><span class="na">set</span><span class="p">(</span><span class="s1">&#39;error&#39;</span><span class="p">,</span> <span class="nv">$error</span><span class="p">);</span>
-<span class="p">}</span>
-</pre></div>             </td>           </tr>                               <tr id="section-57">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-57">&#182;</a>               </div>               <p>Process template</p>             </td>             <td class="code">               <div class="highlight"><pre>
-<span class="k">echo</span> <span class="nx">Template</span><span class="o">::</span><span class="na">serve</span><span class="p">(</span><span class="s1">&#39;sample25.htm&#39;</span><span class="p">);</span>
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>            <span class="variable">$basePath</span> = <span class="string">'https://api.groupdocs.com/v2.0'</span>;
+        }</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-11">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-11">&#182;</a>
+              </div>
+              <p>Set base path</p>
 
-</pre></div>             </td>           </tr>                </tbody>     </table>   </div> </body> </html> 
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        <span class="variable">$docApi</span>-&gt;setBasePath(<span class="variable">$basePath</span>);
+        <span class="variable">$storageApi</span>-&gt;setBasePath(<span class="variable">$basePath</span>);
+        <span class="variable">$api</span>-&gt;setBasePath(<span class="variable">$basePath</span>);
+        <span class="variable">$mergApi</span>-&gt;setBasePath(<span class="variable">$basePath</span>);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-12">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-12">&#182;</a>
+              </div>
+              <p>Get entered by user data</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        <span class="variable">$url</span> = F3::get(<span class="string">'POST["url"]'</span>);
+        <span class="variable">$file</span> = <span class="variable">$_FILES</span>[<span class="string">'file'</span>];
+        <span class="variable">$fileId</span> = f3::get(<span class="string">'POST["fileId"]'</span>);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-13">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-13">&#182;</a>
+              </div>
+              <p>Check if user choose upload file from URL</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        <span class="keyword">if</span> (<span class="variable">$url</span> != <span class="string">""</span>) {</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-14">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-14">&#182;</a>
+              </div>
+              <p>Upload file from URL</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>            <span class="variable">$uploadResult</span> = <span class="variable">$storageApi</span>-&gt;UploadWeb(<span class="variable">$clientId</span>, <span class="variable">$url</span>);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-15">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-15">&#182;</a>
+              </div>
+              <p>Check is file uploaded</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>            <span class="keyword">if</span> (<span class="variable">$uploadResult</span>-&gt;status == <span class="string">"Ok"</span>) {</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-16">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-16">&#182;</a>
+              </div>
+              <p>Get file GUID</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>                <span class="variable">$fileGuId</span> = <span class="variable">$uploadResult</span>-&gt;result-&gt;guid;
+                <span class="variable">$fileId</span> = <span class="string">""</span>;</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-17">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-17">&#182;</a>
+              </div>
+              <p>If it isn&#39;t uploaded throw exception to template</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>            } <span class="keyword">else</span> {
+                <span class="keyword">throw</span> <span class="keyword">new</span> <span class="keyword">Exception</span>(<span class="variable">$uploadResult</span>-&gt;error_message);
+            }
+        }</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-18">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-18">&#182;</a>
+              </div>
+              <p>Check is user choose upload local file</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        <span class="keyword">if</span> (<span class="variable">$_FILES</span>[<span class="string">'file'</span>][<span class="string">"name"</span>] != <span class="string">""</span>) {</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-19">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-19">&#182;</a>
+              </div>
+              <p>Temp name of the file</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>            <span class="variable">$tmpName</span> = <span class="variable">$file</span>[<span class="string">'tmp_name'</span>];</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-20">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-20">&#182;</a>
+              </div>
+              <p>Original name of the file</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>            <span class="variable">$name</span> = <span class="variable">$file</span>[<span class="string">'name'</span>];</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-21">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-21">&#182;</a>
+              </div>
+              <p>Creat file stream</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>            <span class="variable">$fs</span> = FileStream::fromFile(<span class="variable">$tmpName</span>);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-22">
+            <div class="annotation">
+              
+              <div class="pilwrap for-h3">
+                <a class="pilcrow" href="#section-22">&#182;</a>
+              </div>
+              <h3>Make a request to Storage API using clientId</h3>
+<p>Upload file to current user storage</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>            <span class="variable">$uploadResult</span> = <span class="variable">$storageApi</span>-&gt;Upload(<span class="variable">$clientId</span>, <span class="variable">$name</span>, <span class="string">'uploaded'</span>, <span class="string">""</span>, <span class="variable">$fs</span>);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-23">
+            <div class="annotation">
+              
+              <div class="pilwrap for-h3">
+                <a class="pilcrow" href="#section-23">&#182;</a>
+              </div>
+              <h3>Check if file uploaded successfully</h3>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>            <span class="keyword">if</span> (<span class="variable">$uploadResult</span>-&gt;status == <span class="string">"Ok"</span>) {</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-24">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-24">&#182;</a>
+              </div>
+              <p>Get file GUID</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>                <span class="variable">$fileGuId</span> = <span class="variable">$uploadResult</span>-&gt;result-&gt;guid;
+                <span class="variable">$fileId</span> = <span class="string">""</span>;</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-25">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-25">&#182;</a>
+              </div>
+              <p>If it isn&#39;t uploaded throw exception to template</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>            } <span class="keyword">else</span> {
+                <span class="keyword">throw</span> <span class="keyword">new</span> <span class="keyword">Exception</span>(<span class="variable">$uploadResult</span>-&gt;error_message);
+            }
+        }</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-26">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-26">&#182;</a>
+              </div>
+              <p>Check is user choose file GUID</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        <span class="keyword">if</span> (<span class="variable">$fileId</span> != <span class="string">""</span>) {</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-27">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-27">&#182;</a>
+              </div>
+              <p>Get entered by user file GUID</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>            <span class="variable">$fileGuId</span> = <span class="variable">$fileId</span>;
+        }</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-28">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-28">&#182;</a>
+              </div>
+              <p>Get feilds from template</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        <span class="variable">$fields</span> = <span class="variable">$docApi</span>-&gt;GetTemplateFields(<span class="variable">$clientId</span>, <span class="variable">$fileGuId</span>);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-29">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-29">&#182;</a>
+              </div>
+              <p>Check status</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        <span class="keyword">if</span> (<span class="variable">$fields</span>-&gt;status == <span class="string">"Ok"</span>) {</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-30">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-30">&#182;</a>
+              </div>
+              <p>Create new Datasource object</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>            <span class="variable">$dataSource</span> = <span class="keyword">new</span> Datasource();</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-31">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-31">&#182;</a>
+              </div>
+              <p>Create empty array</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>            <span class="variable">$array</span> = <span class="keyword">array</span>();</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-32">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-32">&#182;</a>
+              </div>
+              <p>Loop for fields creataion</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>            <span class="keyword">for</span> (<span class="variable">$i</span> = <span class="number">0</span>; <span class="variable">$i</span> &lt; count(<span class="variable">$fields</span>-&gt;result-&gt;fields); <span class="variable">$i</span>++) {</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-33">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-33">&#182;</a>
+              </div>
+              <p>Create new DatasourceField object</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>                <span class="variable">$field</span> = <span class="keyword">new</span> DatasourceField();</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-34">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-34">&#182;</a>
+              </div>
+              <p>Set DatasourceFiled data</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>                <span class="variable">$field</span>-&gt;name = <span class="variable">$fields</span>-&gt;result-&gt;fields[<span class="variable">$i</span>]-&gt;name;
+                <span class="variable">$field</span>-&gt;type = <span class="string">"text"</span>;
+                <span class="variable">$field</span>-&gt;values = <span class="keyword">array</span>(<span class="string">"value1"</span>, <span class="string">"value2"</span>);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-35">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-35">&#182;</a>
+              </div>
+              <p>Push DatasourceField to array</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>                array_push(<span class="variable">$array</span>, <span class="variable">$field</span>);
+            }</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-36">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-36">&#182;</a>
+              </div>
+              <p>Set array feilds array to the Datasourc</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>            <span class="variable">$dataSource</span>-&gt;fields = <span class="variable">$array</span>;</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-37">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-37">&#182;</a>
+              </div>
+              <p>Add Datasource to GroupDocs</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>            <span class="variable">$addDataSource</span> = <span class="variable">$mergApi</span>-&gt;AddDataSource(<span class="variable">$clientId</span>, <span class="variable">$dataSource</span>);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-38">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-38">&#182;</a>
+              </div>
+              <p>Check status</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>            <span class="keyword">if</span> (<span class="variable">$addDataSource</span>-&gt;status == <span class="string">"Ok"</span>) {</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-39">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-39">&#182;</a>
+              </div>
+              <p>If status ok merge Datasource to new pdf file</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>                <span class="variable">$job</span> = <span class="variable">$mergApi</span>-&gt;MergeDatasource(<span class="variable">$clientId</span>, <span class="variable">$fileGuId</span>, <span class="variable">$addDataSource</span>-&gt;result-&gt;datasource_id, <span class="string">"pdf"</span>, <span class="keyword">null</span>);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-40">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-40">&#182;</a>
+              </div>
+              <p>Check status</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>                <span class="keyword">if</span> (<span class="variable">$job</span>-&gt;status == <span class="string">"Ok"</span>) {</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-41">
+            <div class="annotation">
+              
+              <div class="pilwrap for-h3">
+                <a class="pilcrow" href="#section-41">&#182;</a>
+              </div>
+              <h3>Check job status</h3>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>                    <span class="keyword">for</span> (<span class="variable">$n</span> = <span class="number">0</span>; <span class="variable">$n</span> &lt;= <span class="number">5</span>; <span class="variable">$n</span>++) {</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-42">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-42">&#182;</a>
+              </div>
+              <p>Delay necessary that the inquiry would manage to be processed</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>                        sleep(<span class="number">2</span>);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-43">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-43">&#182;</a>
+              </div>
+              <p>Make request to api for get document info by job id</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>                        <span class="variable">$jobInfo</span> = <span class="variable">$api</span>-&gt;GetJobDocuments(<span class="variable">$clientId</span>, <span class="variable">$job</span>-&gt;result-&gt;job_id);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-44">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-44">&#182;</a>
+              </div>
+              <p>Check job status, if status is Completed or Archived exit from cycle</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>                        <span class="keyword">if</span> (<span class="variable">$jobInfo</span>-&gt;result-&gt;job_status == <span class="string">"Completed"</span> || <span class="variable">$jobInfo</span>-&gt;result-&gt;job_status == <span class="string">"Archived"</span>) {
+                            <span class="keyword">break</span>;</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-45">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-45">&#182;</a>
+              </div>
+              <p>If job status Postponed throw exception with error</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>                        } <span class="keyword">elseif</span> (<span class="variable">$jobInfo</span>-&gt;result-&gt;job_status == <span class="string">"Postponed"</span>) {
+                            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="keyword">Exception</span>(<span class="string">"Job is failed"</span>);
+                        }
+                    }
+                    <span class="keyword">if</span> (<span class="variable">$jobInfo</span>-&gt;result-&gt;job_status == <span class="string">"Pending"</span>) {
+                        <span class="keyword">throw</span> <span class="keyword">new</span> <span class="keyword">Exception</span>(<span class="string">"Job is pending"</span>);
+                    }</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-46">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-46">&#182;</a>
+              </div>
+              <p>Get file guid</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>                    <span class="variable">$guid</span> = <span class="variable">$jobInfo</span>-&gt;result-&gt;inputs[<span class="number">0</span>]-&gt;outputs[<span class="number">0</span>]-&gt;guid;
+                    F3::set(<span class="string">'fileId'</span>, <span class="variable">$guid</span>);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-47">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-47">&#182;</a>
+              </div>
+              <p>Get file name</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>                    <span class="variable">$name</span> = <span class="variable">$jobInfo</span>-&gt;result-&gt;inputs[<span class="number">0</span>]-&gt;outputs[<span class="number">0</span>]-&gt;name;</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-48">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-48">&#182;</a>
+              </div>
+              <p>Local path to the downloads folder</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>                    <span class="variable">$downloadFolder</span> = dirname(__FILE__) . <span class="string">'/../downloads'</span>;</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-49">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-49">&#182;</a>
+              </div>
+              <p>Check is folder exist</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>                    <span class="keyword">if</span> (!file_exists(<span class="variable">$downloadFolder</span>)) {</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-50">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-50">&#182;</a>
+              </div>
+              <p>If folder don&#39;t exist create it</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>                        mkdir(<span class="variable">$downloadFolder</span>);
+                    }</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-51">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-51">&#182;</a>
+              </div>
+              <p>Obtaining file stream of downloading file and definition of folder where to download file</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>                    <span class="variable">$outFileStream</span> = FileStream::fromHttp(<span class="variable">$downloadFolder</span>, <span class="variable">$name</span>);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-52">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-52">&#182;</a>
+              </div>
+              <p>Download file from GroupDocs.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>                    <span class="variable">$download</span> = <span class="variable">$storageApi</span>-&gt;GetFile(<span class="variable">$clientId</span>, <span class="variable">$guid</span>, <span class="variable">$outFileStream</span>);
+                    f3::set(<span class="string">"message"</span>, <span class="string">"File was converted and downloaded to the "</span> . <span class="variable">$downloadFolder</span> . <span class="string">"/"</span> . <span class="variable">$name</span>);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-53">
+            <div class="annotation">
+              
+              <div class="pilwrap for-h3">
+                <a class="pilcrow" href="#section-53">&#182;</a>
+              </div>
+              <h3>If request was successfull</h3>
+<p>Generation of iframe URL using $pageImage-&gt;result-&gt;guid
+iframe to prodaction server</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>                    <span class="keyword">if</span> (<span class="variable">$basePath</span> == <span class="string">"https://api.groupdocs.com/v2.0"</span>) {
+                        <span class="variable">$iframe</span> = <span class="string">'https://apps.groupdocs.com/document-viewer/embed/'</span> . <span class="variable">$guid</span>;</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-54">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-54">&#182;</a>
+              </div>
+              <p>iframe to dev server</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>                    } <span class="keyword">elseif</span> (<span class="variable">$basePath</span> == <span class="string">"https://dev-api.groupdocs.com/v2.0"</span>) {
+                        <span class="variable">$iframe</span> = <span class="string">'https://dev-apps.groupdocs.com/document-viewer/embed/'</span> . <span class="variable">$guid</span>;</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-55">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-55">&#182;</a>
+              </div>
+              <p>iframe to test server</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>                    } <span class="keyword">elseif</span> (<span class="variable">$basePath</span> == <span class="string">"https://stage-api.groupdocs.com/v2.0"</span>) {
+                        <span class="variable">$iframe</span> = <span class="string">'https://stage-apps.groupdocs.com/document-viewer/embed/'</span> . <span class="variable">$guid</span>;
+                    } <span class="keyword">elseif</span> (<span class="variable">$basePath</span> == <span class="string">"http://realtime-api.groupdocs.com"</span>) {
+                        <span class="variable">$iframe</span> = <span class="string">'http://realtime-apps.groupdocs.com/document-viewer/embed/'</span> . <span class="variable">$guid</span>;
+                    }
+                } <span class="keyword">else</span> {
+                    <span class="keyword">throw</span> <span class="keyword">new</span> <span class="keyword">Exception</span>(<span class="variable">$job</span>-&gt;error_message);
+                }
+            } <span class="keyword">else</span> {
+                <span class="keyword">throw</span> <span class="keyword">new</span> <span class="keyword">Exception</span>(<span class="variable">$addDataSource</span>-&gt;error_message);
+            }
+        } <span class="keyword">else</span> {
+            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="keyword">Exception</span>(<span class="variable">$fields</span>-&gt;error_message);
+        }</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-56">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-56">&#182;</a>
+              </div>
+              <p>Set variable with results for template</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        <span class="keyword">return</span> f3::set(<span class="string">'url'</span>, <span class="variable">$iframe</span>);
+    }
+}
+
+<span class="keyword">try</span> {
+    mergeFields(<span class="variable">$clientId</span>, <span class="variable">$privateKey</span>, <span class="variable">$basePath</span>);
+} <span class="keyword">catch</span> (<span class="keyword">Exception</span> <span class="variable">$e</span>) {
+    <span class="variable">$error</span> = <span class="string">'ERROR: '</span> . <span class="variable">$e</span>-&gt;getMessage() . <span class="string">"\n"</span>;
+    f3::set(<span class="string">'error'</span>, <span class="variable">$error</span>);
+}</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-57">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-57">&#182;</a>
+              </div>
+              <p>Process template</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="keyword">echo</span> Template::serve(<span class="string">'sample25.htm'</span>);</pre></div></div>
+            
+        </li>
+        
+    </ul>
+  </div>
+</body>
+</html>

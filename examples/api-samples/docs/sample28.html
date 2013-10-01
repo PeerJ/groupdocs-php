@@ -41,7 +41,7 @@
               <div class="pilwrap for-h3">
                 <a class="pilcrow" href="#section-2">&#182;</a>
               </div>
-              <h3>This sample will show how to delete all annotations from document</h3>
+              <h3>This sample will show how to list all annotations from document</h3>
 <h3>Set variables and get POST data</h3>
 
             </div>
@@ -137,7 +137,11 @@ F3::set(<span class="string">'fileId'</span>, <span class="string">''</span>);
             </div>
             
             <div class="content"><div class='highlight'><pre>        <span class="keyword">if</span> (<span class="variable">$list</span>-&gt;status == <span class="string">"Ok"</span>) {
-            <span class="keyword">if</span> (!<span class="keyword">empty</span>(<span class="variable">$list</span>-&gt;result-&gt;annotations)) {</pre></div></div>
+            <span class="keyword">if</span> (!<span class="keyword">empty</span>(<span class="variable">$list</span>-&gt;result-&gt;annotations)) {
+                <span class="keyword">for</span> (<span class="variable">$i</span> = <span class="number">0</span>; <span class="variable">$i</span> &lt; count(<span class="variable">$list</span>-&gt;result-&gt;annotations); <span class="variable">$i</span>++) {
+                    <span class="variable">$del</span> = <span class="variable">$ant</span>-&gt;DeleteAnnotation(<span class="variable">$clientId</span>, <span class="variable">$list</span>-&gt;result-&gt;annotations[<span class="variable">$i</span>]-&gt;guid);
+                    <span class="keyword">if</span> (<span class="variable">$del</span>-&gt;status == <span class="string">"Ok"</span>) {
+                        <span class="variable">$message</span> = <span class="string">'&lt;span style="color: green"&gt;All annotation were deleted successfully&lt;/span&gt;'</span>;</pre></div></div>
             
         </li>
         
@@ -145,40 +149,8 @@ F3::set(<span class="string">'fileId'</span>, <span class="string">''</span>);
         <li id="section-7">
             <div class="annotation">
               
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-7">&#182;</a>
-              </div>
-              <p>Loop for annotations</p>
-
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>                <span class="keyword">for</span> (<span class="variable">$i</span> = <span class="number">0</span>; <span class="variable">$i</span> &lt; count(<span class="variable">$list</span>-&gt;result-&gt;annotations); <span class="variable">$i</span>++) {</pre></div></div>
-            
-        </li>
-        
-        
-        <li id="section-8">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-8">&#182;</a>
-              </div>
-              <p>Delete annotation using it&#39;s GUID</p>
-
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>                    <span class="variable">$del</span> = <span class="variable">$ant</span>-&gt;DeleteAnnotation(<span class="variable">$clientId</span>, <span class="variable">$list</span>-&gt;result-&gt;annotations[<span class="variable">$i</span>]-&gt;guid);
-                    <span class="keyword">if</span> (<span class="variable">$del</span>-&gt;status == <span class="string">"Ok"</span>) {
-                        <span class="variable">$message</span> = <span class="string">'&lt;span style="color: green"&gt;All annotation were deleted successfully&lt;/span&gt;'</span>;</pre></div></div>
-            
-        </li>
-        
-        
-        <li id="section-9">
-            <div class="annotation">
-              
               <div class="pilwrap for-h3">
-                <a class="pilcrow" href="#section-9">&#182;</a>
+                <a class="pilcrow" href="#section-7">&#182;</a>
               </div>
               <h3>If request was successfull</h3>
 <p>Generation of iframe URL using $pageImage-&gt;result-&gt;guid
@@ -192,11 +164,11 @@ iframe to prodaction server</p>
         </li>
         
         
-        <li id="section-10">
+        <li id="section-8">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-10">&#182;</a>
+                <a class="pilcrow" href="#section-8">&#182;</a>
               </div>
               <p>iframe to dev server</p>
 
@@ -208,11 +180,11 @@ iframe to prodaction server</p>
         </li>
         
         
-        <li id="section-11">
+        <li id="section-9">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-11">&#182;</a>
+                <a class="pilcrow" href="#section-9">&#182;</a>
               </div>
               <p>iframe to test server</p>
 
@@ -248,11 +220,11 @@ iframe to prodaction server</p>
         </li>
         
         
-        <li id="section-12">
+        <li id="section-10">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-12">&#182;</a>
+                <a class="pilcrow" href="#section-10">&#182;</a>
               </div>
               <p>Process template</p>
 

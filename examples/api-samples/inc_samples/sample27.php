@@ -1,7 +1,7 @@
 <?php
 
-//<i>This sample will show how to create your own questionary using forms and show the result document using PHP SDK</i>
-//###Set variables and get POST data
+//###<i>This sample will show how to create your own questionary using forms and show the result document using PHP SDK</i>
+//Set variables and get POST data
 F3::set('userId', '');
 F3::set('privateKey', '');
 $clientId = F3::get('POST["client_id"]');

@@ -20,7 +20,6 @@ if (empty($clientId) || empty($privateKey) || empty($fileName)) {
     if ($basePath == "") {
          $basePath = 'https://api.groupdocs.com/v2.0';
     }
-	//Get entered by user data
     F3::set('userId', $clientId);
     F3::set('privateKey', $privateKey);
     F3::set('fileName', $fileName);

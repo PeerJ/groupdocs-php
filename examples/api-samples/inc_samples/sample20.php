@@ -1,7 +1,7 @@
 <?php
 
-//<i>This sample will show how to use <b>GetChanges</b> method from ComparisonApi to return a list of changes of a Document</i>
-//###Set variables and get POST data
+//###<i>This sample will show how to use <b>GetChanges</b> method from ComparisonApi to return a list of changes of a Document</i>
+//Set variables and get POST data
 F3::set('userId', '');
 F3::set('privateKey', '');
 f3::set('result', "");

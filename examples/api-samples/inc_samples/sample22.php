@@ -1,7 +1,7 @@
 <?php
 
 //### This sample will show how create or update user and add him to collaborators using PHP SDK
-//### Set variables and get POST data
+// Set variables and get POST data
 F3::set('userId', '');
 F3::set('privateKey', '');
 F3::set('email', '');

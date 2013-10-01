@@ -1,7 +1,7 @@
 <?php
 
-//<i>This sample will show how to use <b>GuId</b> of file to generate an embedded Viewer URL for a Document</i>
-//###Set variables and get POST data
+//###<i>This sample will show how to use <b>GuId</b> of file to generate an embedded Viewer/Annotation URL for a Document</i>
+//Set variables and get POST data
 F3::set('userId', '');
 F3::set('privateKey', '');
 $clientId = F3::get('POST["client_id"]');

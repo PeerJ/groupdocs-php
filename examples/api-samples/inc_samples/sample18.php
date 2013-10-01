@@ -1,7 +1,7 @@
 <?php
 
-//### This sample will show how to insert Assembly questionary into webpage using PHP SDK
-//### Set variables and get POST data
+//### This sample will show how to convert Doc to Docx, Docx to Doc, Docx to PDF and PPT to PDF using PHP SDK
+// Set variables and get POST data
 F3::set('userId', '');
 F3::set('privateKey', '');
 F3::set('fileId', '');

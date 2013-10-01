@@ -1,7 +1,7 @@
 <?php
 
-//<i>This sample will show how to use <b>Upload</b> method from Storage Api to upload file to GroupDocs Storage </i>
-//###Set variables and get POST data
+//###<i>This sample will show how to use <b>UploadWeb</b> method from Storage Api to upload file to GroupDocs Storage </i>
+//Set variables and get POST data
 F3::set('userId', '');
 F3::set('privateKey', '');
 F3::set('fileId', '');

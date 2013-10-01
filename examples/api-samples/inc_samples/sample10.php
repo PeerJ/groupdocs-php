@@ -1,7 +1,7 @@
 <?php
 
-//<i>This sample will show how to use <b>ShareDocument</b> method from Doc Api to share a document to other users</i>
-//###Set variables and get POST data
+//###<i>This sample will show how to use <b>ShareDocument</b> method from Doc Api to share a document to other users</i>
+//Set variables and get POST data
 
 F3::set('userId', '');
 F3::set('privateKey', '');

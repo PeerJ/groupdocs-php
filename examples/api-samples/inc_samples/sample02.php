@@ -1,7 +1,7 @@
 <?php
 
-//<i>This sample will show how to use <b>ListEntities</b> method from Storage  API  to list files within GroupDocs Storage</i>
-//###Set variables and get POST data
+//###<i>This sample will show how to use <b>ListEntities</b> method from Storage  API  to list files within GroupDocs Storage</i>
+//Set variables and get POST data
 
 $clientId = F3::get('POST["client_id"]');
 $privateKey = F3::get('POST["private_key"]');

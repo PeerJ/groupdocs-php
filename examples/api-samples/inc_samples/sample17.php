@@ -1,7 +1,7 @@
 <?php
 
 //### This sample will how to upload a file into the storage and compress it into zip archive using PHP SDK
-//### Set variables and get POST data
+// Set variables and get POST data
 F3::set('userId', '');
 F3::set('privateKey', '');
 F3::set('fileId', '');

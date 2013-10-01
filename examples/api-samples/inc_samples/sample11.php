@@ -1,7 +1,7 @@
 <?php
 
 //### This sample will show how programmatically create and post an annotation into document. How to delete the annotation
-//### Set variables and get POST data
+// Set variables and get POST data
 F3::set('userId', '');
 F3::set('privateKey', '');
 F3::set('fileId', '');

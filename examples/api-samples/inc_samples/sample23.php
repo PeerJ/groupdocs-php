@@ -1,7 +1,7 @@
 <?php
 
-//<i>This sample will show how to use <b>GuId</b> of file to generate an embedded Viewer URL for a Document</i>
-//###Set variables and get POST data
+//###<i>This sample will show how to use <b>GuId</b> of file to view document pages as images</i>
+//Set variables and get POST data
 F3::set('userId', '');
 F3::set('privateKey', '');
 $clientId = F3::get('POST["client_id"]');
@@ -85,6 +85,7 @@ function Iframe($clientId, $privateKey, $basePath) {
         }
         //Make request yo the Api to get images for all document pages
         $pageImage = $api->GetDocumentPagesImageUrls($clientId, $fileGuId, 0, -1, '650x500', null, null, null);
+        var_dump($pageImage);
         $url = "";
         $image = "";
         //Check the result of the request

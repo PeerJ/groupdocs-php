@@ -1,7 +1,7 @@
 <?php
 
-//<i>This sample will show how to merge data fields in docx file with data source and get result file as PDF file</i>
-//###Set variables and get POST data
+//###<i>This sample will show how to merge data fields in docx file with data source and get result file as PDF file</i>
+//Set variables and get POST data
 F3::set('userId', '');
 F3::set('privateKey', '');
 $clientId = F3::get('POST["client_id"]');

@@ -1,7 +1,7 @@
 <?php
 
 //### This sample will show how to check the number of document's views using PHP SDK
-//### Set variables and get POST data
+// Set variables and get POST data
 F3::set('userId', '');
 F3::set('privateKey', '');
 $clientId = F3::get('POST["client_id"]');

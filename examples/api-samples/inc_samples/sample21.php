@@ -1,7 +1,7 @@
 <?php
 
-//<i>This sample will show how to Create and Upload Envelop to GroupDocs account using PHP SDK </i>
-//###Set variables and get POST data
+//###<i>This sample will show how to Create and Upload Envelop to GroupDocs account using PHP SDK </i>
+//Set variables and get POST data
 F3::set('userId', '');
 F3::set('privateKey', '');
 F3::set('fileId', '');

@@ -84,8 +84,8 @@ function Iframe($clientId, $privateKey, $basePath) {
             }
         }
         //Make request yo the Api to get images for all document pages
-        $pageImage = $api->GetDocumentPagesImageUrls($clientId, $fileGuId, 0, -1, '650x500', null, null, null);
-        var_dump($pageImage);
+        $pageImage = $api->GetDocumentPagesImageUrls($clientId, $fileGuId, 1, 1, '650x500', null, null, null);
+       
         $url = "";
         $image = "";
         //Check the result of the request
@@ -100,6 +100,7 @@ function Iframe($clientId, $privateKey, $basePath) {
             throw new Exception($pageImage->error_message);
         }
         //Set variable with results for template
+        f3::set("fileId", $fileGuId);
         return f3::set('image', $image);
     }
 }

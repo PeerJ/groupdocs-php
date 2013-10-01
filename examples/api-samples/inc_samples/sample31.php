@@ -25,6 +25,7 @@ function createQuestionary($clientId, $privateKey, $basePath) {
         fwrite($infoFile, $clientId . "\r\n" . $privateKey);
         fclose($infoFile);
         //check if Downloads folder exists and remove it to clean all old files
+
         if (file_exists(__DIR__ . '/../downloads')) {
             delFolder(__DIR__ . '/../downloads/');
         }

@@ -1,6 +1,6 @@
 <?php
 
-//###<i>This sample will show how to use <b>Signer object</b> to be authorized at GroupDocs and how to get GroupDocs user infromation using PHP SDK</i>
+//###<i>This sample will show how to use <b>Signer object</b> to be authorized at GroupDocs and how to get GroupDocs user information using PHP SDK</i>
 //Set variables and get POST data
 F3::set('email', '');
 F3::set('password', '');

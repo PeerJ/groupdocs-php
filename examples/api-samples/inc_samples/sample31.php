@@ -25,9 +25,11 @@ function createQuestionary($clientId, $privateKey, $basePath) {
         fwrite($infoFile, $clientId . "\r\n" . $privateKey);
         fclose($infoFile);
         //check if Downloads folder exists and remove it to clean all old files
-
-        if (file_exists(__DIR__ . '/../downloads')) {
-            delFolder(__DIR__ . '/../downloads/');
+        $callbackUrl = f3::get('POST["callbackUrl"]');
+        if ($callbackUrl != "") {
+            if (file_exists(__DIR__ . '/../downloads')) {
+                delFolder(__DIR__ . '/../downloads/');
+            }
         }
         F3::set('userId', $clientId);
         F3::set('privateKey', $privateKey);
@@ -61,7 +63,7 @@ function createQuestionary($clientId, $privateKey, $basePath) {
         $country = f3::get('POST["country"]');
         $city = f3::get('POST["city"]');
         $street = f3::get('POST["street"]');
-        $callbackUrl = f3::get('POST["callbackUrl"]');
+       
         f3::set("email", $email);
         f3::set("country", $country);
         f3::set("name", $name);
@@ -130,7 +132,7 @@ function createQuestionary($clientId, $privateKey, $basePath) {
                                 }
                             }
                             //Add recipient to envelope
-                            $addRecipient = $signatureApi->AddSignatureEnvelopeRecipient($clientId, $envelop->result->envelope->id, 'test@test.com', 'test', 'test', $roleId, null);
+                            $addRecipient = $signatureApi->AddSignatureEnvelopeRecipient($clientId, $envelop->result->envelope->id, $email, $name, 'test', $roleId, null);
                             if ($addRecipient->status == "Ok") {
                                 //Get recipient id
                                 $getRecipient = $signatureApi->GetSignatureEnvelopeRecipients($clientId, $envelop->result->envelope->id);

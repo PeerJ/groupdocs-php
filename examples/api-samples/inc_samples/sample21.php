@@ -206,8 +206,8 @@ if (empty($clientId) || empty($privateKey)) {
                                                                     $iframe = '<iframe src="https://dev-apps.groupdocs.com/signature/signembed/' .
                                                                             $envelop->result->envelope->id . '/' . $recipientId . '?frameborder="0" width="720" height="600"></iframe>';
                                                                     //iframe to test server
-                                                                } elseif ($basePath == "https://stage-api.groupdocs.com/v2.0") {
-                                                                    $iframe = '<iframe src="https://stage-apps.groupdocs.com/signature/signembed/' .
+                                                                } elseif ($basePath == "https://stage-apps-groupdocs.dynabic.com/v2.0") {
+                                                                    $iframe = '<iframe src="https://stage-apps-groupdocs.dynabic.com/signature/signembed/' .
                                                                             $envelop->result->envelope->id . '/' . $recipientId . '?frameborder="0" width="720" height="600"></iframe>';
                                                                 } elseif ($basePath == "http://realtime-api.groupdocs.com") {
                                                                     $iframe = 'http://realtime-apps.groupdocs.com/signature/signembed/' .

@@ -171,8 +171,8 @@ if (empty($clientId) || empty($privateKey)) {
                     $iframe = 'http://dev-apps.groupdocs.com/document-annotation2/embed/' .
                             $createAnnotation->result->documentGuid . '?frameborder="0" width="720" height="600"';
                     //iframe to test server
-                } elseif ($basePath == "https://stage-api.groupdocs.com/v2.0") {
-                    $iframe = 'http://stage-apps.groupdocs.com/document-annotation2/embed/' .
+                } elseif ($basePath == "https://stage-api-groupdocs.dynabic.com/v2.0") {
+                            $iframe = 'https://stage-apps-groupdocs.dynabic.com/document-annotation2/Embed/' .
                             $createAnnotation->result->documentGuid . '?frameborder="0" width="720" height="600"';
                     //Iframe to realtime server
                 } elseif ($basePath == "http://realtime-api.groupdocs.com") {

@@ -155,8 +155,8 @@ function mergeFields($clientId, $privateKey, $basePath) {
                     } elseif ($basePath == "https://dev-api.groupdocs.com/v2.0") {
                         $iframe = 'https://dev-apps.groupdocs.com/document-viewer/embed/' . $guid;
                         //iframe to test server
-                    } elseif ($basePath == "https://stage-api.groupdocs.com/v2.0") {
-                        $iframe = 'https://stage-apps.groupdocs.com/document-viewer/embed/' . $guid;
+                    } elseif ($basePath == "https://stage-apps-groupdocs.dynabic.com/v2.0") {
+                        $iframe = 'https://stage-apps-groupdocs.dynabic.com/document-viewer/embed/' . $guid;
                     } elseif ($basePath == "http://realtime-api.groupdocs.com") {
                         $iframe = 'http://realtime-apps.groupdocs.com/document-viewer/embed/' . $guid;
                     }

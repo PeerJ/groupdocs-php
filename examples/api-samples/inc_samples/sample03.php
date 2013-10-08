@@ -35,6 +35,7 @@ if (empty($clientId) || empty($privateKey)) {
     }
     //Set base path
     $storageApi->setBasePath($basePath);
+    $iframe = null;
     //Check URL entered
     if ($url != "") {
         //Upload file from URL
@@ -44,6 +45,28 @@ if (empty($clientId) || empty($privateKey)) {
             if ($uploadResult->status == "Ok") {
                 //Get file GUID
                 $guid = $uploadResult->result->guid;
+                if ($basePath == "https://api.groupdocs.com/v2.0") {
+                    $iframe = 'http://apps.groupdocs.com/document-viewer/embed/' . $guid;
+                    //iframe to dev server
+                } elseif ($basePath == "https://dev-api.groupdocs.com/v2.0") {
+                    $iframe = 'http://dev-apps.groupdocs.com/document-viewer/embed/' . $guid;
+                    //iframe to test server
+                } elseif ($basePath == "https://stage-api-groupdocs.dynabic.com/v2.0") {
+                    $iframe = 'https://stage-apps-groupdocs.dynabic.com/document-viewer/Embed/' . $guid;
+                    //Iframe to realtime server
+                } elseif ($basePath == "http://realtime-api.groupdocs.com") {
+                    $iframe = 'http://realtime-apps.groupdocs.com/document-viewer/embed/' . $guid;
+                }
+
+                //Generation of Embeded Viewer URL with uploaded file GuId
+                $result = '<iframe src="' . $iframe . '" frameborder="0" width="800" height="650"></iframe>';
+                //If request was successfull - set result variable for template
+                $message = '<p>File was uploaded to GroupDocs. Here you can see your file in the GroupDocs Embedded Viewer.</p>';
+                F3::set('message', $message);
+                F3::set('iframe', $result);
+                F3::set('userId', $clientId);
+                F3::set('privateKey', $privateKey);
+                F3::set('basePath', $basePath);
             } else {
                 throw new Exception($uploadResult->error_message);
             }
@@ -56,7 +79,7 @@ if (empty($clientId) || empty($privateKey)) {
         $uploadedFile = $_FILES['file'];
         //###Check uploaded file
         if (null === $uploadedFile) {
-            return new RedirectResponse("/sample3");
+            return new RedirectResponse("/sample03");
         }
         //Temp name of the file
         $tmpName = $uploadedFile['tmp_name'];
@@ -70,7 +93,7 @@ if (empty($clientId) || empty($privateKey)) {
         //Upload file to current user storage
         try {
             $uploadResult = $storageApi->Upload($clientID, $name, 'uploaded', $callbackUrl, $fs);
-
+            var_dump($uploadResult);
             //###Check if file uploaded successfully
             if ($uploadResult->status == "Ok") {
                 //Get file GUID
@@ -78,33 +101,33 @@ if (empty($clientId) || empty($privateKey)) {
             } else {
                 throw new Exception($uploadResult->error_message);
             }
+            if ($basePath == "https://api.groupdocs.com/v2.0") {
+                $iframe = 'http://apps.groupdocs.com/document-viewer/embed/' . $guid;
+                //iframe to dev server
+            } elseif ($basePath == "https://dev-api.groupdocs.com/v2.0") {
+                $iframe = 'http://dev-apps.groupdocs.com/document-viewer/embed/' . $guid;
+                //iframe to test server
+            } elseif ($basePath == "https://stage-api-groupdocs.dynabic.com/v2.0") {
+                $iframe = 'https://stage-apps-groupdocs.dynabic.com/document-viewer/Embed/' . $guid;
+                //Iframe to realtime server
+            } elseif ($basePath == "http://realtime-api.groupdocs.com") {
+                $iframe = 'http://realtime-apps.groupdocs.com/document-viewer/embed/' . $guid;
+            }
+
+            //Generation of Embeded Viewer URL with uploaded file GuId
+            $result = '<iframe src="' . $iframe . '" frameborder="0" width="800" height="650"></iframe>';
+            //If request was successfull - set result variable for template
+            $message = '<p>File was uploaded to GroupDocs. Here you can see your file in the GroupDocs Embedded Viewer.</p>';
+            F3::set('message', $message);
+            F3::set('iframe', $result);
+            F3::set('userId', $clientId);
+            F3::set('privateKey', $privateKey);
+            F3::set('basePath', $basePath);
         } catch (Exception $e) {
             $error = 'ERROR: ' . $e->getMessage() . "\n";
             f3::set('error', $error);
         }
     }
-    if ($basePath == "https://api.groupdocs.com/v2.0") {
-        $iframe = 'http://apps.groupdocs.com/document-viewer/embed/' . $guid;
-        //iframe to dev server
-    } elseif ($basePath == "https://dev-api.groupdocs.com/v2.0") {
-        $iframe = 'http://dev-apps.groupdocs.com/document-viewer/embed/' . $guid;
-        //iframe to test server
-    } elseif ($basePath == "https://stage-api.groupdocs.com/v2.0") {
-        $iframe = 'http://stage-apps.groupdocs.com/document-viewer/embed/' . $guid;
-        //Iframe to realtime server
-    } elseif ($basePath == "http://realtime-api.groupdocs.com") {
-        $iframe = 'http://realtime-apps.groupdocs.com/document-viewer/embed/' . $guid;
-    }
-
-    //Generation of Embeded Viewer URL with uploaded file GuId
-    $result = '<iframe src="' . $iframe . '" frameborder="0" width="800" height="650"></iframe>';
-    //If request was successfull - set result variable for template
-    $message = '<p>File was uploaded to GroupDocs. Here you can see your file in the GroupDocs Embedded Viewer.</p>';
-    F3::set('message', $message);
-    F3::set('iframe', $result);
-    F3::set('userId', $clientId);
-    F3::set('privateKey', $privateKey);
-    F3::set('basePath', $basePath);
 }
 //Process template
 echo Template::serve('sample03.htm');

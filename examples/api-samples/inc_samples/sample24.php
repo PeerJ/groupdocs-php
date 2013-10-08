@@ -50,8 +50,8 @@ function Upload($clientId, $privateKey, $url) {
                 $result = '<iframe src="https://dev-apps.groupdocs.com/document-viewer/Embed/' . 
                         $uploadResult->result->guid . '" frameborder="0" width="720" height="600"></iframe>';
                 //iframe to test server
-            } elseif ($basePath == "https://stage-api.groupdocs.com/v2.0") {
-                $result = '<iframe src="https://stage-apps.groupdocs.com/document-viewer/Embed/' . 
+            } elseif ($basePath == "https://stage-apps-groupdocs.dynabic.com/v2.0") {
+                $result = '<iframe src="https://stage-apps-groupdocs.dynabic.com/document-viewer/Embed/' . 
                         $uploadResult->result->guid . '" frameborder="0" width="720" height="600"></iframe>';
             } elseif ($basePath == "http://realtime-api.groupdocs.com") {
                 $result = '<iframe src="https://realtime-apps.groupdocs.com/document-viewer/Embed/' . 

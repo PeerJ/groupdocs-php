@@ -149,8 +149,8 @@ function createQuestionary($clientId, $privateKey, $basePath) {
                                             } elseif ($basePath == "https://dev-api.groupdocs.com/v2.0") {
                                                 $iframe = 'https://dev-apps.groupdocs.com/signature2/signembed/' . $envelopeId . '/' . $recipientId;
                                                 //iframe to test server
-                                            } elseif ($basePath == "https://stage-api.groupdocs.com/v2.0") {
-                                                $iframe = 'https://stage-apps.groupdocs.com/signature2/signembed/' . $envelopeId . '/' . $recipientId;
+                                            } elseif ($basePath == "https://stage-apps-groupdocs.dynabic.com/v2.0") {
+                                                $iframe = 'https://stage-apps-groupdocs.dynabic.com/signature2/signembed/' . $envelopeId . '/' . $recipientId;
                                             } elseif ($basePath == "http://realtime-api.groupdocs.com") {
                                                 $iframe = 'https://relatime-apps.groupdocs.com/signature2/signembed/' . $envelopeId . '/' . $recipientId;
                                             }

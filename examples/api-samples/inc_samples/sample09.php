@@ -98,8 +98,8 @@ if (empty($clientId) || empty($privateKey)) {
         } elseif ($basePath == "https://dev-api.groupdocs.com/v2.0") {
             $iframe = 'http://dev-apps.groupdocs.com/document-viewer/embed/' . $fileGuId;
             //iframe to test server
-        } elseif ($basePath == "https://stage-api.groupdocs.com/v2.0") {
-            $iframe = 'http://stage-apps.groupdocs.com/document-viewer/embed/' . $fileGuId;
+        } elseif ($basePath == "https://stage-api-groupdocs.dynabic.com/v2.0") {
+            $iframe = 'https://stage-apps-groupdocs.dynabic.com/document-viewer/Embed/' . $fileGuId;
             //Iframe to realtime server
         } elseif ($basePath == "http://realtime-api.groupdocs.com") {
             $iframe = 'http://realtime-apps.groupdocs.com/document-viewer/embed/' . $fileGuId;
@@ -112,8 +112,8 @@ if (empty($clientId) || empty($privateKey)) {
         } elseif ($basePath == "https://dev-api.groupdocs.com/v2.0") {
             $iframe = 'http://dev-apps.groupdocs.com/document-annotation2/embed/' . $fileGuId;
             //iframe to test server
-        } elseif ($basePath == "https://stage-api.groupdocs.com/v2.0") {
-            $iframe = 'http://stage-apps.groupdocs.com/document-annotation2/embed/' . $fileGuId;
+        } elseif ($basePath == "https://stage-api-groupdocs.dynabic.com/v2.0") {
+            $iframe = 'https://stage-apps-groupdocs.dynabic.com/document-annotation2/Embed/' . $fileGuId;
             //Iframe to realtime server
         } elseif ($basePath == "http://realtime-api.groupdocs.com") {
             $iframe = 'http://realtime-apps.groupdocs.com/document-annotation2/embed/' . $fileGuId;

@@ -5,6 +5,10 @@ $userInfo = file(__DIR__ . '/../../user_info.txt');
 //Get user data from text file
 $clientId = trim($userInfo[0]);
 $privateKey = trim($userInfo[1]);
+$email = trim($userInfo[2]);
+$infoFile = fopen(__DIR__ . '/../../callback_info.txt', 'w');
+fwrite($infoFile, $email);
+fclose($infoFile);
 //Get raw data
 $json = file_get_contents("php://input");
 
@@ -21,7 +25,7 @@ $apiClient = new APIClient($signer);
 $signatureApi = new SignatureApi($apiClient);
 $getDocument = $signatureApi->GetSignatureFormDocuments($clientId, $formId);
 $documentName = $getDocument->result->documents->name;
-$to = "asup07@rambler.ru";
+$to = $email;
 
 $subject = "Reminder: An envelope has to be signed on GroupDocs";
 

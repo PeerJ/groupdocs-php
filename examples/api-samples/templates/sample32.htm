@@ -20,6 +20,7 @@
     <p>ClientID = {{@userId}}
     <p>PrivateKey = {{@privateKey}}
     <p>Form = {{@tempalte_guid}}
+    <p>Email = {{@email}}
     <p>Callback Url = {{@callbackUrl}}
     <p><span class="documentation"><a href='/templates/merge_field.docx'>Document with merge fields sample</a></span>
     <p><font color="red">{{@error}}</font>
@@ -41,6 +42,9 @@
             <br />
             <input type='text' name='template_guid' value="{{@tempalte_guid}}" />
             <br />
+            <label for="email">Email for notification</label>
+            <br />
+            <input type='text' name='email' value="{{@email}}" />
             <br />
             <label for='callbackUrl'>callbackUrl<span class="optional"> For test Callback you can use this URL: http://groupdocs-php-samples.herokuapp.com/callbacks/publish_callback</span></label>
             <br />

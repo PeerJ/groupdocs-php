@@ -9,6 +9,7 @@ $privateKey = F3::get('POST["private_key"]');
 $basePath = f3::get('POST["server_type"]');
 $callbackUrl = f3::get('POST["callbackUrl"]');
 $templateGuid = F3::get('POST["template_guid"]');
+$email = F3::get('POST["email"]');
 $error = null;
 if (empty($clientId) || empty($privateKey) || empty($templateGuid)) {
     $error = 'Please enter all parameters';
@@ -16,10 +17,11 @@ if (empty($clientId) || empty($privateKey) || empty($templateGuid)) {
 } else {
     //path to settings file - temporary save userId and apiKey like to property file
     $infoFile = fopen(__DIR__ . '/../user_info.txt', 'w');
-    fwrite($infoFile, $clientId . "\r\n" . $privateKey);
+    fwrite($infoFile, $clientId . "\r\n" . $privateKey . "\r\n" . $email);
     fclose($infoFile);
     F3::set('userId', $clientId);
     F3::set('privateKey', $privateKey);
+    F3::set('email', $email);
     //###Create Signer, ApiClient and Storage Api objects
     //Create signer object
     $signer = new GroupDocsRequestSigner($privateKey);

@@ -37,10 +37,18 @@
             <br />
             <input type='text' name='private_key'  value="{{@privateKey}}" />
             <br />
+             <input type="radio" name="sourse" value="form" id="form_radion" onClick="display('form');" checked>From GUID </input>
             <br />
-            <label for="template_guid">GroupDocs template Guid</label>
+            <input type="radio" name="sourse" value="template" id="template_radio" onClick="display('template');" >Template GUID </input>
             <br />
-            <input type='text' name='template_guid' value="{{@tempalte_guid}}" />
+            <br />
+            <label for="form_guid" id="form_label" >GroupDoc Form Guid</label>
+            <br />
+            <input type='text' id="form" name='form_guid' value="{{@form_guid}}" />
+            <br />
+            <label for="template_guid" id="template_label" style="display:none;">GroupDocs template Guid</label>
+            <br />
+            <input type='text' name='template_guid' id="template" value="{{@tempalte_guid}}" style="display:none;"/>
             <br />
             <label for="email">Email for notification</label>
             <br />
@@ -61,13 +69,44 @@
     <div id = 'result' style="padding:20px; border:1px solid black;" >
         <p> Results: </p>
         <font color="green">{{@message}}</font>
-        <iframe id='downloadframe' src="{{@url}}" width = '800' height = '1000'></iframe>
+        <iframe id='downloadframe' src="{{@url}}" width = '1000' height = '1000'></iframe>
         
     </div>
     <br/>
 </div>
 
 <include href="links.htm" />
+<script>
+ function display(_element_id) {
 
+             if (_element_id == "form") {
+                 var element1 = document.getElementById("form");
+                 var element2 = document.getElementById("form_label");
+                 var element3 = document.getElementById("template");
+                 var element4 = document.getElementById("template_label");
+           
+                 element1.style.display = "inline";
+                 element2.style.display = "inline";
+                 element3.style.display = "none";
+                 element4.style.display = "none";
+                
+
+             }
+
+             if (_element_id == "template") {
+                 var element1 = document.getElementById("form");
+                 var element2 = document.getElementById("form_label");
+                 var element3 = document.getElementById("template");
+                 var element4 = document.getElementById("template_label");
+           
+                 element1.style.display = "none";
+                 element2.style.display = "none";
+                 element3.style.display = "inline";
+                 element4.style.display = "inline";
+                
+
+             }
+ }
+</script>
 </body>
 </html>

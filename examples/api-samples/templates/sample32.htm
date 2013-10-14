@@ -16,6 +16,9 @@
     <br />
     <span class="documentation"><a href="/docs/sample32.html">Docs for this sample</a></span>
     <br />
+    <br />
+    <span class="documentation"><a href="/docs/publish_callback.html">Docs for callback handler</a></span>
+    <br />
     <br/><p>The data you provided:
     <p>ClientID = {{@userId}}
     <p>PrivateKey = {{@privateKey}}
@@ -23,6 +26,7 @@
     <p>Email = {{@email}}
     <p>Callback Url = {{@callbackUrl}}
     <p><span class="documentation"><a href='/templates/merge_field.docx'>Document with merge fields sample</a></span>
+        
     <p><font color="red">{{@error}}</font>
     <div id="requestForm" style="padding:20px; border:1px solid black;">
         <p> Enter data for request and press "Signature" button </p>
@@ -37,7 +41,7 @@
             <br />
             <input type='text' name='private_key'  value="{{@privateKey}}" />
             <br />
-             <input type="radio" name="sourse" value="form" id="form_radion" onClick="display('form');" checked>Form GUID </input>
+             <input type="radio" name="sourse" value="form" id="form_radion" onClick="display('form');" checked>From GUID </input>
             <br />
             <input type="radio" name="sourse" value="template" id="template_radio" onClick="display('template');" >Template GUID </input>
             <br />

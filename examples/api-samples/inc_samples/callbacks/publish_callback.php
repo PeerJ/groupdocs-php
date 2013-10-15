@@ -23,8 +23,11 @@ $signer = new GroupDocsRequestSigner(trim($privateKey));
 $apiClient = new APIClient($signer);
 //Create AsyncApi object
 $signatureApi = new SignatureApi($apiClient);
+//Get document from signature form
 $getDocument = $signatureApi->GetSignatureFormDocuments($clientId, $formId);
-$documentName = $getDocument->result->documents->name;
+//Get document name
+$documentName = $getDocument->result->documents[0]->name;
+//Create email with document name
 $to = $email;
 
 $subject = "Reminder: An envelope has to be signed on GroupDocs";

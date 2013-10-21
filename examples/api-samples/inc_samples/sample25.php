@@ -1,6 +1,6 @@
 <?php
 
-//###<i>This sample will show how to merge data fields in docx file with data source and get result file as PDF file</i>
+//###<i>This sample will show how to  merge/assemble data fields in docx file with data source and get result file as PDF file</i>
 //Set variables and get POST data
 F3::set('userId', '');
 F3::set('privateKey', '');
@@ -108,7 +108,7 @@ function mergeFields($clientId, $privateKey, $basePath) {
             $addDataSource = $mergApi->AddDataSource($clientId, $dataSource);
             //Check status
             if ($addDataSource->status == "Ok") {
-                //If status ok merge Datasource to new pdf file
+                //If status ok  merge/assemble Datasource to new pdf file
                 $job = $mergApi->MergeDatasource($clientId, $fileGuId, $addDataSource->result->datasource_id, "pdf", null);
                 //Check status
                 if ($job->status == "Ok") {

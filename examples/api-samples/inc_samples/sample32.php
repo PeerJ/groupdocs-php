@@ -1,6 +1,6 @@
 <?php
 
-//<i>This sample will show how to dinamically create your own questionary using forms and build signature form from the result document using PHP SDK</i>
+//<i>This sample will show how to create signature form, publish it and configure notification when it was signed using PHP SDK</i>
 //###Set variables and get POST data
 F3::set('userId', '');
 F3::set('privateKey', '');
@@ -48,7 +48,6 @@ if (empty($clientId) || empty($privateKey)) {
     if (!empty($formGuid)) {
         F3::set("form_guid", $formGuid);
         try {
-            //Publish form
             $postForm = $signatureApi->PublishSignatureForm($clientId, $formGuid, $webHook);
             //Check status
             if ($postForm->status == "Ok") {

@@ -8,7 +8,6 @@ F3::set('fileId', '');
 $clientId = F3::get('POST["client_id"]');
 $privateKey = F3::get('POST["private_key"]');
 
-
 if (empty($clientId) || empty($privateKey)) {
     $error = 'Please enter all required parameters';
     f3::set('error', $error);

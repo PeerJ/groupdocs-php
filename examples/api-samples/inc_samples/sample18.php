@@ -9,6 +9,7 @@ F3::set('convert_type', '');
 $clientId = F3::get('POST["client_id"]');
 $privateKey = F3::get('POST["private_key"]');
 $convert_type = F3::get('POST["convert_type"]');
+$callbackUrl = f3::get('POST["callbackUrl"]');
 if (empty($clientId) || empty($privateKey) || empty($convert_type)) {
     $error = 'Please enter all required parameters';
     f3::set('error', $error);
@@ -18,8 +19,10 @@ if (empty($clientId) || empty($privateKey) || empty($convert_type)) {
     fwrite($infoFile, $clientId . "\r\n" . $privateKey);
     fclose($infoFile);
     //check if Downloads folder exists and remove it to clean all old files
-    if (file_exists(__DIR__ . '/../downloads')) {
-        delFolder(__DIR__ . '/../downloads/');
+    if ($callbackUrl != "") {
+        if (file_exists(__DIR__ . '/../downloads')) {
+            delFolder(__DIR__ . '/../downloads/');
+        }
     }
     //Get base path
     $basePath = f3::get('POST["server_type"]');
@@ -96,7 +99,7 @@ if (empty($clientId) || empty($privateKey) || empty($convert_type)) {
         //Get entered by user file GUID
         $fileGuId = $fileId;
     }
-    $callbackUrl = f3::get('POST["callbackUrl"]');
+    
     F3::set("callbackUrl", $callbackUrl);
     //Make request to api for convert file
     try {

@@ -56,6 +56,7 @@ F3::set(<span class="string">'iframe'</span>, <span class="string">''</span>);
 <span class="variable">$email</span> = f3::get(<span class="string">'POST["email"]'</span>);
 <span class="variable">$signName</span> = f3::get(<span class="string">'POST["name"]'</span>);
 <span class="variable">$lastName</span> = f3::get(<span class="string">'POST["lastName"]'</span>);
+<span class="variable">$callbackUrl</span> = f3::get(<span class="string">'POST["callbackUrl"]'</span>);
 f3::set(<span class="string">'email'</span>, <span class="variable">$email</span>);
 f3::set(<span class="string">'name'</span>, <span class="variable">$signName</span>);
 f3::set(<span class="string">'lastName'</span>, <span class="variable">$lastName</span>);</pre></div></div>
@@ -108,8 +109,10 @@ f3::set(<span class="string">'lastName'</span>, <span class="variable">$lastName
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    <span class="keyword">if</span> (file_exists(__DIR__ . <span class="string">'/../downloads'</span>)) {
-        delFolder(__DIR__ . <span class="string">'/../downloads/'</span>);
+            <div class="content"><div class='highlight'><pre>    <span class="keyword">if</span> (<span class="variable">$callbackUrl</span> != <span class="string">""</span>) {
+        <span class="keyword">if</span> (file_exists(__DIR__ . <span class="string">'/../downloads'</span>)) {
+            delFolder(__DIR__ . <span class="string">'/../downloads/'</span>);
+        }
     }</pre></div></div>
             
         </li>
@@ -623,7 +626,8 @@ f3::set(<span class="string">'lastName'</span>, <span class="variable">$lastName
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>            <span class="variable">$addDocument</span> = <span class="variable">$signature</span>-&gt;AddSignatureEnvelopeDocument(<span class="variable">$clientID</span>, <span class="variable">$envelop</span>-&gt;result-&gt;envelope-&gt;id, <span class="variable">$fileGuId</span>, <span class="keyword">null</span>, <span class="keyword">true</span>);
+            <div class="content"><div class='highlight'><pre>
+            <span class="variable">$addDocument</span> = <span class="variable">$signature</span>-&gt;AddSignatureEnvelopeDocument(<span class="variable">$clientID</span>, <span class="variable">$envelop</span>-&gt;result-&gt;envelope-&gt;id, <span class="variable">$fileGuId</span>, <span class="keyword">null</span>, <span class="keyword">true</span>);
             <span class="keyword">try</span> {
                 <span class="keyword">if</span> (<span class="variable">$addDocument</span>-&gt;status == <span class="string">"Ok"</span>) {</pre></div></div>
             
@@ -711,7 +715,7 @@ f3::set(<span class="string">'lastName'</span>, <span class="variable">$lastName
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>                                            <span class="variable">$callbackUrl</span> = f3::get(<span class="string">'POST["callbackUrl"]'</span>);
+            <div class="content"><div class='highlight'><pre>                                           
                                             F3::set(<span class="string">"callbackUrl"</span>, <span class="variable">$callbackUrl</span>);
                                             <span class="keyword">try</span> {
                                                 <span class="variable">$getDocuments</span> = <span class="variable">$signature</span>-&gt;GetSignatureEnvelopeDocuments(<span class="variable">$clientID</span>, <span class="variable">$envelop</span>-&gt;result-&gt;envelope-&gt;id);
@@ -803,8 +807,8 @@ f3::set(<span class="string">'lastName'</span>, <span class="variable">$lastName
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>                                                                } <span class="keyword">elseif</span> (<span class="variable">$basePath</span> == <span class="string">"https://stage-api.groupdocs.com/v2.0"</span>) {
-                                                                    <span class="variable">$iframe</span> = <span class="string">'&lt;iframe src="https://stage-apps.groupdocs.com/signature/signembed/'</span> .
+            <div class="content"><div class='highlight'><pre>                                                                } <span class="keyword">elseif</span> (<span class="variable">$basePath</span> == <span class="string">"https://stage-apps-groupdocs.dynabic.com/v2.0"</span>) {
+                                                                    <span class="variable">$iframe</span> = <span class="string">'&lt;iframe src="https://stage-apps-groupdocs.dynabic.com/signature/signembed/'</span> .
                                                                             <span class="variable">$envelop</span>-&gt;result-&gt;envelope-&gt;id . <span class="string">'/'</span> . <span class="variable">$recipientId</span> . <span class="string">'?frameborder="0" width="720" height="600"&gt;&lt;/iframe&gt;'</span>;
                                                                 } <span class="keyword">elseif</span> (<span class="variable">$basePath</span> == <span class="string">"http://realtime-api.groupdocs.com"</span>) {
                                                                     <span class="variable">$iframe</span> = <span class="string">'http://realtime-apps.groupdocs.com/signature/signembed/'</span> .
@@ -923,7 +927,7 @@ f3::set(<span class="string">'lastName'</span>, <span class="variable">$lastName
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-49">&#182;</a>
               </div>
-              <p>Remove from array &quot;.&quot; and &quot;..&quot;</p>
+              <p>Remove from array “.” and “..”</p>
 
             </div>
             

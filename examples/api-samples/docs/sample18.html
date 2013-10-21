@@ -53,6 +53,7 @@ F3::set(<span class="string">'convert_type'</span>, <span class="string">''</spa
 <span class="variable">$clientId</span> = F3::get(<span class="string">'POST["client_id"]'</span>);
 <span class="variable">$privateKey</span> = F3::get(<span class="string">'POST["private_key"]'</span>);
 <span class="variable">$convert_type</span> = F3::get(<span class="string">'POST["convert_type"]'</span>);
+<span class="variable">$callbackUrl</span> = f3::get(<span class="string">'POST["callbackUrl"]'</span>);
 <span class="keyword">if</span> (<span class="keyword">empty</span>(<span class="variable">$clientId</span>) || <span class="keyword">empty</span>(<span class="variable">$privateKey</span>) || <span class="keyword">empty</span>(<span class="variable">$convert_type</span>)) {
     <span class="variable">$error</span> = <span class="string">'Please enter all required parameters'</span>;
     f3::set(<span class="string">'error'</span>, <span class="variable">$error</span>);
@@ -88,8 +89,10 @@ F3::set(<span class="string">'convert_type'</span>, <span class="string">''</spa
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    <span class="keyword">if</span> (file_exists(__DIR__ . <span class="string">'/../downloads'</span>)) {
-        delFolder(__DIR__ . <span class="string">'/../downloads/'</span>);
+            <div class="content"><div class='highlight'><pre>    <span class="keyword">if</span> (<span class="variable">$callbackUrl</span> != <span class="string">""</span>) {
+        <span class="keyword">if</span> (file_exists(__DIR__ . <span class="string">'/../downloads'</span>)) {
+            delFolder(__DIR__ . <span class="string">'/../downloads/'</span>);
+        }
     }</pre></div></div>
             
         </li>
@@ -478,7 +481,7 @@ F3::set(<span class="string">'convert_type'</span>, <span class="string">''</spa
             
             <div class="content"><div class='highlight'><pre>        <span class="variable">$fileGuId</span> = <span class="variable">$fileId</span>;
     }
-    <span class="variable">$callbackUrl</span> = f3::get(<span class="string">'POST["callbackUrl"]'</span>);
+    
     F3::set(<span class="string">"callbackUrl"</span>, <span class="variable">$callbackUrl</span>);</pre></div></div>
             
         </li>
@@ -614,8 +617,8 @@ F3::set(<span class="string">'convert_type'</span>, <span class="string">''</spa
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>            } <span class="keyword">elseif</span> (<span class="variable">$basePath</span> == <span class="string">"https://stage-api.groupdocs.com/v2.0"</span>) {
-                <span class="variable">$iframe</span> = <span class="string">'http://stage-apps.groupdocs.com/document-viewer/embed/'</span> .
+            <div class="content"><div class='highlight'><pre>            } <span class="keyword">elseif</span> (<span class="variable">$basePath</span> == <span class="string">"https://stage-apps-groupdocs.dynabic.com/v2.0"</span>) {
+                <span class="variable">$iframe</span> = <span class="string">'https://stage-apps-groupdocs.dynabic.com/document-viewer/embed/'</span> .
                         <span class="variable">$guid</span> . <span class="string">'" frameborder="0" width="100%" height="600"'</span>;</pre></div></div>
             
         </li>
@@ -702,7 +705,7 @@ F3::set(<span class="string">'convert_type'</span>, <span class="string">''</spa
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-41">&#182;</a>
               </div>
-              <p>Remove from array &quot;.&quot; and &quot;..&quot;</p>
+              <p>Remove from array “.” and “..”</p>
 
             </div>
             

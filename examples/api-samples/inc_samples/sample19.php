@@ -20,8 +20,10 @@ if (empty($clientId) || empty($privateKey)) {
     fwrite($infoFile, $clientId . "\r\n" . $privateKey);
     fclose($infoFile);
     //check if Downloads folder exists and remove it to clean all old files
-    if (file_exists(__DIR__ . '/../downloads')) {
-        delFolder(__DIR__ . '/../downloads/');
+    if ($callbackUrl != "") {
+        if (file_exists(__DIR__ . '/../downloads')) {
+            delFolder(__DIR__ . '/../downloads/');
+        }
     }
     //Set variables for Viewer
     F3::set('userId', $clientId);

@@ -48,7 +48,6 @@ if (empty($clientId) || empty($privateKey) || empty($firstUrl) || empty($secondU
     F3::set("url2", $secondUrl);
     F3::set("url3", $thirdUrl);
     $guidArray = array();
-    $inputDocumentsArray = array();
     //Upload file from URL
     for ($i = 0; $i < count($urlArray); $i++) {
         try {

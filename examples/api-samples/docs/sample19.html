@@ -103,8 +103,10 @@ f3::set(<span class="string">'result'</span>, <span class="string">""</span>);
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    <span class="keyword">if</span> (file_exists(__DIR__ . <span class="string">'/../downloads'</span>)) {
-        delFolder(__DIR__ . <span class="string">'/../downloads/'</span>);
+            <div class="content"><div class='highlight'><pre>    <span class="keyword">if</span> (<span class="variable">$callbackUrl</span> != <span class="string">""</span>) {
+        <span class="keyword">if</span> (file_exists(__DIR__ . <span class="string">'/../downloads'</span>)) {
+            delFolder(__DIR__ . <span class="string">'/../downloads/'</span>);
+        }
     }</pre></div></div>
             
         </li>
@@ -692,8 +694,8 @@ $targetFileId - file GuId with wich will compare sourceFile, $callbackUrl - Url 
               <h3>Example of handling callback request:</h3>
 <p> You can handle callback request in separate php file or in the same one. Our service will post JSON data via post request. 
 In PHP you should get raw data like this:
-    $json = file<em>get<em>contents(&quot;php://input&quot;); - get callback data
-    $fp = fopen(__DIR</em></em> . &#39;/../../temp/signature_request_log.txt&#39;, &#39;a&#39;); - open file for data write
+    $json = file<em>get<em>contents(“php://input”); - get callback data
+    $fp = fopen(__DIR</em></em> . &#39;/../../temp/signature_request_log.txt‘, ’a&#39;); - open file for data write
     fwrite($fp, $json . &quot;\r\n&quot;); - write data to the file
     fclose($fp); - close file
 Check request status</p>
@@ -869,8 +871,8 @@ Check request status</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>            } <span class="keyword">elseif</span> (<span class="variable">$basePath</span> == <span class="string">"https://stage-api.groupdocs.com/v2.0"</span>) {
-                <span class="variable">$iframe</span> = <span class="string">'https://stage-apps.groupdocs.com/document-viewer/embed/'</span> .
+            <div class="content"><div class='highlight'><pre>            } <span class="keyword">elseif</span> (<span class="variable">$basePath</span> == <span class="string">"https://stage-apps-groupdocs.dynabic.com/v2.0"</span>) {
+                <span class="variable">$iframe</span> = <span class="string">'https://stage-apps-groupdocs.dynabic.com/document-viewer/embed/'</span> .
                         <span class="variable">$guid</span> . <span class="string">' frameborder="0" width="500" height="650"'</span>;
             } <span class="keyword">elseif</span> (<span class="variable">$basePath</span> == <span class="string">"http://realtime-api.groupdocs.com"</span>) {
                 <span class="variable">$iframe</span> = <span class="string">'http://realtime-apps.groupdocs.com/document-viewer/embed/'</span> .
@@ -943,7 +945,7 @@ Check request status</p>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-54">&#182;</a>
               </div>
-              <p>Remove from array &quot;.&quot; and &quot;..&quot;</p>
+              <p>Remove from array “.” and “..”</p>
 
             </div>
             

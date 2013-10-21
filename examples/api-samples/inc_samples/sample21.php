@@ -12,6 +12,7 @@ $privateKey = F3::get('POST["private_key"]');
 $email = f3::get('POST["email"]');
 $signName = f3::get('POST["name"]');
 $lastName = f3::get('POST["lastName"]');
+$callbackUrl = f3::get('POST["callbackUrl"]');
 f3::set('email', $email);
 f3::set('name', $signName);
 f3::set('lastName', $lastName);
@@ -25,8 +26,10 @@ if (empty($clientId) || empty($privateKey)) {
     fwrite($infoFile, $clientId . "\r\n" . $privateKey);
     fclose($infoFile);
     //check if Downloads folder exists and remove it to clean all old files
-    if (file_exists(__DIR__ . '/../downloads')) {
-        delFolder(__DIR__ . '/../downloads/');
+    if ($callbackUrl != "") {
+        if (file_exists(__DIR__ . '/../downloads')) {
+            delFolder(__DIR__ . '/../downloads/');
+        }
     }
     //Deleting of tags, slashes and  space from clientId and privateKey
     $clientID = strip_tags(stripslashes(trim($clientId))); //ClientId==UserId
@@ -177,7 +180,7 @@ if (empty($clientId) || empty($privateKey)) {
                                             $recipientId = $getRecipient->result->recipients[0]->id;
 
                                             //Url for callback
-                                            $callbackUrl = f3::get('POST["callbackUrl"]');
+                                           
                                             F3::set("callbackUrl", $callbackUrl);
                                             try {
                                                 $getDocuments = $signature->GetSignatureEnvelopeDocuments($clientID, $envelop->result->envelope->id);

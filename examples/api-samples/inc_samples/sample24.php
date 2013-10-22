@@ -37,26 +37,22 @@ function Upload($clientId, $privateKey, $url) {
         //###Make a request to Storage API using clientId
         //Upload file to current user storage using entere URl to the file
         $uploadResult = $storageApi->UploadWeb($clientID, $url);
-
+       
         //###Check if file uploaded successfully
         if ($uploadResult->status == "Ok") {
             $guid = $uploadResult->result->guid;
             //Generation of iframe URL using $pageImage->result->guid
             //iframe to prodaction server
             if ($basePath == "https://api.groupdocs.com/v2.0") {
-                $iframe = 'https://apps.groupdocs.com/document-viewer/embed/' .
-                        $guid . ' frameborder="0" width="500" height="650"';
+                $iframe = 'https://apps.groupdocs.com/document-viewer/embed/' . $guid;
                 //iframe to dev server
             } elseif ($basePath == "https://dev-api.groupdocs.com/v2.0") {
-                $iframe = 'https://dev-apps.groupdocs.com/document-viewer/embed/' .
-                        $guid . ' frameborder="0" width="500" height="650"';
+                $iframe = 'https://dev-apps.groupdocs.com/document-viewer/embed/' . $guid;
                 //iframe to test server
             } elseif ($basePath == "https://stage-apps-groupdocs.dynabic.com/v2.0") {
-                $iframe = 'https://stage-apps-groupdocs.dynabic.com/document-viewer/embed/' .
-                        $guid . ' frameborder="0" width="500" height="650"';
+                $iframe = 'https://stage-apps-groupdocs.dynabic.com/document-viewer/embed/' . $guid;
             } elseif ($basePath == "http://realtime-api.groupdocs.com") {
-                $iframe = 'http://realtime-apps.groupdocs.com/document-viewer/embed/' .
-                        $guid . '" frameborder="0" width="100%" height="600"';
+                $iframe = 'http://realtime-apps.groupdocs.com/document-viewer/embed/' . $guid;
             }
             $iframe = $signer->signUrl($iframe);
             //If request was successfull - set result variable for template

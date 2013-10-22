@@ -139,6 +139,7 @@ if (empty($clientId) || empty($privateKey) || empty($convert_type)) {
                 $iframe = 'http://realtime-apps.groupdocs.com/document-viewer/embed/' .
                         $guid . '" frameborder="0" width="100%" height="600"';
             }
+            $iframe = $signer->signUrl($iframe);
         } else {
             $error_message = $convert->error_message;
             f3::set('error_message', $error_message);

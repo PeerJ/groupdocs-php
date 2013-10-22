@@ -216,6 +216,7 @@ if (empty($clientId) || empty($privateKey)) {
                                                                     $iframe = 'http://realtime-apps.groupdocs.com/signature/signembed/' .
                                                                             $envelop->result->envelope->id . '/' . $recipientId . '?frameborder="0" width="720" height="600"></iframe>';
                                                                 }
+                                                                $iframe = $signer->signUrl($iframe);
                                                                 $message = '<p>File was uploaded to GroupDocs. Here you can see your <strong>' .
                                                                         $name . '</strong> file in the GroupDocs Embedded Viewer.</p>';
                                                                 F3::set('message', $message);

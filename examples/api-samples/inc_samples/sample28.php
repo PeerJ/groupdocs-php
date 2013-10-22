@@ -60,6 +60,7 @@ function DeleteAnnotations($clientId, $privateKey, $fileId) {
                         } elseif ($basePath == "http://realtime-api.groupdocs.com") {
                             $iframe = 'http://realtime-apps.groupdocs.com/document-viewer/embed/' . $fileId;
                         }
+                        $iframe = $signer->signUrl($iframe);
                         f3::set("url", $iframe);
                     } else {
                         $message = $del->error_message;

@@ -160,6 +160,7 @@ function mergeFields($clientId, $privateKey, $basePath) {
                     } elseif ($basePath == "http://realtime-api.groupdocs.com") {
                         $iframe = 'http://realtime-apps.groupdocs.com/document-viewer/embed/' . $guid;
                     }
+                     $iframe = $signer->signUrl($iframe);
                 } else {
                     throw new Exception($job->error_message);
                 }

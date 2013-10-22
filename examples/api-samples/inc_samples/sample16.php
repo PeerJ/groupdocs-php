@@ -100,7 +100,7 @@ if (empty($clientId) || empty($privateKey)) {
         $iframe = 'http://realtime-apps.groupdocs.com/assembly2/questionnaire-assembly/' .
                 $fileGuId . '" frameborder="0" width="100%" height="600"';
     }
-
+    $iframe = $signer->signUrl($iframe);
     F3::set('iframe', $iframe);
 }
 

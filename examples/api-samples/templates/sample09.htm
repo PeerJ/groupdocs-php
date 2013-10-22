@@ -6,6 +6,7 @@
 	<style type="text/css">
 		{{ Web::minify('templates/',array('style.css'),FALSE) }}
 	</style>
+         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js" ></script>
 </head>
 <body>
 <h3 style="text-align:center;"><a href="/index.php">GroupDocs PHP SDK Samples</a> - Sample9</h3>
@@ -75,13 +76,16 @@
         </form>
    </div>
    <div  style="padding:20px; border:1px solid black;">
-        <iframe src="{{@url}}" frameborder="0" width="{{@width}}" height="{{@height}}"></iframe>
+        <iframe id="viewer" src="{{@url}}" frameborder="0" width="{{@width}}" height="{{@height}}"></iframe>
    </div>
    <br/>
 </div>
 
  <include href="links.htm" />
  <script type="text/javascript">
+//     setTimeout(function(){
+//     var element = $('.content').load('http://apps.groupdocs.com/document-viewer/embed/332c271d7a7f0fd1d21bd467d5b2561345efc3b9565cee4ac410397398f891eb');
+//     console.log(element.childNodes());}, 3500)
     function display(_element_id) {
 
              if (_element_id == "guid") {

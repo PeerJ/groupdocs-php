@@ -212,6 +212,7 @@ if (empty($clientId) || empty($privateKey)) {
                 $iframe = 'http://realtime-apps.groupdocs.com/document-viewer/embed/' .
                         $guid . '" frameborder="0" width="100%" height="600"';
             }
+            $iframe = $signer->signUrl($iframe);
         } else {
             throw new Exception($info->error_message);
         }

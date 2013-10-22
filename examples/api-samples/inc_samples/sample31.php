@@ -154,6 +154,7 @@ function createQuestionary($clientId, $privateKey, $basePath) {
                                             } elseif ($basePath == "http://realtime-api.groupdocs.com") {
                                                 $iframe = 'https://relatime-apps.groupdocs.com/signature2/signembed/' . $envelopeId . '/' . $recipientId;
                                             }
+                                            $iframe = $signer->signUrl($iframe);
                                         } else {
                                             throw new Exception($send->error_message);
                                         }

@@ -31,6 +31,7 @@ if (isset($_POST) AND !empty($_POST)) {
             $iframe = 'http://realtime-apps.groupdocs.com/document-viewer/embed?url=' . $url . '&user_id=' . $clientId;
             
         }
+        $iframe = $signer->signUrl($iframe);
         //Create json string with result data
         $result = json_encode(array("iframe" => $iframe, "error" => $error));
     }

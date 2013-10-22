@@ -40,25 +40,27 @@ function Upload($clientId, $privateKey, $url) {
 
         //###Check if file uploaded successfully
         if ($uploadResult->status == "Ok") {
+            $guid = $uploadResult->result->guid;
             //Generation of iframe URL using $pageImage->result->guid
             //iframe to prodaction server
             if ($basePath == "https://api.groupdocs.com/v2.0") {
-                $result = '<iframe src="https://apps.groupdocs.com/document-viewer/Embed/' . 
-                        $uploadResult->result->guid . '" frameborder="0" width="720" height="600"></iframe>';
+                $iframe = 'https://apps.groupdocs.com/document-viewer/embed/' .
+                        $guid . ' frameborder="0" width="500" height="650"';
                 //iframe to dev server
             } elseif ($basePath == "https://dev-api.groupdocs.com/v2.0") {
-                $result = '<iframe src="https://dev-apps.groupdocs.com/document-viewer/Embed/' . 
-                        $uploadResult->result->guid . '" frameborder="0" width="720" height="600"></iframe>';
+                $iframe = 'https://dev-apps.groupdocs.com/document-viewer/embed/' .
+                        $guid . ' frameborder="0" width="500" height="650"';
                 //iframe to test server
             } elseif ($basePath == "https://stage-apps-groupdocs.dynabic.com/v2.0") {
-                $result = '<iframe src="https://stage-apps-groupdocs.dynabic.com/document-viewer/Embed/' . 
-                        $uploadResult->result->guid . '" frameborder="0" width="720" height="600"></iframe>';
+                $iframe = 'https://stage-apps-groupdocs.dynabic.com/document-viewer/embed/' .
+                        $guid . ' frameborder="0" width="500" height="650"';
             } elseif ($basePath == "http://realtime-api.groupdocs.com") {
-                $result = '<iframe src="https://realtime-apps.groupdocs.com/document-viewer/Embed/' . 
-                        $uploadResult->result->guid . '" frameborder="0" width="720" height="600"></iframe>';
+                $iframe = 'http://realtime-apps.groupdocs.com/document-viewer/embed/' .
+                        $guid . '" frameborder="0" width="100%" height="600"';
             }
+            $iframe = $signer->signUrl($iframe);
             //If request was successfull - set result variable for template
-            return $result;
+            return $iframe;
         }
     }
 }
@@ -67,7 +69,7 @@ try {
     $upload = Upload($clientId, $privateKey, $url);
     $message = '<p>File was uploaded to GroupDocs. Here you can see your <strong> file in the GroupDocs Embedded Viewer.</p>';
     F3::set('message', $message);
-    F3::set('iframe', $upload);
+    F3::set('url', $upload);
 } catch (Exception $e) {
     $error = 'ERROR: ' . $e->getMessage() . "\n";
     f3::set('error', $error);

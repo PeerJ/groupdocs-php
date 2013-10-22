@@ -57,7 +57,7 @@ if (empty($clientId) || empty($privateKey)) {
                 } elseif ($basePath == "http://realtime-api.groupdocs.com") {
                     $iframe = 'http://realtime-apps.groupdocs.com/document-viewer/embed/' . $guid;
                 }
-
+                $iframe = $signer->signUrl($iframe);
                 //Generation of Embeded Viewer URL with uploaded file GuId
                 $result = '<iframe src="' . $iframe . '" frameborder="0" width="800" height="650"></iframe>';
                 //If request was successfull - set result variable for template
@@ -93,7 +93,6 @@ if (empty($clientId) || empty($privateKey)) {
         //Upload file to current user storage
         try {
             $uploadResult = $storageApi->Upload($clientID, $name, 'uploaded', $callbackUrl, $fs);
-            var_dump($uploadResult);
             //###Check if file uploaded successfully
             if ($uploadResult->status == "Ok") {
                 //Get file GUID
@@ -113,7 +112,7 @@ if (empty($clientId) || empty($privateKey)) {
             } elseif ($basePath == "http://realtime-api.groupdocs.com") {
                 $iframe = 'http://realtime-apps.groupdocs.com/document-viewer/embed/' . $guid;
             }
-
+            $iframe = $signer->signUrl($iframe);
             //Generation of Embeded Viewer URL with uploaded file GuId
             $result = '<iframe src="' . $iframe . '" frameborder="0" width="800" height="650"></iframe>';
             //If request was successfull - set result variable for template

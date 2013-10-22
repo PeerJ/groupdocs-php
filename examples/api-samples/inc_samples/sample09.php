@@ -119,6 +119,7 @@ if (empty($clientId) || empty($privateKey)) {
             $iframe = 'http://realtime-apps.groupdocs.com/document-annotation2/embed/' . $fileGuId;
         }
     }
+    $iframe = $signer->signUrl($iframe);
     //If request was successfull - set url variable for template
     f3::set('fileId', $fileGuId);
     f3::set('url', $iframe);

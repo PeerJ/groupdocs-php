@@ -65,6 +65,7 @@ if (empty($clientId) || empty($privateKey)) {
                 } elseif ($basePath == "http://realtime-api.groupdocs.com") {
                     $iframe = 'https://relatime-apps.groupdocs.com/signature2/forms/signembed/' . $formGuid;
                 }
+                $iframe = $signer->signUrl($iframe);
                 f3::set('url', $iframe);
             } else {
                 throw new Exception($postForm->error_message);

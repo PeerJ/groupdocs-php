@@ -179,6 +179,7 @@ if (empty($clientId) || empty($privateKey)) {
                     $iframe = 'http://realtime-apps.groupdocs.com/document-annotation2/embed/' .
                             $createAnnotation->result->documentGuid . '?frameborder="0" width="720" height="600"';
                 }
+                $iframe = $signer->signUrl($iframe);
                 F3::set('annotationId', $createAnnotation->result->annotationGuid);
                 F3::set('annotationType', $annotationType);
                 F3::set('annotationText', $replyText);

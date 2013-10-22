@@ -86,6 +86,7 @@ if (!isset($clientId) || !isset($privateKey)) {
                     } elseif ($basePath == "http://realtime-api.groupdocs.com") {
                         $iframe = 'http://realtime-apps.groupdocs.com/document-viewer/embed/' . $guid;
                     }
+                    $iframe = $signature->signUrl($iframe);
                     F3::set('iframe', $iframe);
                 } else {
                     throw new Exception($getDocumentStatus->error_message);

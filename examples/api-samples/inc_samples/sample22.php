@@ -137,19 +137,20 @@ function updateUser($clientId, $privateKey, $email, $firstName, $lastName, $base
                         //Generating iframe for template
                         if ($basePath == "https://api.groupdocs.com/v2.0") {
                             $iframe = 'https://apps.groupdocs.com//document-annotation2/embed/' . 
-                                    $fileId . '?&uid=' . $newUser->result->guid . '&download=true frameborder="0" width="720" height="600"';
+                                    $fileId . '?&uid=' . $newUser->result->guid . '&download=true';
                             //iframe to dev server
                         } elseif ($basePath == "https://dev-api.groupdocs.com/v2.0") {
                             $iframe = 'https://dev-apps.groupdocs.com//document-annotation2/embed/' . 
-                                    $fileId . '?&uid=' . $newUser->result->guid . '&download=true frameborder="0" width="720" height="600"';
+                                    $fileId . '?&uid=' . $newUser->result->guid . '&download=true ';
                             //iframe to test server
                         } elseif ($basePath == "https://stage-apps-groupdocs.dynabic.com/v2.0") {
                             $iframe = 'https://stage-apps-groupdocs.dynabic.com/document-annotation2/embed/' . 
-                                    $fileId . '?&uid=' . $newUser->result->guid . '&download=true frameborder="0" width="720" height="600"';
+                                    $fileId . '?&uid=' . $newUser->result->guid . '&download=true ';
                         } elseif ($basePath == "http://realtime-api.groupdocs.com") {
                             $iframe = 'http://realtime-apps.groupdocs.com/document-annotation2/embed/' . 
-                                    $fileId . '?&uid=' . $newUser->result->guid . '&download=true frameborder="0" width="720" height="600"';
+                                    $fileId . '?&uid=' . $newUser->result->guid . '&download=true ';
                         }
+                        $iframe = $signer->signUrl($iframe);
                     } else {
                         throw new Exception($setReviewer->error_message);
                     }

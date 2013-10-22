@@ -111,6 +111,7 @@ if (empty($clientId) || empty($privateKey) || empty($firstUrl) || empty($secondU
                             } elseif ($basePath == "http://realtime-api.groupdocs.com") {
                                 $iframe = 'https://relatime-apps.groupdocs.com/document-viewer/embed/' . $getJobDocument->result->outputs[0]->guid;
                             }
+                            $iframe = $signer->signUrl($iframe);
                             f3::set('url', $iframe);
                         } else {
                             throw new Exception($getJobDocument->error_message);

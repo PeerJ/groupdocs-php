@@ -11,6 +11,10 @@ if (isset($_POST) AND !empty($_POST)) {
     $basePath = $_POST["server_type"];
     //Get user id
     $clientId = $_POST["clientId"];
+    $apiKey = $_POST["privateKey"];
+    //###Create Signer, ApiClient and Storage Api objects
+    //Create signer object
+    $signer = new GroupDocsRequestSigner($apiKey);
     if ($basePath == "") {
         //If base base is empty seting base path to prod server
         $basePath = 'https://api.groupdocs.com/v2.0';

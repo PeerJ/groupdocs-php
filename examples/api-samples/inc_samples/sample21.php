@@ -289,7 +289,7 @@ function delFolder($path) {
     if (count($item) > 0) {
         //Delete files from folder
         for ($i = 0; $i < count($item); $i++) {
-            $next = $path . "\\" . $item[$i];
+            $next = $path . "/" . $item[$i];
             if (file_exists($next)) {
                 unlink($next);
             }

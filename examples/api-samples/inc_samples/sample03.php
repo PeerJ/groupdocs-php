@@ -8,9 +8,11 @@ F3::set('fileId', '');
 F3::set('message', '');
 F3::set('iframe', '');
 F3::set('basePath', '');
+F3::set('folderPath', '');
 $clientId = F3::get('POST["client_id"]');
 $privateKey = F3::get('POST["private_key"]');
 $basePath = f3::get('POST["server_type"]');
+$folderPath = f3::get('POST["folderPath"]');
 $url = F3::get('POST["url"]');
 
 //###Check clientId and privateKey
@@ -92,7 +94,7 @@ if (empty($clientId) || empty($privateKey)) {
         F3::set("callbackUrl", $callbackUrl);
         //Upload file to current user storage
         try {
-            $uploadResult = $storageApi->Upload($clientID, $name, 'uploaded', $callbackUrl, $fs);
+            $uploadResult = $storageApi->Upload($clientID, $folderPath . $name, 'uploaded', $callbackUrl, $fs);
             //###Check if file uploaded successfully
             if ($uploadResult->status == "Ok") {
                 //Get file GUID
@@ -122,6 +124,7 @@ if (empty($clientId) || empty($privateKey)) {
             F3::set('userId', $clientId);
             F3::set('privateKey', $privateKey);
             F3::set('basePath', $basePath);
+			F3::set('folderPath', $folderPath);
         } catch (Exception $e) {
             $error = 'ERROR: ' . $e->getMessage() . "\n";
             f3::set('error', $error);

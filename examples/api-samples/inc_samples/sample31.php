@@ -140,7 +140,13 @@ function createQuestionary($clientId, $privateKey, $basePath) {
                                     $recipientId = $getRecipient->result->recipients[0]->id;
                                     $getDocuments = $signatureApi->GetSignatureEnvelopeDocuments($clientId, $envelop->result->envelope->id);
                                     if ($getDocuments->status == "Ok") {
-                                        $send = $signatureApi->SignatureEnvelopeSend($clientId, $envelop->result->envelope->id, $callbackUrl);
+                                        $webHook = new WebhookInfo;
+                                        if ($callbackUrl != "") {
+                                            $webHook->callbackUrl = $callbackUrl;
+                                        } else {
+                                            $webHook->callbackUrl = "";
+                                        }
+                                        $send = $signatureApi->SignatureEnvelopeSend($clientId, $envelop->result->envelope->id, $webHook);
                                         if ($send->status == "Ok") {
                                             $envelopeId = $envelop->result->envelope->id;
                                             if ($basePath == "https://api.groupdocs.com/v2.0") {

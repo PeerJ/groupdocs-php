@@ -14,7 +14,6 @@ if (isset($_POST) AND !empty($_POST)) {
     $apiKey = $_POST["privateKey"];
     //###Create Signer, ApiClient and Storage Api objects
     //Create signer object
-    $signer = new GroupDocsRequestSigner($apiKey);
     if ($basePath == "") {
         //If base base is empty seting base path to prod server
         $basePath = 'https://api.groupdocs.com/v2.0';
@@ -35,7 +34,6 @@ if (isset($_POST) AND !empty($_POST)) {
             $iframe = 'http://realtime-apps.groupdocs.com/document-viewer/embed?url=' . $url . '&user_id=' . $clientId;
             
         }
-        $iframe = $signer->signUrl($iframe);
         //Create json string with result data
         $result = json_encode(array("iframe" => $iframe, "error" => $error));
     }

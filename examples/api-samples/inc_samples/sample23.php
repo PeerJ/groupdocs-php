@@ -84,8 +84,7 @@ function Iframe($clientId, $privateKey, $basePath) {
             }
         }
         //Make request yo the Api to get images for all document pages
-        $pageImage = $api->GetDocumentPagesImageUrls($clientId, $fileGuId, 1, 1, '650x500', null, null, null);
-       
+        $pageImage = $api->GetDocumentPagesImageUrls($clientId, $fileGuId, 0, 1, '650x500', null, null, null);
         $url = "";
         $image = "";
         //Check the result of the request

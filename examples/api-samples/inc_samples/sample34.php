@@ -31,16 +31,17 @@ if (!isset($clientId) || !isset($privateKey) || !isset($folder)) {
     $basePath = strip_tags(trim($basePath));
     //Set base path
     $storageApi->setBasePath($basePath);
-    //###Make a request to Doc API using clientId and file id
-    //Obtaining all Metadata for file
+    //###Make a request to Storage API using clientId and file id
     try {
+        //Check entere path for propper slashes
         if (strpos($folder, '\\') == true) {
             $folder = str_replace('\\', '/', $folder);
         }
+        //Create folder
         $createFodler = $storageApi->Create($clientId, $folder);
-        //Selecting file names
+        //Check status of creating folder action
         if ($createFodler->status == "Ok") {
-            //Obtaining file name for entered file Id
+            //Generate message with successful result
             $message = '<span style="color:green">Folder was created ' . $createFodler->result->path . '</span>';
             f3::set('message', $message);
         } else {

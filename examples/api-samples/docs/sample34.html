@@ -188,16 +188,11 @@
               <div class="pilwrap for-h3">
                 <a class="pilcrow" href="#section-11">&#182;</a>
               </div>
-              <h3>Make a request to Doc API using clientId and file id</h3>
-<p>Obtaining all Metadata for file</p>
+              <h3>Make a request to Storage API using clientId and file id</h3>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    <span class="keyword">try</span> {
-        <span class="keyword">if</span> (strpos(<span class="variable">$folder</span>, <span class="string">'\\'</span>) == <span class="keyword">true</span>) {
-            <span class="variable">$folder</span> = str_replace(<span class="string">'\\'</span>, <span class="string">'/'</span>, <span class="variable">$folder</span>);
-        }
-        <span class="variable">$createFodler</span> = <span class="variable">$storageApi</span>-&gt;Create(<span class="variable">$clientId</span>, <span class="variable">$folder</span>);</pre></div></div>
+            <div class="content"><div class='highlight'><pre>    <span class="keyword">try</span> {</pre></div></div>
             
         </li>
         
@@ -208,11 +203,13 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-12">&#182;</a>
               </div>
-              <p>Selecting file names</p>
+              <p>Check entere path for propper slashes</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>        <span class="keyword">if</span> (<span class="variable">$createFodler</span>-&gt;status == <span class="string">"Ok"</span>) {</pre></div></div>
+            <div class="content"><div class='highlight'><pre>        <span class="keyword">if</span> (strpos(<span class="variable">$folder</span>, <span class="string">'\\'</span>) == <span class="keyword">true</span>) {
+            <span class="variable">$folder</span> = str_replace(<span class="string">'\\'</span>, <span class="string">'/'</span>, <span class="variable">$folder</span>);
+        }</pre></div></div>
             
         </li>
         
@@ -223,7 +220,37 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-13">&#182;</a>
               </div>
-              <p>Obtaining file name for entered file Id</p>
+              <p>Create folder</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        <span class="variable">$createFodler</span> = <span class="variable">$storageApi</span>-&gt;Create(<span class="variable">$clientId</span>, <span class="variable">$folder</span>);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-14">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-14">&#182;</a>
+              </div>
+              <p>Check status of creating folder action</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        <span class="keyword">if</span> (<span class="variable">$createFodler</span>-&gt;status == <span class="string">"Ok"</span>) {</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-15">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-15">&#182;</a>
+              </div>
+              <p>Generate message with successful result</p>
 
             </div>
             
@@ -241,11 +268,11 @@
         </li>
         
         
-        <li id="section-14">
+        <li id="section-16">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-14">&#182;</a>
+                <a class="pilcrow" href="#section-16">&#182;</a>
               </div>
               <p>Process template</p>
 

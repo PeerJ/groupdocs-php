@@ -425,15 +425,17 @@ class MergeApi {
    * status, string: Questionnaire status to filter by (optional)
    * pageNumber, int: Page number to return questionnaires on (optional)
    * pageSize, int: Number of questionnaires to return (optional)
+   * orderBy, string: Order by column (optional)
+   * isAscending, bool: Order by ascending or descending (optional)
    * @return GetQuestionnairesResponse
 	 */
 
-   public function GetQuestionnaires($userId, $status=null, $pageNumber=null, $pageSize=null) {
+   public function GetQuestionnaires($userId, $status=null, $pageNumber=null, $pageSize=null, $orderBy=null, $isAscending=null) {
       if( $userId === null ) {
         throw new ApiException("missing required parameters", 400);
       }
       //parse inputs
-  	  $resourcePath = str_replace("*", "", "/merge/{userId}/questionnaires?status={status}&page_number={pageNumber}&page_size={pageSize}");
+  	  $resourcePath = str_replace("*", "", "/merge/{userId}/questionnaires?status={status}&page_number={pageNumber}&page_size={pageSize}&orderBy={orderBy}&isAscending={isAscending}");
   	  $pos = strpos($resourcePath, "?");
 	  if($pos !== false){
   	  	$resourcePath = substr($resourcePath, 0, $pos);
@@ -451,6 +453,12 @@ class MergeApi {
   		}
   		if($pageSize !== null) {
   		  $queryParams['page_size'] = $this->apiClient->toPathValue($pageSize);
+  		}
+  		if($orderBy !== null) {
+  		  $queryParams['orderBy'] = $this->apiClient->toPathValue($orderBy);
+  		}
+  		if($isAscending !== null) {
+  		  $queryParams['isAscending'] = $this->apiClient->toPathValue($isAscending);
   		}
   		if($userId !== null) {
   			$resourcePath = str_replace("{" . "userId" . "}",
@@ -1320,21 +1328,33 @@ class MergeApi {
 	 * Get questionnaire collectors
    * userId, string: User global unique identifier (required)
    * questionnaireId, string: Questionnaire identifier (required)
+   * orderBy, string: Order by column (required)
+   * isAsc, bool: Order by ascending or descending (required)
    * @return GetQuestionnaireCollectorsResponse
 	 */
 
-   public function GetQuestionnaireCollectors($userId, $questionnaireId) {
-      if( $userId === null || $questionnaireId === null ) {
+   public function GetQuestionnaireCollectors($userId, $questionnaireId, $orderBy, $isAsc) {
+      if( $userId === null || $questionnaireId === null || $orderBy === null || $isAsc === null ) {
         throw new ApiException("missing required parameters", 400);
       }
       //parse inputs
-  	  $resourcePath = str_replace("*", "", "/merge/{userId}/questionnaires/{questionnaireId}/collectors");
-  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $resourcePath = str_replace("*", "", "/merge/{userId}/questionnaires/{questionnaireId}/collectors?orderBy={orderBy}&isAsc={isAsc}");
+  	  $pos = strpos($resourcePath, "?");
+	  if($pos !== false){
+  	  	$resourcePath = substr($resourcePath, 0, $pos);
+	  }
+	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "GET";
       $queryParams = array();
       $headerParams = array();
 
-      if($userId !== null) {
+      if($orderBy !== null) {
+  		  $queryParams['orderBy'] = $this->apiClient->toPathValue($orderBy);
+  		}
+  		if($isAsc !== null) {
+  		  $queryParams['isAsc'] = $this->apiClient->toPathValue($isAsc);
+  		}
+  		if($userId !== null) {
   			$resourcePath = str_replace("{" . "userId" . "}",
   			                            $userId, $resourcePath);
   		}
@@ -1688,6 +1708,63 @@ class MergeApi {
 
   	  $responseObject = $this->apiClient->deserialize($response,
   		                                                'UpdateQuestionnaireResponse');
+  	  return $responseObject;
+      }
+  /**
+	 * CopyFileToTemplates
+	 * Copy file to template
+   * userId, string: User GUID (required)
+   * path, string: Path (required)
+   * mode, string: Mode (optional)
+   * Groupdocs_Copy, string: File ID (copy) (optional)
+   * Groupdocs_Move, string: File ID (move) (optional)
+   * @return GetTemplatesResponse
+	 */
+
+   public function CopyFileToTemplates($userId, $path, $mode=null, $Groupdocs_Copy=null, $Groupdocs_Move=null) {
+      if( $userId === null || $path === null ) {
+        throw new ApiException("missing required parameters", 400);
+      }
+      //parse inputs
+  	  $resourcePath = str_replace("*", "", "/merge/{userId}/files/{*path}");
+  	  $pos = strpos($resourcePath, "?");
+	  if($pos !== false){
+  	  	$resourcePath = substr($resourcePath, 0, $pos);
+	  }
+	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "PUT";
+      $queryParams = array();
+      $headerParams = array();
+
+      if($mode !== null) {
+  		  $queryParams['mode'] = $this->apiClient->toPathValue($mode);
+  		}
+  		if($Groupdocs_Copy !== null) {
+  		 	$headerParams['Groupdocs-Copy'] = $this->apiClient->toPathValue($Groupdocs_Copy);
+  		}
+      if($Groupdocs_Move !== null) {
+  		 	$headerParams['Groupdocs-Move'] = $this->apiClient->toPathValue($Groupdocs_Move);
+  		}
+      if($userId !== null) {
+  			$resourcePath = str_replace("{" . "userId" . "}",
+  			                            $userId, $resourcePath);
+  		}
+  		if($path !== null) {
+  			$resourcePath = str_replace("{" . "path" . "}",
+  			                            $path, $resourcePath);
+  		}
+  		//make the API Call
+      if (! isset($body)) {
+        $body = null;
+      }
+      $response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
+      if(! $response){
+        return null;
+      }
+
+  	  $responseObject = $this->apiClient->deserialize($response,
+  		                                                'GetTemplatesResponse');
   	  return $responseObject;
       }
   

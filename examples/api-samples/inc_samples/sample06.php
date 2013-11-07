@@ -28,11 +28,11 @@ if (!isset($clientId) || !isset($privateKey)) {
     //Get signature file content
     $signatureContent = file_get_contents($fiSignature["tmp_name"]);
     //Create SignatureSignDocumentDocumentSettings object
-    $document = new SignatureSignDocumentDocumentSettings();
+    $document = new SignatureSignDocumentDocumentSettingsInfo();
     $document->name = $fiDocument["name"];
     $document->data = "data:" . $fiDocument["type"] . ";base64," . base64_encode($docContent);
     //Create SignatureSignDocumentSignerSettings object
-    $signer = new SignatureSignDocumentSignerSettings();
+    $signer = new SignatureSignDocumentSignerSettingsInfo();
     $signer->placeSignatureOn = "";
     $signer->name = $fiSignature["name"];
     $signer->data = "data:" . $fiSignature["type"] . ";base64," . base64_encode($signatureContent);
@@ -58,7 +58,7 @@ if (!isset($clientId) || !isset($privateKey)) {
     $signatureApi->setBasePath($basePath);
     $asyncApi->setBasePath($basePath);
     //Create setting variable for signature SignDocument method
-    $settings = new SignatureSignDocumentSettings();
+    $settings = new SignatureSignDocumentSettingsInfo();
     $settings->documents = array(get_object_vars($document));
     $settings->signers = array(get_object_vars($signer));
     //###Make a request to Signature Api for sign document

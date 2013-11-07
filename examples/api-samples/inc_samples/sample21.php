@@ -186,8 +186,8 @@ if (empty($clientId) || empty($privateKey)) {
                                                 $getDocuments = $signature->GetSignatureEnvelopeDocuments($clientID, $envelop->result->envelope->id);
                                                 if ($getDocuments->status == "Ok") {
                                                     try {
-//                                                       
-                                                        $signFieldEnvelopSettings = new SignatureEnvelopeFieldSettings();
+                                                        
+                                                        $signFieldEnvelopSettings = new SignatureEnvelopeFieldSettingsInfo();
                                                         $signFieldEnvelopSettings->locationX = "0.15";
                                                         $signFieldEnvelopSettings->locationY = "0.73";
                                                         $signFieldEnvelopSettings->locationWidth = "150";
@@ -196,7 +196,6 @@ if (empty($clientId) || empty($privateKey)) {
                                                         $signFieldEnvelopSettings->forceNewField = true;
                                                         $signFieldEnvelopSettings->page = "1";
                                                         $addEnvelopField = $signature->AddSignatureEnvelopeField($clientID, $envelop->result->envelope->id, $getDocuments->result->documents[0]->documentId, $recipientId, "0545e589fb3e27c9bb7a1f59d0e3fcb9", $signFieldEnvelopSettings);
-//                                                                       
                                                         try {
                                                             $send = $signature->SignatureEnvelopeSend($clientID, $envelop->result->envelope->id, $callbackUrl);
                                                             if ($send->status == "Ok") {

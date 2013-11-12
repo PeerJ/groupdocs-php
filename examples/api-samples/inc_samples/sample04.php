@@ -2,8 +2,8 @@
 
 //###<i>This sample will show how to use <b>GetFile</b> method from Storage Api to download a file from GroupDocs Storage</i>
 //Set variables and get POST data
-$clientId = F3::get('POST["client_id"]');
-$privateKey = F3::get('POST["private_key"]');
+$clientId = F3::get('POST["clientId"]');
+$privateKey = F3::get('POST["privateKey"]');
 $file_id = F3::get('POST["fileId"]');
 
 //###Check clientId, privateKey and file Id

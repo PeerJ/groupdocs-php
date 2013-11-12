@@ -4,8 +4,8 @@
 //Set variables and get POST data
 F3::set('userId', '');
 F3::set('privateKey', '');
-$clientId = F3::get('POST["client_id"]');
-$privateKey = F3::get('POST["private_key"]');
+$clientId = F3::get('POST["clientId"]');
+$privateKey = F3::get('POST["privateKey"]');
 $pageNumber = f3::get('POST["pageNumber"]');
 
 //### Check clientId, privateKey and fileGuId

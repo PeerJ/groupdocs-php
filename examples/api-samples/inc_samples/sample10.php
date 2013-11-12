@@ -5,8 +5,8 @@
 
 F3::set('userId', '');
 F3::set('privateKey', '');
-$clientId = F3::get('POST["client_id"]');
-$privateKey = F3::get('POST["private_key"]');
+$clientId = F3::get('POST["clientId"]');
+$privateKey = F3::get('POST["privateKey"]');
 $email = f3::get('POST["email"]');
 $sharer = array($email);
 //### Check file id, user, private key and body

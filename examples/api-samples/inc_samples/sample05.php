@@ -2,8 +2,8 @@
 
 //###<i>This sample will show how to use <b>MoveFile</b> method from Storage Api to copy/move a file in GroupDocs Storage </i>
 //Set variables and get POST data
-$clientId = F3::get('POST["client_id"]');
-$privateKey = F3::get('POST["private_key"]');
+$clientId = F3::get('POST["clientId"]');
+$privateKey = F3::get('POST["privateKey"]');
 
 $copy = F3::get('POST["copy"]');
 $move = F3::get('POST["move"]');

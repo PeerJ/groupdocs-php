@@ -5,8 +5,8 @@
 F3::set('userId', '');
 F3::set('privateKey', '');
 f3::set('result', "");
-$clientId = F3::get('POST["client_id"]');
-$privateKey = F3::get('POST["private_key"]');
+$clientId = F3::get('POST["clientId"]');
+$privateKey = F3::get('POST["privateKey"]');
 $resultFileId = f3::get('POST["resultFileId"]');
 //### Check clientId, privateKey and fileGuId
 if (empty($clientId) || empty($privateKey) || empty($resultFileId)) {

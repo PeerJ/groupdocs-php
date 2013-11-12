@@ -4,8 +4,8 @@
 //Set variables and get POST data
 F3::set('userId', '');
 F3::set('privateKey', '');
-$clientId = F3::get('POST["client_id"]');
-$privateKey = F3::get('POST["private_key"]');
+$clientId = F3::get('POST["clientId"]');
+$privateKey = F3::get('POST["privateKey"]');
 $basePath = f3::get('POST["server_type"]');
 
 function mergeFields($clientId, $privateKey, $basePath) {
@@ -152,8 +152,8 @@ function mergeFields($clientId, $privateKey, $basePath) {
                     if ($basePath == "https://api.groupdocs.com/v2.0") {
                         $iframe = 'https://apps.groupdocs.com/document-viewer/embed/' . $guid;
                         //iframe to dev server
-                    } elseif ($basePath == "https://dev-api.groupdocs.com/v2.0") {
-                        $iframe = 'https://dev-apps.groupdocs.com/document-viewer/embed/' . $guid;
+                    } elseif ($basePath == "https://dev-api-groupdocs.dynabic.com/v2.0") {
+                        $iframe = 'https://dev-apps-groupdocs.dynabic.com/document-viewer/embed/' . $guid;
                         //iframe to test server
                     } elseif ($basePath == "https://stage-apps-groupdocs.dynabic.com/v2.0") {
                         $iframe = 'https://stage-apps-groupdocs.dynabic.com/document-viewer/embed/' . $guid;

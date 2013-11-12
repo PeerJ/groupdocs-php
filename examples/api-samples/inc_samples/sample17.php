@@ -7,8 +7,8 @@ F3::set('privateKey', '');
 F3::set('fileId', '');
 F3::set('message', '');
 F3::set('iframe', '');
-$clientId = F3::get('POST["client_id"]');
-$privateKey = F3::get('POST["private_key"]');
+$clientId = F3::get('POST["clientId"]');
+$privateKey = F3::get('POST["privateKey"]');
 //###Check clientId and privateKey
 if (empty($clientId) || empty($privateKey)) {
     $error = 'Please enter all required parameters';

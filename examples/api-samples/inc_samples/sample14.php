@@ -5,8 +5,8 @@
 F3::set('userId', '');
 F3::set('privateKey', '');
 F3::set('path', '');
-$clientId = F3::get('POST["client_id"]');
-$privateKey = F3::get('POST["private_key"]');
+$clientId = F3::get('POST["clientId"]');
+$privateKey = F3::get('POST["privateKey"]');
 $path = F3::get('POST["path"]');
 if (empty($clientId) || empty($privateKey) || empty($path)) {
     $error = 'Please enter all required parameters';

@@ -20,13 +20,13 @@
     <div id="requestForm" style="padding:20px; border:1px solid black;">
         <p> Click "Pick file" to select file which will be uploaded and shown in iframe </p>
         <form name="gdform" action="sample29" method = "post" enctype = 'multipart/form-data' >
-            <label for='client_id'>GroupDocs ClientID</label>
+            <label for='clientId'>GroupDocs ClientID</label>
             <br />
-            <input type='text' name='client_id' value="{{@userId}}" />
+            <input type='text' name='clientId' value="{{@userId}}" />
             <br />
-            <label for='private_key'>GroupDocs PrivateKey</label>
+            <label for='privateKey'>GroupDocs PrivateKey</label>
             <br />
-            <input type='text' name='private_key'  value="{{@privateKey}}" />
+            <input type='text' name='privateKey'  value="{{@privateKey}}" />
             <br />
             <label for='server_type'>Base path<span class="optional">(Optional)</span></label>
             <br />
@@ -77,7 +77,7 @@
 
             xhttp.open('POST','/inc_samples/sample29.php',true);
             xhttp.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
-            var str= 'url=' + url + '&basePath=' + document.forms.gdform.server_type.value + '&clientId=' + document.forms.gdform.client_id.value + '&privateKey=' + document.forms.gdform.private_key.value;
+            var str= 'url=' + url + '&basePath=' + document.forms.gdform.server_type.value + '&clientId=' + document.forms.gdform.clientId.value + '&privateKey=' + document.forms.gdform.privateKey.value;
             xhttp.send(str);
         
       }

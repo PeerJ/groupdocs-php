@@ -50,8 +50,8 @@
 F3::set(<span class="string">'privateKey'</span>, <span class="string">''</span>);
 F3::set(<span class="string">'fileId'</span>, <span class="string">''</span>);
 F3::set(<span class="string">'convert_type'</span>, <span class="string">''</span>);
-<span class="variable">$clientId</span> = F3::get(<span class="string">'POST["client_id"]'</span>);
-<span class="variable">$privateKey</span> = F3::get(<span class="string">'POST["private_key"]'</span>);
+<span class="variable">$clientId</span> = F3::get(<span class="string">'POST["clientId"]'</span>);
+<span class="variable">$privateKey</span> = F3::get(<span class="string">'POST["privateKey"]'</span>);
 <span class="variable">$convert_type</span> = F3::get(<span class="string">'POST["convert_type"]'</span>);
 <span class="variable">$callbackUrl</span> = f3::get(<span class="string">'POST["callbackUrl"]'</span>);
 <span class="keyword">if</span> (<span class="keyword">empty</span>(<span class="variable">$clientId</span>) || <span class="keyword">empty</span>(<span class="variable">$privateKey</span>) || <span class="keyword">empty</span>(<span class="variable">$convert_type</span>)) {

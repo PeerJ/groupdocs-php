@@ -2,8 +2,8 @@
 
 //###<i>This sample will show how to create folder in the GroupDocs account</i>
 //Set variables and get POST data
-$clientId = F3::get('POST["client_id"]');
-$privateKey = F3::get('POST["private_key"]');
+$clientId = F3::get('POST["clientId"]');
+$privateKey = F3::get('POST["privateKey"]');
 $folder = F3::get('POST["folder"]');
 
 //###Check clientId, privateKey and file Id

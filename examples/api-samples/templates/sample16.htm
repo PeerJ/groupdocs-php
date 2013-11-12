@@ -23,13 +23,13 @@
     <div id="requestForm" style="padding:20px; border:1px solid black;">
         <p> Enter data for request and press "Make request" button </p>
         <form action="sample16" method = "post" enctype = 'multipart/form-data'>
-             <label for='client_id'>GroupDocs ClientID</label>
+             <label for='clientId'>GroupDocs ClientID</label>
             <br />
-            <input type='text' id='client_id' name='client_id' value="{{@userId}}" />
+            <input type='text' id='clientId' name='clientId' value="{{@userId}}" />
             <br />
-            <label for='private_key'>GroupDocs PrivateKey</label>
+            <label for='privateKey'>GroupDocs PrivateKey</label>
             <br />
-            <input type='text' name='private_key' id='private_key' value="{{@privateKey}}" />
+            <input type='text' name='privateKey' id='privateKey' value="{{@privateKey}}" />
             <br />
             <input type="radio" name="sourse" value="guid" id="id" onClick="display('guid');" checked>Assembly file id</input>
             <br />
@@ -38,7 +38,7 @@
             <input type="radio" name="sourse" value="url" id="urlFieldRadio" onClick="display('url');" >Upload file from URL </input>
             <br />
             <br />
-            <label for='private_key' id="guid">Assembly file id</label>
+            <label for='guidfield' id="guid">Assembly file id</label>
             <br />
             <input type='text' name='fileId' id="guidfield" value="{{@fileId}}" />
             
@@ -46,7 +46,7 @@
             <br />
             <input type='file' name='file' id="filefield" style="display:none;" />
 
-            <label for='private_key' style="display:none;" id="url">File URL</label>
+            <label for='urlfield' style="display:none;" id="url">File URL</label>
             <br />
             <input type='text' name='url'  value="" id="urlfield" style="display:none;" />
             <br />

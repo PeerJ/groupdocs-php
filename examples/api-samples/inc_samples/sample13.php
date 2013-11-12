@@ -6,8 +6,8 @@ F3::set('userId', '');
 F3::set('privateKey', '');
 F3::set('fileId', '');
 F3::set('collaborations', '');
-$clientId = F3::get('POST["client_id"]');
-$privateKey = F3::get('POST["private_key"]');
+$clientId = F3::get('POST["clientId"]');
+$privateKey = F3::get('POST["privateKey"]');
 $collaborations = array(F3::get('POST["email"]'));
 // Remove NULL value
 $collaborations = (is_array($collaborations)) ? array_filter($collaborations, 'strlen') : array();

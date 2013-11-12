@@ -108,8 +108,11 @@ F3::set(<span class="string">'privateKey'</span>, <span class="string">''</span>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>        <span class="keyword">if</span> (file_exists(__DIR__ . <span class="string">'/../downloads'</span>)) {
-            delFolder(__DIR__ . <span class="string">'/../downloads/'</span>);
+            <div class="content"><div class='highlight'><pre>        <span class="variable">$callbackUrl</span> = f3::get(<span class="string">'POST["callbackUrl"]'</span>);
+        <span class="keyword">if</span> (<span class="variable">$callbackUrl</span> != <span class="string">""</span>) {
+            <span class="keyword">if</span> (file_exists(__DIR__ . <span class="string">'/../downloads'</span>)) {
+                delFolder(__DIR__ . <span class="string">'/../downloads/'</span>);
+            }
         }
         F3::set(<span class="string">'userId'</span>, <span class="variable">$clientId</span>);
         F3::set(<span class="string">'privateKey'</span>, <span class="variable">$privateKey</span>);</pre></div></div>
@@ -260,7 +263,7 @@ F3::set(<span class="string">'privateKey'</span>, <span class="string">''</span>
         <span class="variable">$country</span> = f3::get(<span class="string">'POST["country"]'</span>);
         <span class="variable">$city</span> = f3::get(<span class="string">'POST["city"]'</span>);
         <span class="variable">$street</span> = f3::get(<span class="string">'POST["street"]'</span>);
-        <span class="variable">$callbackUrl</span> = f3::get(<span class="string">'POST["callbackUrl"]'</span>);
+       
         f3::set(<span class="string">"email"</span>, <span class="variable">$email</span>);
         f3::set(<span class="string">"country"</span>, <span class="variable">$country</span>);
         f3::set(<span class="string">"name"</span>, <span class="variable">$name</span>);
@@ -601,7 +604,7 @@ F3::set(<span class="string">'privateKey'</span>, <span class="string">''</span>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>                            <span class="variable">$addRecipient</span> = <span class="variable">$signatureApi</span>-&gt;AddSignatureEnvelopeRecipient(<span class="variable">$clientId</span>, <span class="variable">$envelop</span>-&gt;result-&gt;envelope-&gt;id, <span class="string">'test@test.com'</span>, <span class="string">'test'</span>, <span class="string">'test'</span>, <span class="variable">$roleId</span>, <span class="keyword">null</span>);
+            <div class="content"><div class='highlight'><pre>                            <span class="variable">$addRecipient</span> = <span class="variable">$signatureApi</span>-&gt;AddSignatureEnvelopeRecipient(<span class="variable">$clientId</span>, <span class="variable">$envelop</span>-&gt;result-&gt;envelope-&gt;id, <span class="variable">$email</span>, <span class="variable">$name</span>, <span class="string">'test'</span>, <span class="variable">$roleId</span>, <span class="keyword">null</span>);
                             <span class="keyword">if</span> (<span class="variable">$addRecipient</span>-&gt;status == <span class="string">"Ok"</span>) {</pre></div></div>
             
         </li>
@@ -622,7 +625,13 @@ F3::set(<span class="string">'privateKey'</span>, <span class="string">''</span>
                                     <span class="variable">$recipientId</span> = <span class="variable">$getRecipient</span>-&gt;result-&gt;recipients[<span class="number">0</span>]-&gt;id;
                                     <span class="variable">$getDocuments</span> = <span class="variable">$signatureApi</span>-&gt;GetSignatureEnvelopeDocuments(<span class="variable">$clientId</span>, <span class="variable">$envelop</span>-&gt;result-&gt;envelope-&gt;id);
                                     <span class="keyword">if</span> (<span class="variable">$getDocuments</span>-&gt;status == <span class="string">"Ok"</span>) {
-                                        <span class="variable">$send</span> = <span class="variable">$signatureApi</span>-&gt;SignatureEnvelopeSend(<span class="variable">$clientId</span>, <span class="variable">$envelop</span>-&gt;result-&gt;envelope-&gt;id, <span class="variable">$callbackUrl</span>);
+                                        <span class="variable">$webHook</span> = <span class="keyword">new</span> WebhookInfo;
+                                        <span class="keyword">if</span> (<span class="variable">$callbackUrl</span> != <span class="string">""</span>) {
+                                            <span class="variable">$webHook</span>-&gt;callbackUrl = <span class="variable">$callbackUrl</span>;
+                                        } <span class="keyword">else</span> {
+                                            <span class="variable">$webHook</span>-&gt;callbackUrl = <span class="string">""</span>;
+                                        }
+                                        <span class="variable">$send</span> = <span class="variable">$signatureApi</span>-&gt;SignatureEnvelopeSend(<span class="variable">$clientId</span>, <span class="variable">$envelop</span>-&gt;result-&gt;envelope-&gt;id, <span class="variable">$webHook</span>);
                                         <span class="keyword">if</span> (<span class="variable">$send</span>-&gt;status == <span class="string">"Ok"</span>) {
                                             <span class="variable">$envelopeId</span> = <span class="variable">$envelop</span>-&gt;result-&gt;envelope-&gt;id;
                                             <span class="keyword">if</span> (<span class="variable">$basePath</span> == <span class="string">"https://api.groupdocs.com/v2.0"</span>) {
@@ -657,11 +666,12 @@ F3::set(<span class="string">'privateKey'</span>, <span class="string">''</span>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>                                            } <span class="keyword">elseif</span> (<span class="variable">$basePath</span> == <span class="string">"https://stage-api.groupdocs.com/v2.0"</span>) {
-                                                <span class="variable">$iframe</span> = <span class="string">'https://stage-apps.groupdocs.com/signature2/signembed/'</span> . <span class="variable">$envelopeId</span> . <span class="string">'/'</span> . <span class="variable">$recipientId</span>;
+            <div class="content"><div class='highlight'><pre>                                            } <span class="keyword">elseif</span> (<span class="variable">$basePath</span> == <span class="string">"https://stage-apps-groupdocs.dynabic.com/v2.0"</span>) {
+                                                <span class="variable">$iframe</span> = <span class="string">'https://stage-apps-groupdocs.dynabic.com/signature2/signembed/'</span> . <span class="variable">$envelopeId</span> . <span class="string">'/'</span> . <span class="variable">$recipientId</span>;
                                             } <span class="keyword">elseif</span> (<span class="variable">$basePath</span> == <span class="string">"http://realtime-api.groupdocs.com"</span>) {
                                                 <span class="variable">$iframe</span> = <span class="string">'https://relatime-apps.groupdocs.com/signature2/signembed/'</span> . <span class="variable">$envelopeId</span> . <span class="string">'/'</span> . <span class="variable">$recipientId</span>;
                                             }
+                                            <span class="variable">$iframe</span> = <span class="variable">$signer</span>-&gt;signUrl(<span class="variable">$iframe</span>);
                                         } <span class="keyword">else</span> {
                                             <span class="keyword">throw</span> <span class="keyword">new</span> <span class="keyword">Exception</span>(<span class="variable">$send</span>-&gt;error_message);
                                         }
@@ -748,7 +758,7 @@ F3::set(<span class="string">'privateKey'</span>, <span class="string">''</span>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-42">&#182;</a>
               </div>
-              <p>Remove from array &quot;.&quot; and &quot;..&quot;</p>
+              <p>Remove from array “.” and “..”</p>
 
             </div>
             
@@ -783,7 +793,7 @@ F3::set(<span class="string">'privateKey'</span>, <span class="string">''</span>
             </div>
             
             <div class="content"><div class='highlight'><pre>        <span class="keyword">for</span> (<span class="variable">$i</span> = <span class="number">0</span>; <span class="variable">$i</span> &lt; count(<span class="variable">$item</span>); <span class="variable">$i</span>++) {
-            <span class="variable">$next</span> = <span class="variable">$path</span> . <span class="string">"\\"</span> . <span class="variable">$item</span>[<span class="variable">$i</span>];
+            <span class="variable">$next</span> = <span class="variable">$path</span> . <span class="string">"/"</span> . <span class="variable">$item</span>[<span class="variable">$i</span>];
             <span class="keyword">if</span> (file_exists(<span class="variable">$next</span>)) {
                 unlink(<span class="variable">$next</span>);
             }

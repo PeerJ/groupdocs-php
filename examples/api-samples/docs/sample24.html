@@ -212,7 +212,8 @@ F3::set(<span class="string">'iframe'</span>, <span class="string">''</span>);
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>        <span class="keyword">if</span> (<span class="variable">$uploadResult</span>-&gt;status == <span class="string">"Ok"</span>) {</pre></div></div>
+            <div class="content"><div class='highlight'><pre>        <span class="keyword">if</span> (<span class="variable">$uploadResult</span>-&gt;status == <span class="string">"Ok"</span>) {
+            <span class="variable">$guid</span> = <span class="variable">$uploadResult</span>-&gt;result-&gt;guid;</pre></div></div>
             
         </li>
         
@@ -229,8 +230,7 @@ iframe to prodaction server</p>
             </div>
             
             <div class="content"><div class='highlight'><pre>            <span class="keyword">if</span> (<span class="variable">$basePath</span> == <span class="string">"https://api.groupdocs.com/v2.0"</span>) {
-                <span class="variable">$result</span> = <span class="string">'&lt;iframe src="https://apps.groupdocs.com/document-viewer/Embed/'</span> . 
-                        <span class="variable">$uploadResult</span>-&gt;result-&gt;guid . <span class="string">'" frameborder="0" width="720" height="600"&gt;&lt;/iframe&gt;'</span>;</pre></div></div>
+                <span class="variable">$iframe</span> = <span class="string">'https://apps.groupdocs.com/document-viewer/embed/'</span> . <span class="variable">$guid</span>;</pre></div></div>
             
         </li>
         
@@ -246,8 +246,7 @@ iframe to prodaction server</p>
             </div>
             
             <div class="content"><div class='highlight'><pre>            } <span class="keyword">elseif</span> (<span class="variable">$basePath</span> == <span class="string">"https://dev-api.groupdocs.com/v2.0"</span>) {
-                <span class="variable">$result</span> = <span class="string">'&lt;iframe src="https://dev-apps.groupdocs.com/document-viewer/Embed/'</span> . 
-                        <span class="variable">$uploadResult</span>-&gt;result-&gt;guid . <span class="string">'" frameborder="0" width="720" height="600"&gt;&lt;/iframe&gt;'</span>;</pre></div></div>
+                <span class="variable">$iframe</span> = <span class="string">'https://dev-apps.groupdocs.com/document-viewer/embed/'</span> . <span class="variable">$guid</span>;</pre></div></div>
             
         </li>
         
@@ -262,13 +261,12 @@ iframe to prodaction server</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>            } <span class="keyword">elseif</span> (<span class="variable">$basePath</span> == <span class="string">"https://stage-api.groupdocs.com/v2.0"</span>) {
-                <span class="variable">$result</span> = <span class="string">'&lt;iframe src="https://stage-apps.groupdocs.com/document-viewer/Embed/'</span> . 
-                        <span class="variable">$uploadResult</span>-&gt;result-&gt;guid . <span class="string">'" frameborder="0" width="720" height="600"&gt;&lt;/iframe&gt;'</span>;
+            <div class="content"><div class='highlight'><pre>            } <span class="keyword">elseif</span> (<span class="variable">$basePath</span> == <span class="string">"https://stage-apps-groupdocs.dynabic.com/v2.0"</span>) {
+                <span class="variable">$iframe</span> = <span class="string">'https://stage-apps-groupdocs.dynabic.com/document-viewer/embed/'</span> . <span class="variable">$guid</span>;
             } <span class="keyword">elseif</span> (<span class="variable">$basePath</span> == <span class="string">"http://realtime-api.groupdocs.com"</span>) {
-                <span class="variable">$result</span> = <span class="string">'&lt;iframe src="https://realtime-apps.groupdocs.com/document-viewer/Embed/'</span> . 
-                        <span class="variable">$uploadResult</span>-&gt;result-&gt;guid . <span class="string">'" frameborder="0" width="720" height="600"&gt;&lt;/iframe&gt;'</span>;
-            }</pre></div></div>
+                <span class="variable">$iframe</span> = <span class="string">'http://realtime-apps.groupdocs.com/document-viewer/embed/'</span> . <span class="variable">$guid</span>;
+            }
+            <span class="variable">$iframe</span> = <span class="variable">$signer</span>-&gt;signUrl(<span class="variable">$iframe</span>);</pre></div></div>
             
         </li>
         
@@ -283,7 +281,7 @@ iframe to prodaction server</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>            <span class="keyword">return</span> <span class="variable">$result</span>;
+            <div class="content"><div class='highlight'><pre>            <span class="keyword">return</span> <span class="variable">$iframe</span>;
         }
     }
 }
@@ -292,7 +290,7 @@ iframe to prodaction server</p>
     <span class="variable">$upload</span> = Upload(<span class="variable">$clientId</span>, <span class="variable">$privateKey</span>, <span class="variable">$url</span>);
     <span class="variable">$message</span> = <span class="string">'&lt;p&gt;File was uploaded to GroupDocs. Here you can see your &lt;strong&gt; file in the GroupDocs Embedded Viewer.&lt;/p&gt;'</span>;
     F3::set(<span class="string">'message'</span>, <span class="variable">$message</span>);
-    F3::set(<span class="string">'iframe'</span>, <span class="variable">$upload</span>);
+    F3::set(<span class="string">'url'</span>, <span class="variable">$upload</span>);
 } <span class="keyword">catch</span> (<span class="keyword">Exception</span> <span class="variable">$e</span>) {
     <span class="variable">$error</span> = <span class="string">'ERROR: '</span> . <span class="variable">$e</span>-&gt;getMessage() . <span class="string">"\n"</span>;
     f3::set(<span class="string">'error'</span>, <span class="variable">$error</span>);

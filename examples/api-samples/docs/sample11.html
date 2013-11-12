@@ -443,7 +443,7 @@ F3::set(<span class="string">'fileId'</span>, <span class="string">''</span>);
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-26">&#182;</a>
               </div>
-              <p>Added required parameters depends on  annotation type [&#39;type&#39; or &#39;area&#39;]</p>
+              <p>Added required parameters depends on  annotation type [‘type’ or ‘area’]</p>
 
             </div>
             
@@ -642,8 +642,8 @@ text annotation</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>                } <span class="keyword">elseif</span> (<span class="variable">$basePath</span> == <span class="string">"https://stage-api.groupdocs.com/v2.0"</span>) {
-                    <span class="variable">$iframe</span> = <span class="string">'http://stage-apps.groupdocs.com/document-annotation2/embed/'</span> .
+            <div class="content"><div class='highlight'><pre>                } <span class="keyword">elseif</span> (<span class="variable">$basePath</span> == <span class="string">"https://stage-api-groupdocs.dynabic.com/v2.0"</span>) {
+                            <span class="variable">$iframe</span> = <span class="string">'https://stage-apps-groupdocs.dynabic.com/document-annotation2/Embed/'</span> .
                             <span class="variable">$createAnnotation</span>-&gt;result-&gt;documentGuid . <span class="string">'?frameborder="0" width="720" height="600"'</span>;</pre></div></div>
             
         </li>
@@ -663,6 +663,7 @@ text annotation</p>
                     <span class="variable">$iframe</span> = <span class="string">'http://realtime-apps.groupdocs.com/document-annotation2/embed/'</span> .
                             <span class="variable">$createAnnotation</span>-&gt;result-&gt;documentGuid . <span class="string">'?frameborder="0" width="720" height="600"'</span>;
                 }
+                <span class="variable">$iframe</span> = <span class="variable">$signer</span>-&gt;signUrl(<span class="variable">$iframe</span>);
                 F3::set(<span class="string">'annotationId'</span>, <span class="variable">$createAnnotation</span>-&gt;result-&gt;annotationGuid);
                 F3::set(<span class="string">'annotationType'</span>, <span class="variable">$annotationType</span>);
                 F3::set(<span class="string">'annotationText'</span>, <span class="variable">$replyText</span>);

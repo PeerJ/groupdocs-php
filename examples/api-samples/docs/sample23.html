@@ -435,8 +435,7 @@ F3::set(<span class="string">'privateKey'</span>, <span class="string">''</span>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>        <span class="variable">$pageImage</span> = <span class="variable">$api</span>-&gt;GetDocumentPagesImageUrls(<span class="variable">$clientId</span>, <span class="variable">$fileGuId</span>, <span class="number">0</span>, -<span class="number">1</span>, <span class="string">'650x500'</span>, <span class="keyword">null</span>, <span class="keyword">null</span>, <span class="keyword">null</span>);
-        var_dump(<span class="variable">$pageImage</span>);
+            <div class="content"><div class='highlight'><pre>        <span class="variable">$pageImage</span> = <span class="variable">$api</span>-&gt;GetDocumentPagesImageUrls(<span class="variable">$clientId</span>, <span class="variable">$fileGuId</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="string">'650x500'</span>, <span class="keyword">null</span>, <span class="keyword">null</span>, <span class="keyword">null</span>);
         <span class="variable">$url</span> = <span class="string">""</span>;
         <span class="variable">$image</span> = <span class="string">""</span>;</pre></div></div>
             
@@ -489,7 +488,8 @@ F3::set(<span class="string">'privateKey'</span>, <span class="string">''</span>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>        <span class="keyword">return</span> f3::set(<span class="string">'image'</span>, <span class="variable">$image</span>);
+            <div class="content"><div class='highlight'><pre>        f3::set(<span class="string">"fileId"</span>, <span class="variable">$fileGuId</span>);
+        <span class="keyword">return</span> f3::set(<span class="string">'image'</span>, <span class="variable">$image</span>);
     }
 }
 

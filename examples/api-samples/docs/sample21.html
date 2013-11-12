@@ -720,7 +720,21 @@ f3::set(<span class="string">'lastName'</span>, <span class="variable">$lastName
                                             <span class="keyword">try</span> {
                                                 <span class="variable">$getDocuments</span> = <span class="variable">$signature</span>-&gt;GetSignatureEnvelopeDocuments(<span class="variable">$clientID</span>, <span class="variable">$envelop</span>-&gt;result-&gt;envelope-&gt;id);
                                                 <span class="keyword">if</span> (<span class="variable">$getDocuments</span>-&gt;status == <span class="string">"Ok"</span>) {
-                                                    <span class="keyword">try</span> {</pre></div></div>
+                                                    <span class="keyword">try</span> {
+                                                        
+                                                        <span class="variable">$signFieldEnvelopSettings</span> = <span class="keyword">new</span> SignatureEnvelopeFieldSettingsInfo();
+                                                        <span class="variable">$signFieldEnvelopSettings</span>-&gt;locationX = <span class="string">"0.15"</span>;
+                                                        <span class="variable">$signFieldEnvelopSettings</span>-&gt;locationY = <span class="string">"0.73"</span>;
+                                                        <span class="variable">$signFieldEnvelopSettings</span>-&gt;locationWidth = <span class="string">"150"</span>;
+                                                        <span class="variable">$signFieldEnvelopSettings</span>-&gt;locationHeight = <span class="string">"50"</span>;
+                                                        <span class="variable">$signFieldEnvelopSettings</span>-&gt;name = <span class="string">"test"</span> . rand(<span class="number">0</span>, <span class="number">500</span>);
+                                                        <span class="variable">$signFieldEnvelopSettings</span>-&gt;forceNewField = <span class="keyword">true</span>;
+                                                        <span class="variable">$signFieldEnvelopSettings</span>-&gt;page = <span class="string">"1"</span>;
+                                                        <span class="variable">$addEnvelopField</span> = <span class="variable">$signature</span>-&gt;AddSignatureEnvelopeField(<span class="variable">$clientID</span>, <span class="variable">$envelop</span>-&gt;result-&gt;envelope-&gt;id, <span class="variable">$getDocuments</span>-&gt;result-&gt;documents[<span class="number">0</span>]-&gt;documentId, <span class="variable">$recipientId</span>, <span class="string">"0545e589fb3e27c9bb7a1f59d0e3fcb9"</span>, <span class="variable">$signFieldEnvelopSettings</span>);
+                                                        <span class="keyword">try</span> {
+                                                            <span class="variable">$send</span> = <span class="variable">$signature</span>-&gt;SignatureEnvelopeSend(<span class="variable">$clientID</span>, <span class="variable">$envelop</span>-&gt;result-&gt;envelope-&gt;id, <span class="variable">$callbackUrl</span>);
+                                                            <span class="keyword">if</span> (<span class="variable">$send</span>-&gt;status == <span class="string">"Ok"</span>) {
+                                                                <span class="keyword">if</span> (<span class="variable">$basePath</span> == <span class="string">"https://api.groupdocs.com/v2.0"</span>) {</pre></div></div>
             
         </li>
         
@@ -730,45 +744,6 @@ f3::set(<span class="string">'lastName'</span>, <span class="variable">$lastName
               
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-41">&#182;</a>
-              </div>
-              
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>                                                        <span class="variable">$signFieldEnvelopSettings</span> = <span class="keyword">new</span> SignatureEnvelopeFieldSettings();
-                                                        <span class="variable">$signFieldEnvelopSettings</span>-&gt;locationX = <span class="string">"0.15"</span>;
-                                                        <span class="variable">$signFieldEnvelopSettings</span>-&gt;locationY = <span class="string">"0.73"</span>;
-                                                        <span class="variable">$signFieldEnvelopSettings</span>-&gt;locationWidth = <span class="string">"150"</span>;
-                                                        <span class="variable">$signFieldEnvelopSettings</span>-&gt;locationHeight = <span class="string">"50"</span>;
-                                                        <span class="variable">$signFieldEnvelopSettings</span>-&gt;name = <span class="string">"test"</span> . rand(<span class="number">0</span>, <span class="number">500</span>);
-                                                        <span class="variable">$signFieldEnvelopSettings</span>-&gt;forceNewField = <span class="keyword">true</span>;
-                                                        <span class="variable">$signFieldEnvelopSettings</span>-&gt;page = <span class="string">"1"</span>;
-                                                        <span class="variable">$addEnvelopField</span> = <span class="variable">$signature</span>-&gt;AddSignatureEnvelopeField(<span class="variable">$clientID</span>, <span class="variable">$envelop</span>-&gt;result-&gt;envelope-&gt;id, <span class="variable">$getDocuments</span>-&gt;result-&gt;documents[<span class="number">0</span>]-&gt;documentId, <span class="variable">$recipientId</span>, <span class="string">"0545e589fb3e27c9bb7a1f59d0e3fcb9"</span>, <span class="variable">$signFieldEnvelopSettings</span>);</pre></div></div>
-            
-        </li>
-        
-        
-        <li id="section-42">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-42">&#182;</a>
-              </div>
-              
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>                                                        <span class="keyword">try</span> {
-                                                            <span class="variable">$send</span> = <span class="variable">$signature</span>-&gt;SignatureEnvelopeSend(<span class="variable">$clientID</span>, <span class="variable">$envelop</span>-&gt;result-&gt;envelope-&gt;id, <span class="variable">$callbackUrl</span>);
-                                                            <span class="keyword">if</span> (<span class="variable">$send</span>-&gt;status == <span class="string">"Ok"</span>) {
-                                                                <span class="keyword">if</span> (<span class="variable">$basePath</span> == <span class="string">"https://api.groupdocs.com/v2.0"</span>) {</pre></div></div>
-            
-        </li>
-        
-        
-        <li id="section-43">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-43">&#182;</a>
               </div>
               <p>iframe to prodaction server</p>
 
@@ -780,11 +755,11 @@ f3::set(<span class="string">'lastName'</span>, <span class="variable">$lastName
         </li>
         
         
-        <li id="section-44">
+        <li id="section-42">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-44">&#182;</a>
+                <a class="pilcrow" href="#section-42">&#182;</a>
               </div>
               <p>iframe to dev server</p>
 
@@ -797,11 +772,11 @@ f3::set(<span class="string">'lastName'</span>, <span class="variable">$lastName
         </li>
         
         
-        <li id="section-45">
+        <li id="section-43">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-45">&#182;</a>
+                <a class="pilcrow" href="#section-43">&#182;</a>
               </div>
               <p>iframe to test server</p>
 
@@ -814,6 +789,7 @@ f3::set(<span class="string">'lastName'</span>, <span class="variable">$lastName
                                                                     <span class="variable">$iframe</span> = <span class="string">'http://realtime-apps.groupdocs.com/signature/signembed/'</span> .
                                                                             <span class="variable">$envelop</span>-&gt;result-&gt;envelope-&gt;id . <span class="string">'/'</span> . <span class="variable">$recipientId</span> . <span class="string">'?frameborder="0" width="720" height="600"&gt;&lt;/iframe&gt;'</span>;
                                                                 }
+                                                                <span class="variable">$iframe</span> = <span class="variable">$signer</span>-&gt;signUrl(<span class="variable">$iframe</span>);
                                                                 <span class="variable">$message</span> = <span class="string">'&lt;p&gt;File was uploaded to GroupDocs. Here you can see your &lt;strong&gt;'</span> .
                                                                         <span class="variable">$name</span> . <span class="string">'&lt;/strong&gt; file in the GroupDocs Embedded Viewer.&lt;/p&gt;'</span>;
                                                                 F3::set(<span class="string">'message'</span>, <span class="variable">$message</span>);
@@ -829,11 +805,11 @@ f3::set(<span class="string">'lastName'</span>, <span class="variable">$lastName
         </li>
         
         
-        <li id="section-46">
+        <li id="section-44">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-46">&#182;</a>
+                <a class="pilcrow" href="#section-44">&#182;</a>
               </div>
               
             </div>
@@ -889,11 +865,11 @@ f3::set(<span class="string">'lastName'</span>, <span class="variable">$lastName
         </li>
         
         
-        <li id="section-47">
+        <li id="section-45">
             <div class="annotation">
               
               <div class="pilwrap for-h3">
-                <a class="pilcrow" href="#section-47">&#182;</a>
+                <a class="pilcrow" href="#section-45">&#182;</a>
               </div>
               <h3>Delete downloads folder and all files in this folder</h3>
 
@@ -906,11 +882,11 @@ f3::set(<span class="string">'lastName'</span>, <span class="variable">$lastName
         </li>
         
         
-        <li id="section-48">
+        <li id="section-46">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-48">&#182;</a>
+                <a class="pilcrow" href="#section-46">&#182;</a>
               </div>
               <p>Get all items fron folder</p>
 
@@ -921,11 +897,11 @@ f3::set(<span class="string">'lastName'</span>, <span class="variable">$lastName
         </li>
         
         
-        <li id="section-49">
+        <li id="section-47">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-49">&#182;</a>
+                <a class="pilcrow" href="#section-47">&#182;</a>
               </div>
               <p>Remove from array “.” and “..”</p>
 
@@ -936,11 +912,11 @@ f3::set(<span class="string">'lastName'</span>, <span class="variable">$lastName
         </li>
         
         
-        <li id="section-50">
+        <li id="section-48">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-50">&#182;</a>
+                <a class="pilcrow" href="#section-48">&#182;</a>
               </div>
               <p>Check is there was files</p>
 
@@ -951,18 +927,18 @@ f3::set(<span class="string">'lastName'</span>, <span class="variable">$lastName
         </li>
         
         
-        <li id="section-51">
+        <li id="section-49">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-51">&#182;</a>
+                <a class="pilcrow" href="#section-49">&#182;</a>
               </div>
               <p>Delete files from folder</p>
 
             </div>
             
             <div class="content"><div class='highlight'><pre>        <span class="keyword">for</span> (<span class="variable">$i</span> = <span class="number">0</span>; <span class="variable">$i</span> &lt; count(<span class="variable">$item</span>); <span class="variable">$i</span>++) {
-            <span class="variable">$next</span> = <span class="variable">$path</span> . <span class="string">"\\"</span> . <span class="variable">$item</span>[<span class="variable">$i</span>];
+            <span class="variable">$next</span> = <span class="variable">$path</span> . <span class="string">"/"</span> . <span class="variable">$item</span>[<span class="variable">$i</span>];
             <span class="keyword">if</span> (file_exists(<span class="variable">$next</span>)) {
                 unlink(<span class="variable">$next</span>);
             }
@@ -972,11 +948,11 @@ f3::set(<span class="string">'lastName'</span>, <span class="variable">$lastName
         </li>
         
         
-        <li id="section-52">
+        <li id="section-50">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-52">&#182;</a>
+                <a class="pilcrow" href="#section-50">&#182;</a>
               </div>
               <p>Delete folder</p>
 
@@ -988,11 +964,11 @@ f3::set(<span class="string">'lastName'</span>, <span class="variable">$lastName
         </li>
         
         
-        <li id="section-53">
+        <li id="section-51">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-53">&#182;</a>
+                <a class="pilcrow" href="#section-51">&#182;</a>
               </div>
               <p>Process template</p>
 

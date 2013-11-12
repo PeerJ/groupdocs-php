@@ -41,7 +41,7 @@
               <div class="pilwrap for-h3">
                 <a class="pilcrow" href="#section-2">&#182;</a>
               </div>
-              <h3><i>This sample will show how to merge data fields in docx file with data source and get result file as PDF file</i></h3>
+              <h3><i>This sample will show how to  merge/assemble data fields in docx file with data source and get result file as PDF file</i></h3>
 <p>Set variables and get POST data</p>
 
             </div>
@@ -628,7 +628,7 @@ F3::set(<span class="string">'privateKey'</span>, <span class="string">''</span>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-39">&#182;</a>
               </div>
-              <p>If status ok merge Datasource to new pdf file</p>
+              <p>If status ok  merge/assemble Datasource to new pdf file</p>
 
             </div>
             
@@ -870,8 +870,8 @@ iframe to prodaction server</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>                    } <span class="keyword">elseif</span> (<span class="variable">$basePath</span> == <span class="string">"https://dev-api.groupdocs.com/v2.0"</span>) {
-                        <span class="variable">$iframe</span> = <span class="string">'https://dev-apps.groupdocs.com/document-viewer/embed/'</span> . <span class="variable">$guid</span>;</pre></div></div>
+            <div class="content"><div class='highlight'><pre>                    } <span class="keyword">elseif</span> (<span class="variable">$basePath</span> == <span class="string">"https://dev-api-groupdocs.dynabic.com/v2.0"</span>) {
+                        <span class="variable">$iframe</span> = <span class="string">'https://dev-apps-groupdocs.dynabic.com/document-viewer/embed/'</span> . <span class="variable">$guid</span>;</pre></div></div>
             
         </li>
         
@@ -886,11 +886,12 @@ iframe to prodaction server</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>                    } <span class="keyword">elseif</span> (<span class="variable">$basePath</span> == <span class="string">"https://stage-api.groupdocs.com/v2.0"</span>) {
-                        <span class="variable">$iframe</span> = <span class="string">'https://stage-apps.groupdocs.com/document-viewer/embed/'</span> . <span class="variable">$guid</span>;
+            <div class="content"><div class='highlight'><pre>                    } <span class="keyword">elseif</span> (<span class="variable">$basePath</span> == <span class="string">"https://stage-apps-groupdocs.dynabic.com/v2.0"</span>) {
+                        <span class="variable">$iframe</span> = <span class="string">'https://stage-apps-groupdocs.dynabic.com/document-viewer/embed/'</span> . <span class="variable">$guid</span>;
                     } <span class="keyword">elseif</span> (<span class="variable">$basePath</span> == <span class="string">"http://realtime-api.groupdocs.com"</span>) {
                         <span class="variable">$iframe</span> = <span class="string">'http://realtime-apps.groupdocs.com/document-viewer/embed/'</span> . <span class="variable">$guid</span>;
                     }
+                     <span class="variable">$iframe</span> = <span class="variable">$signer</span>-&gt;signUrl(<span class="variable">$iframe</span>);
                 } <span class="keyword">else</span> {
                     <span class="keyword">throw</span> <span class="keyword">new</span> <span class="keyword">Exception</span>(<span class="variable">$job</span>-&gt;error_message);
                 }
@@ -914,7 +915,8 @@ iframe to prodaction server</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>        <span class="keyword">return</span> f3::set(<span class="string">'url'</span>, <span class="variable">$iframe</span>);
+            <div class="content"><div class='highlight'><pre>
+        <span class="keyword">return</span> f3::set(<span class="string">'url'</span>, <span class="variable">$iframe</span>);
     }
 }
 

@@ -42,40 +42,40 @@ make annotations in document and more.
 
 ### List of samples:
 
-Sample01 - How to login to GroupDocs using the API
-Sample02 - How to list files within GroupDocs Storage using the Storage API
-Sample03 - How to upload a file to GroupDocs using the Storage API
-Sample04 - How to download a file from GroupDocs Storage using the Storage API
-Sample05 - How to copy / move a file using the GroupDocs Storage API
-Sample06 - How to add a Signature to a document in GroupDocs Signature
-Sample07 - How to create a list of thumbnails for a document
-Sample08 - How to return a URL representing a single page of a Document
-Sample09 - how to generate an embedded Viewer/Annotation URL for a Document
-Sample10 - How to share a document to other users
-Sample11 - How programmatically create and post an annotation into document. How to delete the annotation
-Sample12 - How to list all annotations from document
-Sample13 - How to add collaborator to doc with annotations
-Sample14 - How to check the list of shares for a folder
-Sample15 - How to check the number of document's views
-Sample16 - How to insert Assembly questionary into webpage
-Sample17 - How to upload a file into the storage and compress it into zip archive
-Sample18 - How to convert Doc to Docx, Docx to Doc, Docx to PDF and PPT to PDF
-Sample19 - How to Compare documents using PHP SDK
-Sample20 - How to Get Compare Change list for document using PHP SDK
-Sample21 - How to Create and Upload Envelop to GroupDocs account using PHP SDK
-Sample22 - This sample will show how create or update user and add him to collaborators using PHP SDK
-Sample23 - How to View Document pages as images using PHP SDK
-Sample24 - How to use StorageApi to upload file from URL to GroupDocs account using PHP SDK
-Sample25 - How to merge/assemble data fields in docx file with data source and get result file as PDF file using PHP SDK
-Sample26 - How to use login method in the API
-Sample27 - How to create your own questionary using forms and show the result document using PHP SDK
-Sample28 - How to delete all annotations from document
-Sample29 - How to use Filepicker.io to upload document and get it's URL
-Sample30 - How to delete file from GroupDocs Storage using PHP SDK
-Sample31 - How to dinamically create Signature Form using data from HTM form
-Sample32 - How to create signature form, publish it and configure notification when it was signed
-Sample33 - How to convert several HTML documents to PDF and merge them to one document
-Sample34 - How to create folder in the GroupDocs account
+* Sample01 - How to login to GroupDocs using the API
+* Sample02 - How to list files within GroupDocs Storage using the Storage API
+* Sample03 - How to upload a file to GroupDocs using the Storage API
+* Sample04 - How to download a file from GroupDocs Storage using the Storage API
+* Sample05 - How to copy / move a file using the GroupDocs Storage API
+* Sample06 - How to add a Signature to a document in GroupDocs Signature
+* Sample07 - How to create a list of thumbnails for a document
+* Sample08 - How to return a URL representing a single page of a Document
+* Sample09 - how to generate an embedded Viewer/Annotation URL for a Document
+* Sample10 - How to share a document to other users
+* Sample11 - How programmatically create and post an annotation into document. How to delete the annotation
+* Sample12 - How to list all annotations from document
+* Sample13 - How to add collaborator to doc with annotations
+* Sample14 - How to check the list of shares for a folder
+* Sample15 - How to check the number of document's views
+* Sample16 - How to insert Assembly questionary into webpage
+* Sample17 - How to upload a file into the storage and compress it into zip archive
+* Sample18 - How to convert Doc to Docx, Docx to Doc, Docx to PDF and PPT to PDF
+* Sample19 - How to Compare documents using PHP SDK
+* Sample20 - How to Get Compare Change list for document using PHP SDK
+* Sample21 - How to Create and Upload Envelop to GroupDocs account using PHP SDK
+* Sample22 - This sample will show how create or update user and add him to collaborators using PHP SDK
+* Sample23 - How to View Document pages as images using PHP SDK
+* Sample24 - How to use StorageApi to upload file from URL to GroupDocs account using PHP SDK
+* Sample25 - How to merge/assemble data fields in docx file with data source and get result file as PDF file using PHP SDK
+* Sample26 - How to use login method in the API
+* Sample27 - How to create your own questionary using forms and show the result document using PHP SDK
+* Sample28 - How to delete all annotations from document
+* Sample29 - How to use Filepicker.io to upload document and get it's URL
+* Sample30 - How to delete file from GroupDocs Storage using PHP SDK
+* Sample31 - How to dinamically create Signature Form using data from HTM form
+* Sample32 - How to create signature form, publish it and configure notification when it was signed
+* Sample33 - How to convert several HTML documents to PDF and merge them to one document
+* Sample34 - How to create folder in the GroupDocs account
 
 
 

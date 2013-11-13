@@ -11,14 +11,14 @@ F3::set('basePath', '');
 F3::set('folderPath', '');
 $clientId = F3::get('POST["clientId"]');
 $privateKey = F3::get('POST["privateKey"]');
-$basePath = f3::get('POST["basePath"]');
-$folderPath = f3::get('POST["folderPath"]');
+$basePath = F3::get('POST["basePath"]');
+$folderPath = F3::get('POST["folderPath"]');
 $url = F3::get('POST["url"]');
 
 //###Check clientId and privateKey
 if (empty($clientId) || empty($privateKey)) {
     $error = 'Please enter all required parameters';
-    f3::set('error', $error);
+    F3::set('error', $error);
 } else {
     //Deleting of tags, slashes and  space from clientId and privateKey
     $clientID = strip_tags(stripslashes(trim($clientId))); //ClientId==UserId
@@ -74,7 +74,7 @@ if (empty($clientId) || empty($privateKey)) {
             }
         } catch (Exception $e) {
             $error = 'ERROR: ' . $e->getMessage() . "\n";
-            f3::set('error', $error);
+            F3::set('error', $error);
         }
     } else {
         //Get uploaded file
@@ -90,7 +90,7 @@ if (empty($clientId) || empty($privateKey)) {
         //Creat file stream
         $fs = FileStream::fromFile($tmpName);
         //###Make a request to Storage API using clientId
-        $callbackUrl = f3::get('POST["callbackUrl"]');
+        $callbackUrl = F3::get('POST["callbackUrl"]');
         F3::set("callbackUrl", $callbackUrl);
         //Upload file to current user storage
         try {
@@ -127,7 +127,7 @@ if (empty($clientId) || empty($privateKey)) {
 			F3::set('folderPath', $folderPath);
         } catch (Exception $e) {
             $error = 'ERROR: ' . $e->getMessage() . "\n";
-            f3::set('error', $error);
+            F3::set('error', $error);
         }
     }
 }

@@ -12,10 +12,10 @@ $privateKey = F3::get('POST["privateKey"]');
 //###Check clientId and privateKey
 if (empty($clientId) || empty($privateKey)) {
     $error = 'Please enter all required parameters';
-    f3::set('error', $error);
+    F3::set('error', $error);
 } else {
     //Get base path
-    $basePath = f3::get('POST["basePath"]');
+    $basePath = F3::get('POST["basePath"]');
     // Deleting of tags, slashes and  space from clientId and privateKey
     $clientID = strip_tags(stripslashes(trim($clientId))); //ClientId==UserId
     $apiKey = strip_tags(stripslashes(trim($privateKey))); //ApiKey==PrivateKey
@@ -48,7 +48,7 @@ if (empty($clientId) || empty($privateKey)) {
             }
         } catch (Exception $e) {
             $error = 'ERROR: ' . $e->getMessage() . "\n";
-            f3::set('error', $error);
+            F3::set('error', $error);
         }
     } else {
         // Get uploaded file
@@ -74,7 +74,7 @@ if (empty($clientId) || empty($privateKey)) {
             }
         } catch (Exception $e) {
             $error = 'ERROR: ' . $e->getMessage() . "\n";
-            f3::set('error', $error);
+            F3::set('error', $error);
         }
     }
     $result = array();
@@ -92,7 +92,7 @@ if (empty($clientId) || empty($privateKey)) {
         }
     } catch (Exception $e) {
         $error = 'ERROR: ' . $e->getMessage() . "\n";
-        f3::set('error', $error);
+        F3::set('error', $error);
     }
 }
 

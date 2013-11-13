@@ -6,24 +6,24 @@ F3::set('userId', '');
 F3::set('privateKey', '');
 $clientId = F3::get('POST["clientId"]');
 $privateKey = F3::get('POST["privateKey"]');
-$width = f3::get('POST["width"]');
-$height = f3::get('POST["height"]');
+$width = F3::get('POST["width"]');
+$height = F3::get('POST["height"]');
 //###Check fileGuId
 if (empty($clientId) || empty($privateKey)) {
     $error = 'Please enter all required parameters';
-    f3::set('error', $error);
+    F3::set('error', $error);
 } else {
     F3::set('userId', $clientId);
     F3::set('privateKey', $privateKey);
-    $iframeType = f3::get('POST["iframeType"]');
-    f3::set("iframeType", $iframeType);
+    $iframeType = F3::get('POST["iframeType"]');
+    F3::set("iframeType", $iframeType);
     //Get base path
-    $basePath = f3::get('POST["basePath"]');
+    $basePath = F3::get('POST["basePath"]');
     //Get entered by user data
     $fileGuId = "";
     $url = F3::get('POST["url"]');
     $file = $_FILES['file'];
-    $fileId = f3::get('POST["fileId"]');
+    $fileId = F3::get('POST["fileId"]');
     //###Create Signer, ApiClient and Storage Api objects
     //Create signer object
     $signer = new GroupDocsRequestSigner($privateKey);
@@ -54,7 +54,7 @@ if (empty($clientId) || empty($privateKey)) {
             }
         } catch (Exception $e) {
             $error = 'ERROR: ' . $e->getMessage() . "\n";
-            f3::set('error', $error);
+            F3::set('error', $error);
         }
     }
     //Check is user choose upload local file
@@ -82,7 +82,7 @@ if (empty($clientId) || empty($privateKey)) {
             }
         } catch (Exception $e) {
             $error = 'ERROR: ' . $e->getMessage() . "\n";
-            f3::set('error', $error);
+            F3::set('error', $error);
         }
     }
     //Check is user choose file GUID
@@ -121,8 +121,8 @@ if (empty($clientId) || empty($privateKey)) {
     }
     $iframe = $signer->signUrl($iframe);
     //If request was successfull - set url variable for template
-    f3::set('fileId', $fileGuId);
-    f3::set('url', $iframe);
+    F3::set('fileId', $fileGuId);
+    F3::set('url', $iframe);
 }
 //Process template
 F3::set('userId', $clientId);

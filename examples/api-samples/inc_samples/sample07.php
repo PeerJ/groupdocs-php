@@ -8,10 +8,10 @@ $privateKey = F3::get('POST["privateKey"]');
 //### Check clientId and privateKey
 if (empty($clientId) || empty($privateKey)) {
     $error = 'Please enter all required parameters';
-    f3::set('error', $error);
+    F3::set('error', $error);
 } else {
     //Get base path
-    $basePath = f3::get('POST["basePath"]');
+    $basePath = F3::get('POST["basePath"]');
     //Set variables for Viewer
     F3::set('userId', $clientId);
     F3::set('privateKey', $privateKey);
@@ -56,14 +56,14 @@ if (empty($clientId) || empty($privateKey)) {
                 F3::set('thumbnailList', $thumbnail);
             } else {
                 $error = "There are no thumbnails";
-                f3::set('error', $error);
+                F3::set('error', $error);
             }
         } else {
             throw new Exception($files->error_message);
         }
     } catch (Exception $e) {
         $error = 'ERROR: ' . $e->getMessage() . "\n";
-        f3::set('error', $error);
+        F3::set('error', $error);
     }
 }
 //Process template

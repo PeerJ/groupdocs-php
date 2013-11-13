@@ -10,15 +10,15 @@ F3::set('iframe', '');
 F3::set('basePath', '');
 $clientId = F3::get('POST["clientId"]');
 $privateKey = F3::get('POST["privateKey"]');
-$basePath = f3::get('POST["basePath"]');
+$basePath = F3::get('POST["basePath"]');
 $firstUrl = F3::get('POST["url1"]');
-$secondUrl = f3::get("POST['url2']");
-$thirdUrl = f3::get("POST['url3']");
+$secondUrl = F3::get("POST['url2']");
+$thirdUrl = F3::get("POST['url3']");
 
 //###Check clientId and privateKey
 if (empty($clientId) || empty($privateKey) || empty($firstUrl) || empty($secondUrl) || empty($thirdUrl)) {
     $error = 'Please enter all required parameters';
-    f3::set('error', $error);
+    F3::set('error', $error);
 } else {
     //Deleting of tags, slashes and  space from clientId and privateKey
     $clientID = strip_tags(stripslashes(trim($clientId))); //ClientId==UserId
@@ -61,7 +61,7 @@ if (empty($clientId) || empty($privateKey) || empty($firstUrl) || empty($secondU
             }
         } catch (Exception $e) {
             $error = 'ERROR: ' . $e->getMessage() . "\n";
-            f3::set('error', $error);
+            F3::set('error', $error);
         }
     }
     try {
@@ -85,7 +85,7 @@ if (empty($clientId) || empty($privateKey) || empty($firstUrl) || empty($secondU
                 }
             } catch (Exception $e) {
                 $error = 'ERROR: ' . $e->getMessage() . "\n";
-                f3::set('error', $error);
+                F3::set('error', $error);
             }
             try {
                 //Change job status
@@ -112,27 +112,27 @@ if (empty($clientId) || empty($privateKey) || empty($firstUrl) || empty($secondU
                                 $iframe = 'https://relatime-apps.groupdocs.com/document-viewer/embed/' . $getJobDocument->result->outputs[0]->guid;
                             }
                             $iframe = $signer->signUrl($iframe);
-                            f3::set('url', $iframe);
+                            F3::set('url', $iframe);
                         } else {
                             throw new Exception($getJobDocument->error_message);
                         }
                     } catch (Exception $e) {
                         $error = 'ERROR: ' . $e->getMessage() . "\n";
-                        f3::set('error', $error);
+                        F3::set('error', $error);
                     }
                 } else {
                     throw new Exception($updateJob->error_message);
                 }
             } catch (Exception $e) {
                 $error = 'ERROR: ' . $e->getMessage() . "\n";
-                f3::set('error', $error);
+                F3::set('error', $error);
             }
         } else {
             throw new Exception($createJob->error_message);
         }
     } catch (Exception $e) {
         $error = 'ERROR: ' . $e->getMessage() . "\n";
-        f3::set('error', $error);
+        F3::set('error', $error);
     }
 }
 //Process template

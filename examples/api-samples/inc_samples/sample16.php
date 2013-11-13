@@ -7,17 +7,17 @@ $clientId = F3::get('POST["clientId"]');
 $privateKey = F3::get('POST["privateKey"]');
 if (empty($clientId) || empty($privateKey)) {
     $error = 'Please enter all required parameters';
-    f3::set('error', $error);
+    F3::set('error', $error);
 } else {
     F3::set('userId', $clientId);
     F3::set('privateKey', $privateKey);
     //Get base path
-    $basePath = f3::get('POST["basePath"]');
+    $basePath = F3::get('POST["basePath"]');
     //Get entered by user data
     $fileGuId = "";
     $url = F3::get('POST["url"]');
     $file = $_FILES['file'];
-    $fileId = f3::get('POST["fileId"]');
+    $fileId = F3::get('POST["fileId"]');
     //###Create Signer, ApiClient and Storage Api objects
     //Create signer object
     $signer = new GroupDocsRequestSigner($privateKey);
@@ -48,7 +48,7 @@ if (empty($clientId) || empty($privateKey)) {
             }
         } catch (Exception $e) {
             $error = 'ERROR: ' . $e->getMessage() . "\n";
-            f3::set('error', $error);
+            F3::set('error', $error);
         }
     }
     //Check is user choose upload local file
@@ -75,7 +75,7 @@ if (empty($clientId) || empty($privateKey)) {
             }
         } catch (Exception $e) {
             $error = 'ERROR: ' . $e->getMessage() . "\n";
-            f3::set('error', $error);
+            F3::set('error', $error);
         }
     }
     //Check is user choose file GUID

@@ -8,10 +8,10 @@ $clientId = F3::get('POST["clientId"]');
 $privateKey = F3::get('POST["privateKey"]');
 if (empty($clientId) || empty($privateKey)) {
     $error = 'Please enter all required parameters';
-    f3::set('error', $error);
+    F3::set('error', $error);
 } else {
     //Get base path
-    $basePath = f3::get('POST["basePath"]');
+    $basePath = F3::get('POST["basePath"]');
     F3::set('userId', $clientId);
     F3::set('privateKey', $privateKey);
     // initialization some variables
@@ -43,7 +43,7 @@ if (empty($clientId) || empty($privateKey)) {
         }
     } catch (Exception $e) {
         $error = 'ERROR: ' . $e->getMessage() . "\n";
-        f3::set('error', $error);
+        F3::set('error', $error);
     }
 }
 // Process template

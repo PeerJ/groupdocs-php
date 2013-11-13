@@ -4,14 +4,14 @@
 //Set variables and get POST data
 $clientId = F3::get('POST["clientId"]');
 $privateKey = F3::get('POST["privateKey"]');
-$file_id = F3::get('POST["fileId"]');
+$fileId = F3::get('POST["fileId"]');
 
 //###Check clientId, privateKey and file Id
-if (!isset($clientId) || !isset($privateKey) || !isset($file_id)) {
+if (!isset($clientId) || !isset($privateKey) || !isset($fileId)) {
     $error = 'Please enter all required parameters';
-    f3::set('error', $error);
+    F3::set('error', $error);
 } else {
-    $basePath = f3::get('POST["basePath"]');
+    $basePath = F3::get('POST["basePath"]');
     //###Create Signer, ApiClient and Storage Api objects
     //Create signer object
     $signer = new GroupDocsRequestSigner($privateKey);
@@ -31,7 +31,7 @@ if (!isset($clientId) || !isset($privateKey) || !isset($file_id)) {
     //###Make a request to Doc API using clientId and file id
     //Obtaining all Metadata for file
     try {
-        $docInfo = $docApi->GetDocumentMetadata($clientId, $file_id);
+        $docInfo = $docApi->GetDocumentMetadata($clientId, $fileId);
         //Selecting file names
         if ($docInfo->status == "Ok") {
             //Obtaining file name for entered file Id
@@ -44,28 +44,28 @@ if (!isset($clientId) || !isset($privateKey) || !isset($file_id)) {
         $outFileStream = FileStream::fromHttp(dirname(__FILE__) . '/../temp', $name);
         //Downlaoding of file
         try {
-            $file = $storageApi->GetFile($clientId, $file_id, $outFileStream);
+            $file = $storageApi->GetFile($clientId, $fileId, $outFileStream);
             if ($file->downloadDirectory != "" && isset($file)) {
                 //If request was successfull - set message variable for template
                 $message = '<font color="green">File was downloaded to the <font color="blue">' .
                         $outFileStream->downloadDirectory . '</font> folder</font> <br />';
-                f3::set('message', $message);
+                F3::set('message', $message);
             } else {
                 throw new Exception("Something wrong with entered data");
             }
         } catch (Exception $e) {
             $error = 'ERROR: ' . $e->getMessage() . "\n";
-            f3::set('error', $error);
+            F3::set('error', $error);
         }
     } catch (Exception $e) {
         $error = 'ERROR: ' . $e->getMessage() . "\n";
-        f3::set('error', $error);
+        F3::set('error', $error);
     }
 }
 
 //Process template
 F3::set('userId', $clientId);
 F3::set('privateKey', $privateKey);
-F3::set('file_Id', $file_id);
+F3::set('fileId', $fileId);
 
 echo Template::serve('sample04.htm');

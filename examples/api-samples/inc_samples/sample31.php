@@ -6,16 +6,15 @@ F3::set('userId', '');
 F3::set('privateKey', '');
 $clientId = F3::get('POST["clientId"]');
 $privateKey = F3::get('POST["privateKey"]');
-$basePath = f3::get('POST["basePath"]');
-$templateGuid = F3::get('POST["template_guid"]');
-$name = f3::get('POST["name"]');
-$email = f3::get('POST["email"]');
-$country = f3::get('POST["country"]');
-$city = f3::get('POST["city"]');
-$street = f3::get('POST["street"]');
+$basePath = F3::get('POST["basePath"]');
+$templateGuid = F3::get('POST["templateGuid"]');
+$name = F3::get('POST["name"]');
+$email = F3::get('POST["email"]');
+$country = F3::get('POST["country"]');
+$city = F3::get('POST["city"]');
+$street = F3::get('POST["street"]');
 
-function createQuestionary($clientId, $privateKey, $basePath) {
-    $templateGuid = F3::get('POST["templateGuid"]');
+function createQuestionary($clientId, $privateKey, $basePath, $templateGuid) {
     //###Check if user entered all parameters
     if (empty($clientId) || empty($privateKey)) {
         throw new Exception('Please enter FILE ID');
@@ -25,7 +24,7 @@ function createQuestionary($clientId, $privateKey, $basePath) {
         fwrite($infoFile, $clientId . "\r\n" . $privateKey);
         fclose($infoFile);
         //check if Downloads folder exists and remove it to clean all old files
-        $callbackUrl = f3::get('POST["callbackUrl"]');
+        $callbackUrl = F3::get('POST["callbackUrl"]');
         if ($callbackUrl != "") {
             if (file_exists(__DIR__ . '/../downloads')) {
                 delFolder(__DIR__ . '/../downloads/');
@@ -58,18 +57,18 @@ function createQuestionary($clientId, $privateKey, $basePath) {
         $mergApi->setBasePath($basePath);
         $signatureApi->setBasePath($basePath);
         //Get entered by user data
-        $name = f3::get('POST["name"]');
-        $email = f3::get('POST["email"]');
-        $country = f3::get('POST["country"]');
-        $city = f3::get('POST["city"]');
-        $street = f3::get('POST["street"]');
+        $name = F3::get('POST["name"]');
+        $email = F3::get('POST["email"]');
+        $country = F3::get('POST["country"]');
+        $city = F3::get('POST["city"]');
+        $street = F3::get('POST["street"]');
        
-        f3::set("email", $email);
-        f3::set("country", $country);
-        f3::set("name", $name);
-        f3::set("street", $street);
-        f3::set("city", $city);
-        f3::set("callbackUrl", $callbackUrl);
+        F3::set("email", $email);
+        F3::set("country", $country);
+        F3::set("name", $name);
+        F3::set("street", $street);
+        F3::set("city", $city);
+        F3::set("callbackUrl", $callbackUrl);
         $enteredData = array("email" => $email, "country" => $country, "name" => $name, "street" => $street, "city" => $city);
         //Create new Datasource object
         $dataSource = new Datasource();
@@ -190,7 +189,7 @@ function createQuestionary($clientId, $privateKey, $basePath) {
         }
 
         //Set variable with results for template
-        return f3::set('url', $iframe);
+        return F3::set('url', $iframe);
     }
 }
 
@@ -217,10 +216,11 @@ function delFolder($path) {
 }
 
 try {
-    createQuestionary($clientId, $privateKey, $basePath);
+    createQuestionary($clientId, $privateKey, $basePath, $templateGuid);
+
 } catch (Exception $e) {
     $error = 'ERROR: ' . $e->getMessage() . "\n";
-    f3::set('error', $error);
+    F3::set('error', $error);
 }
 //Process template
 echo Template::serve('sample31.htm');

@@ -9,17 +9,17 @@ F3::set('message', '');
 F3::set('iframe', '');
 $clientId = F3::get('POST["clientId"]');
 $privateKey = F3::get('POST["privateKey"]');
-$email = f3::get('POST["email"]');
-$signName = f3::get('POST["name"]');
-$lastName = f3::get('POST["lastName"]');
-$callbackUrl = f3::get('POST["callbackUrl"]');
-f3::set('email', $email);
-f3::set('name', $signName);
-f3::set('lastName', $lastName);
+$email = F3::get('POST["email"]');
+$signName = F3::get('POST["name"]');
+$lastName = F3::get('POST["lastName"]');
+$callbackUrl = F3::get('POST["callbackUrl"]');
+F3::set('email', $email);
+F3::set('name', $signName);
+F3::set('lastName', $lastName);
 //###Check clientId and privateKey
 if (empty($clientId) || empty($privateKey)) {
     $error = 'Please enter all required parameters';
-    f3::set('error', $error);
+    F3::set('error', $error);
 } else {
     //path to settings file - temporary save userId and apiKey like to property file
     $infoFile = fopen(__DIR__ . '/../user_info.txt', 'w');
@@ -41,7 +41,7 @@ if (empty($clientId) || empty($privateKey)) {
     $apiClient = new APIClient($signer);
     //Create Storage Api object
     $storageApi = new StorageApi($apiClient);
-    $basePath = f3::get('POST["basePath"]');
+    $basePath = F3::get('POST["basePath"]');
     //Declare which Server to use
     if ($basePath == "") {
         //If base base is empty seting base path to prod server
@@ -54,7 +54,7 @@ if (empty($clientId) || empty($privateKey)) {
     $fileGuId = "";
     $url = F3::get('POST["url"]');
     $file = $_FILES['file'];
-    $fileId = f3::get('POST["fileId"]');
+    $fileId = F3::get('POST["fileId"]');
     //Check is URL entered
     if ($url != "") {
         //Upload file from URL
@@ -80,7 +80,7 @@ if (empty($clientId) || empty($privateKey)) {
                     }
                 } catch (Exception $e) {
                     $error = 'ERROR: ' . $e->getMessage() . "\n";
-                    f3::set('error', $error);
+                    F3::set('error', $error);
                 }
                 //If it isn't uploaded throw exception to template
             } else {
@@ -88,7 +88,7 @@ if (empty($clientId) || empty($privateKey)) {
             }
         } catch (Exception $e) {
             $error = 'ERROR: ' . $e->getMessage() . "\n";
-            f3::set('error', $error);
+            F3::set('error', $error);
         }
     }
     //Check is local file chosen
@@ -118,7 +118,7 @@ if (empty($clientId) || empty($privateKey)) {
             }
         } catch (Exception $e) {
             $error = 'ERROR: ' . $e->getMessage() . "\n";
-            f3::set('error', $error);
+            F3::set('error', $error);
         }
     }
     //Check is user choose file GUID
@@ -141,7 +141,7 @@ if (empty($clientId) || empty($privateKey)) {
             }
         } catch (Exception $e) {
             $error = 'ERROR: ' . $e->getMessage() . "\n";
-            f3::set('error', $error);
+            F3::set('error', $error);
         }
     }
 
@@ -225,54 +225,54 @@ if (empty($clientId) || empty($privateKey)) {
                                                             }
                                                         } catch (Exception $e) {
                                                             $error = 'ERROR: ' . $e->getMessage() . "\n";
-                                                            f3::set('error', $error);
+                                                            F3::set('error', $error);
                                                         }
 //                                                       
                                                     } catch (Exception $e) {
                                                         $error = 'ERROR: ' . $e->getMessage() . "\n";
-                                                        f3::set('error', $error);
+                                                        F3::set('error', $error);
                                                     }
                                                 } else {
                                                     throw new Exception($getDocuments->error_message);
                                                 }
                                             } catch (Exception $e) {
                                                 $error = 'ERROR: ' . $e->getMessage() . "\n";
-                                                f3::set('error', $error);
+                                                F3::set('error', $error);
                                             }
                                         } else {
                                             throw new Exception($getRecipient->error_message);
                                         }
                                     } catch (Exception $e) {
                                         $error = 'ERROR: ' . $e->getMessage() . "\n";
-                                        f3::set('error', $error);
+                                        F3::set('error', $error);
                                     }
                                 } else {
                                     throw new Exception($addRecipient->error_message);
                                 }
                             } catch (Exception $e) {
                                 $error = 'ERROR: ' . $e->getMessage() . "\n";
-                                f3::set('error', $error);
+                                F3::set('error', $error);
                             }
                         } else {
                             throw new Exception($recipient->error_message);
                         }
                     } catch (Exception $e) {
                         $error = 'ERROR: ' . $e->getMessage() . "\n";
-                        f3::set('error', $error);
+                        F3::set('error', $error);
                     }
                 } else {
                     throw new Exception($addDocument->error_message);
                 }
             } catch (Exception $e) {
                 $error = 'ERROR: ' . $e->getMessage() . "\n";
-                f3::set('error', $error);
+                F3::set('error', $error);
             }
         } else {
             throw new Exception($envelop->error_message);
         }
     } catch (Exception $e) {
         $error = 'ERROR: ' . $e->getMessage() . "\n";
-        f3::set('error', $error);
+        F3::set('error', $error);
     }
 }
 

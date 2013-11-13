@@ -6,15 +6,15 @@ F3::set('userId', '');
 F3::set('privateKey', '');
 $clientId = F3::get('POST["clientId"]');
 $privateKey = F3::get('POST["privateKey"]');
-$basePath = f3::get('POST["basePath"]');
-$callbackUrl = f3::get('POST["callbackUrl"]');
+$basePath = F3::get('POST["basePath"]');
+$callbackUrl = F3::get('POST["callbackUrl"]');
 $templateGuid = F3::get('POST["templateGuid"]');
 $formGuid = F3::get("POST['formGuid']");
 $email = F3::get('POST["email"]');
 $error = null;
 if (empty($clientId) || empty($privateKey)) {
     $error = 'Please enter all parameters';
-    f3::set('error', $error);
+    F3::set('error', $error);
 } else {
     //path to settings file - temporary save userId and apiKey like to property file
     $infoFile = fopen(__DIR__ . '/../user_info.txt', 'w');
@@ -40,7 +40,7 @@ if (empty($clientId) || empty($privateKey)) {
         $callbackUrl = "";
     }
     //Set variables for template       
-    f3::set("callbackUrl", $callbackUrl);
+    F3::set("callbackUrl", $callbackUrl);
     //Create WebHook object
     $webHook = new WebhookInfo();
     //Set callback url of webhook which will be triggered when form is signed.
@@ -66,13 +66,13 @@ if (empty($clientId) || empty($privateKey)) {
                     $iframe = 'https://relatime-apps.groupdocs.com/signature2/forms/signembed/' . $formGuid;
                 }
                 $iframe = $signer->signUrl($iframe);
-                f3::set('url', $iframe);
+                F3::set('url', $iframe);
             } else {
                 throw new Exception($postForm->error_message);
             }
         } catch (Exception $e) {
             $error = 'ERROR: ' . $e->getMessage() . "\n";
-            f3::set('error', $error);
+            F3::set('error', $error);
         }
     } else {
         //Create Signature form settings object
@@ -107,21 +107,21 @@ if (empty($clientId) || empty($privateKey)) {
                         } elseif ($basePath == "http://realtime-api.groupdocs.com") {
                             $iframe = 'https://relatime-apps.groupdocs.com/signature2/forms/signembed/' . $createForm->result->form->id;
                         }
-                        f3::set('url', $iframe);
+                        F3::set('url', $iframe);
                         F3::set("formGuid", $createForm->result->form->id);
                     } else {
                         throw new Exception($postForm->error_message);
                     }
                 } catch (Exception $e) {
                     $error = 'ERROR: ' . $e->getMessage() . "\n";
-                    f3::set('error', $error);
+                    F3::set('error', $error);
                 }
             } else {
                 throw new Exception($createForm->error_message);
             }
         } catch (Exception $e) {
             $error = 'ERROR: ' . $e->getMessage() . "\n";
-            f3::set('error', $error);
+            F3::set('error', $error);
         }
     }
 }

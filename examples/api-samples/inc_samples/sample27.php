@@ -6,7 +6,7 @@ F3::set('userId', '');
 F3::set('privateKey', '');
 $clientId = F3::get('POST["clientId"]');
 $privateKey = F3::get('POST["privateKey"]');
-$basePath = f3::get('POST["basePath"]');
+$basePath = F3::get('POST["basePath"]');
 
 function createQuestionary($clientId, $privateKey, $basePath) {
     //###Check if user entered all parameters
@@ -38,19 +38,19 @@ function createQuestionary($clientId, $privateKey, $basePath) {
         $api->setBasePath($basePath);
         $mergApi->setBasePath($basePath);
         //Get entered by user data
-        $sex = f3::get('POST["sex"]');
-        $age = f3::get('POST["age"]');
-        $sunrise = f3::get('POST["sunrise"]');
-        $name = f3::get('POST["name"]');
-        f3::set("sex", $sex);
-        f3::set("age", $age);
-        f3::set("sunrise", $sunrise);
-        f3::set("name", $name);
+        $sex = F3::get('POST["sex"]');
+        $age = F3::get('POST["age"]');
+        $sunrise = F3::get('POST["sunrise"]');
+        $name = F3::get('POST["name"]');
+        F3::set("sex", $sex);
+        F3::set("age", $age);
+        F3::set("sunrise", $sunrise);
+        F3::set("name", $name);
         $file = $_FILES['file'];
         $fileGuId = "";
         $url = F3::get('POST["url"]');
         $file = $_FILES['file'];
-        $fileId = f3::get('POST["fileId"]');
+        $fileId = F3::get('POST["fileId"]');
         //Check if user choose upload file from URL
         if ($url != "") {
             //Upload file from URL
@@ -94,8 +94,8 @@ function createQuestionary($clientId, $privateKey, $basePath) {
             $fileGuId = $fileId;
         }
         $enteredData = array("sex" => $sex, "age" => $age, "sunrise" => $sunrise, "name" => $name);
-        $resultType = f3::get('POST["type"]');
-        f3::set("type", $resultType);
+        $resultType = F3::get('POST["type"]');
+        F3::set("type", $resultType);
         //Create new Datasource object
         $dataSource = new Datasource();
         //Create empty array
@@ -155,7 +155,7 @@ function createQuestionary($clientId, $privateKey, $basePath) {
                 $outFileStream = FileStream::fromHttp($downloadFolder, $name);
                 //Download file from GroupDocs.
                 $download = $storageApi->GetFile($clientId, $guid, $outFileStream);
-                f3::set("message", "File was converted and downloaded to the " . $downloadFolder . "/" . $name);
+                F3::set("message", "File was converted and downloaded to the " . $downloadFolder . "/" . $name);
                 //### If request was successfull
                 //Generation of iframe URL using $pageImage->result->guid
                 //iframe to prodaction server
@@ -180,7 +180,7 @@ function createQuestionary($clientId, $privateKey, $basePath) {
 
         //Set variable with results for template
 
-        return f3::set('url', $iframe);
+        return F3::set('url', $iframe);
     }
 }
 
@@ -188,7 +188,7 @@ try {
     createQuestionary($clientId, $privateKey, $basePath);
 } catch (Exception $e) {
     $error = 'ERROR: ' . $e->getMessage() . "\n";
-    f3::set('error', $error);
+    F3::set('error', $error);
 }
 //Process template
 echo Template::serve('sample27.htm');

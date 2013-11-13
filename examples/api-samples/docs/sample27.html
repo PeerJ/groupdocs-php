@@ -50,7 +50,7 @@
 F3::set(<span class="string">'privateKey'</span>, <span class="string">''</span>);
 <span class="variable">$clientId</span> = F3::get(<span class="string">'POST["clientId"]'</span>);
 <span class="variable">$privateKey</span> = F3::get(<span class="string">'POST["privateKey"]'</span>);
-<span class="variable">$basePath</span> = f3::get(<span class="string">'POST["basePath"]'</span>);
+<span class="variable">$basePath</span> = F3::get(<span class="string">'POST["basePath"]'</span>);
 
 <span class="function"><span class="keyword">function</span> <span class="title">createQuestionary</span><span class="params">(<span class="variable">$clientId</span>, <span class="variable">$privateKey</span>, <span class="variable">$basePath</span>)</span> {</span></pre></div></div>
             
@@ -212,19 +212,19 @@ F3::set(<span class="string">'privateKey'</span>, <span class="string">''</span>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>        <span class="variable">$sex</span> = f3::get(<span class="string">'POST["sex"]'</span>);
-        <span class="variable">$age</span> = f3::get(<span class="string">'POST["age"]'</span>);
-        <span class="variable">$sunrise</span> = f3::get(<span class="string">'POST["sunrise"]'</span>);
-        <span class="variable">$name</span> = f3::get(<span class="string">'POST["name"]'</span>);
-        f3::set(<span class="string">"sex"</span>, <span class="variable">$sex</span>);
-        f3::set(<span class="string">"age"</span>, <span class="variable">$age</span>);
-        f3::set(<span class="string">"sunrise"</span>, <span class="variable">$sunrise</span>);
-        f3::set(<span class="string">"name"</span>, <span class="variable">$name</span>);
+            <div class="content"><div class='highlight'><pre>        <span class="variable">$sex</span> = F3::get(<span class="string">'POST["sex"]'</span>);
+        <span class="variable">$age</span> = F3::get(<span class="string">'POST["age"]'</span>);
+        <span class="variable">$sunrise</span> = F3::get(<span class="string">'POST["sunrise"]'</span>);
+        <span class="variable">$name</span> = F3::get(<span class="string">'POST["name"]'</span>);
+        F3::set(<span class="string">"sex"</span>, <span class="variable">$sex</span>);
+        F3::set(<span class="string">"age"</span>, <span class="variable">$age</span>);
+        F3::set(<span class="string">"sunrise"</span>, <span class="variable">$sunrise</span>);
+        F3::set(<span class="string">"name"</span>, <span class="variable">$name</span>);
         <span class="variable">$file</span> = <span class="variable">$_FILES</span>[<span class="string">'file'</span>];
         <span class="variable">$fileGuId</span> = <span class="string">""</span>;
         <span class="variable">$url</span> = F3::get(<span class="string">'POST["url"]'</span>);
         <span class="variable">$file</span> = <span class="variable">$_FILES</span>[<span class="string">'file'</span>];
-        <span class="variable">$fileId</span> = f3::get(<span class="string">'POST["fileId"]'</span>);</pre></div></div>
+        <span class="variable">$fileId</span> = F3::get(<span class="string">'POST["fileId"]'</span>);</pre></div></div>
             
         </li>
         
@@ -461,8 +461,8 @@ F3::set(<span class="string">'privateKey'</span>, <span class="string">''</span>
             <div class="content"><div class='highlight'><pre>            <span class="variable">$fileGuId</span> = <span class="variable">$fileId</span>;
         }
         <span class="variable">$enteredData</span> = <span class="keyword">array</span>(<span class="string">"sex"</span> =&gt; <span class="variable">$sex</span>, <span class="string">"age"</span> =&gt; <span class="variable">$age</span>, <span class="string">"sunrise"</span> =&gt; <span class="variable">$sunrise</span>, <span class="string">"name"</span> =&gt; <span class="variable">$name</span>);
-        <span class="variable">$resultType</span> = f3::get(<span class="string">'POST["type"]'</span>);
-        f3::set(<span class="string">"type"</span>, <span class="variable">$resultType</span>);</pre></div></div>
+        <span class="variable">$resultType</span> = F3::get(<span class="string">'POST["type"]'</span>);
+        F3::set(<span class="string">"type"</span>, <span class="variable">$resultType</span>);</pre></div></div>
             
         </li>
         
@@ -821,7 +821,7 @@ F3::set(<span class="string">'privateKey'</span>, <span class="string">''</span>
             </div>
             
             <div class="content"><div class='highlight'><pre>                <span class="variable">$download</span> = <span class="variable">$storageApi</span>-&gt;GetFile(<span class="variable">$clientId</span>, <span class="variable">$guid</span>, <span class="variable">$outFileStream</span>);
-                f3::set(<span class="string">"message"</span>, <span class="string">"File was converted and downloaded to the "</span> . <span class="variable">$downloadFolder</span> . <span class="string">"/"</span> . <span class="variable">$name</span>);</pre></div></div>
+                F3::set(<span class="string">"message"</span>, <span class="string">"File was converted and downloaded to the "</span> . <span class="variable">$downloadFolder</span> . <span class="string">"/"</span> . <span class="variable">$name</span>);</pre></div></div>
             
         </li>
         
@@ -897,7 +897,7 @@ iframe to prodaction server</p>
             </div>
             
             <div class="content"><div class='highlight'><pre>
-        <span class="keyword">return</span> f3::set(<span class="string">'url'</span>, <span class="variable">$iframe</span>);
+        <span class="keyword">return</span> F3::set(<span class="string">'url'</span>, <span class="variable">$iframe</span>);
     }
 }
 
@@ -905,7 +905,7 @@ iframe to prodaction server</p>
     createQuestionary(<span class="variable">$clientId</span>, <span class="variable">$privateKey</span>, <span class="variable">$basePath</span>);
 } <span class="keyword">catch</span> (<span class="keyword">Exception</span> <span class="variable">$e</span>) {
     <span class="variable">$error</span> = <span class="string">'ERROR: '</span> . <span class="variable">$e</span>-&gt;getMessage() . <span class="string">"\n"</span>;
-    f3::set(<span class="string">'error'</span>, <span class="variable">$error</span>);
+    F3::set(<span class="string">'error'</span>, <span class="variable">$error</span>);
 }</pre></div></div>
             
         </li>

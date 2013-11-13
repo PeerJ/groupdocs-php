@@ -4,17 +4,17 @@
 //Set variables and get POST data
 F3::set('userId', '');
 F3::set('privateKey', '');
-f3::set('result', "");
+F3::set('result', "");
 $clientId = F3::get('POST["clientId"]');
 $privateKey = F3::get('POST["privateKey"]');
-$resultFileId = f3::get('POST["resultFileId"]');
+$resultFileId = F3::get('POST["resultFileId"]');
 //### Check clientId, privateKey and fileGuId
 if (empty($clientId) || empty($privateKey) || empty($resultFileId)) {
     $error = 'Please enter all required parameters';
-    f3::set('error', $error);
+    F3::set('error', $error);
 } else {
     //Get base path
-    $basePath = f3::get('POST["basePath"]');
+    $basePath = F3::get('POST["basePath"]');
     //Set variables for Viewer
     F3::set('userId', $clientId);
     F3::set('privateKey', $privateKey);
@@ -63,18 +63,18 @@ if (empty($clientId) || empty($privateKey) || empty($resultFileId)) {
                 $table .= "<tr bgcolor='#808080'><td></td><td></td></tr>";
             }
             $table .= "</table>";
-            f3::set('change', $table);
+            F3::set('change', $table);
         } else {
             throw new Exception($info->error_message);
         }
     } catch (Exception $e) {
         $error = 'ERROR: ' . $e->getMessage() . "\n";
-        f3::set('error', $error);
+        F3::set('error', $error);
     }
     //If request was successfull - set url variable for template
-//            return f3::set('change', $table);
+//            return F3::set('change', $table);
 }
 //Process template
-f3::set('resultFileId', $resultFileId);
-//    f3::set('result', $result);
+F3::set('resultFileId', $resultFileId);
+//    F3::set('result', $result);
 echo Template::serve('sample20.htm');

@@ -5,15 +5,15 @@
 F3::set('userId', '');
 F3::set('privateKey', '');
 F3::set('email', '');
-F3::set('first_name', '');
+F3::set('firstName', '');
 F3::set('fileId', '');
-F3::set('last_name', '');
+F3::set('lastName', '');
 $clientId = F3::get('POST["clientId]');
 $privateKey = F3::get('POST["privateKey"]');
 $email = F3::get('POST["email"]');
 $firstName = F3::get('POST["firstName"]');
 $lastName = F3::get('POST["lastName"]');
-$basePath = f3::get('POST["basePath"]');
+$basePath = F3::get('POST["basePath"]');
 
 function updateUser($clientId, $privateKey, $email, $firstName, $lastName, $basePath) {
     //Check if all requared parameters were transferred
@@ -25,8 +25,8 @@ function updateUser($clientId, $privateKey, $email, $firstName, $lastName, $base
         F3::set('userId', $clientId);
         F3::set('privateKey', $privateKey);
         F3::set('email', $email);
-        F3::set('first_name', $firstName);
-        F3::set('last_name', $lastName);
+        F3::set('firstName', $firstName);
+        F3::set('lastName', $lastName);
         //### Create Signer, ApiClient and Mgmt Api objects
         // Create signer object
         $signer = new GroupDocsRequestSigner($privateKey);
@@ -47,7 +47,7 @@ function updateUser($clientId, $privateKey, $email, $firstName, $lastName, $base
         //Get entered by user data
         $url = F3::get('POST["url"]');
         $file = $_FILES['file'];
-        $fileGuId = f3::get('POST["fileId"]');
+        $fileGuId = F3::get('POST["fileId"]');
         $fileId = "";
         //Check is file GUID entered
         if ($fileGuId != "") {
@@ -173,7 +173,7 @@ try {
     updateUser($clientId, $privateKey, $email, $firstName, $lastName, $basePath);
 } catch (Exception $e) {
     $error = 'ERROR: ' . $e->getMessage() . "\n";
-    f3::set('error', $error);
+    F3::set('error', $error);
 }
 
 // Process template

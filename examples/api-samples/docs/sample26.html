@@ -69,7 +69,7 @@ F3::set(<span class="string">'password'</span>, <span class="string">''</span>);
             <div class="content"><div class='highlight'><pre>    <span class="keyword">if</span> (!<span class="keyword">isset</span>(<span class="variable">$login</span>) || !<span class="keyword">isset</span>(<span class="variable">$password</span>)) {
         <span class="keyword">throw</span> <span class="keyword">new</span> <span class="keyword">Exception</span>(<span class="string">"Please enter login and password"</span>);
     }
-    <span class="variable">$basePath</span> = f3::get(<span class="string">'POST["basePath"]'</span>);</pre></div></div>
+    <span class="variable">$basePath</span> = F3::get(<span class="string">'POST["basePath"]'</span>);</pre></div></div>
             
         </li>
         
@@ -238,14 +238,14 @@ F3::set(<span class="string">'password'</span>, <span class="string">''</span>);
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    <span class="keyword">return</span> f3::set(<span class="string">"userInfo"</span>, <span class="variable">$result</span>);
+            <div class="content"><div class='highlight'><pre>    <span class="keyword">return</span> F3::set(<span class="string">"userInfo"</span>, <span class="variable">$result</span>);
 }
 
 <span class="keyword">try</span> {
     Login(<span class="variable">$login</span>, <span class="variable">$password</span>);
 } <span class="keyword">catch</span> (<span class="keyword">Exception</span> <span class="variable">$e</span>) {
     <span class="variable">$error</span> = <span class="string">'ERROR: '</span> . <span class="variable">$e</span>-&gt;getMessage() . <span class="string">"\n"</span>;
-    f3::set(<span class="string">'error'</span>, <span class="variable">$error</span>);
+    F3::set(<span class="string">'error'</span>, <span class="variable">$error</span>);
 }</pre></div></div>
             
         </li>

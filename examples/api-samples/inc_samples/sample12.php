@@ -10,10 +10,10 @@ $privateKey = F3::get('POST["privateKey"]');
 $fileId = F3::get('POST["fileId"]');
 if (empty($clientId) || empty($privateKey) || empty($fileId)) {
     $error = 'Please enter all required parameters';
-    f3::set('error', $error);
+    F3::set('error', $error);
 } else {
     //Get base path
-    $basePath = f3::get('POST["basePath"]');
+    $basePath = F3::get('POST["basePath"]');
     F3::set('userId', $clientId);
     F3::set('privateKey', $privateKey);
     F3::set('fileId', $fileId);
@@ -45,7 +45,7 @@ if (empty($clientId) || empty($privateKey) || empty($fileId)) {
         }
     } catch (Exception $e) {
         $error = 'ERROR: ' . $e->getMessage() . "\n";
-        f3::set('error', $error);
+        F3::set('error', $error);
     }
 }
 // Process template

@@ -50,16 +50,15 @@
 F3::set(<span class="string">'privateKey'</span>, <span class="string">''</span>);
 <span class="variable">$clientId</span> = F3::get(<span class="string">'POST["clientId"]'</span>);
 <span class="variable">$privateKey</span> = F3::get(<span class="string">'POST["privateKey"]'</span>);
-<span class="variable">$basePath</span> = f3::get(<span class="string">'POST["basePath"]'</span>);
-<span class="variable">$templateGuid</span> = F3::get(<span class="string">'POST["template_guid"]'</span>);
-<span class="variable">$name</span> = f3::get(<span class="string">'POST["name"]'</span>);
-<span class="variable">$email</span> = f3::get(<span class="string">'POST["email"]'</span>);
-<span class="variable">$country</span> = f3::get(<span class="string">'POST["country"]'</span>);
-<span class="variable">$city</span> = f3::get(<span class="string">'POST["city"]'</span>);
-<span class="variable">$street</span> = f3::get(<span class="string">'POST["street"]'</span>);
+<span class="variable">$basePath</span> = F3::get(<span class="string">'POST["basePath"]'</span>);
+<span class="variable">$templateGuid</span> = F3::get(<span class="string">'POST["templateGuid"]'</span>);
+<span class="variable">$name</span> = F3::get(<span class="string">'POST["name"]'</span>);
+<span class="variable">$email</span> = F3::get(<span class="string">'POST["email"]'</span>);
+<span class="variable">$country</span> = F3::get(<span class="string">'POST["country"]'</span>);
+<span class="variable">$city</span> = F3::get(<span class="string">'POST["city"]'</span>);
+<span class="variable">$street</span> = F3::get(<span class="string">'POST["street"]'</span>);
 
-<span class="function"><span class="keyword">function</span> <span class="title">createQuestionary</span><span class="params">(<span class="variable">$clientId</span>, <span class="variable">$privateKey</span>, <span class="variable">$basePath</span>)</span> {</span>
-    <span class="variable">$templateGuid</span> = F3::get(<span class="string">'POST["templateGuid"]'</span>);</pre></div></div>
+<span class="function"><span class="keyword">function</span> <span class="title">createQuestionary</span><span class="params">(<span class="variable">$clientId</span>, <span class="variable">$privateKey</span>, <span class="variable">$basePath</span>, <span class="variable">$templateGuid</span>)</span> {</span></pre></div></div>
             
         </li>
         
@@ -108,7 +107,7 @@ F3::set(<span class="string">'privateKey'</span>, <span class="string">''</span>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>        <span class="variable">$callbackUrl</span> = f3::get(<span class="string">'POST["callbackUrl"]'</span>);
+            <div class="content"><div class='highlight'><pre>        <span class="variable">$callbackUrl</span> = F3::get(<span class="string">'POST["callbackUrl"]'</span>);
         <span class="keyword">if</span> (<span class="variable">$callbackUrl</span> != <span class="string">""</span>) {
             <span class="keyword">if</span> (file_exists(__DIR__ . <span class="string">'/../downloads'</span>)) {
                 delFolder(__DIR__ . <span class="string">'/../downloads/'</span>);
@@ -258,18 +257,18 @@ F3::set(<span class="string">'privateKey'</span>, <span class="string">''</span>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>        <span class="variable">$name</span> = f3::get(<span class="string">'POST["name"]'</span>);
-        <span class="variable">$email</span> = f3::get(<span class="string">'POST["email"]'</span>);
-        <span class="variable">$country</span> = f3::get(<span class="string">'POST["country"]'</span>);
-        <span class="variable">$city</span> = f3::get(<span class="string">'POST["city"]'</span>);
-        <span class="variable">$street</span> = f3::get(<span class="string">'POST["street"]'</span>);
+            <div class="content"><div class='highlight'><pre>        <span class="variable">$name</span> = F3::get(<span class="string">'POST["name"]'</span>);
+        <span class="variable">$email</span> = F3::get(<span class="string">'POST["email"]'</span>);
+        <span class="variable">$country</span> = F3::get(<span class="string">'POST["country"]'</span>);
+        <span class="variable">$city</span> = F3::get(<span class="string">'POST["city"]'</span>);
+        <span class="variable">$street</span> = F3::get(<span class="string">'POST["street"]'</span>);
        
-        f3::set(<span class="string">"email"</span>, <span class="variable">$email</span>);
-        f3::set(<span class="string">"country"</span>, <span class="variable">$country</span>);
-        f3::set(<span class="string">"name"</span>, <span class="variable">$name</span>);
-        f3::set(<span class="string">"street"</span>, <span class="variable">$street</span>);
-        f3::set(<span class="string">"city"</span>, <span class="variable">$city</span>);
-        f3::set(<span class="string">"callbackUrl"</span>, <span class="variable">$callbackUrl</span>);
+        F3::set(<span class="string">"email"</span>, <span class="variable">$email</span>);
+        F3::set(<span class="string">"country"</span>, <span class="variable">$country</span>);
+        F3::set(<span class="string">"name"</span>, <span class="variable">$name</span>);
+        F3::set(<span class="string">"street"</span>, <span class="variable">$street</span>);
+        F3::set(<span class="string">"city"</span>, <span class="variable">$city</span>);
+        F3::set(<span class="string">"callbackUrl"</span>, <span class="variable">$callbackUrl</span>);
         <span class="variable">$enteredData</span> = <span class="keyword">array</span>(<span class="string">"email"</span> =&gt; <span class="variable">$email</span>, <span class="string">"country"</span> =&gt; <span class="variable">$country</span>, <span class="string">"name"</span> =&gt; <span class="variable">$name</span>, <span class="string">"street"</span> =&gt; <span class="variable">$street</span>, <span class="string">"city"</span> =&gt; <span class="variable">$city</span>);</pre></div></div>
             
         </li>
@@ -713,7 +712,7 @@ F3::set(<span class="string">'privateKey'</span>, <span class="string">''</span>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>        <span class="keyword">return</span> f3::set(<span class="string">'url'</span>, <span class="variable">$iframe</span>);
+            <div class="content"><div class='highlight'><pre>        <span class="keyword">return</span> F3::set(<span class="string">'url'</span>, <span class="variable">$iframe</span>);
     }
 }</pre></div></div>
             
@@ -817,10 +816,11 @@ F3::set(<span class="string">'privateKey'</span>, <span class="string">''</span>
 }
 
 <span class="keyword">try</span> {
-    createQuestionary(<span class="variable">$clientId</span>, <span class="variable">$privateKey</span>, <span class="variable">$basePath</span>);
+    createQuestionary(<span class="variable">$clientId</span>, <span class="variable">$privateKey</span>, <span class="variable">$basePath</span>, <span class="variable">$templateGuid</span>);
+
 } <span class="keyword">catch</span> (<span class="keyword">Exception</span> <span class="variable">$e</span>) {
     <span class="variable">$error</span> = <span class="string">'ERROR: '</span> . <span class="variable">$e</span>-&gt;getMessage() . <span class="string">"\n"</span>;
-    f3::set(<span class="string">'error'</span>, <span class="variable">$error</span>);
+    F3::set(<span class="string">'error'</span>, <span class="variable">$error</span>);
 }</pre></div></div>
             
         </li>

@@ -9,10 +9,10 @@ $privateKey = F3::get('POST["privateKey"]');
 //###Check clientId and privateKey
 if (empty($clientId) || empty($privateKey)) {
     $error = 'Please enter all required parameters';
-    f3::set('error', $error);
+    F3::set('error', $error);
 } else {
     //Get base path
-    $basePath = f3::get('POST["basePath"]');
+    $basePath = F3::get('POST["basePath"]');
     //###Create Signer, ApiClient and Storage Api objects
     //Create signer object
     $signer = new GroupDocsRequestSigner($privateKey);
@@ -45,7 +45,7 @@ if (empty($clientId) || empty($privateKey)) {
         }
     } catch (Exception $e) {
         $error = 'ERROR: ' . $e->getMessage() . "\n";
-        f3::set('error', $error);
+        F3::set('error', $error);
     }
 }
 //Process template

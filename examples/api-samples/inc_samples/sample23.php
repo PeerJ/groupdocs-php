@@ -6,7 +6,7 @@ F3::set('userId', '');
 F3::set('privateKey', '');
 $clientId = F3::get('POST["clientId"]');
 $privateKey = F3::get('POST["privateKey"]');
-$basePath = f3::get('POST["basePath"]');
+$basePath = F3::get('POST["basePath"]');
 
 function Iframe($clientId, $privateKey, $basePath) {
     //###Check if user entered all parameters
@@ -35,7 +35,7 @@ function Iframe($clientId, $privateKey, $basePath) {
         //Get entered by user data
         $url = F3::get('POST["url"]');
         $file = $_FILES['file'];
-        $fileId = f3::get('POST["fileId"]');
+        $fileId = F3::get('POST["fileId"]');
         $fileGuId = "";
         //Check is file GUID entered
         if ($fileId != "") {
@@ -99,8 +99,8 @@ function Iframe($clientId, $privateKey, $basePath) {
             throw new Exception($pageImage->error_message);
         }
         //Set variable with results for template
-        f3::set("fileId", $fileGuId);
-        return f3::set('image', $image);
+        F3::set("fileId", $fileGuId);
+        return F3::set('image', $image);
     }
 }
 
@@ -108,7 +108,7 @@ try {
     Iframe($clientId, $privateKey, $basePath);
 } catch (Exception $e) {
     $error = 'ERROR: ' . $e->getMessage() . "\n";
-    f3::set('error', $error);
+    F3::set('error', $error);
 }
 //Process template
 echo Template::serve('sample23.htm');

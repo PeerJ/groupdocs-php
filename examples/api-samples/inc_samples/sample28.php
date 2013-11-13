@@ -15,7 +15,7 @@ function DeleteAnnotations($clientId, $privateKey, $fileId) {
         throw new Exception('Please enter all required parameters');
     } else {
         //Get base path
-        $basePath = f3::get('POST["basePath"]');
+        $basePath = F3::get('POST["basePath"]');
         F3::set('userId', $clientId);
         F3::set('privateKey', $privateKey);
         F3::set('fileId', $fileId);
@@ -61,7 +61,7 @@ function DeleteAnnotations($clientId, $privateKey, $fileId) {
                             $iframe = 'http://realtime-apps.groupdocs.com/document-viewer/embed/' . $fileId;
                         }
                         $iframe = $signer->signUrl($iframe);
-                        f3::set("url", $iframe);
+                        F3::set("url", $iframe);
                     } else {
                         $message = $del->error_message;
                     }
@@ -80,7 +80,7 @@ try {
     DeleteAnnotations($clientId, $privateKey, $fileId);
 } catch (Exception $e) {
     $error = 'ERROR: ' . $e->getMessage() . "\n";
-    f3::set('error', $error);
+    F3::set('error', $error);
 }
 
 // Process template

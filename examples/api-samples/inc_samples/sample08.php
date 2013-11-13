@@ -6,20 +6,20 @@ F3::set('userId', '');
 F3::set('privateKey', '');
 $clientId = F3::get('POST["clientId"]');
 $privateKey = F3::get('POST["privateKey"]');
-$pageNumber = f3::get('POST["pageNumber"]');
+$pageNumber = F3::get('POST["pageNumber"]');
 
 //### Check clientId, privateKey and fileGuId
 if (empty($clientId) || empty($privateKey)) {
     $error = 'Please enter all required parameters';
-    f3::set('error', $error);
+    F3::set('error', $error);
 } else {
     //Get entered by user data
     $fileGuId = "";
     $url = F3::get('POST["url"]');
     $file = $_FILES['file'];
-    $fileId = f3::get('POST["fileId"]');
+    $fileId = F3::get('POST["fileId"]');
     //Get base path
-    $basePath = f3::get('POST["basePath"]');
+    $basePath = F3::get('POST["basePath"]');
     //Set variables for Viewer
     F3::set('userId', $clientId);
     F3::set('privateKey', $privateKey);
@@ -57,7 +57,7 @@ if (empty($clientId) || empty($privateKey)) {
             }
         } catch (Exception $e) {
             $error = 'ERROR: ' . $e->getMessage() . "\n";
-            f3::set('error', $error);
+            F3::set('error', $error);
         }
     }
     //Check is user choose upload local file
@@ -86,7 +86,7 @@ if (empty($clientId) || empty($privateKey)) {
             }
         } catch (Exception $e) {
             $error = 'ERROR: ' . $e->getMessage() . "\n";
-            f3::set('error', $error);
+            F3::set('error', $error);
         }
     }
     //Check is user choose file GUID
@@ -100,16 +100,16 @@ if (empty($clientId) || empty($privateKey)) {
         $URL = $docApi->GetDocumentPagesImageUrls($clientId, $fileGuId, (int) $pageNumber, 1, "500x600");
         if ($URL->status == "Ok") {
             //If request was successfull - set url variable for template
-            f3::set('fileId', $fileGuId);
-            f3::set('url', $URL->result->url[0]);
+            F3::set('fileId', $fileGuId);
+            F3::set('url', $URL->result->url[0]);
         } else {
             throw new Exception($URL->error_message);
         }
     } catch (Exception $e) {
         $error = 'ERROR: ' . $e->getMessage() . "\n";
-        f3::set('error', $error);
+        F3::set('error', $error);
     }
 }
 //Process template
-f3::set('pageNumber', $pageNumber);
+F3::set('pageNumber', $pageNumber);
 echo Template::serve('sample08.htm');

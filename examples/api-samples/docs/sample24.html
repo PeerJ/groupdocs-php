@@ -87,7 +87,7 @@ F3::set(<span class="string">'iframe'</span>, <span class="string">''</span>);
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>        <span class="variable">$basePath</span> = f3::get(<span class="string">'POST["basePath"]'</span>);
+            <div class="content"><div class='highlight'><pre>        <span class="variable">$basePath</span> = F3::get(<span class="string">'POST["basePath"]'</span>);
         <span class="variable">$clientID</span> = strip_tags(stripslashes(trim(<span class="variable">$clientId</span>))); <span class="comment">//ClientId==UserId</span>
         <span class="variable">$apiKey</span> = strip_tags(stripslashes(trim(<span class="variable">$privateKey</span>))); <span class="comment">//ApiKey==PrivateKey</span></pre></div></div>
             
@@ -293,7 +293,7 @@ iframe to prodaction server</p>
     F3::set(<span class="string">'url'</span>, <span class="variable">$upload</span>);
 } <span class="keyword">catch</span> (<span class="keyword">Exception</span> <span class="variable">$e</span>) {
     <span class="variable">$error</span> = <span class="string">'ERROR: '</span> . <span class="variable">$e</span>-&gt;getMessage() . <span class="string">"\n"</span>;
-    f3::set(<span class="string">'error'</span>, <span class="variable">$error</span>);
+    F3::set(<span class="string">'error'</span>, <span class="variable">$error</span>);
 }</pre></div></div>
             
         </li>

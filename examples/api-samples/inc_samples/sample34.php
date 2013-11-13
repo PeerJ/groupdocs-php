@@ -9,13 +9,13 @@ $folder = F3::get('POST["folder"]');
 //###Check clientId, privateKey and file Id
 if (!isset($clientId) || !isset($privateKey) || !isset($folder)) {
     $error = 'Please enter all required parameters';
-    f3::set('error', $error);
+    F3::set('error', $error);
 } else {
     //Clear entered data from tags and spaces
     $clientId = strip_tags(trim($clientId));
     $privateKey = strip_tags(trim($privateKey));
     $folder = strip_tags(trim($folder));
-    $basePath = f3::get('POST["basePath"]');
+    $basePath = F3::get('POST["basePath"]');
     //###Create Signer, ApiClient and Storage Api objects
     //Create signer object
     $signer = new GroupDocsRequestSigner($privateKey);
@@ -43,13 +43,13 @@ if (!isset($clientId) || !isset($privateKey) || !isset($folder)) {
         if ($createFodler->status == "Ok") {
             //Generate message with successful result
             $message = '<span style="color:green">Folder was created ' . $createFodler->result->path . '</span>';
-            f3::set('message', $message);
+            F3::set('message', $message);
         } else {
             throw new Exception($docInfo->error_message);
         }
     } catch (Exception $e) {
         $error = 'ERROR: ' . $e->getMessage() . "\n";
-        f3::set('error', $error);
+        F3::set('error', $error);
     }
 }
 

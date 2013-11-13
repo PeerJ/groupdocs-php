@@ -5,14 +5,14 @@
 F3::set('userId', '');
 F3::set('privateKey', '');
 F3::set('fileId', '');
-F3::set('convert_type', '');
+F3::set('convertType', '');
 $clientId = F3::get('POST["clientId"]');
 $privateKey = F3::get('POST["privateKey"]');
-$convert_type = F3::get('POST["convertType"]');
-$callbackUrl = f3::get('POST["callbackUrl"]');
-if (empty($clientId) || empty($privateKey) || empty($convert_type)) {
+$convertType = F3::get('POST["convertType"]');
+$callbackUrl = F3::get('POST["callbackUrl"]');
+if (empty($clientId) || empty($privateKey) || empty($convertType)) {
     $error = 'Please enter all required parameters';
-    f3::set('error', $error);
+    F3::set('error', $error);
 } else {
     //path to settings file - temporary save userId and apiKey like to property file
     $infoFile = fopen(__DIR__ . '/../user_info.txt', 'w');
@@ -25,14 +25,14 @@ if (empty($clientId) || empty($privateKey) || empty($convert_type)) {
         }
     }
     //Get base path
-    $basePath = f3::get('POST["basePath"]');
+    $basePath = F3::get('POST["basePath"]');
     //Set variables for Viewer
     F3::set('userId', $clientId);
     F3::set('privateKey', $privateKey);
     //Get entered by user data
     $url = F3::get('POST["url"]');
     $file = $_FILES['file'];
-    $fileId = f3::get('POST["fileId"]');
+    $fileId = F3::get('POST["fileId"]');
     //###Create Signer, ApiClient and Storage Api objects
     //Create signer object
     $signer = new GroupDocsRequestSigner($privateKey);
@@ -65,7 +65,7 @@ if (empty($clientId) || empty($privateKey) || empty($convert_type)) {
             }
         } catch (Exception $e) {
             $error = 'ERROR: ' . $e->getMessage() . "\n";
-            f3::set('error', $error);
+            F3::set('error', $error);
         }
     }
     //Check is user choose upload local file
@@ -91,7 +91,7 @@ if (empty($clientId) || empty($privateKey) || empty($convert_type)) {
             }
         } catch (Exception $e) {
             $error = 'ERROR: ' . $e->getMessage() . "\n";
-            f3::set('error', $error);
+            F3::set('error', $error);
         }
     }
     //Check is user choose file GUID
@@ -103,7 +103,7 @@ if (empty($clientId) || empty($privateKey) || empty($convert_type)) {
     F3::set("callbackUrl", $callbackUrl);
     //Make request to api for convert file
     try {
-        $convert = $asyncApi->Convert($clientId, $fileGuId, null, null, null, $callbackUrl, $convert_type);
+        $convert = $asyncApi->Convert($clientId, $fileGuId, null, null, null, $callbackUrl, $convertType);
         //Check request status
         if ($convert->status == "Ok") {
             //Delay necessary that the inquiry would manage to be processed
@@ -120,7 +120,7 @@ if (empty($clientId) || empty($privateKey) || empty($convert_type)) {
                 }
             } catch (Exception $e) {
                 $error = 'ERROR: ' . $e->getMessage() . "\n";
-                f3::set('error', $error);
+                F3::set('error', $error);
             }
             //Generation of iframe URL using fileGuId
             if ($basePath == "https://api.groupdocs.com/v2.0") {
@@ -141,12 +141,11 @@ if (empty($clientId) || empty($privateKey) || empty($convert_type)) {
             }
             $iframe = $signer->signUrl($iframe);
         } else {
-            $error_message = $convert->error_message;
-            f3::set('error_message', $error_message);
+            throw new Exception($convert->error_message);
         }
     } catch (Exception $e) {
         $error = 'ERROR: ' . $e->getMessage() . "\n";
-        f3::set('error', $error);
+        F3::set('error', $error);
     }
     //If request was successfull - set url variable for template
     F3::set('fileId', $fileId);
@@ -177,6 +176,6 @@ function delFolder($path) {
 
 F3::set('userId', $clientId);
 F3::set('privateKey', $privateKey);
-F3::set('convert_type', $convert_type);
+F3::set('convertType', $convertType);
 // Process template
 echo Template::serve('sample18.htm');

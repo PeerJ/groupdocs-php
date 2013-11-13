@@ -7,20 +7,20 @@ F3::set('userId', '');
 F3::set('privateKey', '');
 $clientId = F3::get('POST["clientId"]');
 $privateKey = F3::get('POST["privateKey"]');
-$email = f3::get('POST["email"]');
+$email = F3::get('POST["email"]');
 $sharer = array($email);
 //### Check file id, user, private key and body
 if ($clientId == "" || $privateKey == "" || $sharer == "") {
     $error = 'Please enter all required parameters';
-    f3::set('error', $error);
+    F3::set('error', $error);
 } else {
     //Get base path
-    $basePath = f3::get('POST["basePath"]');
+    $basePath = F3::get('POST["basePath"]');
     //Get entered by user data
     $url = F3::get('POST["url"]');
     $file = $_FILES['file'];
-    $fileId = f3::get('POST["fileId"]');
-    $file_id = "";
+    $fileId = F3::get('POST["fileId"]');
+    $guid = "";
     //###Create Signer, ApiClient and Storage Api objects
     //Create signer object
     $signer = new GroupDocsRequestSigner($privateKey);
@@ -42,7 +42,7 @@ if ($clientId == "" || $privateKey == "" || $sharer == "") {
             //Check is file uploaded
             if ($uploadResult->status == "Ok") {
                 //Get file GUID
-                $file_id = $uploadResult->result->id;
+                $guid = $uploadResult->result->id;
                 $fileId = "";
                 //If it isn't uploaded throw exception to template
             } else {
@@ -50,7 +50,7 @@ if ($clientId == "" || $privateKey == "" || $sharer == "") {
             }
         } catch (Exception $e) {
             $error = 'ERROR: ' . $e->getMessage() . "\n";
-            f3::set('error', $error);
+            F3::set('error', $error);
         }
     }
     //Check is user choose upload local file
@@ -69,7 +69,7 @@ if ($clientId == "" || $privateKey == "" || $sharer == "") {
             //###Check if file uploaded successfully
             if ($uploadResult->status == "Ok") {
                 //Get file GUID
-                $file_id = $uploadResult->result->id;
+                $guid = $uploadResult->result->id;
                 $fileId = "";
 
                 //If it isn't uploaded throw exception to template
@@ -78,7 +78,7 @@ if ($clientId == "" || $privateKey == "" || $sharer == "") {
             }
         } catch (Exception $e) {
             $error = 'ERROR: ' . $e->getMessage() . "\n";
-            f3::set('error', $error);
+            F3::set('error', $error);
         }
     }
     if ($fileId != "") {
@@ -92,7 +92,7 @@ if ($clientId == "" || $privateKey == "" || $sharer == "") {
                 foreach ($files->result->files as $item) {
                     if ($item->guid == $fileId) {
                         $name = $item->name;
-                        $file_id = $item->id;
+                        $guid = $item->id;
                     }
                 }
                
@@ -101,7 +101,7 @@ if ($clientId == "" || $privateKey == "" || $sharer == "") {
             }
         } catch (Exception $e) {
             $error = 'ERROR: ' . $e->getMessage() . "\n";
-            f3::set('error', $error);
+            F3::set('error', $error);
         }
     }
     //###Create DocApi object
@@ -109,21 +109,21 @@ if ($clientId == "" || $privateKey == "" || $sharer == "") {
     $docApi->setBasePath($basePath);
     //Make request to user storage for sharing document
     try {
-        $share = $docApi->ShareDocument($clientId, $file_id, $sharer);
+        $share = $docApi->ShareDocument($clientId, $guid, $sharer);
         if ($share->status == "Ok") {
             //If request was successfull - set shared variable for template
-            f3::set('shared', $sharer['0']);
-            f3::set('fileId', $file_id);
+            F3::set('shared', $sharer['0']);
+            F3::set('fileId', $guid);
         } else {
             throw new Exception($share->error_message);
         }
     } catch (Exception $e) {
         $error = 'ERROR: ' . $e->getMessage() . "\n";
-        f3::set('error', $error);
+        F3::set('error', $error);
     }
 }
 //Process template
 F3::set('userId', $clientId);
 F3::set('privateKey', $privateKey);
-f3::set('email', $email);
+F3::set('email', $email);
 echo Template::serve('sample10.htm');

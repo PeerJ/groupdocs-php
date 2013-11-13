@@ -70,7 +70,7 @@ F3::set(<span class="string">'collaborations'</span>, <span class="string">''</s
             <div class="content"><div class='highlight'><pre><span class="variable">$collaborations</span> = (is_array(<span class="variable">$collaborations</span>)) ? array_filter(<span class="variable">$collaborations</span>, <span class="string">'strlen'</span>) : <span class="keyword">array</span>();
 <span class="keyword">if</span> (<span class="keyword">empty</span>(<span class="variable">$clientId</span>) || <span class="keyword">empty</span>(<span class="variable">$privateKey</span>) || (is_array(<span class="variable">$collaborations</span>) &amp;&amp; !count(<span class="variable">$collaborations</span>))) {
     <span class="variable">$error</span> = <span class="string">'Please enter all required parameters'</span>;
-    f3::set(<span class="string">'error'</span>, <span class="variable">$error</span>);
+    F3::set(<span class="string">'error'</span>, <span class="variable">$error</span>);
 } <span class="keyword">else</span> {</pre></div></div>
             
         </li>
@@ -86,7 +86,7 @@ F3::set(<span class="string">'collaborations'</span>, <span class="string">''</s
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    <span class="variable">$basePath</span> = f3::get(<span class="string">'POST["basePath"]'</span>);</pre></div></div>
+            <div class="content"><div class='highlight'><pre>    <span class="variable">$basePath</span> = F3::get(<span class="string">'POST["basePath"]'</span>);</pre></div></div>
             
         </li>
         
@@ -282,7 +282,7 @@ F3::set(<span class="string">'collaborations'</span>, <span class="string">''</s
             }
         } <span class="keyword">catch</span> (<span class="keyword">Exception</span> <span class="variable">$e</span>) {
             <span class="variable">$error</span> = <span class="string">'ERROR: '</span> . <span class="variable">$e</span>-&gt;getMessage() . <span class="string">"\n"</span>;
-            f3::set(<span class="string">'error'</span>, <span class="variable">$error</span>);
+            F3::set(<span class="string">'error'</span>, <span class="variable">$error</span>);
         }
     }</pre></div></div>
             
@@ -412,7 +412,7 @@ F3::set(<span class="string">'collaborations'</span>, <span class="string">''</s
             }
         } <span class="keyword">catch</span> (<span class="keyword">Exception</span> <span class="variable">$e</span>) {
             <span class="variable">$error</span> = <span class="string">'ERROR: '</span> . <span class="variable">$e</span>-&gt;getMessage() . <span class="string">"\n"</span>;
-            f3::set(<span class="string">'error'</span>, <span class="variable">$error</span>);
+            F3::set(<span class="string">'error'</span>, <span class="variable">$error</span>);
         }
     }
     <span class="keyword">if</span> (<span class="variable">$fileGuId</span> != <span class="string">""</span>) {
@@ -472,7 +472,7 @@ F3::set(<span class="string">'collaborations'</span>, <span class="string">''</s
         }
     } <span class="keyword">catch</span> (<span class="keyword">Exception</span> <span class="variable">$e</span>) {
         <span class="variable">$error</span> = <span class="string">'ERROR: '</span> . <span class="variable">$e</span>-&gt;getMessage() . <span class="string">"\n"</span>;
-        f3::set(<span class="string">'error'</span>, <span class="variable">$error</span>);
+        F3::set(<span class="string">'error'</span>, <span class="variable">$error</span>);
     }
 }</pre></div></div>
             

@@ -12,7 +12,7 @@ function Login($login, $password) {
     if (!isset($login) || !isset($password)) {
         throw new Exception("Please enter login and password");
     }
-    $basePath = f3::get('POST["basePath"]');
+    $basePath = F3::get('POST["basePath"]');
     //Check if user entered base path
     if ($basePath == "") {
         //If base base is empty seting base path to prod server
@@ -38,14 +38,14 @@ function Login($login, $password) {
         throw new Exception($userData->error_message);
     }
     //Return user data for template
-    return f3::set("userInfo", $result);
+    return F3::set("userInfo", $result);
 }
 
 try {
     Login($login, $password);
 } catch (Exception $e) {
     $error = 'ERROR: ' . $e->getMessage() . "\n";
-    f3::set('error', $error);
+    F3::set('error', $error);
 }
 //Process template
 echo Template::serve('sample26.htm');

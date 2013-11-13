@@ -10,10 +10,10 @@ $privateKey = F3::get('POST["privateKey"]');
 $path = F3::get('POST["path"]');
 if (empty($clientId) || empty($privateKey) || empty($path)) {
     $error = 'Please enter all required parameters';
-    f3::set('error', $error);
+    F3::set('error', $error);
 } else {
     //Get base path
-    $basePath = f3::get('POST["basePath"]');
+    $basePath = F3::get('POST["basePath"]');
     F3::set('userId', $clientId);
     F3::set('privateKey', $privateKey);
     F3::set('path', $path);
@@ -60,7 +60,7 @@ if (empty($clientId) || empty($privateKey) || empty($path)) {
         }
     } catch (Exception $e) {
         $error = 'ERROR: ' . $e->getMessage() . "\n";
-        f3::set('error', $error);
+        F3::set('error', $error);
     }
     //### Get list of shares
     if (!is_null($folderId)) {
@@ -78,7 +78,7 @@ if (empty($clientId) || empty($privateKey) || empty($path)) {
             }
         } catch (Exception $e) {
             $error = 'ERROR: ' . $e->getMessage() . "\n";
-            f3::set('error', $error);
+            F3::set('error', $error);
         }
     }
 

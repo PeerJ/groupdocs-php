@@ -12,10 +12,10 @@ $folder = F3::get('POST["destPath"]');
 //###Check clientId, privateKey and file Id
 if (!isset($clientId) || !isset($privateKey) || $folder == "") {
     $error = 'Please enter all required parameters';
-    f3::set('error', $error);
+    F3::set('error', $error);
 } else {
     //Get base path
-    $basePath = f3::get('POST["basePath"]');
+    $basePath = F3::get('POST["basePath"]');
     //###Create Signer, ApiClient and Storage Api objects
     //Create signer object
     $signer = new GroupDocsRequestSigner($privateKey);
@@ -114,19 +114,20 @@ if (!isset($clientId) || !isset($privateKey) || $folder == "") {
             try {
                 $file = $storageApi->MoveFile($clientId, $path, NULL, NULL, $fileId); //download file
                 //If request was successfull - set button variable for template
-                F3::set('file_Name', $fileId);
+               
                 F3::set('button', $move);
             } catch (Exception $e) {
                 $error = 'ERROR: ' . $e->getMessage() . "\n";
                 $message = $error;
             }
         }
+         F3::set('fileName', $name);
         $message = 'File was {{@button}}\'ed to the <font color="blue">{{@folder}}</font> folder';
         //Process template
         F3::set('userId', $clientId);
         F3::set('privateKey', $privateKey);
         F3::set('folder', $folder);
-        f3::set('message', $message);
+        F3::set('message', $message);
     } catch (Exception $e) {
         $error = 'ERROR: ' . $e->getMessage() . "\n";
         $message = $error;

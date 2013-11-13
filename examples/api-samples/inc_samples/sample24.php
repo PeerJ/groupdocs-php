@@ -17,7 +17,7 @@ function Upload($clientId, $privateKey, $url) {
         throw new Exception('Please enter all required parameters');
     } else {
         //Get base path
-        $basePath = f3::get('POST["basePath"]');
+        $basePath = F3::get('POST["basePath"]');
         $clientID = strip_tags(stripslashes(trim($clientId))); //ClientId==UserId
         $apiKey = strip_tags(stripslashes(trim($privateKey))); //ApiKey==PrivateKey
         //###Create Signer, ApiClient and Storage Api objects
@@ -68,7 +68,7 @@ try {
     F3::set('url', $upload);
 } catch (Exception $e) {
     $error = 'ERROR: ' . $e->getMessage() . "\n";
-    f3::set('error', $error);
+    F3::set('error', $error);
 }
 //Process template
 F3::set('userId', $clientId);

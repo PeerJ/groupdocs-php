@@ -11,7 +11,7 @@ $privateKey = F3::get('POST["privateKey"]');
 //###Check clientId, privateKey
 if (!isset($clientId) || !isset($privateKey)) {
     $error = 'Please enter all required parameters';
-    f3::set('error', $error);
+    F3::set('error', $error);
 } else {
     //Get chosen local file
     $fiDocument = $_FILES["fiDocument"];
@@ -19,10 +19,10 @@ if (!isset($clientId) || !isset($privateKey)) {
     //Check is both file chosen
     if ($fiDocument == null || $fiSignature == null) {
         $error = "please choose document to sign and signature file";
-        f3::set('error', $error);
+        F3::set('error', $error);
     }
     //Get base path
-    $basePath = f3::get('POST["basePath"]');
+    $basePath = F3::get('POST["basePath"]');
     //Get document to sign content
     $docContent = file_get_contents($fiDocument["tmp_name"]);
     //Get signature file content
@@ -93,14 +93,14 @@ if (!isset($clientId) || !isset($privateKey)) {
                 }
             } catch (Exception $e) {
                 $error = 'ERROR: ' . $e->getMessage() . "\n";
-                f3::set('error', $error);
+                F3::set('error', $error);
             }
         } else {
             throw new Exception($response->error_message);
         }
     } catch (Exception $e) {
         $error = 'ERROR: ' . $e->getMessage() . "\n";
-        f3::set('error', $error);
+        F3::set('error', $error);
     }
 }
 

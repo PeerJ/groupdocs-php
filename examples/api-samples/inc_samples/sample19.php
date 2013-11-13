@@ -4,16 +4,16 @@
 //Set variables and get POST data
 F3::set('userId', '');
 F3::set('privateKey', '');
-f3::set('result', "");
+F3::set('result', "");
 $clientId = F3::get('POST["clientId"]');
 $privateKey = F3::get('POST["privateKey"]');
 
-$callbackUrl = f3::get('POST["callbackUrl"]');
-$basePath = f3::get('POST["basePath"]');
+$callbackUrl = F3::get('POST["callbackUrl"]');
+$basePath = F3::get('POST["basePath"]');
 //### Check clientId, privateKey and fileGuId
 if (empty($clientId) || empty($privateKey)) {
     $error = 'Please enter all required parameters';
-    f3::set('error', $error);
+    F3::set('error', $error);
 } else {
     //path to settings file - temporary save userId and apiKey like to property file
     $infoFile = fopen(__DIR__ . '/../user_info.txt', 'w');
@@ -31,8 +31,8 @@ if (empty($clientId) || empty($privateKey)) {
     //Get entered by user data
     $sourceFileId = "";
     $targetFileId = "";
-    $firstFileId = f3::get('POST["sourceFileId"]');
-    $secondFileId = f3::get('POST["targetFileId"]');
+    $firstFileId = F3::get('POST["sourceFileId"]');
+    $secondFileId = F3::get('POST["targetFileId"]');
     $url = F3::get('POST["url"]');
     $targetUrl = F3::get('POST["targetUrl"]');
     $iframe = "";
@@ -86,7 +86,7 @@ if (empty($clientId) || empty($privateKey)) {
                 }
             } catch (Exception $e) {
                 $error = 'ERROR: ' . $e->getMessage() . "\n";
-                f3::set('error', $error);
+                F3::set('error', $error);
             }
         }
         //Check is user choose upload and compare file from URL
@@ -113,7 +113,7 @@ if (empty($clientId) || empty($privateKey)) {
                 }
             } catch (Exception $e) {
                 $error = 'ERROR: ' . $e->getMessage() . "\n";
-                f3::set('error', $error);
+                F3::set('error', $error);
             }
         }
     }
@@ -132,7 +132,7 @@ if (empty($clientId) || empty($privateKey)) {
                 }
             } catch (Exception $e) {
                 $error = 'ERROR: ' . $e->getMessage() . "\n";
-                f3::set('error', $error);
+                F3::set('error', $error);
             }
         }
         if ($targetUrl != "") {
@@ -149,7 +149,7 @@ if (empty($clientId) || empty($privateKey)) {
                 }
             } catch (Exception $e) {
                 $error = 'ERROR: ' . $e->getMessage() . "\n";
-                f3::set('error', $error);
+                F3::set('error', $error);
             }
         }
     }
@@ -190,7 +190,7 @@ if (empty($clientId) || empty($privateKey)) {
                     }
                 } catch (Exception $e) {
                     $error = 'ERROR: ' . $e->getMessage() . "\n";
-                    f3::set('error', $error);
+                    F3::set('error', $error);
                 }
             }
             //Get file guid
@@ -218,11 +218,11 @@ if (empty($clientId) || empty($privateKey)) {
         }
     } catch (Exception $e) {
         $error = 'ERROR: ' . $e->getMessage() . "\n";
-        f3::set('error', $error);
+        F3::set('error', $error);
     }
     //If request was successfull - set url variable for template
-    f3::set('sourceFileId', $sourceFileId);
-    f3::set('targetFileId', $targetFileId);
+    F3::set('sourceFileId', $sourceFileId);
+    F3::set('targetFileId', $targetFileId);
     F3::set('iframe', $iframe);
 }
 
@@ -249,5 +249,5 @@ function delFolder($path) {
 }
 
 //Process template
-f3::set('callbackURL', $callbackUrl);
+F3::set('callbackURL', $callbackUrl);
 echo Template::serve('sample19.htm');

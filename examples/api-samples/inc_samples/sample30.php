@@ -13,10 +13,10 @@ $fileGuid = "";
 $message = "";
 if (empty($clientId) || empty($privateKey) || empty($fileName)) {
     $error = 'Please enter all required parameters';
-    f3::set('error', $error);
+    F3::set('error', $error);
 } else {
     //Get base path
-    $basePath = f3::get('POST["basePath"]');
+    $basePath = F3::get('POST["basePath"]');
     if ($basePath == "") {
          $basePath = 'https://api.groupdocs.com/v2.0';
     }
@@ -59,7 +59,7 @@ if (empty($clientId) || empty($privateKey) || empty($fileName)) {
                
             } catch (Exception $e) {
                 $error = 'ERROR: ' . $e->getMessage() . "\n";
-                f3::set('error', $error);
+                F3::set('error', $error);
             }
         } else {
             $message = '<span style="color: red">' . $allFiles->error_message . '</span>';
@@ -67,7 +67,7 @@ if (empty($clientId) || empty($privateKey) || empty($fileName)) {
 
     } catch (Exception $e) {
         $error = 'ERROR: ' . $e->getMessage() . "\n";
-        f3::set('error', $error);
+        F3::set('error', $error);
     }
     F3::set('message', $message);
 }

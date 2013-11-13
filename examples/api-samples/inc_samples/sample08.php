@@ -19,7 +19,7 @@ if (empty($clientId) || empty($privateKey)) {
     $file = $_FILES['file'];
     $fileId = f3::get('POST["fileId"]');
     //Get base path
-    $basePath = f3::get('POST["server_type"]');
+    $basePath = f3::get('POST["basePath"]');
     //Set variables for Viewer
     F3::set('userId', $clientId);
     F3::set('privateKey', $privateKey);

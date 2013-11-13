@@ -38,37 +38,37 @@
             <br />
             <input type="radio" name="sourse" value="local" id="localField" onClick="display('local');" >Upload local file </input>
             <br />
-            <input type="radio" name="sourse" value="url" id="urlFieldR" onClick="display('url');" >Upload file from URL </input>
+            <input type="radio" name="sourse" value="url" id="urlField" onClick="display('url');" >Upload file from URL </input>
             <br />
             <br />
-            <label for='guidfield' id="guid">GroupDocs fileID</label>
+            <label for='guidField' id="guid">GroupDocs fileID</label>
             <br />
-            <input type='text' name='fileId' id="guidfield" value="{{@fileId}}" />
+            <input type='text' name='fileId' id="guidField" value="{{@fileId}}" />
             
             <label for='file' id="file" style="display:none;">Local file</label>
             <br />
-            <input type='file' name='file' id="filefield" style="display:none;" />
+            <input type='file' name='file' id="fileField" style="display:none;" />
 
-            <label for='urlfield' style="display:none;" id="url">File URL</label>
+            <label for='urlField' style="display:none;" id="url">File URL</label>
             <br />
-            <input type='text' name='url'  value="" id="urlfield" style="display:none;" />
+            <input type='text' name='url'  value="" id="urlField" style="display:none;" />
             <br />
             <label for='callbackUrl'>callbackUrl<span class="optional">(Optional)<br />For test Callback you can use this URL: http://groupdocs-php-samples.herokuapp.com/callbacks/convert_callback</span></label>
             <br />
             <input type='text' name='callbackUrl' id="callbackUrl" value="{{@callbackUrl}}" />
             <br />
-            <label for='server_type'>Base path<span class="optional">(Optional)</span></label>
+            <label for='basePath'>Base path<span class="optional">(Optional)</span></label>
             <br />
-            <input type ="text" name="server_type" id="server_type" />
+            <input type ="text" name="basePath" id="basePath" />
             <br />
             <input type='submit' value='Make Request'/>
-            <select name="convert_type" id="convert_type">
+            <select name="convertType" id="convertType">
                             <option value="doc">Doc</option>
                             <option value="pdf">PDF</option>
                             <option value="docx">Docx</option>
                             <option value="ppt">PPT</option>
             </select>
-            <span id="results_status" style="color:red;display:none;"> (Please wait for ajax response) </span>
+            <span id="resultsStatus" style="color:red;display:none;"> (Please wait for ajax response) </span>
             <div id="link"></div>
         </form>
         <br>
@@ -92,13 +92,13 @@
          function check() {
              
              if (($("input[name=callbackUrl]").val() != "") && (document.getElementById("result") != null)) {
-                 $('#results_status').fadeIn("slow");
+                 $('#resultsStatus').fadeIn("slow");
                  form = document.forms.form;
                  $.ajax({
                      type: 'POST',
                      url: '/callbacks/check_file',
                      success: function (data) {
-                         $('#results_status').fadeOut("slow");
+                         $('#resultsStatus').fadeOut("slow");
                          div = document.getElementById("link");
                          p = document.createElement("p");
                          if (data == "File was not found. Looks like something went wrong.") {
@@ -118,11 +118,11 @@
 
              if (_element_id == "guid") {
                  var element1 = document.getElementById("file");
-                 var element2 = document.getElementById("filefield");
+                 var element2 = document.getElementById("fileField");
                  var element3 = document.getElementById("url");
-                 var element4 = document.getElementById("urlfield");
+                 var element4 = document.getElementById("urlField");
                  var element5 = document.getElementById("guid");
-                 var element6 = document.getElementById("guidfield");
+                 var element6 = document.getElementById("guidField");
                  element1.style.display = "none";
                  element2.style.display = "none";
                  element3.style.display = "none";
@@ -134,11 +134,11 @@
 
              if (_element_id == "local") {
                  var element1 = document.getElementById("file");
-                 var element2 = document.getElementById("filefield");
+                 var element2 = document.getElementById("fileField");
                  var element3 = document.getElementById("url");
-                 var element4 = document.getElementById("urlfield");
+                 var element4 = document.getElementById("urlField");
                  var element5 = document.getElementById("guid");
-                 var element6 = document.getElementById("guidfield");
+                 var element6 = document.getElementById("guidField");
                  element1.style.display = "inline";
                  element2.style.display = "inline";
                  element3.style.display = "none";
@@ -150,11 +150,11 @@
 
              if (_element_id == "url") {
                  var element1 = document.getElementById("url");
-                 var element2 = document.getElementById("urlfield");
+                 var element2 = document.getElementById("urlField");
                  var element3 = document.getElementById("file");
-                 var element4 = document.getElementById("filefield");
+                 var element4 = document.getElementById("fileField");
                  var element5 = document.getElementById("guid");
-                 var element6 = document.getElementById("guidfield");
+                 var element6 = document.getElementById("guidField");
                  element1.style.display = "inline";
                  element2.style.display = "inline";
                  element3.style.display = "none";

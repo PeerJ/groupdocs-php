@@ -18,7 +18,7 @@ if (empty($clientId) || empty($privateKey)) {
     $iframeType = f3::get('POST["iframeType"]');
     f3::set("iframeType", $iframeType);
     //Get base path
-    $basePath = f3::get('POST["server_type"]');
+    $basePath = f3::get('POST["basePath"]');
     //Get entered by user data
     $fileGuId = "";
     $url = F3::get('POST["url"]');

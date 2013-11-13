@@ -13,7 +13,7 @@ if (empty($clientId) || empty($privateKey)) {
     f3::set('error', $error);
 } else {
     //Get base path
-    $basePath = f3::get('POST["server_type"]');
+    $basePath = f3::get('POST["basePath"]');
     F3::set('userId', $clientId);
     F3::set('privateKey', $privateKey);
     //###Create Signer, ApiClient and Management Api objects

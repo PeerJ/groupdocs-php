@@ -41,7 +41,7 @@ if (empty($clientId) || empty($privateKey)) {
     $apiClient = new APIClient($signer);
     //Create Storage Api object
     $storageApi = new StorageApi($apiClient);
-    $basePath = f3::get('POST["server_type"]');
+    $basePath = f3::get('POST["basePath"]');
     //Declare which Server to use
     if ($basePath == "") {
         //If base base is empty seting base path to prod server

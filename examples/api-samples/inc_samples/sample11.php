@@ -13,7 +13,7 @@ if (empty($clientId) || empty($privateKey)) {
     f3::set('error', $error);
 } else {
     //Get base path
-    $basePath = f3::get('POST["server_type"]');
+    $basePath = f3::get('POST["basePath"]');
     //Get entered by user data
     $fileGuId = F3::get('POST["fileId"]');
     $url = F3::get('POST["url"]');
@@ -83,21 +83,21 @@ if (empty($clientId) || empty($privateKey)) {
     if ($fileGuId != "") {
         $fileId = $fileGuId;
     }
-    $annotationType = F3::get('POST["annotation_type"]');
+    $annotationType = F3::get('POST["annotationType"]');
     $replyText = F3::get('POST["text"]');
 
     // Delete annotation if Delete Button clicked
-    if (F3::get('POST["delete_annotation"]') == "1") {
+    if (F3::get('POST["deleteAnnotation"]') == "1") {
         $antApi->DeleteAnnotation($clientId, F3::get('POST["annotationId"]'));
     }
     // Required parameters
-    $allParams = array('annotation_type', 'box_x', 'box_y', 'text');
+    $allParams = array('annotationType', 'boxX', 'boxY', 'text');
     // Added required parameters depends on  annotation type ['type' or 'area']
     if ($annotationType == "text")
-        $allParams = array_merge($allParams, array('box_width', 'box_height', 'annotationPosition_x',
-            'annotationPosition_y', 'range_position', 'range_length'));
+        $allParams = array_merge($allParams, array('boxWidth', 'boxHeight', 'annotationPositionX',
+            'annotationPositionY', 'rangePosition', 'rangeLength'));
     elseif ($annotationType == "area")
-        $allParams = array_merge($allParams, array('box_width', 'box_height'));
+        $allParams = array_merge($allParams, array('boxWidth', 'boxHeight'));
     // Checking required parameters
     foreach ($allParams as $param) {
         $needParam = F3::get('POST["' . $param . '"]');
@@ -117,26 +117,26 @@ if (empty($clientId) || empty($privateKey)) {
     // text annotation
     if ($annotationType == "text") {
         $range = new Range();
-        $range->position = F3::get('POST["range_position"]');
-        $range->length = F3::get('POST["range_length"]');
+        $range->position = F3::get('POST["rangePosition"]');
+        $range->length = F3::get('POST["rangeLength"]');
         $box = new Rectangle();
-        $box->x = F3::get('POST["box_x"]');
-        $box->y = F3::get('POST["box_y"]');
-        $box->width = F3::get('POST["box_width"]');
-        $box->height = F3::get('POST["box_height"]');
+        $box->x = F3::get('POST["boxX"]');
+        $box->y = F3::get('POST["boxY"]');
+        $box->width = F3::get('POST["boxWidth"]');
+        $box->height = F3::get('POST["boxHeight"]');
         $point = new Point();
-        $point->x = F3::get('POST["annotationPosition_x"]');
-        $point->y = F3::get('POST["annotationPosition_y"]');
+        $point->x = F3::get('POST["annotationPositionX"]');
+        $point->y = F3::get('POST["annotationPositionY"]');
         $annotationInfo->box = $box;
         $annotationInfo->annotationPosition = $point;
         $annotationInfo->range = $range;
         // area annotation
     } elseif ($annotationType == "area") {
         $box = new Rectangle();
-        $box->x = F3::get('POST["box_x"]');
-        $box->y = F3::get('POST["box_y"]');
-        $box->width = F3::get('POST["box_width"]');
-        $box->height = F3::get('POST["box_height"]');
+        $box->x = F3::get('POST["boxX"]');
+        $box->y = F3::get('POST["boxY"]');
+        $box->width = F3::get('POST["boxWidth"]');
+        $box->height = F3::get('POST["boxHeight"]');
         $point = new Point();
         $point->x = 0;
         $point->y = 0;
@@ -145,8 +145,8 @@ if (empty($clientId) || empty($privateKey)) {
         // point annotation
     } elseif ($annotationType == "point") {
         $box = new Rectangle();
-        $box->x = F3::get('POST["box_x"]');
-        $box->y = F3::get('POST["box_y"]');
+        $box->x = F3::get('POST["boxX"]');
+        $box->y = F3::get('POST["boxY"]');
         $box->width = 0;
         $box->height = 0;
         $point = new Point();

@@ -15,7 +15,7 @@ if (!isset($clientId) || !isset($privateKey) || !isset($folder)) {
     $clientId = strip_tags(trim($clientId));
     $privateKey = strip_tags(trim($privateKey));
     $folder = strip_tags(trim($folder));
-    $basePath = f3::get('POST["server_type"]');
+    $basePath = f3::get('POST["basePath"]');
     //###Create Signer, ApiClient and Storage Api objects
     //Create signer object
     $signer = new GroupDocsRequestSigner($privateKey);

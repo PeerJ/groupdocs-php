@@ -11,9 +11,9 @@ F3::set('last_name', '');
 $clientId = F3::get('POST["clientId]');
 $privateKey = F3::get('POST["privateKey"]');
 $email = F3::get('POST["email"]');
-$firstName = F3::get('POST["first_name"]');
-$lastName = F3::get('POST["last_name"]');
-$basePath = f3::get('POST["server_type"]');
+$firstName = F3::get('POST["firstName"]');
+$lastName = F3::get('POST["lastName"]');
+$basePath = f3::get('POST["basePath"]');
 
 function updateUser($clientId, $privateKey, $email, $firstName, $lastName, $basePath) {
     //Check if all requared parameters were transferred

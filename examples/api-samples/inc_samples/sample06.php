@@ -14,15 +14,15 @@ if (!isset($clientId) || !isset($privateKey)) {
     f3::set('error', $error);
 } else {
     //Get chosen local file
-    $fiDocument = $_FILES["fi_document"];
-    $fiSignature = $_FILES["fi_signature"];
+    $fiDocument = $_FILES["fiDocument"];
+    $fiSignature = $_FILES["fiSignature"];
     //Check is both file chosen
     if ($fiDocument == null || $fiSignature == null) {
         $error = "please choose document to sign and signature file";
         f3::set('error', $error);
     }
     //Get base path
-    $basePath = f3::get('POST["server_type"]');
+    $basePath = f3::get('POST["basePath"]');
     //Get document to sign content
     $docContent = file_get_contents($fiDocument["tmp_name"]);
     //Get signature file content

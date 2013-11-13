@@ -53,7 +53,7 @@ f3::set(<span class="string">'result'</span>, <span class="string">""</span>);
 <span class="variable">$privateKey</span> = F3::get(<span class="string">'POST["privateKey"]'</span>);
 
 <span class="variable">$callbackUrl</span> = f3::get(<span class="string">'POST["callbackUrl"]'</span>);
-<span class="variable">$basePath</span> = f3::get(<span class="string">'POST["server_type"]'</span>);</pre></div></div>
+<span class="variable">$basePath</span> = f3::get(<span class="string">'POST["basePath"]'</span>);</pre></div></div>
             
         </li>
         
@@ -143,7 +143,7 @@ f3::set(<span class="string">'result'</span>, <span class="string">""</span>);
     <span class="variable">$firstFileId</span> = f3::get(<span class="string">'POST["sourceFileId"]'</span>);
     <span class="variable">$secondFileId</span> = f3::get(<span class="string">'POST["targetFileId"]'</span>);
     <span class="variable">$url</span> = F3::get(<span class="string">'POST["url"]'</span>);
-    <span class="variable">$targetUrl</span> = F3::get(<span class="string">'POST["target_url"]'</span>);
+    <span class="variable">$targetUrl</span> = F3::get(<span class="string">'POST["targetUrl"]'</span>);
     <span class="variable">$iframe</span> = <span class="string">""</span>;</pre></div></div>
             
         </li>
@@ -275,7 +275,7 @@ f3::set(<span class="string">'result'</span>, <span class="string">""</span>);
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    <span class="keyword">if</span> (<span class="variable">$_FILES</span>[<span class="string">'file'</span>][<span class="string">"name"</span>] != <span class="string">""</span> || <span class="variable">$_FILES</span>[<span class="string">"target_file"</span>][<span class="string">"name"</span>] != <span class="string">""</span>) {
+            <div class="content"><div class='highlight'><pre>    <span class="keyword">if</span> (<span class="variable">$_FILES</span>[<span class="string">'file'</span>][<span class="string">"name"</span>] != <span class="string">""</span> || <span class="variable">$_FILES</span>[<span class="string">"targetFile"</span>][<span class="string">"name"</span>] != <span class="string">""</span>) {
         <span class="keyword">if</span> (<span class="variable">$_FILES</span>[<span class="string">'file'</span>][<span class="string">"name"</span>] != <span class="string">""</span>) {</pre></div></div>
             
         </li>
@@ -406,7 +406,7 @@ f3::set(<span class="string">'result'</span>, <span class="string">""</span>);
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>        <span class="keyword">if</span> (<span class="variable">$_FILES</span>[<span class="string">'target_file'</span>][<span class="string">"name"</span>] != <span class="string">""</span>) {</pre></div></div>
+            <div class="content"><div class='highlight'><pre>        <span class="keyword">if</span> (<span class="variable">$_FILES</span>[<span class="string">'targetFile'</span>][<span class="string">"name"</span>] != <span class="string">""</span>) {</pre></div></div>
             
         </li>
         
@@ -421,7 +421,7 @@ f3::set(<span class="string">'result'</span>, <span class="string">""</span>);
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>            <span class="variable">$tmpName</span> = <span class="variable">$_FILES</span>[<span class="string">"target_file"</span>][<span class="string">'tmp_name'</span>];</pre></div></div>
+            <div class="content"><div class='highlight'><pre>            <span class="variable">$tmpName</span> = <span class="variable">$_FILES</span>[<span class="string">"targetFile"</span>][<span class="string">'tmp_name'</span>];</pre></div></div>
             
         </li>
         
@@ -436,7 +436,7 @@ f3::set(<span class="string">'result'</span>, <span class="string">""</span>);
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>            <span class="variable">$name</span> = <span class="variable">$_FILES</span>[<span class="string">"target_file"</span>][<span class="string">'name'</span>];</pre></div></div>
+            <div class="content"><div class='highlight'><pre>            <span class="variable">$name</span> = <span class="variable">$_FILES</span>[<span class="string">"targetFile"</span>][<span class="string">'name'</span>];</pre></div></div>
             
         </li>
         

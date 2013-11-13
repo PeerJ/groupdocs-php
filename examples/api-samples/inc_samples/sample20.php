@@ -14,7 +14,7 @@ if (empty($clientId) || empty($privateKey) || empty($resultFileId)) {
     f3::set('error', $error);
 } else {
     //Get base path
-    $basePath = f3::get('POST["server_type"]');
+    $basePath = f3::get('POST["basePath"]');
     //Set variables for Viewer
     F3::set('userId', $clientId);
     F3::set('privateKey', $privateKey);

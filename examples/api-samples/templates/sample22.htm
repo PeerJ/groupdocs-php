@@ -21,8 +21,8 @@
     <p>PrivateKey = {{@privateKey}}
     <p>FileId = {{@fileId}}
     <p>Email = {{@email}}
-    <p>First Name = {{@first_name}}
-    <p>Last Name = {{@last_name}}
+    <p>First Name = {{@firstName}}
+    <p>Last Name = {{@lastName}}
     <p>CallBack URL = {{@callbackUrl}}
     <p><span style="color: red">{{@error}}{{@message}}</span>
     <div id="requestForm" style="padding:20px; border:1px solid black;">
@@ -41,34 +41,34 @@
             <br />
             <input type='text' name='email' id="email" value="{{@email}}" />
             <br />
-            <label for='first_name'>First Name</label>
+            <label for='firstName'>First Name</label>
             <br />
-            <input type='text' name='first_name' id="first_name" value="{{@first_name}}" />
+            <input type='text' name='firstName' id="firstName" value="{{@firstName}}" />
             <br />
-            <label for='last_name'>Last Name</label>
+            <label for='lastName'>Last Name</label>
             <br />
-            <input type='text' name='last_name' id="last_name" value="{{@last_name}}" />
+            <input type='text' name='lastName' id="lastName" value="{{@lastName}}" />
             <br />
             <input type="radio" name="sourse" value="guid" id="id" onClick="display('guid');" checked>File ID (GUID) </input>
             <br />
             <input type="radio" name="sourse" value="local" id="localField" onClick="display('local');" >Upload local file </input>
             <br />
-            <input type="radio" name="sourse" value="url" id="urlFieldR" onClick="display('url');" >Upload file from URL </input>
+            <input type="radio" name="sourse" value="url" id="urlField" onClick="display('url');" >Upload file from URL </input>
             <br />
             <br />
-            <label for='guidfield' id="guid">GroupDocs fileID</label>
+            <label for='guidField' id="guid">GroupDocs fileID</label>
             <br />
-            <input type='text' name='fileId' id="guidfield" value="{{@fileId}}" />
+            <input type='text' name='fileId' id="guidField" value="{{@fileId}}" />
             <label for='file' id="file" style="display:none;">Local file</label>
             <br />
-            <input type='file' name='file' id="filefield" style="display:none;" />
-            <label for='urlfield' style="display:none;" id="url">File URL</label>
+            <input type='file' name='file' id="fileField" style="display:none;" />
+            <label for='urlField' style="display:none;" id="url">File URL</label>
             <br />
-            <input type='text' name='url'  value="" id="urlfield" style="display:none;" />
+            <input type='text' name='url'  value="" id="urlField" style="display:none;" />
             <br />
-            <label for='server_type'>Base path<span class="optional">(Optional)</span></label>
+            <label for='basePath'>Base path<span class="optional">(Optional)</span></label>
             <br />
-            <input type ="text" name="server_type" id="server_type" />
+            <input type ="text" name="basePath" id="basePath" />
             <br />
             <input type='submit' value='Make Request'/>
 		</form>
@@ -85,11 +85,11 @@
 
              if (_element_id == "guid") {
                  var element1 = document.getElementById("file");
-                 var element2 = document.getElementById("filefield");
+                 var element2 = document.getElementById("fileField");
                  var element3 = document.getElementById("url");
-                 var element4 = document.getElementById("urlfield");
+                 var element4 = document.getElementById("urlField");
                  var element5 = document.getElementById("guid");
-                 var element6 = document.getElementById("guidfield");
+                 var element6 = document.getElementById("guidField");
                  element1.style.display = "none";
                  element2.style.display = "none";
                  element3.style.display = "none";
@@ -101,11 +101,11 @@
 
              if (_element_id == "local") {
                  var element1 = document.getElementById("file");
-                 var element2 = document.getElementById("filefield");
+                 var element2 = document.getElementById("fileField");
                  var element3 = document.getElementById("url");
-                 var element4 = document.getElementById("urlfield");
+                 var element4 = document.getElementById("urlField");
                  var element5 = document.getElementById("guid");
-                 var element6 = document.getElementById("guidfield");
+                 var element6 = document.getElementById("guidField");
                  element1.style.display = "inline";
                  element2.style.display = "inline";
                  element3.style.display = "none";
@@ -117,11 +117,11 @@
 
              if (_element_id == "url") {
                  var element1 = document.getElementById("url");
-                 var element2 = document.getElementById("urlfield");
+                 var element2 = document.getElementById("urlField");
                  var element3 = document.getElementById("file");
-                 var element4 = document.getElementById("filefield");
+                 var element4 = document.getElementById("fileField");
                  var element5 = document.getElementById("guid");
-                 var element6 = document.getElementById("guidfield");
+                 var element6 = document.getElementById("guidField");
                  element1.style.display = "inline";
                  element2.style.display = "inline";
                  element3.style.display = "none";

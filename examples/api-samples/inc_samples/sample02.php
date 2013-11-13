@@ -12,7 +12,7 @@ if (empty($clientId) || empty($privateKey)) {
     f3::set('error', $error);
 } else {
     //Get base path
-    $basePath = f3::get('POST["server_type"]');
+    $basePath = f3::get('POST["basePath"]');
     //###Create Signer, ApiClient and Storage Api objects
     //Create signer object
     $signer = new GroupDocsRequestSigner($privateKey);

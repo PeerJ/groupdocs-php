@@ -12,7 +12,7 @@ if (empty($clientId) || empty($privateKey)) {
     F3::set('userId', $clientId);
     F3::set('privateKey', $privateKey);
     //Get base path
-    $basePath = f3::get('POST["server_type"]');
+    $basePath = f3::get('POST["basePath"]');
     //Get entered by user data
     $fileGuId = "";
     $url = F3::get('POST["url"]');

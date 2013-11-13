@@ -40,9 +40,9 @@
             <input type='text' name='privateKey'  value="{{@privateKey}}" />
             <br />
             <br />
-            <label for="template_guid">GroupDocs template Guid</label>
+            <label for="templateGuid">GroupDocs template Guid</label>
             <br />
-            <input type='text' name='template_guid' value="{{@template_guid}}" />
+            <input type='text' name='templateGuid' value="{{@template_guid}}" />
             <br />
             <br />
             <label for='callbackUrl'>callbackUrl<span class="optional">(Optional)For test Callback you can use this URL: http://groupdocs-php-samples.herokuapp.com/callbacks/signature_callback</span></label>
@@ -73,12 +73,12 @@
                 <br />
             </div>
             <br />
-            <label for='server_type'>Base path<span class="optional">(Optional)</span></label>
+            <label for='basePath'>Base path<span class="optional">(Optional)</span></label>
             <br />
-            <input type ="text" name="server_type" id="server_type" />
+            <input type ="text" name="basePath" id="basePath" />
             <br />
             <input type='submit' value='Signature'/>
-            <span id="results_status" style="color:red;display:none;"> (Please wait for ajax response) </span>
+            <span id="resultsStatus" style="color:red;display:none;"> (Please wait for ajax response) </span>
         </form>
     </div>
     <div id = 'result' style="padding:20px; border:1px solid black;" >
@@ -96,13 +96,13 @@
     function check() {
 
         if (($("input[name=callbackUrl]").val() != "") && (document.getElementById("result") != null)) {
-            $('#results_status').fadeIn("slow");
+            $('#resultsStatus').fadeIn("slow");
             form = document.forms.form;
             $.ajax({
                 type: 'POST',
                 url: '/callbacks/check_file',
                 success: function (data) {
-                    $('#results_status').fadeOut("slow");
+                    $('#resultsStatus').fadeOut("slow");
                     div = document.getElementById("link");
                     p = document.createElement("p");
                     if (data == "File was not found. Looks like something went wrong.") {

@@ -15,7 +15,7 @@ function DeleteAnnotations($clientId, $privateKey, $fileId) {
         throw new Exception('Please enter all required parameters');
     } else {
         //Get base path
-        $basePath = f3::get('POST["server_type"]');
+        $basePath = f3::get('POST["basePath"]');
         F3::set('userId', $clientId);
         F3::set('privateKey', $privateKey);
         F3::set('fileId', $fileId);

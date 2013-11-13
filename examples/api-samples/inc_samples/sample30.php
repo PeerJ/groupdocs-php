@@ -16,7 +16,7 @@ if (empty($clientId) || empty($privateKey) || empty($fileName)) {
     f3::set('error', $error);
 } else {
     //Get base path
-    $basePath = f3::get('POST["server_type"]');
+    $basePath = f3::get('POST["basePath"]');
     if ($basePath == "") {
          $basePath = 'https://api.groupdocs.com/v2.0';
     }

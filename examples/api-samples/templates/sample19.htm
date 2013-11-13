@@ -42,7 +42,7 @@
                         <input type="radio" name="sourse" value="guid" id="id" onClick="display('guid');" checked>File ID (GUID) </input>
                     </td>
                     <td>
-                        <input type="radio" name="target" value="guid" id="target_id" onClick="display('target_guid');" checked>File ID (GUID) </input>
+                        <input type="radio" name="target" value="guid" id="targetId" onClick="display('targetGuid');" checked>File ID (GUID) </input>
                     </td>
                 </tr>
                 <tr>
@@ -50,7 +50,7 @@
                         <input type="radio" name="sourse" value="local" id="localField" onClick="display('local');" >Upload local file </input>
                     </td>
                     <td>
-                        <input type="radio" name="target" value="local" id="target_localField" onClick="display('target_local');" >Upload local file </input>
+                        <input type="radio" name="target" value="local" id="targetLocalField" onClick="display('targetLocal');" >Upload local file </input>
                     </td>
                 </tr>
                 <tr>
@@ -58,46 +58,46 @@
                         <input type="radio" name="sourse" value="url" id="urlField" onClick="display('url');" >Upload file from URL </input>
                     </td>
                     <td>
-                        <input type="radio" name="target" value="target_url" id="target_urlField" onClick="display('target_url');" >Upload file from URL </input>
+                        <input type="radio" name="target" value="targetUrl" id="target_urlField" onClick="display('targetUrl');" >Upload file from URL </input>
                     </td>
                 </tr>
             </table>
-            <label for='guidfield' id="guid">sourceFileId</label>
+            <label for='guidField' id="guid">Source File GUID</label>
             <br />
-            <input type='text' id="guidfield" name='sourceFileId'  value="{{@sourceFileId}}" />
+            <input type='text' id="guidField" name='sourceFileId'  value="{{@sourceFileId}}" />
             
             <label for='file' id="file" style="display:none;">Local file</label>
             <br />
-            <input type='file' name='file' id="filefield" style="display:none;" />
+            <input type='file' name='file' id="fileField" style="display:none;" />
 
             <label for='url' style="display:none;" id="url">File URL</label>
             <br />
-            <input type='text' name='url'  value="" id="urlfield" style="display:none;" />
+            <input type='text' name='url'  value="" id="urlField" style="display:none;" />
             <br />
             
-            <label for='target_guidfield' id="target_guid">targetFileId</label>
+            <label for='targetFileId' id="targetGuid">Target File GUID</label>
             <br />
-            <input type='text' id="target_guidfield" name='targetFileId'  value="{{@targetFileId}}" />
+            <input type='text' id="targetFileId" name='targetFileId'  value="{{@targetFileId}}" />
            
-            <label for='file' id="target_file" style="display:none;">Local file</label>
+            <label for='file' id="targetFile" style="display:none;">Target Local file</label>
             <br />
-            <input type='file' name='target_file' id="target_filefield" style="display:none;" />
+            <input type='file' name='targetFile' id="targetFileField" style="display:none;" />
 
-            <label for='target_url' style="display:none;" id="target_url">File URL</label>
+            <label for='targetUrl' style="display:none;" id="targetUrl">Target File URL</label>
             <br />
-            <input type='text' name='target_url'  value="" id="target_urlfield" style="display:none;" />
+            <input type='text' name='targetUrl'  value="" id="targetUrlField" style="display:none;" />
             <br />
          
             <label for='callbackUrl'>callbackUrl<span class="optional">(Optional)For test Callback you can use this URL: http://groupdocs-php-samples.herokuapp.com/callbacks/compare_callback</span></label>
             <br />
             <input type='text' name='callbackUrl' id="callbackUrl" value="{{@callbackURL}}" />
             <br />
-            <label for='server_type'>Base path<span class="optional">(Optional)</span></label>
+            <label for='basePath'>Base path<span class="optional">(Optional)</span></label>
             <br />
-            <input type ="text" name="server_type" id="server_type" />
+            <input type ="text" name="basePath" id="basePath" />
             <br />
             <input type='submit' value='Make Request'/>
-            <span id="results_status" style="color:red;display:none;"> (Please wait for ajax response) </span>
+            <span id="resultsStatus" style="color:red;display:none;"> (Please wait for ajax response) </span>
             <div id="link"></div>
         </form>
         <iframe id="downloadframe" style="display:none"></iframe>
@@ -116,13 +116,13 @@
          function check() {
              
              if (($("input[name=callbackUrl]").val() != "") && (document.getElementById("result") != null)) {
-                 $('#results_status').fadeIn("slow");
+                 $('#resultsStatus').fadeIn("slow");
                  form = document.forms.form;
                  $.ajax({
                      type: 'POST',
                      url: '/callbacks/check_file',
                      success: function (data) {
-                         $('#results_status').fadeOut("slow");
+                         $('#resultsStatus').fadeOut("slow");
                          div = document.getElementById("link");
                          p = document.createElement("p");
                           if (data == "File was not found. Looks like something went wrong.") {
@@ -143,11 +143,11 @@
 
              if (_element_id == "guid") {
                  var element1 = document.getElementById("file");
-                 var element2 = document.getElementById("filefield");
+                 var element2 = document.getElementById("fileField");
                  var element3 = document.getElementById("url");
-                 var element4 = document.getElementById("urlfield");
+                 var element4 = document.getElementById("urlField");
                  var element5 = document.getElementById("guid");
-                 var element6 = document.getElementById("guidfield");
+                 var element6 = document.getElementById("guidField");
                  element1.style.display = "none";
                  element2.style.display = "none";
                  element3.style.display = "none";
@@ -159,11 +159,11 @@
 
              if (_element_id == "local") {
                  var element1 = document.getElementById("file");
-                 var element2 = document.getElementById("filefield");
+                 var element2 = document.getElementById("fileField");
                  var element3 = document.getElementById("url");
-                 var element4 = document.getElementById("urlfield");
+                 var element4 = document.getElementById("urlField");
                  var element5 = document.getElementById("guid");
-                 var element6 = document.getElementById("guidfield");
+                 var element6 = document.getElementById("guidField");
                  element1.style.display = "inline";
                  element2.style.display = "inline";
                  element3.style.display = "none";
@@ -175,11 +175,11 @@
 
              if (_element_id == "url") {
                  var element1 = document.getElementById("url");
-                 var element2 = document.getElementById("urlfield");
+                 var element2 = document.getElementById("urlField");
                  var element3 = document.getElementById("file");
-                 var element4 = document.getElementById("filefield");
+                 var element4 = document.getElementById("fileField");
                  var element5 = document.getElementById("guid");
-                 var element6 = document.getElementById("guidfield");
+                 var element6 = document.getElementById("guidField");
                  element1.style.display = "inline";
                  element2.style.display = "inline";
                  element3.style.display = "none";
@@ -187,13 +187,13 @@
                  element5.style.display = "none";
                  element6.style.display = "none";
              }
-              if (_element_id == "target_guid") {
-                 var element1 = document.getElementById("target_file");
-                 var element2 = document.getElementById("target_filefield");
-                 var element3 = document.getElementById("target_url");
-                 var element4 = document.getElementById("target_urlfield");
-                 var element5 = document.getElementById("target_guid");
-                 var element6 = document.getElementById("target_guidfield");
+              if (_element_id == "targetGuid") {
+                 var element1 = document.getElementById("targetFile");
+                 var element2 = document.getElementById("targetFileField");
+                 var element3 = document.getElementById("targetUrl");
+                 var element4 = document.getElementById("targetUrlField");
+                 var element5 = document.getElementById("targetGuid");
+                 var element6 = document.getElementById("targetFileId");
                  element1.style.display = "none";
                  element2.style.display = "none";
                  element3.style.display = "none";
@@ -203,13 +203,13 @@
 
              }
 
-             if (_element_id == "target_local") {
-                 var element1 = document.getElementById("target_file");
-                 var element2 = document.getElementById("target_filefield");
-                 var element3 = document.getElementById("target_url");
-                 var element4 = document.getElementById("target_urlfield");
-                 var element5 = document.getElementById("target_guid");
-                 var element6 = document.getElementById("target_guidfield");
+             if (_element_id == "targetLocal") {
+                 var element1 = document.getElementById("targetFile");
+                 var element2 = document.getElementById("targetFileField");
+                 var element3 = document.getElementById("targetUrl");
+                 var element4 = document.getElementById("targetUrlField");
+                 var element5 = document.getElementById("targetGuid");
+                 var element6 = document.getElementById("targetFileId");
                  element1.style.display = "inline";
                  element2.style.display = "inline";
                  element3.style.display = "none";
@@ -219,13 +219,13 @@
 
              }
 
-             if (_element_id == "target_url") {
-                 var element1 = document.getElementById("target_file");
-                 var element2 = document.getElementById("target_filefield");
-                 var element3 = document.getElementById("target_url");
-                 var element4 = document.getElementById("target_urlfield");
-                 var element5 = document.getElementById("target_guid");
-                 var element6 = document.getElementById("target_guidfield");
+             if (_element_id == "targetUrl") {
+                 var element1 = document.getElementById("targetFile");
+                 var element2 = document.getElementById("targetFileField");
+                 var element3 = document.getElementById("targetUrl");
+                 var element4 = document.getElementById("targetUrlField");
+                 var element5 = document.getElementById("targetGuid");
+                 var element6 = document.getElementById("targetFileId");
                  element1.style.display = "none";
                  element2.style.display = "none";
                  element3.style.display = "inline";

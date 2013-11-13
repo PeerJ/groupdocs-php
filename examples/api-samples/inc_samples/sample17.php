@@ -15,7 +15,7 @@ if (empty($clientId) || empty($privateKey)) {
     f3::set('error', $error);
 } else {
     //Get base path
-    $basePath = f3::get('POST["server_type"]');
+    $basePath = f3::get('POST["basePath"]');
     // Deleting of tags, slashes and  space from clientId and privateKey
     $clientID = strip_tags(stripslashes(trim($clientId))); //ClientId==UserId
     $apiKey = strip_tags(stripslashes(trim($privateKey))); //ApiKey==PrivateKey

@@ -11,7 +11,7 @@ F3::set('basePath', '');
 F3::set('folderPath', '');
 $clientId = F3::get('POST["clientId"]');
 $privateKey = F3::get('POST["privateKey"]');
-$basePath = f3::get('POST["server_type"]');
+$basePath = f3::get('POST["basePath"]');
 $folderPath = f3::get('POST["folderPath"]');
 $url = F3::get('POST["url"]');
 

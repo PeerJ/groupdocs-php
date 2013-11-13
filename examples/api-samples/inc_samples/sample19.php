@@ -9,7 +9,7 @@ $clientId = F3::get('POST["clientId"]');
 $privateKey = F3::get('POST["privateKey"]');
 
 $callbackUrl = f3::get('POST["callbackUrl"]');
-$basePath = f3::get('POST["server_type"]');
+$basePath = f3::get('POST["basePath"]');
 //### Check clientId, privateKey and fileGuId
 if (empty($clientId) || empty($privateKey)) {
     $error = 'Please enter all required parameters';
@@ -34,7 +34,7 @@ if (empty($clientId) || empty($privateKey)) {
     $firstFileId = f3::get('POST["sourceFileId"]');
     $secondFileId = f3::get('POST["targetFileId"]');
     $url = F3::get('POST["url"]');
-    $targetUrl = F3::get('POST["target_url"]');
+    $targetUrl = F3::get('POST["targetUrl"]');
     $iframe = "";
     //###Create Signer, ApiClient and Storage Api objects
     //Create signer object
@@ -62,7 +62,7 @@ if (empty($clientId) || empty($privateKey)) {
         }
     }
     //Check is user choose local files to upload and compare
-    if ($_FILES['file']["name"] != "" || $_FILES["target_file"]["name"] != "") {
+    if ($_FILES['file']["name"] != "" || $_FILES["targetFile"]["name"] != "") {
         if ($_FILES['file']["name"] != "") {
             //Temp name of the file
             $tmpName = $_FILES['file']['tmp_name'];
@@ -90,11 +90,11 @@ if (empty($clientId) || empty($privateKey)) {
             }
         }
         //Check is user choose upload and compare file from URL
-        if ($_FILES['target_file']["name"] != "") {
+        if ($_FILES['targetFile']["name"] != "") {
             //Temp name of the file
-            $tmpName = $_FILES["target_file"]['tmp_name'];
+            $tmpName = $_FILES["targetFile"]['tmp_name'];
             //Original name of the file
-            $name = $_FILES["target_file"]['name'];
+            $name = $_FILES["targetFile"]['name'];
             //Creat file stream
             $fs = FileStream::fromFile($tmpName);
             //###Make a request to Storage API using clientId

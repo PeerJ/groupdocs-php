@@ -8,7 +8,7 @@ F3::set('fileId', '');
 F3::set('convert_type', '');
 $clientId = F3::get('POST["clientId"]');
 $privateKey = F3::get('POST["privateKey"]');
-$convert_type = F3::get('POST["convert_type"]');
+$convert_type = F3::get('POST["convertType"]');
 $callbackUrl = f3::get('POST["callbackUrl"]');
 if (empty($clientId) || empty($privateKey) || empty($convert_type)) {
     $error = 'Please enter all required parameters';
@@ -25,7 +25,7 @@ if (empty($clientId) || empty($privateKey) || empty($convert_type)) {
         }
     }
     //Get base path
-    $basePath = f3::get('POST["server_type"]');
+    $basePath = f3::get('POST["basePath"]');
     //Set variables for Viewer
     F3::set('userId', $clientId);
     F3::set('privateKey', $privateKey);

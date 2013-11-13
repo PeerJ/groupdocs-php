@@ -6,7 +6,7 @@ F3::set('userId', '');
 F3::set('privateKey', '');
 $clientId = F3::get('POST["clientId"]');
 $privateKey = F3::get('POST["privateKey"]');
-$basePath = f3::get('POST["server_type"]');
+$basePath = f3::get('POST["basePath"]');
 
 function createQuestionary($clientId, $privateKey, $basePath) {
     //###Check if user entered all parameters

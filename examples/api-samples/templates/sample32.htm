@@ -22,14 +22,14 @@
     <br/><p>The data you provided:
     <p>ClientID = {{@userId}}
     <p>PrivateKey = {{@privateKey}}
-    <p>Form = {{@tempalte_guid}}
+    <p>Form = {{@formGuid}}
     <p>Email = {{@email}}
     <p>Callback Url = {{@callbackUrl}}
     <p><span class="documentation"><a href='/templates/merge_field.docx'>Document with merge fields sample</a></span>
         
     <p><font color="red">{{@error}}</font>
     <div id="requestForm" style="padding:20px; border:1px solid black;">
-        <p> Enter data for request and press "Signature" button </p>
+        <p> Enter data for request and press "Publish form" button </p>
         <form action="sample32" method = "post" enctype = 'multipart/form-data'>
             <br />
             <label for='clientId'>GroupDocs Client ID</label>
@@ -46,13 +46,13 @@
             <input type="radio" name="sourse" value="template" id="template_radio" onClick="display('template');" checked>Template GUID </input>
             <br />
             <br />
-            <label for="form_guid" id="form_label" style="display:none;">GroupDoc Form Guid</label>
+            <label for="formGuid" id="formLabel" style="display:none;">GroupDoc Form Guid</label>
             <br />
-            <input type='text' id="form" name='form_guid' value="{{@form_guid}}" style="display:none;"/>
+            <input type='text' id="form" name='formGuid' value="{{@formGuid}}" style="display:none;"/>
             <br />
-            <label for="template_guid" id="template_label" >GroupDocs template Guid</label>
+            <label for="templateGuid" id="templateLabel" >GroupDocs template Guid</label>
             <br />
-            <input type='text' name='template_guid' id="template" value="{{@tempalte_guid}}" />
+            <input type='text' name='templateGuid' id="template" value="{{@tempalteGuid}}" />
             <br />
             <label for="email">Email for notification</label>
             <br />
@@ -62,12 +62,12 @@
             <br />
             <input type='text' name='callbackUrl' id="callbackUrl" value="{{@callbackUrl}}" />
             <br />
-            <label for='server_type'>Base path<span class="optional">(Optional)</span></label>
+            <label for='basePath'>Base path<span class="optional">(Optional)</span></label>
             <br />
-            <input type ="text" name="server_type" id="server_type" />
+            <input type ="text" name="basePath" id="basePath" />
             <br />
-            <input type='submit' value='Signature'/>
-            <span id="results_status" style="color:red;display:none;"> (Please wait for ajax response) </span>
+            <input type='submit' value='Publish form'/>
+            <span id="resultsStatus" style="color:red;display:none;"> (Please wait for ajax response) </span>
         </form>
     </div>
     <div id = 'result' style="padding:20px; border:1px solid black;" >
@@ -85,9 +85,9 @@
 
              if (_element_id == "form") {
                  var element1 = document.getElementById("form");
-                 var element2 = document.getElementById("form_label");
+                 var element2 = document.getElementById("formLabel");
                  var element3 = document.getElementById("template");
-                 var element4 = document.getElementById("template_label");
+                 var element4 = document.getElementById("templateLabel");
            
                  element1.style.display = "inline";
                  element2.style.display = "inline";
@@ -98,10 +98,10 @@
              }
 
              if (_element_id == "template") {
-                 var element1 = document.getElementById("form");
-                 var element2 = document.getElementById("form_label");
+               var element1 = document.getElementById("form");
+                 var element2 = document.getElementById("formLabel");
                  var element3 = document.getElementById("template");
-                 var element4 = document.getElementById("template_label");
+                 var element4 = document.getElementById("templateLabel");
            
                  element1.style.display = "none";
                  element2.style.display = "none";

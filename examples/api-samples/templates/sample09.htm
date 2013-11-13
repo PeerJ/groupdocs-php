@@ -43,17 +43,17 @@
             <input type="radio" name="sourse" value="url" id="urlRadio" onClick="display('url');" >Upload file from URL </input>
             <br />
             <br />
-            <label for='guidfield' id="guid">GroupDocs fileID</label>
+            <label for='guidField' id="guid">GroupDocs fileID</label>
             <br />
-            <input type='text' name='fileId' id="guidfield" value="{{@fileId}}" />
+            <input type='text' name='fileId' id="guidField" value="{{@fileId}}" />
             
             <label for='file' id="file" style="display:none;">Local file</label>
             <br />
-            <input type='file' name='file' id="filefield" style="display:none;" />
+            <input type='file' name='file' id="fileField" style="display:none;" />
 
-            <label for='urlfield' style="display:none;" id="url">File URL</label>
+            <label for='urlField' style="display:none;" id="url">File URL</label>
             <br />
-            <input type='text' name='url'  value="" id="urlfield" style="display:none;" />
+            <input type='text' name='url'  value="" id="urlField" style="display:none;" />
              <br />
             <label for="iframeType">What app you want to generate?  Viewer / Annotation</label>
              <br />
@@ -68,9 +68,9 @@
             <br />
             <input type='text' name='height'  value="{{@height}}" />
             <br />
-            <label for='server_type'>Base path<span class="optional">(Optional)</span></label>
+            <label for='basePath'>Base path<span class="optional">(Optional)</span></label>
             <br />
-            <input type ="text" name="server_type" id="server_type" />
+            <input type ="text" name="basePath" id="basePath" />
             <br />
             <input type='submit' value='Make Request'/>
         </form>
@@ -90,11 +90,11 @@
 
              if (_element_id == "guid") {
                  var element1 = document.getElementById("file");
-                 var element2 = document.getElementById("filefield");
+                 var element2 = document.getElementById("fileField");
                  var element3 = document.getElementById("url");
-                 var element4 = document.getElementById("urlfield");
+                 var element4 = document.getElementById("urlField");
                  var element5 = document.getElementById("guid");
-                 var element6 = document.getElementById("guidfield");
+                 var element6 = document.getElementById("guidField");
                  element1.style.display = "none";
                  element2.style.display = "none";
                  element3.style.display = "none";
@@ -106,11 +106,11 @@
 
              if (_element_id == "local") {
                  var element1 = document.getElementById("file");
-                 var element2 = document.getElementById("filefield");
+                 var element2 = document.getElementById("fileField");
                  var element3 = document.getElementById("url");
-                 var element4 = document.getElementById("urlfield");
+                 var element4 = document.getElementById("urlField");
                  var element5 = document.getElementById("guid");
-                 var element6 = document.getElementById("guidfield");
+                 var element6 = document.getElementById("guidField");
                  element1.style.display = "inline";
                  element2.style.display = "inline";
                  element3.style.display = "none";
@@ -122,11 +122,11 @@
 
              if (_element_id == "url") {
                  var element1 = document.getElementById("url");
-                 var element2 = document.getElementById("urlfield");
+                 var element2 = document.getElementById("urlField");
                  var element3 = document.getElementById("file");
-                 var element4 = document.getElementById("filefield");
+                 var element4 = document.getElementById("fileField");
                  var element5 = document.getElementById("guid");
-                 var element6 = document.getElementById("guidfield");
+                 var element6 = document.getElementById("guidField");
                  element1.style.display = "inline";
                  element2.style.display = "inline";
                  element3.style.display = "none";

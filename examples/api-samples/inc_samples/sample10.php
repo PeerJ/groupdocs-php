@@ -15,7 +15,7 @@ if ($clientId == "" || $privateKey == "" || $sharer == "") {
     f3::set('error', $error);
 } else {
     //Get base path
-    $basePath = f3::get('POST["server_type"]');
+    $basePath = f3::get('POST["basePath"]');
     //Get entered by user data
     $url = F3::get('POST["url"]');
     $file = $_FILES['file'];

@@ -10,7 +10,7 @@ F3::set('iframe', '');
 F3::set('basePath', '');
 $clientId = F3::get('POST["clientId"]');
 $privateKey = F3::get('POST["privateKey"]');
-$basePath = f3::get('POST["server_type"]');
+$basePath = f3::get('POST["basePath"]');
 $firstUrl = F3::get('POST["url1"]');
 $secondUrl = f3::get("POST['url2']");
 $thirdUrl = f3::get("POST['url3']");

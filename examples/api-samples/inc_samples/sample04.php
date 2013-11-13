@@ -11,7 +11,7 @@ if (!isset($clientId) || !isset($privateKey) || !isset($file_id)) {
     $error = 'Please enter all required parameters';
     f3::set('error', $error);
 } else {
-    $basePath = f3::get('POST["server_type"]');
+    $basePath = f3::get('POST["basePath"]');
     //###Create Signer, ApiClient and Storage Api objects
     //Create signer object
     $signer = new GroupDocsRequestSigner($privateKey);

@@ -5,7 +5,12 @@ Latest SDK version 1.7.3.
 
 ## Requirements
 
-* SDK requires PHP 5.3 (or later).
+* PHP 5.3
+* Apache ModRewrite
+* PHP Curl extension
+* PHP Sockets extension (php_sockets.dll)
+* composer.phar (http://getcomposer.org/download/ or use included version)
+
 
 ## Installation
 
@@ -28,21 +33,16 @@ To add SDK as a local, per-project dependency to your project, simply add a depe
 To get the lastest SDK code from master branch use "dev-master" version. With this version the top revision of the master branch will be cloned by composer.
 
 ### Usage Example
-	$apiClient = new APIClient(new GroupDocsRequestSigner($privateKey));
-	$api = new AntAPI($apiClient);
+	 //Create signer object
+    $signer = new GroupDocsRequestSigner($privateKey);
+    //Create apiClient object
+    $apiClient = new APIClient($signer);
+  	$api = new AntAPI($apiClient);
 	$response = $api->ListAnnotations($userId, $fileId);
 
 ###ChangeLog
 
-2013-03-11
-
-1. Service update to fix and clean travis build
-2. SDK v1.5.0 released.
-
-2012-12-07
-
-1. Parameter check in function "deserialize" in APIClient.php fixed.
-2. Adjusted examples to tests
+You can found change log by this link 
 
 ###[Sign, Manage, Annotate, Assemble, Compare and Convert Documents with GroupDocs](http://groupdocs.com)
 1. [Sign documents online with GroupDocs Signature](http://groupdocs.com/apps/signature)

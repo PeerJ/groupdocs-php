@@ -8,7 +8,7 @@ if (isset($_POST) AND !empty($_POST)) {
     //Get parameters from json object
     $url = $_POST['url'];
     //Get base path
-    $basePath = $_POST["server_type"];
+    $basePath = $_POST["basePath"];
     //Get user id
     $clientId = $_POST["clientId"];
     $apiKey = $_POST["privateKey"];

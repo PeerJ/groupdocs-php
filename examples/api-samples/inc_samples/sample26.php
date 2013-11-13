@@ -12,7 +12,7 @@ function Login($login, $password) {
     if (!isset($login) || !isset($password)) {
         throw new Exception("Please enter login and password");
     }
-    $basePath = f3::get('POST["server_type"]');
+    $basePath = f3::get('POST["basePath"]');
     //Check if user entered base path
     if ($basePath == "") {
         //If base base is empty seting base path to prod server

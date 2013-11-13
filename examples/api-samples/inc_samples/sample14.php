@@ -13,7 +13,7 @@ if (empty($clientId) || empty($privateKey) || empty($path)) {
     f3::set('error', $error);
 } else {
     //Get base path
-    $basePath = f3::get('POST["server_type"]');
+    $basePath = f3::get('POST["basePath"]');
     F3::set('userId', $clientId);
     F3::set('privateKey', $privateKey);
     F3::set('path', $path);

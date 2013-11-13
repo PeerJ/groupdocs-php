@@ -70,7 +70,7 @@ F3::set(<span class="string">'fileId'</span>, <span class="string">''</span>);
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    <span class="variable">$basePath</span> = f3::get(<span class="string">'POST["server_type"]'</span>);</pre></div></div>
+            <div class="content"><div class='highlight'><pre>    <span class="variable">$basePath</span> = f3::get(<span class="string">'POST["basePath"]'</span>);</pre></div></div>
             
         </li>
         
@@ -399,7 +399,7 @@ F3::set(<span class="string">'fileId'</span>, <span class="string">''</span>);
     <span class="keyword">if</span> (<span class="variable">$fileGuId</span> != <span class="string">""</span>) {
         <span class="variable">$fileId</span> = <span class="variable">$fileGuId</span>;
     }
-    <span class="variable">$annotationType</span> = F3::get(<span class="string">'POST["annotation_type"]'</span>);
+    <span class="variable">$annotationType</span> = F3::get(<span class="string">'POST["annotationType"]'</span>);
     <span class="variable">$replyText</span> = F3::get(<span class="string">'POST["text"]'</span>);</pre></div></div>
             
         </li>
@@ -415,7 +415,7 @@ F3::set(<span class="string">'fileId'</span>, <span class="string">''</span>);
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    <span class="keyword">if</span> (F3::get(<span class="string">'POST["delete_annotation"]'</span>) == <span class="string">"1"</span>) {
+            <div class="content"><div class='highlight'><pre>    <span class="keyword">if</span> (F3::get(<span class="string">'POST["deleteAnnotation"]'</span>) == <span class="string">"1"</span>) {
         <span class="variable">$antApi</span>-&gt;DeleteAnnotation(<span class="variable">$clientId</span>, F3::get(<span class="string">'POST["annotationId"]'</span>));
     }</pre></div></div>
             
@@ -432,7 +432,7 @@ F3::set(<span class="string">'fileId'</span>, <span class="string">''</span>);
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    <span class="variable">$allParams</span> = <span class="keyword">array</span>(<span class="string">'annotation_type'</span>, <span class="string">'box_x'</span>, <span class="string">'box_y'</span>, <span class="string">'text'</span>);</pre></div></div>
+            <div class="content"><div class='highlight'><pre>    <span class="variable">$allParams</span> = <span class="keyword">array</span>(<span class="string">'annotationType'</span>, <span class="string">'boxX'</span>, <span class="string">'boxY'</span>, <span class="string">'text'</span>);</pre></div></div>
             
         </li>
         
@@ -448,10 +448,10 @@ F3::set(<span class="string">'fileId'</span>, <span class="string">''</span>);
             </div>
             
             <div class="content"><div class='highlight'><pre>    <span class="keyword">if</span> (<span class="variable">$annotationType</span> == <span class="string">"text"</span>)
-        <span class="variable">$allParams</span> = array_merge(<span class="variable">$allParams</span>, <span class="keyword">array</span>(<span class="string">'box_width'</span>, <span class="string">'box_height'</span>, <span class="string">'annotationPosition_x'</span>,
-            <span class="string">'annotationPosition_y'</span>, <span class="string">'range_position'</span>, <span class="string">'range_length'</span>));
+        <span class="variable">$allParams</span> = array_merge(<span class="variable">$allParams</span>, <span class="keyword">array</span>(<span class="string">'boxWidth'</span>, <span class="string">'boxHeight'</span>, <span class="string">'annotationPositionX'</span>,
+            <span class="string">'annotationPositionY'</span>, <span class="string">'rangePosition'</span>, <span class="string">'rangeLength'</span>));
     <span class="keyword">elseif</span> (<span class="variable">$annotationType</span> == <span class="string">"area"</span>)
-        <span class="variable">$allParams</span> = array_merge(<span class="variable">$allParams</span>, <span class="keyword">array</span>(<span class="string">'box_width'</span>, <span class="string">'box_height'</span>));</pre></div></div>
+        <span class="variable">$allParams</span> = array_merge(<span class="variable">$allParams</span>, <span class="keyword">array</span>(<span class="string">'boxWidth'</span>, <span class="string">'boxHeight'</span>));</pre></div></div>
             
         </li>
         
@@ -523,16 +523,16 @@ text annotation</p>
             
             <div class="content"><div class='highlight'><pre>    <span class="keyword">if</span> (<span class="variable">$annotationType</span> == <span class="string">"text"</span>) {
         <span class="variable">$range</span> = <span class="keyword">new</span> Range();
-        <span class="variable">$range</span>-&gt;position = F3::get(<span class="string">'POST["range_position"]'</span>);
-        <span class="variable">$range</span>-&gt;length = F3::get(<span class="string">'POST["range_length"]'</span>);
+        <span class="variable">$range</span>-&gt;position = F3::get(<span class="string">'POST["rangePosition"]'</span>);
+        <span class="variable">$range</span>-&gt;length = F3::get(<span class="string">'POST["rangeLength"]'</span>);
         <span class="variable">$box</span> = <span class="keyword">new</span> Rectangle();
-        <span class="variable">$box</span>-&gt;x = F3::get(<span class="string">'POST["box_x"]'</span>);
-        <span class="variable">$box</span>-&gt;y = F3::get(<span class="string">'POST["box_y"]'</span>);
-        <span class="variable">$box</span>-&gt;width = F3::get(<span class="string">'POST["box_width"]'</span>);
-        <span class="variable">$box</span>-&gt;height = F3::get(<span class="string">'POST["box_height"]'</span>);
+        <span class="variable">$box</span>-&gt;x = F3::get(<span class="string">'POST["boxX"]'</span>);
+        <span class="variable">$box</span>-&gt;y = F3::get(<span class="string">'POST["boxY"]'</span>);
+        <span class="variable">$box</span>-&gt;width = F3::get(<span class="string">'POST["boxWidth"]'</span>);
+        <span class="variable">$box</span>-&gt;height = F3::get(<span class="string">'POST["boxHeight"]'</span>);
         <span class="variable">$point</span> = <span class="keyword">new</span> Point();
-        <span class="variable">$point</span>-&gt;x = F3::get(<span class="string">'POST["annotationPosition_x"]'</span>);
-        <span class="variable">$point</span>-&gt;y = F3::get(<span class="string">'POST["annotationPosition_y"]'</span>);
+        <span class="variable">$point</span>-&gt;x = F3::get(<span class="string">'POST["annotationPositionX"]'</span>);
+        <span class="variable">$point</span>-&gt;y = F3::get(<span class="string">'POST["annotationPositionY"]'</span>);
         <span class="variable">$annotationInfo</span>-&gt;box = <span class="variable">$box</span>;
         <span class="variable">$annotationInfo</span>-&gt;annotationPosition = <span class="variable">$point</span>;
         <span class="variable">$annotationInfo</span>-&gt;range = <span class="variable">$range</span>;</pre></div></div>
@@ -552,10 +552,10 @@ text annotation</p>
             
             <div class="content"><div class='highlight'><pre>    } <span class="keyword">elseif</span> (<span class="variable">$annotationType</span> == <span class="string">"area"</span>) {
         <span class="variable">$box</span> = <span class="keyword">new</span> Rectangle();
-        <span class="variable">$box</span>-&gt;x = F3::get(<span class="string">'POST["box_x"]'</span>);
-        <span class="variable">$box</span>-&gt;y = F3::get(<span class="string">'POST["box_y"]'</span>);
-        <span class="variable">$box</span>-&gt;width = F3::get(<span class="string">'POST["box_width"]'</span>);
-        <span class="variable">$box</span>-&gt;height = F3::get(<span class="string">'POST["box_height"]'</span>);
+        <span class="variable">$box</span>-&gt;x = F3::get(<span class="string">'POST["boxX"]'</span>);
+        <span class="variable">$box</span>-&gt;y = F3::get(<span class="string">'POST["boxY"]'</span>);
+        <span class="variable">$box</span>-&gt;width = F3::get(<span class="string">'POST["boxWidth"]'</span>);
+        <span class="variable">$box</span>-&gt;height = F3::get(<span class="string">'POST["boxHeight"]'</span>);
         <span class="variable">$point</span> = <span class="keyword">new</span> Point();
         <span class="variable">$point</span>-&gt;x = <span class="number">0</span>;
         <span class="variable">$point</span>-&gt;y = <span class="number">0</span>;
@@ -577,8 +577,8 @@ text annotation</p>
             
             <div class="content"><div class='highlight'><pre>    } <span class="keyword">elseif</span> (<span class="variable">$annotationType</span> == <span class="string">"point"</span>) {
         <span class="variable">$box</span> = <span class="keyword">new</span> Rectangle();
-        <span class="variable">$box</span>-&gt;x = F3::get(<span class="string">'POST["box_x"]'</span>);
-        <span class="variable">$box</span>-&gt;y = F3::get(<span class="string">'POST["box_y"]'</span>);
+        <span class="variable">$box</span>-&gt;x = F3::get(<span class="string">'POST["boxX"]'</span>);
+        <span class="variable">$box</span>-&gt;y = F3::get(<span class="string">'POST["boxY"]'</span>);
         <span class="variable">$box</span>-&gt;width = <span class="number">0</span>;
         <span class="variable">$box</span>-&gt;height = <span class="number">0</span>;
         <span class="variable">$point</span> = <span class="keyword">new</span> Point();

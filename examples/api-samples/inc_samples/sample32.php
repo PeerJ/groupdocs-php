@@ -6,10 +6,10 @@ F3::set('userId', '');
 F3::set('privateKey', '');
 $clientId = F3::get('POST["clientId"]');
 $privateKey = F3::get('POST["privateKey"]');
-$basePath = f3::get('POST["server_type"]');
+$basePath = f3::get('POST["basePath"]');
 $callbackUrl = f3::get('POST["callbackUrl"]');
-$templateGuid = F3::get('POST["template_guid"]');
-$formGuid = F3::get("POST['form_guid']");
+$templateGuid = F3::get('POST["templateGuid"]');
+$formGuid = F3::get("POST['formGuid']");
 $email = F3::get('POST["email"]');
 $error = null;
 if (empty($clientId) || empty($privateKey)) {
@@ -46,7 +46,7 @@ if (empty($clientId) || empty($privateKey)) {
     //Set callback url of webhook which will be triggered when form is signed.
     $webHook->callbackUrl = $callbackUrl;
     if (!empty($formGuid)) {
-        F3::set("form_guid", $formGuid);
+        F3::set("formGuid", $formGuid);
         try {
             $postForm = $signatureApi->PublishSignatureForm($clientId, $formGuid, $webHook);
             //Check status
@@ -87,7 +87,7 @@ if (empty($clientId) || empty($privateKey)) {
             //Check status
             if ($createForm->status == "Ok") {
                 //Set variable for template
-                F3::set("tempalte_guid", $templateGuid);
+                F3::set("tempalteGuid", $templateGuid);
                 try {
                     //Publish form
                     $postForm = $signatureApi->PublishSignatureForm($clientId, $createForm->result->form->id, $webHook);
@@ -108,6 +108,7 @@ if (empty($clientId) || empty($privateKey)) {
                             $iframe = 'https://relatime-apps.groupdocs.com/signature2/forms/signembed/' . $createForm->result->form->id;
                         }
                         f3::set('url', $iframe);
+                        F3::set("formGuid", $createForm->result->form->id);
                     } else {
                         throw new Exception($postForm->error_message);
                     }

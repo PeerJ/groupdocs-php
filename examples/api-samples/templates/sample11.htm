@@ -55,25 +55,25 @@
             <input type="radio" name="sourse" value="url" id="urlField" onClick="display('url');" >Upload file from URL </input>
             <br />
             <br />
-            <label for='guidfield' id="guid">GroupDocs fileID</label>
+            <label for='guidField' id="guid">GroupDocs fileID</label>
             <br />
-            <input type='text' name='fileId' id="guidfield" value="{{@fileId}}" />
+            <input type='text' name='fileId' id="guidField" value="{{@fileId}}" />
             
             <label for='file' id="file" style="display:none;">Local file</label>
             <br />
-            <input type='file' name='file' id="filefield" style="display:none;" />
+            <input type='file' name='file' id="fileField" style="display:none;" />
 
-            <label for='urlfield' style="display:none;" id="url">File URL</label>
+            <label for='urlField' style="display:none;" id="url">File URL</label>
             <br />
-            <input type='text' name='url'  value="" id="urlfield" style="display:none;" />
+            <input type='text' name='url'  value="" id="urlField" style="display:none;" />
             <br />
-            <label for='server_type'>Base path<span class="optional">(Optional)</span></label>
+            <label for='basePath'>Base path<span class="optional">(Optional)</span></label>
             <br />
-            <input type ="text" name="server_type" id="server_type" />
+            <input type ="text" name="basePath" id="basePath" />
             <br />
-            <label for='annotation_type'>Annotation Type</label>
+            <label for='annotationType'>Annotation Type</label>
             <br />
-            <select name="annotation_type" id="annotation_type">
+            <select name="annotationType" id="annotationType">
                 <option value="text">Text</option>
                 <option value="area">Area</option>
                 <option selected value="point">Point</option>
@@ -84,44 +84,44 @@
                 <legend>Parameters (all are required)</legend>
                 <div>
                     <span>Box X</span>
-                    <input minlength="0" name="box_x" placeholder="double" type="text" value="">
+                    <input minlength="0" name="boxX" placeholder="double" type="text" value="">
                 </div>
                 <div>
                     <span>Box Y</span>
-                    <input minlength="0" name="box_y" placeholder="double" type="text" value="">
+                    <input minlength="0" name="boxY" placeholder="double" type="text" value="">
                 </div>
 
-                <div id="box-params" style="display:none;">
+                <div id="boxParams" style="display:none;">
                     <div>
                         <span>Box Width</span>
-                        <input minlength="0" name="box_width" placeholder="double" type="text" value="">
+                        <input minlength="0" name="boxWidth" placeholder="double" type="text" value="">
                     </div>
                     <div>
                         <span>Box Height</span>
-                        <input minlength="0" name="box_height" placeholder="double" type="text" value="">
+                        <input minlength="0" name="boxHeight" placeholder="double" type="text" value="">
                     </div>
                 </div>
 
-                <div id="annotation-position" style="display:none;">
+                <div id="annotationPosition" style="display:none;">
                     <div>
                         <span>Annotation Position X</span>
-                        <input minlength="0" name="annotationPosition_x" placeholder="double" type="text" value="">
+                        <input minlength="0" name="annotationPositionX" placeholder="double" type="text" value="">
                     </div>
                     <div>
                         <span>Annotation Position Y</span>
-                        <input minlength="0" name="annotationPosition_Y" placeholder="double" type="text" value="">
+                        <input minlength="0" name="annotationPositionY" placeholder="double" type="text" value="">
                     </div>
                 </div>
 
 
-                <div id="text-params" style="display:none;">
+                <div id="textParams" style="display:none;">
                     <div>
                         <span>Range Position</span>
-                        <input minlength="0" name="range_position" placeholder="double" type="text" value="">
+                        <input minlength="0" name="rangePosition" placeholder="double" type="text" value="">
                     </div>
                     <div>
                         <span>Range Length</span>
-                        <input minlength="0" name="range_length" placeholder="double" type="text" value="">
+                        <input minlength="0" name="rangeLength" placeholder="double" type="text" value="">
                     </div>
                 </div>
 
@@ -137,7 +137,7 @@
                 <true>
                     <tr>
                         <td colspan="2">
-                            <button name="delete_annotation" value="1">Delete annotation</button>
+                            <button name="deleteAnnotation" value="1">Delete annotation</button>
                         </td>
                     </tr>
                 </true>
@@ -155,21 +155,21 @@
 
 <script>
     $(function() {
-        $('select[name="annotation_type"]').change(function() {
+        $('select[name="annotationType"]').change(function() {
             var obj = $(this);
 
             if (obj.val() == "text") {
-                $('#text-params, #annotation-position, #box-params').show();
+                $('#textParams, #annotationPosition, #boxParams').show();
             }
             else if (obj.val() == "area") {
-                $('#box-params').show();
-                $('#annotation-position').hide();
-                $('#text-params').hide();
+                $('#boxParams').show();
+                $('#annotationPosition').hide();
+                $('#textParams').hide();
             }
             else if (obj.val() == "point") {
-                $('#annotation-position').hide();
-                $('#box-params').hide();
-                $('#text-params').hide();
+                $('#annotationPosition').hide();
+                $('#boxParams').hide();
+                $('#textParams').hide();
             }
         });
     });
@@ -177,11 +177,11 @@
 
              if (_element_id == "guid") {
                  var element1 = document.getElementById("file");
-                 var element2 = document.getElementById("filefield");
+                 var element2 = document.getElementById("fileField");
                  var element3 = document.getElementById("url");
-                 var element4 = document.getElementById("urlfield");
+                 var element4 = document.getElementById("urlField");
                  var element5 = document.getElementById("guid");
-                 var element6 = document.getElementById("guidfield");
+                 var element6 = document.getElementById("guidField");
                  element1.style.display = "none";
                  element2.style.display = "none";
                  element3.style.display = "none";
@@ -193,11 +193,11 @@
 
              if (_element_id == "local") {
                  var element1 = document.getElementById("file");
-                 var element2 = document.getElementById("filefield");
+                 var element2 = document.getElementById("fileField");
                  var element3 = document.getElementById("url");
-                 var element4 = document.getElementById("urlfield");
+                 var element4 = document.getElementById("urlField");
                  var element5 = document.getElementById("guid");
-                 var element6 = document.getElementById("guidfield");
+                 var element6 = document.getElementById("guidField");
                  element1.style.display = "inline";
                  element2.style.display = "inline";
                  element3.style.display = "none";
@@ -209,11 +209,11 @@
 
              if (_element_id == "url") {
                  var element1 = document.getElementById("url");
-                 var element2 = document.getElementById("urlfield");
+                 var element2 = document.getElementById("urlField");
                  var element3 = document.getElementById("file");
-                 var element4 = document.getElementById("filefield");
+                 var element4 = document.getElementById("fileField");
                  var element5 = document.getElementById("guid");
-                 var element6 = document.getElementById("guidfield");
+                 var element6 = document.getElementById("guidField");
                  element1.style.display = "inline";
                  element2.style.display = "inline";
                  element3.style.display = "none";

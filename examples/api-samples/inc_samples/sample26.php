@@ -7,7 +7,7 @@ F3::set('password', '');
 $login = F3::get('POST["login"]');
 $password = F3::get('POST["password"]');
 
-function Login($login, $password) {
+try {
     //Check is all data entered
     if (!isset($login) || !isset($password)) {
         throw new Exception("Please enter login and password");
@@ -34,15 +34,11 @@ function Login($login, $password) {
     if ($userData->status == "Ok") {
         //If status Ok get all user data
         $result = $userData->result->user;
+        //Return user data for template
+        F3::set("userInfo", $result);
     } else {
         throw new Exception($userData->error_message);
     }
-    //Return user data for template
-    return F3::set("userInfo", $result);
-}
-
-try {
-    Login($login, $password);
 } catch (Exception $e) {
     $error = 'ERROR: ' . $e->getMessage() . "\n";
     F3::set('error', $error);

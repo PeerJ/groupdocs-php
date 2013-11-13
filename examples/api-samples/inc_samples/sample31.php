@@ -14,7 +14,7 @@ $country = F3::get('POST["country"]');
 $city = F3::get('POST["city"]');
 $street = F3::get('POST["street"]');
 
-function createQuestionary($clientId, $privateKey, $basePath, $templateGuid) {
+try {
     //###Check if user entered all parameters
     if (empty($clientId) || empty($privateKey)) {
         throw new Exception('Please enter FILE ID');
@@ -62,7 +62,7 @@ function createQuestionary($clientId, $privateKey, $basePath, $templateGuid) {
         $country = F3::get('POST["country"]');
         $city = F3::get('POST["city"]');
         $street = F3::get('POST["street"]');
-       
+
         F3::set("email", $email);
         F3::set("country", $country);
         F3::set("name", $name);
@@ -160,6 +160,8 @@ function createQuestionary($clientId, $privateKey, $basePath, $templateGuid) {
                                                 $iframe = 'https://relatime-apps.groupdocs.com/signature2/signembed/' . $envelopeId . '/' . $recipientId;
                                             }
                                             $iframe = $signer->signUrl($iframe);
+                                            //Set variable with results for template
+                                            F3::set('url', $iframe);
                                         } else {
                                             throw new Exception($send->error_message);
                                         }
@@ -187,10 +189,10 @@ function createQuestionary($clientId, $privateKey, $basePath, $templateGuid) {
         } else {
             throw new Exception($addDataSource->error_message);
         }
-
-        //Set variable with results for template
-        return F3::set('url', $iframe);
     }
+} catch (Exception $e) {
+    $error = 'ERROR: ' . $e->getMessage() . "\n";
+    F3::set('error', $error);
 }
 
 //### Delete downloads folder and all files in this folder
@@ -215,12 +217,5 @@ function delFolder($path) {
     rmdir($path);
 }
 
-try {
-    createQuestionary($clientId, $privateKey, $basePath, $templateGuid);
-
-} catch (Exception $e) {
-    $error = 'ERROR: ' . $e->getMessage() . "\n";
-    F3::set('error', $error);
-}
 //Process template
 echo Template::serve('sample31.htm');

@@ -179,7 +179,7 @@ if (empty($clientId) || empty($privateKey)) {
                                         if ($getRecipient->status == "Ok") {
                                             $recipientId = $getRecipient->result->recipients[0]->id;
 
-                                            //Url for callback
+                                            //Url for callbackUrl
                                            
                                             F3::set("callbackUrl", $callbackUrl);
                                             try {

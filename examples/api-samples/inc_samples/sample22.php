@@ -15,7 +15,7 @@ $firstName = F3::get('POST["firstName"]');
 $lastName = F3::get('POST["lastName"]');
 $basePath = F3::get('POST["basePath"]');
 
-function updateUser($clientId, $privateKey, $email, $firstName, $lastName, $basePath) {
+try {
     //Check if all requared parameters were transferred
     if (empty($clientId) || empty($privateKey) || empty($email) || empty($firstName) || empty($lastName)) {
         //if not send error message
@@ -136,18 +136,18 @@ function updateUser($clientId, $privateKey, $email, $firstName, $lastName, $base
                     if ($setReviewer->status == "Ok") {
                         //Generating iframe for template
                         if ($basePath == "https://api.groupdocs.com/v2.0") {
-                            $iframe = 'https://apps.groupdocs.com//document-annotation2/embed/' . 
+                            $iframe = 'https://apps.groupdocs.com//document-annotation2/embed/' .
                                     $fileId . '?&uid=' . $newUser->result->guid . '&download=true';
                             //iframe to dev server
                         } elseif ($basePath == "https://dev-api.groupdocs.com/v2.0") {
-                            $iframe = 'https://dev-apps.groupdocs.com//document-annotation2/embed/' . 
+                            $iframe = 'https://dev-apps.groupdocs.com//document-annotation2/embed/' .
                                     $fileId . '?&uid=' . $newUser->result->guid . '&download=true ';
                             //iframe to test server
                         } elseif ($basePath == "https://stage-apps-groupdocs.dynabic.com/v2.0") {
-                            $iframe = 'https://stage-apps-groupdocs.dynabic.com/document-annotation2/embed/' . 
+                            $iframe = 'https://stage-apps-groupdocs.dynabic.com/document-annotation2/embed/' .
                                     $fileId . '?&uid=' . $newUser->result->guid . '&download=true ';
                         } elseif ($basePath == "http://realtime-api.groupdocs.com") {
-                            $iframe = 'http://realtime-apps.groupdocs.com/document-annotation2/embed/' . 
+                            $iframe = 'http://realtime-apps.groupdocs.com/document-annotation2/embed/' .
                                     $fileId . '?&uid=' . $newUser->result->guid . '&download=true ';
                         }
                         $iframe = $signer->signUrl($iframe);
@@ -162,15 +162,11 @@ function updateUser($clientId, $privateKey, $email, $firstName, $lastName, $base
             }
             //Set variable with work results for template
             F3::set('fileId', $fileId);
-            return F3::set('url', $iframe);
+            F3::set('url', $iframe);
         } else {
-            return F3::set("message", $newUser->error_message);
+            F3::set("message", $newUser->error_message);
         }
     }
-}
-
-try {
-    updateUser($clientId, $privateKey, $email, $firstName, $lastName, $basePath);
 } catch (Exception $e) {
     $error = 'ERROR: ' . $e->getMessage() . "\n";
     F3::set('error', $error);

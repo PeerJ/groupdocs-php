@@ -158,10 +158,10 @@ if (empty($clientId) || empty($privateKey)) {
     //$targetFileId - file GuId with wich will compare sourceFile, $callbackUrl - Url which will be executed after compare,
     try {
         $info = $CompareApi->Compare($clientId, $sourceFileId, $targetFileId, $callbackUrl);
-        //###Example of handling callback request:
-        //  You can handle callback request in separate php file or in the same one. Our service will post JSON data via post request. 
+        //###Example of handling callbackUrl request:
+        //  You can handle callbackUrl request in separate php file or in the same one. Our service will post JSON data via post request. 
         //In PHP you should get raw data like this:
-        //     $json = file_get_contents("php://input"); - get callback data
+        //     $json = file_get_contents("php://input"); - get callbackUrl data
         //     $fp = fopen(__DIR__ . '/../../temp/signature_request_log.txt', 'a'); - open file for data write
         //     fwrite($fp, $json . "\r\n"); - write data to the file
         //     fclose($fp); - close file

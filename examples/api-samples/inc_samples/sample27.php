@@ -8,7 +8,7 @@ $clientId = F3::get('POST["clientId"]');
 $privateKey = F3::get('POST["privateKey"]');
 $basePath = F3::get('POST["basePath"]');
 
-function createQuestionary($clientId, $privateKey, $basePath) {
+try {
     //###Check if user entered all parameters
     if (empty($clientId) || empty($privateKey)) {
         throw new Exception('Please enter FILE ID');
@@ -118,8 +118,7 @@ function createQuestionary($clientId, $privateKey, $basePath) {
         //Check status
         if ($addDataSource->status == "Ok") {
             //If status ok merge Datasource to new pdf file
-            $job = $mergApi->MergeDatasource($clientId, $fileGuId, 
-                    $addDataSource->result->datasource_id, $resultType, null);
+            $job = $mergApi->MergeDatasource($clientId, $fileGuId, $addDataSource->result->datasource_id, $resultType, null);
             //Check status
             if ($job->status == "Ok") {
                 //### Check job status
@@ -171,21 +170,15 @@ function createQuestionary($clientId, $privateKey, $basePath) {
                     $iframe = 'http://realtime-apps.groupdocs.com/document-viewer/embed/' . $guid;
                 }
                 $iframe = $signer->signUrl($iframe);
+                //Set variable with results for template
+                F3::set('url', $iframe);
             } else {
                 throw new Exception($job->error_message);
             }
         } else {
             throw new Exception($addDataSource->error_message);
         }
-
-        //Set variable with results for template
-
-        return F3::set('url', $iframe);
     }
-}
-
-try {
-    createQuestionary($clientId, $privateKey, $basePath);
 } catch (Exception $e) {
     $error = 'ERROR: ' . $e->getMessage() . "\n";
     F3::set('error', $error);

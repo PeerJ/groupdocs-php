@@ -691,10 +691,10 @@ $targetFileId - file GuId with wich will compare sourceFile, $callbackUrl - Url 
               <div class="pilwrap for-h3">
                 <a class="pilcrow" href="#section-40">&#182;</a>
               </div>
-              <h3>Example of handling callback request:</h3>
-<p> You can handle callback request in separate php file or in the same one. Our service will post JSON data via post request. 
+              <h3>Example of handling callbackUrl request:</h3>
+<p> You can handle callbackUrl request in separate php file or in the same one. Our service will post JSON data via post request. 
 In PHP you should get raw data like this:
-    $json = file<em>get<em>contents(“php://input”); - get callback data
+    $json = file<em>get<em>contents(“php://input”); - get callbackUrl data
     $fp = fopen(__DIR</em></em> . &#39;/../../temp/signature_request_log.txt‘, ’a&#39;); - open file for data write
     fwrite($fp, $json . &quot;\r\n&quot;); - write data to the file
     fclose($fp); - close file

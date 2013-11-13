@@ -10,7 +10,7 @@ $clientId = F3::get('POST["clientId"]');
 $privateKey = F3::get('POST["privateKey"]');
 $fileId = F3::get('POST["fileId"]');
 
-function DeleteAnnotations($clientId, $privateKey, $fileId) {
+try {
     if (empty($clientId) || empty($privateKey) || empty($fileId)) {
         throw new Exception('Please enter all required parameters');
     } else {
@@ -63,21 +63,16 @@ function DeleteAnnotations($clientId, $privateKey, $fileId) {
                         $iframe = $signer->signUrl($iframe);
                         F3::set("url", $iframe);
                     } else {
-                        $message = $del->error_message;
+                        throw new Exception($del->error_message);
                     }
                 }
             } else {
-                $message = '<span style="color: red">There are no annotations</span>';
+                throw new Exception('<span style="color: red">There are no annotations</span>');
             }
         } else {
-            $message = $list->error_message;
+            throw new Exception($list->error_message);
         }
-        return F3::set('message', $message);
     }
-}
-
-try {
-    DeleteAnnotations($clientId, $privateKey, $fileId);
 } catch (Exception $e) {
     $error = 'ERROR: ' . $e->getMessage() . "\n";
     F3::set('error', $error);

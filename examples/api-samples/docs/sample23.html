@@ -52,7 +52,7 @@ F3::set(<span class="string">'privateKey'</span>, <span class="string">''</span>
 <span class="variable">$privateKey</span> = F3::get(<span class="string">'POST["privateKey"]'</span>);
 <span class="variable">$basePath</span> = F3::get(<span class="string">'POST["basePath"]'</span>);
 
-<span class="function"><span class="keyword">function</span> <span class="title">Iframe</span><span class="params">(<span class="variable">$clientId</span>, <span class="variable">$privateKey</span>, <span class="variable">$basePath</span>)</span> {</span></pre></div></div>
+<span class="keyword">try</span> {</pre></div></div>
             
         </li>
         
@@ -338,7 +338,7 @@ F3::set(<span class="string">'privateKey'</span>, <span class="string">''</span>
             </div>
             
             <div class="content"><div class='highlight'><pre>            <span class="keyword">if</span> (<span class="keyword">null</span> === <span class="variable">$uploadedFile</span>) {
-                <span class="keyword">return</span> <span class="keyword">new</span> RedirectResponse(<span class="string">"/sample23"</span>);
+                <span class="keyword">new</span> RedirectResponse(<span class="string">"/sample23"</span>);
             }</pre></div></div>
             
         </li>
@@ -435,7 +435,7 @@ F3::set(<span class="string">'privateKey'</span>, <span class="string">''</span>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>        <span class="variable">$pageImage</span> = <span class="variable">$api</span>-&gt;GetDocumentPagesImageUrls(<span class="variable">$clientId</span>, <span class="variable">$fileGuId</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="string">'650x500'</span>, <span class="keyword">null</span>, <span class="keyword">null</span>, <span class="keyword">null</span>);
+            <div class="content"><div class='highlight'><pre>        <span class="variable">$pageImage</span> = <span class="variable">$api</span>-&gt;GetDocumentPagesImageUrls(<span class="variable">$clientId</span>, <span class="variable">$fileGuId</span>, <span class="number">0</span>, <span class="keyword">null</span>, <span class="string">'650x500'</span>, <span class="keyword">null</span>, <span class="keyword">null</span>, <span class="keyword">null</span>);
         <span class="variable">$url</span> = <span class="string">""</span>;
         <span class="variable">$image</span> = <span class="string">""</span>;</pre></div></div>
             
@@ -468,7 +468,7 @@ F3::set(<span class="string">'privateKey'</span>, <span class="string">''</span>
             </div>
             
             <div class="content"><div class='highlight'><pre>            <span class="keyword">for</span> (<span class="variable">$i</span> = <span class="number">0</span>; <span class="variable">$i</span> &lt; count(<span class="variable">$pageImage</span>-&gt;result-&gt;url); <span class="variable">$i</span>++) {
-               
+
                 <span class="variable">$image</span> .= <span class="string">'&lt;img src="'</span> . <span class="variable">$pageImage</span>-&gt;result-&gt;url[<span class="variable">$i</span>] . <span class="string">'"&gt;&lt;/img&gt;&lt;br/&gt;'</span>;
             }
         } <span class="keyword">else</span> {
@@ -489,12 +489,8 @@ F3::set(<span class="string">'privateKey'</span>, <span class="string">''</span>
             </div>
             
             <div class="content"><div class='highlight'><pre>        F3::set(<span class="string">"fileId"</span>, <span class="variable">$fileGuId</span>);
-        <span class="keyword">return</span> F3::set(<span class="string">'image'</span>, <span class="variable">$image</span>);
+        F3::set(<span class="string">'image'</span>, <span class="variable">$image</span>);
     }
-}
-
-<span class="keyword">try</span> {
-    Iframe(<span class="variable">$clientId</span>, <span class="variable">$privateKey</span>, <span class="variable">$basePath</span>);
 } <span class="keyword">catch</span> (<span class="keyword">Exception</span> <span class="variable">$e</span>) {
     <span class="variable">$error</span> = <span class="string">'ERROR: '</span> . <span class="variable">$e</span>-&gt;getMessage() . <span class="string">"\n"</span>;
     F3::set(<span class="string">'error'</span>, <span class="variable">$error</span>);

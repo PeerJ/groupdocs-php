@@ -52,7 +52,7 @@ F3::set(<span class="string">'privateKey'</span>, <span class="string">''</span>
 <span class="variable">$privateKey</span> = F3::get(<span class="string">'POST["privateKey"]'</span>);
 <span class="variable">$basePath</span> = F3::get(<span class="string">'POST["basePath"]'</span>);
 
-<span class="function"><span class="keyword">function</span> <span class="title">createQuestionary</span><span class="params">(<span class="variable">$clientId</span>, <span class="variable">$privateKey</span>, <span class="variable">$basePath</span>)</span> {</span></pre></div></div>
+<span class="keyword">try</span> {</pre></div></div>
             
         </li>
         
@@ -615,8 +615,7 @@ F3::set(<span class="string">'privateKey'</span>, <span class="string">''</span>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>            <span class="variable">$job</span> = <span class="variable">$mergApi</span>-&gt;MergeDatasource(<span class="variable">$clientId</span>, <span class="variable">$fileGuId</span>, 
-                    <span class="variable">$addDataSource</span>-&gt;result-&gt;datasource_id, <span class="variable">$resultType</span>, <span class="keyword">null</span>);</pre></div></div>
+            <div class="content"><div class='highlight'><pre>            <span class="variable">$job</span> = <span class="variable">$mergApi</span>-&gt;MergeDatasource(<span class="variable">$clientId</span>, <span class="variable">$fileGuId</span>, <span class="variable">$addDataSource</span>-&gt;result-&gt;datasource_id, <span class="variable">$resultType</span>, <span class="keyword">null</span>);</pre></div></div>
             
         </li>
         
@@ -875,13 +874,7 @@ iframe to prodaction server</p>
                 } <span class="keyword">elseif</span> (<span class="variable">$basePath</span> == <span class="string">"http://realtime-api.groupdocs.com"</span>) {
                     <span class="variable">$iframe</span> = <span class="string">'http://realtime-apps.groupdocs.com/document-viewer/embed/'</span> . <span class="variable">$guid</span>;
                 }
-                <span class="variable">$iframe</span> = <span class="variable">$signer</span>-&gt;signUrl(<span class="variable">$iframe</span>);
-            } <span class="keyword">else</span> {
-                <span class="keyword">throw</span> <span class="keyword">new</span> <span class="keyword">Exception</span>(<span class="variable">$job</span>-&gt;error_message);
-            }
-        } <span class="keyword">else</span> {
-            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="keyword">Exception</span>(<span class="variable">$addDataSource</span>-&gt;error_message);
-        }</pre></div></div>
+                <span class="variable">$iframe</span> = <span class="variable">$signer</span>-&gt;signUrl(<span class="variable">$iframe</span>);</pre></div></div>
             
         </li>
         
@@ -896,13 +889,14 @@ iframe to prodaction server</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>
-        <span class="keyword">return</span> F3::set(<span class="string">'url'</span>, <span class="variable">$iframe</span>);
+            <div class="content"><div class='highlight'><pre>                F3::set(<span class="string">'url'</span>, <span class="variable">$iframe</span>);
+            } <span class="keyword">else</span> {
+                <span class="keyword">throw</span> <span class="keyword">new</span> <span class="keyword">Exception</span>(<span class="variable">$job</span>-&gt;error_message);
+            }
+        } <span class="keyword">else</span> {
+            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="keyword">Exception</span>(<span class="variable">$addDataSource</span>-&gt;error_message);
+        }
     }
-}
-
-<span class="keyword">try</span> {
-    createQuestionary(<span class="variable">$clientId</span>, <span class="variable">$privateKey</span>, <span class="variable">$basePath</span>);
 } <span class="keyword">catch</span> (<span class="keyword">Exception</span> <span class="variable">$e</span>) {
     <span class="variable">$error</span> = <span class="string">'ERROR: '</span> . <span class="variable">$e</span>-&gt;getMessage() . <span class="string">"\n"</span>;
     F3::set(<span class="string">'error'</span>, <span class="variable">$error</span>);

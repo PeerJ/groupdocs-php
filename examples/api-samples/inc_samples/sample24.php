@@ -11,7 +11,7 @@ $clientId = F3::get('POST["clientId"]');
 $privateKey = F3::get('POST["privateKey"]');
 $url = F3::get('POST["url"]');
 
-function Upload($clientId, $privateKey, $url) {
+try {
     //###Check clientId and privateKey
     if (empty($clientId) || empty($privateKey) || empty($url)) {
         throw new Exception('Please enter all required parameters');
@@ -20,6 +20,9 @@ function Upload($clientId, $privateKey, $url) {
         $basePath = F3::get('POST["basePath"]');
         $clientID = strip_tags(stripslashes(trim($clientId))); //ClientId==UserId
         $apiKey = strip_tags(stripslashes(trim($privateKey))); //ApiKey==PrivateKey
+        //Process template
+        F3::set('userId', $clientId);
+        F3::set('privateKey', $privateKey);
         //###Create Signer, ApiClient and Storage Api objects
         //Create signer object
         $signer = new GroupDocsRequestSigner($apiKey);
@@ -37,7 +40,7 @@ function Upload($clientId, $privateKey, $url) {
         //###Make a request to Storage API using clientId
         //Upload file to current user storage using entere URl to the file
         $uploadResult = $storageApi->UploadWeb($clientID, $url);
-       
+
         //###Check if file uploaded successfully
         if ($uploadResult->status == "Ok") {
             $guid = $uploadResult->result->guid;
@@ -55,22 +58,14 @@ function Upload($clientId, $privateKey, $url) {
                 $iframe = 'http://realtime-apps.groupdocs.com/document-viewer/embed/' . $guid;
             }
             $iframe = $signer->signUrl($iframe);
-            //If request was successfull - set result variable for template
-            return $iframe;
+            $message = '<p>File was uploaded to GroupDocs. Here you can see your <strong> file in the GroupDocs Embedded Viewer.</p>';
+            F3::set('message', $message);
+            F3::set('url', $iframe);
         }
     }
-}
-
-try {
-    $upload = Upload($clientId, $privateKey, $url);
-    $message = '<p>File was uploaded to GroupDocs. Here you can see your <strong> file in the GroupDocs Embedded Viewer.</p>';
-    F3::set('message', $message);
-    F3::set('url', $upload);
 } catch (Exception $e) {
     $error = 'ERROR: ' . $e->getMessage() . "\n";
     F3::set('error', $error);
 }
-//Process template
-F3::set('userId', $clientId);
-F3::set('privateKey', $privateKey);
+
 echo Template::serve('sample24.htm');

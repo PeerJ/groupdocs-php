@@ -8,7 +8,7 @@ $clientId = F3::get('POST["clientId"]');
 $privateKey = F3::get('POST["privateKey"]');
 $basePath = F3::get('POST["basePath"]');
 
-function Iframe($clientId, $privateKey, $basePath) {
+try {
     //###Check if user entered all parameters
     if (empty($clientId) || empty($privateKey)) {
         throw new Exception('Please enter FILE ID');
@@ -63,7 +63,7 @@ function Iframe($clientId, $privateKey, $basePath) {
 
             //###Check uploaded file
             if (null === $uploadedFile) {
-                return new RedirectResponse("/sample23");
+                new RedirectResponse("/sample23");
             }
             //Temp name of the file
             $tmpName = $uploadedFile['tmp_name'];
@@ -84,15 +84,15 @@ function Iframe($clientId, $privateKey, $basePath) {
             }
         }
         //Make request yo the Api to get images for all document pages
-        $pageImage = $api->GetDocumentPagesImageUrls($clientId, $fileGuId, 0, 1, '650x500', null, null, null);
+        $pageImage = $api->GetDocumentPagesImageUrls($clientId, $fileGuId, 0, null, '650x500', null, null, null);
         $url = "";
         $image = "";
         //Check the result of the request
         if ($pageImage->status == "Ok") {
-            
+
             //### If request was successfull
             for ($i = 0; $i < count($pageImage->result->url); $i++) {
-               
+
                 $image .= '<img src="' . $pageImage->result->url[$i] . '"></img><br/>';
             }
         } else {
@@ -100,12 +100,8 @@ function Iframe($clientId, $privateKey, $basePath) {
         }
         //Set variable with results for template
         F3::set("fileId", $fileGuId);
-        return F3::set('image', $image);
+        F3::set('image', $image);
     }
-}
-
-try {
-    Iframe($clientId, $privateKey, $basePath);
 } catch (Exception $e) {
     $error = 'ERROR: ' . $e->getMessage() . "\n";
     F3::set('error', $error);

@@ -58,7 +58,7 @@ F3::set(<span class="string">'privateKey'</span>, <span class="string">''</span>
 <span class="variable">$city</span> = F3::get(<span class="string">'POST["city"]'</span>);
 <span class="variable">$street</span> = F3::get(<span class="string">'POST["street"]'</span>);
 
-<span class="function"><span class="keyword">function</span> <span class="title">createQuestionary</span><span class="params">(<span class="variable">$clientId</span>, <span class="variable">$privateKey</span>, <span class="variable">$basePath</span>, <span class="variable">$templateGuid</span>)</span> {</span></pre></div></div>
+<span class="keyword">try</span> {</pre></div></div>
             
         </li>
         
@@ -262,7 +262,7 @@ F3::set(<span class="string">'privateKey'</span>, <span class="string">''</span>
         <span class="variable">$country</span> = F3::get(<span class="string">'POST["country"]'</span>);
         <span class="variable">$city</span> = F3::get(<span class="string">'POST["city"]'</span>);
         <span class="variable">$street</span> = F3::get(<span class="string">'POST["street"]'</span>);
-       
+
         F3::set(<span class="string">"email"</span>, <span class="variable">$email</span>);
         F3::set(<span class="string">"country"</span>, <span class="variable">$country</span>);
         F3::set(<span class="string">"name"</span>, <span class="variable">$name</span>);
@@ -670,7 +670,22 @@ F3::set(<span class="string">'privateKey'</span>, <span class="string">''</span>
                                             } <span class="keyword">elseif</span> (<span class="variable">$basePath</span> == <span class="string">"http://realtime-api.groupdocs.com"</span>) {
                                                 <span class="variable">$iframe</span> = <span class="string">'https://relatime-apps.groupdocs.com/signature2/signembed/'</span> . <span class="variable">$envelopeId</span> . <span class="string">'/'</span> . <span class="variable">$recipientId</span>;
                                             }
-                                            <span class="variable">$iframe</span> = <span class="variable">$signer</span>-&gt;signUrl(<span class="variable">$iframe</span>);
+                                            <span class="variable">$iframe</span> = <span class="variable">$signer</span>-&gt;signUrl(<span class="variable">$iframe</span>);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-39">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-39">&#182;</a>
+              </div>
+              <p>Set variable with results for template</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>                                            F3::set(<span class="string">'url'</span>, <span class="variable">$iframe</span>);
                                         } <span class="keyword">else</span> {
                                             <span class="keyword">throw</span> <span class="keyword">new</span> <span class="keyword">Exception</span>(<span class="variable">$send</span>-&gt;error_message);
                                         }
@@ -697,23 +712,11 @@ F3::set(<span class="string">'privateKey'</span>, <span class="string">''</span>
             }
         } <span class="keyword">else</span> {
             <span class="keyword">throw</span> <span class="keyword">new</span> <span class="keyword">Exception</span>(<span class="variable">$addDataSource</span>-&gt;error_message);
-        }</pre></div></div>
-            
-        </li>
-        
-        
-        <li id="section-39">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-39">&#182;</a>
-              </div>
-              <p>Set variable with results for template</p>
-
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>        <span class="keyword">return</span> F3::set(<span class="string">'url'</span>, <span class="variable">$iframe</span>);
+        }
     }
+} <span class="keyword">catch</span> (<span class="keyword">Exception</span> <span class="variable">$e</span>) {
+    <span class="variable">$error</span> = <span class="string">'ERROR: '</span> . <span class="variable">$e</span>-&gt;getMessage() . <span class="string">"\n"</span>;
+    F3::set(<span class="string">'error'</span>, <span class="variable">$error</span>);
 }</pre></div></div>
             
         </li>
@@ -813,14 +816,6 @@ F3::set(<span class="string">'privateKey'</span>, <span class="string">''</span>
             </div>
             
             <div class="content"><div class='highlight'><pre>    rmdir(<span class="variable">$path</span>);
-}
-
-<span class="keyword">try</span> {
-    createQuestionary(<span class="variable">$clientId</span>, <span class="variable">$privateKey</span>, <span class="variable">$basePath</span>, <span class="variable">$templateGuid</span>);
-
-} <span class="keyword">catch</span> (<span class="keyword">Exception</span> <span class="variable">$e</span>) {
-    <span class="variable">$error</span> = <span class="string">'ERROR: '</span> . <span class="variable">$e</span>-&gt;getMessage() . <span class="string">"\n"</span>;
-    F3::set(<span class="string">'error'</span>, <span class="variable">$error</span>);
 }</pre></div></div>
             
         </li>

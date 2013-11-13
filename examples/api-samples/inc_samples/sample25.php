@@ -8,7 +8,7 @@ $clientId = F3::get('POST["clientId"]');
 $privateKey = F3::get('POST["privateKey"]');
 $basePath = F3::get('POST["basePath"]');
 
-function mergeFields($clientId, $privateKey, $basePath) {
+try {
     //###Check if user entered all parameters
     if (empty($clientId) || empty($privateKey)) {
         throw new Exception('Please enter FILE ID');
@@ -160,7 +160,9 @@ function mergeFields($clientId, $privateKey, $basePath) {
                     } elseif ($basePath == "http://realtime-api.groupdocs.com") {
                         $iframe = 'http://realtime-apps.groupdocs.com/document-viewer/embed/' . $guid;
                     }
-                     $iframe = $signer->signUrl($iframe);
+                    $iframe = $signer->signUrl($iframe);
+                    //Set variable with results for template
+                    F3::set('url', $iframe);
                 } else {
                     throw new Exception($job->error_message);
                 }
@@ -170,15 +172,7 @@ function mergeFields($clientId, $privateKey, $basePath) {
         } else {
             throw new Exception($fields->error_message);
         }
-
-        //Set variable with results for template
-
-        return F3::set('url', $iframe);
     }
-}
-
-try {
-    mergeFields($clientId, $privateKey, $basePath);
 } catch (Exception $e) {
     $error = 'ERROR: ' . $e->getMessage() . "\n";
     F3::set('error', $error);

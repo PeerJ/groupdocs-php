@@ -43,7 +43,7 @@ if (empty($clientId) || empty($privateKey)) {
     F3::set("callbackUrl", $callbackUrl);
     //Create WebHook object
     $webHook = new WebhookInfo();
-    //Set callback url of webhook which will be triggered when form is signed.
+    //Set callbackUrl url of webhook which will be triggered when form is signed.
     $webHook->callbackUrl = $callbackUrl;
     if (!empty($formGuid)) {
         F3::set("formGuid", $formGuid);

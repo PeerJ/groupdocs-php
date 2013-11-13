@@ -206,21 +206,96 @@ added field 'String webhook_notification_failed_recipients' |
 | AdminApi \\ | \- | New method \\ |
 
 1.7.3 version
-|| {color:#333333}Class{color} || Method || Changes ||
-| SignatureSignDocumentSignerSettingsInfo | \- | fields -   added new property |
-| TemplateInfo | \- | size -   new property |
-| TemplateInfo | \- | upload_time   - new property |
-| PublicSignatureSignDocumentSignerSettingsInfo | \- | fields -   new property |
-| SignatureDocumentFieldsResponse | \- | new class |
-| SignatureDocumentFieldsResult | \- | new class |
-| UploadRequestResult | \- | upload_time   - new property |
-| \- | GetContacts | useAnd -   new parameter |
-| \- | UpdateEnvelopeFromTemplate | new   method |
-| \- | DeletePredefinedList | SignaturePredefinedListResponse - renamed to   SignaturePredefinedListsResponse |
-| | CreateSignatureTemplate | name - parameter property changed from   "required=false" to "requierd=true" |
-| | GetQuestionnaires | orderBy   - new parameter |
-| | GetQuestionnaires | isAscending   - new parameter |
-| | GetQuestionnaireCollectors | orderBy   - new parameter |
-| | GetQuestionnaireCollectors | isAsc -   new parameter |
-| | PublicGetDocumentFields | new   method |
-| | CopyFileToTemplates | new   method |
+
+table class="confluenceTable"><tbody>
+<tr>
+<th class="confluenceTh"> <font color="#333333">Class</font> </th>
+<th class="confluenceTh"> Method </th>
+<th class="confluenceTh"> Changes </th>
+</tr>
+<tr>
+<td class="confluenceTd"> SignatureSignDocumentSignerSettingsInfo </td>
+<td class="confluenceTd"> - </td>
+<td class="confluenceTd"> fields -   added new property </td>
+</tr>
+<tr>
+<td class="confluenceTd"> TemplateInfo </td>
+<td class="confluenceTd"> - </td>
+<td class="confluenceTd"> size -   new property </td>
+</tr>
+<tr>
+<td class="confluenceTd"> TemplateInfo </td>
+<td class="confluenceTd"> - </td>
+<td class="confluenceTd"> upload_time   - new property </td>
+</tr>
+<tr>
+<td class="confluenceTd"> PublicSignatureSignDocumentSignerSettingsInfo </td>
+<td class="confluenceTd"> - </td>
+<td class="confluenceTd"> fields -   new property </td>
+</tr>
+<tr>
+<td class="confluenceTd"> SignatureDocumentFieldsResponse </td>
+<td class="confluenceTd"> - </td>
+<td class="confluenceTd"> new class </td>
+</tr>
+<tr>
+<td class="confluenceTd"> SignatureDocumentFieldsResult </td>
+<td class="confluenceTd"> - </td>
+<td class="confluenceTd"> new class </td>
+</tr>
+<tr>
+<td class="confluenceTd"> UploadRequestResult </td>
+<td class="confluenceTd"> - </td>
+<td class="confluenceTd"> upload_time   - new property </td>
+</tr>
+<tr>
+<td class="confluenceTd"> - </td>
+<td class="confluenceTd"> GetContacts </td>
+<td class="confluenceTd"> useAnd -   new parameter </td>
+</tr>
+<tr>
+<td class="confluenceTd"> - </td>
+<td class="confluenceTd"> UpdateEnvelopeFromTemplate </td>
+<td class="confluenceTd"> new   method </td>
+</tr>
+<tr>
+<td class="confluenceTd"> - </td>
+<td class="confluenceTd"> DeletePredefinedList </td>
+<td class="confluenceTd"> SignaturePredefinedListResponse - renamed to   SignaturePredefinedListsResponse </td>
+</tr>
+<tr>
+<td class="confluenceTd">&nbsp;</td>
+<td class="confluenceTd"> CreateSignatureTemplate </td>
+<td class="confluenceTd"> name - parameter property changed from   "required=false" to "requierd=true" </td>
+</tr>
+<tr>
+<td class="confluenceTd">&nbsp;</td>
+<td class="confluenceTd"> GetQuestionnaires </td>
+<td class="confluenceTd"> orderBy   - new parameter </td>
+</tr>
+<tr>
+<td class="confluenceTd">&nbsp;</td>
+<td class="confluenceTd"> GetQuestionnaires </td>
+<td class="confluenceTd"> isAscending   - new parameter </td>
+</tr>
+<tr>
+<td class="confluenceTd">&nbsp;</td>
+<td class="confluenceTd"> GetQuestionnaireCollectors </td>
+<td class="confluenceTd"> orderBy   - new parameter </td>
+</tr>
+<tr>
+<td class="confluenceTd">&nbsp;</td>
+<td class="confluenceTd"> GetQuestionnaireCollectors </td>
+<td class="confluenceTd"> isAsc -   new parameter </td>
+</tr>
+<tr>
+<td class="confluenceTd">&nbsp;</td>
+<td class="confluenceTd"> PublicGetDocumentFields </td>
+<td class="confluenceTd"> new   method </td>
+</tr>
+<tr>
+<td class="confluenceTd">&nbsp;</td>
+<td class="confluenceTd"> CopyFileToTemplates </td>
+<td class="confluenceTd"> new   method </td>
+</tr>
+</tbody></table>

@@ -207,7 +207,7 @@ added field 'String webhook_notification_failed_recipients' |
 
 1.7.3 version
 
-table class="confluenceTable"><tbody>
+<table class="confluenceTable"><tbody>
 <tr>
 <th class="confluenceTh"> <font color="#333333">Class</font> </th>
 <th class="confluenceTh"> Method </th>

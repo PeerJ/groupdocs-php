@@ -8,7 +8,6 @@ Latest SDK version 1.7.3.
 * PHP 5.3
 * Apache ModRewrite
 * PHP Curl extension
-* PHP Sockets extension (php_sockets.dll)
 * composer.phar (http://getcomposer.org/download/ or use included version)
 
 

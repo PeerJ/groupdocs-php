@@ -9,7 +9,7 @@ Latest SDK version 1.7.3.
 * Apache ModRewrite
 * PHP Curl extension
 * composer.phar (http://getcomposer.org/download/ or use included version, this requirement needed
-only if you want to install PHP SDk from Packagist repository)
+only if you want to install PHP SDK from Packagist repository)
 
 
 ## Installation

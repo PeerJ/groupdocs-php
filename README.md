@@ -42,7 +42,7 @@ To get the lastest SDK code from master branch use "dev-master" version. With th
 
 ###ChangeLog
 
-You can found change log by this link https://github.com/groupdocs/groupdocs-php/blob/master/changelog.md
+Change log content was moved to separate file - https://github.com/groupdocs/groupdocs-php/blob/master/changelog.md
 
 ###[Sign, Manage, Annotate, Assemble, Compare and Convert Documents with GroupDocs](http://groupdocs.com)
 1. [Sign documents online with GroupDocs Signature](http://groupdocs.com/apps/signature)

@@ -20,6 +20,14 @@ if (empty($clientId) || empty($privateKey)) {
     $error = 'Please enter all required parameters';
     F3::set('error', $error);
 } else {
+    if ($folderPath != "") {
+        if (strpos($folderPath, "/") == true) {
+            $folderPath = $folderPath;
+        } else if (strpos($folderPath, "\\") == true || strpos($folderPath, "/") == false) {
+            $folderPath = str_replace("\\", "", $folderPath);
+            $folderPath = trim(strip_tags($folderPath . "/"));
+        }
+    }
     //Deleting of tags, slashes and  space from clientId and privateKey
     $clientID = strip_tags(stripslashes(trim($clientId))); //ClientId==UserId
     $apiKey = strip_tags(stripslashes(trim($privateKey))); //ApiKey==PrivateKey

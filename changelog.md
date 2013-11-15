@@ -1,300 +1,99 @@
 ###Change log for GroupDocs SDK
 
-1.6.0 version
+1.7.3 version
 
 <table class="confluenceTable"><tbody>
 <tr>
-<th class="confluenceTh"> Class </th>
+<th class="confluenceTh"> <font color="#333333">Class</font> </th>
 <th class="confluenceTh"> Method </th>
 <th class="confluenceTh"> Changes </th>
 </tr>
 <tr>
-<td class="confluenceTd"> DocApi <br class="atl-forced-newline"> </td>
-<td class="confluenceTd"> ViewDocument <br class="atl-forced-newline"> </td>
-<td class="confluenceTd"> Added parameter 'String passwordSalt' (last position) </td>
-</tr>
-<tr>
-<td class="confluenceTd"> DocApi <br class="atl-forced-newline"> </td>
-<td class="confluenceTd"> ViewDocumentAsHtml <br class="atl-forced-newline"> </td>
-<td class="confluenceTd"> Added parameter 'String passwordSalt'&nbsp;(last position) </td>
-</tr>
-<tr>
-<td class="confluenceTd"> DocApi <br class="atl-forced-newline"> </td>
-<td class="confluenceTd"> SetDocumentPassword <br class="atl-forced-newline"> </td>
-<td class="confluenceTd"> New method </td>
-</tr>
-<tr>
-<td class="confluenceTd"> DocApi <br class="atl-forced-newline"> </td>
-<td class="confluenceTd"> GetDocumentPageHtmlFixed <br class="atl-forced-newline"> </td>
-<td class="confluenceTd"> New method <br class="atl-forced-newline"> </td>
-</tr>
-<tr>
-<td class="confluenceTd"> SharedApi <br class="atl-forced-newline"> </td>
-<td class="confluenceTd"> GetHtml <br class="atl-forced-newline"> </td>
-<td class="confluenceTd"> New method <br class="atl-forced-newline"> </td>
-</tr>
-<tr>
-<td class="confluenceTd"> SignatureApi <br class="atl-forced-newline"> </td>
-<td class="confluenceTd"> CreateSignatureEnvelope <br class="atl-forced-newline"> </td>
-<td class="confluenceTd"> Added parameter 'Boolean parseFields' (position 6) </td>
-</tr>
-<tr>
-<td class="confluenceTd"> SignatureApi <br class="atl-forced-newline"> </td>
-<td class="confluenceTd"> AddSignatureEnvelopeDocument <br class="atl-forced-newline"> </td>
-<td class="confluenceTd"> Added parameter 'Boolean parseFields'&nbsp;(last position) </td>
-</tr>
-<tr>
-<td class="confluenceTd"> SignatureApi <br class="atl-forced-newline"> </td>
-<td class="confluenceTd"> GetSignatureEnvelopes <br class="atl-forced-newline"> </td>
-<td class="confluenceTd"> Parameter 'String date' moved from pos 5 to pos 7; parameter 'String name' moved from pos 6 to pos 8; parameter 'String document' renamed to 'String originalDocumentMD5' and moved from pos 7 to pos 5; parameter 'String recipient' renamed to 'String recipientEmail' and moved from pos 8 to pos 6; </td>
-</tr>
-<tr>
-<td class="confluenceTd"> SignatureApi <br class="atl-forced-newline"> </td>
-<td class="confluenceTd"> RenameSignatureEnvelopeDocument <br class="atl-forced-newline"> </td>
-<td class="confluenceTd"> New method <br class="atl-forced-newline"> </td>
-</tr>
-<tr>
-<td class="confluenceTd"> SignatureApi<br class="atl-forced-newline"> </td>
-<td class="confluenceTd"> CancelSignatureEnvelope<br class="atl-forced-newline"> </td>
-<td class="confluenceTd"> New method<br class="atl-forced-newline"> </td>
-</tr>
-<tr>
-<td class="confluenceTd"> SignatureApi <br class="atl-forced-newline"> </td>
-<td class="confluenceTd"> AddSignatureFormDocument <br class="atl-forced-newline"> </td>
-<td class="confluenceTd"> Added parameter 'Boolean parseFields'&nbsp;(last position) </td>
-</tr>
-<tr>
-<td class="confluenceTd"> SignatureApi <br class="atl-forced-newline"> </td>
-<td class="confluenceTd"> PublishSignatureForm <br class="atl-forced-newline"> </td>
-<td class="confluenceTd"> Added parameter 'FileStream body'&nbsp;(last position, required) </td>
-</tr>
-<tr>
-<td class="confluenceTd"> SignatureApi<br class="atl-forced-newline"> </td>
-<td class="confluenceTd"> GetSignatureForms<br class="atl-forced-newline"> </td>
-<td class="confluenceTd"> Parameter 'String date' moved from pos 5 to pos 6; parameter 'String name' moved from pos 6 to pos 7; parameter 'String documentGuid' renamed to 'String originalDocumentMD5' and moved from pos 7 to pos 5 </td>
-</tr>
-<tr>
-<td class="confluenceTd"> SignatureApi <br class="atl-forced-newline"> </td>
-<td class="confluenceTd"> AddSignatureTemplateDocument <br class="atl-forced-newline"> </td>
-<td class="confluenceTd"> Added parameter 'Boolean parseFields'&nbsp;(last position) </td>
-</tr>
-<tr>
-<td class="confluenceTd"> SignatureApi<br class="atl-forced-newline"> </td>
-<td class="confluenceTd"> RenameSignatureTemplateDocument<br class="atl-forced-newline"> </td>
-<td class="confluenceTd"> New method<br class="atl-forced-newline"> </td>
-</tr>
-<tr>
-<td class="confluenceTd"> StorageApi </td>
-<td class="confluenceTd"> MoveFolder<br class="atl-forced-newline"> </td>
-<td class="confluenceTd"> Parameter 'String Groupdocs_Copy' moved from pos 4 to pos 5; parameter 'String Groupdocs_Move' moved from pos 5 to pos 4; </td>
-</tr>
-<tr>
-<td class="confluenceTd"> SystemApi <br class="atl-forced-newline"> </td>
-<td class="confluenceTd"> SimulateAssessForPricingPlan <br class="atl-forced-newline"> </td>
-<td class="confluenceTd"> New method </td>
-</tr>
-<tr>
-<td class="confluenceTd"> SystemApi <br class="atl-forced-newline"> </td>
-<td class="confluenceTd"> UpdateSubscriptionPlan <br class="atl-forced-newline"> </td>
-<td class="confluenceTd"> Parameter 'String userCount' replaced to 'UpdateSubscriptionPlanInfo body' </td>
-</tr>
-<tr>
-<td class="confluenceTd"> SystemApi <br class="atl-forced-newline"> </td>
-<td class="confluenceTd"> GetPurchseWizardInfo <br class="atl-forced-newline"> </td>
-<td class="confluenceTd"> New method <br class="atl-forced-newline"> </td>
-</tr>
-<tr>
-<td class="confluenceTd"> ConditionInfo<br class="atl-forced-newline"> </td>
+<td class="confluenceTd"> SignatureSignDocumentSignerSettingsInfo </td>
 <td class="confluenceTd"> - </td>
-<td class="confluenceTd"> New class </td>
+<td class="confluenceTd"> fields -   added new property </td>
 </tr>
 <tr>
-<td class="confluenceTd"> SignatureSignDocumentsResponse<br class="atl-forced-newline"> </td>
+<td class="confluenceTd"> TemplateInfo </td>
 <td class="confluenceTd"> - </td>
-<td class="confluenceTd"> class 'SignatureSignDocumentsResponse' renamed to 'GetPurchaseWizardResponse' </td>
+<td class="confluenceTd"> size -   new property </td>
 </tr>
 <tr>
-<td class="confluenceTd"> QuestionInfo <br class="atl-forced-newline"> </td>
+<td class="confluenceTd"> TemplateInfo </td>
 <td class="confluenceTd"> - </td>
-<td class="confluenceTd"> Added field 'List&lt;ConditionInfo&gt; conditions' </td>
+<td class="confluenceTd"> upload_time   - new property </td>
 </tr>
 <tr>
-<td class="confluenceTd"> QuestionnaireInfo<br class="atl-forced-newline"> </td>
+<td class="confluenceTd"> PublicSignatureSignDocumentSignerSettingsInfo </td>
 <td class="confluenceTd"> - </td>
-<td class="confluenceTd"> Added field 'List&lt;String&gt; formats' </td>
+<td class="confluenceTd"> fields -   new property </td>
 </tr>
 <tr>
-<td class="confluenceTd"> SetDocumentPasswordResponse<br class="atl-forced-newline"> </td>
+<td class="confluenceTd"> SignatureDocumentFieldsResponse </td>
 <td class="confluenceTd"> - </td>
-<td class="confluenceTd"> New class </td>
+<td class="confluenceTd"> new class </td>
 </tr>
 <tr>
-<td class="confluenceTd"> SetDocumentPasswordResult<br class="atl-forced-newline"> </td>
+<td class="confluenceTd"> SignatureDocumentFieldsResult </td>
 <td class="confluenceTd"> - </td>
-<td class="confluenceTd"> New class<br class="atl-forced-newline"> </td>
+<td class="confluenceTd"> new class </td>
 </tr>
 <tr>
-<td class="confluenceTd"> SignatureEnvelopeAuditLogInfo <br class="atl-forced-newline"> </td>
+<td class="confluenceTd"> UploadRequestResult </td>
 <td class="confluenceTd"> - </td>
-<td class="confluenceTd"> Added field 'Integer type' </td>
+<td class="confluenceTd"> upload_time   - new property </td>
 </tr>
 <tr>
-<td class="confluenceTd"> SignatureEnvelopeFieldInfo <br class="atl-forced-newline"> </td>
 <td class="confluenceTd"> - </td>
-<td class="confluenceTd"> Added field 'String guidanceText' </td>
+<td class="confluenceTd"> GetContacts </td>
+<td class="confluenceTd"> useAnd -   new parameter </td>
 </tr>
 <tr>
-<td class="confluenceTd"> SignatureEnvelopeFieldSettings <br class="atl-forced-newline"> </td>
 <td class="confluenceTd"> - </td>
-<td class="confluenceTd"> Added field 'String guidanceText' </td>
+<td class="confluenceTd"> UpdateEnvelopeFromTemplate </td>
+<td class="confluenceTd"> new   method </td>
 </tr>
 <tr>
-<td class="confluenceTd"> SignatureEnvelopeInfo <br class="atl-forced-newline"> </td>
 <td class="confluenceTd"> - </td>
-<td class="confluenceTd"> Added field 'Boolean canBeCommented' </td>
-</tr>
-<tr>
-<td class="confluenceTd"> SignatureEnvelopeInfo <br class="atl-forced-newline"> </td>
-<td class="confluenceTd"> - </td>
-<td class="confluenceTd"> Added field 'Boolean inPersonSign' </td>
-</tr>
-<tr>
-<td class="confluenceTd"> SignatureEnvelopeSettings <br class="atl-forced-newline"> </td>
-<td class="confluenceTd"> - </td>
-<td class="confluenceTd"> Added field 'Boolean canBeCommented' </td>
-</tr>
-<tr>
-<td class="confluenceTd"> SignatureEnvelopeSettings <br class="atl-forced-newline"> </td>
-<td class="confluenceTd"> - </td>
-<td class="confluenceTd"> Added field 'Boolean inPersonSign' </td>
-</tr>
-<tr>
-<td class="confluenceTd"> SignatureFieldInfo<br class="atl-forced-newline"> </td>
-<td class="confluenceTd"> - </td>
-<td class="confluenceTd"> Added field 'Integer minGraphSizeW' </td>
-</tr>
-<tr>
-<td class="confluenceTd"> SignatureFieldInfo<br class="atl-forced-newline"> </td>
-<td class="confluenceTd"> - </td>
-<td class="confluenceTd"> Added field 'Integer minGraphSizeH' </td>
-</tr>
-<tr>
-<td class="confluenceTd"> SignatureFormFieldInfo <br class="atl-forced-newline"> </td>
-<td class="confluenceTd"> - </td>
-<td class="confluenceTd"> Added field 'String guidanceText' </td>
-</tr>
-<tr>
-<td class="confluenceTd"> SignatureFormFieldSettings <br class="atl-forced-newline"> </td>
-<td class="confluenceTd"> - </td>
-<td class="confluenceTd"> Added field 'String guidanceText' </td>
-</tr>
-<tr>
-<td class="confluenceTd"> SignatureFormInfo<br class="atl-forced-newline"> </td>
-<td class="confluenceTd"> - </td>
-<td class="confluenceTd"> Added field 'Boolean notifyOwnerOnSign' </td>
-</tr>
-<tr>
-<td class="confluenceTd"> SignatureFormInfo<br class="atl-forced-newline"> </td>
-<td class="confluenceTd"> - </td>
-<td class="confluenceTd"> Added field 'Boolean attachSignedDocument' </td>
-</tr>
-<tr>
-<td class="confluenceTd"> SignatureFormSettings<br class="atl-forced-newline"> </td>
-<td class="confluenceTd"> - </td>
-<td class="confluenceTd"> Added field 'Boolean notifyOwnerOnSign' </td>
-</tr>
-<tr>
-<td class="confluenceTd"> SignatureFormSettings<br class="atl-forced-newline"> </td>
-<td class="confluenceTd"> - </td>
-<td class="confluenceTd"> Added field 'Boolean attachSignedDocument' </td>
-</tr>
-<tr>
-<td class="confluenceTd"> SignatureSignDocumentResult <br class="atl-forced-newline"> </td>
-<td class="confluenceTd"> - </td>
-<td class="confluenceTd"> Field 'List&lt;SignatureSignDocumentInfo&gt; documents' replaced to 'String jobId' </td>
-</tr>
-<tr>
-<td class="confluenceTd"> SignatureTemplateFieldInfo <br class="atl-forced-newline"> </td>
-<td class="confluenceTd"> - </td>
-<td class="confluenceTd"> Added field 'String guidanceText' </td>
-</tr>
-<tr>
-<td class="confluenceTd"> SignatureTemplateFieldSettings <br class="atl-forced-newline"> </td>
-<td class="confluenceTd"> - </td>
-<td class="confluenceTd"> Added field 'String guidanceText' </td>
-</tr>
-<tr>
-<td class="confluenceTd"> SignatureVerifyDocumentResult <br class="atl-forced-newline"> </td>
-<td class="confluenceTd"> - </td>
-<td class="confluenceTd"> Added field 'List&lt;String&gt; datesSigned' </td>
-</tr>
-<tr>
-<td class="confluenceTd"> SignatureVerifyDocumentResult <br class="atl-forced-newline"> </td>
-<td class="confluenceTd"> - </td>
-<td class="confluenceTd"> Added field 'List&lt;String&gt; references' </td>
-</tr>
-<tr>
-<td class="confluenceTd"> SignatureVerifyDocumentResult <br class="atl-forced-newline"> </td>
-<td class="confluenceTd"> - </td>
-<td class="confluenceTd"> Added field 'List&lt;SignatureEnvelopeRecipientInfo&gt; recipients' </td>
-</tr>
-<tr>
-<td class="confluenceTd"> SubscriptionPlanInfo <br class="atl-forced-newline"> </td>
-<td class="confluenceTd"> - </td>
-<td class="confluenceTd"> Added field 'String promoCode' </td>
-</tr>
-<tr>
-<td class="confluenceTd"> SignatureSignDocumentsResult<br class="atl-forced-newline"> </td>
-<td class="confluenceTd"> - </td>
-<td class="confluenceTd"> Class deleted </td>
-</tr>
-<tr>
-<td class="confluenceTd"> UpdateSubscriptionPlanInfo<br class="atl-forced-newline"> </td>
-<td class="confluenceTd"> - </td>
-<td class="confluenceTd"> New class </td>
-</tr>
-<tr>
-<td class="confluenceTd"> UserInfo <br class="atl-forced-newline"> </td>
-<td class="confluenceTd"> - </td>
-<td class="confluenceTd"> Field 'Object photo' replaced to 'List&lt;Integer&gt; photo' </td>
-</tr>
-<tr>
-<td class="confluenceTd"> UserInfo <br class="atl-forced-newline"> </td>
-<td class="confluenceTd"> - </td>
-<td class="confluenceTd"> Added field 'List&lt;Integer&gt; annotation_navigation_icons' </td>
-</tr>
-<tr>
-<td class="confluenceTd"> UserInfo <br class="atl-forced-newline"> </td>
-<td class="confluenceTd"> - </td>
-<td class="confluenceTd"> Added field 'List&lt;Integer&gt; annotation_tool_icons' </td>
-</tr>
-<tr>
-<td class="confluenceTd"> UserInfo <br class="atl-forced-newline"> </td>
-<td class="confluenceTd"> - </td>
-<td class="confluenceTd"> Added field 'Integer annotation_background_color' </td>
-</tr>
-<tr>
-<td class="confluenceTd"> UserInfo <br class="atl-forced-newline"> </td>
-<td class="confluenceTd"> - </td>
-<td class="confluenceTd"> Added field 'Boolean isviewer_right_mouse_button_menu_enabled' </td>
-</tr>
-<tr>
-<td class="confluenceTd"> UserInfo <br class="atl-forced-newline"> </td>
-<td class="confluenceTd"> - </td>
-<td class="confluenceTd"> Added field 'String signature_color' </td>
-</tr>
-<tr>
-<td class="confluenceTd"> ViewDocumentResult </td>
-<td class="confluenceTd"> - </td>
-<td class="confluenceTd"> Added field 'String password' </td>
+<td class="confluenceTd"> DeletePredefinedList </td>
+<td class="confluenceTd"> SignaturePredefinedListResponse - renamed to   SignaturePredefinedListsResponse </td>
 </tr>
 <tr>
 <td class="confluenceTd">&nbsp;</td>
+<td class="confluenceTd"> CreateSignatureTemplate </td>
+<td class="confluenceTd"> name - parameter property changed from   "required=false" to "requierd=true" </td>
+</tr>
+<tr>
 <td class="confluenceTd">&nbsp;</td>
+<td class="confluenceTd"> GetQuestionnaires </td>
+<td class="confluenceTd"> orderBy   - new parameter </td>
+</tr>
+<tr>
 <td class="confluenceTd">&nbsp;</td>
+<td class="confluenceTd"> GetQuestionnaires </td>
+<td class="confluenceTd"> isAscending   - new parameter </td>
+</tr>
+<tr>
+<td class="confluenceTd">&nbsp;</td>
+<td class="confluenceTd"> GetQuestionnaireCollectors </td>
+<td class="confluenceTd"> orderBy   - new parameter </td>
+</tr>
+<tr>
+<td class="confluenceTd">&nbsp;</td>
+<td class="confluenceTd"> GetQuestionnaireCollectors </td>
+<td class="confluenceTd"> isAsc -   new parameter </td>
+</tr>
+<tr>
+<td class="confluenceTd">&nbsp;</td>
+<td class="confluenceTd"> PublicGetDocumentFields </td>
+<td class="confluenceTd"> new   method </td>
+</tr>
+<tr>
+<td class="confluenceTd">&nbsp;</td>
+<td class="confluenceTd"> CopyFileToTemplates </td>
+<td class="confluenceTd"> new   method </td>
 </tr>
 </tbody></table>
-
 
 1.7.0 version
 <table class="confluenceTable"><tbody>
@@ -665,97 +464,297 @@
 </tr>
 </tbody></table>
 
-1.7.3 version
+1.6.0 version
 
 <table class="confluenceTable"><tbody>
 <tr>
-<th class="confluenceTh"> <font color="#333333">Class</font> </th>
+<th class="confluenceTh"> Class </th>
 <th class="confluenceTh"> Method </th>
 <th class="confluenceTh"> Changes </th>
 </tr>
 <tr>
-<td class="confluenceTd"> SignatureSignDocumentSignerSettingsInfo </td>
-<td class="confluenceTd"> - </td>
-<td class="confluenceTd"> fields -   added new property </td>
+<td class="confluenceTd"> DocApi <br class="atl-forced-newline"> </td>
+<td class="confluenceTd"> ViewDocument <br class="atl-forced-newline"> </td>
+<td class="confluenceTd"> Added parameter 'String passwordSalt' (last position) </td>
 </tr>
 <tr>
-<td class="confluenceTd"> TemplateInfo </td>
-<td class="confluenceTd"> - </td>
-<td class="confluenceTd"> size -   new property </td>
+<td class="confluenceTd"> DocApi <br class="atl-forced-newline"> </td>
+<td class="confluenceTd"> ViewDocumentAsHtml <br class="atl-forced-newline"> </td>
+<td class="confluenceTd"> Added parameter 'String passwordSalt'&nbsp;(last position) </td>
 </tr>
 <tr>
-<td class="confluenceTd"> TemplateInfo </td>
-<td class="confluenceTd"> - </td>
-<td class="confluenceTd"> upload_time   - new property </td>
+<td class="confluenceTd"> DocApi <br class="atl-forced-newline"> </td>
+<td class="confluenceTd"> SetDocumentPassword <br class="atl-forced-newline"> </td>
+<td class="confluenceTd"> New method </td>
 </tr>
 <tr>
-<td class="confluenceTd"> PublicSignatureSignDocumentSignerSettingsInfo </td>
-<td class="confluenceTd"> - </td>
-<td class="confluenceTd"> fields -   new property </td>
+<td class="confluenceTd"> DocApi <br class="atl-forced-newline"> </td>
+<td class="confluenceTd"> GetDocumentPageHtmlFixed <br class="atl-forced-newline"> </td>
+<td class="confluenceTd"> New method <br class="atl-forced-newline"> </td>
 </tr>
 <tr>
-<td class="confluenceTd"> SignatureDocumentFieldsResponse </td>
-<td class="confluenceTd"> - </td>
-<td class="confluenceTd"> new class </td>
+<td class="confluenceTd"> SharedApi <br class="atl-forced-newline"> </td>
+<td class="confluenceTd"> GetHtml <br class="atl-forced-newline"> </td>
+<td class="confluenceTd"> New method <br class="atl-forced-newline"> </td>
 </tr>
 <tr>
-<td class="confluenceTd"> SignatureDocumentFieldsResult </td>
-<td class="confluenceTd"> - </td>
-<td class="confluenceTd"> new class </td>
+<td class="confluenceTd"> SignatureApi <br class="atl-forced-newline"> </td>
+<td class="confluenceTd"> CreateSignatureEnvelope <br class="atl-forced-newline"> </td>
+<td class="confluenceTd"> Added parameter 'Boolean parseFields' (position 6) </td>
 </tr>
 <tr>
-<td class="confluenceTd"> UploadRequestResult </td>
-<td class="confluenceTd"> - </td>
-<td class="confluenceTd"> upload_time   - new property </td>
+<td class="confluenceTd"> SignatureApi <br class="atl-forced-newline"> </td>
+<td class="confluenceTd"> AddSignatureEnvelopeDocument <br class="atl-forced-newline"> </td>
+<td class="confluenceTd"> Added parameter 'Boolean parseFields'&nbsp;(last position) </td>
 </tr>
 <tr>
-<td class="confluenceTd"> - </td>
-<td class="confluenceTd"> GetContacts </td>
-<td class="confluenceTd"> useAnd -   new parameter </td>
+<td class="confluenceTd"> SignatureApi <br class="atl-forced-newline"> </td>
+<td class="confluenceTd"> GetSignatureEnvelopes <br class="atl-forced-newline"> </td>
+<td class="confluenceTd"> Parameter 'String date' moved from pos 5 to pos 7; parameter 'String name' moved from pos 6 to pos 8; parameter 'String document' renamed to 'String originalDocumentMD5' and moved from pos 7 to pos 5; parameter 'String recipient' renamed to 'String recipientEmail' and moved from pos 8 to pos 6; </td>
 </tr>
 <tr>
-<td class="confluenceTd"> - </td>
-<td class="confluenceTd"> UpdateEnvelopeFromTemplate </td>
-<td class="confluenceTd"> new   method </td>
+<td class="confluenceTd"> SignatureApi <br class="atl-forced-newline"> </td>
+<td class="confluenceTd"> RenameSignatureEnvelopeDocument <br class="atl-forced-newline"> </td>
+<td class="confluenceTd"> New method <br class="atl-forced-newline"> </td>
 </tr>
 <tr>
+<td class="confluenceTd"> SignatureApi<br class="atl-forced-newline"> </td>
+<td class="confluenceTd"> CancelSignatureEnvelope<br class="atl-forced-newline"> </td>
+<td class="confluenceTd"> New method<br class="atl-forced-newline"> </td>
+</tr>
+<tr>
+<td class="confluenceTd"> SignatureApi <br class="atl-forced-newline"> </td>
+<td class="confluenceTd"> AddSignatureFormDocument <br class="atl-forced-newline"> </td>
+<td class="confluenceTd"> Added parameter 'Boolean parseFields'&nbsp;(last position) </td>
+</tr>
+<tr>
+<td class="confluenceTd"> SignatureApi <br class="atl-forced-newline"> </td>
+<td class="confluenceTd"> PublishSignatureForm <br class="atl-forced-newline"> </td>
+<td class="confluenceTd"> Added parameter 'FileStream body'&nbsp;(last position, required) </td>
+</tr>
+<tr>
+<td class="confluenceTd"> SignatureApi<br class="atl-forced-newline"> </td>
+<td class="confluenceTd"> GetSignatureForms<br class="atl-forced-newline"> </td>
+<td class="confluenceTd"> Parameter 'String date' moved from pos 5 to pos 6; parameter 'String name' moved from pos 6 to pos 7; parameter 'String documentGuid' renamed to 'String originalDocumentMD5' and moved from pos 7 to pos 5 </td>
+</tr>
+<tr>
+<td class="confluenceTd"> SignatureApi <br class="atl-forced-newline"> </td>
+<td class="confluenceTd"> AddSignatureTemplateDocument <br class="atl-forced-newline"> </td>
+<td class="confluenceTd"> Added parameter 'Boolean parseFields'&nbsp;(last position) </td>
+</tr>
+<tr>
+<td class="confluenceTd"> SignatureApi<br class="atl-forced-newline"> </td>
+<td class="confluenceTd"> RenameSignatureTemplateDocument<br class="atl-forced-newline"> </td>
+<td class="confluenceTd"> New method<br class="atl-forced-newline"> </td>
+</tr>
+<tr>
+<td class="confluenceTd"> StorageApi </td>
+<td class="confluenceTd"> MoveFolder<br class="atl-forced-newline"> </td>
+<td class="confluenceTd"> Parameter 'String Groupdocs_Copy' moved from pos 4 to pos 5; parameter 'String Groupdocs_Move' moved from pos 5 to pos 4; </td>
+</tr>
+<tr>
+<td class="confluenceTd"> SystemApi <br class="atl-forced-newline"> </td>
+<td class="confluenceTd"> SimulateAssessForPricingPlan <br class="atl-forced-newline"> </td>
+<td class="confluenceTd"> New method </td>
+</tr>
+<tr>
+<td class="confluenceTd"> SystemApi <br class="atl-forced-newline"> </td>
+<td class="confluenceTd"> UpdateSubscriptionPlan <br class="atl-forced-newline"> </td>
+<td class="confluenceTd"> Parameter 'String userCount' replaced to 'UpdateSubscriptionPlanInfo body' </td>
+</tr>
+<tr>
+<td class="confluenceTd"> SystemApi <br class="atl-forced-newline"> </td>
+<td class="confluenceTd"> GetPurchseWizardInfo <br class="atl-forced-newline"> </td>
+<td class="confluenceTd"> New method <br class="atl-forced-newline"> </td>
+</tr>
+<tr>
+<td class="confluenceTd"> ConditionInfo<br class="atl-forced-newline"> </td>
 <td class="confluenceTd"> - </td>
-<td class="confluenceTd"> DeletePredefinedList </td>
-<td class="confluenceTd"> SignaturePredefinedListResponse - renamed to   SignaturePredefinedListsResponse </td>
+<td class="confluenceTd"> New class </td>
+</tr>
+<tr>
+<td class="confluenceTd"> SignatureSignDocumentsResponse<br class="atl-forced-newline"> </td>
+<td class="confluenceTd"> - </td>
+<td class="confluenceTd"> class 'SignatureSignDocumentsResponse' renamed to 'GetPurchaseWizardResponse' </td>
+</tr>
+<tr>
+<td class="confluenceTd"> QuestionInfo <br class="atl-forced-newline"> </td>
+<td class="confluenceTd"> - </td>
+<td class="confluenceTd"> Added field 'List&lt;ConditionInfo&gt; conditions' </td>
+</tr>
+<tr>
+<td class="confluenceTd"> QuestionnaireInfo<br class="atl-forced-newline"> </td>
+<td class="confluenceTd"> - </td>
+<td class="confluenceTd"> Added field 'List&lt;String&gt; formats' </td>
+</tr>
+<tr>
+<td class="confluenceTd"> SetDocumentPasswordResponse<br class="atl-forced-newline"> </td>
+<td class="confluenceTd"> - </td>
+<td class="confluenceTd"> New class </td>
+</tr>
+<tr>
+<td class="confluenceTd"> SetDocumentPasswordResult<br class="atl-forced-newline"> </td>
+<td class="confluenceTd"> - </td>
+<td class="confluenceTd"> New class<br class="atl-forced-newline"> </td>
+</tr>
+<tr>
+<td class="confluenceTd"> SignatureEnvelopeAuditLogInfo <br class="atl-forced-newline"> </td>
+<td class="confluenceTd"> - </td>
+<td class="confluenceTd"> Added field 'Integer type' </td>
+</tr>
+<tr>
+<td class="confluenceTd"> SignatureEnvelopeFieldInfo <br class="atl-forced-newline"> </td>
+<td class="confluenceTd"> - </td>
+<td class="confluenceTd"> Added field 'String guidanceText' </td>
+</tr>
+<tr>
+<td class="confluenceTd"> SignatureEnvelopeFieldSettings <br class="atl-forced-newline"> </td>
+<td class="confluenceTd"> - </td>
+<td class="confluenceTd"> Added field 'String guidanceText' </td>
+</tr>
+<tr>
+<td class="confluenceTd"> SignatureEnvelopeInfo <br class="atl-forced-newline"> </td>
+<td class="confluenceTd"> - </td>
+<td class="confluenceTd"> Added field 'Boolean canBeCommented' </td>
+</tr>
+<tr>
+<td class="confluenceTd"> SignatureEnvelopeInfo <br class="atl-forced-newline"> </td>
+<td class="confluenceTd"> - </td>
+<td class="confluenceTd"> Added field 'Boolean inPersonSign' </td>
+</tr>
+<tr>
+<td class="confluenceTd"> SignatureEnvelopeSettings <br class="atl-forced-newline"> </td>
+<td class="confluenceTd"> - </td>
+<td class="confluenceTd"> Added field 'Boolean canBeCommented' </td>
+</tr>
+<tr>
+<td class="confluenceTd"> SignatureEnvelopeSettings <br class="atl-forced-newline"> </td>
+<td class="confluenceTd"> - </td>
+<td class="confluenceTd"> Added field 'Boolean inPersonSign' </td>
+</tr>
+<tr>
+<td class="confluenceTd"> SignatureFieldInfo<br class="atl-forced-newline"> </td>
+<td class="confluenceTd"> - </td>
+<td class="confluenceTd"> Added field 'Integer minGraphSizeW' </td>
+</tr>
+<tr>
+<td class="confluenceTd"> SignatureFieldInfo<br class="atl-forced-newline"> </td>
+<td class="confluenceTd"> - </td>
+<td class="confluenceTd"> Added field 'Integer minGraphSizeH' </td>
+</tr>
+<tr>
+<td class="confluenceTd"> SignatureFormFieldInfo <br class="atl-forced-newline"> </td>
+<td class="confluenceTd"> - </td>
+<td class="confluenceTd"> Added field 'String guidanceText' </td>
+</tr>
+<tr>
+<td class="confluenceTd"> SignatureFormFieldSettings <br class="atl-forced-newline"> </td>
+<td class="confluenceTd"> - </td>
+<td class="confluenceTd"> Added field 'String guidanceText' </td>
+</tr>
+<tr>
+<td class="confluenceTd"> SignatureFormInfo<br class="atl-forced-newline"> </td>
+<td class="confluenceTd"> - </td>
+<td class="confluenceTd"> Added field 'Boolean notifyOwnerOnSign' </td>
+</tr>
+<tr>
+<td class="confluenceTd"> SignatureFormInfo<br class="atl-forced-newline"> </td>
+<td class="confluenceTd"> - </td>
+<td class="confluenceTd"> Added field 'Boolean attachSignedDocument' </td>
+</tr>
+<tr>
+<td class="confluenceTd"> SignatureFormSettings<br class="atl-forced-newline"> </td>
+<td class="confluenceTd"> - </td>
+<td class="confluenceTd"> Added field 'Boolean notifyOwnerOnSign' </td>
+</tr>
+<tr>
+<td class="confluenceTd"> SignatureFormSettings<br class="atl-forced-newline"> </td>
+<td class="confluenceTd"> - </td>
+<td class="confluenceTd"> Added field 'Boolean attachSignedDocument' </td>
+</tr>
+<tr>
+<td class="confluenceTd"> SignatureSignDocumentResult <br class="atl-forced-newline"> </td>
+<td class="confluenceTd"> - </td>
+<td class="confluenceTd"> Field 'List&lt;SignatureSignDocumentInfo&gt; documents' replaced to 'String jobId' </td>
+</tr>
+<tr>
+<td class="confluenceTd"> SignatureTemplateFieldInfo <br class="atl-forced-newline"> </td>
+<td class="confluenceTd"> - </td>
+<td class="confluenceTd"> Added field 'String guidanceText' </td>
+</tr>
+<tr>
+<td class="confluenceTd"> SignatureTemplateFieldSettings <br class="atl-forced-newline"> </td>
+<td class="confluenceTd"> - </td>
+<td class="confluenceTd"> Added field 'String guidanceText' </td>
+</tr>
+<tr>
+<td class="confluenceTd"> SignatureVerifyDocumentResult <br class="atl-forced-newline"> </td>
+<td class="confluenceTd"> - </td>
+<td class="confluenceTd"> Added field 'List&lt;String&gt; datesSigned' </td>
+</tr>
+<tr>
+<td class="confluenceTd"> SignatureVerifyDocumentResult <br class="atl-forced-newline"> </td>
+<td class="confluenceTd"> - </td>
+<td class="confluenceTd"> Added field 'List&lt;String&gt; references' </td>
+</tr>
+<tr>
+<td class="confluenceTd"> SignatureVerifyDocumentResult <br class="atl-forced-newline"> </td>
+<td class="confluenceTd"> - </td>
+<td class="confluenceTd"> Added field 'List&lt;SignatureEnvelopeRecipientInfo&gt; recipients' </td>
+</tr>
+<tr>
+<td class="confluenceTd"> SubscriptionPlanInfo <br class="atl-forced-newline"> </td>
+<td class="confluenceTd"> - </td>
+<td class="confluenceTd"> Added field 'String promoCode' </td>
+</tr>
+<tr>
+<td class="confluenceTd"> SignatureSignDocumentsResult<br class="atl-forced-newline"> </td>
+<td class="confluenceTd"> - </td>
+<td class="confluenceTd"> Class deleted </td>
+</tr>
+<tr>
+<td class="confluenceTd"> UpdateSubscriptionPlanInfo<br class="atl-forced-newline"> </td>
+<td class="confluenceTd"> - </td>
+<td class="confluenceTd"> New class </td>
+</tr>
+<tr>
+<td class="confluenceTd"> UserInfo <br class="atl-forced-newline"> </td>
+<td class="confluenceTd"> - </td>
+<td class="confluenceTd"> Field 'Object photo' replaced to 'List&lt;Integer&gt; photo' </td>
+</tr>
+<tr>
+<td class="confluenceTd"> UserInfo <br class="atl-forced-newline"> </td>
+<td class="confluenceTd"> - </td>
+<td class="confluenceTd"> Added field 'List&lt;Integer&gt; annotation_navigation_icons' </td>
+</tr>
+<tr>
+<td class="confluenceTd"> UserInfo <br class="atl-forced-newline"> </td>
+<td class="confluenceTd"> - </td>
+<td class="confluenceTd"> Added field 'List&lt;Integer&gt; annotation_tool_icons' </td>
+</tr>
+<tr>
+<td class="confluenceTd"> UserInfo <br class="atl-forced-newline"> </td>
+<td class="confluenceTd"> - </td>
+<td class="confluenceTd"> Added field 'Integer annotation_background_color' </td>
+</tr>
+<tr>
+<td class="confluenceTd"> UserInfo <br class="atl-forced-newline"> </td>
+<td class="confluenceTd"> - </td>
+<td class="confluenceTd"> Added field 'Boolean isviewer_right_mouse_button_menu_enabled' </td>
+</tr>
+<tr>
+<td class="confluenceTd"> UserInfo <br class="atl-forced-newline"> </td>
+<td class="confluenceTd"> - </td>
+<td class="confluenceTd"> Added field 'String signature_color' </td>
+</tr>
+<tr>
+<td class="confluenceTd"> ViewDocumentResult </td>
+<td class="confluenceTd"> - </td>
+<td class="confluenceTd"> Added field 'String password' </td>
 </tr>
 <tr>
 <td class="confluenceTd">&nbsp;</td>
-<td class="confluenceTd"> CreateSignatureTemplate </td>
-<td class="confluenceTd"> name - parameter property changed from   "required=false" to "requierd=true" </td>
-</tr>
-<tr>
 <td class="confluenceTd">&nbsp;</td>
-<td class="confluenceTd"> GetQuestionnaires </td>
-<td class="confluenceTd"> orderBy   - new parameter </td>
-</tr>
-<tr>
 <td class="confluenceTd">&nbsp;</td>
-<td class="confluenceTd"> GetQuestionnaires </td>
-<td class="confluenceTd"> isAscending   - new parameter </td>
-</tr>
-<tr>
-<td class="confluenceTd">&nbsp;</td>
-<td class="confluenceTd"> GetQuestionnaireCollectors </td>
-<td class="confluenceTd"> orderBy   - new parameter </td>
-</tr>
-<tr>
-<td class="confluenceTd">&nbsp;</td>
-<td class="confluenceTd"> GetQuestionnaireCollectors </td>
-<td class="confluenceTd"> isAsc -   new parameter </td>
-</tr>
-<tr>
-<td class="confluenceTd">&nbsp;</td>
-<td class="confluenceTd"> PublicGetDocumentFields </td>
-<td class="confluenceTd"> new   method </td>
-</tr>
-<tr>
-<td class="confluenceTd">&nbsp;</td>
-<td class="confluenceTd"> CopyFileToTemplates </td>
-<td class="confluenceTd"> new   method </td>
 </tr>
 </tbody></table>

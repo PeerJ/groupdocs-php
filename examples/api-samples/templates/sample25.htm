@@ -19,7 +19,7 @@
    <p>ClientID = {{@userId}}
    <p>PrivateKey = {{@privateKey}}
    <p>File Id = {{@fileId}}
-   
+    <p><span class="documentation"><a href='/templates/merge_field.docx'>Document with merge fields sample</a></span>
    <p><span style="color: red">{{@error}}</span>
    <div id="requestForm" style="padding:20px; border:1px solid black;">
    <p> Enter data for request and press "Make request" button </p>
@@ -38,7 +38,7 @@
             <br />
             <input type="radio" name="sourse" value="local" id="localField" onClick="display('local');" checked>Upload local file </input>
             <br />
-            <input type="radio" name="sourse" value="url" id="urlField" onClick="display('url');" >Upload file from URL </input>
+            <input type="radio" name="sourse" value="url" id="urlRadio" onClick="display('url');" >Upload file from URL </input>
             <br />
             
             <label for='guidField' id="guid" style="display:none;">GroupDocs fileID</label>

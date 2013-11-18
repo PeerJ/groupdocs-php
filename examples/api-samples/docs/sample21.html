@@ -715,13 +715,13 @@ F3::set(<span class="string">'lastName'</span>, <span class="variable">$lastName
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>                                           
+            <div class="content"><div class='highlight'><pre>
                                             F3::set(<span class="string">"callbackUrl"</span>, <span class="variable">$callbackUrl</span>);
                                             <span class="keyword">try</span> {
                                                 <span class="variable">$getDocuments</span> = <span class="variable">$signature</span>-&gt;GetSignatureEnvelopeDocuments(<span class="variable">$clientID</span>, <span class="variable">$envelop</span>-&gt;result-&gt;envelope-&gt;id);
                                                 <span class="keyword">if</span> (<span class="variable">$getDocuments</span>-&gt;status == <span class="string">"Ok"</span>) {
                                                     <span class="keyword">try</span> {
-                                                        
+
                                                         <span class="variable">$signFieldEnvelopSettings</span> = <span class="keyword">new</span> SignatureEnvelopeFieldSettingsInfo();
                                                         <span class="variable">$signFieldEnvelopSettings</span>-&gt;locationX = <span class="string">"0.15"</span>;
                                                         <span class="variable">$signFieldEnvelopSettings</span>-&gt;locationY = <span class="string">"0.73"</span>;
@@ -732,7 +732,13 @@ F3::set(<span class="string">'lastName'</span>, <span class="variable">$lastName
                                                         <span class="variable">$signFieldEnvelopSettings</span>-&gt;page = <span class="string">"1"</span>;
                                                         <span class="variable">$addEnvelopField</span> = <span class="variable">$signature</span>-&gt;AddSignatureEnvelopeField(<span class="variable">$clientID</span>, <span class="variable">$envelop</span>-&gt;result-&gt;envelope-&gt;id, <span class="variable">$getDocuments</span>-&gt;result-&gt;documents[<span class="number">0</span>]-&gt;documentId, <span class="variable">$recipientId</span>, <span class="string">"0545e589fb3e27c9bb7a1f59d0e3fcb9"</span>, <span class="variable">$signFieldEnvelopSettings</span>);
                                                         <span class="keyword">try</span> {
-                                                            <span class="variable">$send</span> = <span class="variable">$signature</span>-&gt;SignatureEnvelopeSend(<span class="variable">$clientID</span>, <span class="variable">$envelop</span>-&gt;result-&gt;envelope-&gt;id, <span class="variable">$callbackUrl</span>);
+                                                            <span class="variable">$webHook</span> = <span class="keyword">new</span> WebhookInfo();
+                                                            <span class="keyword">if</span> (<span class="variable">$callbackUrl</span> != <span class="string">""</span>) {
+                                                                <span class="variable">$webHook</span>-&gt;callbackUrl = trim(strip_tags(<span class="variable">$callbackUrl</span>));
+                                                            } <span class="keyword">else</span> {
+                                                                <span class="variable">$webHook</span>-&gt;callbackUrl = <span class="string">""</span>;
+                                                            }
+                                                            <span class="variable">$send</span> = <span class="variable">$signature</span>-&gt;SignatureEnvelopeSend(<span class="variable">$clientID</span>, <span class="variable">$envelop</span>-&gt;result-&gt;envelope-&gt;id, <span class="variable">$webHook</span>);
                                                             <span class="keyword">if</span> (<span class="variable">$send</span>-&gt;status == <span class="string">"Ok"</span>) {
                                                                 <span class="keyword">if</span> (<span class="variable">$basePath</span> == <span class="string">"https://api.groupdocs.com/v2.0"</span>) {</pre></div></div>
             

@@ -17,7 +17,7 @@ $street = F3::get('POST["street"]');
 try {
     //###Check if user entered all parameters
     if (empty($clientId) || empty($privateKey)) {
-        throw new Exception('Please enter FILE ID');
+        throw new Exception('Please enter User ID and Private Key');
     } else {
         //path to settings file - temporary save userId and apiKey like to property file
         $infoFile = fopen(__DIR__ . '/../user_info.txt', 'w');

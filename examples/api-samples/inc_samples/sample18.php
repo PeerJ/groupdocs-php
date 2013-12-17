@@ -131,8 +131,8 @@ if (empty($clientId) || empty($privateKey) || empty($convertType)) {
                 $iframe = 'http://dev-apps.groupdocs.com/document-viewer/embed/' .
                         $guid . '" frameborder="0" width="100%" height="600"';
                 //iframe to test server
-            } elseif ($basePath == "https://stage-apps-groupdocs.dynabic.com/v2.0") {
-                $iframe = 'https://stage-apps-groupdocs.dynabic.com/document-viewer/embed/' .
+            } elseif ($basePath == "https://stage-api-groupdocs.dynabic.com/v2.0") {
+                $iframe = 'https://stage-api-groupdocs.dynabic.com/document-viewer/embed/' .
                         $guid . '" frameborder="0" width="100%" height="600"';
                 //Iframe to realtime server
             } elseif ($basePath == "http://realtime-api.groupdocs.com") {

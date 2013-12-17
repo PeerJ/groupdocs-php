@@ -27,8 +27,8 @@ if (isset($_POST) AND !empty($_POST)) {
             $iframe = 'https://dev-apps.groupdocs.com/document-viewer/embed?url=' . $url . '&user_id=' . $clientId;
             
             //iframe to test server
-        } elseif ($basePath == "https://stage-apps-groupdocs.dynabic.com/v2.0") {
-            $iframe = 'https://stage-apps-groupdocs.dynabic.com/document-viewer/embed?url=' . $url . '&user_id=' . $clientId;
+        } elseif ($basePath == "https://stage-api-groupdocs.dynabic.com/v2.0") {
+            $iframe = 'https://stage-api-groupdocs.dynabic.com/document-viewer/embed?url=' . $url . '&user_id=' . $clientId;
             
         } elseif ($basePath == "http://realtime-api.groupdocs.com") {
             $iframe = 'http://realtime-apps.groupdocs.com/document-viewer/embed?url=' . $url . '&user_id=' . $clientId;

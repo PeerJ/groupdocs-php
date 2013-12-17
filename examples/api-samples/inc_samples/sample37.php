@@ -144,18 +144,15 @@ if (empty($clientId) || empty($privateKey)) {
             F3::set('error', $error);
         }
     }
-
     //Create SignatureApi object
     $signature = new SignatureApi($apiClient);
     $signature->setBasePath($basePath);
-
     //Create envilope using user id and entered by user name
     try {
         $envelop = $signature->CreateSignatureEnvelope($clientID, $name);
         if ($envelop->status == "Ok") {
             sleep(5);
             //Add uploaded document to envelope
-
             $addDocument = $signature->AddSignatureEnvelopeDocument($clientID, $envelop->result->envelope->id, $fileGuId, null, true);
             try {
                 if ($addDocument->status == "Ok") {
@@ -214,8 +211,8 @@ if (empty($clientId) || empty($privateKey)) {
                                                                     $iframe = '<iframe src="https://dev-apps.groupdocs.com/signature/signembed/' .
                                                                             $envelop->result->envelope->id . '/' . $recipientId . '?frameborder="0" width="720" height="600"></iframe>';
                                                                     //iframe to test server
-                                                                } elseif ($basePath == "https://stage-apps-groupdocs.dynabic.com/v2.0") {
-                                                                    $iframe = '<iframe src="https://stage-apps-groupdocs.dynabic.com/signature/signembed/' .
+                                                                } elseif ($basePath == "https://stage-api-groupdocs.dynabic.com/v2.0") {
+                                                                    $iframe = '<iframe src="https://stage-api-groupdocs.dynabic.com/signature/signembed/' .
                                                                             $envelop->result->envelope->id . '/' . $recipientId . '?frameborder="0" width="720" height="600"></iframe>';
                                                                 } elseif ($basePath == "http://realtime-api.groupdocs.com") {
                                                                     $iframe = 'http://realtime-apps.groupdocs.com/signature/signembed/' .

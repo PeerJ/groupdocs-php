@@ -151,7 +151,7 @@ if (!empty($_POST['guid'])) {
                             $iframe = 'https://dev-apps-groupdocs.dynabic.com/document-viewer/embed/' . $guid;
                         //iframe to test server
                         } elseif ($basePath == "https://stage-api-groupdocs.dynabic.com/v2.0") {
-                            $iframe = 'https://stage-apps-groupdocs.dynabic.com/document-viewer/embed/' . $guid;
+                            $iframe = 'https://stage-api-groupdocs.dynabic.com/document-viewer/embed/' . $guid;
                         } elseif ($basePath == "http://realtime-api.groupdocs.com") {
                             $iframe = 'http://realtime-apps.groupdocs.com/document-viewer/embed/' . $guid;
                         }

@@ -46,7 +46,6 @@ try {
         F3::set("age", $age);
         F3::set("sunrise", $sunrise);
         F3::set("name", $name);
-        $file = $_FILES['file'];
         $fileGuId = "";
         $url = F3::get('POST["url"]');
         $file = $_FILES['file'];

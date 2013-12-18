@@ -754,8 +754,7 @@ F3::set(<span class="string">'lastName'</span>, <span class="variable">$lastName
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>                                                                    <span class="variable">$iframe</span> = <span class="string">'&lt;iframe src="https://apps.groupdocs.com/signature/signembed/'</span> .
-                                                                            <span class="variable">$envelop</span>-&gt;result-&gt;envelope-&gt;id . <span class="string">'/'</span> . <span class="variable">$recipientId</span> . <span class="string">'?frameborder="0" width="720" height="600"&gt;&lt;/iframe&gt;'</span>;</pre></div></div>
+            <div class="content"><div class='highlight'><pre>                                                                    <span class="variable">$iframe</span> = <span class="string">"https://apps.groupdocs.com/signature/signembed/"</span> . <span class="variable">$envelop</span>-&gt;result-&gt;envelope-&gt;id . <span class="string">'/'</span> . <span class="variable">$recipientId</span>;</pre></div></div>
             
         </li>
         
@@ -771,8 +770,7 @@ F3::set(<span class="string">'lastName'</span>, <span class="variable">$lastName
             </div>
             
             <div class="content"><div class='highlight'><pre>                                                                } <span class="keyword">elseif</span> (<span class="variable">$basePath</span> == <span class="string">"https://dev-api.groupdocs.com/v2.0"</span>) {
-                                                                    <span class="variable">$iframe</span> = <span class="string">'&lt;iframe src="https://dev-apps.groupdocs.com/signature/signembed/'</span> .
-                                                                            <span class="variable">$envelop</span>-&gt;result-&gt;envelope-&gt;id . <span class="string">'/'</span> . <span class="variable">$recipientId</span> . <span class="string">'?frameborder="0" width="720" height="600"&gt;&lt;/iframe&gt;'</span>;</pre></div></div>
+                                                                    <span class="variable">$iframe</span> = <span class="string">'https://dev-apps.groupdocs.com/signature/signembed/'</span> . <span class="variable">$envelop</span>-&gt;result-&gt;envelope-&gt;id . <span class="string">'/'</span> . <span class="variable">$recipientId</span>;</pre></div></div>
             
         </li>
         
@@ -788,11 +786,9 @@ F3::set(<span class="string">'lastName'</span>, <span class="variable">$lastName
             </div>
             
             <div class="content"><div class='highlight'><pre>                                                                } <span class="keyword">elseif</span> (<span class="variable">$basePath</span> == <span class="string">"https://stage-api-groupdocs.dynabic.com/v2.0"</span>) {
-                                                                    <span class="variable">$iframe</span> = <span class="string">'&lt;iframe src="https://stage-api-groupdocs.dynabic.com/signature/signembed/'</span> .
-                                                                            <span class="variable">$envelop</span>-&gt;result-&gt;envelope-&gt;id . <span class="string">'/'</span> . <span class="variable">$recipientId</span> . <span class="string">'?frameborder="0" width="720" height="600"&gt;&lt;/iframe&gt;'</span>;
+                                                                    <span class="variable">$iframe</span> = <span class="string">'https://stage-api-groupdocs.dynabic.com/signature/signembed/'</span> . <span class="variable">$envelop</span>-&gt;result-&gt;envelope-&gt;id . <span class="string">'/'</span> . <span class="variable">$recipientId</span>;
                                                                 } <span class="keyword">elseif</span> (<span class="variable">$basePath</span> == <span class="string">"http://realtime-api.groupdocs.com"</span>) {
-                                                                    <span class="variable">$iframe</span> = <span class="string">'http://realtime-apps.groupdocs.com/signature/signembed/'</span> .
-                                                                            <span class="variable">$envelop</span>-&gt;result-&gt;envelope-&gt;id . <span class="string">'/'</span> . <span class="variable">$recipientId</span> . <span class="string">'?frameborder="0" width="720" height="600"&gt;&lt;/iframe&gt;'</span>;
+                                                                    <span class="variable">$iframe</span> = <span class="string">'http://realtime-apps.groupdocs.com/signature/signembed/'</span> . <span class="variable">$envelop</span>-&gt;result-&gt;envelope-&gt;id . <span class="string">'/'</span> . <span class="variable">$recipientId</span>;
                                                                 }
                                                                 <span class="variable">$iframe</span> = <span class="variable">$signer</span>-&gt;signUrl(<span class="variable">$iframe</span>);
                                                                 <span class="variable">$message</span> = <span class="string">'&lt;p&gt;File was uploaded to GroupDocs. Here you can see your &lt;strong&gt;'</span> .

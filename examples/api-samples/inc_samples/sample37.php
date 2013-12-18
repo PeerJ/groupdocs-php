@@ -204,19 +204,15 @@ if (empty($clientId) || empty($privateKey)) {
                                                             if ($send->status == "Ok") {
                                                                 if ($basePath == "https://api.groupdocs.com/v2.0") {
                                                                     //iframe to prodaction server
-                                                                    $iframe = '<iframe src="https://apps.groupdocs.com/signature/signembed/' .
-                                                                            $envelop->result->envelope->id . '/' . $recipientId . '?frameborder="0" width="720" height="600"></iframe>';
+                                                                    $iframe = "https://apps.groupdocs.com/signature/signembed/" . $envelop->result->envelope->id . '/' . $recipientId;
                                                                     //iframe to dev server
                                                                 } elseif ($basePath == "https://dev-api.groupdocs.com/v2.0") {
-                                                                    $iframe = '<iframe src="https://dev-apps.groupdocs.com/signature/signembed/' .
-                                                                            $envelop->result->envelope->id . '/' . $recipientId . '?frameborder="0" width="720" height="600"></iframe>';
+                                                                    $iframe = 'https://dev-apps.groupdocs.com/signature/signembed/' . $envelop->result->envelope->id . '/' . $recipientId;
                                                                     //iframe to test server
                                                                 } elseif ($basePath == "https://stage-api-groupdocs.dynabic.com/v2.0") {
-                                                                    $iframe = '<iframe src="https://stage-api-groupdocs.dynabic.com/signature/signembed/' .
-                                                                            $envelop->result->envelope->id . '/' . $recipientId . '?frameborder="0" width="720" height="600"></iframe>';
+                                                                    $iframe = 'https://stage-api-groupdocs.dynabic.com/signature/signembed/' . $envelop->result->envelope->id . '/' . $recipientId;
                                                                 } elseif ($basePath == "http://realtime-api.groupdocs.com") {
-                                                                    $iframe = 'http://realtime-apps.groupdocs.com/signature/signembed/' .
-                                                                            $envelop->result->envelope->id . '/' . $recipientId . '?frameborder="0" width="720" height="600"></iframe>';
+                                                                    $iframe = 'http://realtime-apps.groupdocs.com/signature/signembed/' . $envelop->result->envelope->id . '/' . $recipientId;
                                                                 }
                                                                 $iframe = $signer->signUrl($iframe);
                                                                 $message = '<p>File was uploaded to GroupDocs. Here you can see your <strong>' .

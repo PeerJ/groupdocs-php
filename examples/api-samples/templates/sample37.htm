@@ -64,7 +64,7 @@
                     <br />
                     <input type='text' name='url'  value="" id="urlField" style="display:none;" />
                     <br />
-                    <label for='callbackUrl'>callbackUrl<span class="optional">(Optional)For test Callback you can use this URL: http://groupdocs-php-samples.herokuapp.com/callbacks/signature_callback</span></label>
+                    <label for='callbackUrl'>callbackUrl<span class="optional">(Optional)For test Callback you can use this URL: http://groupdocs-php-samples.herokuapp.com/callbacks/sample37_callback</span></label>
                     <br />
                     <input type='text' name='callbackUrl' id="callbackUrl" value="{{@callbackUrl}}" />
                     <br />
@@ -81,7 +81,7 @@
             <div id="result" style="padding:20px; border:1px solid black;">
                 <p>Results:</p>
                 {{ @message }}
-                {{ @iframe }}
+                <iframe id='downloadframe' src="{{@iframe}}" width = '800' height = '1000'></iframe>
             </div>
         </div>
     <include href="links.htm" />

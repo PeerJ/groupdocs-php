@@ -58,6 +58,7 @@ try {
         $signatureApi->setBasePath($basePath);
         //Get entered by user data
         $name = F3::get('POST["name"]');
+        $lastName = F3::get('POST["lastName"]');
         $email = F3::get('POST["email"]');
         $country = F3::get('POST["country"]');
         $city = F3::get('POST["city"]');
@@ -66,6 +67,7 @@ try {
         F3::set("email", $email);
         F3::set("country", $country);
         F3::set("name", $name);
+        F3::set("lastName", $lastName);
         F3::set("street", $street);
         F3::set("city", $city);
         F3::set("callbackUrl", $callbackUrl);
@@ -131,7 +133,7 @@ try {
                                 }
                             }
                             //Add recipient to envelope
-                            $addRecipient = $signatureApi->AddSignatureEnvelopeRecipient($clientId, $envelop->result->envelope->id, $email, $name, 'test', $roleId, null);
+                            $addRecipient = $signatureApi->AddSignatureEnvelopeRecipient($clientId, $envelop->result->envelope->id, $email, $name, $lastName, $roleId, null);
                             if ($addRecipient->status == "Ok") {
                                 //Get recipient id
                                 $getRecipient = $signatureApi->GetSignatureEnvelopeRecipients($clientId, $envelop->result->envelope->id);

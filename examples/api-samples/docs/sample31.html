@@ -258,6 +258,7 @@ F3::set(<span class="string">'privateKey'</span>, <span class="string">''</span>
             </div>
             
             <div class="content"><div class='highlight'><pre>        <span class="variable">$name</span> = F3::get(<span class="string">'POST["name"]'</span>);
+        <span class="variable">$lastName</span> = F3::get(<span class="string">'POST["lastName"]'</span>);
         <span class="variable">$email</span> = F3::get(<span class="string">'POST["email"]'</span>);
         <span class="variable">$country</span> = F3::get(<span class="string">'POST["country"]'</span>);
         <span class="variable">$city</span> = F3::get(<span class="string">'POST["city"]'</span>);
@@ -266,6 +267,7 @@ F3::set(<span class="string">'privateKey'</span>, <span class="string">''</span>
         F3::set(<span class="string">"email"</span>, <span class="variable">$email</span>);
         F3::set(<span class="string">"country"</span>, <span class="variable">$country</span>);
         F3::set(<span class="string">"name"</span>, <span class="variable">$name</span>);
+        F3::set(<span class="string">"lastName"</span>, <span class="variable">$lastName</span>);
         F3::set(<span class="string">"street"</span>, <span class="variable">$street</span>);
         F3::set(<span class="string">"city"</span>, <span class="variable">$city</span>);
         F3::set(<span class="string">"callbackUrl"</span>, <span class="variable">$callbackUrl</span>);
@@ -603,7 +605,7 @@ F3::set(<span class="string">'privateKey'</span>, <span class="string">''</span>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>                            <span class="variable">$addRecipient</span> = <span class="variable">$signatureApi</span>-&gt;AddSignatureEnvelopeRecipient(<span class="variable">$clientId</span>, <span class="variable">$envelop</span>-&gt;result-&gt;envelope-&gt;id, <span class="variable">$email</span>, <span class="variable">$name</span>, <span class="string">'test'</span>, <span class="variable">$roleId</span>, <span class="keyword">null</span>);
+            <div class="content"><div class='highlight'><pre>                            <span class="variable">$addRecipient</span> = <span class="variable">$signatureApi</span>-&gt;AddSignatureEnvelopeRecipient(<span class="variable">$clientId</span>, <span class="variable">$envelop</span>-&gt;result-&gt;envelope-&gt;id, <span class="variable">$email</span>, <span class="variable">$name</span>, <span class="variable">$lastName</span>, <span class="variable">$roleId</span>, <span class="keyword">null</span>);
                             <span class="keyword">if</span> (<span class="variable">$addRecipient</span>-&gt;status == <span class="string">"Ok"</span>) {</pre></div></div>
             
         </li>

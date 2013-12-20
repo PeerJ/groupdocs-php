@@ -24,16 +24,20 @@
 class TemplateField {
 
   static $swaggerTypes = array(
+      'id' => 'string',
       'page' => 'int',
       'name' => 'string',
       'type' => 'string',
-      'rect' => 'Rectangle'
+      'rect' => 'Rectangle',
+      'mandatory' => 'bool'
 
     );
 
+  public $id; // string
   public $page; // int
   public $name; // string
   public $type; // string
   public $rect; // Rectangle
+  public $mandatory; // Boolean
   }
 

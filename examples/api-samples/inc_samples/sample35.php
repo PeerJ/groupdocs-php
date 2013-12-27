@@ -1,4 +1,5 @@
 <?php
+
 //###<i>This sample will show how to create assembly from document and merge fields </i>
 //Set variables and get POST data
 F3::set('userId', '');
@@ -83,12 +84,13 @@ if (!empty($_POST['guid'])) {
                 //Create Data source field
                 for ($i = 0; $i < count($fields->result->fields); $i++) {
                     //Replace all spaces in fields names to "_"
-                    $fieldName = str_replace(" ", "_", $fields->result->fields[$i]->name);
                     //Check is qurent field name equally to field name from document 
                     foreach ($dataForDataSource as $paramName => $paramValue) {
                         //Set field type
-                        if ($paramName == $fieldName || $paramName == $fields->result->fields[$i]->name) {
-                            if ($fields->result->fields[$i]->type == "Radio") {
+                        $list = null;
+                        $paramName = str_replace("_", " ", $paramName);
+                        if ($paramName == $fields->result->fields[$i]->name) {
+                            if ($fields->result->fields[$i]->type == "RadioButton") {
                                 $counter = $counter + 1;
                                 if ($counter == $paramValue) {
                                     $paramType = "Integer";
@@ -97,10 +99,14 @@ if (!empty($_POST['guid'])) {
                                 }
                             } elseif ($fields->result->fields[$i]->type == "MultiLineText") {
                                 $paramType = "text";
-                            } elseif ($fields->result->fields[$i]->type == "CheckBox") {
-                                $paramName = str_replace("_", " ", $paramName);
+                            } elseif ($fields->result->fields[$i]->type == "Checkbox") {
                                 $paramType = "boolean";
                                 $paramValue = true;
+                            } elseif ($fields->result->fields[$i]->type == "Listbox") {
+                                $paramType = "Integer";
+                                $list = $paramValue;
+                            } elseif ($fields->result->fields[$i]->type == "Combobox") {
+                                $paramType = "Integer";
                             } else {
                                 $paramType = $fields->result->fields[$i]->type;
                             }
@@ -109,7 +115,11 @@ if (!empty($_POST['guid'])) {
                             //Set DatasourceFiled data
                             $field->name = $paramName;
                             $field->type = $paramType;
-                            $field->values = array($paramValue);
+                            if ($list) {
+                                $field->values = $list;
+                            } else {
+                                $field->values = array($paramValue);
+                            }
                             //Push DatasourceField to array
                             array_push($array, $field);
                         }
@@ -134,7 +144,7 @@ if (!empty($_POST['guid'])) {
                             //Check job status, if status is Completed or Archived exit from cycle
                             if ($jobInfo->result->job_status == "Completed" || $jobInfo->result->job_status == "Archived") {
                                 break;
-                            //If job status Postponed throw exception with error
+                                //If job status Postponed throw exception with error
                             } elseif ($jobInfo->result->job_status == "Postponed") {
                                 throw new Exception("Job is failed");
                             }
@@ -146,12 +156,12 @@ if (!empty($_POST['guid'])) {
                         $guid = $jobInfo->result->inputs[0]->outputs[0]->guid;
                         if ($basePath == "https://api.groupdocs.com/v2.0") {
                             $iframe = 'https://apps.groupdocs.com/document-viewer/embed/' . $guid;
-                        //iframe to dev server
+                            //iframe to dev server
                         } elseif ($basePath == "https://dev-api-groupdocs.dynabic.com/v2.0") {
                             $iframe = 'https://dev-apps-groupdocs.dynabic.com/document-viewer/embed/' . $guid;
-                        //iframe to test server
+                            //iframe to test server
                         } elseif ($basePath == "https://stage-api-groupdocs.dynabic.com/v2.0") {
-                            $iframe = 'https://stage-api-groupdocs.dynabic.com/document-viewer/embed/' . $guid;
+                            $iframe = 'https://stage-apps-groupdocs.dynabic.com/document-viewer/embed/' . $guid;
                         } elseif ($basePath == "http://realtime-api.groupdocs.com") {
                             $iframe = 'http://realtime-apps.groupdocs.com/document-viewer/embed/' . $guid;
                         }
@@ -199,7 +209,7 @@ if (!empty($_POST['guid'])) {
         $storageApi = new StorageApi($apiClient);
         //Check if user entered base path
         if ($basePath == "") {
-        //If base base is empty seting base path to prod server
+            //If base base is empty seting base path to prod server
             $basePath = 'https://api.groupdocs.com/v2.0';
         }
         //Build propper vasePath
@@ -269,7 +279,7 @@ if (!empty($_POST['guid'])) {
                 $fieldName = null;
                 //Create HTML form from fields
                 for ($i = 0; $i < count($fields); $i++) {
-                    $fieldName = str_replace(" ", "_", $fields[$i]->name);
+                    $fieldName = $fields[$i]->name;
                     if ($fields[$i]->mandatory == false) {
                         $optional = '<span class="optional">(Optional)</span>';
                     } else {
@@ -279,25 +289,25 @@ if (!empty($_POST['guid'])) {
                         $element .= '<br /><label for="' . $fieldName . '">' . $fields[$i]->name . " " .
                                 $optional . '</label><br /><input type="text" name="' . $fieldName . '" id="' .
                                 $fields[$i]->id . '" value="" /><br />';
-//                    } elseif ($fields[$i]->type == "ComboBox") {
-//                        $element .= '<br /><label for="' . $fieldName . '">' . $fields[$i]->name . " " .
-//                                $optional . '</label><br /><select name="' . $fieldName . '" id="' . $fields[$i]->id . '">';
-//                        $options = explode(";", $fields[$i]->acceptableValues);
-//                        foreach ($options as $option) {
-//                            $element .= '<option value="' . $countList . '">' . $option . '</option>';
-//                        }
-//                        $countList = $countList + 1;
-//                        $element .= '</select><br />';
-//                    } elseif ($fields[$i]->type == "ListBox") {
-//                        $element .= '<br /><label for="' . $fieldName . '">' . $fields[$i]->name . " " .
-//                                $optional . '</label><br /><select multiple name="' . $fieldName . '[]" id="' . $fields[$i]->id . '">';
-//                        $options = explode(";", $fields[$i]->acceptableValues);
-//                        foreach ($options as $option) {
-//                            $element .= '<option value="' . $countCombo . '">' . $option . '</option>';
-//                        }
-//                        $countCombo = $countCombo + 1;
-//                        $element .= '</select><br />';
-                    } elseif ($fields[$i]->type == "CheckBox") {
+                    } elseif ($fields[$i]->type == "Combobox") {
+                        $element .= '<br /><label for="' . $fieldName . '">' . $fields[$i]->name . " " .
+                                $optional . '</label><br /><select name="' . $fieldName . '" id="' . $fields[$i]->id . '">';
+                        $options = $fields[$i]->acceptableValues;
+                        foreach ($options as $option) {
+                            $element .= '<option value="' . $countList . '">' . $option . '</option>';
+                            $countList = $countList + 1;
+                        }
+                        $element .= '</select><br />';
+                    } elseif ($fields[$i]->type == "Listbox") {
+                        $element .= '<br /><label for="' . $fieldName . '">' . $fields[$i]->name . " " .
+                                $optional . '</label><br /><select multiple name="' . $fieldName . '[]" id="' . $fields[$i]->id . '">';
+                        $options = $fields[$i]->acceptableValues;
+                        foreach ($options as $option) {
+                            $element .= '<option value="' . $countCombo . '">' . $option . '</option>';
+                            $countCombo = $countCombo + 1;
+                        }
+                        $element .= '</select><br />';
+                    } elseif ($fields[$i]->type == "Checkbox") {
                         $element .= '<br /><input type="checkbox" name="' . $fieldName . '" id="' .
                                 $fields[$i]->id . '" value="' . $countCheckBox . '" >' . $fields[$i]->name . $optional . '</input><br />';
                         $countCheckBox = $countCheckBox + 1;
@@ -309,7 +319,7 @@ if (!empty($_POST['guid'])) {
                         $element .= '<br /><label for="' . $fieldName . '">' . $fields[$i]->name . " " .
                                 $optional . '</label><br /><input type="file" name="' . $fieldName . '" id="' .
                                 $fields[$i]->id . '" value="" /><br />';
-                    } elseif ($fields[$i]->type == "Radio") {
+                    } elseif ($fields[$i]->type == "RadioButton") {
                         $element .= '<br /><input type="radio" name="' . $fieldName . '" id="' .
                                 $fields[$i]->id . '" value="' . $countRadio . '" >' . $fields[$i]->name . $optional . '</input><br />';
                         $countRadio = $countRadio + 1;

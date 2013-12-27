@@ -29,7 +29,9 @@ class TemplateField {
       'name' => 'string',
       'type' => 'string',
       'rect' => 'Rectangle',
-      'mandatory' => 'bool'
+      'mandatory' => 'bool',
+      'acceptableValues' => 'array[string]'
+      
 
     );
 
@@ -39,5 +41,6 @@ class TemplateField {
   public $type; // string
   public $rect; // Rectangle
   public $mandatory; // Boolean
+  public $acceptableValues; // Array
   }
 

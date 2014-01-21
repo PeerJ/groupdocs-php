@@ -95,7 +95,7 @@ if (empty($clientId) || empty($privateKey) || empty($firstUrl) || empty($secondU
                 if ($updateJob->status == "Ok") {
                     try {
                         //Delay for server proccesing
-                        sleep(5);
+                        sleep(8);
                         //Get result document guid from job
                         $getJobDocument = $asyncApi->GetJobDocuments($clientID, $createJob->result->job_id);
                         if ($getJobDocument->status == "Ok") {

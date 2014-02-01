@@ -107,7 +107,7 @@ if (empty($clientId) || empty($privateKey) || empty($email) || empty($firstName)
     if ($basePath == "https://api.groupdocs.com/v2.0") {
         $url = 'https://apps.groupdocs.com/document-annotation2/embed/' . $fileId;
         //iframe to dev server
-    } elseif ($basePath == "https://dev-api.groupdocs.com/v2.0") {
+    } elseif ($basePath == "https://dev-api-groupdocs.dynabic.com/v2.0") {
         $url = 'https://dev-apps.groupdocs.com/document-annotation2/embed/' . $fileId;
         //iframe to test server
     } elseif ($basePath == "https://stage-api-groupdocs.dynabic.com/v2.0") {

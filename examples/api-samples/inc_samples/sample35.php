@@ -212,7 +212,7 @@ if (!empty($_POST['guid'])) {
             //If base base is empty seting base path to prod server
             $basePath = 'https://api.groupdocs.com/v2.0';
         }
-        //Build propper vasePath
+        //Build propper basePath
         if (substr($basePath, -3) != "2.0") {
             if (substr($basePath, -1) != "/") {
                 $basePath = $basePath . "/v2.0";

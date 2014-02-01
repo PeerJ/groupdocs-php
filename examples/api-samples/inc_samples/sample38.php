@@ -108,12 +108,12 @@ if (empty($clientId) || empty($privateKey) || empty($email) || empty($firstName)
         $url = 'https://apps.groupdocs.com/document-annotation2/embed/' . $fileId;
         //iframe to dev server
     } elseif ($basePath == "https://dev-api-groupdocs.dynabic.com/v2.0") {
-        $url = 'https://dev-apps.groupdocs.dynabic.com/document-annotation2/embed/' . $fileId;
+        $url = 'https://dev-apps-groupdocs.dynabic.com/document-annotation2/embed/' . $fileId;
         //iframe to test server
     } elseif ($basePath == "https://stage-api-groupdocs.dynabic.com/v2.0") {
-        $url = 'https://stage-api-groupdocs.dynabic.com/document-annotation2/embed/' . $fileId;
+        $url = 'https://stage-apps-groupdocs.dynabic.com/document-annotation2/embed/' . $fileId;
     } elseif ($basePath == "http://realtime-api.groupdocs.com") {
-        $url = 'http://realtime-apps.groupdocs.dynabic.com/document-annotation2/embed/' . $fileId;
+        $url = 'http://realtime-apps-groupdocs.dynabic.com/document-annotation2/embed/' . $fileId;
     }
 
     try {

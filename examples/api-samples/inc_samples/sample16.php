@@ -102,6 +102,7 @@ if (empty($clientId) || empty($privateKey)) {
     }
     $iframe = $signer->signUrl($iframe);
     F3::set('iframe', $iframe);
+    F3::set('fileId', $fileGuId);
 }
 
 // Process template

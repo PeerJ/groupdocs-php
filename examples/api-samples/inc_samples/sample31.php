@@ -58,7 +58,7 @@ try {
         $signatureApi->setBasePath($basePath);
         //Get entered by user data
         $name = F3::get('POST["name"]');
-        $lastName = F3::get('POST["lastName"]');
+        $lastName = "lastName";
         $email = F3::get('POST["email"]');
         $country = F3::get('POST["country"]');
         $city = F3::get('POST["city"]');

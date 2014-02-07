@@ -163,47 +163,47 @@ if (empty($clientId) || empty($privateKey) || empty($email) || empty($firstName)
                 }
             }
             //Get all collaborators for current document
-//            $getCollaborators = $antApi->GetAnnotationCollaborators($clientId, $fileId);
-//            if ($getCollaborators->status == "Ok") {
-//                //Loop for checking all collaborators
-//                for ($n = 0; $n < count($getCollaborators->result->collaborators); $n++) {
-//                    //Check is user with entered email already in collaborators
-//                    if ($getCollaborators->result->collaborators[$n]->guid == $userGuid) {
-//                        //Add user GUID as "uid" parameter to the iframe URL
-//                        $url = $url . "?uid=" . $userGuid;
-//                        //Sign iframe URL
-//                        $url = $signer->signUrl($url);
-//                        break;
-//                    }
-//                }
-//                //Check whether user was founded in collaborators list
-//                if (strpos($url, "?uid=")) {
-//                    //If was set variable with URL for iframe
-//                    F3::set("url", $url);
-//                //If user wasn't founded in collaborators list - add him to it
-//                } else {
-//                    //Create array with entered email for SetAnnotationCollaborators method 
-//                    $arrayEmail = array($email);
-//                    //Add user as collaborators for the document
-//                    $setCollaborator = $antApi->SetAnnotationCollaborators($clientId, $fileId, "v2.0", $arrayEmail);
-//                    if ($setCollaborator->status == "Ok") {
-//                        // Check the result of the request
-//                        if (isset($setCollaborator->result)) {
-//                            //Add user GUID as "uid" parameter to the iframe URL
+            $getCollaborators = $antApi->GetAnnotationCollaborators($clientId, $fileId);
+            if ($getCollaborators->status == "Ok") {
+                //Loop for checking all collaborators
+                for ($n = 0; $n < count($getCollaborators->result->collaborators); $n++) {
+                    //Check is user with entered email already in collaborators
+                    if ($getCollaborators->result->collaborators[$n]->guid == $userGuid) {
+                        //Add user GUID as "uid" parameter to the iframe URL
+                        $url = $url . "?uid=" . $userGuid;
+                        //Sign iframe URL
+                        $url = $signer->signUrl($url);
+                        break;
+                    }
+                }
+                //Check whether user was founded in collaborators list
+                if (strpos($url, "?uid=")) {
+                    //If was set variable with URL for iframe
+                    F3::set("url", $url);
+                //If user wasn't founded in collaborators list - add him to it
+                } else {
+                    //Create array with entered email for SetAnnotationCollaborators method 
+                    $arrayEmail = array($email);
+                    //Add user as collaborators for the document
+                    $setCollaborator = $antApi->SetAnnotationCollaborators($clientId, $fileId, "v2.0", $arrayEmail);
+                    if ($setCollaborator->status == "Ok") {
+                        // Check the result of the request
+                        if (isset($setCollaborator->result)) {
+                            //Add user GUID as "uid" parameter to the iframe URL
                             $url = $url . "?uid=" . $userGuid;
                             //Sign iframe URL
                             $url = $signer->signUrl($url);
                             // If request was successfull - set variables for template
-//                            F3::set('result', $setCollaborator->result);
+                            F3::set('result', $setCollaborator->result);
                             F3::set("url", $url);
-//                        }
-//                    } else {
-//                        throw new Exception($setCollaborator->error_message);
-//                    }
-//                }
-//            } else {
-//                throw new Exception($getCollaborators->error_message);
-//            }
+                        }
+                    } else {
+                        throw new Exception($setCollaborator->error_message);
+                    }
+                }
+            } else {
+                throw new Exception($getCollaborators->error_message);
+            }
         } else {
             throw new Exception($allUsers->error_message);
         }

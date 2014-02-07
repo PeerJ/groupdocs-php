@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>sample39.php</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+  <link rel="stylesheet" media="all" href="docco.css" />
+</head>
+<body>
+  <div id="container">
+    <div id="background"></div>
+    
+    <ul class="sections">
+        
+          <li id="title">
+              <div class="annotation">
+                  <h1>sample39.php</h1>
+              </div>
+          </li>
+        
+        
+        
+        <li id="section-1">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-1">&#182;</a>
+              </div>
+              
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="preprocessor">&lt;?php</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-2">
+            <div class="annotation">
+              
+              <div class="pilwrap for-h3">
+                <a class="pilcrow" href="#section-2">&#182;</a>
+              </div>
+              <h3><i>This sample will show how to add a Signature to a document and redirect after signing with GroupDocs widget</i></h3>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-3">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-3">&#182;</a>
+              </div>
+              <p>Get all data from ajax</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="variable">$postdata</span> = file_get_contents(<span class="string">"php://input"</span>);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-4">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-4">&#182;</a>
+              </div>
+              <p>Check if data from ajax not empty</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="keyword">if</span> (!<span class="keyword">empty</span>(<span class="variable">$postdata</span>)) {
+    <span class="variable">$error</span> = <span class="keyword">null</span>;</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-5">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-5">&#182;</a>
+              </div>
+              <p>Decode ajax data</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    <span class="variable">$json_post_data</span> = json_decode(<span class="variable">$postdata</span>, <span class="keyword">true</span>);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-6">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-6">&#182;</a>
+              </div>
+              <p>Get Client ID</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    <span class="variable">$clientId</span> = <span class="variable">$json_post_data</span>[<span class="string">'userId'</span>];</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-7">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-7">&#182;</a>
+              </div>
+              <p>Get Private Key</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    <span class="variable">$privateKey</span> = <span class="variable">$json_post_data</span>[<span class="string">'privateKey'</span>];</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-8">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-8">&#182;</a>
+              </div>
+              <p>Get document for sign</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    <span class="variable">$documents</span> = <span class="variable">$json_post_data</span>[<span class="string">'documents'</span>];</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-9">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-9">&#182;</a>
+              </div>
+              <p>Get signature file</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    <span class="variable">$signers</span> = <span class="variable">$json_post_data</span>[<span class="string">'signers'</span>];</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-10">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-10">&#182;</a>
+              </div>
+              <p>Inable signature parameter for the signature object</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    <span class="keyword">for</span> (<span class="variable">$i</span> = <span class="number">0</span>; <span class="variable">$i</span> &lt; count(<span class="variable">$signers</span>); <span class="variable">$i</span>++) {
+        <span class="variable">$signers</span>[<span class="variable">$i</span>][<span class="string">'placeSignatureOn'</span>] = <span class="string">''</span>;
+    }</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-11">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-11">&#182;</a>
+              </div>
+              <p>Create signer object</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    <span class="variable">$signer</span> = <span class="keyword">new</span> GroupDocsRequestSigner(<span class="variable">$privateKey</span>);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-12">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-12">&#182;</a>
+              </div>
+              <p>Create Api Client object</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    <span class="variable">$apiClient</span> = <span class="keyword">new</span> APIClient(<span class="variable">$signer</span>);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-13">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-13">&#182;</a>
+              </div>
+              <p>Create Signature Api object</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    <span class="variable">$signatureApi</span> = <span class="keyword">new</span> SignatureApi(<span class="variable">$apiClient</span>);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-14">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-14">&#182;</a>
+              </div>
+              <p>Create object of sign ssettings</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    <span class="variable">$settings</span> = <span class="keyword">new</span> SignatureSignDocumentSettingsInfo();</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-15">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-15">&#182;</a>
+              </div>
+              <p>Set document for signing</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    <span class="variable">$settings</span>-&gt;documents = <span class="variable">$documents</span>;</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-16">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-16">&#182;</a>
+              </div>
+              <p>Set signature</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    <span class="variable">$settings</span>-&gt;signers = <span class="variable">$signers</span>;</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-17">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-17">&#182;</a>
+              </div>
+              <p>Make request to sign documnet</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    <span class="variable">$signDocument</span> = <span class="variable">$signatureApi</span>-&gt;SignDocument(<span class="variable">$clientId</span>, <span class="variable">$settings</span>);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-18">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-18">&#182;</a>
+              </div>
+              <p>Check request status</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    <span class="keyword">if</span> (<span class="variable">$signDocument</span>-&gt;status == <span class="string">"Ok"</span>) {</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-19">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-19">&#182;</a>
+              </div>
+              <p>Get signed document GUID</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        <span class="keyword">for</span> (<span class="variable">$i</span> = <span class="number">0</span>; <span class="variable">$i</span> &lt; <span class="number">5</span>; <span class="variable">$i</span>++) {</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-20">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-20">&#182;</a>
+              </div>
+              <p>Check status of documnet is it signed</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>            <span class="variable">$getSignDocument</span> = <span class="variable">$signatureApi</span>-&gt;GetSignDocumentStatus(<span class="variable">$clientId</span>, <span class="variable">$signDocument</span>-&gt;result-&gt;jobId);
+            <span class="keyword">if</span> (<span class="variable">$getSignDocument</span>-&gt;status == <span class="string">"Ok"</span>) {
+                <span class="keyword">if</span> (<span class="variable">$getSignDocument</span>-&gt;result-&gt;documents[<span class="number">0</span>]-&gt;status == <span class="string">"Completed"</span>) {</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-21">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-21">&#182;</a>
+              </div>
+              <p>Get file GUID</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>                    <span class="variable">$guid</span> = <span class="variable">$getSignDocument</span>-&gt;result-&gt;documents[<span class="number">0</span>]-&gt;documentId;
+                    <span class="keyword">break</span>;
+                } <span class="keyword">else</span> {</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-22">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-22">&#182;</a>
+              </div>
+              <p>Wait while server processed data</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>                    sleep(<span class="number">3</span>);
+                }
+            } <span class="keyword">else</span> {
+                <span class="variable">$error</span> = <span class="variable">$getSignDocument</span>-&gt;error_message;
+            }
+        }
+    } <span class="keyword">else</span> {
+        <span class="variable">$error</span> = <span class="variable">$signDocument</span>-&gt;error_message;
+    }</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-23">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-23">&#182;</a>
+              </div>
+              <p>Create array with result data</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    <span class="variable">$result</span> = <span class="keyword">array</span>(<span class="string">'guid'</span> =&gt; <span class="variable">$guid</span>,
+        <span class="string">'clientId'</span> =&gt; <span class="variable">$clientId</span>,
+        <span class="string">'privateKey'</span> =&gt; <span class="variable">$privateKey</span>,
+        <span class="string">'error'</span> =&gt; <span class="variable">$error</span>);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-24">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-24">&#182;</a>
+              </div>
+              <p>Decode array to json and return json string to ajax request</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    <span class="keyword">echo</span> json_encode(<span class="variable">$result</span>);
+} <span class="keyword">else</span> {
+    <span class="keyword">echo</span> Template::serve(<span class="string">'sample39.htm'</span>);
+}</pre></div></div>
+            
+        </li>
+        
+    </ul>
+  </div>
+</body>
+</html>

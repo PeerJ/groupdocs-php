@@ -800,38 +800,12 @@ F3::set(<span class="string">'collaborations'</span>, <span class="string">''</s
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-48">&#182;</a>
               </div>
-              <p>Get all collaborators for current document
-           $getCollaborators = $antApi-&gt;GetAnnotationCollaborators($clientId, $fileId);
-           if ($getCollaborators-&gt;status == “Ok”) {
-               //Loop for checking all collaborators
-               for ($n = 0; $n &lt; count($getCollaborators-&gt;result-&gt;collaborators); $n++) {
-                   //Check is user with entered email already in collaborators
-                   if ($getCollaborators-&gt;result-&gt;collaborators[$n]-&gt;guid == $userGuid) {
-                       //Add user GUID as “uid” parameter to the iframe URL
-                       $url = $url . “?uid=” . $userGuid;
-                       //Sign iframe URL
-                       $url = $signer-&gt;signUrl($url);
-                       break;
-                   }
-               }
-               //Check whether user was founded in collaborators list
-               if (strpos($url, “?uid=”)) {
-                   //If was set variable with URL for iframe
-                   F3::set(“url”, $url);
-               //If user wasn&#39;t founded in collaborators list - add him to it
-               } else {
-                   //Create array with entered email for SetAnnotationCollaborators method 
-                   $arrayEmail = array($email);
-                   //Add user as collaborators for the document
-                   $setCollaborator = $antApi-&gt;SetAnnotationCollaborators($clientId, $fileId, “v2.0”, $arrayEmail);
-                   if ($setCollaborator-&gt;status == “Ok”) {
-                       // Check the result of the request
-                       if (isset($setCollaborator-&gt;result)) {
-                           //Add user GUID as “uid” parameter to the iframe URL</p>
+              <p>Get all collaborators for current document</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>                            <span class="variable">$url</span> = <span class="variable">$url</span> . <span class="string">"?uid="</span> . <span class="variable">$userGuid</span>;</pre></div></div>
+            <div class="content"><div class='highlight'><pre>            <span class="variable">$getCollaborators</span> = <span class="variable">$antApi</span>-&gt;GetAnnotationCollaborators(<span class="variable">$clientId</span>, <span class="variable">$fileId</span>);
+            <span class="keyword">if</span> (<span class="variable">$getCollaborators</span>-&gt;status == <span class="string">"Ok"</span>) {</pre></div></div>
             
         </li>
         
@@ -842,11 +816,11 @@ F3::set(<span class="string">'collaborations'</span>, <span class="string">''</s
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-49">&#182;</a>
               </div>
-              <p>Sign iframe URL</p>
+              <p>Loop for checking all collaborators</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>                            <span class="variable">$url</span> = <span class="variable">$signer</span>-&gt;signUrl(<span class="variable">$url</span>);</pre></div></div>
+            <div class="content"><div class='highlight'><pre>                <span class="keyword">for</span> (<span class="variable">$n</span> = <span class="number">0</span>; <span class="variable">$n</span> &lt; count(<span class="variable">$getCollaborators</span>-&gt;result-&gt;collaborators); <span class="variable">$n</span>++) {</pre></div></div>
             
         </li>
         
@@ -857,12 +831,11 @@ F3::set(<span class="string">'collaborations'</span>, <span class="string">''</s
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-50">&#182;</a>
               </div>
-              <p>If request was successfull - set variables for template
-                           F3::set(‘result’, $setCollaborator-&gt;result);</p>
+              <p>Check is user with entered email already in collaborators</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>                            F3::set(<span class="string">"url"</span>, <span class="variable">$url</span>);</pre></div></div>
+            <div class="content"><div class='highlight'><pre>                    <span class="keyword">if</span> (<span class="variable">$getCollaborators</span>-&gt;result-&gt;collaborators[<span class="variable">$n</span>]-&gt;guid == <span class="variable">$userGuid</span>) {</pre></div></div>
             
         </li>
         
@@ -873,18 +846,175 @@ F3::set(<span class="string">'collaborations'</span>, <span class="string">''</s
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-51">&#182;</a>
               </div>
-              <pre><code>                   }
-               } <span class="keyword">else</span> {
-                   <span class="keyword">throw</span> <span class="keyword">new</span> <span class="keyword">Exception</span>(<span class="variable">$setCollaborator</span>-&gt;error_message);
-               }
-           }
-       } <span class="keyword">else</span> {
-           <span class="keyword">throw</span> <span class="keyword">new</span> <span class="keyword">Exception</span>(<span class="variable">$getCollaborators</span>-&gt;error_message);
-       }</code></pre>
+              <p>Add user GUID as “uid” parameter to the iframe URL</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>        } <span class="keyword">else</span> {
+            <div class="content"><div class='highlight'><pre>                        <span class="variable">$url</span> = <span class="variable">$url</span> . <span class="string">"?uid="</span> . <span class="variable">$userGuid</span>;</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-52">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-52">&#182;</a>
+              </div>
+              <p>Sign iframe URL</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>                        <span class="variable">$url</span> = <span class="variable">$signer</span>-&gt;signUrl(<span class="variable">$url</span>);
+                        <span class="keyword">break</span>;
+                    }
+                }</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-53">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-53">&#182;</a>
+              </div>
+              <p>Check whether user was founded in collaborators list</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>                <span class="keyword">if</span> (strpos(<span class="variable">$url</span>, <span class="string">"?uid="</span>)) {</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-54">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-54">&#182;</a>
+              </div>
+              <p>If was set variable with URL for iframe</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>                    F3::set(<span class="string">"url"</span>, <span class="variable">$url</span>);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-55">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-55">&#182;</a>
+              </div>
+              <p>If user wasn&#39;t founded in collaborators list - add him to it</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>                } <span class="keyword">else</span> {</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-56">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-56">&#182;</a>
+              </div>
+              <p>Create array with entered email for SetAnnotationCollaborators method </p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>                    <span class="variable">$arrayEmail</span> = <span class="keyword">array</span>(<span class="variable">$email</span>);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-57">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-57">&#182;</a>
+              </div>
+              <p>Add user as collaborators for the document</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>                    <span class="variable">$setCollaborator</span> = <span class="variable">$antApi</span>-&gt;SetAnnotationCollaborators(<span class="variable">$clientId</span>, <span class="variable">$fileId</span>, <span class="string">"v2.0"</span>, <span class="variable">$arrayEmail</span>);
+                    <span class="keyword">if</span> (<span class="variable">$setCollaborator</span>-&gt;status == <span class="string">"Ok"</span>) {</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-58">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-58">&#182;</a>
+              </div>
+              <p>Check the result of the request</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>                        <span class="keyword">if</span> (<span class="keyword">isset</span>(<span class="variable">$setCollaborator</span>-&gt;result)) {</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-59">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-59">&#182;</a>
+              </div>
+              <p>Add user GUID as “uid” parameter to the iframe URL</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>                            <span class="variable">$url</span> = <span class="variable">$url</span> . <span class="string">"?uid="</span> . <span class="variable">$userGuid</span>;</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-60">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-60">&#182;</a>
+              </div>
+              <p>Sign iframe URL</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>                            <span class="variable">$url</span> = <span class="variable">$signer</span>-&gt;signUrl(<span class="variable">$url</span>);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-61">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-61">&#182;</a>
+              </div>
+              <p>If request was successfull - set variables for template</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>                            F3::set(<span class="string">'result'</span>, <span class="variable">$setCollaborator</span>-&gt;result);
+                            F3::set(<span class="string">"url"</span>, <span class="variable">$url</span>);
+                        }
+                    } <span class="keyword">else</span> {
+                        <span class="keyword">throw</span> <span class="keyword">new</span> <span class="keyword">Exception</span>(<span class="variable">$setCollaborator</span>-&gt;error_message);
+                    }
+                }
+            } <span class="keyword">else</span> {
+                <span class="keyword">throw</span> <span class="keyword">new</span> <span class="keyword">Exception</span>(<span class="variable">$getCollaborators</span>-&gt;error_message);
+            }
+        } <span class="keyword">else</span> {
             <span class="keyword">throw</span> <span class="keyword">new</span> <span class="keyword">Exception</span>(<span class="variable">$allUsers</span>-&gt;error_message);
         }
     } <span class="keyword">catch</span> (<span class="keyword">Exception</span> <span class="variable">$e</span>) {
@@ -896,11 +1026,11 @@ F3::set(<span class="string">'collaborations'</span>, <span class="string">''</s
         </li>
         
         
-        <li id="section-52">
+        <li id="section-62">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-52">&#182;</a>
+                <a class="pilcrow" href="#section-62">&#182;</a>
               </div>
               <p>Process template</p>
 

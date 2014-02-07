@@ -62,6 +62,7 @@ F3::route('GET|POST /callbacks/convert_callback','callbacks/convert_callback.php
 F3::route('GET|POST /callbacks/check_file','callbacks/check_file.php');
 F3::route('GET|POST /callbacks/download_file','callbacks/download_file.php');
 F3::route('GET|POST /callbacks/sample37_callback','callbacks/sample37_callback.php');
+F3::route('GET|POST /callbacks/sample39_callback','callbacks/sample39_callback.php');
 F3::route('GET|POST /callbacks/publish_callback','callbacks/publish_callback.php');
 
 F3::route('GET /about_framework.php','about');

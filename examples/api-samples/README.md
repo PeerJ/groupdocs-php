@@ -73,7 +73,8 @@ To see all available PHP SDK versions tags visit this page - https://packagist.o
 35. How to create assembly from document and merge fields
 36. How to download document after sign envelope
 37. How to Create and Upload Envelop to GroupDocs account and get signed document
-38. How to Create and Upload Envelop to GroupDocs account and get signed document
+38. How to create new user and add him as collaborator to doc with annotations
+39. How to add a Signature to a document and redirect after signing with GroupDocs widget
 
 
 

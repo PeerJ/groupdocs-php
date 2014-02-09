@@ -18,17 +18,20 @@
                     $('#resultsStatus').fadeIn("slow");
                     $.ajax({
                         type: 'POST',
-                        url: '/callbacks/sample39_callback',
+                        url: '/callbacks/check_guid',
                         success: function (data) {
-                            var result = $.parseJSON(data);
-                            if (result.error == null) {
+                            var result = null;
+                            result = data
+                            if (result!= null) {
                                 $("#result").css("display", "none");
-                                var guid = result.guid;
-                                $("#clientId").val(result.clientId);
-                                $("#privateKey").val(result.privateKey);
+                                var guid = result;
                                 var leftvar = (screen.width-800)/2;
                                 var topvar = (screen.height-600)/2;       
                                 window.open('/popup?guid=' + guid, 'Redirect window', 'width=850,height=500,left=' + leftvar + ',top=' + topvar + ',resizable=no,scrollbars=no,location=no');
+                            } else {
+                                var leftvar = (screen.width-800)/2;
+                                var topvar = (screen.height-600)/2;       
+                                window.open('/popup', 'Redirect window', 'width=850,height=500,left=' + leftvar + ',top=' + topvar + ',resizable=no,scrollbars=no,location=no');
                             }
                         },
                         dataType: "text"

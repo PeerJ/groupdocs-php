@@ -56,6 +56,7 @@ F3::route('GET|POST /callbacks/signature_callback','callbacks/signature_callback
 F3::route('GET|POST /callbacks/signature_check_file','callbacks/signature_check_file.php');
 F3::route('GET|POST /callbacks/annotation_callback','callbacks/annotation_callback.php');
 F3::route('GET|POST /callbacks/annotation_check_file','callbacks/annotation_check_file.php');
+F3::route('GET|POST /callbacks/check_guid','callbacks/check_guid.php');
 F3::route('GET|POST /callbacks/compare_callback','callbacks/compare_callback.php');
 F3::route('GET|POST /callbacks/compare_check_file','callbacks/compare_check_file.php');
 F3::route('GET|POST /callbacks/convert_callback','callbacks/convert_callback.php');

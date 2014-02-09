@@ -65,6 +65,7 @@ if (!empty($postdata)) {
     echo json_encode($result);
 //### Check if user not use Widget for signing
 } elseif (!empty($_POST["clientId"])) {
+	//Get all entered data
     $clientId = F3::get('POST["clientId"]');
     $privateKey = F3::get('POST["privateKey"]');
     $email = F3::get('POST["email"]');
@@ -83,6 +84,10 @@ if (!empty($postdata)) {
         $infoFile = fopen(__DIR__ . '/../user_info.txt', 'w');
         fwrite($infoFile, $clientId . "\r\n" . $privateKey);
         fclose($infoFile);
+        //Delete temporary file which content callback data
+        if (file_exists(__DIR__ . '/../callback_info.txt')) {
+            unlink(__DIR__ . '/../callback_info.txt');
+        }
         //Deleting of tags, slashes and  space from clientId and privateKey
         $clientID = strip_tags(stripslashes(trim($clientId))); //ClientId==UserId
         $apiKey = strip_tags(stripslashes(trim($privateKey))); //ApiKey==PrivateKey
@@ -124,7 +129,7 @@ if (!empty($postdata)) {
                     //Create SignatureApi object
                     $signature = new SignatureApi($apiClient);
                     try {
-                         //Create envilope using user id and entered by user name
+                        //Create envilope using user id and entered by user name
                         $envelop = $signature->CreateSignatureEnvelope($clientID, $name);
                         if ($envelop->status == "Ok") {
                             sleep(5);

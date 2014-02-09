@@ -19,14 +19,19 @@
                     vars.push(hash[0]);
                     vars[hash[0]] = hash[1];
                 }
-                $("#resultIframe").attr('src', "https://apps.groupdocs.com/document-viewer/embed/" + vars['guid']);
+                if (vars['guid']) {
+                   $("#result").append('<span class="description"><i>Document was signed successfully</i></span>')
+                   $("#resultIframe").attr('src', "https://apps.groupdocs.com/document-viewer/embed/" + vars['guid']);
+                } else {
+                    $("#result").append('<span style="color:red"><i>Document was not signed successfully</i></span>')
+                }
             })
         </script>
     </head>
     <body>
         <div style="padding:20px; text-align:center;"><h2><a href="">GroupDocs Redirect Sample</a></h2></div>
-        <div>
-            <span class="description"><i>Document was signed successfully</i></span>
+        <div id="result">
+            
         </div>
         <iframe id="resultIframe" src="" width = '800' height = '1000'></iframe>
     </body>

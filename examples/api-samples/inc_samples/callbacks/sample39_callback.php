@@ -5,6 +5,7 @@ $userInfo = file(__DIR__ . '/../../user_info.txt');
 //Get user data from text file
 $clientId = trim($userInfo[0]);
 $privateKey = trim($userInfo[1]);
+$guid = null;
 //Get raw data
 $json = file_get_contents("php://input");
 //path to settings file - temporary save userId and apiKey like to property file
@@ -23,13 +24,15 @@ if ($jobStatus == "JobCompleted") {
     //Create Storage Api object
     $storageApi = new StorageApi($apiClient);
     $getDocInfo = $signatureApi->GetSignatureEnvelopeDocuments($clientId, $envelopeId);
+    //path to settings file - temporary save userId and apiKey like to property file
     if ($getDocInfo->status == "Ok") {
-        if ($getSignDocument->result->documents[0]->status == "Completed") {
-            //Get file GUID
-            $guid = $getSignDocument->result->documents[0]->documentId;
-            $result = array('guid' => $guid);
-            //Decode array to json and return json string to ajax request
-            echo json_encode($result);
-        }
+        $guid = $getDocInfo->result->documents[0]->documentId;
     }
+    //path to settings file - temporary save userId and apiKey like to property file
+    if (file_exists(__DIR__ . '/../../callback_info.txt')) {
+        unlink(__DIR__ . '/../../callback_info.txt');
+    }
+    $infoFile = fopen(__DIR__ . '/../../callback_info.txt', 'w');
+    fwrite($infoFile, $guid);
+    fclose($infoFile);
 }

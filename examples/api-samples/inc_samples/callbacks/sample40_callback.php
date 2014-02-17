@@ -23,12 +23,13 @@ if ($jobStatus == "JobCompleted") {
     $signatureApi = new SignatureApi($apiClient);
     //Create Storage Api object
     $storageApi = new StorageApi($apiClient);
+    //Get document from envelop
     $getDocInfo = $signatureApi->GetSignatureEnvelopeDocuments($clientId, $envelopeId);
-    //path to settings file - temporary save userId and apiKey like to property file
     if ($getDocInfo->status == "Ok") {
+        //Get signed document GUID
         $guid = $getDocInfo->result->documents[0]->documentId;
     }
-    //path to settings file - temporary save userId and apiKey like to property file
+    //path to settings file - temporary save signed document GUID like to property file
     if (file_exists(__DIR__ . '/../../callback_info.txt')) {
         unlink(__DIR__ . '/../../callback_info.txt');
     }

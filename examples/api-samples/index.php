@@ -51,6 +51,7 @@ F3::route('GET|POST /sample36','sample36.php');
 F3::route('GET|POST /sample37','sample37.php');
 F3::route('GET|POST /sample38','sample38.php');
 F3::route('GET|POST /sample39','sample39.php');
+F3::route('GET|POST /sample40','sample40.php');
 F3::route('GET|POST /popup','popup.php');
 F3::route('GET|POST /callbacks/signature_callback','callbacks/signature_callback.php');
 F3::route('GET|POST /callbacks/signature_check_file','callbacks/signature_check_file.php');
@@ -64,6 +65,7 @@ F3::route('GET|POST /callbacks/check_file','callbacks/check_file.php');
 F3::route('GET|POST /callbacks/download_file','callbacks/download_file.php');
 F3::route('GET|POST /callbacks/sample37_callback','callbacks/sample37_callback.php');
 F3::route('GET|POST /callbacks/sample39_callback','callbacks/sample39_callback.php');
+F3::route('GET|POST /callbacks/sample40_callback','callbacks/sample40_callback.php');
 F3::route('GET|POST /callbacks/publish_callback','callbacks/publish_callback.php');
 
 F3::route('GET /about_framework.php','about');

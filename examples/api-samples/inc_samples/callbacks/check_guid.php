@@ -6,7 +6,7 @@ $counter = 0;
 //Check folder for downloaded file
 do {
     //Set max. iterations
-    if ($counter >= 6) {
+    if ($counter >= 10) {
         $result = array("Error" => "File was not found. Looks like something went wrong.");
         break;
     }

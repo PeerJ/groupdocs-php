@@ -10,7 +10,7 @@ do {
         $result = array("Error" => "File was not found. Looks like something went wrong.");
         break;
     }
-    sleep(5);
+    
     //Check is downloads folder exist
     if (file_exists(__DIR__ . '/../../callback_info.txt')) {
         //If folder don't exist create it
@@ -23,6 +23,7 @@ do {
         break;
     } else {
         $counter++;
+        sleep(5);
     }
 } while (true);
 //Check result

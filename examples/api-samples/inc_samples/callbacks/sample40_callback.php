@@ -35,9 +35,6 @@ if ($jobStatus == "JobCompleted") {
         $guid = $getDocInfo->result->participant->documentGuid;
     }
     //path to settings file - temporary save signed document GUID like to property file
-    if (file_exists(__DIR__ . '/../../callback_info.txt')) {
-        unlink(__DIR__ . '/../../callback_info.txt');
-    }
     $infoFile = fopen(__DIR__ . '/../../callback_info.txt', 'w');
     fwrite($infoFile, $guid);
     fclose($infoFile);

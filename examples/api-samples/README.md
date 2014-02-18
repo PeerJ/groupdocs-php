@@ -75,6 +75,7 @@ To see all available PHP SDK versions tags visit this page - https://packagist.o
 37. How to Create and Upload Envelop to GroupDocs account and get signed document
 38. How to create new user and add him as collaborator to doc with annotations
 39. How to add a Signature to a document and redirect after signing with GroupDocs widget
+40. How to set callback for signature form and re-direct when it was signed
 
 
 

@@ -108,8 +108,11 @@ Decode json with raw data to array</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre><span class="variable">$envelopeId</span> = <span class="variable">$callBack_data</span>[<span class="string">"SourceId"</span>];
+            <div class="content"><div class='highlight'><pre><span class="variable">$formId</span> = <span class="variable">$callBack_data</span>[<span class="string">"SourceId"</span>];
 <span class="variable">$jobStatus</span> = <span class="variable">$callBack_data</span>[<span class="string">"EventType"</span>];
+  
+<span class="variable">$serializedData</span> = json_decode(<span class="variable">$callBack_data</span>[<span class="string">'SerializedData'</span>], <span class="keyword">true</span>);
+<span class="variable">$participant</span> = <span class="variable">$serializedData</span>[<span class="string">'ParticipantGuid'</span>];
 <span class="keyword">if</span> (<span class="variable">$jobStatus</span> == <span class="string">"JobCompleted"</span>) {</pre></div></div>
             
         </li>
@@ -185,7 +188,7 @@ Decode json with raw data to array</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    <span class="variable">$getDocInfo</span> = <span class="variable">$signatureApi</span>-&gt;GetSignatureEnvelopeDocuments(<span class="variable">$clientId</span>, <span class="variable">$envelopeId</span>);
+            <div class="content"><div class='highlight'><pre>    <span class="variable">$getDocInfo</span> = <span class="variable">$signatureApi</span>-&gt;GetSignatureFormParticipant(<span class="variable">$formId</span>, <span class="variable">$participant</span>);
     <span class="keyword">if</span> (<span class="variable">$getDocInfo</span>-&gt;status == <span class="string">"Ok"</span>) {</pre></div></div>
             
         </li>
@@ -201,7 +204,7 @@ Decode json with raw data to array</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>        <span class="variable">$guid</span> = <span class="variable">$getDocInfo</span>-&gt;result-&gt;documents[<span class="number">0</span>]-&gt;documentId;
+            <div class="content"><div class='highlight'><pre>        <span class="variable">$guid</span> = <span class="variable">$getDocInfo</span>-&gt;result-&gt;participant-&gt;documentGuid;
     }</pre></div></div>
             
         </li>

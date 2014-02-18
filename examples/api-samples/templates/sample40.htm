@@ -74,18 +74,17 @@
                     type: 'POST',
                     url: '/callbacks/check_guid',
                     success: function(data) {
+                        $('#resultsStatus').fadeOut("slow");
                         var result = null;
-                        result = data
-                        if (result != null) {
+                        result = $.parseJSON(data);
+                        if (result.guid) {
                             $("#result").css("display", "none");
-                            var guid = result;
+                            var guid = result.guid;
                             var leftvar = (screen.width - 800) / 2;
                             var topvar = (screen.height - 600) / 2;
                             window.open('/popup?guid=' + guid, 'Redirect window', 'width=850,height=500,left=' + leftvar + ',top=' + topvar + ',resizable=no,scrollbars=no,location=no');
                         } else {
-                            var leftvar = (screen.width - 800) / 2;
-                            var topvar = (screen.height - 600) / 2;
-                            window.open('/popup', 'Redirect window', 'width=850,height=500,left=' + leftvar + ',top=' + topvar + ',resizable=no,scrollbars=no,location=no');
+                           alert(result.error);
                         }
                     },
                     dataType: "text"

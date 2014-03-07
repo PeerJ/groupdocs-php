@@ -81,7 +81,7 @@ if (!isset($clientId) || !isset($privateKey)) {
                         $iframe = 'http://dev-apps.groupdocs.com/document-viewer/embed/' . $guid;
                         //iframe to test server
                     } elseif ($basePath == "https://stage-api-groupdocs.dynabic.com/v2.0") {
-                        $iframe = 'https://stage-api-groupdocs.dynabic.com/document-viewer/Embed/' . $guid;
+                        $iframe = 'https://stage-apps-groupdocs.dynabic.com/document-viewer/Embed/' . $guid;
                         //Iframe to realtime server
                     } elseif ($basePath == "http://realtime-api.groupdocs.com") {
                         $iframe = 'http://realtime-apps.groupdocs.com/document-viewer/embed/' . $guid;

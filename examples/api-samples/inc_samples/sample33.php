@@ -107,7 +107,7 @@ if (empty($clientId) || empty($privateKey) || empty($firstUrl) || empty($secondU
                                 $iframe = 'https://dev-apps.groupdocs.com/document-viewer/embed/' . $getJobDocument->result->outputs[0]->guid;
                                 //iframe to test server
                             } elseif ($basePath == "https://stage-api-groupdocs.dynabic.com/v2.0") {
-                                $iframe = 'https://stage-api-groupdocs.dynabic.com/document-viewer/embed/' . $getJobDocument->result->outputs[0]->guid;
+                                $iframe = 'https://stage-apps-groupdocs.dynabic.com/document-viewer/embed/' . $getJobDocument->result->outputs[0]->guid;
                             } elseif ($basePath == "http://realtime-api.groupdocs.com") {
                                 $iframe = 'https://relatime-apps.groupdocs.com/document-viewer/embed/' . $getJobDocument->result->outputs[0]->guid;
                             }

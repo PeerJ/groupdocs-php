@@ -144,7 +144,7 @@ try {
                                     $fileId . '?&uid=' . $newUser->result->guid . '&download=true ';
                             //iframe to test server
                         } elseif ($basePath == "https://stage-api-groupdocs.dynabic.com/v2.0") {
-                            $iframe = 'https://stage-api-groupdocs.dynabic.com/document-annotation2/embed/' .
+                            $iframe = 'https://stage-apps-groupdocs.dynabic.com/document-annotation2/embed/' .
                                     $fileId . '?&uid=' . $newUser->result->guid . '&download=true ';
                         } elseif ($basePath == "http://realtime-api.groupdocs.com") {
                             $iframe = 'http://realtime-apps.groupdocs.com/document-annotation2/embed/' .

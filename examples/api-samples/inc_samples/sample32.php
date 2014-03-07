@@ -61,7 +61,7 @@ if (empty($clientId) || empty($privateKey)) {
                     $iframe = 'https://dev-apps.groupdocs.com/signature2/forms/signembed/' . $formGuid;
                     //iframe to test server
                 } elseif ($basePath == "https://stage-api-groupdocs.dynabic.com/v2.0") {
-                    $iframe = 'https://stage-api-groupdocs.dynabic.com/signature2/forms/signembed/' . $formGuid;
+                    $iframe = 'https://stage-apps-groupdocs.dynabic.com/signature2/forms/signembed/' . $formGuid;
                 } elseif ($basePath == "http://realtime-api.groupdocs.com") {
                     $iframe = 'https://relatime-apps.groupdocs.com/signature2/forms/signembed/' . $formGuid;
                 }
@@ -103,7 +103,7 @@ if (empty($clientId) || empty($privateKey)) {
                             $iframe = 'https://dev-apps.groupdocs.com/signature2/forms/signembed/' . $createForm->result->form->id;
                             //iframe to test server
                         } elseif ($basePath == "https://stage-api-groupdocs.dynabic.com/v2.0") {
-                            $iframe = 'https://stage-api-groupdocs.dynabic.com/signature2/forms/signembed/' . $createForm->result->form->id;
+                            $iframe = 'https://stage-apps-groupdocs.dynabic.com/signature2/forms/signembed/' . $createForm->result->form->id;
                         } elseif ($basePath == "http://realtime-api.groupdocs.com") {
                             $iframe = 'https://relatime-apps.groupdocs.com/signature2/forms/signembed/' . $createForm->result->form->id;
                         }

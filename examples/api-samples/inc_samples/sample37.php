@@ -209,8 +209,8 @@ if (empty($clientId) || empty($privateKey)) {
                                                                 } elseif ($basePath == "https://dev-api.groupdocs.com/v2.0") {
                                                                     $iframe = 'https://dev-apps.groupdocs.com/signature/signembed/' . $envelop->result->envelope->id . '/' . $recipientId;
                                                                     //iframe to test server
-                                                                } elseif ($basePath == "https://stage-api-groupdocs.dynabic.com/v2.0") {
-                                                                    $iframe = 'https://stage-api-groupdocs.dynabic.com/signature/signembed/' . $envelop->result->envelope->id . '/' . $recipientId;
+                                                                } elseif ($basePath == "https://stage-apps-groupdocs.dynabic.com/v2.0") {
+                                                                    $iframe = 'https://stage-apps-groupdocs.dynabic.com/signature/signembed/' . $envelop->result->envelope->id . '/' . $recipientId;
                                                                 } elseif ($basePath == "http://realtime-api.groupdocs.com") {
                                                                     $iframe = 'http://realtime-apps.groupdocs.com/signature/signembed/' . $envelop->result->envelope->id . '/' . $recipientId;
                                                                 }

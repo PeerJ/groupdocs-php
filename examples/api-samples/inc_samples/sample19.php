@@ -206,7 +206,7 @@ if (empty($clientId) || empty($privateKey)) {
                         $guid . ' frameborder="0" width="500" height="650"';
                 //iframe to test server
             } elseif ($basePath == "https://stage-api-groupdocs.dynabic.com/v2.0") {
-                $iframe = 'https://stage-api-groupdocs.dynabic.com/document-viewer/embed/' .
+                $iframe = 'https://stage-apps-groupdocs.dynabic.com/document-viewer/embed/' .
                         $guid . ' frameborder="0" width="500" height="650"';
             } elseif ($basePath == "http://realtime-api.groupdocs.com") {
                 $iframe = 'http://realtime-apps.groupdocs.com/document-viewer/embed/' .

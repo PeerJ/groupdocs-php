@@ -99,7 +99,7 @@ if (empty($clientId) || empty($privateKey)) {
             $iframe = 'http://dev-apps.groupdocs.com/document-viewer/embed/' . $fileGuId;
             //iframe to test server
         } elseif ($basePath == "https://stage-api-groupdocs.dynabic.com/v2.0") {
-            $iframe = 'https://stage-api-groupdocs.dynabic.com/document-viewer/Embed/' . $fileGuId;
+            $iframe = 'https://stage-apps-groupdocs.dynabic.com/document-viewer/Embed/' . $fileGuId;
             //Iframe to realtime server
         } elseif ($basePath == "http://realtime-api.groupdocs.com") {
             $iframe = 'http://realtime-apps.groupdocs.com/document-viewer/embed/' . $fileGuId;
@@ -113,7 +113,7 @@ if (empty($clientId) || empty($privateKey)) {
             $iframe = 'http://dev-apps.groupdocs.com/document-annotation2/embed/' . $fileGuId;
             //iframe to test server
         } elseif ($basePath == "https://stage-api-groupdocs.dynabic.com/v2.0") {
-            $iframe = 'https://stage-api-groupdocs.dynabic.com/document-annotation2/Embed/' . $fileGuId;
+            $iframe = 'https://stage-apps-groupdocs.dynabic.com/document-annotation2/Embed/' . $fileGuId;
             //Iframe to realtime server
         } elseif ($basePath == "http://realtime-api.groupdocs.com") {
             $iframe = 'http://realtime-apps.groupdocs.com/document-annotation2/embed/' . $fileGuId;

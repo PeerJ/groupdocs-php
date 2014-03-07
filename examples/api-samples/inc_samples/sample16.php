@@ -93,7 +93,7 @@ if (empty($clientId) || empty($privateKey)) {
                 $fileGuId . '" frameborder="0" width="100%" height="600"';
         //iframe to test server
     } elseif ($basePath == "https://stage-api-groupdocs.dynabic.com/v2.0") {
-        $iframe = 'https://stage-api-groupdocs.dynabic.com/assembly2/questionnaire-assembly/' .
+        $iframe = 'https://stage-apps-groupdocs.dynabic.com/assembly2/questionnaire-assembly/' .
                 $fileGuId . '" frameborder="0" width="100%" height="600"';
         //Iframe to realtime server
     } elseif ($basePath == "http://realtime-api.groupdocs.com") {

@@ -107,7 +107,7 @@ if (empty($clientId) || empty($privateKey)) {
     }
     $types = array('text' => "0", "area" => "1", "point" => "2");
     // reply text
-    $reply = new AnnotationReplyInfo();
+    $reply = new nnotationReplyInfo();
     $reply->text = $replyText;
     // Annotation Info
     $annotationInfo = new AnnotationInfo();
@@ -172,7 +172,7 @@ if (empty($clientId) || empty($privateKey)) {
                             $createAnnotation->result->documentGuid . '?frameborder="0" width="720" height="600"';
                     //iframe to test server
                 } elseif ($basePath == "https://stage-api-groupdocs.dynabic.com/v2.0") {
-                            $iframe = 'https://stage-api-groupdocs.dynabic.com/document-annotation2/Embed/' .
+                            $iframe = 'https://stage-apps-groupdocs.dynabic.com/document-annotation2/Embed/' .
                             $createAnnotation->result->documentGuid . '?frameborder="0" width="720" height="600"';
                     //Iframe to realtime server
                 } elseif ($basePath == "http://realtime-api.groupdocs.com") {

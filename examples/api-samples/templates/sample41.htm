@@ -6,14 +6,18 @@
     <style type="text/css">
         {{ Web::minify('templates/',array('style.css'),FALSE) }}
     </style>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js" ></script>
 </head>
 <body>
 <h3 style="text-align:center;"><a href="/index.php">GroupDocs PHP SDK Samples</a> - Sample41</h3>
 
 <div class='samplecontent' style="padding:10px;">
-    <span class="description"><i>This sample will show how to add numeration in the doc file using PHP SDK</i></span> <br/>
+    <span class="description"><i>This sample will show how to set callback for Annotation and manage user rights using PHP SDK</i></span> <br/>
     <br />
     <span class="documentation"><a href="/docs/sample41.html">Docs for this sample</a></span>
+    <br />
+    <br />
+    <span class="documentation"><a href="/docs/sample41_callback.html">Docs for callback handler</a></span>
     <br />
     <br/><p>You entered:
     <p>ClientID = {{@userId}}
@@ -52,22 +56,59 @@
             <br />
             <input type='text' name='url'  value="" id="urlField" style="display:none;" />
             <br />
+            <label>First collaborator email</label>
+            <br />
+            <input type='text' name='email[]' value="" />
+            <br />
+            <label>Second collaborator email</label>
+            <br />
+            <input type='text' name='email[]' value="" />
+            <br />
+            <label for='callbackUrl'>callbackUrl<span class="optional">(Optional) <br /> For test Callback you can use this URL: http://groupdocs-php-samples.herokuapp.com/callbacks/sample41_callback </span></label>
+            <br />
+            <input type='text' id='callbackUrl' name='callbackUrl'  value="" size="70" />
+            <br/>
             <label for='basePath'>Base path<span class="optional">(Optional)</span></label>
             <br />
             <input type ="text" name="basePath" id="basePath" />
             <br />
             <input type='submit' value='Make Request'/>
+            <span id="resultsStatus" style="color:red;display:none;"> (Please wait for ajax response) </span>
         </form>
     </div>
-    <div  style="padding:20px; border:1px solid black;">
-        <span style="color: green">{{@message}}</span>
-        <iframe frameborder="0" width="800" height="650" src="{{@url}}"></iframe>
+    <div id = 'result' style="padding:20px; border:1px solid black;" >
+        <p> Results: </p>
+        <div id="rights"></div>
+        <iframe frameborder="0" width="800" height="650" src="{{@url}}" id='iframe'></iframe>
     </div>
     <br/>
 </div>
 
 <include href="links.htm" />
 <script type="text/javascript">
+    $(document).ready(setTimeout(check, 5000));
+
+    function check() {
+        if (($("input[name=callbackUrl]").val() != "") && (document.getElementById("result") != null)) {
+            $('#resultsStatus').fadeIn("slow");
+            $.ajax({
+                type: 'POST',
+                url: '/samples/check_guid',
+                success: function (data) {
+                    $('#resultsStatus').fadeOut("slow");
+                    var result = null;
+                    result = data;
+                    if (result) {
+                        var message = result;
+                        $("#rights").append('<span style="color:red"><i>' + message + '</i></span>')
+                        var url = $('#iframe').attr('src');
+                        $('#iframe').attr('src', url);
+                    }
+                },
+                dataType: "text"
+            });
+        }
+    }
 
     function display(_element_id) {
 

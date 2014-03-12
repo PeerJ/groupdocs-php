@@ -27,6 +27,7 @@ class TemplateInfo {
       'name' => 'string',
       'field_count' => 'int',
       'size' => 'string',
+      'fileType' => 'string',
       'upload_time' => 'string',
       'id' => 'float',
       'guid' => 'string'
@@ -36,6 +37,7 @@ class TemplateInfo {
   public $name; // string
   public $field_count; // int
   public $size; // string
+  public $fileType; // string
   public $upload_time; // string
   public $id; // float
   public $guid; // string

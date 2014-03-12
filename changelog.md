@@ -1,4 +1,529 @@
 ###Change log for GroupDocs SDK
+1.8.0 version
+<table class="confluenceTable"><tbody>
+<tr>
+<th class="confluenceTh"> API </th>
+<th class="confluenceTh"> <font color="#000000"><b>Class</b></font> </th>
+<th class="confluenceTh"> <font color="#000000"><b>Method</b></font> </th>
+<th class="confluenceTh"> <font color="#000000"><b>Changes</b></font><br class="atl-forced-newline"> </th>
+</tr>
+<tr>
+<td class="confluenceTd"> <font color="#ff0000">&nbsp;</font><font color="#ff0000"><b>Annotation API</b></font> </td>
+<td class="confluenceTd">&nbsp;</td>
+<td class="confluenceTd">&nbsp;</td>
+<td class="confluenceTd">&nbsp;</td>
+</tr>
+<tr>
+<td class="confluenceTd">&nbsp;</td>
+<td class="confluenceTd"> CreateAnnotationResult </td>
+<td class="confluenceTd"> - </td>
+<td class="confluenceTd"> changed type of parameter "id" from "double" to "long" </td>
+</tr>
+<tr>
+<td class="confluenceTd">&nbsp;</td>
+<td class="confluenceTd"> AnnotationInfo </td>
+<td class="confluenceTd"> - </td>
+<td class="confluenceTd"> added new property "pageNumber" type "int" also&nbsp;updated property "type" added new parameter "required" default "false" </td>
+</tr>
+<tr>
+<td class="confluenceTd">&nbsp;</td>
+<td class="confluenceTd"> AnnotationReplyInfo </td>
+<td class="confluenceTd"> - </td>
+<td class="confluenceTd"> added new property "isAvatarExist" type "boolean" </td>
+</tr>
+<tr>
+<td class="confluenceTd">&nbsp;</td>
+<td class="confluenceTd"> DeleteReplyResponse </td>
+<td class="confluenceTd"> - </td>
+<td class="confluenceTd"> added new property "serverTime" type "long" <br class="atl-forced-newline"> </td>
+</tr>
+<tr>
+<td class="confluenceTd">&nbsp;</td>
+<td class="confluenceTd"> ReviewerInfo </td>
+<td class="confluenceTd"> - </td>
+<td class="confluenceTd"> changed type of property "access_rights" from "int" to "string" also&nbsp;added new property "avatar" and "items" </td>
+</tr>
+<tr>
+<td class="confluenceTd">&nbsp;</td>
+<td class="confluenceTd"> GetSharedLinkAccessRightsResult </td>
+<td class="confluenceTd"> - </td>
+<td class="confluenceTd"> changed type for property "accessRights" from "int" to "string" </td>
+</tr>
+<tr>
+<td class="confluenceTd">&nbsp;</td>
+<td class="confluenceTd"> - </td>
+<td class="confluenceTd"> MoveAnnotationMarker <br class="atl-forced-newline"> </td>
+<td class="confluenceTd"> parameter "position" renamed to "marker" and dataType changed from "Point" to "Groupdocs.Api.Contract.Data.MarkerPosition" <br class="atl-forced-newline"> </td>
+</tr>
+<tr>
+<td class="confluenceTd">&nbsp;</td>
+<td class="confluenceTd"> - </td>
+<td class="confluenceTd"> SetSharedLinkAccessRights <br class="atl-forced-newline"> </td>
+<td class="confluenceTd"> changed dataType for parameter "sharedLinkAccessRights" from "int" to "AnnotationReviewerRights" <br class="atl-forced-newline"> </td>
+</tr>
+<tr>
+<td class="confluenceTd"> <font color="#ff0000"><b>Async API</b></font> </td>
+<td class="confluenceTd">&nbsp;</td>
+<td class="confluenceTd">&nbsp;</td>
+<td class="confluenceTd">&nbsp;</td>
+</tr>
+<tr>
+<td class="confluenceTd">&nbsp;</td>
+<td class="confluenceTd"> JobInputDocument <br class="atl-forced-newline"> </td>
+<td class="confluenceTd"> - </td>
+<td class="confluenceTd"> added new property "required" default "false" <br class="atl-forced-newline"> </td>
+</tr>
+<tr>
+<td class="confluenceTd">&nbsp;</td>
+<td class="confluenceTd"> - </td>
+<td class="confluenceTd"> GetJobs <br class="atl-forced-newline"> </td>
+<td class="confluenceTd"> added new parameter "jobName" <br class="atl-forced-newline"> </td>
+</tr>
+<tr>
+<td class="confluenceTd"> <font color="#ff0000"><b>Comparison API</b></font><br class="atl-forced-newline"> </td>
+<td class="confluenceTd">&nbsp;</td>
+<td class="confluenceTd">&nbsp;</td>
+<td class="confluenceTd">&nbsp;</td>
+</tr>
+<tr>
+<td class="confluenceTd">&nbsp;</td>
+<td class="confluenceTd"> ChangesResponse <br class="atl-forced-newline"> </td>
+<td class="confluenceTd"> - </td>
+<td class="confluenceTd"> was moved to Public Comparison API <br class="atl-forced-newline"> </td>
+</tr>
+<tr>
+<td class="confluenceTd">&nbsp;</td>
+<td class="confluenceTd"> ChangesResult <br class="atl-forced-newline"> </td>
+<td class="confluenceTd"> - </td>
+<td class="confluenceTd"> was moved to Public Comparison API <br class="atl-forced-newline"> </td>
+</tr>
+<tr>
+<td class="confluenceTd">&nbsp;</td>
+<td class="confluenceTd"> ChangeInfo <br class="atl-forced-newline"> </td>
+<td class="confluenceTd"> - </td>
+<td class="confluenceTd"> was moved to Public Comparison API <br class="atl-forced-newline"> </td>
+</tr>
+<tr>
+<td class="confluenceTd">&nbsp;</td>
+<td class="confluenceTd"> Page <br class="atl-forced-newline"> </td>
+<td class="confluenceTd"> - </td>
+<td class="confluenceTd"> was moved to Public Comparison API <br class="atl-forced-newline"> </td>
+</tr>
+<tr>
+<td class="confluenceTd">&nbsp;</td>
+<td class="confluenceTd"> Rectangle <br class="atl-forced-newline"> </td>
+<td class="confluenceTd"> - </td>
+<td class="confluenceTd"> was moved to Public Comparison API <br class="atl-forced-newline"> </td>
+</tr>
+<tr>
+<td class="confluenceTd">&nbsp;</td>
+<td class="confluenceTd"> - </td>
+<td class="confluenceTd"> GetChanges <br class="atl-forced-newline"> </td>
+<td class="confluenceTd"> was moved to Public Comparison API <br class="atl-forced-newline"> </td>
+</tr>
+<tr>
+<td class="confluenceTd">&nbsp;</td>
+<td class="confluenceTd"> - </td>
+<td class="confluenceTd"> UpdateChanges <br class="atl-forced-newline"> </td>
+<td class="confluenceTd"> was moved to Public Comparison API <br class="atl-forced-newline"> </td>
+</tr>
+<tr>
+<td class="confluenceTd"> <font color="#ff0000"><b>Public&nbsp;Comparison API</b></font><br class="atl-forced-newline"> </td>
+<td class="confluenceTd">&nbsp;</td>
+<td class="confluenceTd">&nbsp;</td>
+<td class="confluenceTd">&nbsp;</td>
+</tr>
+<tr>
+<td class="confluenceTd">&nbsp;</td>
+<td class="confluenceTd"> - </td>
+<td class="confluenceTd"> DownloadResult <br class="atl-forced-newline"> </td>
+<td class="confluenceTd"> removed parameter "UserId" also&nbsp;changed type of parameter "resultFileId" from "query" to "path" </td>
+</tr>
+<tr>
+<td class="confluenceTd"> <font color="#ff0000"><b>Document API</b></font><br class="atl-forced-newline"> </td>
+<td class="confluenceTd">&nbsp;</td>
+<td class="confluenceTd">&nbsp;</td>
+<td class="confluenceTd">&nbsp;</td>
+</tr>
+<tr>
+<td class="confluenceTd">&nbsp;</td>
+<td class="confluenceTd"> ViewDocumentResult <br class="atl-forced-newline"> </td>
+<td class="confluenceTd"> - </td>
+<td class="confluenceTd"> added new properties&nbsp;"lic", "pdfPrintUrl", &nbsp;"htmlPrintUrl" <br class="atl-forced-newline"> </td>
+</tr>
+<tr>
+<td class="confluenceTd">&nbsp;</td>
+<td class="confluenceTd"> UserInfo <br class="atl-forced-newline"> </td>
+<td class="confluenceTd"> - </td>
+<td class="confluenceTd"> added new property "signature_save_field_changes_automatically" "type": "boolean" also&nbsp;changed type of property "id" from "double" to "long" <br class="atl-forced-newline"> </td>
+</tr>
+<tr>
+<td class="confluenceTd">&nbsp;</td>
+<td class="confluenceTd"> TemplateField <br class="atl-forced-newline"> </td>
+<td class="confluenceTd"> - </td>
+<td class="confluenceTd"> added new properties "maxlength" "type" "int", "mandatory" "type" "boolean", "fieldtype" "type": "string", &nbsp;"acceptableValues" "type" "List", "items" "type" "string" <br class="atl-forced-newline"> </td>
+</tr>
+<tr>
+<td class="confluenceTd">&nbsp;</td>
+<td class="confluenceTd"> GetHyperlinksResponse <br class="atl-forced-newline"> </td>
+<td class="confluenceTd"> - </td>
+<td class="confluenceTd"> new class </td>
+</tr>
+<tr>
+<td class="confluenceTd">&nbsp;</td>
+<td class="confluenceTd"> GetHyperlinksResult <br class="atl-forced-newline"> </td>
+<td class="confluenceTd"> - </td>
+<td class="confluenceTd"> new class </td>
+</tr>
+<tr>
+<td class="confluenceTd">&nbsp;</td>
+<td class="confluenceTd"> DocumentHyperlink <br class="atl-forced-newline"> </td>
+<td class="confluenceTd"> - </td>
+<td class="confluenceTd"> new class </td>
+</tr>
+<tr>
+<td class="confluenceTd">&nbsp;</td>
+<td class="confluenceTd"> - </td>
+<td class="confluenceTd"> ShareDocument <br class="atl-forced-newline"> </td>
+<td class="confluenceTd"> changed description form "File GUID" to "File ID - decimal type" <br class="atl-forced-newline"> </td>
+</tr>
+<tr>
+<td class="confluenceTd">&nbsp;</td>
+<td class="confluenceTd"> - </td>
+<td class="confluenceTd"> GetDocumentHyperlinks <br class="atl-forced-newline"> </td>
+<td class="confluenceTd"> new method </td>
+</tr>
+<tr>
+<td class="confluenceTd"> <font color="#ff0000"><b>Merge API</b></font><br class="atl-forced-newline"> </td>
+<td class="confluenceTd">&nbsp;</td>
+<td class="confluenceTd">&nbsp;</td>
+<td class="confluenceTd">&nbsp;</td>
+</tr>
+<tr>
+<td class="confluenceTd">&nbsp;</td>
+<td class="confluenceTd"> QuestionInfo <br class="atl-forced-newline"> </td>
+<td class="confluenceTd"> - </td>
+<td class="confluenceTd"> added new properties "acceptableValues" and "max_length" <br class="atl-forced-newline"> </td>
+</tr>
+<tr>
+<td class="confluenceTd">&nbsp;</td>
+<td class="confluenceTd"> AnswerInfo <br class="atl-forced-newline"> </td>
+<td class="confluenceTd"> - </td>
+<td class="confluenceTd"> added new property "ordinal" <br class="atl-forced-newline"> </td>
+</tr>
+<tr>
+<td class="confluenceTd">&nbsp;</td>
+<td class="confluenceTd"> ConditionInfo <br class="atl-forced-newline"> </td>
+<td class="confluenceTd"> - </td>
+<td class="confluenceTd"> added new property "operatorComparer" <br class="atl-forced-newline"> </td>
+</tr>
+<tr>
+<td class="confluenceTd">&nbsp;</td>
+<td class="confluenceTd"> GetQuestionnaireDocumentResponse <br class="atl-forced-newline"> </td>
+<td class="confluenceTd"> - </td>
+<td class="confluenceTd"> new class </td>
+</tr>
+<tr>
+<td class="confluenceTd">&nbsp;</td>
+<td class="confluenceTd"> GetQuestionnaireDocumentResult <br class="atl-forced-newline"> </td>
+<td class="confluenceTd"> - </td>
+<td class="confluenceTd"> new class </td>
+</tr>
+<tr>
+<td class="confluenceTd">&nbsp;</td>
+<td class="confluenceTd"> - </td>
+<td class="confluenceTd"> GetQuestionnaireByCollector <br class="atl-forced-newline"> </td>
+<td class="confluenceTd"> new method </td>
+</tr>
+<tr>
+<td class="confluenceTd">&nbsp;</td>
+<td class="confluenceTd"> - </td>
+<td class="confluenceTd"> GetQuestionnairesByName <br class="atl-forced-newline"> </td>
+<td class="confluenceTd"> new method </td>
+</tr>
+<tr>
+<td class="confluenceTd">&nbsp;</td>
+<td class="confluenceTd"> - </td>
+<td class="confluenceTd"> DeleteQuestionnairesList <br class="atl-forced-newline"> </td>
+<td class="confluenceTd"> new method </td>
+</tr>
+<tr>
+<td class="confluenceTd">&nbsp;</td>
+<td class="confluenceTd"> - </td>
+<td class="confluenceTd"> DeleteDataSourceList <br class="atl-forced-newline"> </td>
+<td class="confluenceTd"> new method </td>
+</tr>
+<tr>
+<td class="confluenceTd">&nbsp;</td>
+<td class="confluenceTd"> - </td>
+<td class="confluenceTd"> DeleteQuestionnaireExecutionList <br class="atl-forced-newline"> </td>
+<td class="confluenceTd"> new method </td>
+</tr>
+<tr>
+<td class="confluenceTd">&nbsp;</td>
+<td class="confluenceTd"> - </td>
+<td class="confluenceTd"> DeleteQuestionnaireCollectorList <br class="atl-forced-newline"> </td>
+<td class="confluenceTd"> new method </td>
+</tr>
+<tr>
+<td class="confluenceTd">&nbsp;</td>
+<td class="confluenceTd"> - </td>
+<td class="confluenceTd"> GetDocumentByQuestionnaire <br class="atl-forced-newline"> </td>
+<td class="confluenceTd"> new method </td>
+</tr>
+<tr>
+<td class="confluenceTd"> <font color="#ff0000"><b>Public&nbsp;Signature API</b></font><br class="atl-forced-newline"> </td>
+<td class="confluenceTd">&nbsp;</td>
+<td class="confluenceTd">&nbsp;</td>
+<td class="confluenceTd">&nbsp;</td>
+</tr>
+<tr>
+<td class="confluenceTd">&nbsp;</td>
+<td class="confluenceTd"> - </td>
+<td class="confluenceTd"> PublicFillEnvelopeField <br class="atl-forced-newline"> </td>
+<td class="confluenceTd"> changed type of parameter "postData" from "string" to "stream" <br class="atl-forced-newline"> </td>
+</tr>
+<tr>
+<td class="confluenceTd">&nbsp;</td>
+<td class="confluenceTd"> - </td>
+<td class="confluenceTd"> PublicFillFormField <br class="atl-forced-newline"> </td>
+<td class="confluenceTd"> changed type of parameter "postData" from "string" to "stream" <br class="atl-forced-newline"> </td>
+</tr>
+<tr>
+<td class="confluenceTd">&nbsp;</td>
+<td class="confluenceTd"> - </td>
+<td class="confluenceTd"> PublicSignForm <br class="atl-forced-newline"> </td>
+<td class="confluenceTd"> added new parameter "participantName" <br class="atl-forced-newline"> </td>
+</tr>
+<tr>
+<td class="confluenceTd">&nbsp;</td>
+<td class="confluenceTd"> SignatureEnvelopeFieldInfo <br class="atl-forced-newline"> </td>
+<td class="confluenceTd"> - </td>
+<td class="confluenceTd"> added new properties "groupName" and "settings" <br class="atl-forced-newline"> </td>
+</tr>
+<tr>
+<td class="confluenceTd">&nbsp;</td>
+<td class="confluenceTd"> SignatureEnvelopeFieldLocationInfo <br class="atl-forced-newline"> </td>
+<td class="confluenceTd"> - </td>
+<td class="confluenceTd"> added new property "order" <br class="atl-forced-newline"> </td>
+</tr>
+<tr>
+<td class="confluenceTd">&nbsp;</td>
+<td class="confluenceTd"> SignatureFormFieldInfo <br class="atl-forced-newline"> </td>
+<td class="confluenceTd"> - </td>
+<td class="confluenceTd"> added new properties "groupName" and "settings" <br class="atl-forced-newline"> </td>
+</tr>
+<tr>
+<td class="confluenceTd">&nbsp;</td>
+<td class="confluenceTd"> SignatureFormFieldLocationInfo <br class="atl-forced-newline"> </td>
+<td class="confluenceTd"> - </td>
+<td class="confluenceTd"> added new property "order" <br class="atl-forced-newline"> </td>
+</tr>
+<tr>
+<td class="confluenceTd">&nbsp;</td>
+<td class="confluenceTd"> SignatureFormInfo <br class="atl-forced-newline"> </td>
+<td class="confluenceTd"> - </td>
+<td class="confluenceTd"> added new property notifyOtherOnSign <br class="atl-forced-newline"> </td>
+</tr>
+<tr>
+<td class="confluenceTd">&nbsp;</td>
+<td class="confluenceTd"> PublicSignatureSignDocumentSignerSettingsInfo <br class="atl-forced-newline"> </td>
+<td class="confluenceTd"> - </td>
+<td class="confluenceTd"> added new parameter for all properties "required" <br class="atl-forced-newline"> </td>
+</tr>
+<tr>
+<td class="confluenceTd"> <font color="#ff0000"><b>Storage API</b></font><br class="atl-forced-newline"> </td>
+<td class="confluenceTd">&nbsp;</td>
+<td class="confluenceTd">&nbsp;</td>
+<td class="confluenceTd">&nbsp;</td>
+</tr>
+<tr>
+<td class="confluenceTd">&nbsp;</td>
+<td class="confluenceTd"> CancelFileUploadResponse <br class="atl-forced-newline"> </td>
+<td class="confluenceTd"> - </td>
+<td class="confluenceTd"> new class </td>
+</tr>
+<tr>
+<td class="confluenceTd">&nbsp;</td>
+<td class="confluenceTd"> CancelFileUploadResult <br class="atl-forced-newline"> </td>
+<td class="confluenceTd"> - </td>
+<td class="confluenceTd"> new class </td>
+</tr>
+<tr>
+<td class="confluenceTd">&nbsp;</td>
+<td class="confluenceTd"> StorageInfoResult <br class="atl-forced-newline"> </td>
+<td class="confluenceTd"> - </td>
+<td class="confluenceTd"> added new property "maxViewingFileSize" <br class="atl-forced-newline"> </td>
+</tr>
+<tr>
+<td class="confluenceTd">&nbsp;</td>
+<td class="confluenceTd"> FileSystemDocument <br class="atl-forced-newline"> </td>
+<td class="confluenceTd"> - </td>
+<td class="confluenceTd"> to property "thumbnail" added new parameter "required" default false <br class="atl-forced-newline"> </td>
+</tr>
+<tr>
+<td class="confluenceTd">&nbsp;</td>
+<td class="confluenceTd"> UploadRequestResult <br class="atl-forced-newline"> </td>
+<td class="confluenceTd"> - </td>
+<td class="confluenceTd"> to property "thumbnail" added new parameter "required" default false <br class="atl-forced-newline"> </td>
+</tr>
+<tr>
+<td class="confluenceTd">&nbsp;</td>
+<td class="confluenceTd"> - </td>
+<td class="confluenceTd"> CancelFileUpload <br class="atl-forced-newline"> </td>
+<td class="confluenceTd"> new method </td>
+</tr>
+<tr>
+<td class="confluenceTd">&nbsp;</td>
+<td class="confluenceTd"> - </td>
+<td class="confluenceTd"> MoveToTrash <br class="atl-forced-newline"> </td>
+<td class="confluenceTd"> changed response type form "FolderMoveResponse" to "DeleteResponse" <br class="atl-forced-newline"> </td>
+</tr>
+<tr>
+<td class="confluenceTd"> <font color="#ff0000"><b>System API</b></font><br class="atl-forced-newline"> </td>
+<td class="confluenceTd">&nbsp;</td>
+<td class="confluenceTd">&nbsp;</td>
+<td class="confluenceTd">&nbsp;</td>
+</tr>
+<tr>
+<td class="confluenceTd">&nbsp;</td>
+<td class="confluenceTd"> UpdateAccountUserResult <br class="atl-forced-newline"> </td>
+<td class="confluenceTd"> - </td>
+<td class="confluenceTd"> changed type for property "id" from "double" to "long" <br class="atl-forced-newline"> </td>
+</tr>
+<tr>
+<td class="confluenceTd">&nbsp;</td>
+<td class="confluenceTd"> DeleteAccountUserResult <br class="atl-forced-newline"> </td>
+<td class="confluenceTd"> - </td>
+<td class="confluenceTd"> changed type for property "id" from "double" to "long" <br class="atl-forced-newline"> </td>
+</tr>
+<tr>
+<td class="confluenceTd">&nbsp;</td>
+<td class="confluenceTd"> UserIdentity <br class="atl-forced-newline"> </td>
+<td class="confluenceTd"> - </td>
+<td class="confluenceTd"> changed type for property "id" from "double" to "long" <br class="atl-forced-newline"> </td>
+</tr>
+<tr>
+<td class="confluenceTd">&nbsp;</td>
+<td class="confluenceTd"> - </td>
+<td class="confluenceTd"> GetSubscriptionPlans <br class="atl-forced-newline"> </td>
+<td class="confluenceTd"> added new GET parameter 
+<div class="code panel" style="border-width: 1px;"><div class="codeContent panelContent">
+<pre class="code-java">invalidate={invalidate}</pre>
+</div></div>
+<p><br class="atl-forced-newline"> </p></td>
+</tr>
+<tr>
+<td class="confluenceTd"> <font color="#ff0000"><b>Signature API</b></font><br class="atl-forced-newline"> </td>
+<td class="confluenceTd">&nbsp;</td>
+<td class="confluenceTd">&nbsp;</td>
+<td class="confluenceTd">&nbsp;</td>
+</tr>
+<tr>
+<td class="confluenceTd">&nbsp;</td>
+<td class="confluenceTd"> SignatureTemplateInfo <br class="atl-forced-newline"> </td>
+<td class="confluenceTd"> - </td>
+<td class="confluenceTd"> new class </td>
+</tr>
+<tr>
+<td class="confluenceTd">&nbsp;</td>
+<td class="confluenceTd"> SignatureTemplateFieldInfo <br class="atl-forced-newline"> </td>
+<td class="confluenceTd"> - </td>
+<td class="confluenceTd"> added new properties "groupName" and "settings" <br class="atl-forced-newline"> </td>
+</tr>
+<tr>
+<td class="confluenceTd">&nbsp;</td>
+<td class="confluenceTd"> SignatureTemplateFieldSettingsInfo <br class="atl-forced-newline"> </td>
+<td class="confluenceTd"> - </td>
+<td class="confluenceTd"> added new parameter "required" for properties "page", "LocationX" and "LocationY" also&nbsp;added new properties "groupName", "fieldType", "settings", "pageWidth", "pageHeight" <br class="atl-forced-newline"> </td>
+</tr>
+<tr>
+<td class="confluenceTd">&nbsp;</td>
+<td class="confluenceTd"> SignatureTemplateFieldLocationSettingsInfo <br class="atl-forced-newline"> </td>
+<td class="confluenceTd"> - </td>
+<td class="confluenceTd"> added new parameter "required" for properties "page", "LocationX", "LocationY", "locationWidth" and "locationHeight" also&nbsp;added new properties "pageWidth" and "pageHeight" <br class="atl-forced-newline"> </td>
+</tr>
+<tr>
+<td class="confluenceTd">&nbsp;</td>
+<td class="confluenceTd"> SignatureContactSettingsInfo <br class="atl-forced-newline"> </td>
+<td class="confluenceTd"> - </td>
+<td class="confluenceTd"> added new parameter "required" for properties "firstName", "lastName" and "email" <br class="atl-forced-newline"> </td>
+</tr>
+<tr>
+<td class="confluenceTd">&nbsp;</td>
+<td class="confluenceTd"> SignatureSignDocumentDocumentSettingsInfo <br class="atl-forced-newline"> </td>
+<td class="confluenceTd"> - </td>
+<td class="confluenceTd"> added new parameter "required" for properties "name" and "data" <br class="atl-forced-newline"> </td>
+</tr>
+<tr>
+<td class="confluenceTd">&nbsp;</td>
+<td class="confluenceTd"> SignatureSignDocumentSignerSettingsInfo <br class="atl-forced-newline"> </td>
+<td class="confluenceTd"> - </td>
+<td class="confluenceTd"> added new parameter "required" for properties &nbsp;"name", "top", "left", "width", "height", "placeSignatureOn" <br class="atl-forced-newline"> </td>
+</tr>
+<tr>
+<td class="confluenceTd">&nbsp;</td>
+<td class="confluenceTd"> SignatureEnvelopeFieldInfo <br class="atl-forced-newline"> </td>
+<td class="confluenceTd"> - </td>
+<td class="confluenceTd"> added new properties "groupName" and "settings" <br class="atl-forced-newline"> </td>
+</tr>
+<tr>
+<td class="confluenceTd">&nbsp;</td>
+<td class="confluenceTd"> SignatureEnvelopeFieldSettingsInfo <br class="atl-forced-newline"> </td>
+<td class="confluenceTd"> - </td>
+<td class="confluenceTd"> added new parameter "required" for properties "page" and "LocationX" also&nbsp;added new properties "groupName", "fieldType", "settings", "pageWidth", "pageHeight" <br class="atl-forced-newline"> </td>
+</tr>
+<tr>
+<td class="confluenceTd">&nbsp;</td>
+<td class="confluenceTd"> SignatureEnvelopeFieldLocationSettingsInfo <br class="atl-forced-newline"> </td>
+<td class="confluenceTd"> - </td>
+<td class="confluenceTd"> added new parameter "required" for properties "page", "LocationX", "LocationY", "locationWidth" and "locationHeight" also&nbsp;added new properties "pageWidth", "pageHeight" <br class="atl-forced-newline"> </td>
+</tr>
+<tr>
+<td class="confluenceTd">&nbsp;</td>
+<td class="confluenceTd"> SignatureFieldSettingsInfo <br class="atl-forced-newline"> </td>
+<td class="confluenceTd"> - </td>
+<td class="confluenceTd"> added new parameter "required" for property "name" <br class="atl-forced-newline"> </td>
+</tr>
+<tr>
+<td class="confluenceTd">&nbsp;</td>
+<td class="confluenceTd"> SignaturePredefinedListSettingsInfo <br class="atl-forced-newline"> </td>
+<td class="confluenceTd"> - </td>
+<td class="confluenceTd"> added new parameter "required" for properties "name", "values", "defaultValue" <br class="atl-forced-newline"> </td>
+</tr>
+<tr>
+<td class="confluenceTd">&nbsp;</td>
+<td class="confluenceTd"> SignatureSignatureSettingsInfo <br class="atl-forced-newline"> </td>
+<td class="confluenceTd"> - </td>
+<td class="confluenceTd"> added new parameter "required" for properties "firstName" and "lastName" <br class="atl-forced-newline"> </td>
+</tr>
+<tr>
+<td class="confluenceTd">&nbsp;</td>
+<td class="confluenceTd"> - </td>
+<td class="confluenceTd"> ModifySignatureEnvelopeFieldLocationOrder <br class="atl-forced-newline"> </td>
+<td class="confluenceTd"> new method </td>
+</tr>
+<tr>
+<td class="confluenceTd">&nbsp;</td>
+<td class="confluenceTd"> - </td>
+<td class="confluenceTd"> GetSignatureFormFields <br class="atl-forced-newline"> </td>
+<td class="confluenceTd"> added new parameter "fieldGuid" <br class="atl-forced-newline"> </td>
+</tr>
+<tr>
+<td class="confluenceTd">&nbsp;</td>
+<td class="confluenceTd"> - </td>
+<td class="confluenceTd"> GetSignatureEnvelopeFields <br class="atl-forced-newline"> </td>
+<td class="confluenceTd"> added new parameter "fieldGuid" <br class="atl-forced-newline"> </td>
+</tr>
+<tr>
+<td class="confluenceTd">&nbsp;</td>
+<td class="confluenceTd"> - </td>
+<td class="confluenceTd"> GetSignatureTemplateFields <br class="atl-forced-newline"> </td>
+<td class="confluenceTd"> added new parameter "fieldGuid" <br class="atl-forced-newline"> </td>
+</tr>
+</tbody></table>
+
+
 
 1.7.3 version
 

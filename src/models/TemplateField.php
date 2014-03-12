@@ -24,23 +24,24 @@
 class TemplateField {
 
   static $swaggerTypes = array(
-      'id' => 'string',
       'page' => 'int',
       'name' => 'string',
       'type' => 'string',
       'rect' => 'Rectangle',
+      'maxlength' => 'int',
       'mandatory' => 'bool',
+      'fieldtype' => 'string',
       'acceptableValues' => 'array[string]'
-      
 
     );
 
-  public $id; // string
   public $page; // int
   public $name; // string
   public $type; // string
   public $rect; // Rectangle
-  public $mandatory; // Boolean
-  public $acceptableValues; // Array
+  public $maxlength; // int
+  public $mandatory; // bool
+  public $fieldtype; // string
+  public $acceptableValues; // array[string]
   }
 

@@ -1,157 +1,276 @@
 <?php
 
-//###<i>This sample will show how to add numeration in the doc file</i>
+//###<i>This sample will show how to set callback for Annotation and manage user rights using PHP SDK </i>
 //Set variables and get POST data
 F3::set('userId', '');
 F3::set('privateKey', '');
-
-$clientID = F3::get('POST["clientId"]');
+F3::set('fileId', '');
+F3::set('message', '');
+F3::set('iframe', '');
+$clientId = F3::get('POST["clientId"]');
 $privateKey = F3::get('POST["privateKey"]');
-$basePath = F3::get('POST["basePath"]');
-
-try {
-    //###Check if user entered all parameters
-    if (empty($clientID) || empty($privateKey)) {
-        throw new Exception('Please enter FILE ID');
-    } else {
-        F3::set('userId', $clientID);
-        F3::set('privateKey', $privateKey);
-        //###Create Signer, ApiClient and Storage Api objects
-        //Create signer object
-        $signer = new GroupDocsRequestSigner($privateKey);
-        //Create apiClient object
-        $apiClient = new APIClient($signer);
-        //Create Doc Api object
-        $docApi = new DocApi($apiClient);
-        //Create Storage Api object
-        $storageApi = new StorageApi($apiClient);
-        //Create AsyncApi object
-        $asyncApi = new AsyncApi($apiClient);
-        $mergApi = new MergeApi($apiClient);
-        //Set url to choose whot server to use
-        if ($basePath == "") {
-            //If base base is empty seting base path to prod server
-            $basePath = 'https://api.groupdocs.com/v2.0';
-        }
-        //Set base path
-        $docApi->setBasePath($basePath);
-        $storageApi->setBasePath($basePath);
-        $asyncApi->setBasePath($basePath);
-        $mergApi->setBasePath($basePath);
-        //Get entered by user data
-        $url = F3::get('POST["url"]');
-        $file = $_FILES['file'];
-        $fileId = F3::get('POST["fileId"]');
-        //Check if user choose upload file from URL
-        if ($url != "") {
-            //Upload file from URL
+$emailsArray = F3::get('POST["email"]');
+$callbackUrl = F3::get('POST["callbackUrl"]');
+//###Check clientId and privateKey
+if (empty($clientId) || empty($privateKey) || empty($emailsArray[0])) {
+    $error = 'Please enter all required parameters';
+    F3::set('error', $error);
+} else {
+    //path to settings file - temporary save userId and apiKey like to property file
+    $infoFile = fopen(__DIR__ . '/../user_info.txt', 'w');
+    fwrite($infoFile, $clientId . "\r\n" . $privateKey);
+    fclose($infoFile);
+    //Delete temporary file which content callback data
+    if (file_exists(__DIR__ . '/../callback_info.txt')) {
+        unlink(__DIR__ . '/../callback_info.txt');
+    }
+    //Deleting of tags, slashes and  space from clientId and privateKey
+    $clientID = strip_tags(stripslashes(trim($clientId))); //ClientId==UserId
+    $apiKey = strip_tags(stripslashes(trim($privateKey))); //ApiKey==PrivateKey
+    //###Create Signer, ApiClient and Storage Api objects
+    //Create signer object
+    $signer = new GroupDocsRequestSigner($apiKey);
+    //Create apiClient object
+    $apiClient = new APIClient($signer);
+    //Create Storage Api object
+    $storageApi = new StorageApi($apiClient);
+    //Create MgmtApi object (this class allow manipulations with User account)
+    $mgmtApi = new MgmtApi($apiClient);
+    $basePath = F3::get('POST["basePath"]');
+    //Declare which Server to use
+    if ($basePath == "") {
+        //If base base is empty seting base path to prod server
+        $basePath = 'https://api.groupdocs.com/v2.0';
+    }
+    //Set base path
+    $storageApi->setBasePath($basePath);
+    $mgmtApi->setBasePath($basePath);
+    //Get entered by user data
+    $name = "";
+    $fileGuId = "";
+    $url = F3::get('POST["url"]');
+    $file = $_FILES['file'];
+    $fileId = F3::get('POST["fileId"]');
+    //Check is URL entered
+    if ($url != "") {
+        //Upload file from URL
+        try {
             $uploadResult = $storageApi->UploadWeb($clientID, $url);
             //Check is file uploaded
             if ($uploadResult->status == "Ok") {
                 //Get file GUID
                 $fileGuId = $uploadResult->result->guid;
-                $fileId = "";
+                //###Make a request to Storage API using clientId
+                //Obtaining all Entities from current user
+                try {
+                    $files = $storageApi->ListEntities($clientID, 'My Web Documents', 0);
+                    //Obtaining file name and id by fileGuID
+                    if ($files->status == "Ok") {
+                        foreach ($files->result->files as $item) {
+                            if ($item->guid == $fileGuId) {
+                                $name = $item->name;
+                            }
+                        }
+                    } else {
+                        throw new Exception($uploadResult->error_message);
+                    }
+                } catch (Exception $e) {
+                    $error = 'ERROR: ' . $e->getMessage() . "\n";
+                    F3::set('error', $error);
+                }
                 //If it isn't uploaded throw exception to template
             } else {
                 throw new Exception($uploadResult->error_message);
             }
+        } catch (Exception $e) {
+            $error = 'ERROR: ' . $e->getMessage() . "\n";
+            F3::set('error', $error);
         }
-        //Check is user choose upload local file
-        if ($_FILES['file']["name"] != "") {
-            //Temp name of the file
-            $tmpName = $file['tmp_name'];
-            //Original name of the file
-            $name = $file['name'];
-            //Create file stream
-            $fs = FileStream::fromFile($tmpName);
-            //###Make a request to Storage API using clientId
-            //Upload file to current user storage
+    }
+    //Check is local file chosen
+    if ($file["name"] != "") {
+        //Get uploaded file
+        $uploadedFile = $_FILES['file'];
+        //###Check uploaded file
+        if (null === $uploadedFile) {
+            return new RedirectResponse("/sample41");
+        }
+        //Temp name of the file
+        $tmpName = $uploadedFile['tmp_name'];
+        //Original name of the file
+        $name = $uploadedFile['name'];
+        //Create file stream
+        $fs = FileStream::fromFile($tmpName);
+        //###Make a request to Storage API using clientId
+        //Upload file to current user storage
+        try {
             $uploadResult = $storageApi->Upload($clientID, $name, 'uploaded', "", $fs);
-
             //###Check if file uploaded successfully
             if ($uploadResult->status == "Ok") {
-                //Get file GUID
                 $fileGuId = $uploadResult->result->guid;
-                $fileId = "";
-
-                //If it isn't uploaded throw exception to template
+                $name = $uploadResult->result->adj_name;
             } else {
                 throw new Exception($uploadResult->error_message);
             }
+        } catch (Exception $e) {
+            $error = 'ERROR: ' . $e->getMessage() . "\n";
+            F3::set('error', $error);
         }
-        //Check is user choose file GUID
-        if ($fileId != "") {
-            //Get entered by user file GUID
-            $fileGuId = $fileId;
-        }
-        F3::set('fileId', $fileGuId);
-         //Create job info object
-                $jobInfo = new JobInfo();
-                $jobInfo->actions = "8193";
-                $jobInfo->out_formats = array('doc');
-
-                //Create new job
-                $createJob = $asyncApi->CreateJob($clientID, $jobInfo);
-
-                if ($createJob->status == "Ok") {
-                    try {
-                        //Add document to job
-                            $addJobDocument = $asyncApi->AddJobDocument($clientID, $createJob->result->job_id, $fileGuId, false);
-                            if ($addJobDocument->status != "Ok") {
-                                throw new Exception($addJobDocument->error_message);
-                            }
-
-                    } catch (Exception $e) {
-                        $error = 'ERROR: ' . $e->getMessage() . "\n";
-                        F3::set('error', $error);
-                    }
-                    try {
-                        //Change job status
-                        $jobInfo->status = 0;
-                        //Update job with new status
-                        $updateJob = $asyncApi->UpdateJob($clientID, $createJob->result->job_id, $jobInfo);
-                        if ($updateJob->status == "Ok") {
-                            try {
-                                //Delay for server proccesing
-                                sleep(8);
-                                //Get result document guid from job
-                                $getJobDocument = $asyncApi->GetJobDocuments($clientID, $createJob->result->job_id);
-                                if ($getJobDocument->status == "Ok") {
-                                    //Generate iframe url
-                                    if ($basePath == "https://api.groupdocs.com/v2.0") {
-                                        $iframe = 'https://apps.groupdocs.com/document-viewer/embed/' . $getJobDocument->result->inputs[0]->outputs[0]->guid;
-                                        //iframe to dev server
-                                    } elseif ($basePath == "https://dev-api.groupdocs.com/v2.0") {
-                                        $iframe = 'https://dev-apps.groupdocs.com/document-viewer/embed/' . $getJobDocument->result->inputs[0]->outputs[0]->guid;
-                                        //iframe to test server
-                                    } elseif ($basePath == "https://stage-api-groupdocs.dynabic.com/v2.0") {
-                                        $iframe = 'https://stage-apps-groupdocs.dynabic.com/document-viewer/embed/' . $getJobDocument->result->inputs[0]->outputs[0]->guid;
-                                    } elseif ($basePath == "http://realtime-api.groupdocs.com") {
-                                        $iframe = 'https://relatime-apps.groupdocs.com/document-viewer/embed/' . $getJobDocument->result->inputs[0]->outputs[0]->guid;
-                                    }
-                                    $iframe = $signer->signUrl($iframe);
-                                    F3::set('url', $iframe);
-                                } else {
-                                    throw new Exception($getJobDocument->error_message);
-                                }
-                            } catch (Exception $e) {
-                                $error = 'ERROR: ' . $e->getMessage() . "\n";
-                                F3::set('error', $error);
-                            }
-                        } else {
-                            throw new Exception($updateJob->error_message);
-                        }
-                    } catch (Exception $e) {
-                        $error = 'ERROR: ' . $e->getMessage() . "\n";
-                        F3::set('error', $error);
-                    }
-                } else {
-                    throw new Exception($createJob->error_message);
-                }
     }
-} catch (Exception $e) {
-    $error = 'ERROR: ' . $e->getMessage() . "\n";
-    F3::set('error', $error);
+    //Check is user choose file GUID
+    if ($fileId != "") {
+        //Get entered by user file GUID
+        $fileGuId = $fileId;
+        //###Make a request to Storage API using clientId
+        //Obtaining all Entities from current user
+        try {
+            $files = $storageApi->ListEntities($clientID, '', 0);
+            if ($files->status == "Ok") {
+                //Obtaining file name and id by fileGuID
+                foreach ($files->result->files as $item) {
+                    if ($item->guid == $fileGuId) {
+                        $name = $item->name;
+                    }
+                }
+            } else {
+                throw new Exception($uploadResult->error_message);
+            }
+        } catch (Exception $e) {
+            $error = 'ERROR: ' . $e->getMessage() . "\n";
+            F3::set('error', $error);
+        }
+    }
+    //Create Annotation Api object
+    $antApi = new AntApi($apiClient);
+    $antApi->setBasePath($basePath);
+
+    try {
+        //Set file sesion callback - will be trigered when user add, remove or edit commit for annotation
+        $setCallback = $antApi->SetSessionCallbackUrl($clientID, $fileGuId, $callbackUrl);
+        if ($setCallback->status == 'Ok'){
+            //Generate iframe URL for iframe
+            if ($basePath == "https://api.groupdocs.com/v2.0") {
+                //iframe to prodaction server
+                $url = "https://apps.groupdocs.com/document-annotation2/embed/" . $fileGuId;
+                //iframe to dev server
+            } elseif ($basePath == "https://dev-api.groupdocs.com/v2.0") {
+                $url = 'https://dev-apps.groupdocs.com/document-annotation2/embed/' . $fileGuId;
+                //iframe to test server
+            } elseif ($basePath == "https://stage-apps-groupdocs.dynabic.com/v2.0") {
+                $url = 'https://stage-apps-groupdocs.dynabic.com/document-annotation2/embed/' . $fileGuId;
+            } elseif ($basePath == "http://realtime-api.groupdocs.com") {
+                $url = 'http://realtime-apps.groupdocs.com/document-annotation2/embed/' . $fileGuId;
+            }
+            //Get all users from accaunt
+            $allUsers = $mgmtApi->GetAccountUsers($clientId);
+            $counter = 0;
+            if ($allUsers->status == "Ok" && $allUsers->result->users != null) {
+                //Loop for all users
+                foreach($emailsArray as $item) {
+                    //Get current user email
+                    $email = $item;
+                    //Loop to get user GUID if user with same email already exist
+                    for ($i = 0; $i < count($allUsers->result->users); $i++) {
+                        //Check whether there is a user with entered email
+                        if ($email == $allUsers->result->users[$i]->primary_email) {
+                            //Get user GUID
+                            $userGuid = $allUsers->result->users[$i]->guid;
+                            break;
+                        }
+                    }
+                    //Check is user with entered email was founded in GroupDocs account, if not user will be created
+                    if (!isset($userGuid)) {
+                        //###Create User info object
+                        //Create User info object
+                        $user = new UserInfo ();
+                        //Create Role info object
+                        $role = new RoleInfo ();
+                        //Set user role Id. Can be: 1 -  SysAdmin, 2 - Admin, 3 - User, 4 - Guest
+                        $role->id = "3";
+                        //Set user role name. Can be: SysAdmin, Admin, User, Guest
+                        $role->name = "User";
+                        //Create array of roles.
+                        $roles = array($role);
+                        //Set first name as entered first name
+                        $user->firstname = $email;
+                        //Set last name as entered last name
+                        $user->lastname = $email;
+                        $user->roles = $roles;
+                        //Set email as entered email
+                        $user->primary_email = $email;
+                        //Creating of new user. $clientId - user id, $firstName - entered first name, $user - object with new user info
+                        $newUser = $mgmtApi->UpdateAccountUser($clientId, $email, $user);
+                        //Check the result of the request
+                        if ($newUser->status == "Ok") {
+                            //Get user GUID
+                            $userGuid = $newUser->result->guid;
+                        } else {
+                            //Throw error message
+                            throw new Exception($newUser->error_message);
+                        }
+                    }
+                    //Get all collaborators for current document
+                    $getCollaborators = $antApi->GetAnnotationCollaborators($clientId, $fileId);
+                    if ($getCollaborators->status == "Ok") {
+                        //Loop for checking all collaborators
+                        for ($n = 0; $n < count($getCollaborators->result->collaborators); $n++) {
+                            //Check is user with entered email already in collaborators
+                            if ($getCollaborators->result->collaborators[$n]->primary_email == $email) {
+                                //Add user GUID as "uid" parameter to the iframe URL
+                                $url = $url . "?uid=" . $userGuid;
+                                $urlParametr = $userGuid;
+                                //Sign iframe URL
+                                $url = $signer->signUrl($url);
+                                break;
+                            }
+                        }
+                        //Check whether user was founded in collaborators list
+                        if (strpos($url, "?uid=") && $urlParametr != null) {
+                            //If was set variable with URL for iframe
+                            F3::set("url", $url);
+                            $urlParametr = null;
+                            //If user wasn't founded in collaborators list - add him to it
+                        } else {
+                            if ($counter == 0 ){
+                                //Add user as collaborators for the document
+                                $setCollaborator = $antApi->SetAnnotationCollaborators($clientId, $fileId, "v2.0", $emailsArray);
+
+                                if ($setCollaborator->status == "Ok") {
+                                    // Check the result of the request
+                                    if (isset($setCollaborator->result)) {
+
+                                        $counter = 1;
+                                        //Add user GUID as "uid" parameter to the iframe URL
+                                        $url = $url . "?uid=" . $userGuid;
+                                        //Sign iframe URL
+                                        $url = $signer->signUrl($url);
+                                        // If request was successfull - set variables for template
+                                        F3::set('result', $setCollaborator->result);
+                                        F3::set("url", $url);
+                                    }
+                                } else {
+                                    throw new Exception($setCollaborator->error_message);
+                                }
+                            }
+                        }
+                    } else {
+                        throw new Exception($getCollaborators->error_message);
+                    }
+                }
+
+            } else {
+                throw new Exception($allUsers->error_message);
+            }
+        }
+    } catch (Exception $e) {
+        $error = 'ERROR: ' . $e->getMessage() . "\n";
+        F3::set('error', $error);
+    }
 }
+
+
+
 //Process template
+F3::set('userId', $clientId);
+F3::set('privateKey', $privateKey);
 echo Template::serve('sample41.htm');

@@ -76,7 +76,9 @@ To see all available PHP SDK versions tags visit this page - https://packagist.o
 38. How to create new user and add him as collaborator to doc with annotations
 39. How to add a Signature to a document and redirect after signing with GroupDocs widget
 40. How to set callback for signature form and re-direct when it was signed
-
+41. How to set callback for Annotation and manage user rights using PHP SDK
+42. How to add numeration in the doc file using PHP SDK
+43. How to download document with annotations using PHP SDK
 
 
 ###[View, Sign, Manage, Annotate, Assemble, Compare and Convert Documents with GroupDocs](http://groupdocs.com)

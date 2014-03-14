@@ -11,6 +11,7 @@ $clientId = F3::get('POST["clientId"]');
 $privateKey = F3::get('POST["privateKey"]');
 $emailsArray = F3::get('POST["email"]');
 $callbackUrl = F3::get('POST["callbackUrl"]');
+F3::set("callbackUrl", $callbackUrl);
 //###Check clientId and privateKey
 if (empty($clientId) || empty($privateKey) || empty($emailsArray[0])) {
     $error = 'Please enter all required parameters';
@@ -163,7 +164,7 @@ if (empty($clientId) || empty($privateKey) || empty($emailsArray[0])) {
             }
             //Get all users from accaunt
             $allUsers = $mgmtApi->GetAccountUsers($clientId);
-            $counter = 0;
+            $collaborator = array();
             if ($allUsers->status == "Ok" && $allUsers->result->users != null) {
                 //Loop for all users
                 foreach($emailsArray as $item) {
@@ -216,50 +217,37 @@ if (empty($clientId) || empty($privateKey) || empty($emailsArray[0])) {
                         for ($n = 0; $n < count($getCollaborators->result->collaborators); $n++) {
                             //Check is user with entered email already in collaborators
                             if ($getCollaborators->result->collaborators[$n]->primary_email == $email) {
-                                //Add user GUID as "uid" parameter to the iframe URL
-                                $url = $url . "?uid=" . $userGuid;
-                                $urlParametr = $userGuid;
-                                //Sign iframe URL
-                                $url = $signer->signUrl($url);
-                                break;
+                                $collaborator << $getCollaborators->result->collaborators[$n]->guid;
                             }
                         }
-                        //Check whether user was founded in collaborators list
-                        if (strpos($url, "?uid=") && $urlParametr != null) {
-                            //If was set variable with URL for iframe
-                            F3::set("url", $url);
-                            $urlParametr = null;
-                            //If user wasn't founded in collaborators list - add him to it
-                        } else {
-                            if ($counter == 0 ){
-                                //Add user as collaborators for the document
-                                $setCollaborator = $antApi->SetAnnotationCollaborators($clientId, $fileId, "v2.0", $emailsArray);
-
-                                if ($setCollaborator->status == "Ok") {
-                                    // Check the result of the request
-                                    if (isset($setCollaborator->result)) {
-
-                                        $counter = 1;
-                                        //Add user GUID as "uid" parameter to the iframe URL
-                                        $url = $url . "?uid=" . $userGuid;
-                                        //Sign iframe URL
-                                        $url = $signer->signUrl($url);
-                                        // If request was successfull - set variables for template
-                                        F3::set('result', $setCollaborator->result);
-                                        F3::set("url", $url);
-                                    }
-                                } else {
-                                    throw new Exception($setCollaborator->error_message);
-                                }
-                            }
-                        }
-                    } else {
-                        throw new Exception($getCollaborators->error_message);
                     }
                 }
+                //Check whether user was founded in collaborators list
+                if (count($collaborator) < 2) {
+                    //Add user as collaborators for the document
+                    $setCollaborator = $antApi->SetAnnotationCollaborators($clientId, $fileId, "v2.0", $emailsArray);
+                    if ($setCollaborator->status == "Ok") {
+                        // Check the result of the request
+                        if (isset($setCollaborator->result)) {
 
-            } else {
-                throw new Exception($allUsers->error_message);
+                            //Add user GUID as "uid" parameter to the iframe URL
+                            $url = $url . "?uid=" . $userGuid;
+                            //Sign iframe URL
+                            $url = $signer->signUrl($url);
+                            // If request was successfull - set variables for template
+                            F3::set('result', $setCollaborator->result);
+                            F3::set("url", $url);
+                        }
+                    } else {
+                        throw new Exception($setCollaborator->error_message);
+                    }
+                } else {
+                    //Add user GUID as "uid" parameter to the iframe URL
+                    $url = $url . "?uid=" . $userGuid;
+                    //Sign iframe URL
+                    $url = $signer->signUrl($url);
+                    F3::set("url", $url);
+                }
             }
         }
     } catch (Exception $e) {

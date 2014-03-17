@@ -95,8 +95,8 @@ Decode json with raw data to array</p>
             
             <div class="content"><div class='highlight'><pre><span class="variable">$callBack_data</span> = json_decode(<span class="variable">$json</span>, <span class="keyword">true</span>);
 <span class="variable">$serializedData</span> = json_decode(<span class="variable">$callBack_data</span>[<span class="string">'SerializedData'</span>], <span class="keyword">true</span>);
-<span class="variable">$documentGuid</span> = <span class="variable">$serializedData</span>[<span class="string">'documentGuid'</span>];
-<span class="variable">$collaboratorGuid</span> = <span class="variable">$serializedData</span>[<span class="string">'collaboratorGuid'</span>];
+<span class="variable">$documentGuid</span> = <span class="variable">$serializedData</span>[<span class="string">'DocumentGuid'</span>];
+<span class="variable">$collaboratorGuid</span> = <span class="variable">$serializedData</span>[<span class="string">'UserGuid'</span>];
 <span class="keyword">if</span> (<span class="variable">$documentGuid</span> != <span class="string">""</span> &amp;&amp; <span class="variable">$collaboratorGuid</span> != <span class="string">''</span>) {</pre></div></div>
             
         </li>
@@ -203,7 +203,7 @@ Decode json with raw data to array</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>            <span class="variable">$getCollaborators</span>-&gt;result-&gt;collaborators[<span class="variable">$n</span>]-&gt;access_rights = <span class="string">'CanView'</span>;</pre></div></div>
+            <div class="content"><div class='highlight'><pre>            <span class="keyword">if</span> (<span class="variable">$getCollaborators</span>-&gt;result-&gt;collaborators[<span class="variable">$n</span>]-&gt;guid == <span class="variable">$collaboratorGuid</span>) {</pre></div></div>
             
         </li>
         
@@ -218,8 +218,10 @@ Decode json with raw data to array</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>            <span class="variable">$reviewer</span>[<span class="variable">$n</span>] = <span class="variable">$getCollaborators</span>-&gt;result-&gt;collaborators[<span class="variable">$n</span>];
-
+            <div class="content"><div class='highlight'><pre>                <span class="variable">$reviewer</span> -&gt;id = <span class="variable">$getCollaborators</span>-&gt;result-&gt;collaborators[<span class="variable">$n</span>]-&gt;id;
+                <span class="variable">$reviewer</span> -&gt;access_rights = <span class="number">1</span>;
+                <span class="variable">$reviewer</span> = <span class="keyword">array</span>(<span class="variable">$reviewer</span>);
+            }
         }
 
         <span class="variable">$setReviewer</span> = <span class="variable">$antApi</span>-&gt;SetReviewerRights(<span class="variable">$clientId</span>, <span class="variable">$documentGuid</span>, <span class="variable">$reviewer</span>);

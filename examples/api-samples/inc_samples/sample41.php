@@ -17,6 +17,11 @@ if (empty($clientId) || empty($privateKey) || empty($emailsArray[0])) {
     $error = 'Please enter all required parameters';
     F3::set('error', $error);
 } else {
+    //Add all emails to array
+   if (empty($emailsArray[1])) {
+       unset($emailsArray[1]);
+   };
+
     //path to settings file - temporary save userId and apiKey like to property file
     $infoFile = fopen(__DIR__ . '/../user_info.txt', 'w');
     fwrite($infoFile, $clientId . "\r\n" . $privateKey);
@@ -146,6 +151,7 @@ if (empty($clientId) || empty($privateKey) || empty($emailsArray[0])) {
     $antApi->setBasePath($basePath);
 
     try {
+
         //Set file sesion callback - will be trigered when user add, remove or edit commit for annotation
         $setCallback = $antApi->SetSessionCallbackUrl($clientID, $fileGuId, $callbackUrl);
         if ($setCallback->status == 'Ok'){
@@ -211,13 +217,14 @@ if (empty($clientId) || empty($privateKey) || empty($emailsArray[0])) {
                         }
                     }
                     //Get all collaborators for current document
-                    $getCollaborators = $antApi->GetAnnotationCollaborators($clientId, $fileId);
+                    $getCollaborators = $antApi->GetAnnotationCollaborators($clientId, $fileGuId);
+
                     if ($getCollaborators->status == "Ok") {
                         //Loop for checking all collaborators
                         for ($n = 0; $n < count($getCollaborators->result->collaborators); $n++) {
                             //Check is user with entered email already in collaborators
                             if ($getCollaborators->result->collaborators[$n]->primary_email == $email) {
-                                $collaborator << $getCollaborators->result->collaborators[$n]->guid;
+                                $collaborator[$n] = $getCollaborators->result->collaborators[$n]->guid;
                             }
                         }
                     }
@@ -225,7 +232,7 @@ if (empty($clientId) || empty($privateKey) || empty($emailsArray[0])) {
                 //Check whether user was founded in collaborators list
                 if (count($collaborator) < 2) {
                     //Add user as collaborators for the document
-                    $setCollaborator = $antApi->SetAnnotationCollaborators($clientId, $fileId, "v2.0", $emailsArray);
+                    $setCollaborator = $antApi->SetAnnotationCollaborators($clientId, $fileGuId, "v2.0", $emailsArray);
                     if ($setCollaborator->status == "Ok") {
                         // Check the result of the request
                         if (isset($setCollaborator->result)) {

@@ -28,7 +28,7 @@ if (empty($clientId) || empty($privateKey) || empty($fileId)) {
     //Create AsyncApi object
     $asyncApi = new AsyncApi($apiClient);
     //Create SharedApi object
-    $sharedApi = new SharedApi($apiClient);
+    $storageApi = new StorageApi($apiClient);
     if ($basePath == "") {
         //If base base is empty seting base path to prod server
         $basePath = 'https://api.groupdocs.com/v2.0';
@@ -36,7 +36,7 @@ if (empty($clientId) || empty($privateKey) || empty($fileId)) {
     //Set base path
     $antApi->setBasePath($basePath);
     $asyncApi->setBasePath($basePath);
-    $sharedApi->setBasePath($basePath);
+    $storageApi->setBasePath($basePath);
     # Make a request to Annotation API using clientId and fileId
     try {
         $list = $antApi->ListAnnotations($clientId, $fileId);
@@ -101,9 +101,20 @@ if (empty($clientId) || empty($privateKey) || empty($fileId)) {
                                     }
                                     //Obtaining file stream of downloading file and definition of folder where to download file
                                     $outFileStream = FileStream::fromHttp($downloadFolder, $fileName);
-                                    //Download file from GroupDocs.
-                                    $downloadDocument = $sharedApi->Download($fileGuid, $fileName, null, $outFileStream);
-                                    F3::set("message", "<span style=\"color:green\">File with annotations was downloaded to server's local folder. You can check them <a href=\"/downloads/{$fileName}\">here</a></span>");
+
+                                    try {
+                                        $file = $storageApi->GetFile($clientId, $fileGuid, $outFileStream);
+
+                                        if ($file->downloadDirectory != "" && isset($file)) {
+                                            F3::set("message", "<span style=\"color:green\">File with annotations was downloaded to server's local folder. You can check them <a href=\"/downloads/{$fileName}\" type=\"application/file\" download >here</a></span>");
+                                        } else {
+                                            throw new Exception("Something wrong with entered data");
+                                        }
+                                    } catch (Exception $e) {
+                                        $error = 'ERROR: ' . $e->getMessage() . "\n";
+                                        F3::set('error', $error);
+                                    }
+
                                 } else {
                                     throw new Exception($getJobDocument->error_message);
                                 }

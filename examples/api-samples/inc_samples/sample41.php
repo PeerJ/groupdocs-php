@@ -146,6 +146,7 @@ if (empty($clientId) || empty($privateKey) || empty($emailsArray[0])) {
             F3::set('error', $error);
         }
     }
+    F3::set("fileId", $fileGuId);
     //Create Annotation Api object
     $antApi = new AntApi($apiClient);
     $antApi->setBasePath($basePath);

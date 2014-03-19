@@ -32,7 +32,7 @@ class UserInfo {
       'claimed_id' => 'string',
       'token' => 'string',
       'storage' => 'int',
-      'photo' => 'array[int]',
+      'photo' => 'string',
       'active' => 'bool',
       'trial' => 'bool',
       'news_eanbled' => 'bool',

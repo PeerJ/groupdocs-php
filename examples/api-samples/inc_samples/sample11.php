@@ -107,7 +107,7 @@ if (empty($clientId) || empty($privateKey)) {
     }
     $types = array('text' => "0", "area" => "1", "point" => "2");
     // reply text
-    $reply = new nnotationReplyInfo();
+    $reply = new AnnotationReplyInfo();
     $reply->text = $replyText;
     // Annotation Info
     $annotationInfo = new AnnotationInfo();

@@ -161,11 +161,10 @@ class ComparisonApi {
       if($format !== null) {
   		  $queryParams['format'] = $this->apiClient->toPathValue($format);
   		}
-  		if($resultFileId !== null) {
-  			$resourcePath = str_replace("{" . "resultFileId" . "}",
-  			                            $resultFileId, $resourcePath);
-  		}
-  		//make the API Call
+  		if ($resultFileId !== null) {
+            $resourcePath = str_replace("{" . "resultFileId" . "}", $resultFileId, $resourcePath);
+        }
+        //make the API Call
       if (! isset($body)) {
         $body = null;
       }
@@ -184,7 +183,7 @@ class ComparisonApi {
         throw new ApiException("missing required parameters", 400);
       }
       //parse inputs
-  	  $resourcePath = str_replace("*", "", "/comparison/{resultFileId}/changes");
+  	  $resourcePath = str_replace("*", "", "/comparison/public/{resultFileId}/changes");
   	  $pos = strpos($resourcePath, "?");
 	  if($pos !== false){
   	  	$resourcePath = substr($resourcePath, 0, $pos);
@@ -196,6 +195,7 @@ class ComparisonApi {
 
       if($resultFileId !== null) {
   		  $queryParams['resultFileId'] = $this->apiClient->toPathValue($resultFileId);
+                  $resourcePath = str_replace("{" . "resultFileId" . "}", $resultFileId, $resourcePath);
   		}
   		//make the API Call
       if (! isset($body)) {

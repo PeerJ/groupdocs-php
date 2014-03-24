@@ -34,7 +34,7 @@ if (empty($clientId) || empty($privateKey) || empty($resultFileId)) {
     //###Make request to ComparisonApi using user id
     //Get changes list for document
     try {
-        $info = $compareApi->GetChanges($clientId, $resultFileId);
+        $info = $compareApi->GetChanges($resultFileId);
 
         //Check request status
         if ($info->status == "Ok") {

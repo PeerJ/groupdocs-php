@@ -33,7 +33,7 @@ if (!isset($clientId) || !isset($privateKey)) {
     $document->data = "data:" . $fiDocument["type"] . ";base64," . base64_encode($docContent);
     //Create SignatureSignDocumentSignerSettings object
     $signer = new SignatureSignDocumentSignerSettingsInfo();
-    $signer->placeSignatureOn = "";
+    $signer->placeSignatureOn = 1;
     $signer->name = $fiSignature["name"];
     $signer->data = "data:" . $fiSignature["type"] . ";base64," . base64_encode($signatureContent);
     $signer->height = 40;

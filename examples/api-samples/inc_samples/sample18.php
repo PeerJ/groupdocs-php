@@ -107,20 +107,26 @@ if (empty($clientId) || empty($privateKey) || empty($convertType)) {
         //Check request status
         if ($convert->status == "Ok") {
             //Delay necessary that the inquiry would manage to be processed
-            sleep(5);
-            try {
-                //Make request to api for get document info by job id
-                $jobInfo = $asyncApi->GetJobDocuments($clientId, $convert->result->job_id, "");
-                $guid = '';
-                if ($jobInfo->result->inputs[0]->outputs[0]->guid != "") {
-                    //Get file guid
-                    $guid = $jobInfo->result->inputs[0]->outputs[0]->guid;
-                } else {
-                    throw new Exception($jobInfo->error_message);
+            for ($i = 0; $i < 5; $i++) {
+                sleep(5);
+                try {
+                    //Make request to api for get document info by job id
+                    $jobInfo = $asyncApi->GetJobDocuments($clientId, $convert->result->job_id, "");
+                    $guid = '';
+                    if ($jobInfo->result->job_status == "Archived") {
+                        if ($jobInfo->result->inputs[0]->outputs[0]->guid != "") {
+                            //Get file guid
+                            $guid = $jobInfo->result->inputs[0]->outputs[0]->guid;
+                        } else {
+                            throw new Exception($jobInfo->error_message);
+                        }
+                    } else {
+                        continue;
+                    }
+                } catch (Exception $e) {
+                    $error = 'ERROR: ' . $e->getMessage() . "\n";
+                    F3::set('error', $error);
                 }
-            } catch (Exception $e) {
-                $error = 'ERROR: ' . $e->getMessage() . "\n";
-                F3::set('error', $error);
             }
             //Generation of iframe URL using fileGuId
             if ($basePath == "https://api.groupdocs.com/v2.0") {

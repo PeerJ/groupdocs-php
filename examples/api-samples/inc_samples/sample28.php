@@ -61,6 +61,7 @@ try {
                             $iframe = 'http://realtime-apps.groupdocs.com/document-viewer/embed/' . $fileId;
                         }
                         $iframe = $signer->signUrl($iframe);
+                        F3::set("message", $message);
                         F3::set("url", $iframe);
                     } else {
                         throw new Exception($del->error_message);

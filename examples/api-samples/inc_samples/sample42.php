@@ -46,6 +46,7 @@ if (empty($clientId) || empty($privateKey) || empty($fileId)) {
                 //Create job info object
                 $jobInfo = new JobInfo();
                 $jobInfo->actions = "512";
+                $jobInfo->out_formats =
 
                 //Create new job
                 $createJob = $asyncApi->CreateJob($clientId, $jobInfo);

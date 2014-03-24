@@ -186,7 +186,7 @@ if (!empty($postdata)) {
                                                                             $send = $signature->SignatureEnvelopeSend($clientID, $envelop->result->envelope->id, $webHook);
                                                                             if ($send->status == "Ok") {
                                                                                 //Create URL for iframe
-                                                                                $iframe = "https://apps.groupdocs.com/signature/signembed/" . $envelop->result->envelope->id . '/' . $recipientId;
+                                                                                $iframe = "https://apps.groupdocs.com/signature2/signembed/" . $envelop->result->envelope->id . '/' . $recipientId;
                                                                                 //Sign URL
                                                                                 $iframe = $signer->signUrl($iframe);
                                                                                 F3::set('iframe', $iframe);

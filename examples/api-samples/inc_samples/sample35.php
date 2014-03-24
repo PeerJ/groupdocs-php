@@ -287,11 +287,10 @@ if (!empty($_POST['guid'])) {
                     }
                     if ($fields[$i]->type == "Text") {
                         $element .= '<br /><label for="' . $fieldName . '">' . $fields[$i]->name . " " .
-                                $optional . '</label><br /><input type="text" name="' . $fieldName . '" id="' .
-                                $fields[$i]->id . '" value="" /><br />';
+                                $optional . '</label><br /><input type="text" name="' . $fieldName . '" value="" /><br />';
                     } elseif ($fields[$i]->type == "Combobox") {
                         $element .= '<br /><label for="' . $fieldName . '">' . $fields[$i]->name . " " .
-                                $optional . '</label><br /><select name="' . $fieldName . '" id="' . $fields[$i]->id . '">';
+                                $optional . '</label><br /><select name="' . $fieldName . '">';
                         $options = $fields[$i]->acceptableValues;
                         foreach ($options as $option) {
                             $element .= '<option value="' . $countList . '">' . $option . '</option>';
@@ -300,7 +299,7 @@ if (!empty($_POST['guid'])) {
                         $element .= '</select><br />';
                     } elseif ($fields[$i]->type == "Listbox") {
                         $element .= '<br /><label for="' . $fieldName . '">' . $fields[$i]->name . " " .
-                                $optional . '</label><br /><select multiple name="' . $fieldName . '[]" id="' . $fields[$i]->id . '">';
+                                $optional . '</label><br /><select multiple name="' . $fieldName . '[]" >';
                         $options = $fields[$i]->acceptableValues;
                         foreach ($options as $option) {
                             $element .= '<option value="' . $countCombo . '">' . $option . '</option>';
@@ -308,20 +307,16 @@ if (!empty($_POST['guid'])) {
                         }
                         $element .= '</select><br />';
                     } elseif ($fields[$i]->type == "Checkbox") {
-                        $element .= '<br /><input type="checkbox" name="' . $fieldName . '" id="' .
-                                $fields[$i]->id . '" value="' . $countCheckBox . '" >' . $fields[$i]->name . $optional . '</input><br />';
+                        $element .= '<br /><input type="checkbox" name="' . $fieldName . '" value="' . $countCheckBox . '" >' . $fields[$i]->name . $optional . '</input><br />';
                         $countCheckBox = $countCheckBox + 1;
                     } elseif ($fields[$i]->type == "MultiLineText") {
                         $element .= '<br /><label for="' . $fieldName . '">' . $fields[$i]->name . " " .
-                                $optional . '</label><br /><textarea name="' . $fieldName . '" id="' .
-                                $fields[$i]->id . '" value=""></textarea><br />';
+                                $optional . '</label><br /><textarea name="' . $fieldName . '" value=""></textarea><br />';
                     } elseif ($fields[$i]->type == "Signature") {
                         $element .= '<br /><label for="' . $fieldName . '">' . $fields[$i]->name . " " .
-                                $optional . '</label><br /><input type="file" name="' . $fieldName . '" id="' .
-                                $fields[$i]->id . '" value="" /><br />';
+                                $optional . '</label><br /><input type="file" name="' . $fieldName . '" value="" /><br />';
                     } elseif ($fields[$i]->type == "RadioButton") {
-                        $element .= '<br /><input type="radio" name="' . $fieldName . '" id="' .
-                                $fields[$i]->id . '" value="' . $countRadio . '" >' . $fields[$i]->name . $optional . '</input><br />';
+                        $element .= '<br /><input type="radio" name="' . $fieldName . '" value="' . $countRadio . '" >' . $fields[$i]->name . $optional . '</input><br />';
                         $countRadio = $countRadio + 1;
                     }
                 }

@@ -117,6 +117,7 @@ if (empty($clientId) || empty($privateKey) || empty($convertType)) {
                         if ($jobInfo->result->inputs[0]->outputs[0]->guid != "") {
                             //Get file guid
                             $guid = $jobInfo->result->inputs[0]->outputs[0]->guid;
+                            break;
                         } else {
                             throw new Exception($jobInfo->error_message);
                         }

@@ -10,6 +10,8 @@
 <tr>
 <td class="confluenceTd"> <font color="#ff0000">&nbsp;</font><font color="#ff0000"><b>Comparison API</b></font> </td>
 <td class="confluenceTd">&nbsp;</td>
+<td class="confluenceTd">&nbsp;</td>
+<td class="confluenceTd">&nbsp;</td>
 </tr>
 <tr>
 <td class="confluenceTd">&nbsp;</td>

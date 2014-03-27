@@ -1,4 +1,24 @@
 ###Change log for GroupDocs SDK
+1.8.1 version
+<table class="confluenceTable"><tbody>
+<tr>
+<th class="confluenceTh"> API </th>
+<th class="confluenceTh"> <font color="#000000"><b>Class</b></font> </th>
+<th class="confluenceTh"> <font color="#000000"><b>Method</b></font> </th>
+<th class="confluenceTh"> <font color="#000000"><b>Changes</b></font><br class="atl-forced-newline"> </th>
+</tr>
+<tr>
+<td class="confluenceTd"> <font color="#ff0000">&nbsp;</font><font color="#ff0000"><b>Comparison API</b></font> </td>
+<td class="confluenceTd">&nbsp;</td>
+</tr>
+<tr>
+<td class="confluenceTd">&nbsp;</td>
+<td class="confluenceTd"> GetChanges </td>
+<td class="confluenceTd"> - </td>
+<td class="confluenceTd"> fixed request path </td>
+</tr>
+</tbody></table>
+
 1.8.0 version
 <table class="confluenceTable"><tbody>
 <tr>

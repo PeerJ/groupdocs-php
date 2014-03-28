@@ -161,10 +161,11 @@ class ComparisonApi {
       if($format !== null) {
   		  $queryParams['format'] = $this->apiClient->toPathValue($format);
   		}
-  		if ($resultFileId !== null) {
-            $resourcePath = str_replace("{" . "resultFileId" . "}", $resultFileId, $resourcePath);
-        }
-        //make the API Call
+  		if($resultFileId !== null) {
+  			$resourcePath = str_replace("{" . "resultFileId" . "}",
+  			                            $resultFileId, $resourcePath);
+  		}
+  		//make the API Call
       if (! isset($body)) {
         $body = null;
       }
@@ -195,7 +196,7 @@ class ComparisonApi {
 
       if($resultFileId !== null) {
   		  $queryParams['resultFileId'] = $this->apiClient->toPathValue($resultFileId);
-                  $resourcePath = str_replace("{" . "resultFileId" . "}", $resultFileId, $resourcePath);
+          $resourcePath = str_replace("{" . "resultFileId" . "}", $resultFileId, $resourcePath);
   		}
   		//make the API Call
       if (! isset($body)) {

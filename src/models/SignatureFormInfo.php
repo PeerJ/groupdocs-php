@@ -41,7 +41,8 @@ class SignatureFormInfo {
       'fieldsCount' => 'float',
       'notifyOwnerOnSign' => 'bool',
       'attachSignedDocument' => 'bool',
-      'notifyOtherOnSign' => 'string'
+      'notifyOtherOnSign' => 'string',
+      'canParticipantPrintForm' => 'bool'
 
     );
 
@@ -63,5 +64,6 @@ class SignatureFormInfo {
   public $notifyOwnerOnSign; // bool
   public $attachSignedDocument; // bool
   public $notifyOtherOnSign; // string
+  public $canParticipantPrintForm; // bool
   }
 

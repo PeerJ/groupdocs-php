@@ -148,7 +148,7 @@ class ComparisonApi {
         throw new ApiException("missing required parameters", 400);
       }
       //parse inputs
-  	  $resourcePath = str_replace("*", "", "/comparison/{resultFileId}/download?format={format}");
+  	  $resourcePath = str_replace("*", "", "/comparison/public/{resultFileId}/download?format={format}");
   	  $pos = strpos($resourcePath, "?");
 	  if($pos !== false){
   	  	$resourcePath = substr($resourcePath, 0, $pos);
@@ -196,7 +196,6 @@ class ComparisonApi {
 
       if($resultFileId !== null) {
   		  $queryParams['resultFileId'] = $this->apiClient->toPathValue($resultFileId);
-          $resourcePath = str_replace("{" . "resultFileId" . "}", $resultFileId, $resourcePath);
   		}
   		//make the API Call
       if (! isset($body)) {
@@ -225,7 +224,7 @@ class ComparisonApi {
         throw new ApiException("missing required parameters", 400);
       }
       //parse inputs
-  	  $resourcePath = str_replace("*", "", "/comparison/{resultFileId}/changes");
+  	  $resourcePath = str_replace("*", "", "/comparison/public/{resultFileId}/changes");
   	  $pos = strpos($resourcePath, "?");
 	  if($pos !== false){
   	  	$resourcePath = substr($resourcePath, 0, $pos);

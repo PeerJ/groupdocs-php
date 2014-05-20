@@ -31,7 +31,8 @@ class SignatureFormSettingsInfo {
       'waterMarkImage' => 'string',
       'notifyOwnerOnSign ' => 'bool',
       'attachSignedDocument' => 'bool',
-      'notifyOtherOnSign ' => 'string'
+      'notifyOtherOnSign ' => 'string',
+      'canParticipantPrintForm' => 'bool'
 
     );
 
@@ -43,5 +44,6 @@ class SignatureFormSettingsInfo {
   public $notifyOwnerOnSign ; // bool
   public $attachSignedDocument; // bool
   public $notifyOtherOnSign ; // string
+  public $canParticipantPrintForm; // bool
   }
 

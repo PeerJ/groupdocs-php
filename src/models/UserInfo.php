@@ -32,7 +32,7 @@ class UserInfo {
       'claimed_id' => 'string',
       'token' => 'string',
       'storage' => 'int',
-      'photo' => 'string',
+      'photo' => 'array[int]',
       'active' => 'bool',
       'trial' => 'bool',
       'news_eanbled' => 'bool',
@@ -87,6 +87,18 @@ class UserInfo {
       'webhook_notification_failed_recipients' => 'string',
       'signature_color' => 'string',
       'signature_save_field_changes_automatically' => 'bool',
+      'signature_use_custom_email_templates' => 'bool',
+      'signature_envelope_sent_owner_template' => 'string',
+      'signature_envelope_sent_other_template' => 'string',
+      'signature_envelope_completed_template' => 'string',
+      'signature_envelope_signed_template' => 'string',
+      'signature_envelope_declined_template' => 'string',
+      'signature_envelope_failed_template' => 'string',
+      'signature_envelope_cancelled_template' => 'string',
+      'signature_envelope_expired_template' => 'string',
+      'signature_envelope_step_expired_template' => 'string',
+      'signature_envelope_recipient_reminder_template' => 'string',
+      'signature_form_signed_template' => 'string',
       'id' => 'string',
       'guid' => 'string',
       'primary_email' => 'string'
@@ -156,6 +168,18 @@ class UserInfo {
   public $webhook_notification_failed_recipients; // string
   public $signature_color; // string
   public $signature_save_field_changes_automatically; // bool
+  public $signature_use_custom_email_templates; // bool
+  public $signature_envelope_sent_owner_template; // string
+  public $signature_envelope_sent_other_template; // string
+  public $signature_envelope_completed_template; // string
+  public $signature_envelope_signed_template; // string
+  public $signature_envelope_declined_template; // string
+  public $signature_envelope_failed_template; // string
+  public $signature_envelope_cancelled_template; // string
+  public $signature_envelope_expired_template; // string
+  public $signature_envelope_step_expired_template; // string
+  public $signature_envelope_recipient_reminder_template; // string
+  public $signature_form_signed_template; // string
   public $id; // string
   public $guid; // string
   public $primary_email; // string

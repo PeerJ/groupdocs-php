@@ -49,12 +49,15 @@ if (empty($clientId) || empty($privateKey) || empty($resultFileId)) {
                     $table .= "<tr>";
                     //Check is curent element is object
                     if (is_object($content)) {
+                        if (gettype($content) == "StyleChangeInfo") {
+                            continue;
+                        }
                         //If object make cycle for the curent object
                         foreach ($content as $subName => $subContent) {
 
                             $table .= "<tr><td>" . $subName . "</td><td>" . $subContent . "</td></tr>";
                         }
-                    } elseif (!is_object($content)) {
+                    } elseif (!is_object($content) && !is_array($content)) {
                         //Get curent element data
                         $table .= "<td>" . $name . "</td><td>" . $content . "</td>";
                         $table .= "</tr>";

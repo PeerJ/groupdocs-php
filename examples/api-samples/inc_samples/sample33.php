@@ -136,4 +136,4 @@ if (empty($clientId) || empty($privateKey) || empty($firstUrl) || empty($secondU
     }
 }
 //Process template
-echo Template::serve('sample33.htm');
+echo Template::serve('sample33.htm');    

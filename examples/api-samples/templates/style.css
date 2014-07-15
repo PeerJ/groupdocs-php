@@ -183,3 +183,8 @@ table {
     background: url(/../images/help.png) no-repeat left;
     padding-left: 20px;
 }
+
+.testfile {
+    background: url(images/help.png) no-repeat left;
+    padding-left: 20px;
+}

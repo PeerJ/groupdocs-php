@@ -151,7 +151,8 @@ if (empty($clientId) || empty($privateKey)) {
 
     //Create envilope using user id and entered by user name
     try {
-        $envelop = $signature->CreateSignatureEnvelope($clientID, $name);
+
+        $envelop = $signature->CreateSignatureEnvelope($clientID, $name, null, null, null, null, $envelopSettings);
         if ($envelop->status == "Ok") {
             sleep(5);
             //Add uploaded document to envelope

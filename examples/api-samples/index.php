@@ -12,7 +12,6 @@ F3::route('GET /index.php','home');
 F3::route('GET|POST /sample01','sample01.php'); //route for GET and POST requests
 //F3::route('GET /sample1','sample1.php'); //we can have saparate handles for GET and POST requests
 //F3::route('POST /sample1','sample1.php');
-
 F3::route('GET|POST /sample02','sample02.php');
 F3::route('GET|POST /sample03','sample03.php');
 F3::route('GET|POST /sample04','sample04.php');
@@ -55,6 +54,7 @@ F3::route('GET|POST /sample40','sample40.php');
 F3::route('GET|POST /sample41','sample41.php');
 F3::route('GET|POST /sample42','sample42.php');
 F3::route('GET|POST /sample43','sample43.php');
+F3::route('GET|POST /sample44','sample44.php');
 F3::route('GET|POST /popup','popup.php');
 F3::route('GET|POST /callbacks/signature_callback','callbacks/signature_callback.php');
 F3::route('GET|POST /callbacks/signature_check_file','callbacks/signature_check_file.php');

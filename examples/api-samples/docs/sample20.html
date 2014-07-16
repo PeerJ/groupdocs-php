@@ -273,7 +273,10 @@ F3::set(<span class="string">'result'</span>, <span class="string">""</span>);
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>                    <span class="keyword">if</span> (is_object(<span class="variable">$content</span>)) {</pre></div></div>
+            <div class="content"><div class='highlight'><pre>                    <span class="keyword">if</span> (is_object(<span class="variable">$content</span>)) {
+                        <span class="keyword">if</span> (gettype(<span class="variable">$content</span>) == <span class="string">"StyleChangeInfo"</span>) {
+                            <span class="keyword">continue</span>;
+                        }</pre></div></div>
             
         </li>
         
@@ -292,7 +295,7 @@ F3::set(<span class="string">'result'</span>, <span class="string">""</span>);
 
                             <span class="variable">$table</span> .= <span class="string">"&lt;tr&gt;&lt;td&gt;"</span> . <span class="variable">$subName</span> . <span class="string">"&lt;/td&gt;&lt;td&gt;"</span> . <span class="variable">$subContent</span> . <span class="string">"&lt;/td&gt;&lt;/tr&gt;"</span>;
                         }
-                    } <span class="keyword">elseif</span> (!is_object(<span class="variable">$content</span>)) {</pre></div></div>
+                    } <span class="keyword">elseif</span> (!is_object(<span class="variable">$content</span>) &amp;&amp; !is_array(<span class="variable">$content</span>)) {</pre></div></div>
             
         </li>
         

@@ -30,6 +30,7 @@ if (empty($clientId) || empty($privateKey)) {
     //###Make a request to Storage API using clientId
     //Obtaining all Entities from current user
     try {
+   
         $files = $storageApi->ListEntities($clientId, '', 0);
         if ($files->status == "Ok") {
             //Obtaining file names

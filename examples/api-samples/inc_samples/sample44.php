@@ -2,8 +2,8 @@
 
 //###<i>This sample will show how to assemble document and add multiple Signatures and Signers to a document</i>
 //Set variables and get POST data
-F3::set('userId', '');
-F3::set('privateKey', '');
+F3::set('userId',F3::get('POST["clientId"]'));
+F3::set('privateKey', F3::get('POST["privateKey"]'));
 F3::set('fileId', '');
 $clientId = F3::get('POST["clientId"]');
 $privateKey = F3::get('POST["privateKey"]');
@@ -24,6 +24,9 @@ if (empty($clientId) || empty($privateKey) || empty($firstEmail) || empty($first
     $error = 'Please enter all required parameters';
     F3::set('error', $error);
 } else {
+    if (empty($lastName)) {
+        $lastName = "Empty Last name";
+    }
     if ($basePath == "") {
         //If base base is empty seting base path to prod server
         $basePath = 'https://api.groupdocs.com/v2.0';

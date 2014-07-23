@@ -79,8 +79,8 @@ To see all available PHP SDK versions tags visit this page - https://packagist.o
 41. How to set callback for Annotation and manage user rights using PHP SDK
 42. How to add numeration in the doc file using PHP SDK
 43. How to download document with annotations using PHP SDK
-44 - How to assemble document and add multiple Signatures and Signers to a document
-45 - How to check statistic info for the document using PHP SDK
+44. How to assemble document and add multiple Signatures and Signers to a document
+45. How to check statistic info for the document using PHP SDK
 
 ###[View, Sign, Manage, Annotate, Assemble, Compare and Convert Documents with GroupDocs](http://groupdocs.com)
 * [View and Annotate Doc, PDF, Docx, PPT and other documents online with GroupDocs Viewer](http://groupdocs.com/apps)

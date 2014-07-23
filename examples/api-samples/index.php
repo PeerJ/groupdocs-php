@@ -55,6 +55,7 @@ F3::route('GET|POST /sample41','sample41.php');
 F3::route('GET|POST /sample42','sample42.php');
 F3::route('GET|POST /sample43','sample43.php');
 F3::route('GET|POST /sample44','sample44.php');
+F3::route('GET|POST /sample45','sample45.php');
 F3::route('GET|POST /popup','popup.php');
 F3::route('GET|POST /callbacks/signature_callback','callbacks/signature_callback.php');
 F3::route('GET|POST /callbacks/signature_check_file','callbacks/signature_check_file.php');

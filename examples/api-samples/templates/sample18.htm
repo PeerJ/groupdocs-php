@@ -9,7 +9,7 @@
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js" ></script>
 </head>
 <body>
-<h3 style="text-align:center;"><a href="/index.php">GroupDocs PHP SDK Samples</a> - Sample18</h3>
+<h3 style="text-align:center;"><a href="/index.php">GroupDocs PHP SDK Samples</a> - Sample18<br/>How to convert Doc to Docx, Docx to Doc, Docx to PDF and PPT to PDF</h3>
 
 <div class='samplecontent' style="padding:10px;">
     <span class="description"><i>This sample will show how to use <b>ConvertFile</b> method to convert Doc to Docx, Docx to Doc, Docx and DOC to PDF and PPT to PDF, HTML to DOC and DOCX. When you use optional parameter "Callback URL" - additional logic will be involved: POST request from GroupDocs API server will be handled by convert_callback action. Also from result page an AJAX request will be sent to backend to check if callback was handled and result file was downloaded. If yes, then AJAX request will return a link to the file using PHP SDK</i></span> <br/>
@@ -25,7 +25,7 @@
     <p><span style="color: red">{{@error}}</span>
     <div id="requestForm" style="padding:20px; border:1px solid black;">
         <p> Enter data for request and press "Make request" button </p>
-        <form action="sample18" method = "post" enctype = 'multipart/form-data'>
+        <form action="sample18-how-to-convert-doc-to-docx-docx-to-doc-docx-to-pdf-and-ppt-to-pdf" method = "post" enctype = 'multipart/form-data'>
             <label for='clientId'>GroupDocs Client ID</label>
             <br />
             <input type='text' name='clientId' id="clientId" value="{{@userId}}" />

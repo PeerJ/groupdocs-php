@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <title>Powered by {{ @VERSION }}</title>
+    <title>Sample 29 - How to use Filepicker.io to upload document and get it's URL</title>
     <style type="text/css">
         {{ Web::minify('templates/',array('style.css'),FALSE) }}
     </style>
@@ -19,7 +19,7 @@
     <p><font color="red">{{@error}}</font>
     <div id="requestForm" style="padding:20px; border:1px solid black;">
         <p> Click "Pick file" to select file which will be uploaded and shown in iframe </p>
-        <form name="gdform" action="sample29-how-to-use-filepicker-io-to-upload-document-and-get-it's-URL" method = "post" enctype = 'multipart/form-data' >
+        <form name="gdform" action="sample-29-how-to-use-filepicker-io-to-upload-document-and-get-it's-URL" method = "post" enctype = 'multipart/form-data' >
             <label for='clientId'>GroupDocs ClientID</label>
             <br />
             <input type='text' name='clientId' value="{{@userId}}" />

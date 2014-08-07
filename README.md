@@ -1,7 +1,7 @@
  GroupDocs PHP SDK [![Build Status](https://secure.travis-ci.org/groupdocs/groupdocs-php.png)](http://travis-ci.org/groupdocs/groupdocs-php)
 =============
 
-Latest SDK version 1.9.1.
+Latest SDK version 2.0.0.
 
 ## Requirements
 
@@ -23,7 +23,7 @@ To add SDK as a local, per-project dependency to your project, simply add a depe
 
 	{
 		"require": {
-			"groupdocs/groupdocs-php": "1.9.1"
+			"groupdocs/groupdocs-php": "2.0.0"
 		},
 		"require-dev": {
 			"phpunit/phpunit": "3.7.*"

@@ -269,16 +269,17 @@ class StorageApi {
    * path, string: Path (required)
    * description, string: Description (optional)
    * callbackUrl, string: Callback url (optional)
+   * isKeepBothMode, bool: Is keep both mode (optional)
    * body, stream: Stream (required)
    * @return UploadResponse
 	 */
 
-   public function Upload($userId, $path, $description=null, $callbackUrl=null, $body) {
-      if( $userId === null || $path === null || $body === null ) {
+   public function Upload($userId, $path, $description=null, $callbackUrl=null, $isKeepBothMode=null, $body) {
+      if( $userId === null || $path === null || $isKeepBothMode === null || $body === null ) {
         throw new ApiException("missing required parameters", 400);
       }
       //parse inputs
-  	  $resourcePath = str_replace("*", "", "/storage/{userId}/folders/{*path}?description={description}&callbackUrl={callbackUrl}");
+  	  $resourcePath = str_replace("*", "", "/storage/{userId}/folders/{*path}?description={description}&callbackUrl={callbackUrl}&isKeepBothMode={isKeepBothMode}");
   	  $pos = strpos($resourcePath, "?");
 	  if($pos !== false){
   	  	$resourcePath = substr($resourcePath, 0, $pos);
@@ -301,6 +302,10 @@ class StorageApi {
   		if($path !== null) {
   			$resourcePath = str_replace("{" . "path" . "}",
   			                            $path, $resourcePath);
+  		}
+  		if($isKeepBothMode !== null) {
+  			$resourcePath = str_replace("{" . "isKeepBothMode" . "}",
+  			                            $isKeepBothMode, $resourcePath);
   		}
   		//make the API Call
       if (! isset($body)) {
@@ -556,7 +561,7 @@ class StorageApi {
    * @return FileMoveResponse
 	 */
 
-   public function MoveFile($userId, $path, $mode=null, $Groupdocs_Copy=null, $Groupdocs_Move=null) {
+   public function MoveFile($userId, $path, $mode=null, $Groupdocs_Move=null, $Groupdocs_Copy=null) {
       if( $userId === null || $path === null ) {
         throw new ApiException("missing required parameters", 400);
       }

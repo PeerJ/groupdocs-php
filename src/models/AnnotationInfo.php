@@ -26,6 +26,7 @@ class AnnotationInfo {
   static $swaggerTypes = array(
       'guid' => 'string',
       'documentGuid' => 'string',
+      'layerId' => 'string',
       'sessionGuid' => 'string',
       'creatorGuid' => 'string',
       'creatorName' => 'string',
@@ -43,6 +44,7 @@ class AnnotationInfo {
       'penColor' => 'int',
       'penWidth' => 'int',
       'penStyle' => 'int',
+      'backgroundColor' => 'int',
       'fieldText' => 'string',
       'fontFamily' => 'string',
       'fontSize' => 'float'
@@ -51,6 +53,7 @@ class AnnotationInfo {
 
   public $guid; // string
   public $documentGuid; // string
+  public $layerId; // string
   public $sessionGuid; // string
   public $creatorGuid; // string
   public $creatorName; // string
@@ -68,6 +71,7 @@ class AnnotationInfo {
   public $penColor; // int
   public $penWidth; // int
   public $penStyle; // int
+  public $backgroundColor; // int
   public $fieldText; // string
   public $fontFamily; // string
   public $fontSize; // float

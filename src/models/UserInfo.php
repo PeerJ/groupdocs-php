@@ -99,6 +99,15 @@ class UserInfo {
       'signature_envelope_step_expired_template' => 'string',
       'signature_envelope_recipient_reminder_template' => 'string',
       'signature_form_signed_template' => 'string',
+      'signature_form_require_user_auth_for_sign' => 'bool',
+      'signature_form_request_user_auth_by_photo' => 'bool',
+      'signature_form_require_user_identity_validation' => 'bool',
+      'signature_envelope_require_user_auth_for_sign' => 'bool',
+      'signature_envelope_request_user_auth_by_photo' => 'bool',
+      'signature_enable_uploaded_signature' => 'bool',
+      'signature_enable_typed_signature' => 'bool',
+      'signature_enable_envelope_comment' => 'bool',
+      'signature_enable_form_comment' => 'bool',
       'id' => 'string',
       'guid' => 'string',
       'primary_email' => 'string'
@@ -180,6 +189,15 @@ class UserInfo {
   public $signature_envelope_step_expired_template; // string
   public $signature_envelope_recipient_reminder_template; // string
   public $signature_form_signed_template; // string
+  public $signature_form_require_user_auth_for_sign; // bool
+  public $signature_form_request_user_auth_by_photo; // bool
+  public $signature_form_require_user_identity_validation; // bool
+  public $signature_envelope_require_user_auth_for_sign; // bool
+  public $signature_envelope_request_user_auth_by_photo; // bool
+  public $signature_enable_uploaded_signature; // bool
+  public $signature_enable_typed_signature; // bool
+  public $signature_enable_envelope_comment; // bool
+  public $signature_enable_form_comment; // bool
   public $id; // string
   public $guid; // string
   public $primary_email; // string

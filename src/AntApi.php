@@ -165,10 +165,10 @@ class AntApi {
       }
   /**
 	 * DeleteDocumentAnnotations
-	 * Delete annotation
+	 * Delete document annotations
    * userId, string: User GUID (required)
    * fileId, string: File ID (required)
-   * @return DeleteDocumentAnnotationsReponse
+   * @return DeleteDocumentAnnotationsResponse
 	 */
 
    public function DeleteDocumentAnnotations($userId, $fileId) {
@@ -201,7 +201,7 @@ class AntApi {
       }
 
   	  $responseObject = $this->apiClient->deserialize($response,
-  		                                                'DeleteDocumentAnnotationsReponse');
+  		                                                'DeleteDocumentAnnotationsResponse');
   	  return $responseObject;
       }
   /**

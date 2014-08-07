@@ -663,6 +663,47 @@ class AsyncApi {
   		                                                'ConvertResponse');
   	  return $responseObject;
       }
+  /**
+	 * GetPossibleConversions
+	 * Get Possible Conversions
+   * userId, string: User GUID (required)
+   * fileExt, string: File extension to check (required)
+   * @return GetPossibleConversions
+	 */
+
+   public function GetPossibleConversions($userId, $fileExt) {
+      if( $userId === null || $fileExt === null ) {
+        throw new ApiException("missing required parameters", 400);
+      }
+      //parse inputs
+  	  $resourcePath = str_replace("*", "", "/async/{userId}/possibleConversions/{fileExt}");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "GET";
+      $queryParams = array();
+      $headerParams = array();
+
+      if($userId !== null) {
+  			$resourcePath = str_replace("{" . "userId" . "}",
+  			                            $userId, $resourcePath);
+  		}
+  		if($fileExt !== null) {
+  			$resourcePath = str_replace("{" . "fileExt" . "}",
+  			                            $fileExt, $resourcePath);
+  		}
+  		//make the API Call
+      if (! isset($body)) {
+        $body = null;
+      }
+      $response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
+      if(! $response){
+        return null;
+      }
+
+  	  $responseObject = $this->apiClient->deserialize($response,
+  		                                                'GetPossibleConversions');
+  	  return $responseObject;
+      }
   
 }
 

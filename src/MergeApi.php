@@ -1796,24 +1796,119 @@ class MergeApi {
   	  return $responseObject;
       }
   /**
-	 * GetTemplates
-	 * Get template documents information
+	 * DecorateQuestionnaireCollector
+	 * Decorate questionnaire collector
    * userId, string: User global unique identifier (required)
-   * @return GetTemplatesResponse
+   * collectorId, string: Questionnaire collector global unique identifier (required)
+   * body, QuestionnaireCollectorStyle: Questionnaire collector style (required)
+   * @return AddQuestionnaireCollectorStyleResponse
 	 */
 
-   public function GetTemplates($userId) {
-      if( $userId === null ) {
+   public function DecorateQuestionnaireCollector($userId, $collectorId, $body) {
+      if( $userId === null || $collectorId === null || $body === null ) {
         throw new ApiException("missing required parameters", 400);
       }
       //parse inputs
-  	  $resourcePath = str_replace("*", "", "/merge/{userId}/templates");
+  	  $resourcePath = str_replace("*", "", "/merge/{userId}/questionnaires/collectors/{collectorId}/decorate");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "POST";
+      $queryParams = array();
+      $headerParams = array();
+
+      if($userId !== null) {
+  			$resourcePath = str_replace("{" . "userId" . "}",
+  			                            $userId, $resourcePath);
+  		}
+  		if($collectorId !== null) {
+  			$resourcePath = str_replace("{" . "collectorId" . "}",
+  			                            $collectorId, $resourcePath);
+  		}
+  		//make the API Call
+      if (! isset($body)) {
+        $body = null;
+      }
+      $response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
+      if(! $response){
+        return null;
+      }
+
+  	  $responseObject = $this->apiClient->deserialize($response,
+  		                                                'AddQuestionnaireCollectorStyleResponse');
+  	  return $responseObject;
+      }
+  /**
+	 * GetQuestionnaireCollectorStyle
+	 * Returns questionnaire collector style
+   * userId, string: User global unique identifier (required)
+   * collectorId, string: Questionnaire collector global unique identifier (required)
+   * @return GetQuestionnaireCollectorStyleResponse
+	 */
+
+   public function GetQuestionnaireCollectorStyle($userId, $collectorId) {
+      if( $userId === null || $collectorId === null ) {
+        throw new ApiException("missing required parameters", 400);
+      }
+      //parse inputs
+  	  $resourcePath = str_replace("*", "", "/merge/{userId}/questionnaires/collector/{collectorId}/style");
   	  $resourcePath = str_replace("{format}", "json", $resourcePath);
   	  $method = "GET";
       $queryParams = array();
       $headerParams = array();
 
       if($userId !== null) {
+  			$resourcePath = str_replace("{" . "userId" . "}",
+  			                            $userId, $resourcePath);
+  		}
+  		if($collectorId !== null) {
+  			$resourcePath = str_replace("{" . "collectorId" . "}",
+  			                            $collectorId, $resourcePath);
+  		}
+  		//make the API Call
+      if (! isset($body)) {
+        $body = null;
+      }
+      $response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
+      if(! $response){
+        return null;
+      }
+
+  	  $responseObject = $this->apiClient->deserialize($response,
+  		                                                'GetQuestionnaireCollectorStyleResponse');
+  	  return $responseObject;
+      }
+  /**
+	 * GetTemplates
+	 * Get template documents information
+   * userId, string: User global unique identifier (required)
+   * orderBy, string: Order by column (optional)
+   * isAscending, bool: Order by ascending or descending (optional)
+   * @return GetTemplatesResponse
+	 */
+
+   public function GetTemplates($userId, $orderBy=null, $isAscending=null) {
+      if( $userId === null ) {
+        throw new ApiException("missing required parameters", 400);
+      }
+      //parse inputs
+  	  $resourcePath = str_replace("*", "", "/merge/{userId}/templates?orderBy={orderBy}&isAscending={isAscending}");
+  	  $pos = strpos($resourcePath, "?");
+	  if($pos !== false){
+  	  	$resourcePath = substr($resourcePath, 0, $pos);
+	  }
+	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "GET";
+      $queryParams = array();
+      $headerParams = array();
+
+      if($orderBy !== null) {
+  		  $queryParams['orderBy'] = $this->apiClient->toPathValue($orderBy);
+  		}
+  		if($isAscending !== null) {
+  		  $queryParams['isAscending'] = $this->apiClient->toPathValue($isAscending);
+  		}
+  		if($userId !== null) {
   			$resourcePath = str_replace("{" . "userId" . "}",
   			                            $userId, $resourcePath);
   		}
@@ -1969,12 +2064,12 @@ class MergeApi {
    * userId, string: User GUID (required)
    * path, string: Path (required)
    * mode, string: Mode (optional)
-   * Groupdocs_Move, string: File ID (move) (optional)
    * Groupdocs_Copy, string: File ID (copy) (optional)
+   * Groupdocs_Move, string: File ID (move) (optional)
    * @return GetTemplatesResponse
 	 */
 
-   public function CopyFileToTemplates($userId, $path, $mode=null, $Groupdocs_Move=null, $Groupdocs_Copy=null) {
+   public function CopyFileToTemplates($userId, $path, $mode=null, $Groupdocs_Copy=null, $Groupdocs_Move=null) {
       if( $userId === null || $path === null ) {
         throw new ApiException("missing required parameters", 400);
       }
@@ -1992,11 +2087,11 @@ class MergeApi {
       if($mode !== null) {
   		  $queryParams['mode'] = $this->apiClient->toPathValue($mode);
   		}
-  		if($Groupdocs_Move !== null) {
-  		 	$headerParams['Groupdocs-Move'] = $this->apiClient->toPathValue($Groupdocs_Move);
-  		}
-      if($Groupdocs_Copy !== null) {
+  		if($Groupdocs_Copy !== null) {
   		 	$headerParams['Groupdocs-Copy'] = $this->apiClient->toPathValue($Groupdocs_Copy);
+  		}
+      if($Groupdocs_Move !== null) {
+  		 	$headerParams['Groupdocs-Move'] = $this->apiClient->toPathValue($Groupdocs_Move);
   		}
       if($userId !== null) {
   			$resourcePath = str_replace("{" . "userId" . "}",
@@ -2066,7 +2161,7 @@ class MergeApi {
 	 * Create questionnaire template from file
    * userId, string: User GUID (required)
    * fileId, string: File GUID (required)
-   * body, List[TemplateField]: Array of template fields (required)
+   * body, List[TemplateEditorField]: Array of template fields (required)
    * @return CreateQuestionnaireTemplateResponse
 	 */
 

@@ -794,6 +794,47 @@ class DocApi {
   	  return $responseObject;
       }
   /**
+	 * GetTemplateEditorFields
+	 * Get template fields
+   * userId, string: User GUID (required)
+   * fileId, string: File GUID (required)
+   * @return TemplateEditorFieldsResponse
+	 */
+
+   public function GetTemplateEditorFields($userId, $fileId) {
+      if( $userId === null || $fileId === null ) {
+        throw new ApiException("missing required parameters", 400);
+      }
+      //parse inputs
+  	  $resourcePath = str_replace("*", "", "/doc/{userId}/files/{fileId}/editor_fields");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "GET";
+      $queryParams = array();
+      $headerParams = array();
+
+      if($userId !== null) {
+  			$resourcePath = str_replace("{" . "userId" . "}",
+  			                            $userId, $resourcePath);
+  		}
+  		if($fileId !== null) {
+  			$resourcePath = str_replace("{" . "fileId" . "}",
+  			                            $fileId, $resourcePath);
+  		}
+  		//make the API Call
+      if (! isset($body)) {
+        $body = null;
+      }
+      $response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
+      if(! $response){
+        return null;
+      }
+
+  	  $responseObject = $this->apiClient->deserialize($response,
+  		                                                'TemplateEditorFieldsResponse');
+  	  return $responseObject;
+      }
+  /**
 	 * GetDocumentFormats
 	 * Get document formats
    * userId, string: User GUID (required)

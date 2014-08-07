@@ -26,7 +26,7 @@ To download required version of PHP SDK with composer it's enough to set this se
 
      {
          "require": {
-             "groupdocs/groupdocs-php": "v1.4.0"
+             "groupdocs/groupdocs-php": "v2.0.0"
          }
       }
 

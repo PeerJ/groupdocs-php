@@ -42,7 +42,15 @@ class SignatureFormInfo {
       'notifyOwnerOnSign' => 'bool',
       'attachSignedDocument' => 'bool',
       'notifyOtherOnSign' => 'string',
-      'canParticipantPrintForm' => 'bool'
+      'canParticipantPrintForm' => 'bool',
+      'requireUserAuthForSign' => 'bool',
+      'requestUserAuthByPhoto' => 'bool',
+      'enableTypedSignature' => 'bool',
+      'enableUploadedSignature' => 'bool',
+      'requireUserIdentityValidation' => 'bool',
+      'canBeCommented' => 'bool',
+      'showParticipantCommentInSignedDocument' => 'bool',
+      'tags' => 'string'
 
     );
 
@@ -65,5 +73,13 @@ class SignatureFormInfo {
   public $attachSignedDocument; // bool
   public $notifyOtherOnSign; // string
   public $canParticipantPrintForm; // bool
+  public $requireUserAuthForSign; // bool
+  public $requestUserAuthByPhoto; // bool
+  public $enableTypedSignature; // bool
+  public $enableUploadedSignature; // bool
+  public $requireUserIdentityValidation; // bool
+  public $canBeCommented; // bool
+  public $showParticipantCommentInSignedDocument; // bool
+  public $tags; // string
   }
 

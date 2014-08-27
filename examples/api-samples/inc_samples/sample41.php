@@ -110,7 +110,7 @@ if (empty($clientId) || empty($privateKey) || empty($emailsArray[0])) {
         //###Make a request to Storage API using clientId
         //Upload file to current user storage
         try {
-            $uploadResult = $storageApi->Upload($clientID, $name, 'uploaded', "", $fs);
+            $uploadResult = $storageApi->Upload($clientID, $name, 'uploaded', "", false, $fs);
             //###Check if file uploaded successfully
             if ($uploadResult->status == "Ok") {
                 $fileGuId = $uploadResult->result->guid;

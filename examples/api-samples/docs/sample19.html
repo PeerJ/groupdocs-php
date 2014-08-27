@@ -206,6 +206,7 @@ F3::set(<span class="string">'result'</span>, <span class="string">""</span>);
             </div>
             
             <div class="content"><div class='highlight'><pre>    <span class="variable">$storageApi</span> = <span class="keyword">new</span> StorageApi(<span class="variable">$apiClient</span>);
+    <span class="variable">$mgmtApi</span> = <span class="keyword">new</span> MgmtApi(<span class="variable">$apiClient</span>);
     <span class="keyword">if</span> (<span class="variable">$basePath</span> == <span class="string">""</span>) {</pre></div></div>
             
         </li>
@@ -338,7 +339,7 @@ F3::set(<span class="string">'result'</span>, <span class="string">""</span>);
             </div>
             
             <div class="content"><div class='highlight'><pre>            <span class="keyword">try</span> {
-                <span class="variable">$uploadResult</span> = <span class="variable">$storageApi</span>-&gt;Upload(<span class="variable">$clientId</span>, <span class="variable">$name</span>, <span class="string">'uploaded'</span>, <span class="string">""</span>, <span class="variable">$fs</span>);</pre></div></div>
+                <span class="variable">$uploadResult</span> = <span class="variable">$storageApi</span>-&gt;Upload(<span class="variable">$clientId</span>, <span class="variable">$name</span>, <span class="string">'uploaded'</span>, <span class="string">""</span>, <span class="keyword">true</span>, <span class="variable">$fs</span>);</pre></div></div>
             
         </li>
         
@@ -468,7 +469,7 @@ F3::set(<span class="string">'result'</span>, <span class="string">""</span>);
             </div>
             
             <div class="content"><div class='highlight'><pre>            <span class="keyword">try</span> {
-                <span class="variable">$uploadResult</span> = <span class="variable">$storageApi</span>-&gt;Upload(<span class="variable">$clientId</span>, <span class="variable">$name</span>, <span class="string">'uploaded'</span>, <span class="string">""</span>, <span class="variable">$fs</span>);</pre></div></div>
+                <span class="variable">$uploadResult</span> = <span class="variable">$storageApi</span>-&gt;Upload(<span class="variable">$clientId</span>, <span class="variable">$name</span>, <span class="string">'uploaded'</span>, <span class="string">""</span>, <span class="keyword">true</span>, <span class="variable">$fs</span>);</pre></div></div>
             
         </li>
         
@@ -748,7 +749,7 @@ Check request status</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>                sleep(<span class="number">5</span>);</pre></div></div>
+            <div class="content"><div class='highlight'><pre>                sleep(<span class="number">3</span>);</pre></div></div>
             
         </li>
         
@@ -822,7 +823,9 @@ Check request status</p>
             </div>
             
             <div class="content"><div class='highlight'><pre>            <span class="variable">$guid</span> = <span class="variable">$jobInfo</span>-&gt;result-&gt;outputs[<span class="number">0</span>]-&gt;guid;
-            <span class="variable">$iframe</span> = <span class="string">'https://apps.groupdocs.com/document-viewer/embed/'</span>;</pre></div></div>
+            <span class="variable">$userEmbedKey</span> = <span class="variable">$mgmtApi</span>-&gt;GetUserEmbedKey(<span class="variable">$clientId</span>, <span class="string">"comparison"</span>);
+            <span class="variable">$key</span> = <span class="variable">$mgmtApi</span>-&gt;GetUserEmbedKeyFromGuid(<span class="variable">$clientId</span>, <span class="variable">$userEmbedKey</span>-&gt;result-&gt;key-&gt;guid);
+            <span class="variable">$iframe</span> = <span class="string">'https://apps.groupdocs.com/document-comparison2/embed/'</span>;</pre></div></div>
             
         </li>
         
@@ -838,8 +841,7 @@ Check request status</p>
             </div>
             
             <div class="content"><div class='highlight'><pre>            <span class="keyword">if</span> (<span class="variable">$basePath</span> == <span class="string">"https://api.groupdocs.com/v2.0"</span>) {
-                <span class="variable">$iframe</span> = <span class="string">'https://apps.groupdocs.com/document-viewer/embed/'</span> .
-                        <span class="variable">$guid</span> . <span class="string">' frameborder="0" width="500" height="650"'</span>;</pre></div></div>
+                <span class="variable">$iframe</span> = <span class="string">'https://apps.groupdocs.com/document-comparison2/embed/'</span> . <span class="variable">$userEmbedKey</span>-&gt;result-&gt;key-&gt;guid . <span class="string">'/'</span> . <span class="variable">$guid</span>;</pre></div></div>
             
         </li>
         
@@ -855,7 +857,7 @@ Check request status</p>
             </div>
             
             <div class="content"><div class='highlight'><pre>            } <span class="keyword">elseif</span> (<span class="variable">$basePath</span> == <span class="string">"https://dev-api.groupdocs.com/v2.0"</span>) {
-                <span class="variable">$iframe</span> = <span class="string">'https://dev-apps.groupdocs.com/document-viewer/embed/'</span> .
+                <span class="variable">$iframe</span> = <span class="string">'https://dev-apps.groupdocs.com/document-comparison2/embed/'</span> .
                         <span class="variable">$guid</span> . <span class="string">' frameborder="0" width="500" height="650"'</span>;</pre></div></div>
             
         </li>
@@ -872,14 +874,27 @@ Check request status</p>
             </div>
             
             <div class="content"><div class='highlight'><pre>            } <span class="keyword">elseif</span> (<span class="variable">$basePath</span> == <span class="string">"https://stage-api-groupdocs.dynabic.com/v2.0"</span>) {
-                <span class="variable">$iframe</span> = <span class="string">'https://stage-apps-groupdocs.dynabic.com/document-viewer/embed/'</span> .
+                <span class="variable">$iframe</span> = <span class="string">'https://stage-apps-groupdocs.dynabic.com/document-comparison2/embed/'</span> .
                         <span class="variable">$guid</span> . <span class="string">' frameborder="0" width="500" height="650"'</span>;
             } <span class="keyword">elseif</span> (<span class="variable">$basePath</span> == <span class="string">"http://realtime-api.groupdocs.com"</span>) {
-                <span class="variable">$iframe</span> = <span class="string">'http://realtime-apps.groupdocs.com/document-viewer/embed/'</span> .
+                <span class="variable">$iframe</span> = <span class="string">'http://realtime-apps.groupdocs.com/document-comparison2/embed/'</span> .
                         <span class="variable">$guid</span> . <span class="string">'" frameborder="0" width="100%" height="600"'</span>;
-            }
-            <span class="variable">$iframe</span> = <span class="variable">$signer</span>-&gt;signUrl(<span class="variable">$iframe</span>);
-        } <span class="keyword">else</span> {
+            }</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-51">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-51">&#182;</a>
+              </div>
+              <p>$iframe = $signer-&gt;signUrl($iframe);</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        } <span class="keyword">else</span> {
             <span class="keyword">throw</span> <span class="keyword">new</span> <span class="keyword">Exception</span>(<span class="variable">$info</span>-&gt;error_message);
         }
     } <span class="keyword">catch</span> (<span class="keyword">Exception</span> <span class="variable">$e</span>) {
@@ -890,11 +905,11 @@ Check request status</p>
         </li>
         
         
-        <li id="section-51">
+        <li id="section-52">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-51">&#182;</a>
+                <a class="pilcrow" href="#section-52">&#182;</a>
               </div>
               <p>If request was successfull - set url variable for template</p>
 
@@ -908,11 +923,11 @@ Check request status</p>
         </li>
         
         
-        <li id="section-52">
+        <li id="section-53">
             <div class="annotation">
               
               <div class="pilwrap for-h3">
-                <a class="pilcrow" href="#section-52">&#182;</a>
+                <a class="pilcrow" href="#section-53">&#182;</a>
               </div>
               <h3>Delete downloads folder and all files in this folder</h3>
 
@@ -925,11 +940,11 @@ Check request status</p>
         </li>
         
         
-        <li id="section-53">
+        <li id="section-54">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-53">&#182;</a>
+                <a class="pilcrow" href="#section-54">&#182;</a>
               </div>
               <p>Get all items fron folder</p>
 
@@ -940,11 +955,11 @@ Check request status</p>
         </li>
         
         
-        <li id="section-54">
+        <li id="section-55">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-54">&#182;</a>
+                <a class="pilcrow" href="#section-55">&#182;</a>
               </div>
               <p>Remove from array “.” and “..”</p>
 
@@ -955,11 +970,11 @@ Check request status</p>
         </li>
         
         
-        <li id="section-55">
+        <li id="section-56">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-55">&#182;</a>
+                <a class="pilcrow" href="#section-56">&#182;</a>
               </div>
               <p>Check is there was files</p>
 
@@ -970,11 +985,11 @@ Check request status</p>
         </li>
         
         
-        <li id="section-56">
+        <li id="section-57">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-56">&#182;</a>
+                <a class="pilcrow" href="#section-57">&#182;</a>
               </div>
               <p>Delete files from folder</p>
 
@@ -991,11 +1006,11 @@ Check request status</p>
         </li>
         
         
-        <li id="section-57">
+        <li id="section-58">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-57">&#182;</a>
+                <a class="pilcrow" href="#section-58">&#182;</a>
               </div>
               <p>Delete folder</p>
 
@@ -1007,11 +1022,11 @@ Check request status</p>
         </li>
         
         
-        <li id="section-58">
+        <li id="section-59">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-58">&#182;</a>
+                <a class="pilcrow" href="#section-59">&#182;</a>
               </div>
               <p>Process template</p>
 

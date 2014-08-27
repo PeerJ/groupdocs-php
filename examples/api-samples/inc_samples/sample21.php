@@ -108,7 +108,7 @@ if (empty($clientId) || empty($privateKey)) {
         //###Make a request to Storage API using clientId
         //Upload file to current user storage
         try {
-            $uploadResult = $storageApi->Upload($clientID, $name, 'uploaded', "", $fs);
+            $uploadResult = $storageApi->Upload($clientID, $name, 'uploaded', "", false, $fs);
             //###Check if file uploaded successfully
             if ($uploadResult->status == "Ok") {
                 $fileGuId = $uploadResult->result->guid;
@@ -152,7 +152,7 @@ if (empty($clientId) || empty($privateKey)) {
     //Create envilope using user id and entered by user name
     try {
 
-        $envelop = $signature->CreateSignatureEnvelope($clientID, $name, null, null, null, null, $envelopSettings);
+        $envelop = $signature->CreateSignatureEnvelope($clientID, $name);
         if ($envelop->status == "Ok") {
             sleep(5);
             //Add uploaded document to envelope

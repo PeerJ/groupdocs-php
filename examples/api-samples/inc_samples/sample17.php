@@ -66,7 +66,7 @@ if (empty($clientId) || empty($privateKey)) {
         //### Make a request to Storage API using clientId
         // Upload file to current user storage
         try {
-            $uploadResult = $storageApi->Upload($clientID, $name, 'uploaded', "", $fs);
+            $uploadResult = $storageApi->Upload($clientID, $name, 'uploaded', "", false, $fs);
             if ($uploadResult->status == "Ok") {
                 $id = $uploadResult->result->id;
             } else {

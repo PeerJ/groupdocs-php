@@ -62,7 +62,7 @@ if (empty($clientId) || empty($privateKey) || empty($firstEmail) || empty($first
         $fs = FileStream::fromFile($tmpName);
         //###Make a request to Storage API using clientId
         //Upload file to current user storage
-        $uploadResult = $storageApi->Upload($clientId, $name, 'uploaded', "", $fs);
+        $uploadResult = $storageApi->Upload($clientId, $name, 'uploaded', "", false, $fs);
         //###Check if file uploaded successfully
         if ($uploadResult->status == "Ok") {
             //Get file GUID

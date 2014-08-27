@@ -477,7 +477,7 @@ F3::set(<span class="string">'lastName'</span>, <span class="variable">$lastName
             </div>
             
             <div class="content"><div class='highlight'><pre>        <span class="keyword">try</span> {
-            <span class="variable">$uploadResult</span> = <span class="variable">$storageApi</span>-&gt;Upload(<span class="variable">$clientID</span>, <span class="variable">$name</span>, <span class="string">'uploaded'</span>, <span class="string">""</span>, <span class="variable">$fs</span>);</pre></div></div>
+            <span class="variable">$uploadResult</span> = <span class="variable">$storageApi</span>-&gt;Upload(<span class="variable">$clientID</span>, <span class="variable">$name</span>, <span class="string">'uploaded'</span>, <span class="string">""</span>, <span class="keyword">false</span>, <span class="variable">$fs</span>);</pre></div></div>
             
         </li>
         
@@ -610,7 +610,7 @@ F3::set(<span class="string">'lastName'</span>, <span class="variable">$lastName
             
             <div class="content"><div class='highlight'><pre>    <span class="keyword">try</span> {
 
-        <span class="variable">$envelop</span> = <span class="variable">$signature</span>-&gt;CreateSignatureEnvelope(<span class="variable">$clientID</span>, <span class="variable">$name</span>, <span class="keyword">null</span>, <span class="keyword">null</span>, <span class="keyword">null</span>, <span class="keyword">null</span>, <span class="variable">$envelopSettings</span>);
+        <span class="variable">$envelop</span> = <span class="variable">$signature</span>-&gt;CreateSignatureEnvelope(<span class="variable">$clientID</span>, <span class="variable">$name</span>);
         <span class="keyword">if</span> (<span class="variable">$envelop</span>-&gt;status == <span class="string">"Ok"</span>) {
             sleep(<span class="number">5</span>);</pre></div></div>
             

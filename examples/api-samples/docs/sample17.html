@@ -344,7 +344,7 @@ F3::set(<span class="string">'iframe'</span>, <span class="string">''</span>);
             </div>
             
             <div class="content"><div class='highlight'><pre>        <span class="keyword">try</span> {
-            <span class="variable">$uploadResult</span> = <span class="variable">$storageApi</span>-&gt;Upload(<span class="variable">$clientID</span>, <span class="variable">$name</span>, <span class="string">'uploaded'</span>, <span class="string">""</span>, <span class="variable">$fs</span>);
+            <span class="variable">$uploadResult</span> = <span class="variable">$storageApi</span>-&gt;Upload(<span class="variable">$clientID</span>, <span class="variable">$name</span>, <span class="string">'uploaded'</span>, <span class="string">""</span>, <span class="keyword">false</span>, <span class="variable">$fs</span>);
             <span class="keyword">if</span> (<span class="variable">$uploadResult</span>-&gt;status == <span class="string">"Ok"</span>) {
                 <span class="variable">$id</span> = <span class="variable">$uploadResult</span>-&gt;result-&gt;id;
             } <span class="keyword">else</span> {

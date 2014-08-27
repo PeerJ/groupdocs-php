@@ -45,6 +45,7 @@ if (empty($clientId) || empty($privateKey)) {
     $CompareApi = new ComparisonApi($apiClient);
     //Create Storage Api object
     $storageApi = new StorageApi($apiClient);
+    $mgmtApi = new MgmtApi($apiClient);
     if ($basePath == "") {
         //If base base is empty seting base path to prod server
         $basePath = 'https://api.groupdocs.com/v2.0';
@@ -73,7 +74,7 @@ if (empty($clientId) || empty($privateKey)) {
             //###Make a request to Storage API using clientId
             //Upload file to current user storage
             try {
-                $uploadResult = $storageApi->Upload($clientId, $name, 'uploaded', "", $fs);
+                $uploadResult = $storageApi->Upload($clientId, $name, 'uploaded', "", true, $fs);
 
                 //###Check if file uploaded successfully
                 if ($uploadResult->status == "Ok") {
@@ -100,7 +101,7 @@ if (empty($clientId) || empty($privateKey)) {
             //###Make a request to Storage API using clientId
             //Upload file to current user storage
             try {
-                $uploadResult = $storageApi->Upload($clientId, $name, 'uploaded', "", $fs);
+                $uploadResult = $storageApi->Upload($clientId, $name, 'uploaded', "", true, $fs);
 
                 //###Check if file uploaded successfully
                 if ($uploadResult->status == "Ok") {
@@ -173,7 +174,7 @@ if (empty($clientId) || empty($privateKey)) {
             //### Check job status
             for ($i = 0; $i <= 5; $i++) {
                 //Delay necessary that the inquiry would manage to be processed
-                sleep(5);
+                sleep(3);
                 //Make request to api for get document info by job id
                 try {
                     $jobInfo = $asyncApi->GetJobDocuments($clientId, $info->result->job_id);
@@ -195,24 +196,25 @@ if (empty($clientId) || empty($privateKey)) {
             }
             //Get file guid
             $guid = $jobInfo->result->outputs[0]->guid;
-            $iframe = 'https://apps.groupdocs.com/document-viewer/embed/';
+            $userEmbedKey = $mgmtApi->GetUserEmbedKey($clientId, "comparison");
+            $key = $mgmtApi->GetUserEmbedKeyFromGuid($clientId, $userEmbedKey->result->key->guid);
+            $iframe = 'https://apps.groupdocs.com/document-comparison2/embed/';
             // Construct iframe using fileId
             if ($basePath == "https://api.groupdocs.com/v2.0") {
-                $iframe = 'https://apps.groupdocs.com/document-viewer/embed/' .
-                        $guid . ' frameborder="0" width="500" height="650"';
+                $iframe = 'https://apps.groupdocs.com/document-comparison2/embed/' . $userEmbedKey->result->key->guid . '/' . $guid;
                 //iframe to dev server
             } elseif ($basePath == "https://dev-api.groupdocs.com/v2.0") {
-                $iframe = 'https://dev-apps.groupdocs.com/document-viewer/embed/' .
+                $iframe = 'https://dev-apps.groupdocs.com/document-comparison2/embed/' .
                         $guid . ' frameborder="0" width="500" height="650"';
                 //iframe to test server
             } elseif ($basePath == "https://stage-api-groupdocs.dynabic.com/v2.0") {
-                $iframe = 'https://stage-apps-groupdocs.dynabic.com/document-viewer/embed/' .
+                $iframe = 'https://stage-apps-groupdocs.dynabic.com/document-comparison2/embed/' .
                         $guid . ' frameborder="0" width="500" height="650"';
             } elseif ($basePath == "http://realtime-api.groupdocs.com") {
-                $iframe = 'http://realtime-apps.groupdocs.com/document-viewer/embed/' .
+                $iframe = 'http://realtime-apps.groupdocs.com/document-comparison2/embed/' .
                         $guid . '" frameborder="0" width="100%" height="600"';
             }
-            $iframe = $signer->signUrl($iframe);
+          // $iframe = $signer->signUrl($iframe);
         } else {
             throw new Exception($info->error_message);
         }

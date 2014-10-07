@@ -25,11 +25,13 @@ class SignatureSignFormSettingsInfo {
 
   static $swaggerTypes = array(
       'authData' => 'string',
-      'comment' => 'string'
+      'comment' => 'string',
+      'email' => 'string'
 
     );
 
   public $authData; // string
   public $comment; // string
+  public $email; // string
   }
 

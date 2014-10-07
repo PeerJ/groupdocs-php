@@ -108,6 +108,13 @@ class UserInfo {
       'signature_enable_typed_signature' => 'bool',
       'signature_enable_envelope_comment' => 'bool',
       'signature_enable_form_comment' => 'bool',
+      'can_participan_download_form' => 'bool',
+      'can_participant_print_form' => 'bool',
+      'notify_form_owner_on_sign' => 'bool',
+      'attach_signed_form_document' => 'bool',
+      'show_participant_comment_in_signed_document' => 'bool',
+      'forms_notify_other_on_sign' => 'string',
+      'form_document_parse_fields' => 'bool',
       'id' => 'string',
       'guid' => 'string',
       'primary_email' => 'string'
@@ -198,6 +205,13 @@ class UserInfo {
   public $signature_enable_typed_signature; // bool
   public $signature_enable_envelope_comment; // bool
   public $signature_enable_form_comment; // bool
+  public $can_participan_download_form; // bool
+  public $can_participant_print_form; // bool
+  public $notify_form_owner_on_sign; // bool
+  public $attach_signed_form_document; // bool
+  public $show_participant_comment_in_signed_document; // bool
+  public $forms_notify_other_on_sign; // string
+  public $form_document_parse_fields; // bool
   public $id; // string
   public $guid; // string
   public $primary_email; // string

@@ -50,7 +50,8 @@ class SignatureFormInfo {
       'requireUserIdentityValidation' => 'bool',
       'canBeCommented' => 'bool',
       'showParticipantCommentInSignedDocument' => 'bool',
-      'tags' => 'string'
+      'tags' => 'string',
+      'parseFields' => 'bool'
 
     );
 
@@ -81,5 +82,6 @@ class SignatureFormInfo {
   public $canBeCommented; // bool
   public $showParticipantCommentInSignedDocument; // bool
   public $tags; // string
+  public $parseFields; // bool
   }
 

@@ -31,6 +31,7 @@ class TemplateEditorField {
       'selectionPosition' => 'int',
       'selectionLength' => 'int',
       'acceptableValues' => 'array[string]',
+      'options' => 'array[TemplateEditorFieldOption]',
       'style' => 'TemplateEditorFieldStyle',
       'isTableMarker' => 'bool'
 
@@ -43,6 +44,7 @@ class TemplateEditorField {
   public $selectionPosition; // int
   public $selectionLength; // int
   public $acceptableValues; // array[string]
+  public $options; // array[TemplateEditorFieldOption]
   public $style; // TemplateEditorFieldStyle
   public $isTableMarker; // bool
   }

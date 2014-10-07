@@ -795,7 +795,7 @@ class DocApi {
       }
   /**
 	 * GetTemplateEditorFields
-	 * Get template fields
+	 * Get template editor fields
    * userId, string: User GUID (required)
    * fileId, string: File GUID (required)
    * @return TemplateEditorFieldsResponse

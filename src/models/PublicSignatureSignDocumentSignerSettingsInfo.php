@@ -27,6 +27,7 @@ class PublicSignatureSignDocumentSignerSettingsInfo {
       'waterMarkText' => 'string',
       'waterMarkImage' => 'string',
       'name' => 'string',
+      'email' => 'string',
       'top' => 'float',
       'left' => 'float',
       'width' => 'float',
@@ -40,6 +41,7 @@ class PublicSignatureSignDocumentSignerSettingsInfo {
   public $waterMarkText; // string
   public $waterMarkImage; // string
   public $name; // string
+  public $email; // string
   public $top; // float
   public $left; // float
   public $width; // float

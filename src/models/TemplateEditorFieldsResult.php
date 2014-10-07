@@ -24,10 +24,14 @@
 class TemplateEditorFieldsResult {
 
   static $swaggerTypes = array(
-      'fields' => 'array[TemplateEditorField]'
+      'fields' => 'array[TemplateEditorField]',
+      'words' => 'array[DocumentWord]',
+      'pageSizes' => 'array[string]'
 
     );
 
   public $fields; // array[TemplateEditorField]
+  public $words; // array[DocumentWord]
+  public $pageSizes; // array[string]
   }
 

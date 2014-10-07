@@ -24,12 +24,10 @@
 class DeleteDocumentAnnotationsResult {
 
   static $swaggerTypes = array(
-      'id' => 'float',
-      'guid' => 'string'
+      'delete_annotation_results' => 'array[DeleteAnnotationResult]'
 
     );
 
-  public $id; // float
-  public $guid; // string
+  public $delete_annotation_results; // array[DeleteAnnotationResult]
   }
 

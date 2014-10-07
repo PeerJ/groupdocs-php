@@ -269,17 +269,17 @@ class StorageApi {
    * path, string: Path (required)
    * description, string: Description (optional)
    * callbackUrl, string: Callback url (optional)
-   * isKeepBothMode, bool: Is keep both mode (optional)
+   * overrideMode, int: Override mode (optional)
    * body, stream: Stream (required)
    * @return UploadResponse
 	 */
 
-   public function Upload($userId, $path, $description=null, $callbackUrl=null, $isKeepBothMode=null, $body) {
-      if( $userId === null || $path === null || $isKeepBothMode === null || $body === null ) {
+   public function Upload($userId, $path, $description=null, $callbackUrl=null, $overrideMode=null, $body) {
+      if( $userId === null || $path === null || $body === null ) {
         throw new ApiException("missing required parameters", 400);
       }
       //parse inputs
-  	  $resourcePath = str_replace("*", "", "/storage/{userId}/folders/{*path}?description={description}&callbackUrl={callbackUrl}&isKeepBothMode={isKeepBothMode}");
+  	  $resourcePath = str_replace("*", "", "/storage/{userId}/folders/{*path}?description={description}&callbackUrl={callbackUrl}&overrideMode={overrideMode}");
   	  $pos = strpos($resourcePath, "?");
 	  if($pos !== false){
   	  	$resourcePath = substr($resourcePath, 0, $pos);
@@ -295,6 +295,9 @@ class StorageApi {
   		if($callbackUrl !== null) {
   		  $queryParams['callbackUrl'] = $this->apiClient->toPathValue($callbackUrl);
   		}
+  		if($overrideMode !== null) {
+  		  $queryParams['overrideMode'] = $this->apiClient->toPathValue($overrideMode);
+  		}
   		if($userId !== null) {
   			$resourcePath = str_replace("{" . "userId" . "}",
   			                            $userId, $resourcePath);
@@ -302,10 +305,6 @@ class StorageApi {
   		if($path !== null) {
   			$resourcePath = str_replace("{" . "path" . "}",
   			                            $path, $resourcePath);
-  		}
-  		if($isKeepBothMode !== null) {
-  			$resourcePath = str_replace("{" . "isKeepBothMode" . "}",
-  			                            $isKeepBothMode, $resourcePath);
   		}
   		//make the API Call
       if (! isset($body)) {

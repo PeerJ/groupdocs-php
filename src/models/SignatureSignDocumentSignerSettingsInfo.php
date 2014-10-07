@@ -25,6 +25,7 @@ class SignatureSignDocumentSignerSettingsInfo {
 
   static $swaggerTypes = array(
       'name' => 'string',
+      'email' => 'string',
       'top' => 'float',
       'left' => 'float',
       'width' => 'float',
@@ -36,6 +37,7 @@ class SignatureSignDocumentSignerSettingsInfo {
     );
 
   public $name; // string
+  public $email; // string
   public $top; // float
   public $left; // float
   public $width; // float

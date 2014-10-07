@@ -2198,6 +2198,132 @@ class MergeApi {
   		                                                'CreateQuestionnaireTemplateResponse');
   	  return $responseObject;
       }
+  /**
+	 * AddQuestionnaireTemplateFields
+	 * Add template editor fields to the specific document
+   * userId, string: User GUID (required)
+   * fileId, string: File GUID (required)
+   * body, List[TemplateEditorField]: Array of template fields which should be added (required)
+   * @return GetQuestionnaireTemplateResponse
+	 */
+
+   public function AddQuestionnaireTemplateFields($userId, $fileId, $body) {
+      if( $userId === null || $fileId === null || $body === null ) {
+        throw new ApiException("missing required parameters", 400);
+      }
+      //parse inputs
+  	  $resourcePath = str_replace("*", "", "/merge/{userId}/files/{fileId}/templates/add");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "POST";
+      $queryParams = array();
+      $headerParams = array();
+
+      if($userId !== null) {
+  			$resourcePath = str_replace("{" . "userId" . "}",
+  			                            $userId, $resourcePath);
+  		}
+  		if($fileId !== null) {
+  			$resourcePath = str_replace("{" . "fileId" . "}",
+  			                            $fileId, $resourcePath);
+  		}
+  		//make the API Call
+      if (! isset($body)) {
+        $body = null;
+      }
+      $response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
+      if(! $response){
+        return null;
+      }
+
+  	  $responseObject = $this->apiClient->deserialize($response,
+  		                                                'GetQuestionnaireTemplateResponse');
+  	  return $responseObject;
+      }
+  /**
+	 * UpdateQuestionnaireTemplateFields
+	 * Update template's fields
+   * userId, string: User GUID (required)
+   * fileId, string: File GUID (required)
+   * body, List[TemplateEditorField]: Array of template fields which should be updated (required)
+   * @return GetQuestionnaireTemplateResponse
+	 */
+
+   public function UpdateQuestionnaireTemplateFields($userId, $fileId, $body) {
+      if( $userId === null || $fileId === null || $body === null ) {
+        throw new ApiException("missing required parameters", 400);
+      }
+      //parse inputs
+  	  $resourcePath = str_replace("*", "", "/merge/{userId}/files/{fileId}/templates/update");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "PUT";
+      $queryParams = array();
+      $headerParams = array();
+
+      if($userId !== null) {
+  			$resourcePath = str_replace("{" . "userId" . "}",
+  			                            $userId, $resourcePath);
+  		}
+  		if($fileId !== null) {
+  			$resourcePath = str_replace("{" . "fileId" . "}",
+  			                            $fileId, $resourcePath);
+  		}
+  		//make the API Call
+      if (! isset($body)) {
+        $body = null;
+      }
+      $response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
+      if(! $response){
+        return null;
+      }
+
+  	  $responseObject = $this->apiClient->deserialize($response,
+  		                                                'GetQuestionnaireTemplateResponse');
+  	  return $responseObject;
+      }
+  /**
+	 * DeleteQuestionnaireTemplateFields
+	 * Delete template's fields
+   * userId, string: User GUID (required)
+   * fileId, string: File GUID (required)
+   * body, List[TemplateEditorField]: Array of template fields which should be deleted (required)
+   * @return GetQuestionnaireTemplateResponse
+	 */
+
+   public function DeleteQuestionnaireTemplateFields($userId, $fileId, $body) {
+      if( $userId === null || $fileId === null || $body === null ) {
+        throw new ApiException("missing required parameters", 400);
+      }
+      //parse inputs
+  	  $resourcePath = str_replace("*", "", "/merge/{userId}/files/{fileId}/templates/delete");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "DELETE";
+      $queryParams = array();
+      $headerParams = array();
+
+      if($userId !== null) {
+  			$resourcePath = str_replace("{" . "userId" . "}",
+  			                            $userId, $resourcePath);
+  		}
+  		if($fileId !== null) {
+  			$resourcePath = str_replace("{" . "fileId" . "}",
+  			                            $fileId, $resourcePath);
+  		}
+  		//make the API Call
+      if (! isset($body)) {
+        $body = null;
+      }
+      $response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
+      if(! $response){
+        return null;
+      }
+
+  	  $responseObject = $this->apiClient->deserialize($response,
+  		                                                'GetQuestionnaireTemplateResponse');
+  	  return $responseObject;
+      }
   
 }
 

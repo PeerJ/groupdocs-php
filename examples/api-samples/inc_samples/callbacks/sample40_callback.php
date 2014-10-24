@@ -32,7 +32,7 @@ if ($jobStatus == "JobCompleted") {
     if ($getDocInfo->status == "Ok") {
       
         //Get signed document GUID
-        $guid = $getDocInfo->result->participant->documentGuid;
+        $guid = $getDocInfo->result->participant->signedDocuments[0]->documentGuid;
     }
     //path to settings file - temporary save signed document GUID like to property file
     $infoFile = fopen(__DIR__ . '/../../callback_info.txt', 'w');

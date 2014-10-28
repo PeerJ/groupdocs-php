@@ -40,6 +40,7 @@ if (!isset($clientId) || !isset($privateKey)) {
     $signer->width = 100;
     $signer->top = 0.83319;
     $signer->left = 0.72171;
+    $signer->email = "test@email.com";
     //###Create Signer, ApiClient and Storage Api objects
     //Create signer object
     $signature = new GroupDocsRequestSigner($privateKey);

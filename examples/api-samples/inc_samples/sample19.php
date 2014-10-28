@@ -197,7 +197,6 @@ if (empty($clientId) || empty($privateKey)) {
             //Get file guid
             $guid = $jobInfo->result->outputs[0]->guid;
             $userEmbedKey = $mgmtApi->GetUserEmbedKey($clientId, "comparison");
-            $key = $mgmtApi->GetUserEmbedKeyFromGuid($clientId, $userEmbedKey->result->key->guid);
             $iframe = 'https://apps.groupdocs.com/document-comparison2/embed/';
             // Construct iframe using fileId
             if ($basePath == "https://api.groupdocs.com/v2.0") {

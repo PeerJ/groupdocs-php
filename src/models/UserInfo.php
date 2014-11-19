@@ -64,6 +64,12 @@ class UserInfo {
       'is_polyline_annotation_button_enabled' => 'bool',
       'is_typewriter_annotation_button_enabled' => 'bool',
       'is_watermark_annotation_button_enabled' => 'bool',
+      'is_text_replacement_annotation_button_enabled' => 'bool',
+      'is_arrow_annotation_button_enabled' => 'bool',
+      'is_text_redaction_annotation_button_enabled' => 'bool',
+      'is_resource_redaction_annotation_button_enabled' => 'bool',
+      'is_text_underline_annotation_button_enabled' => 'bool',
+      'is_distance_annotation_button_enabled' => 'bool',
       'is_annotation_document_name_shown' => 'bool',
       'annotation_navigation_icons' => 'array[int]',
       'annotation_tool_icons' => 'array[int]',
@@ -161,6 +167,12 @@ class UserInfo {
   public $is_polyline_annotation_button_enabled; // bool
   public $is_typewriter_annotation_button_enabled; // bool
   public $is_watermark_annotation_button_enabled; // bool
+  public $is_text_replacement_annotation_button_enabled; // bool
+  public $is_arrow_annotation_button_enabled; // bool
+  public $is_text_redaction_annotation_button_enabled; // bool
+  public $is_resource_redaction_annotation_button_enabled; // bool
+  public $is_text_underline_annotation_button_enabled; // bool
+  public $is_distance_annotation_button_enabled; // bool
   public $is_annotation_document_name_shown; // bool
   public $annotation_navigation_icons; // array[int]
   public $annotation_tool_icons; // array[int]

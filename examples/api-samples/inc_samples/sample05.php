@@ -100,7 +100,7 @@ if (!isset($clientId) || !isset($privateKey) || $folder == "") {
         if (isset($copy)) {
             //Request to Storage for copying
             try {
-                $file = $storageApi->MoveFile($clientId, $path, NULL, $fileId, NULL); //download file
+                $file = $storageApi->MoveFile($clientId, $path, NULL, NULL, $fileId); //download file
                 //Returning to Viewer what button was pressed
                 F3::set('button', $copy);
             } catch (Exception $e) {
@@ -112,7 +112,7 @@ if (!isset($clientId) || !isset($privateKey) || $folder == "") {
         if (isset($move)) {
             //Request to Storage for copying
             try {
-                $file = $storageApi->MoveFile($clientId, $path, NULL, NULL, $fileId); //download file
+                $file = $storageApi->MoveFile($clientId, $path, NULL, $fileId, NULL); //download file
                 //If request was successfull - set button variable for template
                
                 F3::set('button', $move);

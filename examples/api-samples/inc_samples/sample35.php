@@ -249,7 +249,7 @@ if (!empty($_POST['guid'])) {
                 $fs = FileStream::fromFile($tmpName);
                 //###Make a request to Storage API using clientId
                 //Upload file to current user storage
-                $uploadResult = $storageApi->Upload($clientId, $name, 'uploaded', "", false, $fs);
+                $uploadResult = $storageApi->Upload($clientId, $name, 'uploaded', "", 0, $fs);
                 //###Check if file uploaded successfully
                 if ($uploadResult->status == "Ok") {
                     //Get file GUID

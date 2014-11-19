@@ -102,7 +102,7 @@ if (empty($clientId) || empty($privateKey)) {
         F3::set("callbackUrl", $callbackUrl);
         //Upload file to current user storage
         try {
-            $uploadResult = $storageApi->Upload($clientID, $folderPath . $name, 'uploaded', $callbackUrl, false, $fs);
+            $uploadResult = $storageApi->Upload($clientID, $folderPath . $name, 'uploaded', $callbackUrl, 0, $fs);
             //###Check if file uploaded successfully
             if ($uploadResult->status == "Ok") {
                 //Get file GUID

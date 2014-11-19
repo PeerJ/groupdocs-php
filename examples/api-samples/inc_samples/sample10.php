@@ -64,7 +64,7 @@ if ($clientId == "" || $privateKey == "" || $sharer == "") {
         //###Make a request to Storage API using clientId
         //Upload file to current user storage
         try {
-            $uploadResult = $storageApi->Upload($clientId, $name, 'uploaded', "", false, $fs);
+            $uploadResult = $storageApi->Upload($clientId, $name, 'uploaded', "", 0, $fs);
 
             //###Check if file uploaded successfully
             if ($uploadResult->status == "Ok") {

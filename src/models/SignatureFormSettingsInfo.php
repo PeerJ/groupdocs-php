@@ -29,9 +29,9 @@ class SignatureFormSettingsInfo {
       'canParticipantDownloadForm' => 'bool',
       'waterMarkText' => 'string',
       'waterMarkImage' => 'string',
-      'notifyOwnerOnSign ' => 'bool',
+      'notifyOwnerOnSign' => 'bool',
       'attachSignedDocument' => 'bool',
-      'notifyOtherOnSign ' => 'string',
+      'notifyOtherOnSign' => 'string',
       'canParticipantPrintForm' => 'bool',
       'requireUserAuthForSign' => 'bool',
       'requestUserAuthByPhoto' => 'bool',
@@ -49,9 +49,9 @@ class SignatureFormSettingsInfo {
   public $canParticipantDownloadForm; // bool
   public $waterMarkText; // string
   public $waterMarkImage; // string
-  public $notifyOwnerOnSign ; // bool
+  public $notifyOwnerOnSign; // bool
   public $attachSignedDocument; // bool
-  public $notifyOtherOnSign ; // string
+  public $notifyOtherOnSign; // string
   public $canParticipantPrintForm; // bool
   public $requireUserAuthForSign; // bool
   public $requestUserAuthByPhoto; // bool

@@ -25,25 +25,37 @@ class TemplateEditorField {
 
   static $swaggerTypes = array(
       'name' => 'string',
+      'defaultValue' => 'string',
       'fieldtype' => 'string',
       'page' => 'int',
       'rect' => 'Rectangle',
       'selectionPosition' => 'int',
       'selectionLength' => 'int',
       'acceptableValues' => 'array[string]',
+      'options' => 'array[TemplateEditorFieldOption]',
       'style' => 'TemplateEditorFieldStyle',
-      'isTableMarker' => 'bool'
+      'isTableMarker' => 'bool',
+      'tableNumber' => 'int',
+      'tableRow' => 'int',
+      'tableColumn' => 'int',
+      'tableCell' => 'int'
 
     );
 
   public $name; // string
+  public $defaultValue; // string
   public $fieldtype; // string
   public $page; // int
   public $rect; // Rectangle
   public $selectionPosition; // int
   public $selectionLength; // int
   public $acceptableValues; // array[string]
+  public $options; // array[TemplateEditorFieldOption]
   public $style; // TemplateEditorFieldStyle
   public $isTableMarker; // bool
+  public $tableNumber; // int
+  public $tableRow; // int
+  public $tableColumn; // int
+  public $tableCell; // int
   }
 

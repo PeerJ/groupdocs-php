@@ -26,6 +26,7 @@ class AnnotationInfo {
   static $swaggerTypes = array(
       'guid' => 'string',
       'documentGuid' => 'string',
+      'text' => 'string',
       'layerId' => 'string',
       'sessionGuid' => 'string',
       'creatorGuid' => 'string',
@@ -53,6 +54,7 @@ class AnnotationInfo {
 
   public $guid; // string
   public $documentGuid; // string
+  public $text; // string
   public $layerId; // string
   public $sessionGuid; // string
   public $creatorGuid; // string

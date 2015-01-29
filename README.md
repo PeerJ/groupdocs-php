@@ -1,7 +1,7 @@
  GroupDocs PHP SDK [![Build Status](https://secure.travis-ci.org/groupdocs/groupdocs-php.png)](http://travis-ci.org/groupdocs/groupdocs-php)
 =============
 
-Latest SDK version 2.2.0.
+Latest SDK version 2.3.0.
 
 ## Requirements
 

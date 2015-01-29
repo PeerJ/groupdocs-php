@@ -28,6 +28,7 @@ class TemplateInfo {
       'field_count' => 'int',
       'size' => 'string',
       'fileType' => 'string',
+      'docType' => 'string',
       'dependent_questionnaires_count' => 'int',
       'upload_time' => 'string',
       'id' => 'float',
@@ -39,6 +40,7 @@ class TemplateInfo {
   public $field_count; // int
   public $size; // string
   public $fileType; // string
+  public $docType; // string
   public $dependent_questionnaires_count; // int
   public $upload_time; // string
   public $id; // float

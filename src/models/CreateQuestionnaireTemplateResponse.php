@@ -24,14 +24,14 @@
 class CreateQuestionnaireTemplateResponse {
 
   static $swaggerTypes = array(
-      'result' => 'array[TemplateField]',
+      'result' => 'CreateQuestionnaireTemplateResult',
       'status' => 'string',
       'error_message' => 'string',
       'composedOn' => 'string'
 
     );
 
-  public $result; // array[TemplateField]
+  public $result; // CreateQuestionnaireTemplateResult
   public $status; // string
   public $error_message; // string
   public $composedOn; // string

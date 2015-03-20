@@ -883,7 +883,7 @@ class AntApi {
 	 * Set Shared Link Access Rights
    * userId, string: User GUID (required)
    * fileId, string: File ID (required)
-   * body, AnnotationReviewerRights: Access Rights for the collaborate link (required)
+   * body, string: Access Rights for the collaborate link (required)
    * @return SetSharedLinkAccessRightsResponse
 	 */
 

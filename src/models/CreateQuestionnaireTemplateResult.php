@@ -25,11 +25,11 @@ class CreateQuestionnaireTemplateResult {
 
   static $swaggerTypes = array(
       'documentId' => 'string',
-      'templateFields' => 'array[TemplateField]'
+      'templateFields' => 'array[TemplateEditorField]'
 
     );
 
   public $documentId; // string
-  public $templateFields; // array[TemplateField]
+  public $templateFields; // array[TemplateEditorField]
   }
 

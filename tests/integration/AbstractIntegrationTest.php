@@ -23,7 +23,6 @@ class AbstractIntegrationTest extends PHPUnit_Framework_TestCase {
 		$this->apiClient->setDebug(true);
 		$this->userId = "a9f81d75a3a7df86";
 	}
-	public function test_dumy(){
-	}
+	
 }
 

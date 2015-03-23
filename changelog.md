@@ -1,4 +1,55 @@
 ###Change log for GroupDocs SDK
+2.4.0 version
+<table class="confluenceTable"><tbody>
+<tr>
+<th class="confluenceTh"> <font color="#333333">API</font> </th>
+<th class="confluenceTh"> <font color="#333333">Class</font> </th>
+<th class="confluenceTh"> <font color="#333333">Method</font> </th>
+<th class="confluenceTh"> <font color="#333333">Changes</font> <br class="atl-forced-newline"> </th>
+</tr>
+<tr>
+<td class="confluenceTd"> <font color="#ff0000">Document API</font> </td>
+<td class="confluenceTd">&nbsp;</td>
+<td class="confluenceTd">&nbsp;</td>
+<td class="confluenceTd">&nbsp;</td>
+</tr>
+<tr>
+<td class="confluenceTd">&nbsp;</td>
+<td class="confluenceTd"> TemplateEditorFieldsResult <br class="atl-forced-newline"> </td>
+<td class="confluenceTd">&nbsp;</td>
+<td class="confluenceTd"> add new property : pageSizes&nbsp; <br class="atl-forced-newline"> </td>
+</tr>
+<tr>
+<td class="confluenceTd">&nbsp;</td>
+<td class="confluenceTd"> DocumentSize <br class="atl-forced-newline"> </td>
+<td class="confluenceTd">&nbsp;</td>
+<td class="confluenceTd"> new model </td>
+</tr>
+<tr>
+<td class="confluenceTd">&nbsp;</td>
+<td class="confluenceTd"> DocumentCell <br class="atl-forced-newline"> </td>
+<td class="confluenceTd">&nbsp;</td>
+<td class="confluenceTd"> new properties :name,&nbsp;value,&nbsp;sheetNumber,&nbsp;column,&nbsp;row,&nbsp;width,&nbsp;height </td>
+</tr>
+<tr>
+<td class="confluenceTd"> <font color="#ff0000">Signature API</font><br class="atl-forced-newline"> </td>
+<td class="confluenceTd">&nbsp;</td>
+<td class="confluenceTd">&nbsp;</td>
+<td class="confluenceTd">&nbsp;</td>
+</tr>
+<tr>
+<td class="confluenceTd">&nbsp;</td>
+<td class="confluenceTd"> SignatureSignFieldSettingsInfo <br class="atl-forced-newline"> </td>
+<td class="confluenceTd">&nbsp;</td>
+<td class="confluenceTd"> new model </td>
+</tr>
+<tr>
+<td class="confluenceTd">&nbsp;</td>
+<td class="confluenceTd"> SignatureSignFieldLocationSettingsInfo <br class="atl-forced-newline"> </td>
+<td class="confluenceTd">&nbsp;</td>
+<td class="confluenceTd"> new model <br class="atl-forced-newline"> </td>
+</tr>
+</tbody></table>
 2.3.0 version
 <table class="confluenceTable"><tbody>
 <tr>

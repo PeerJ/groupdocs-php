@@ -53,6 +53,7 @@ if (empty($clientId) || empty($privateKey)) {
     //Set base path
     $CompareApi->setBasePath($basePath);
     $storageApi->setBasePath($basePath);
+    $mgmtApi->setBasePath($basePath);
     //Check entered source file GUID and target file GUID
     if ($firstFileId != "" || $secondFileId != "") {
         if ($firstFileId != "") {
@@ -203,14 +204,14 @@ if (empty($clientId) || empty($privateKey)) {
                 $iframe = 'https://apps.groupdocs.com/document-comparison2/embed/' . $userEmbedKey->result->key->guid . '/' . $guid;
                 //iframe to dev server
             } elseif ($basePath == "https://dev-api.groupdocs.com/v2.0") {
-                $iframe = 'https://dev-apps.groupdocs.com/document-comparison2/embed/' .
+                $iframe = 'https://dev-apps.groupdocs.com/document-comparison2/embed/' . $userEmbedKey->result->key->guid . '/' .
                         $guid . ' frameborder="0" width="500" height="650"';
                 //iframe to test server
             } elseif ($basePath == "https://stage-api-groupdocs.dynabic.com/v2.0") {
-                $iframe = 'https://stage-apps-groupdocs.dynabic.com/document-comparison2/embed/' .
+                $iframe = 'http://stage-apps-groupdocs.dynabic.com/document-comparison2/embed/' . $userEmbedKey->result->key->guid . '/' .
                         $guid . ' frameborder="0" width="500" height="650"';
             } elseif ($basePath == "http://realtime-api.groupdocs.com") {
-                $iframe = 'http://realtime-apps.groupdocs.com/document-comparison2/embed/' .
+                $iframe = 'http://realtime-apps.groupdocs.com/document-comparison2/embed/' . $userEmbedKey->result->key->guid . '/' .
                         $guid . '" frameborder="0" width="100%" height="600"';
             }
           // $iframe = $signer->signUrl($iframe);

@@ -239,7 +239,8 @@ F3::set(<span class="string">'result'</span>, <span class="string">""</span>);
             </div>
             
             <div class="content"><div class='highlight'><pre>    <span class="variable">$CompareApi</span>-&gt;setBasePath(<span class="variable">$basePath</span>);
-    <span class="variable">$storageApi</span>-&gt;setBasePath(<span class="variable">$basePath</span>);</pre></div></div>
+    <span class="variable">$storageApi</span>-&gt;setBasePath(<span class="variable">$basePath</span>);
+    <span class="variable">$mgmtApi</span>-&gt;setBasePath(<span class="variable">$basePath</span>);</pre></div></div>
             
         </li>
         
@@ -856,7 +857,7 @@ Check request status</p>
             </div>
             
             <div class="content"><div class='highlight'><pre>            } <span class="keyword">elseif</span> (<span class="variable">$basePath</span> == <span class="string">"https://dev-api.groupdocs.com/v2.0"</span>) {
-                <span class="variable">$iframe</span> = <span class="string">'https://dev-apps.groupdocs.com/document-comparison2/embed/'</span> .
+                <span class="variable">$iframe</span> = <span class="string">'https://dev-apps.groupdocs.com/document-comparison2/embed/'</span> . <span class="variable">$userEmbedKey</span>-&gt;result-&gt;key-&gt;guid . <span class="string">'/'</span> .
                         <span class="variable">$guid</span> . <span class="string">' frameborder="0" width="500" height="650"'</span>;</pre></div></div>
             
         </li>
@@ -873,10 +874,10 @@ Check request status</p>
             </div>
             
             <div class="content"><div class='highlight'><pre>            } <span class="keyword">elseif</span> (<span class="variable">$basePath</span> == <span class="string">"https://stage-api-groupdocs.dynabic.com/v2.0"</span>) {
-                <span class="variable">$iframe</span> = <span class="string">'https://stage-apps-groupdocs.dynabic.com/document-comparison2/embed/'</span> .
+                <span class="variable">$iframe</span> = <span class="string">'http://stage-apps-groupdocs.dynabic.com/document-comparison2/embed/'</span> . <span class="variable">$userEmbedKey</span>-&gt;result-&gt;key-&gt;guid . <span class="string">'/'</span> .
                         <span class="variable">$guid</span> . <span class="string">' frameborder="0" width="500" height="650"'</span>;
             } <span class="keyword">elseif</span> (<span class="variable">$basePath</span> == <span class="string">"http://realtime-api.groupdocs.com"</span>) {
-                <span class="variable">$iframe</span> = <span class="string">'http://realtime-apps.groupdocs.com/document-comparison2/embed/'</span> .
+                <span class="variable">$iframe</span> = <span class="string">'http://realtime-apps.groupdocs.com/document-comparison2/embed/'</span> . <span class="variable">$userEmbedKey</span>-&gt;result-&gt;key-&gt;guid . <span class="string">'/'</span> .
                         <span class="variable">$guid</span> . <span class="string">'" frameborder="0" width="100%" height="600"'</span>;
             }</pre></div></div>
             

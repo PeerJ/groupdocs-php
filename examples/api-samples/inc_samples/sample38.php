@@ -151,6 +151,8 @@ if (empty($clientId) || empty($privateKey) || empty($email) || empty($firstName)
                 $user->roles = $roles;
                 //Set email as entered email
                 $user->primary_email = $email;
+                $user->alerts_eanbled = false;
+                $user->news_eanbled = false;
                 //Creating of new user. $clientId - user id, $firstName - entered first name, $user - object with new user info
                 $newUser = $mgmtApi->UpdateAccountUser($clientId, $email, $user);
                 //Check the result of the request

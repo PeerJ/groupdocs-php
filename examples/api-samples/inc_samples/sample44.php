@@ -51,6 +51,7 @@ if (empty($clientId) || empty($privateKey) || empty($firstEmail) || empty($first
     $storageApi->setBasePath($basePath);
     $AsyncApi->setBasePath($basePath);
     $mergApi->setBasePath($basePath);
+    $signature->setBasePath($basePath);
     try {
         //File for upload
         $file = $_FILES['file'];

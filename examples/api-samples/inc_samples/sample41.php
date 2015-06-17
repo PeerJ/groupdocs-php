@@ -164,7 +164,7 @@ if (empty($clientId) || empty($privateKey) || empty($emailsArray[0])) {
             } elseif ($basePath == "https://dev-api.groupdocs.com/v2.0") {
                 $url = 'https://dev-apps.groupdocs.com/document-annotation2/embed/' . $fileGuId;
                 //iframe to test server
-            } elseif ($basePath == "https://stage-apps-groupdocs.dynabic.com/v2.0") {
+            } elseif ($basePath == "https://stage-api-groupdocs.dynabic.com/v2.0") {
                 $url = 'https://stage-apps-groupdocs.dynabic.com/document-annotation2/embed/' . $fileGuId;
             } elseif ($basePath == "http://realtime-api.groupdocs.com") {
                 $url = 'http://realtime-apps.groupdocs.com/document-annotation2/embed/' . $fileGuId;

@@ -187,16 +187,18 @@ if (empty($clientId) || empty($privateKey)) {
                                                 $getDocuments = $signature->GetSignatureEnvelopeDocuments($clientID, $envelop->result->envelope->id);
                                                 if ($getDocuments->status == "Ok") {
                                                     try {
-
-                                                        $signFieldEnvelopSettings = new SignatureEnvelopeFieldSettingsInfo();
-                                                        $signFieldEnvelopSettings->locationX = "0.15";
-                                                        $signFieldEnvelopSettings->locationY = "0.73";
-                                                        $signFieldEnvelopSettings->locationWidth = "150";
-                                                        $signFieldEnvelopSettings->locationHeight = "50";
-                                                        $signFieldEnvelopSettings->name = "test" . rand(0, 500);
-                                                        $signFieldEnvelopSettings->forceNewField = true;
-                                                        $signFieldEnvelopSettings->page = "1";
-                                                        $addEnvelopField = $signature->AddSignatureEnvelopeField($clientID, $envelop->result->envelope->id, $getDocuments->result->documents[0]->documentId, $recipientId, "0545e589fb3e27c9bb7a1f59d0e3fcb9", $signFieldEnvelopSettings);
+                                                        //Create first signature field
+                                                        $signFieldEnvelopSettings1 = new SignatureEnvelopeFieldSettingsInfo();
+                                                        $signFieldEnvelopSettings1->locationX = "0.15";
+                                                        $signFieldEnvelopSettings1->locationY = "0.73";
+                                                        $signFieldEnvelopSettings1->locationWidth = "150";
+                                                        $signFieldEnvelopSettings1->locationHeight = "50";
+                                                        $signFieldEnvelopSettings1->name = "test" . rand(0, 500);
+                                                        $signFieldEnvelopSettings1->forceNewField = true;
+                                                        $signFieldEnvelopSettings1->page = "1";
+                                                        $signFieldEnvelopSettings1->lockDuringSign = false;
+                                                        $addEnvelopField = $signature->AddSignatureEnvelopeField($clientID, $envelop->result->envelope->id, $getDocuments->result->documents[0]->documentId, $recipientId, "0545e589fb3e27c9bb7a1f59d0e3fcb9", $signFieldEnvelopSettings1);
+                                                       
                                                         try {
                                                             $webHook = new WebhookInfo();
                                                             if ($callbackUrl != "") {

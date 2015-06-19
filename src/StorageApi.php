@@ -422,17 +422,18 @@ class StorageApi {
 	 * UploadGoogle
 	 * Upload Google
    * userId, string: User GUID (required)
-   * path, string: File path (required)
-   * fileId, string: File unique identifier (optional)
+   * url, string: Url (required)
+   * description, string: Description (required)
+   * accessToken, string: AccessToken (required)
    * @return UploadResponse
 	 */
 
-   public function UploadGoogle($userId, $path, $fileId=null) {
-      if( $userId === null || $path === null ) {
+   public function UploadGoogle($userId, $url, $description, $accessToken) {
+      if( $userId === null || $url === null || $description === null || $accessToken === null ) {
         throw new ApiException("missing required parameters", 400);
       }
       //parse inputs
-  	  $resourcePath = str_replace("*", "", "/storage/{userId}/google/files/{*path}?file_id={fileId}");
+  	  $resourcePath = str_replace("*", "", "/storage/{userId}/google/files/?url={url}&description={description}&accessToken={accessToken}");
   	  $pos = strpos($resourcePath, "?");
 	  if($pos !== false){
   	  	$resourcePath = substr($resourcePath, 0, $pos);
@@ -442,16 +443,18 @@ class StorageApi {
       $queryParams = array();
       $headerParams = array();
 
-      if($fileId !== null) {
-  		  $queryParams['file_id'] = $this->apiClient->toPathValue($fileId);
+      if($url !== null) {
+  		  $queryParams['url'] = $this->apiClient->toPathValue($url);
+  		}
+  		if($description !== null) {
+  		  $queryParams['description'] = $this->apiClient->toPathValue($description);
+  		}
+  		if($accessToken !== null) {
+  		  $queryParams['accessToken'] = $this->apiClient->toPathValue($accessToken);
   		}
   		if($userId !== null) {
   			$resourcePath = str_replace("{" . "userId" . "}",
   			                            $userId, $resourcePath);
-  		}
-  		if($path !== null) {
-  			$resourcePath = str_replace("{" . "path" . "}",
-  			                            $path, $resourcePath);
   		}
   		//make the API Call
       if (! isset($body)) {

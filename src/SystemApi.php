@@ -443,6 +443,79 @@ class SystemApi {
   	  return $responseObject;
       }
   /**
+	 * SetCreditCard
+	 * Set user credit card
+   * userId, string: User GUID (required)
+   * body, CreditCardInfo: Credit Card (required)
+   * @return GetCreditCardResponse
+	 */
+
+   public function SetCreditCard($userId, $body) {
+      if( $userId === null || $body === null ) {
+        throw new ApiException("missing required parameters", 400);
+      }
+      //parse inputs
+  	  $resourcePath = str_replace("*", "", "/system/{userId}/creditcard");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "PUT";
+      $queryParams = array();
+      $headerParams = array();
+
+      if($userId !== null) {
+  			$resourcePath = str_replace("{" . "userId" . "}",
+  			                            $userId, $resourcePath);
+  		}
+  		//make the API Call
+      if (! isset($body)) {
+        $body = null;
+      }
+      $response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
+      if(! $response){
+        return null;
+      }
+
+  	  $responseObject = $this->apiClient->deserialize($response,
+  		                                                'GetCreditCardResponse');
+  	  return $responseObject;
+      }
+  /**
+	 * GetCreditCard
+	 * Get user credit card
+   * userId, string: User GUID (required)
+   * @return GetCreditCardResponse
+	 */
+
+   public function GetCreditCard($userId) {
+      if( $userId === null ) {
+        throw new ApiException("missing required parameters", 400);
+      }
+      //parse inputs
+  	  $resourcePath = str_replace("*", "", "/system/{userId}/creditcard");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "GET";
+      $queryParams = array();
+      $headerParams = array();
+
+      if($userId !== null) {
+  			$resourcePath = str_replace("{" . "userId" . "}",
+  			                            $userId, $resourcePath);
+  		}
+  		//make the API Call
+      if (! isset($body)) {
+        $body = null;
+      }
+      $response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
+      if(! $response){
+        return null;
+      }
+
+  	  $responseObject = $this->apiClient->deserialize($response,
+  		                                                'GetCreditCardResponse');
+  	  return $responseObject;
+      }
+  /**
 	 * GetInvoices
 	 * Get invoices
    * callerId, string: User GUID (required)

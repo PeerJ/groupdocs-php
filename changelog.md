@@ -1,4 +1,50 @@
 ###Change log for GroupDocs SDK
+2.5.0 version
+<table class="confluenceTable"><tbody>
+<tr>
+<th class="confluenceTh"> <font color="#333333">API</font> </th>
+<th class="confluenceTh"> <font color="#333333">Class</font> </th>
+<th class="confluenceTh"> <font color="#333333">Method</font> </th>
+<th class="confluenceTh"> <font color="#333333">Changes</font> <br class="atl-forced-newline"> </th>
+</tr>
+<tr>
+<td class="confluenceTd"> <font color="#ff0000">Storage API</font> </td>
+<td class="confluenceTd">&nbsp;</td>
+<td class="confluenceTd">&nbsp;</td>
+<td class="confluenceTd">&nbsp;</td>
+</tr>
+<tr>
+<td class="confluenceTd">&nbsp;</td>
+<td class="confluenceTd"> StorageInfoResult <br class="atl-forced-newline"> </td>
+<td class="confluenceTd">&nbsp;</td>
+<td class="confluenceTd"> add new property : used_documents&nbsp; <br class="atl-forced-newline"> </td>
+</tr>
+<tr>
+<td class="confluenceTd">&nbsp;</td>
+<td class="confluenceTd"> <br class="atl-forced-newline"> </td>
+<td class="confluenceTd">UploadGoogle</td>
+<td class="confluenceTd"> add new parameters: url, description, accessToken 
+deleted parameters: path and fileId </td>
+</tr>
+<tr>
+<td class="confluenceTd"> <font color="#ff0000">System API</font><br class="atl-forced-newline"> </td>
+<td class="confluenceTd">&nbsp;</td>
+<td class="confluenceTd">&nbsp;</td>
+<td class="confluenceTd">&nbsp;</td>
+</tr>
+<tr>
+<td class="confluenceTd">&nbsp;</td>
+<td class="confluenceTd">  </td>
+<td class="confluenceTd">SetCreditCard<br class="atl-forced-newline"></td>
+<td class="confluenceTd"> new method </td>
+</tr>
+<tr>
+<td class="confluenceTd">&nbsp;</td>
+<td class="confluenceTd"> </td>
+<td class="confluenceTd">SetCreditCard<br class="atl-forced-newline"> </td>
+<td class="confluenceTd"> new method <br class="atl-forced-newline"> </td>
+</tr>
+</tbody></table>
 2.4.0 version
 <table class="confluenceTable"><tbody>
 <tr>

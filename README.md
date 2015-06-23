@@ -3,7 +3,7 @@
 
 Latest SDK version 2.5.0
 
-###GroupDocs.Total for Cloud API
+## GroupDocs.Total for Cloud API
 
 GroupDocs.Total for Cloud is a suite of RESTful APIs that allows developers to seamlessly add powerful document collaboration tools to their web/mobile applications or sites. The suite includes the following tools:
 

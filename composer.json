@@ -2,7 +2,7 @@
     "name": "groupdocs/groupdocs-php",
     "version": "2.5.0",
     "type": "library",
-    "description": "GroupDocs API library for PHP",
+    "description": "GroupDocs.Total for Cloud API - PHP SDK",
     "keywords": ["groupdocs"],
     "license": "Apache-2.0",
     "authors": [

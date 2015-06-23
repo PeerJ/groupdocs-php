@@ -3,6 +3,31 @@
 
 Latest SDK version 2.5.0
 
+###GroupDocs.Total for Cloud API
+
+GroupDocs.Total for Cloud is a suite of RESTful APIs that allows developers to seamlessly add powerful document collaboration tools to their web/mobile applications or sites. The suite includes the following tools:
+
+**GroupDocs.Viewer for Cloud API**
+An embeddable HTML-based document viewer that enables end users to view over 50 common document and image types (including PDF and Microsoft Office) using any HTML5-compliant web-browser and without having to install any office software. <a href=” http://groupdocs.com/cloud/document-viewer-api”>Learn more»</a>
+
+**GroupDocs.Annotation for Cloud API**
+GroupDocs.Annotation lets multiple users to collaboratively review and annotate the same document in real time on the web. <a href=”http://groupdocs.com/cloud/document-annotation-api”>Learn more»</a>
+
+**GroupDocs.Assembly for Cloud API**
+With this tool, users can generate essential business documents on-the-fly by automatically merging their existing templates in a PDF or Microsoft Word format with data collected via online forms. <a href=”http://groupdocs.com/cloud/document-assembly-api”>Learn more»</a>
+
+**GroupDocs.Signature for Cloud API**
+GroupDocs.Signature allows users to sign documents electronically directly from within your application or site.
+<a href=”http://groupdocs.com/cloud/electronic-signature-api”>Learn more»</a>
+
+**GroupDocs.Comparison for Cloud API**
+With GroupDocs.Comparison, users can compare two versions of a PDF, Microsoft Word, Excel, PowerPoint, ODT, plain text or HTML documents on the web, without having to install the original software used to create the documents. <a href=”http://groupdocs.com/cloud/document-comparison-api”>Learn more»</a>
+
+**GroupDocs.Conversion for Cloud API**
+A universal document conversion tool that allows users to convert back and forth between over 50 common document and image types. <a href=”http://groupdocs.com/cloud/document-conversion-api”>Learn more»</a>
+
+All APIs listed here can be used individually, or under a single GroupDocs.Total for Cloud API subscription.
+
 ## Requirements
 
 * PHP 5.3

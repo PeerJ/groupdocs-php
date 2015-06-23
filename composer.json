@@ -2,7 +2,7 @@
     "name": "groupdocs/groupdocs-php",
     "version": "2.5.0",
     "type": "library",
-    "description": "GroupDocs.Total for Cloud API - PHP SDK",
+    "description": "GroupDocs.Total for Cloud is a suite of document collaboration APIs that enables end users to view, annotate, e-sign, compare, convert and assemble 50+ document and image types on the web. With this SDK, you can seamlessly integrate GroupDocs.Total for Cloud into your PHP app or website.",
     "keywords": ["groupdocs"],
     "license": "Apache-2.0",
     "authors": [

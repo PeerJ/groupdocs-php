@@ -17,8 +17,7 @@ GroupDocs.Annotation lets multiple users to collaboratively review and annotate 
 With this tool, users can generate essential business documents on-the-fly by automatically merging their existing templates in a PDF or Microsoft Word format with data collected via online forms. [Learn more»](http://groupdocs.com/cloud/document-assembly-api)
 
 **GroupDocs.Signature for Cloud API**  
-GroupDocs.Signature allows users to sign documents electronically directly from within your application or site. [Learn more»]
-<a href=”http://groupdocs.com/cloud/electronic-signature-api”>Learn more»</a>
+GroupDocs.Signature allows users to sign documents electronically directly from within your application or site. [Learn more»](http://groupdocs.com/cloud/electronic-signature-api)
 
 **GroupDocs.Comparison for Cloud API**  
 With GroupDocs.Comparison, users can compare two versions of a PDF, Microsoft Word, Excel, PowerPoint, ODT, plain text or HTML documents on the web, without having to install the original software used to create the documents. [Learn more»](http://groupdocs.com/cloud/document-comparison-api)

@@ -80,6 +80,7 @@ class UserInfo {
       'is_viewer_zoom_widget_enabled' => 'bool',
       'is_viewer_download_widget_enabled' => 'bool',
       'is_viewer_print_widget_enabled' => 'bool',
+	  'is_viewer_search_widget_enabled' => 'bool',
       'is_viewer_help_widget_enabled' => 'bool',
       'is_viewer_document_name_shown' => 'bool',
       'isviewer_right_mouse_button_menu_enabled' => 'bool',
@@ -183,6 +184,7 @@ class UserInfo {
   public $is_viewer_zoom_widget_enabled; // bool
   public $is_viewer_download_widget_enabled; // bool
   public $is_viewer_print_widget_enabled; // bool
+  public $is_viewer_search_widget_enabled; // bool
   public $is_viewer_help_widget_enabled; // bool
   public $is_viewer_document_name_shown; // bool
   public $isviewer_right_mouse_button_menu_enabled; // bool

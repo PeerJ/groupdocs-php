@@ -1,4 +1,43 @@
 ###Change log for GroupDocs SDK
+2.6.0 version
+<table class="confluenceTable"><tbody>
+<tr>
+<th class="confluenceTh"> <font color="#333333">API</font> </th>
+<th class="confluenceTh"> <font color="#333333">Class</font> </th>
+<th class="confluenceTh"> <font color="#333333">Method</font> </th>
+<th class="confluenceTh"> <font color="#333333">Changes</font> <br class="atl-forced-newline"> </th>
+</tr>
+<tr>
+<td class="confluenceTd"> <font color="#ff0000">Mgmt API</font> </td>
+<td class="confluenceTd">&nbsp;</td>
+<td class="confluenceTd">&nbsp;</td>
+<td class="confluenceTd">&nbsp;</td>
+</tr>
+<tr>
+<td class="confluenceTd">&nbsp;</td>
+<td class="confluenceTd"> UserInfo <br class="atl-forced-newline"> </td>
+<td class="confluenceTd">&nbsp;</td>
+<td class="confluenceTd"> add new property : is_viewer_search_widget_enabled&nbsp; <br class="atl-forced-newline"> </td>
+</tr>
+<tr>
+<td class="confluenceTd">&nbsp;</td>
+<td class="confluenceTd"> <br class="atl-forced-newline"> </td>
+<td class="confluenceTd">RemoveAccount</td>
+<td class="confluenceTd">new method </td>
+</tr>
+<tr>
+<td class="confluenceTd"> <font color="#ff0000">Comparison API</font><br class="atl-forced-newline"> </td>
+<td class="confluenceTd">&nbsp;</td>
+<td class="confluenceTd">&nbsp;</td>
+<td class="confluenceTd">&nbsp;</td>
+</tr>
+<tr>
+<td class="confluenceTd">&nbsp;</td>
+<td class="confluenceTd"> StyleChangeInfo </td>
+<td class="confluenceTd"><br class="atl-forced-newline"></td>
+<td class="confluenceTd"> new property : changedProperty, oldValue, newValue </td>
+</tr>
+</tbody></table>
 2.5.0 version
 <table class="confluenceTable"><tbody>
 <tr>

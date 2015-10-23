@@ -1000,6 +1000,52 @@ class MgmtApi {
   	  return $responseObject;
       }
   /**
+	 * RemoveAccount
+	 * Remove account by request.
+   * userId, string: User id (required)
+   * email, string: User email (required)
+   * nonce, string: Removal nonce (required)
+   * @return AccountRemovalResponse
+	 */
+
+   public function RemoveAccount($userId, $email, $nonce) {
+      if( $userId === null || $email === null || $nonce === null ) {
+        throw new ApiException("missing required parameters", 400);
+      }
+      //parse inputs
+  	  $resourcePath = str_replace("*", "", "/mgmt/{userId}/account/users/removeaccount/{email}?nonce={nonce}");
+  	  $resourcePath = str_replace("{format}", "json", $resourcePath);
+  	  $method = "DELETE";
+      $queryParams = array();
+      $headerParams = array();
+
+      if($userId !== null) {
+  			$resourcePath = str_replace("{" . "userId" . "}",
+  			                            $userId, $resourcePath);
+  		}
+  		if($email !== null) {
+  			$resourcePath = str_replace("{" . "email" . "}",
+  			                            $email, $resourcePath);
+  		}
+  		if($nonce !== null) {
+  			$resourcePath = str_replace("{" . "nonce" . "}",
+  			                            $nonce, $resourcePath);
+  		}
+  		//make the API Call
+      if (! isset($body)) {
+        $body = null;
+      }
+      $response = $this->apiClient->callAPI($this->basePath, $resourcePath, $method,
+  		                                      $queryParams, $body, $headerParams);
+      if(! $response){
+        return null;
+      }
+
+  	  $responseObject = $this->apiClient->deserialize($response,
+  		                                                'AccountRemovalResponse');
+  	  return $responseObject;
+      }
+  /**
 	 * GetUserEmbedKey
 	 * Returns active user embed key.
    * userId, string: User GUID (required)

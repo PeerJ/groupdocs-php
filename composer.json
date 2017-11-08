@@ -1,5 +1,5 @@
 {
-    "name": "groupdocs/groupdocs-php",
+    "name": "peerj/groupdocs-php",
     "version": "2.1.0",
     "type": "library",
     "description": "GroupDocs API library for PHP",
